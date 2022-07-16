@@ -1,4 +1,4 @@
-package utils.imageresources;
+package utils.images;
 
 public class ImagePathFinder {
 }
