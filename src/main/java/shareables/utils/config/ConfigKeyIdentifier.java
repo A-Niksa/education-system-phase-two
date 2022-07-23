@@ -7,8 +7,16 @@ public enum ConfigKeyIdentifier {
     CONSTANTS_PATH("constantsPath"),
     TEXTS_PATH("textsPath"),
     ADDRESSES_PATH("addressesPath"),
-    NETWORK_PATH("networkPath");
+    NETWORK_PATH("networkPath"),
 
+    // ADDRESSES:
+    IMAGES_FOLDER_PATH("imagesFolderPath"),
+    DEFAULT_PROFILE_PICTURE_PATH("defaultProfilePicturePath"),
+    CAPTCHA_5710_PATH("captcha5710Path"),
+    CAPTCHA_7447_PATH("captcha7447Path"),
+    CAPTCHA_8843_PATH("captcha8843Path"),
+    CAPTCHA_8947_PATH("captcha8947Path"),
+    CAPTCHA_9125_PATH("captcha9125Path");
 
     private String identifierString;
 
