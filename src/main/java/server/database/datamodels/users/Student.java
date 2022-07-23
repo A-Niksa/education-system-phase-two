@@ -1,8 +1,6 @@
 package server.database.datamodels.users;
 
-import server.database.builders.users.StudentBuilder;
 import server.database.datamodels.abstractions.Department;
-import server.database.idgeneration.IdGenerator;
 
 import javax.persistence.*;
 
@@ -31,24 +29,6 @@ public class Student {
     private int yearOfEntry;
     private double GPA;
     // TODO: adding student image
-
-    public Student() {
-    }
-
-    public Student(StudentBuilder studentBuilder) {
-        this.firstName = studentBuilder.firstName;
-        this.lastName = studentBuilder.lastName;
-        this.nationalId = studentBuilder.nationalId;
-        this.phoneNumber = studentBuilder.emailAddress;
-        this.emailAddress = studentBuilder.emailAddress;
-        this.department = studentBuilder.department;
-        this.advisingProfessor = studentBuilder.advisingProfessor;
-        this.degreeLevel = studentBuilder.degreeLevel;
-        this.studentStatus = studentBuilder.studentStatus;
-        this.yearOfEntry = studentBuilder.yearOfEntry;
-        this.GPA = studentBuilder.GPA;
-        this.id = IdGenerator.generateId(this);
-    }
 
     public static int getSequentialId() {
         return sequentialId;

@@ -7,20 +7,25 @@ public class IdGetter {
         if (yearOfEntry == 1400) {
             return "00";
         } else {
-            return String.format("%2d", yearOfEntry%1300);
+            return String.format("%02d", yearOfEntry%1300);
         }
     }
 
     public static String getDegreeLevelId(DegreeLevel degreeLevel) {
+        String degreeLevelId;
         switch (degreeLevel) {
             case UNDERGRADUATE:
-                return "1";
+                degreeLevelId = "1";
+                break;
             case GRADUATE:
-                return "2";
+                degreeLevelId = "2";
+                break;
             case PHD:
-                return "3";
+                degreeLevelId = "3";
+                break;
             default:
-                return "-";
+                degreeLevelId = "-";
         }
+        return degreeLevelId;
     }
 }

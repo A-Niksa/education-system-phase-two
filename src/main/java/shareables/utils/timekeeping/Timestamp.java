@@ -57,4 +57,10 @@ public class Timestamp {
     public void setSecond(int second) {
         this.second = second;
     }
+
+    @Override
+    public String toString() {
+        String template = "%04d-%02d-%02d-%02d-%02d-%02d"; // year-month-day-hour-minute-second
+        return String.format(template, year, month, day, hour, minute, second);
+    }
 }

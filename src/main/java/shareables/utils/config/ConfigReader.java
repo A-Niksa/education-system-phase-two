@@ -5,18 +5,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader extends Properties {
-    private static final String PATH_TO_CONFIG_PATHS = "src/main/resources/config/configpaths.properties";
-
-    private FileReader reader;
+    private FileReader fileReader;
 
     public ConfigReader() {
-
     }
 
-    private void initializeReader() {
+    public void initializeFileReader(String configPath) {
         try {
-            reader = new FileReader(PATH_TO_CONFIG_PATHS);
-            load(reader);
+            fileReader = new FileReader(configPath);
+            load(fileReader);
         } catch (IOException e) {
             e.printStackTrace();
         }
