@@ -1,10 +1,14 @@
 package server.database.datamodels.users;
 
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Set;
 
+@Entity
+@Table(name = "PROFESSORS")
 public class Professor {
-    @OneToMany(mappedBy = "advisingProfessor", fetch = FetchType.LAZY)
-    private Set<Student> studentsUnderAdvice;
+    @Id
+    private String id;
+    @OneToMany(mappedBy = "advisingProfessor")
+    private ArrayList<Student> studentsUnderAdvice;
 }

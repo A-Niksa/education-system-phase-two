@@ -1,11 +1,11 @@
-import shareables.utils.config.ConfigFileIdentifier;
-import shareables.utils.config.ConfigKeyIdentifier;
-import shareables.utils.config.ConfigManager;
-import shareables.utils.timekeeping.Timestamp;
-import shareables.utils.timekeeping.TimestampParser;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 
 public class Main {
     public static void main(String[] args) {
-        
+
     }
 }

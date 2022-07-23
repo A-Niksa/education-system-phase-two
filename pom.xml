@@ -15,21 +15,27 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.4.0</version>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.36.0.3</version>
         </dependency>
 
         <dependency>
-            <groupId>hibernate</groupId>
+            <groupId>com.zsoltfabok</groupId>
+            <artifactId>sqlite-dialect</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.4.0.GA</version>
+            <version>5.6.10.Final</version>
         </dependency>
 
         <dependency>
-            <groupId>com.vladmihalcea</groupId>
-            <artifactId>hibernate-types-52</artifactId>
-            <version>2.16.3</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.10.Final</version>
         </dependency>
     </dependencies>
 </project>
