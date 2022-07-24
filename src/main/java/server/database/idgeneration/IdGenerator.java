@@ -1,8 +1,12 @@
 package server.database.idgeneration;
 
 import server.database.datamodels.abstractions.Course;
-import server.database.datamodels.users.Professor;
-import server.database.datamodels.users.Student;
+import server.database.datamodels.abstractions.Department;
+import server.database.datamodels.requests.Request;
+import server.database.datamodels.users.professors.Professor;
+import server.database.datamodels.users.students.Student;
+
+import java.util.Date;
 
 public class IdGenerator {
     public static String generateId(Student student) {
@@ -26,7 +30,16 @@ public class IdGenerator {
     public static String generateId(Course course) {
         String departmentId = course.getDepartment().getId();
         String sequentialId = String.format("%03d", Course.getSequentialId());
-        Student.incrementSequentialId();
+        Course.incrementSequentialId();
         return departmentId + sequentialId;
+    }
+
+    public static String generateId(Department department) {
+        return IdGetter.getDepartmentId(department.getDepartmentName());
+    }
+
+    public static String generateId(Request request) {
+        Date requestDate = request.getRequestDate();
+        return requestDate.getTime() + "";
     }
 }

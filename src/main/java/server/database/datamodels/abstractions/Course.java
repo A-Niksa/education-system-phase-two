@@ -1,7 +1,7 @@
 package server.database.datamodels.abstractions;
 
-import server.database.datamodels.users.Professor;
-import server.database.datamodels.users.Student;
+import server.database.datamodels.users.professors.Professor;
+import server.database.datamodels.users.students.Student;
 import server.database.idgeneration.IdGenerator;
 
 import javax.persistence.*;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Courses")
 public class Course {
     private static int sequentialId = 0;
 
@@ -21,10 +22,10 @@ public class Course {
     @JoinColumn(name = "teaching_professor_id")
     private List<Professor> teachingProfessors;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "TA_i")
+    @JoinColumn(name = "TA_id")
     private List<Student> TAs;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "Course_Student")
+    @JoinTable(name = "Courses_Students")
     private List<Student> students;
     @Column
     private int numberOfCredits;

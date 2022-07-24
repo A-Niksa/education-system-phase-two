@@ -1,5 +1,8 @@
 package server.database.datamodels.media;
 
-public class Picture {
+import javax.persistence.Entity;
+
+@Entity
+public class Picture extends MediaFile {
     // TODO
 }

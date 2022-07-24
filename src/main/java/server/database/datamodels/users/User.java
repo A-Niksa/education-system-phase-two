@@ -7,6 +7,7 @@ import shareables.utils.images.ImageIdentifier;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Users") // added "s" to avoid conflict with reserved words
 public abstract class User {
     @Id
     protected String id;

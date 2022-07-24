@@ -1,15 +1,16 @@
 package server.database.idgeneration;
 
-import server.database.datamodels.users.AcademicLevel;
-import server.database.datamodels.users.AcademicRole;
-import server.database.datamodels.users.DegreeLevel;
+import server.database.datamodels.abstractions.DepartmentName;
+import server.database.datamodels.users.professors.AcademicLevel;
+import server.database.datamodels.users.professors.AcademicRole;
+import server.database.datamodels.users.students.DegreeLevel;
 
 public class IdGetter {
     public static String getYearOfEntryId(int yearOfEntry) {
-        if (yearOfEntry == 1400) {
-            return "00";
+        if (yearOfEntry < 2000) {
+            return (yearOfEntry + "").substring(1);
         } else {
-            return String.format("%02d", yearOfEntry%1300);
+            return String.format("%02d", yearOfEntry%2000);
         }
     }
 
@@ -35,13 +36,13 @@ public class IdGetter {
         String academicRoleId;
         switch (academicRole) {
             case NORMAL:
-                academicRoleId = "1";
+                academicRoleId = "7";
                 break;
             case DEPUTY:
-                academicRoleId = "2";
+                academicRoleId = "8";
                 break;
             case DEAN:
-                academicRoleId = "3";
+                academicRoleId = "9";
                 break;
             default:
                 academicRoleId = "-";
@@ -65,5 +66,29 @@ public class IdGetter {
                 academicLevelId = "-";
         }
         return academicLevelId;
+    }
+
+    public static String getDepartmentId(DepartmentName departmentName) {
+        String departmentId;
+        switch (departmentName) {
+            case MATHEMATICS:
+                departmentId = "1";
+                break;
+            case PHYSICS:
+                departmentId = "2";
+                break;
+            case ECONOMICS:
+                departmentId = "3";
+                break;
+            case CHEMISTRY:
+                departmentId = "4";
+                break;
+            case AEROSPACE_ENGINEERING:
+                departmentId = "5";
+                break;
+            default:
+                departmentId = "-";
+        }
+        return departmentId;
     }
 }

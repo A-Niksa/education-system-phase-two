@@ -1,4 +1,4 @@
-package server.database.datamodels.users;
+package server.database.datamodels.users.professors;
 
 public enum AcademicLevel {
     ASSISTANT, // ostadyar

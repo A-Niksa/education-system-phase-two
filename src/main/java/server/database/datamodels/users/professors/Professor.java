@@ -1,5 +1,8 @@
-package server.database.datamodels.users;
+package server.database.datamodels.users.professors;
 
+import server.database.datamodels.requests.Request;
+import server.database.datamodels.users.students.Student;
+import server.database.datamodels.users.User;
 import server.database.idgeneration.IdGenerator;
 
 import javax.persistence.*;
@@ -11,8 +14,10 @@ public class Professor extends User {
     private static int sequentialId = 0;
 
     @OneToMany(mappedBy = "advisingProfessor", cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "student_under_advice_id")
     private List<Student> studentsUnderAdvice;
+    // TODO:
+//    @OneToMany(mappedBy = "receivingProfessor", cascade = CascadeType.PERSIST)
+//    private List<Request> receivedRequests;
     @Column
     private String roomNumber;
     @Column
@@ -23,6 +28,7 @@ public class Professor extends User {
     public Professor() {
         academicRole = AcademicRole.NORMAL; // default value
         studentsUnderAdvice = new ArrayList<>();
+//        receivedRequests = new ArrayList<>();
     }
 
     public void addToStudentsUnderAdvice(Student student) {
@@ -32,6 +38,14 @@ public class Professor extends User {
     public void removeFromStudentsUnderAdvice(Student student) {
         studentsUnderAdvice.removeIf(e -> e.getId().equals(student.getId()));
     }
+
+//    public void addToReceivedRequests(Request request) {
+//        receivedRequests.add(request);
+//    }
+//
+//    public void removeFromReceivedRequests(Request request) {
+//        receivedRequests.removeIf(e -> e.getId().equals(request.getId()));
+//    }
 
     @Override
     public void initializeId() {
@@ -77,4 +91,12 @@ public class Professor extends User {
     public void setAcademicRole(AcademicRole academicRole) {
         this.academicRole = academicRole;
     }
+
+//    public List<Request> getReceivedRequests() {
+//        return receivedRequests;
+//    }
+//
+//    public void setReceivedRequests(List<Request> receivedRequests) {
+//        this.receivedRequests = receivedRequests;
+//    }
 }

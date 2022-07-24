@@ -3,6 +3,7 @@ package server.database.datamodels.abstractions;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Scores")
 public class Score {
     @Id
     private double score;

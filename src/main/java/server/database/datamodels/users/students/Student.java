@@ -1,7 +1,10 @@
-package server.database.datamodels.users;
+package server.database.datamodels.users.students;
 
 import server.database.datamodels.abstractions.Course;
 import server.database.datamodels.abstractions.Transcript;
+import server.database.datamodels.requests.Request;
+import server.database.datamodels.users.User;
+import server.database.datamodels.users.professors.Professor;
 import server.database.idgeneration.IdGenerator;
 
 import javax.persistence.*;
@@ -16,23 +19,30 @@ public class Student extends User {
     @JoinColumn(name = "advising_professor_id")
     private Professor advisingProfessor;
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "Student_Transcript")
+    @JoinTable(name = "Students_Transcripts")
     private Transcript transcript;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "current_courses_ids")
     private List<Course> currentCourses;
+    // TODO:
+//    @OneToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "Students_Requests")
+//    private List<Request> sentRequests;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "assisting_course_id")
+    private List<Course> assistingCourses; // list of courses where the student is a TA
     @Column
     private DegreeLevel degreeLevel;
     @Column
     private StudentStatus studentStatus;
     @Column
     private int yearOfEntry;
-    @Column
-    private double GPA;
 
     public Student() {
         transcript = new Transcript();
         currentCourses = new ArrayList<>();
+//        sentRequests = new ArrayList<>();
+        assistingCourses = new ArrayList<>();
     }
 
     public void addToCurrentCourses(Course course) {
@@ -43,9 +53,26 @@ public class Student extends User {
         currentCourses.removeIf(e -> e.getId().equals(course.getId()));
     }
 
+//    public void addToSentRequests(Request request) {
+//        sentRequests.add(request);
+//    }
+//
+//    public void removeFromSentRequests(Request request) {
+//        sentRequests.removeIf(e -> e.getId().equals(request.getId()));
+//    }
+
+    public void addToAssistingCourses(Course course) {
+        assistingCourses.add(course);
+    }
+
+    public void removeFromAssistingCourses(Course course) {
+        assistingCourses.removeIf(e -> e.getId().equals(course.getId()));
+    }
+
     @Override
     public void initializeId() { // should only be called after the fields are filled (non-null)
         id = IdGenerator.generateId(this);
+        transcript.setId(id);
     }
 
     public static int getSequentialId() {
@@ -102,13 +129,5 @@ public class Student extends User {
 
     public void setYearOfEntry(int yearOfEntry) {
         this.yearOfEntry = yearOfEntry;
-    }
-
-    public double getGPA() {
-        return GPA;
-    }
-
-    public void setGPA(double GPA) {
-        this.GPA = GPA;
     }
 }
