@@ -1,36 +1,26 @@
 package server.database.datamodels.users;
 
-import server.database.datamodels.abstractions.Department;
+import server.database.datamodels.abstractions.Course;
 import server.database.datamodels.abstractions.Transcript;
+import server.database.idgeneration.IdGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "STUDENTS")
-public class Student {
+public class Student extends User {
     private static int sequentialId = 0;
 
-    @Id
-    private String id;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "department_id", nullable = false)
-    private Department department;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "advising_professor_id", nullable = false)
+    @JoinColumn(name = "advising_professor_id")
     private Professor advisingProfessor;
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "STUDENTS_TRANSCRIPTS")
+    @JoinTable(name = "Student_Transcript")
     private Transcript transcript;
-    @Column
-    private String firstName;
-    @Column
-    private String lastName;
-    @Column
-    private String nationalId;
-    @Column
-    private String phoneNumber;
-    @Column
-    private String emailAddress;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "current_courses_ids")
+    private List<Course> currentCourses;
     @Column
     private DegreeLevel degreeLevel;
     @Column
@@ -39,7 +29,24 @@ public class Student {
     private int yearOfEntry;
     @Column
     private double GPA;
-    // TODO: adding student image
+
+    public Student() {
+        transcript = new Transcript();
+        currentCourses = new ArrayList<>();
+    }
+
+    public void addToCurrentCourses(Course course) {
+        currentCourses.add(course);
+    }
+
+    public void removeFromCurrentCourses(Course course) {
+        currentCourses.removeIf(e -> e.getId().equals(course.getId()));
+    }
+
+    @Override
+    public void initializeId() { // should only be called after the fields are filled (non-null)
+        id = IdGenerator.generateId(this);
+    }
 
     public static int getSequentialId() {
         return sequentialId;
@@ -49,51 +56,59 @@ public class Student {
         sequentialId++;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
     public Professor getAdvisingProfessor() {
         return advisingProfessor;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setAdvisingProfessor(Professor advisingProfessor) {
+        this.advisingProfessor = advisingProfessor;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Transcript getTranscript() {
+        return transcript;
     }
 
-    public String getNationalId() {
-        return nationalId;
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public List<Course> getCurrentCourses() {
+        return currentCourses;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public void setCurrentCourses(List<Course> currentCourses) {
+        this.currentCourses = currentCourses;
     }
 
     public DegreeLevel getDegreeLevel() {
         return degreeLevel;
     }
 
+    public void setDegreeLevel(DegreeLevel degreeLevel) {
+        this.degreeLevel = degreeLevel;
+    }
+
     public StudentStatus getStudentStatus() {
         return studentStatus;
+    }
+
+    public void setStudentStatus(StudentStatus studentStatus) {
+        this.studentStatus = studentStatus;
     }
 
     public int getYearOfEntry() {
         return yearOfEntry;
     }
 
+    public void setYearOfEntry(int yearOfEntry) {
+        this.yearOfEntry = yearOfEntry;
+    }
+
     public double getGPA() {
         return GPA;
+    }
+
+    public void setGPA(double GPA) {
+        this.GPA = GPA;
     }
 }

@@ -1,5 +1,7 @@
 package server.database.idgeneration;
 
+import server.database.datamodels.users.AcademicLevel;
+import server.database.datamodels.users.AcademicRole;
 import server.database.datamodels.users.DegreeLevel;
 
 public class IdGetter {
@@ -27,5 +29,41 @@ public class IdGetter {
                 degreeLevelId = "-";
         }
         return degreeLevelId;
+    }
+
+    public static String getAcademicRoleId(AcademicRole academicRole) {
+        String academicRoleId;
+        switch (academicRole) {
+            case NORMAL:
+                academicRoleId = "1";
+                break;
+            case DEPUTY:
+                academicRoleId = "2";
+                break;
+            case DEAN:
+                academicRoleId = "3";
+                break;
+            default:
+                academicRoleId = "-";
+        }
+        return academicRoleId;
+    }
+
+    public static String getAcademicLevelId(AcademicLevel academicLevel) {
+        String academicLevelId;
+        switch (academicLevel) {
+            case ASSISTANT:
+                academicLevelId = "1";
+                break;
+            case ASSOCIATE:
+                academicLevelId = "2";
+                break;
+            case FULL:
+                academicLevelId = "3";
+                break;
+            default:
+                academicLevelId = "-";
+        }
+        return academicLevelId;
     }
 }

@@ -41,13 +41,14 @@ public class DatabaseManager {
 
     public <T> T fetch(Class<T> tClass, String id) {
         Session session = startSession();
-        T objectOfTypeT = session.get(tClass, id);
+        T t = session.get(tClass, id);
         endSession(session);
-        return objectOfTypeT;
+        return t;
     }
 
     private Session startSession() {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         return session;
     }
 
