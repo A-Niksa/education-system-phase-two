@@ -8,8 +8,8 @@ import java.util.Map;
 @Table(name = "Transcripts")
 public class Transcript {
     @Id
-    private String id; // same as studentId
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    private String id; // same as studentId (with a "T" at the end)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @MapKeyJoinColumn(name="course_id")
     @JoinTable(inverseJoinColumns = @JoinColumn(name = "score"))
     private Map<Course, Score> courseScoreMap; // includes failed courses as well

@@ -12,11 +12,11 @@ import java.util.Date;
 public abstract class Request {
     @Id
     protected String id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "requesting_student_id")
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "requestingStudent_id")
     protected Student requestingStudent;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "receiving_professor_id")
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "receivingProfessor_id")
     protected Professor receivingProfessor;
     @Column
     protected RequestStatus requestStatus;

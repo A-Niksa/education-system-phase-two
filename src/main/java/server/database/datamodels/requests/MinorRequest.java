@@ -6,12 +6,12 @@ import javax.persistence.*;
 
 @Entity
 public class MinorRequest extends Request {
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "origin_deputy_id")
-    private Professor originDeputy;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "originDeputy_id")
+    private Professor originDeputy; // deputy of the student's department
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "target_deputy_id")
-    private Professor targetDeputy;
+    private Professor targetDeputy; // deputy of the student's desired department
     @Column
     private RequestStatus requestStatusAtOrigin;
     @Column

@@ -13,13 +13,15 @@ import java.util.List;
 public class Department {
     @Id
     private String id;
-    @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Professor> professors;
-    @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "department", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Student> students;
-    @OneToOne(mappedBy = "department", cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "dean_id")
     private Professor dean;
-    @OneToOne(mappedBy = "department", cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "deputy_id")
     private Professor deputy;
     @Column
     private DepartmentName departmentName;

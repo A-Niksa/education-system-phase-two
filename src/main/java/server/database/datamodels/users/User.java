@@ -1,5 +1,6 @@
 package server.database.datamodels.users;
 
+import org.hibernate.annotations.DiscriminatorOptions;
 import server.database.datamodels.abstractions.Department;
 import server.database.datamodels.media.Picture;
 import shareables.utils.images.ImageIdentifier;
@@ -7,14 +8,15 @@ import shareables.utils.images.ImageIdentifier;
 import javax.persistence.*;
 
 @Entity
+@DiscriminatorOptions(force = true)
 @Table(name = "Users") // added "s" to avoid conflict with reserved words
 public abstract class User {
     @Id
     protected String id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id")
     protected Department department;
-    @OneToOne(cascade = CascadeType.PERSIST) // TODO: changing pfp through gui?
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER) // TODO: changing pfp through gui?
     @JoinColumn(name = "image_id")
     protected Picture profilePicture;
     @Column

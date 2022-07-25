@@ -1,12 +1,17 @@
 import server.database.datamodels.abstractions.Course;
 import server.database.datamodels.abstractions.Department;
 import server.database.datamodels.abstractions.DepartmentName;
+import server.database.datamodels.requests.MinorRequest;
+import server.database.datamodels.requests.RecommendationRequest;
+import server.database.datamodels.requests.Request;
+import server.database.datamodels.users.User;
 import server.database.datamodels.users.professors.AcademicLevel;
 import server.database.datamodels.users.professors.AcademicRole;
 import server.database.datamodels.users.professors.Professor;
 import server.database.datamodels.users.students.DegreeLevel;
 import server.database.datamodels.users.students.Student;
 import server.database.datamodels.users.students.StudentStatus;
+import server.database.idgeneration.IdGenerator;
 import server.database.management.DatabaseManager;
 
 public class Main {
@@ -14,6 +19,8 @@ public class Main {
 
     public static void main(String[] args) {
         createTestData();
+        Student hamidi = (Student)manager.fetch(User.class, "19101100");
+        System.out.println(hamidi);
     }
 
     private static void createTestData() {
@@ -82,12 +89,13 @@ public class Main {
         complexAnalysis.setNumberOfCredits(4);
         complexAnalysis.setActive(true);
 
-        manager.save(hamidi.getTranscript());
-        manager.save(rezaei.getTranscript());
         manager.save(mathDepartment);
         manager.save(khazayi);
         manager.save(fanaei);
+        manager.save(hamidi.getTranscript());
+        manager.save(rezaei.getTranscript());
         manager.save(hamidi);
+        manager.save(rezaei);
         manager.save(complexAnalysis);
     }
 }

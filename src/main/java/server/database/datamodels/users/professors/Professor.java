@@ -13,10 +13,10 @@ import java.util.List;
 public class Professor extends User {
     private static int sequentialId = 0;
 
-    @OneToMany(mappedBy = "advisingProfessor", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "advisingProfessor", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Student> studentsUnderAdvice;
     // TODO:
-//    @OneToMany(mappedBy = "receivingProfessor", cascade = CascadeType.PERSIST)
+//    @OneToMany(mappedBy = "receivingProfessor", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 //    private List<Request> receivedRequests;
     @Column
     private String roomNumber;

@@ -10,8 +10,15 @@
         <property name="hbm2ddl.auto">create</property>
 
         <!-- mappings -->
-        <mapping class = "test.Course"/>
-        <mapping class = "test.Transcript"/>
-        <mapping class = "test.Score"/>
+        <mapping class = "server.database.datamodels.users.User"/>
+        <mapping class = "server.database.datamodels.users.professors.Professor"/>
+        <mapping class = "server.database.datamodels.users.students.Student"/>
+        <mapping class = "server.database.datamodels.abstractions.Department"/>
+        <mapping class = "server.database.datamodels.abstractions.Score"/>
+        <mapping class = "server.database.datamodels.abstractions.Course"/>
+        <mapping class = "server.database.datamodels.abstractions.Transcript"/>
+        <mapping class = "server.database.datamodels.requests.Request"/>
+        <mapping class = "server.database.datamodels.media.MediaFile"/>
+        <mapping class = "server.database.datamodels.media.Picture"/>
     </session-factory>
 </hibernate-configuration>

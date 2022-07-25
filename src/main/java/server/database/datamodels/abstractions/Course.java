@@ -15,16 +15,16 @@ public class Course {
 
     @Id
     private String id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id")
     private Department department;
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "teaching_professor_id")
+    @ManyToMany(cascade = CascadeType.PERSIST,  fetch = FetchType.EAGER)
+    @JoinTable(name = "Courses_Professors")
     private List<Professor> teachingProfessors;
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "TA_id")
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(name = "Courses_TAs")
     private List<Student> TAs;
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "Courses_Students")
     private List<Student> students;
     @Column
