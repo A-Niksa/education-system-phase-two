@@ -16,21 +16,33 @@ public class ConfigManager {
         return configMaster;
     }
 
-    public static double getDouble(ConfigFileIdentifier configFileIdentifier, ConfigKeyIdentifier configKeyIdentifier) {
-        return Double.parseDouble(getString(configFileIdentifier, configKeyIdentifier));
+    public static int getPort() { // added a separate method since it needs to check for default config if necessary
+        String portReadFromConfigFile = getString(ConfigFileIdentifier.NETWORK, "port");
+        if (portReadFromConfigFile == null) return ConfigConstants.DEFAULT_PORT;
+        return Integer.parseInt(portReadFromConfigFile);
     }
 
-    public static int getInt(ConfigFileIdentifier configFileIdentifier, ConfigKeyIdentifier configKeyIdentifier) {
-        return Integer.parseInt(getString(configFileIdentifier, configKeyIdentifier));
+    public static String getIp() { // added a separate method since it needs to check for default config if necessary
+        String ipReadFromConfigFile = getString(ConfigFileIdentifier.NETWORK, "port");
+        if (ipReadFromConfigFile == null) return ConfigConstants.DEFAULT_IP;
+        return ipReadFromConfigFile;
     }
 
-    public static String getString(ConfigFileIdentifier configFileIdentifier, ConfigKeyIdentifier configKeyIdentifier) {
-        return getInstance().getValue(configFileIdentifier, configKeyIdentifier);
+    public static double getDouble(ConfigFileIdentifier configFileIdentifier, String configKeyString) {
+        return Double.parseDouble(getString(configFileIdentifier, configKeyString));
     }
 
-    private String getValue(ConfigFileIdentifier configFileIdentifier, ConfigKeyIdentifier configKeyIdentifier) {
+    public static int getInt(ConfigFileIdentifier configFileIdentifier, String configKeyString) {
+        return Integer.parseInt(getString(configFileIdentifier, configKeyString));
+    }
+
+    public static String getString(ConfigFileIdentifier configFileIdentifier, String configKeyString) {
+        return getInstance().getValue(configFileIdentifier, configKeyString);
+    }
+
+    private String getValue(ConfigFileIdentifier configFileIdentifier, String configKeyString) {
         String configPath = configFilePathFinder.getPath(configFileIdentifier, configReader);
         configReader.initializeFileReader(configPath);
-        return configReader.getProperty(configKeyIdentifier.toString());
+        return configReader.getProperty(configKeyString);
     }
 }

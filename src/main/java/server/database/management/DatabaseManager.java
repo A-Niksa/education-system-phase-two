@@ -6,10 +6,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 import shareables.utils.config.ConfigFileIdentifier;
-import shareables.utils.config.ConfigKeyIdentifier;
 import shareables.utils.config.ConfigManager;
 
 public class DatabaseManager {
+    // TODO: silencing logs in console
     private String hibernateConfigPath;
     private SessionFactory sessionFactory;
 
@@ -24,7 +24,7 @@ public class DatabaseManager {
     }
 
     private String getHibernateConfigPath() {
-        return ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, ConfigKeyIdentifier.HIBERNATE_CONFIG_PATH);
+        return ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "hibernateConfigPath");
     }
 
     public void save(Object o) {

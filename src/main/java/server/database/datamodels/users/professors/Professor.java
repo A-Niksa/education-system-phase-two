@@ -1,6 +1,6 @@
 package server.database.datamodels.users.professors;
 
-import server.database.datamodels.requests.Request;
+import org.hibernate.annotations.DiscriminatorOptions;
 import server.database.datamodels.users.students.Student;
 import server.database.datamodels.users.User;
 import server.database.idgeneration.IdGenerator;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DiscriminatorOptions(force = true)
 public class Professor extends User {
     private static int sequentialId = 0;
 

@@ -1,32 +1,30 @@
 package shareables.utils.images;
 
-import shareables.utils.config.ConfigKeyIdentifier;
-
 public class ImageIdentifierParser {
-    public ConfigKeyIdentifier getConfigKeyIdentifier(ImageIdentifier imageIdentifier) {
-        ConfigKeyIdentifier configKeyIdentifier;
+    public String getConfigKeyString(ImageIdentifier imageIdentifier) {
+        String configKeyString;
         switch (imageIdentifier) {
             case DEFAULT_PROFILE_PICTURE:
-                configKeyIdentifier = ConfigKeyIdentifier.DEFAULT_PROFILE_PICTURE_PATH;
+                configKeyString = "defaultProfilePicturePath";
                 break;
             case CAPTCHA_5710:
-                configKeyIdentifier = ConfigKeyIdentifier.CAPTCHA_5710_PATH;
+                configKeyString = "captcha5710Path";
                 break;
             case CAPTCHA_7447:
-                configKeyIdentifier = ConfigKeyIdentifier.CAPTCHA_7447_PATH;
+                configKeyString = "captcha7447Path";
                 break;
             case CAPTCHA_8843:
-                configKeyIdentifier = ConfigKeyIdentifier.CAPTCHA_8843_PATH;
+                configKeyString = "captcha8843Path";
                 break;
             case CAPTCHA_8947:
-                configKeyIdentifier = ConfigKeyIdentifier.CAPTCHA_8947_PATH;
+                configKeyString = "captcha8947Path";
                 break;
             case CAPTCHA_9125:
-                configKeyIdentifier = ConfigKeyIdentifier.CAPTCHA_9125_PATH;
+                configKeyString = "captcha9125Path";
                 break;
             default: // this branch was added for explicitness
-                configKeyIdentifier = null;
+                configKeyString = null;
         }
-        return configKeyIdentifier;
+        return configKeyString;
     }
 }

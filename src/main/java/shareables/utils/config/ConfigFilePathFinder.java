@@ -5,31 +5,31 @@ public class ConfigFilePathFinder {
         openConfigPathsProperties(configReader);
         String configFilesFolderPath = getConfigFilesFolderPath(configReader);
 
-        String configKeyIdentifierString;
+        String configKeyString;
         switch (configFileIdentifier) {
             case GUI:
-                configKeyIdentifierString = ConfigKeyIdentifier.GUI_PATH.toString();
+                configKeyString = "GUIPath";
                 break;
             case CONSTANTS:
-                configKeyIdentifierString = ConfigKeyIdentifier.CONSTANTS_PATH.toString();
+                configKeyString = "constantsPath";
                 break;
             case TEXTS:
-                configKeyIdentifierString = ConfigKeyIdentifier.TEXTS_PATH.toString();
+                configKeyString = "textsPath";
                 break;
             case ADDRESSES:
-                configKeyIdentifierString = ConfigKeyIdentifier.ADDRESSES_PATH.toString();
+                configKeyString = "addressesPath";
                 break;
             case NETWORK:
-                configKeyIdentifierString = ConfigKeyIdentifier.NETWORK_PATH.toString();
+                configKeyString = "networkPath";
                 break;
             default:
-                configKeyIdentifierString = "-";
+                configKeyString = null;
         }
-        return configFilesFolderPath + configReader.getProperty(configKeyIdentifierString);
+        return configFilesFolderPath + configReader.getProperty(configKeyString);
     }
 
     private String getConfigFilesFolderPath(ConfigReader configReader) {
-        return configReader.getProperty(ConfigKeyIdentifier.CONFIG_FILES_FOLDER_PATH.toString());
+        return configReader.getProperty("configFilesFolderPath");
     }
 
     private void openConfigPathsProperties(ConfigReader configReader) {

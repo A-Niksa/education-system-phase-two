@@ -17,7 +17,7 @@
         <mapping class = "server.database.datamodels.abstractions.Score"/>
         <mapping class = "server.database.datamodels.abstractions.Course"/>
         <mapping class = "server.database.datamodels.abstractions.Transcript"/>
-        <mapping class = "server.database.datamodels.requests.Request"/>
+        <mapping class = "server.database.datamodels.academicrequests.AcademicRequest"/>
         <mapping class = "server.database.datamodels.media.MediaFile"/>
         <mapping class = "server.database.datamodels.media.Picture"/>
     </session-factory>

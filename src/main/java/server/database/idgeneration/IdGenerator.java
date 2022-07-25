@@ -2,7 +2,7 @@ package server.database.idgeneration;
 
 import server.database.datamodels.abstractions.Course;
 import server.database.datamodels.abstractions.Department;
-import server.database.datamodels.requests.Request;
+import server.database.datamodels.academicrequests.AcademicRequest;
 import server.database.datamodels.users.professors.Professor;
 import server.database.datamodels.users.students.Student;
 
@@ -38,8 +38,8 @@ public class IdGenerator {
         return IdGetter.getDepartmentId(department.getDepartmentName());
     }
 
-    public static String generateId(Request request) {
-        Date requestDate = request.getRequestDate();
+    public static String generateId(AcademicRequest academicRequest) {
+        Date requestDate = academicRequest.getRequestDate();
         return requestDate.getTime() + "";
     }
 }

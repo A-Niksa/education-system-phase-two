@@ -1,7 +1,6 @@
 package shareables.utils.images;
 
 import shareables.utils.config.ConfigFileIdentifier;
-import shareables.utils.config.ConfigKeyIdentifier;
 import shareables.utils.config.ConfigManager;
 
 import java.awt.*;
@@ -33,11 +32,11 @@ public class ImageManager {
 
     private String getImagePath(ImageIdentifier imageIdentifier) {
         String imagesFolderPath = getImagesFolderPath();
-        ConfigKeyIdentifier configKeyIdentifier = imageIdentifierParser.getConfigKeyIdentifier(imageIdentifier);
-        return imagesFolderPath + ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, configKeyIdentifier);
+        String configKeyString = imageIdentifierParser.getConfigKeyString(imageIdentifier);
+        return imagesFolderPath + ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, configKeyString);
     }
 
     private String getImagesFolderPath() {
-        return ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, ConfigKeyIdentifier.IMAGES_FOLDER_PATH);
+        return ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "imagesFolderPath");
     }
 }
