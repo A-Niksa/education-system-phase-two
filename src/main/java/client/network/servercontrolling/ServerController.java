@@ -36,7 +36,13 @@ public class ServerController {
     }
 
     private void receiveAuthTokenFromServer() {
-        authToken = in.nextLine();
+        String responseString = in.nextLine();
+        try {
+            Response response = objectMapper.readValue(responseString, Response.class);
+            authToken = response.getUnsolicitedMessage();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     public Response sendAndListen(Request request) {

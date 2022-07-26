@@ -42,7 +42,13 @@ public class ClientHandler {
     }
 
     private void sendAuthTokenToClient() {
-        printlnAndFlush(authToken);
+        Response response = new Response();
+        response.setUnsolicitedMessage(authToken);
+        try {
+            printlnAndFlush(objectMapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initializeIOStreams() {

@@ -82,6 +82,7 @@ public class Main {
         rezaei.setEmailAddress("rezaei@sharif.edu");
         rezaei.setAdvisingProfessor(fanaei);
         rezaei.setPassword("5678");
+        rezaei.setStudentStatus(StudentStatus.DROPPED_OUT);
         Course complexAnalysis = new Course();
         complexAnalysis.setDepartment(mathDepartment);
         complexAnalysis.initializeId();
