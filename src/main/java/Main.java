@@ -10,12 +10,14 @@ import server.database.datamodels.users.students.Student;
 import server.database.datamodels.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 
+import java.util.Date;
+
 public class Main {
     private static final DatabaseManager manager = new DatabaseManager();
 
     public static void main(String[] args) {
         createTestData();
-        Student hamidi = (Student)manager.fetch(User.class, "19101100");
+        Student hamidi = (Student) manager.fetch(User.class, "19101100");
         System.out.println(hamidi);
     }
 
@@ -34,6 +36,7 @@ public class Main {
         khazayi.setPhoneNumber("09129730021");
         khazayi.setEmailAddress("khazayi@sharif.edu");
         khazayi.setRoomNumber("105");
+        khazayi.setPassword("1234");
         Student hamidi = new Student();
         hamidi.setDepartment(mathDepartment);
         hamidi.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
@@ -46,6 +49,8 @@ public class Main {
         hamidi.setPhoneNumber("09192302103");
         hamidi.setEmailAddress("hamidi@sharif.edu");
         hamidi.setAdvisingProfessor(khazayi);
+        hamidi.setPassword("1234");
+        hamidi.setLastLogin(new Date());
         khazayi.addToStudentsUnderAdvice(hamidi);
         mathDepartment.setDeputy(khazayi);
         mathDepartment.addToStudents(hamidi);
@@ -60,6 +65,7 @@ public class Main {
         fanaei.setPhoneNumber("09129730321");
         fanaei.setEmailAddress("fanaei@sharif.edu");
         fanaei.setRoomNumber("107");
+        fanaei.setPassword("1234");
         mathDepartment.setDean(fanaei);
         mathDepartment.addToProfessors(khazayi);
         mathDepartment.addToProfessors(fanaei);
@@ -75,6 +81,7 @@ public class Main {
         rezaei.setPhoneNumber("09192302110");
         rezaei.setEmailAddress("rezaei@sharif.edu");
         rezaei.setAdvisingProfessor(fanaei);
+        rezaei.setPassword("5678");
         Course complexAnalysis = new Course();
         complexAnalysis.setDepartment(mathDepartment);
         complexAnalysis.initializeId();

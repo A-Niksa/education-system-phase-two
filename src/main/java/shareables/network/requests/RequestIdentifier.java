@@ -1,5 +1,6 @@
 package shareables.network.requests;
 
 public enum RequestIdentifier {
-    LOGIN
+    LOGIN,
+    NEW_PASSWORD
 }

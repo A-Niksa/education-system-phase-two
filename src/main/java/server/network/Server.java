@@ -18,7 +18,7 @@ public class Server {
     private int currentClientHandlerId;
     private int port;
     private boolean isActive;
-    private DatabaseManager databaseManager; // TODO: synchronizing db if necessary?
+    private final DatabaseManager databaseManager; // TODO: synchronizing db if necessary?
     private AuthTokenGenerator authTokenGenerator;
     private RequestMapper requestMapper;
 
@@ -66,10 +66,6 @@ public class Server {
 
     public DatabaseManager getDatabaseManager() {
         return databaseManager;
-    }
-
-    public void setDatabaseManager(DatabaseManager databaseManager) {
-        this.databaseManager = databaseManager;
     }
 
     public AuthTokenGenerator getAuthTokenGenerator() {

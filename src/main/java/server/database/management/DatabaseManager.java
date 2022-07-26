@@ -33,6 +33,12 @@ public class DatabaseManager {
         endSession(session);
     }
 
+    public void update(Object o) {
+        Session session = startSession();
+        session.update(o);
+        endSession(session);
+    }
+
     public void remove(Object o) {
         Session session = startSession();
         session.remove(o);

@@ -1,4 +1,4 @@
-package client.controllers;
+package client.controller;
 
 public class StringObjectMap {
     private String string;

@@ -18,7 +18,12 @@ public class RequestMapper {
     public void mapRequestToHandlerMethod(ClientHandler clientHandler, Request request) {
         RequestIdentifier requestIdentifier = request.getRequestIdentifier();
         switch (requestIdentifier) {
-
+            case LOGIN:
+                requestHandler.login(clientHandler, request);
+                break;
+            case NEW_PASSWORD:
+                requestHandler.changePassword(clientHandler, request);
+                break;
         }
     }
 }

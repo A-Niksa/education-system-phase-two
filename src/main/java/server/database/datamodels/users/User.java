@@ -3,9 +3,11 @@ package server.database.datamodels.users;
 import org.hibernate.annotations.DiscriminatorOptions;
 import server.database.datamodels.abstractions.Department;
 import server.database.datamodels.media.Picture;
-import shareables.utils.images.ImageIdentifier;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @DiscriminatorOptions(force = true)
@@ -20,6 +22,8 @@ public abstract class User {
     @JoinColumn(name = "image_id")
     protected Picture profilePicture;
     @Column
+    protected UserIdentifier userIdentifier;
+    @Column
     protected String nationalId;
     @Column
     protected String firstName;
@@ -29,9 +33,18 @@ public abstract class User {
     protected String phoneNumber;
     @Column
     protected String emailAddress;
+    @Column
+    protected String password;
+    @Column
+    protected Date lastLogin;
 
     public User() {
         // TODO: setting default profile picture
+    }
+
+    public User(UserIdentifier userIdentifier) {
+        // TODO: setting default profile picture
+        this.userIdentifier = userIdentifier;
     }
 
     protected abstract void initializeId();
@@ -98,5 +111,29 @@ public abstract class User {
 
     public void setProfilePicture(Picture profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserIdentifier getUserIdentifier() {
+        return userIdentifier;
+    }
+
+    public void setUserIdentifier(UserIdentifier userIdentifier) {
+        this.userIdentifier = userIdentifier;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 }

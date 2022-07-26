@@ -1,4 +1,4 @@
-package client.controllers;
+package client.controller;
 
 import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;

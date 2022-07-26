@@ -1,8 +1,10 @@
 package server.database.datamodels.users.students;
 
+import org.hibernate.annotations.DiscriminatorOptions;
 import server.database.datamodels.abstractions.Course;
 import server.database.datamodels.abstractions.Transcript;
 import server.database.datamodels.users.User;
+import server.database.datamodels.users.UserIdentifier;
 import server.database.datamodels.users.professors.Professor;
 import server.database.idgeneration.IdGenerator;
 
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@org.hibernate.annotations.DiscriminatorOptions(force=true)
+@DiscriminatorOptions(force = true)
 public class Student extends User {
     private static int sequentialId = 0;
 
@@ -39,6 +41,7 @@ public class Student extends User {
     private int yearOfEntry;
 
     public Student() {
+        super(UserIdentifier.STUDENT);
         transcript = new Transcript();
         currentCourses = new ArrayList<>();
 //        sentRequests = new ArrayList<>();

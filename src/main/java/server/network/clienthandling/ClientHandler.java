@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import server.network.Server;
 import shareables.network.requests.Request;
+import shareables.network.responses.Response;
 import shareables.utils.objectmapping.ObjectMapperUtils;
 
 import java.io.IOException;
@@ -29,6 +30,15 @@ public class ClientHandler {
         initializeIOStreams();
         sendAuthTokenToClient();
         startRequestListenerThread();
+    }
+
+    public void respond(Response response) {
+        try {
+            String responseString = objectMapper.writeValueAsString(response);
+            printlnAndFlush(responseString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     private void sendAuthTokenToClient() {

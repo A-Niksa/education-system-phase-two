@@ -9,6 +9,9 @@ public class Response {
     private String errorMessage;
     private String unsolicitedMessage;
 
+    public Response() {
+    }
+
     public Response(ResponseStatus responseStatus) {
         this.responseStatus = responseStatus;
         dataMap = new HashMap<>();
@@ -23,6 +26,22 @@ public class Response {
     public Response(ResponseStatus responseStatus, String unsolicitedMessage) {
         this.responseStatus = responseStatus;
         this.unsolicitedMessage = unsolicitedMessage;
+    }
+
+    public void put(String dataName, Object data) {
+        dataMap.put(dataName, data);
+    }
+
+    public Object get(String dataName) {
+        return dataMap.get(dataName);
+    }
+
+    public Map<String, Object> getDataMap() {
+        return dataMap;
+    }
+
+    public void setDataMap(Map<String, Object> dataMap) {
+        this.dataMap = dataMap;
     }
 
     public ResponseStatus getResponseStatus() {

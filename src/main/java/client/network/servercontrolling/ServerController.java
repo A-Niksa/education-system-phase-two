@@ -46,7 +46,8 @@ public class ServerController {
 
     private Response listen() {
         try {
-            Response response = objectMapper.readValue(in.nextLine(), Response.class);
+            String responseString = in.nextLine();
+            return objectMapper.readValue(responseString, Response.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

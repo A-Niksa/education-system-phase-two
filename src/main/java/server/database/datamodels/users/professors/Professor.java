@@ -1,6 +1,7 @@
 package server.database.datamodels.users.professors;
 
 import org.hibernate.annotations.DiscriminatorOptions;
+import server.database.datamodels.users.UserIdentifier;
 import server.database.datamodels.users.students.Student;
 import server.database.datamodels.users.User;
 import server.database.idgeneration.IdGenerator;
@@ -27,6 +28,7 @@ public class Professor extends User {
     private AcademicRole academicRole;
 
     public Professor() {
+        super(UserIdentifier.PROFESSOR);
         academicRole = AcademicRole.NORMAL; // default value
         studentsUnderAdvice = new ArrayList<>();
 //        receivedRequests = new ArrayList<>();

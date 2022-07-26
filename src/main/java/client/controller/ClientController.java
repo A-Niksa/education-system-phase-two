@@ -1,4 +1,4 @@
-package client.controllers;
+package client.controller;
 
 import client.network.Client;
 import shareables.network.requests.Request;
@@ -14,10 +14,16 @@ public class ClientController {
         requestGenerator = new RequestGenerator();
     }
 
-    public Response login(String username, String password, String captcha) {
+    public Response login(String username, String password, String captcha, String currentCaptcha) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.LOGIN,
                 new StringObjectMap("username", username), new StringObjectMap("password", password),
-                new StringObjectMap("captcha", captcha));
+                new StringObjectMap("captcha", captcha), new StringObjectMap("currentCaptcha", currentCaptcha));
+        return client.sendAndListen(request);
+    }
+
+    public Response changePassword(String username, String newPassword) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.NEW_PASSWORD,
+                new StringObjectMap("username", username), new StringObjectMap("newPassword", newPassword));
         return client.sendAndListen(request);
     }
 }

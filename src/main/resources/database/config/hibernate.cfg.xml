@@ -7,7 +7,7 @@
         <!-- sql dialect -->
         <property name = "dialect">org.hibernate.dialect.SQLiteDialect</property>
 
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">validate</property>
 
         <!-- mappings -->
         <mapping class = "server.database.datamodels.users.User"/>

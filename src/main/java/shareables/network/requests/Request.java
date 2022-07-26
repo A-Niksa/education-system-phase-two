@@ -8,24 +8,20 @@ public class Request {
     private RequestIdentifier requestIdentifier;
     private Map<String, Object> dataMap;
 
+    public Request() {
+    }
+
     public Request(RequestIdentifier requestIdentifier) {
-        this.authToken = authToken;
         this.requestIdentifier = requestIdentifier;
         dataMap = new HashMap<>();
     }
 
     public void put(String dataName, Object data) {
-        this.authToken = authToken;
         dataMap.put(dataName, data);
     }
 
     public Object get(String dataName) {
-        this.authToken = authToken;
         return dataMap.get(dataName);
-    }
-
-    public RequestIdentifier getRequestIdentifier() {
-        return requestIdentifier;
     }
 
     public String getAuthToken() {
@@ -34,5 +30,21 @@ public class Request {
 
     public void setAuthToken(String authToken) {
         this.authToken = authToken;
+    }
+
+    public RequestIdentifier getRequestIdentifier() {
+        return requestIdentifier;
+    }
+
+    public void setRequestIdentifier(RequestIdentifier requestIdentifier) {
+        this.requestIdentifier = requestIdentifier;
+    }
+
+    public Map<String, Object> getDataMap() {
+        return dataMap;
+    }
+
+    public void setDataMap(Map<String, Object> dataMap) {
+        this.dataMap = dataMap;
     }
 }

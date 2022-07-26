@@ -7,9 +7,6 @@ public class ConfigFilePathFinder {
 
         String configKeyString;
         switch (configFileIdentifier) {
-            case GUI:
-                configKeyString = "GUIPath";
-                break;
             case CONSTANTS:
                 configKeyString = "constantsPath";
                 break;
@@ -21,6 +18,12 @@ public class ConfigFilePathFinder {
                 break;
             case NETWORK:
                 configKeyString = "networkPath";
+                break;
+            case GUI:
+                configKeyString = "GUIPath";
+                break;
+            case GUI_LOGIN:
+                configKeyString = "GUILoginPath";
                 break;
             default:
                 configKeyString = null;
