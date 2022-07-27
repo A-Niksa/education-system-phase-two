@@ -2,6 +2,7 @@ package shareables.utils.images;
 
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 
 import java.awt.*;
 
@@ -22,6 +23,8 @@ public class ImageManager {
     }
 
     public static Image getImage(ImageIdentifier imageIdentifier) {
+        MasterLogger.info("Image loaded (identifier: " + imageIdentifier + ")", "getImage",
+                ImageManager.class);
         return getInstance().getImageByInstance(imageIdentifier);
     }
 

@@ -5,6 +5,7 @@ import server.network.authentication.AuthTokenGenerator;
 import server.network.clienthandling.ClientHandler;
 import server.network.clienthandling.RequestMapper;
 import shareables.network.requests.Request;
+import shareables.utils.logging.MasterLogger;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -45,6 +46,7 @@ public class Server {
         while (isActive) {
             try {
                 Socket socket = serverSocket.accept();
+                MasterLogger.info("Connection established with new client", "awaitConnection", Server.class);
                 ClientHandler clientHandler = new ClientHandler(currentClientHandlerId,
                         authTokenGenerator.generateAuthToken(), socket, this);
                 currentClientHandlerId++;

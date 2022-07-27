@@ -1,0 +1,9 @@
+2022/07/28 | 02:24:17 - INFO - Start of program (Server) - psvm - server.ServerMain
+2022/07/28 | 02:24:31 - INFO - Start of program (Client) - psvm - client.ClientMain
+2022/07/28 | 02:24:32 - INFO - Connection established with new client - awaitConnection - server.network.Server
+2022/07/28 | 02:24:33 - INFO - Image loaded (identifier: CAPTCHA_5710) - getImage - shareables.utils.images.ImageManager
+2022/07/28 | 02:24:55 - ERROR - Wrong username or password - alignComponents - client.GUI.login.LoginMenu
+2022/07/28 | 02:25:49 - ERROR - Wrong captcha - alignComponents - client.GUI.login.LoginMenu
+2022/07/28 | 02:25:53 - INFO - Image loaded (identifier: CAPTCHA_7447) - getImage - shareables.utils.images.ImageManager
+2022/07/28 | 02:25:57 - ERROR - Has been too long since last login; should change password - alignComponents - client.GUI.login.LoginMenu
+2022/07/28 | 02:26:03 - INFO - Image loaded (identifier: CAPTCHA_5710) - getImage - shareables.utils.images.ImageManager
