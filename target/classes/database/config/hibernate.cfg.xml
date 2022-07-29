@@ -18,6 +18,12 @@
         <mapping class = "server.database.datamodels.abstractions.Course"/>
         <mapping class = "server.database.datamodels.abstractions.Transcript"/>
         <mapping class = "server.database.datamodels.academicrequests.AcademicRequest"/>
+        <mapping class = "server.database.datamodels.academicrequests.CertificateRequest"/>
+        <mapping class = "server.database.datamodels.academicrequests.DefenseRequest"/>
+        <mapping class = "server.database.datamodels.academicrequests.DormRequest"/>
+        <mapping class = "server.database.datamodels.academicrequests.DroppingOutRequest"/>
+        <mapping class = "server.database.datamodels.academicrequests.MinorRequest"/>
+        <mapping class = "server.database.datamodels.academicrequests.RecommendationRequest"/>
         <mapping class = "server.database.datamodels.media.MediaFile"/>
         <mapping class = "server.database.datamodels.media.Picture"/>
     </session-factory>

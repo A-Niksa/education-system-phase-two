@@ -1,10 +1,12 @@
 package server.database.datamodels.academicrequests;
 
+import org.hibernate.annotations.DiscriminatorOptions;
 import server.database.datamodels.users.professors.Professor;
 
 import javax.persistence.*;
 
 @Entity
+@DiscriminatorOptions(force = true)
 public class MinorRequest extends AcademicRequest {
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "originDeputy_id")

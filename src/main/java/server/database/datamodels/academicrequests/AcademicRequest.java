@@ -1,5 +1,6 @@
 package server.database.datamodels.academicrequests;
 
+import org.hibernate.annotations.DiscriminatorOptions;
 import server.database.datamodels.users.professors.Professor;
 import server.database.datamodels.users.students.Student;
 import server.database.idgeneration.IdGenerator;
@@ -8,7 +9,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Requests")
+@DiscriminatorOptions(force = true)
+@Table(name = "AcademicRequests")
 public abstract class AcademicRequest {
     @Id
     protected String id;

@@ -1,10 +1,13 @@
 package server.database.datamodels.academicrequests;
 
+import org.hibernate.annotations.DiscriminatorOptions;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.Date;
 
 @Entity
+@DiscriminatorOptions(force = true)
 public class CertificateRequest extends AcademicRequest {
     @Column
     private String certificateText;

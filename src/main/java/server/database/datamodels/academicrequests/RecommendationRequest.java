@@ -1,8 +1,11 @@
 package server.database.datamodels.academicrequests;
 
+import org.hibernate.annotations.DiscriminatorOptions;
+
 import javax.persistence.*;
 
 @Entity
+@DiscriminatorOptions(force = true)
 public class RecommendationRequest extends AcademicRequest {
     @Column
     private String recommendationText;

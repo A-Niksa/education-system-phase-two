@@ -1,6 +1,7 @@
 package server.database.datamodels.users.professors;
 
 import org.hibernate.annotations.DiscriminatorOptions;
+import server.database.datamodels.academicrequests.AcademicRequest;
 import server.database.datamodels.users.UserIdentifier;
 import server.database.datamodels.users.students.Student;
 import server.database.datamodels.users.User;
@@ -17,9 +18,8 @@ public class Professor extends User {
 
     @OneToMany(mappedBy = "advisingProfessor", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Student> studentsUnderAdvice;
-    // TODO:
-//    @OneToMany(mappedBy = "receivingProfessor", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-//    private List<Request> receivedRequests;
+    @OneToMany(mappedBy = "receivingProfessor", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private List<AcademicRequest> receivedRequests;
     @Column
     private String roomNumber;
     @Column
@@ -31,7 +31,7 @@ public class Professor extends User {
         super(UserIdentifier.PROFESSOR);
         academicRole = AcademicRole.NORMAL; // default value
         studentsUnderAdvice = new ArrayList<>();
-//        receivedRequests = new ArrayList<>();
+        receivedRequests = new ArrayList<>();
     }
 
     public void addToStudentsUnderAdvice(Student student) {
@@ -42,13 +42,13 @@ public class Professor extends User {
         studentsUnderAdvice.removeIf(e -> e.getId().equals(student.getId()));
     }
 
-//    public void addToReceivedRequests(Request request) {
-//        receivedRequests.add(request);
-//    }
-//
-//    public void removeFromReceivedRequests(Request request) {
-//        receivedRequests.removeIf(e -> e.getId().equals(request.getId()));
-//    }
+    public void addToReceivedRequests(AcademicRequest request) {
+        receivedRequests.add(request);
+    }
+
+    public void removeFromReceivedRequests(AcademicRequest request) {
+        receivedRequests.removeIf(e -> e.getId().equals(request.getId()));
+    }
 
     @Override
     public void initializeId() {
@@ -95,11 +95,11 @@ public class Professor extends User {
         this.academicRole = academicRole;
     }
 
-//    public List<Request> getReceivedRequests() {
-//        return receivedRequests;
-//    }
-//
-//    public void setReceivedRequests(List<Request> receivedRequests) {
-//        this.receivedRequests = receivedRequests;
-//    }
+    public List<AcademicRequest> getReceivedRequests() {
+        return receivedRequests;
+    }
+
+    public void setReceivedRequests(List<AcademicRequest> receivedRequests) {
+        this.receivedRequests = receivedRequests;
+    }
 }

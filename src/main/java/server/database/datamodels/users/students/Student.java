@@ -3,6 +3,7 @@ package server.database.datamodels.users.students;
 import org.hibernate.annotations.DiscriminatorOptions;
 import server.database.datamodels.abstractions.Course;
 import server.database.datamodels.abstractions.Transcript;
+import server.database.datamodels.academicrequests.AcademicRequest;
 import server.database.datamodels.users.User;
 import server.database.datamodels.users.UserIdentifier;
 import server.database.datamodels.users.professors.Professor;
@@ -26,10 +27,8 @@ public class Student extends User {
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "currentCourses_ids")
     private List<Course> currentCourses;
-    // TODO:
-//    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-//    @JoinTable(name = "Students_Requests")
-//    private List<Request> sentRequests;
+    @OneToMany(mappedBy = "requestingStudent", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private List<AcademicRequest> sentRequests;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "assistingCourses_id")
     private List<Course> assistingCourses; // list of courses where the student is a TA
@@ -44,7 +43,7 @@ public class Student extends User {
         super(UserIdentifier.STUDENT);
         transcript = new Transcript();
         currentCourses = new ArrayList<>();
-//        sentRequests = new ArrayList<>();
+        sentRequests = new ArrayList<>();
         assistingCourses = new ArrayList<>();
     }
 
@@ -56,13 +55,13 @@ public class Student extends User {
         currentCourses.removeIf(e -> e.getId().equals(course.getId()));
     }
 
-//    public void addToSentRequests(Request request) {
-//        sentRequests.add(request);
-//    }
-//
-//    public void removeFromSentRequests(Request request) {
-//        sentRequests.removeIf(e -> e.getId().equals(request.getId()));
-//    }
+    public void addToSentRequests(AcademicRequest request) {
+        sentRequests.add(request);
+    }
+
+    public void removeFromSentRequests(AcademicRequest request) {
+        sentRequests.removeIf(e -> e.getId().equals(request.getId()));
+    }
 
     public void addToAssistingCourses(Course course) {
         assistingCourses.add(course);
