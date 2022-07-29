@@ -1,6 +1,6 @@
 package server.network.clienthandling.logicutils.login;
 
-import server.database.datamodels.users.User;
+import server.database.models.pojos.users.User;
 import server.database.management.DatabaseManager;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
