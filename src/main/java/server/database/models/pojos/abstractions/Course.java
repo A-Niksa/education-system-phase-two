@@ -28,6 +28,8 @@ public class Course {
     @JoinTable(name = "Courses_Students")
     private List<Student> students;
     @Column
+    private String termIdentifier; // such as "20182" or "20201"
+    @Column
     private int numberOfCredits;
     @Column
     private boolean isActive; // shows whether the course is being currently taught
@@ -129,5 +131,13 @@ public class Course {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public String getTermIdentifier() {
+        return termIdentifier;
+    }
+
+    public void setTermIdentifier(String termIdentifier) {
+        this.termIdentifier = termIdentifier;
     }
 }

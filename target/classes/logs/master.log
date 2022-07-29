@@ -3,3 +3,4 @@
 2022/07/29 | 17:14:59 - INFO - 0 - SERVER - Connection established with new client - awaitConnection - server.network.Server
 2022/07/29 | 17:15:08 - ERROR - 1 - CLIENT - Wrong username or password - alignComponents - client.GUI.login.LoginMenu
 2022/07/29 | 17:27:30 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/07/29 | 17:39:52 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain

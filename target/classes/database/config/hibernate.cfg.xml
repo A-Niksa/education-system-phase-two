@@ -1,30 +1,30 @@
 <hibernate-configuration>
     <session-factory>
-        <!-- database connection -->
+        <!-- modelcatalogue connection -->
         <property name = "connection.driver_class">org.sqlite.JDBC</property>
         <property name = "connection.url">jdbc:sqlite:./src/main/resources/database/data/sqlite.db</property>
 
         <!-- sql dialect -->
         <property name = "dialect">org.hibernate.dialect.SQLiteDialect</property>
 
-        <property name="hbm2ddl.auto">validate</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <!-- mappings -->
-        <mapping class = "server.database.datamodels.users.User"/>
-        <mapping class = "server.database.datamodels.users.professors.Professor"/>
-        <mapping class = "server.database.datamodels.users.students.Student"/>
-        <mapping class = "server.database.datamodels.abstractions.Department"/>
-        <mapping class = "server.database.datamodels.abstractions.Score"/>
-        <mapping class = "server.database.datamodels.abstractions.Course"/>
-        <mapping class = "server.database.datamodels.abstractions.Transcript"/>
-        <mapping class = "server.database.datamodels.academicrequests.AcademicRequest"/>
-        <mapping class = "server.database.datamodels.academicrequests.CertificateRequest"/>
-        <mapping class = "server.database.datamodels.academicrequests.DefenseRequest"/>
-        <mapping class = "server.database.datamodels.academicrequests.DormRequest"/>
-        <mapping class = "server.database.datamodels.academicrequests.DroppingOutRequest"/>
-        <mapping class = "server.database.datamodels.academicrequests.MinorRequest"/>
-        <mapping class = "server.database.datamodels.academicrequests.RecommendationRequest"/>
-        <mapping class = "server.database.datamodels.media.MediaFile"/>
-        <mapping class = "server.database.datamodels.media.Picture"/>
+        <mapping class = "server.database.models.pojos.users.User"/>
+        <mapping class = "server.database.models.pojos.users.professors.Professor"/>
+        <mapping class = "server.database.models.pojos.users.students.Student"/>
+        <mapping class = "server.database.models.pojos.abstractions.Department"/>
+        <mapping class = "server.database.models.pojos.abstractions.Score"/>
+        <mapping class = "server.database.models.pojos.abstractions.Course"/>
+        <mapping class = "server.database.models.pojos.abstractions.Transcript"/>
+        <mapping class = "server.database.models.pojos.academicrequests.AcademicRequest"/>
+        <mapping class = "server.database.models.pojos.academicrequests.CertificateRequest"/>
+        <mapping class = "server.database.models.pojos.academicrequests.DefenseRequest"/>
+        <mapping class = "server.database.models.pojos.academicrequests.DormRequest"/>
+        <mapping class = "server.database.models.pojos.academicrequests.DroppingOutRequest"/>
+        <mapping class = "server.database.models.pojos.academicrequests.MinorRequest"/>
+        <mapping class = "server.database.models.pojos.academicrequests.RecommendationRequest"/>
+        <mapping class = "server.database.models.pojos.media.MediaFile"/>
+        <mapping class = "server.database.models.pojos.media.Picture"/>
     </session-factory>
 </hibernate-configuration>

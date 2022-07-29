@@ -91,6 +91,7 @@ public class Main {
         complexAnalysis.addToStudents(hamidi);
         complexAnalysis.addToTAs(rezaei);
         complexAnalysis.setNumberOfCredits(4);
+        complexAnalysis.setTermIdentifier("20222");
         complexAnalysis.setActive(true);
 
         manager.save(mathDepartment);
