@@ -11,27 +11,45 @@ public class StreamLogger implements Logger {
         this.printStream = printStream;
     }
 
+
     @Override
-    public void log(String message, LogIdentifier logIdentifier, String methodName, String className) {
-        printStream.println(String.format("%s - %s - %s - %s - %s", getTime(), logIdentifier.toString(), message,
-                methodName, className));
+    public void clientLog(int callerId, LogIdentifier logIdentifier, String message, String methodName, String className) {
+        log(callerId, LoggerCaller.CLIENT, logIdentifier, message, methodName, className, printStream);
     }
 
     @Override
-    public void info(String message, String methodName, Class<?> clazz) {
-        printStream.println(String.format("%s - %s - %s - %s - %s", getTime(), LogIdentifier.INFO.toString(), message,
-                methodName, clazz.getName()));
+    public void clientInfo(int callerId, String message, String methodName, Class<?> clazz) {
+        info(callerId, LoggerCaller.CLIENT, message, methodName, clazz, printStream);
     }
 
     @Override
-    public void error(String message, String methodName, Class<?> clazz) {
-        printStream.println(String.format("%s - %s - %s - %s - %s", getTime(), LogIdentifier.ERROR.toString(), message,
-                methodName, clazz.getName()));
+    public void clientError(int callerId, String message, String methodName, Class<?> clazz) {
+        error(callerId, LoggerCaller.CLIENT, message, methodName, clazz, printStream);
     }
 
     @Override
-    public void fatal(String message, String methodName, Class<?> clazz) {
-        printStream.println(String.format("%s - %s - %s - %s - %s", getTime(), LogIdentifier.FATAL.toString(), message,
-                methodName, clazz.getName()));
+    public void clientFatal(int callerId, String message, String methodName, Class<?> clazz) {
+        fatal(callerId, LoggerCaller.CLIENT, message, methodName, clazz, printStream);
+    }
+
+    @Override
+    public void serverLog(LogIdentifier logIdentifier, String message, String methodName, String className) {
+        // the server has an id of 0 by convention
+        log(0, LoggerCaller.SERVER, logIdentifier, message, methodName, className, printStream);
+    }
+
+    @Override
+    public void serverInfo(String message, String methodName, Class<?> clazz) {
+        info(0, LoggerCaller.SERVER, message, methodName, clazz, printStream);
+    }
+
+    @Override
+    public void serverError(String message, String methodName, Class<?> clazz) {
+        error(0, LoggerCaller.SERVER, message, methodName, clazz, printStream);
+    }
+
+    @Override
+    public void serverFatal(String message, String methodName, Class<?> clazz) {
+        fatal(0, LoggerCaller.SERVER, message, methodName, clazz, printStream);
     }
 }

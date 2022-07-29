@@ -23,8 +23,6 @@ public class ImageManager {
     }
 
     public static Image getImage(ImageIdentifier imageIdentifier) {
-        MasterLogger.info("Image loaded (identifier: " + imageIdentifier + ")", "getImage",
-                ImageManager.class);
         return getInstance().getImageByInstance(imageIdentifier);
     }
 

@@ -46,7 +46,7 @@ public class Server {
         while (isActive) {
             try {
                 Socket socket = serverSocket.accept();
-                MasterLogger.info("Connection established with new client", "awaitConnection", Server.class);
+                MasterLogger.serverInfo("Connection established with new client", "awaitConnection", Server.class);
                 ClientHandler clientHandler = new ClientHandler(currentClientHandlerId,
                         authTokenGenerator.generateAuthToken(), socket, this);
                 currentClientHandlerId++;

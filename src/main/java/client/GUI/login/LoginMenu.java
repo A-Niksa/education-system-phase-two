@@ -4,7 +4,6 @@ import client.GUI.ErrorUtils;
 import client.GUI.MainFrame;
 import client.controller.ClientController;
 import shareables.network.responses.Response;
-import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -126,7 +125,8 @@ public class LoginMenu extends JPanel {
 
             Response response = clientController.login(username, password, captcha, currentCaptcha);
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
-                MasterLogger.error(response.getErrorMessage(), "alignComponents", LoginMenu.class);
+                MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                        "alignComponents", LoginMenu.class);
                 if (response.getErrorMessage()
                     .equals(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "hasBeenTooLongSinceLastLogin"))) {
                     mainFrame.setCurrentPanel(new PasswordChanger(mainFrame, username));
@@ -135,11 +135,13 @@ public class LoginMenu extends JPanel {
             }
             String userIdentifierString = (String) response.get("userIdentifier");
             if (userIdentifierString.equals("student")) {
-                MasterLogger.info("Logged in as student", "connectListeners", LoginMenu.class);
+                MasterLogger.clientInfo(clientController.getId(), "Logged in as student",
+                        "connectListeners", LoginMenu.class);
                 // TODO: open StudentMenu
                 return;
             } else if (userIdentifierString.equals("professor")) {
-                MasterLogger.info("Logged in as professor", "connectListeners", LoginMenu.class);
+                MasterLogger.clientInfo(clientController.getId(), "Logged in as professor",
+                        "connectListeners", LoginMenu.class);
                 // TODO: open ProfessorMenu
                 return;
             }

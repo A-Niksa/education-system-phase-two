@@ -26,4 +26,8 @@ public class ClientController {
                 new StringObjectMap("username", username), new StringObjectMap("newPassword", newPassword));
         return client.sendAndListen(request);
     }
+
+    public int getId() { // same as the id of the client
+        return client.getId();
+    }
 }

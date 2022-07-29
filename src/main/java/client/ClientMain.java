@@ -5,8 +5,10 @@ import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
 public class ClientMain {
+    private static int clientId = 0;
+
     public static void main(String[] args) {
-        MasterLogger.info("Start of program (Client)", "psvm", ClientMain.class);
-        new Client(ConfigManager.getPort()).start();
+        MasterLogger.clientInfo(clientId++, "Start of program", "psvm", ClientMain.class);
+        new Client(clientId, ConfigManager.getPort()).start();
     }
 }

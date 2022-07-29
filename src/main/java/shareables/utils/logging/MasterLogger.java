@@ -17,36 +17,37 @@ public class MasterLogger {
         }
         return masterLogger;
     }
-
-    public static void log(String message, LogIdentifier logIdentifier, String methodName, String className) {
-        getInstance().logByInstance(message, logIdentifier, methodName, className);
+    
+    public static void clientLog(int callerId, LogIdentifier logIdentifier, String message, String methodName,
+                                 String className) {
+        getInstance().multiLogger.clientLog(callerId, logIdentifier, message, methodName, className);
     }
-
-    private void logByInstance(String message, LogIdentifier logIdentifier, String methodName, String className) {
-        multiLogger.log(message, logIdentifier, methodName, className);
+    
+    public static void clientInfo(int callerId, String message, String methodName, Class<?> clazz) {
+        getInstance().multiLogger.clientInfo(callerId, message, methodName, clazz);
     }
-
-    public static void info(String message, String methodName, Class<?> clazz) {
-        getInstance().logInfoByInstance(message, methodName, clazz);
+    
+    public static void clientError(int callerId, String message, String methodName, Class<?> clazz) {
+        getInstance().multiLogger.clientError(callerId, message, methodName, clazz);
     }
-
-    private void logInfoByInstance(String message, String methodName, Class<?> clazz) {
-        multiLogger.info(message, methodName, clazz);
+    
+    public static void clientFatal(int callerId, String message, String methodName, Class<?> clazz) {
+        getInstance().multiLogger.clientFatal(callerId, message, methodName, clazz);
     }
-
-    public static void error(String message, String methodName, Class<?> clazz) {
-        getInstance().logErrorByInstance(message, methodName, clazz);
+    
+    public static void serverLog(LogIdentifier logIdentifier, String message, String methodName, String className) {
+        getInstance().multiLogger.serverLog(logIdentifier, message, methodName, className);
     }
-
-    private void logErrorByInstance(String message, String methodName, Class<?> clazz) {
-        multiLogger.error(message, methodName, clazz);
+    
+    public static void serverInfo(String message, String methodName, Class<?> clazz) {
+        getInstance().multiLogger.serverInfo(message, methodName, clazz);
     }
-
-    public static void fatal(String message, String methodName, Class<?> clazz) {
-        getInstance().logFatalErrorByInstance(message, methodName, clazz);
+    
+    public static void serverError(String message, String methodName, Class<?> clazz) {
+        getInstance().multiLogger.serverError(message, methodName, clazz);
     }
-
-    private void logFatalErrorByInstance(String message, String methodName, Class<?> clazz) {
-        multiLogger.fatal(message, methodName, clazz);
+    
+    public static void serverFatal(String message, String methodName, Class<?> clazz) {
+        getInstance().multiLogger.serverFatal(message, methodName, clazz);
     }
 }
