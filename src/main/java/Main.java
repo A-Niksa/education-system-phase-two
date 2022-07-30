@@ -1,13 +1,13 @@
-import server.database.models.pojos.abstractions.Course;
-import server.database.models.pojos.abstractions.Department;
-import server.database.models.pojos.abstractions.DepartmentName;
-import server.database.models.pojos.users.User;
-import server.database.models.pojos.users.professors.AcademicLevel;
-import server.database.models.pojos.users.professors.AcademicRole;
-import server.database.models.pojos.users.professors.Professor;
-import server.database.models.pojos.users.students.DegreeLevel;
-import server.database.models.pojos.users.students.Student;
-import server.database.models.pojos.users.students.StudentStatus;
+import shareables.models.pojos.abstractions.Course;
+import shareables.models.pojos.abstractions.Department;
+import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.users.User;
+import shareables.models.pojos.users.professors.AcademicLevel;
+import shareables.models.pojos.users.professors.AcademicRole;
+import shareables.models.pojos.users.professors.Professor;
+import shareables.models.pojos.users.students.DegreeLevel;
+import shareables.models.pojos.users.students.Student;
+import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 
 import java.util.Date;

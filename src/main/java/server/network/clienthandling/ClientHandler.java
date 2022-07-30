@@ -26,7 +26,7 @@ public class ClientHandler {
         this.authToken = authToken;
         this.socket = socket;
         this.server = server;
-        objectMapper = ObjectMapperUtils.getNetworkObjectMapper();
+        objectMapper = ObjectMapperUtils.getCustomObjectMapper();
         initializeIOStreams();
         sendAuthTokenToClient();
         startRequestListenerThread();

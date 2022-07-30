@@ -1,9 +1,9 @@
 package server.network.clienthandling;
 
-import server.database.models.pojos.users.User;
-import server.database.models.pojos.users.UserIdentifier;
-import server.database.models.pojos.users.students.Student;
-import server.database.models.pojos.users.students.StudentStatus;
+import shareables.models.pojos.users.User;
+import shareables.models.pojos.users.UserIdentifier;
+import shareables.models.pojos.users.students.Student;
+import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import shareables.network.requests.Request;

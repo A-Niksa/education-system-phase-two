@@ -1,6 +1,6 @@
 package server.network.clienthandling;
 
-import server.database.models.pojos.users.UserIdentifier;
+import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;

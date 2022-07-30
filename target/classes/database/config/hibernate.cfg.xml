@@ -26,5 +26,8 @@
         <mapping class = "server.database.models.pojos.academicrequests.RecommendationRequest"/>
         <mapping class = "server.database.models.pojos.media.MediaFile"/>
         <mapping class = "server.database.models.pojos.media.Picture"/>
+        <mapping class = "shareables.models.pojos.messaging.Message"/>
+        <mapping class = "shareables.models.pojos.messaging.Conversation"/>
+        <mapping class = "shareables.models.pojos.messaging.Messenger"/>
     </session-factory>
 </hibernate-configuration>

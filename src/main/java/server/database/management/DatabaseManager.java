@@ -1,65 +1,47 @@
 package server.database.management;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
+import server.database.datasets.Dataset;
+import server.database.datasets.DatasetIdentifier;
+import shareables.models.idgeneration.Identifiable;
+import shareables.models.idgeneration.IdentifiableWithTime;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DatabaseManager {
-    // TODO: silencing logs in console
-    private String hibernateConfigPath;
-    private SessionFactory sessionFactory;
+    private DatasetMapper datasetMapper;
+    private Map<DatasetIdentifier, Dataset<? extends Identifiable>> identifierDatasetMap;
 
     public DatabaseManager() {
+        identifierDatasetMap = new HashMap<>();
         hibernateConfigPath = getHibernateConfigPath();
         buildSessionFactory();
     }
 
-    private void buildSessionFactory() {
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure(hibernateConfigPath).build();
-        sessionFactory = new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
+    public <T extends Identifiable> void save(DatasetIdentifier datasetIdentifier, T t) {
+        getDataset(datasetIdentifier)
+                .save(datasetMapper.mapTToAppropriateIdentifiable(datasetIdentifier, t));
     }
 
-    private String getHibernateConfigPath() {
-        return ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "hibernateConfigPath");
+    public void remove(DatasetIdentifier datasetIdentifier, String tId) {
+        getDataset(datasetIdentifier).remove(tId);
     }
 
-    public void save(Object o) {
-        Session session = startSession();
-        session.save(o);
-        endSession(session);
+    public void get(DatasetIdentifier datasetIdentifier, String tId) {
+        getDataset(datasetIdentifier).get(tId);
     }
 
-    public void update(Object o) {
-        Session session = startSession();
-        session.update(o);
-        endSession(session);
+    /**
+     * works under the condition that the id of t does not change
+     */
+    public <T extends Identifiable> void update(DatasetIdentifier datasetIdentifier, T t) {
+        remove(datasetIdentifier, t.getId());
+        save(datasetIdentifier, t);
     }
 
-    public void remove(Object o) {
-        Session session = startSession();
-        session.remove(o);
-        endSession(session);
-    }
-
-    public <T> T fetch(Class<T> tClass, String id) {
-        Session session = startSession();
-        T t = session.get(tClass, id);
-        endSession(session);
-        return t;
-    }
-
-    private Session startSession() {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        return session;
-    }
-
-    private void endSession(Session session) {
-        session.getTransaction().commit(); // "flushing", so to speak
-        session.close();
+    private Dataset<? extends Identifiable> getDataset(DatasetIdentifier datasetIdentifier) {
+        return identifierDatasetMap.get(datasetIdentifier);
     }
 }
