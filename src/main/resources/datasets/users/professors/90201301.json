@@ -1,0 +1,21 @@
+{
+  "id" : "90201301",
+  "departmentId" : "1",
+  "profilePicture" : null,
+  "messenger" : {
+    "ownerId" : "90201301",
+    "conversations" : [ ]
+  },
+  "userIdentifier" : "PROFESSOR",
+  "nationalId" : "015033904",
+  "firstName" : "Hamidreza",
+  "lastName" : "Fanaei",
+  "phoneNumber" : "09129730321",
+  "emailAddress" : "fanaei@sharif.edu",
+  "password" : "1234",
+  "lastLogin" : null,
+  "studentsUnderAdvice" : [ ],
+  "roomNumber" : "107",
+  "academicLevel" : "FULL",
+  "academicRole" : "DEAN"
+}

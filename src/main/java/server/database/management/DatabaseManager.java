@@ -3,45 +3,62 @@ package server.database.management;
 import server.database.datasets.Dataset;
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.Identifiable;
-import shareables.models.idgeneration.IdentifiableWithTime;
-import shareables.utils.config.ConfigFileIdentifier;
-import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class DatabaseManager {
-    private DatasetMapper datasetMapper;
-    private Map<DatasetIdentifier, Dataset<? extends Identifiable>> identifierDatasetMap;
+    private Map<DatasetIdentifier, Dataset> identifierDatasetMap;
+    private DatabaseReader databaseReader;
+    private DatabaseWriter databaseWriter;
 
     public DatabaseManager() {
+        initializeIdentifierDatasetMap();
+        databaseReader = new DatabaseReader(identifierDatasetMap);
+        databaseWriter = new DatabaseWriter(identifierDatasetMap);
+    }
+
+    private void initializeIdentifierDatasetMap() {
         identifierDatasetMap = new HashMap<>();
-        hibernateConfigPath = getHibernateConfigPath();
-        buildSessionFactory();
+        Stream.of(DatasetIdentifier.values()).forEach(e -> {
+            Dataset dataset = new Dataset();
+            identifierDatasetMap.put(e, dataset);
+        });
     }
 
-    public <T extends Identifiable> void save(DatasetIdentifier datasetIdentifier, T t) {
-        getDataset(datasetIdentifier)
-                .save(datasetMapper.mapTToAppropriateIdentifiable(datasetIdentifier, t));
+    public void loadDatabase() {
+        databaseReader.loadDatabase();
+        MasterLogger.serverInfo("loaded database", "loadDatabase", DatabaseManager.class);
     }
 
-    public void remove(DatasetIdentifier datasetIdentifier, String tId) {
-        getDataset(datasetIdentifier).remove(tId);
+    public void saveDatabase() {
+        databaseWriter.saveDatabase();
+        MasterLogger.serverInfo("saved database to resources", "saveDatabase", DatabaseManager.class);
     }
 
-    public void get(DatasetIdentifier datasetIdentifier, String tId) {
-        getDataset(datasetIdentifier).get(tId);
+    public void save(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
+        getDataset(datasetIdentifier).save(identifiable);
+    }
+
+    public void remove(DatasetIdentifier datasetIdentifier, String identifiableId) {
+        getDataset(datasetIdentifier).remove(identifiableId);
+    }
+
+    public Identifiable get(DatasetIdentifier datasetIdentifier, String identifiableId) {
+        return getDataset(datasetIdentifier).get(identifiableId);
     }
 
     /**
      * works under the condition that the id of t does not change
      */
-    public <T extends Identifiable> void update(DatasetIdentifier datasetIdentifier, T t) {
-        remove(datasetIdentifier, t.getId());
-        save(datasetIdentifier, t);
+    public void update(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
+        remove(datasetIdentifier, identifiable.getId());
+        save(datasetIdentifier, identifiable);
     }
 
-    private Dataset<? extends Identifiable> getDataset(DatasetIdentifier datasetIdentifier) {
+    private Dataset getDataset(DatasetIdentifier datasetIdentifier) {
         return identifierDatasetMap.get(datasetIdentifier);
     }
 }

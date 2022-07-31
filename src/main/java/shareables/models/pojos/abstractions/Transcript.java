@@ -18,7 +18,7 @@ public class Transcript {
         courseScoreMap.entrySet().removeIf(e -> e.getKey().getId().equals(course.getId()));
     }
 
-    public double getGPA() {
+    public double calculateGPA() {
         double GPA = -1.0; // -1.0 is equivalent to N/A
         return GPA;
         // TODO: calculating GPA

@@ -15,31 +15,46 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DatabaseReader {
-    private Map<DatasetIdentifier, Dataset<? extends Identifiable>> identifierDatasetMap;
+    private Map<DatasetIdentifier, Dataset> identifierDatasetMap;
     private ObjectMapper objectMapper;
 
-    public DatabaseReader(Map<DatasetIdentifier, Dataset<? extends Identifiable>> identifierDatasetMap) {
+    public DatabaseReader(Map<DatasetIdentifier, Dataset> identifierDatasetMap) {
         this.identifierDatasetMap = identifierDatasetMap;
         objectMapper = ObjectMapperUtils.getCustomObjectMapper();
     }
 
     public void loadDatabase() {
-        for (DatasetIdentifier datasetIdentifier : DatasetIdentifier.values()) {
-            loadDataset(datasetIdentifier);
-        }
+        Stream.of(DatasetIdentifier.values()).parallel().forEach(this::loadDataset);
     }
 
     private void loadDataset(DatasetIdentifier datasetIdentifier) {
-        Dataset<? extends Identifiable> dataset = new Dataset<>(datasetIdentifier);
-        readFilesAndSaveToDataset(datasetIdentifier.getFolderPath(), dataset);
+        Dataset dataset = new Dataset();
+        readFilesAndSaveToDataset(datasetIdentifier, dataset);
         identifierDatasetMap.put(datasetIdentifier, dataset);
     }
 
-    private void readFilesAndSaveToDataset(String folderPath, Dataset<?> dataset) {
-        List<File> filesInFolder = getFilesInFolder(folderPath);
+    private void readFilesAndSaveToDataset(DatasetIdentifier datasetIdentifier, Dataset dataset) {
+        List<File> filesInFolder = getFilesInFolder(datasetIdentifier.getFolderPath());
+        readFilesInFolder(datasetIdentifier, filesInFolder, dataset);
+    }
 
+    private void readFilesInFolder(DatasetIdentifier datasetIdentifier, List<File> filesInFolder, Dataset dataset) {
+        filesInFolder.stream()
+                .map(e -> readValueByObjectMapper(e, datasetIdentifier))
+                .forEach(dataset::save);
+    }
+
+    private Identifiable readValueByObjectMapper(File file, DatasetIdentifier datasetIdentifier) {
+        Identifiable identifiable = null;
+        try {
+            identifiable = (Identifiable) objectMapper.readValue(file, datasetIdentifier.getClassLiteral());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return identifiable;
     }
 
     private List<File> getFilesInFolder(String folderPath) {

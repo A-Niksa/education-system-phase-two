@@ -20,7 +20,9 @@ public class RequestHandler {
     }
 
     public void login(ClientHandler clientHandler, Request request) {
-        User user = databaseManager.fetch(User.class, (String) request.get("username"));
+//        User user = databaseManager.fetch(User.class, (String) request.get("username"));
+        User user = null;
+        // TODO
         if (user == null ||
                 !request.get("username").equals(user.getId()) || !request.get("password").equals(user.getPassword())) {
             responseHandler.wrongUsernameOrPassword(clientHandler);
@@ -40,7 +42,9 @@ public class RequestHandler {
     }
 
     public void changePassword(ClientHandler clientHandler, Request request) {
-        User user = databaseManager.fetch(User.class, (String) request.get("username"));
+//        User user = databaseManager.fetch(User.class, (String) request.get("username"));
+        User user = null;
+        // TODO
         if (user == null || user.getPassword().equals(request.get("newPassword"))) {
             responseHandler.newPasswordIsSameAsOldOne(clientHandler);
         } else {

@@ -22,6 +22,10 @@ public class Course extends Identifiable {
     private int numberOfCredits;
     private boolean isActive; // shows whether the course is being currently taught
 
+    public Course() {
+
+    }
+
     public Course(String departmentId) {
         this.departmentId = departmentId;
         isActive = false; // default value
@@ -55,7 +59,8 @@ public class Course extends Identifiable {
         students.removeIf(e -> e.getId().equals(studentId));
     }
 
-    public void initializeId() {
+    @Override
+    protected void initializeId() {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 

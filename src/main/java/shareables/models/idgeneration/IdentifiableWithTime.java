@@ -10,11 +10,11 @@ public abstract class IdentifiableWithTime extends Identifiable {
     }
 
     @Override
-    public void initializeId() {
+    protected void initializeId() {
         id = idGenerator.nextId(this);
     }
 
-    public void initializeId(SequentialIdGenerator sequentialIdGenerator) {
+    protected void initializeId(SequentialIdGenerator sequentialIdGenerator) {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 

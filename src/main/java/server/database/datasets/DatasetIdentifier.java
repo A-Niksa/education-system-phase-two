@@ -1,5 +1,6 @@
 package server.database.datasets;
 
+import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.users.professors.Professor;
@@ -14,9 +15,9 @@ public enum DatasetIdentifier {
     DEPARTMENTS("departmentsFolderPath", Department.class);
 
     private String folderPath;
-    private Class<?> classLiteral;
+    private Class<? extends Identifiable> classLiteral;
 
-    private DatasetIdentifier(String pathConfigKeyString, Class<?> classLiteral) {
+    private DatasetIdentifier(String pathConfigKeyString, Class<? extends Identifiable> classLiteral) {
         folderPath = ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "datasetsFolderPath") +
                 ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, pathConfigKeyString);
         this.classLiteral = classLiteral;

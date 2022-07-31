@@ -15,6 +15,10 @@ public class Department extends Identifiable {
     private Professor deputy;
     private DepartmentName departmentName;
 
+    public Department() {
+
+    }
+
     public Department(DepartmentName departmentName) {
         this.departmentName = departmentName;
         professors = new ArrayList<>();
@@ -38,7 +42,8 @@ public class Department extends Identifiable {
         students.removeIf(e -> e.getId().equals(studentId));
     }
 
-    public void initializeId() {
+    @Override
+    protected void initializeId() {
         id = idGenerator.nextId(this);
     }
 

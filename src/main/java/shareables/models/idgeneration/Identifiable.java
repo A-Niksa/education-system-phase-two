@@ -12,7 +12,7 @@ public abstract class Identifiable {
         return new SequentialIdGenerator();
     }
 
-    public abstract void initializeId();
+    protected abstract void initializeId();
 
     public String getId() {
         return id;

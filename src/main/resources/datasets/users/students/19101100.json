@@ -1,0 +1,26 @@
+{
+  "id" : "19101100",
+  "departmentId" : "1",
+  "profilePicture" : null,
+  "messenger" : {
+    "ownerId" : "19101100",
+    "conversations" : [ ]
+  },
+  "userIdentifier" : "STUDENT",
+  "nationalId" : "0150802202",
+  "firstName" : "Aref",
+  "lastName" : "Hamidi",
+  "phoneNumber" : "09192302103",
+  "emailAddress" : "hamidi@sharif.edu",
+  "password" : "1234",
+  "lastLogin" : 1659259701731,
+  "advisingProfessorId" : "80201200",
+  "transcript" : {
+    "courseScoreMap" : { }
+  },
+  "currentCoursesIds" : [ ],
+  "assistingCoursesIds" : [ ],
+  "degreeLevel" : "UNDERGRADUATE",
+  "studentStatus" : "CURRENTLY_STUDYING",
+  "yearOfEntry" : 2019
+}

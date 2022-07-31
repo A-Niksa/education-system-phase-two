@@ -1,0 +1,152 @@
+{
+  "id" : "1000",
+  "departmentId" : "1",
+  "teachingProfessors" : [ {
+    "id" : "80201200",
+    "departmentId" : "1",
+    "profilePicture" : null,
+    "messenger" : {
+      "ownerId" : "80201200",
+      "conversations" : [ ]
+    },
+    "userIdentifier" : "PROFESSOR",
+    "nationalId" : "015033903",
+    "firstName" : "Shahram",
+    "lastName" : "Khazayi",
+    "phoneNumber" : "09129730021",
+    "emailAddress" : "khazayi@sharif.edu",
+    "password" : "1234",
+    "lastLogin" : null,
+    "studentsUnderAdvice" : [ {
+      "id" : "19101100",
+      "departmentId" : "1",
+      "profilePicture" : null,
+      "messenger" : {
+        "ownerId" : "19101100",
+        "conversations" : [ ]
+      },
+      "userIdentifier" : "STUDENT",
+      "nationalId" : "0150802202",
+      "firstName" : "Aref",
+      "lastName" : "Hamidi",
+      "phoneNumber" : "09192302103",
+      "emailAddress" : "hamidi@sharif.edu",
+      "password" : "1234",
+      "lastLogin" : 1659259701731,
+      "advisingProfessorId" : "80201200",
+      "transcript" : {
+        "courseScoreMap" : { }
+      },
+      "currentCoursesIds" : [ ],
+      "assistingCoursesIds" : [ ],
+      "degreeLevel" : "UNDERGRADUATE",
+      "studentStatus" : "CURRENTLY_STUDYING",
+      "yearOfEntry" : 2019
+    } ],
+    "roomNumber" : "105",
+    "academicLevel" : "ASSOCIATE",
+    "academicRole" : "DEPUTY"
+  }, {
+    "id" : "90201301",
+    "departmentId" : "1",
+    "profilePicture" : null,
+    "messenger" : {
+      "ownerId" : "90201301",
+      "conversations" : [ ]
+    },
+    "userIdentifier" : "PROFESSOR",
+    "nationalId" : "015033904",
+    "firstName" : "Hamidreza",
+    "lastName" : "Fanaei",
+    "phoneNumber" : "09129730321",
+    "emailAddress" : "fanaei@sharif.edu",
+    "password" : "1234",
+    "lastLogin" : null,
+    "studentsUnderAdvice" : [ ],
+    "roomNumber" : "107",
+    "academicLevel" : "FULL",
+    "academicRole" : "DEAN"
+  } ],
+  "TAs" : [ {
+    "id" : "18101102",
+    "departmentId" : "1",
+    "profilePicture" : null,
+    "messenger" : {
+      "ownerId" : "18101102",
+      "conversations" : [ ]
+    },
+    "userIdentifier" : "STUDENT",
+    "nationalId" : "0152902202",
+    "firstName" : "Arash",
+    "lastName" : "Rezaei",
+    "phoneNumber" : "09192302110",
+    "emailAddress" : "rezaei@sharif.edu",
+    "password" : "5678",
+    "lastLogin" : null,
+    "advisingProfessorId" : "90201301",
+    "transcript" : {
+      "courseScoreMap" : { }
+    },
+    "currentCoursesIds" : [ ],
+    "assistingCoursesIds" : [ ],
+    "degreeLevel" : "UNDERGRADUATE",
+    "studentStatus" : "DROPPED_OUT",
+    "yearOfEntry" : 2018
+  } ],
+  "students" : [ {
+    "id" : "19101100",
+    "departmentId" : "1",
+    "profilePicture" : null,
+    "messenger" : {
+      "ownerId" : "19101100",
+      "conversations" : [ ]
+    },
+    "userIdentifier" : "STUDENT",
+    "nationalId" : "0150802202",
+    "firstName" : "Aref",
+    "lastName" : "Hamidi",
+    "phoneNumber" : "09192302103",
+    "emailAddress" : "hamidi@sharif.edu",
+    "password" : "1234",
+    "lastLogin" : 1659259701731,
+    "advisingProfessorId" : "80201200",
+    "transcript" : {
+      "courseScoreMap" : { }
+    },
+    "currentCoursesIds" : [ ],
+    "assistingCoursesIds" : [ ],
+    "degreeLevel" : "UNDERGRADUATE",
+    "studentStatus" : "CURRENTLY_STUDYING",
+    "yearOfEntry" : 2019
+  } ],
+  "termIdentifier" : "20222",
+  "numberOfCredits" : 4,
+  "isActive" : true,
+  "active" : true,
+  "tas" : [ {
+    "id" : "18101102",
+    "departmentId" : "1",
+    "profilePicture" : null,
+    "messenger" : {
+      "ownerId" : "18101102",
+      "conversations" : [ ]
+    },
+    "userIdentifier" : "STUDENT",
+    "nationalId" : "0152902202",
+    "firstName" : "Arash",
+    "lastName" : "Rezaei",
+    "phoneNumber" : "09192302110",
+    "emailAddress" : "rezaei@sharif.edu",
+    "password" : "5678",
+    "lastLogin" : null,
+    "advisingProfessorId" : "90201301",
+    "transcript" : {
+      "courseScoreMap" : { }
+    },
+    "currentCoursesIds" : [ ],
+    "assistingCoursesIds" : [ ],
+    "degreeLevel" : "UNDERGRADUATE",
+    "studentStatus" : "DROPPED_OUT",
+    "yearOfEntry" : 2018
+  } ]
+}

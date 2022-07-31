@@ -19,6 +19,7 @@ public class LoginUtils {
 
     public static void changePassword(User user, String newPassword, DatabaseManager databaseManager) {
         user.setPassword(newPassword);
-        databaseManager.update(user);
+//        databaseManager.update(user);
+        // TODO
     }
 }

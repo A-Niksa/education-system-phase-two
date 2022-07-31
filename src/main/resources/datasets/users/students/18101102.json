@@ -1,0 +1,26 @@
+{
+  "id" : "18101102",
+  "departmentId" : "1",
+  "profilePicture" : null,
+  "messenger" : {
+    "ownerId" : "18101102",
+    "conversations" : [ ]
+  },
+  "userIdentifier" : "STUDENT",
+  "nationalId" : "0152902202",
+  "firstName" : "Arash",
+  "lastName" : "Rezaei",
+  "phoneNumber" : "09192302110",
+  "emailAddress" : "rezaei@sharif.edu",
+  "password" : "5678",
+  "lastLogin" : null,
+  "advisingProfessorId" : "90201301",
+  "transcript" : {
+    "courseScoreMap" : { }
+  },
+  "currentCoursesIds" : [ ],
+  "assistingCoursesIds" : [ ],
+  "degreeLevel" : "UNDERGRADUATE",
+  "studentStatus" : "DROPPED_OUT",
+  "yearOfEntry" : 2018
+}

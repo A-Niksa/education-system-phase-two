@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Student extends User {
     private static SequentialIdGenerator sequentialIdGenerator;
+
     static {
         sequentialIdGenerator = getNewSequentialIdGenerator();
     }
@@ -23,6 +24,9 @@ public class Student extends User {
     private StudentStatus studentStatus;
     private int yearOfEntry;
 
+    public Student() {
+    }
+
     public Student(int yearOfEntry, DegreeLevel degreeLevel, String departmentId) {
         super(UserIdentifier.STUDENT);
         this.yearOfEntry = yearOfEntry;
@@ -31,6 +35,7 @@ public class Student extends User {
         transcript = new Transcript();
         currentCoursesIds = new ArrayList<>();
         assistingCoursesIds = new ArrayList<>();
+        studentStatus = StudentStatus.CURRENTLY_STUDYING; // default value
         initializeId();
         initializeMessenger(id);
     }
@@ -52,7 +57,7 @@ public class Student extends User {
     }
 
     @Override
-    public void initializeId() { // should only be called after the fields are filled (non-null)
+    protected void initializeId() { // should only be called after the necessary constructor fields are filled (non-null)
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
@@ -110,5 +115,19 @@ public class Student extends User {
 
     public int getYearOfEntry() {
         return yearOfEntry;
+    }
+
+    // TODO: should be removed
+    @Override
+    public String toString() {
+        return "Student{" +
+                "advisingProfessorId='" + advisingProfessorId + '\'' +
+                ", transcript=" + transcript +
+                ", currentCoursesIds=" + currentCoursesIds +
+                ", assistingCoursesIds=" + assistingCoursesIds +
+                ", degreeLevel=" + degreeLevel +
+                ", studentStatus=" + studentStatus +
+                ", yearOfEntry=" + yearOfEntry +
+                '}';
     }
 }

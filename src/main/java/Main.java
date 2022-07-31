@@ -1,3 +1,4 @@
+import server.database.datasets.DatasetIdentifier;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.abstractions.DepartmentName;
@@ -17,19 +18,14 @@ public class Main {
 
     public static void main(String[] args) {
         createTestData();
-        Student hamidi = (Student) manager.fetch(User.class, "19101100");
-        System.out.println(hamidi);
+//        manager.loadDatabase();
+//        Student student = (Student) manager.get(DatasetIdentifier.STUDENTS, "19101100");
+//        System.out.println(student);
     }
 
     private static void createTestData() {
-        Department mathDepartment = new Department();
-        mathDepartment.setDepartmentName(DepartmentName.MATHEMATICS);
-        mathDepartment.initializeId();
-        Professor khazayi = new Professor();
-        khazayi.setDepartment(mathDepartment);
-        khazayi.setAcademicLevel(AcademicLevel.ASSOCIATE);
-        khazayi.setAcademicRole(AcademicRole.DEPUTY);
-        khazayi.initializeId();
+        Department mathDepartment = new Department(DepartmentName.MATHEMATICS);
+        Professor khazayi = new Professor(AcademicRole.DEPUTY, AcademicLevel.ASSOCIATE, mathDepartment.getId());
         khazayi.setNationalId("015033903");
         khazayi.setFirstName("Shahram");
         khazayi.setLastName("Khazayi");
@@ -37,28 +33,19 @@ public class Main {
         khazayi.setEmailAddress("khazayi@sharif.edu");
         khazayi.setRoomNumber("105");
         khazayi.setPassword("1234");
-        Student hamidi = new Student();
-        hamidi.setDepartment(mathDepartment);
-        hamidi.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
-        hamidi.setStudentStatus(StudentStatus.CURRENTLY_STUDYING);
-        hamidi.setYearOfEntry(2019);
-        hamidi.initializeId();
+        Student hamidi = new Student(2019, DegreeLevel.UNDERGRADUATE, mathDepartment.getId());
         hamidi.setNationalId("0150802202");
         hamidi.setFirstName("Aref");
         hamidi.setLastName("Hamidi");
         hamidi.setPhoneNumber("09192302103");
         hamidi.setEmailAddress("hamidi@sharif.edu");
-        hamidi.setAdvisingProfessor(khazayi);
+        hamidi.setAdvisingProfessorId(khazayi.getId());
         hamidi.setPassword("1234");
         hamidi.setLastLogin(new Date());
         khazayi.addToStudentsUnderAdvice(hamidi);
         mathDepartment.setDeputy(khazayi);
         mathDepartment.addToStudents(hamidi);
-        Professor fanaei = new Professor();
-        fanaei.setDepartment(mathDepartment);
-        fanaei.setAcademicLevel(AcademicLevel.FULL);
-        fanaei.setAcademicRole(AcademicRole.DEAN);
-        fanaei.initializeId();
+        Professor fanaei = new Professor(AcademicRole.DEAN, AcademicLevel.FULL, mathDepartment.getId());
         fanaei.setNationalId("015033904");
         fanaei.setFirstName("Hamidreza");
         fanaei.setLastName("Fanaei");
@@ -69,23 +56,16 @@ public class Main {
         mathDepartment.setDean(fanaei);
         mathDepartment.addToProfessors(khazayi);
         mathDepartment.addToProfessors(fanaei);
-        Student rezaei = new Student();
-        rezaei.setDepartment(mathDepartment);
-        rezaei.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
-        rezaei.setStudentStatus(StudentStatus.CURRENTLY_STUDYING);
-        rezaei.setYearOfEntry(2018);
-        rezaei.initializeId();
+        Student rezaei = new Student(2018, DegreeLevel.UNDERGRADUATE, mathDepartment.getId());
         rezaei.setNationalId("0152902202");
         rezaei.setFirstName("Arash");
         rezaei.setLastName("Rezaei");
         rezaei.setPhoneNumber("09192302110");
         rezaei.setEmailAddress("rezaei@sharif.edu");
-        rezaei.setAdvisingProfessor(fanaei);
+        rezaei.setAdvisingProfessorId(fanaei.getId());
         rezaei.setPassword("5678");
         rezaei.setStudentStatus(StudentStatus.DROPPED_OUT);
-        Course complexAnalysis = new Course();
-        complexAnalysis.setDepartment(mathDepartment);
-        complexAnalysis.initializeId();
+        Course complexAnalysis = new Course(mathDepartment.getId());
         complexAnalysis.addToTeachingProfessors(khazayi);
         complexAnalysis.addToTeachingProfessors(fanaei);
         complexAnalysis.addToStudents(hamidi);
@@ -94,13 +74,12 @@ public class Main {
         complexAnalysis.setTermIdentifier("20222");
         complexAnalysis.setActive(true);
 
-        manager.save(mathDepartment);
-        manager.save(khazayi);
-        manager.save(fanaei);
-        manager.save(hamidi.getTranscript());
-        manager.save(rezaei.getTranscript());
-        manager.save(hamidi);
-        manager.save(rezaei);
-        manager.save(complexAnalysis);
+        manager.save(DatasetIdentifier.STUDENTS, hamidi);
+        manager.save(DatasetIdentifier.STUDENTS, rezaei);
+        manager.save(DatasetIdentifier.PROFESSORS, khazayi);
+        manager.save(DatasetIdentifier.PROFESSORS, fanaei);
+        manager.save(DatasetIdentifier.COURSES, complexAnalysis);
+        manager.save(DatasetIdentifier.DEPARTMENTS, mathDepartment);
+        manager.saveDatabase();
     }
 }

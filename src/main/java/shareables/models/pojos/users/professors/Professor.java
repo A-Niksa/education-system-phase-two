@@ -20,6 +20,9 @@ public class Professor extends User {
     private AcademicLevel academicLevel;
     private AcademicRole academicRole;
 
+    public Professor() {
+    }
+
     public Professor(AcademicRole academicRole, AcademicLevel academicLevel, String departmentId) {
         super(UserIdentifier.PROFESSOR);
         this.academicRole = academicRole;
@@ -39,7 +42,7 @@ public class Professor extends User {
     }
 
     @Override
-    public void initializeId() {
+    protected void initializeId() {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
