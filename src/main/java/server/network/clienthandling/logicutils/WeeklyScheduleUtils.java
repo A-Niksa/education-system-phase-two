@@ -18,10 +18,7 @@ public class WeeklyScheduleUtils {
                 .filter(e -> studentIsEnrolledInCourse(username, (Course) e))
                 .forEach(e -> {
                     Course course = (Course) e;
-                    CourseDTO courseDTO = new CourseDTO(course.getCourseName(),
-                            getCompressedNamesOfProfessors(course.getTeachingProfessors()),
-                            course.getWeeklyClassTimes(),
-                            course.getExamDate());
+                    CourseDTO courseDTO = initializeCourseDTO(course);
                     courseDTOs.add(courseDTO);
                 });
         return courseDTOs;
@@ -34,13 +31,23 @@ public class WeeklyScheduleUtils {
                 .filter(e -> professorIsTeachingCourse(username, (Course) e))
                 .forEach(e -> {
                     Course course = (Course) e;
-                    CourseDTO courseDTO = new CourseDTO(course.getCourseName(),
-                            getCompressedNamesOfProfessors(course.getTeachingProfessors()),
-                            course.getWeeklyClassTimes(),
-                            course.getExamDate());
+                    CourseDTO courseDTO = initializeCourseDTO(course);
                     courseDTOs.add(courseDTO);
                 });
         return courseDTOs;
+    }
+
+    static CourseDTO initializeCourseDTO(Course course) {
+        CourseDTO courseDTO = new CourseDTO();
+        courseDTO.setId(course.getId());
+        courseDTO.setCourseName(course.getCourseName());
+        courseDTO.setCompressedNamesOfProfessors(getCompressedNamesOfProfessors(course.getTeachingProfessors()));
+        courseDTO.setWeeklyClassTimes(course.getWeeklyClassTimes());
+        courseDTO.setExamDate(course.getExamDate());
+        courseDTO.setNumberOfCredits(course.getNumberOfCredits());
+        courseDTO.setCourseLevel(course.getCourseLevel());
+        courseDTO.setDepartmentId(course.getDepartmentId());
+        return courseDTO;
     }
 
     private static boolean professorIsTeachingCourse(String username, Course course) {

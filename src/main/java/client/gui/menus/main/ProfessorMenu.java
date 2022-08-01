@@ -1,6 +1,7 @@
 package client.gui.menus.main;
 
 import client.gui.MainFrame;
+import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.profile.ProfessorProfile;
 import client.gui.menus.services.ProfessorExamsList;
 import client.gui.menus.services.ProfessorWeeklySchedule;
@@ -142,8 +143,7 @@ public class ProfessorMenu extends MainMenu {
                     // TODO
 //                    mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professorUser));
                 } else {
-                    // TODO
-//                    mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu));
+                    mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu));
                 }
             }
         });

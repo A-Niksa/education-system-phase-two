@@ -1,6 +1,7 @@
 package server.network.clienthandling;
 
 import server.network.clienthandling.logicutils.AcademicRequestUtils;
+import server.network.clienthandling.logicutils.CourseViewUtils;
 import server.network.clienthandling.logicutils.LoginUtils;
 import server.network.clienthandling.logicutils.WeeklyScheduleUtils;
 import shareables.models.pojos.users.User;
@@ -76,6 +77,11 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void getProfessorCourseDTOs(ClientHandler clientHandler, Request request) {
         List<CourseDTO> courseDTOs = WeeklyScheduleUtils.getProfessorCourseDTOs(databaseManager, (String) request.get("username"));
         responseHandler.courseDTOsAcquired(clientHandler, courseDTOs);
+    }
+
+    public void getActiveCourseDTOs(ClientHandler clientHandler, Request request) {
+        List<CourseDTO> activeCourseDTOs = CourseViewUtils.getActiveCourseDTOs(databaseManager);
+        responseHandler.courseDTOsAcquired(clientHandler, activeCourseDTOs);
     }
 
     public void askForDorm(ClientHandler clientHandler, Request request) {

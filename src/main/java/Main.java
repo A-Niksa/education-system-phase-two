@@ -75,6 +75,7 @@ public class Main {
         complexAnalysis.setNumberOfCredits(4);
         complexAnalysis.setTermIdentifier("20222");
         complexAnalysis.setActive(true);
+        complexAnalysis.setCourseLevel(DegreeLevel.UNDERGRADUATE);
         complexAnalysis.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
         WeekTime firstWeekTime = new WeekTime(Weekday.SUNDAY, new DayTime(14, 30, 0),
                 new DayTime(16, 30, 0));

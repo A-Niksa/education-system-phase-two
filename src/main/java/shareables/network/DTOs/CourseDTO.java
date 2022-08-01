@@ -1,5 +1,6 @@
 package shareables.network.DTOs;
 
+import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.utils.timekeeping.FormattingUtils;
 import shareables.utils.timekeeping.WeekTime;
 
@@ -10,24 +11,69 @@ import java.util.Date;
 import java.util.List;
 
 public class CourseDTO {
+    private String id;
     private String courseName;
+    private String departmentId;
     private String compressedNamesOfProfessors;
+    private int numberOfCredits;
     private List<WeekTime> weeklyClassTimes;
     private LocalDateTime examDate;
+    private DegreeLevel courseLevel;
 
     public CourseDTO() {
-    }
-
-    public CourseDTO(String courseName, String compressedNamesOfProfessors, List<WeekTime> weeklyClassTimes, LocalDateTime examDate) {
-        this.courseName = courseName;
-        this.compressedNamesOfProfessors = compressedNamesOfProfessors;
-        this.weeklyClassTimes = weeklyClassTimes;
-        this.examDate = examDate;
     }
 
     public String fetchFormattedExamDate() {
         DateTimeFormatter dateTimeFormatter = FormattingUtils.getExtensiveDateTimeFormatter();
         return dateTimeFormatter.format(examDate);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getCompressedNamesOfProfessors() {
+        return compressedNamesOfProfessors;
+    }
+
+    public void setCompressedNamesOfProfessors(String compressedNamesOfProfessors) {
+        this.compressedNamesOfProfessors = compressedNamesOfProfessors;
+    }
+
+    public int getNumberOfCredits() {
+        return numberOfCredits;
+    }
+
+    public void setNumberOfCredits(int numberOfCredits) {
+        this.numberOfCredits = numberOfCredits;
+    }
+
+    public List<WeekTime> getWeeklyClassTimes() {
+        return weeklyClassTimes;
+    }
+
+    public void setWeeklyClassTimes(List<WeekTime> weeklyClassTimes) {
+        this.weeklyClassTimes = weeklyClassTimes;
     }
 
     public LocalDateTime getExamDate() {
@@ -38,15 +84,11 @@ public class CourseDTO {
         this.examDate = examDate;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public DegreeLevel getCourseLevel() {
+        return courseLevel;
     }
 
-    public String getCompressedNamesOfProfessors() {
-        return compressedNamesOfProfessors;
-    }
-
-    public List<WeekTime> getWeeklyClassTimes() {
-        return weeklyClassTimes;
+    public void setCourseLevel(DegreeLevel courseLevel) {
+        this.courseLevel = courseLevel;
     }
 }

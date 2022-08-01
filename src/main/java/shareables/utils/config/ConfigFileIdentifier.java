@@ -13,7 +13,8 @@ public enum ConfigFileIdentifier {
     GUI_PROFILE("guiProfilePath"),
     GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath"),
     GUI_EXAMS_LIST("guiExamsListPath"),
-    GUI_DORM_SUBMISSION("guiDormSubmission");
+    GUI_DORM_SUBMISSION("guiDormSubmission"),
+    GUI_COURSES_LIST_VIEW("guiCoursesListView");
 
     private String configKeyString;
 

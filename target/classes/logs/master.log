@@ -272,3 +272,51 @@
 2022/08/01 | 18:57:59 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
 2022/08/01 | 18:57:59 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
 2022/08/01 | 18:57:59 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/01 | 18:58:36 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/01 | 18:58:36 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/01 | 18:58:39 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/01 | 18:58:40 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/01 | 18:58:53 - INFO - 0 - SERVER - Fetched identifiable (id: 18101202) - get - server.database.management.DatabaseManager
+2022/08/01 | 18:58:53 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/01 | 18:58:53 - INFO - 0 - SERVER - Fetched identifiable (id: 18101202) - get - server.database.management.DatabaseManager
+2022/08/01 | 18:58:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/01 | 18:58:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/01 | 18:58:56 - INFO - 1 - CLIENT - Opened the dorm requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$12
+2022/08/01 | 18:58:58 - INFO - 1 - CLIENT - Requested a dorm room - connectListeners - client.gui.menus.services.requests.submission.DormSubmission$1
+2022/08/01 | 18:58:58 - INFO - 1 - CLIENT - Student was not able to get a dorm room - connectListeners - client.gui.menus.services.requests.submission.DormSubmission$1
+2022/08/01 | 18:59:03 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/01 | 18:59:05 - INFO - 1 - CLIENT - Opened the dorm requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$12
+2022/08/01 | 18:59:05 - INFO - 1 - CLIENT - Requested a dorm room - connectListeners - client.gui.menus.services.requests.submission.DormSubmission$1
+2022/08/01 | 18:59:05 - INFO - 1 - CLIENT - Student was not able to get a dorm room - connectListeners - client.gui.menus.services.requests.submission.DormSubmission$1
+2022/08/01 | 18:59:11 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/01 | 18:59:27 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/01 | 20:36:45 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/01 | 20:36:45 - INFO - 0 - SERVER - Saved identifiable (id: 18101202) - save - server.database.management.DatabaseManager
+2022/08/01 | 20:36:45 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/01 | 20:36:45 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/01 | 20:36:45 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/01 | 20:36:45 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/01 | 20:36:45 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/01 | 20:36:56 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/01 | 20:36:57 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/01 | 20:37:03 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/01 | 20:37:04 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/01 | 20:37:19 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:37:19 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/01 | 20:37:19 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:37:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:37:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:37:22 - INFO - 1 - CLIENT - Opened the courses list in educational services - connectListeners - client.gui.menus.main.StudentMenu$2
+2022/08/01 | 20:37:25 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/01 | 20:39:11 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/01 | 20:39:11 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/01 | 20:39:16 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/01 | 20:39:16 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/01 | 20:39:23 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:39:23 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/01 | 20:39:23 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:39:23 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:39:23 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/01 | 20:39:26 - INFO - 1 - CLIENT - Opened the courses list in educational services - connectListeners - client.gui.menus.main.StudentMenu$2
+2022/08/01 | 20:39:26 - INFO - 0 - SERVER - Fetched identifiables list from COURSES - getIdentifiables - server.database.management.DatabaseManager
+2022/08/01 | 20:41:24 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager

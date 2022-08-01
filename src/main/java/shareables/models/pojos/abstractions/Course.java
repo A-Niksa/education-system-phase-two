@@ -3,6 +3,7 @@ package shareables.models.pojos.abstractions;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import shareables.utils.timekeeping.WeekTime;
 
@@ -27,6 +28,7 @@ public class Course extends Identifiable {
     private String termIdentifier; // such as "20182" or "20201"
     private int numberOfCredits;
     private boolean isActive; // shows whether the course is being currently taught
+    private DegreeLevel courseLevel;
 
     public Course() {
     }
@@ -160,5 +162,13 @@ public class Course extends Identifiable {
 
     public List<WeekTime> getWeeklyClassTimes() {
         return weeklyClassTimes;
+    }
+
+    public DegreeLevel getCourseLevel() {
+        return courseLevel;
+    }
+
+    public void setCourseLevel(DegreeLevel courseLevel) {
+        this.courseLevel = courseLevel;
     }
 }
