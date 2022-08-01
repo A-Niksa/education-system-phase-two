@@ -60,8 +60,8 @@ public class Student extends User {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
-    public String calculateAndGetGPAString() {
-        return transcript.calculateAndGetGPAString();
+    public String fetchGPAString() {
+        return transcript.fetchGPAString();
     }
 
     public Transcript getTranscript() {

@@ -1,36 +1,53 @@
 package client.gui.menus.services;
 
-import gui.MainFrame;
-import gui.Template;
-import gui.main.MainMenu;
-import logic.menus.services.ExamsListLoader;
-import logic.models.abstractions.Course;
-import logic.models.roles.Professor;
+import client.gui.MainFrame;
+import client.gui.PanelTemplate;
+import client.gui.menus.main.MainMenu;
+import client.locallogic.services.ExamsListSorter;
+import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.CourseDTO;
+import shareables.network.responses.Response;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 
 import javax.swing.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-public class ProfessorExamsList extends Template {
-    Professor operatingProfessor;
+public class ProfessorExamsList extends PanelTemplate {
+    Professor professor;
+    private ArrayList<CourseDTO> courseDTOs;
     private JTable examsTable;
     private String[] columns;
     private String[][] data;
 
-    public ProfessorExamsList(MainFrame mainFrame, MainMenu mainMenu, Professor operatingProfessor) {
+    public ProfessorExamsList(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
         super(mainFrame, mainMenu);
-        this.operatingProfessor = operatingProfessor;
-        columns = new String[]{"Course Name", "Exam Date and Time"};
+        this.professor = professor;
+        configIdentifier = ConfigFileIdentifier.GUI_EXAMS_LIST;
+        initializeCourseDTOs();
+        initializeColumns();
         setTableData();
         drawPanel();
     }
 
+    private void initializeCourseDTOs() {
+        Response response = clientController.getProfessorCourseDTOs(professor.getId());
+        courseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
+    }
+
+    private void initializeColumns() {
+        columns = new String[2];
+        columns[0] = ConfigManager.getString(configIdentifier, "courseNameColumn");
+        columns[1] = ConfigManager.getString(configIdentifier, "examDateAndTimeColumn");
+    }
+
     private void setTableData() {
-        LinkedList<Course> sortedCoursesList = ExamsListLoader.getSortedListOfCoursesPerExam(operatingProfessor);
-        Course course;
-        data = new String[sortedCoursesList.size()][];
-        for (int i = 0; i < sortedCoursesList.size(); i++) {
-            course = sortedCoursesList.get(i);
-            data[i] = new String[]{course.getCourseName(), course.getExamTimeString()};
+        ArrayList<CourseDTO> sortedCourseDTOs = ExamsListSorter.getSortedCourseDTOs(courseDTOs);
+        CourseDTO courseDTO;
+        data = new String[sortedCourseDTOs.size()][];
+        for (int i = 0; i < sortedCourseDTOs.size(); i++) {
+            courseDTO = sortedCourseDTOs.get(i);
+            data[i] = new String[]{courseDTO.getCourseName(), courseDTO.fetchFormattedExamDate()};
         }
     }
 
@@ -41,9 +58,12 @@ public class ProfessorExamsList extends Template {
 
     @Override
     protected void alignComponents() {
-        examsTable.setRowHeight(25);
+        examsTable.setRowHeight(ConfigManager.getInt(configIdentifier, "tableRowHeight"));
         JScrollPane scrollPane = new JScrollPane(examsTable);
-        scrollPane.setBounds(50, 50, 885, 530);
+        scrollPane.setBounds(ConfigManager.getInt(configIdentifier, "scrollPaneX"),
+                ConfigManager.getInt(configIdentifier, "scrollPaneY"),
+                ConfigManager.getInt(configIdentifier, "scrollPaneW"),
+                ConfigManager.getInt(configIdentifier, "scrollPaneH"));
         add(scrollPane);
     }
 

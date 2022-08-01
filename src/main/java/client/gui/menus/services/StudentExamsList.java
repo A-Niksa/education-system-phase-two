@@ -1,18 +1,22 @@
 package client.gui.menus.services;
 
-import gui.MainFrame;
-import gui.Template;
-import gui.main.MainMenu;
-import logic.menus.services.ExamsListLoader;
-import logic.models.abstractions.Course;
-import logic.models.roles.Student;
-import logic.models.roles.User;
+import client.gui.MainFrame;
+import client.gui.PanelTemplate;
+import client.gui.menus.main.MainMenu;
+import client.locallogic.services.ExamsListSorter;
+import shareables.models.pojos.users.User;
+import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.CourseDTO;
+import shareables.network.responses.Response;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 
 import javax.swing.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-public class StudentExamsList extends Template {
+public class StudentExamsList extends PanelTemplate {
     private Student student;
+    private ArrayList<CourseDTO> courseDTOs;
     private JTable examsTable;
     private String[] columns;
     private String[][] data;
@@ -20,18 +24,31 @@ public class StudentExamsList extends Template {
     public StudentExamsList(MainFrame mainFrame, MainMenu mainMenu, User user) {
         super(mainFrame, mainMenu);
         student = (Student) user;
-        columns = new String[]{"Course Name", "Exam Date and Time"};
+        configIdentifier = ConfigFileIdentifier.GUI_EXAMS_LIST;
+        initializeCourseDTOs();
+        initializeColumns();
         setTableData();
         drawPanel();
     }
 
+    private void initializeCourseDTOs() {
+        Response response = clientController.getStudentCourseDTOs(student.getId());
+        courseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
+    }
+
+    private void initializeColumns() {
+        columns = new String[2];
+        columns[0] = ConfigManager.getString(configIdentifier, "courseNameColumn");
+        columns[1] = ConfigManager.getString(configIdentifier, "examDateAndTimeColumn");
+    }
+
     private void setTableData() {
-        LinkedList<Course> sortedCoursesList = ExamsListLoader.getSortedListOfCoursesPerExam(student);
-        Course course;
-        data = new String[sortedCoursesList.size()][];
-        for (int i = 0; i < sortedCoursesList.size(); i++) {
-            course = sortedCoursesList.get(i);
-            data[i] = new String[]{course.getCourseName(), course.getExamTimeString()};
+        ArrayList<CourseDTO> sortedCourseDTOs = ExamsListSorter.getSortedCourseDTOs(courseDTOs);
+        CourseDTO courseDTO;
+        data = new String[sortedCourseDTOs.size()][];
+        for (int i = 0; i < sortedCourseDTOs.size(); i++) {
+            courseDTO = sortedCourseDTOs.get(i);
+            data[i] = new String[]{courseDTO.getCourseName(), courseDTO.fetchFormattedExamDate()};
         }
     }
 
@@ -42,9 +59,12 @@ public class StudentExamsList extends Template {
 
     @Override
     protected void alignComponents() {
-        examsTable.setRowHeight(25);
+        examsTable.setRowHeight(ConfigManager.getInt(configIdentifier, "tableRowHeight"));
         JScrollPane scrollPane = new JScrollPane(examsTable);
-        scrollPane.setBounds(50, 50, 885, 530);
+        scrollPane.setBounds(ConfigManager.getInt(configIdentifier, "scrollPaneX"),
+                ConfigManager.getInt(configIdentifier, "scrollPaneY"),
+                ConfigManager.getInt(configIdentifier, "scrollPaneW"),
+                ConfigManager.getInt(configIdentifier, "scrollPaneH"));
         add(scrollPane);
     }
 

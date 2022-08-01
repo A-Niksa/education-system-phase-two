@@ -2,6 +2,8 @@ package client.gui.menus.main;
 
 import client.gui.MainFrame;
 import client.gui.menus.profile.ProfessorProfile;
+import client.gui.menus.services.ProfessorExamsList;
+import client.gui.menus.services.ProfessorWeeklySchedule;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -166,8 +168,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, professorUser));
+                mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, professor));
             }
         });
 
@@ -176,8 +177,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, professorUser));
+                mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, professor));
             }
         });
 

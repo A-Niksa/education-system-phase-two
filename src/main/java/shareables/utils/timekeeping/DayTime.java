@@ -5,6 +5,9 @@ public class DayTime {
     private int minute;
     private int second;
 
+    public DayTime() {
+    }
+
     public DayTime(int hour, int minute, int second) {
         this.hour = hour;
         this.minute = minute;

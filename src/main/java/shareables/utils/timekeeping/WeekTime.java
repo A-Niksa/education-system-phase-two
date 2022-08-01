@@ -5,6 +5,9 @@ public class WeekTime {
     private DayTime startTime;
     private DayTime endTime;
 
+    public WeekTime() {
+    }
+
     public WeekTime(Weekday weekday, DayTime startTime, DayTime endTime) {
         this.weekday = weekday;
         this.startTime = startTime;

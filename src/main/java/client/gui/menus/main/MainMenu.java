@@ -16,6 +16,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
 
 public class MainMenu extends JPanel {
     protected MainFrame mainFrame;
@@ -45,8 +46,8 @@ public class MainMenu extends JPanel {
     }
 
     private void initializeComponents() {
-        DateFormat dateFormat = FormattingUtils.getStandardDateFormat();
-        lastLoginTime = new JLabel("Last Login: " + dateFormat.format(user.getLastLogin()));
+        DateTimeFormatter dateTimeFormatter = FormattingUtils.getExtensiveDateTimeFormatter();
+        lastLoginTime = new JLabel("Last Login: " + dateTimeFormatter.format(user.getLastLogin()));
         ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(user.getProfilePicture());
         profilePicture = new JLabel(profilePictureIcon);
         nameLabel = new JLabel(user.getFirstName() + " " + user.getLastName());

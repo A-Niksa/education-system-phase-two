@@ -70,7 +70,7 @@ public class StudentProfile extends PanelTemplate {
                 + student.getEmailAddress());
         labelsList.add(emailAddress);
         totalGPA = new JLabel(ConfigManager.getString(configIdentifier, "totalGPAMessage")
-                + student.calculateAndGetGPAString());
+                + student.fetchGPAString());
         labelsList.add(totalGPA);
         department = new JLabel(ConfigManager.getString(configIdentifier, "departmentMessage")
                 + DepartmentGetter.getDepartmentName(student.getDepartmentId()));

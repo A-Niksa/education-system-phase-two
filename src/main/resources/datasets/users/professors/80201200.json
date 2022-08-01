@@ -14,10 +14,10 @@
   "nationalId" : "015033903",
   "firstName" : "Shahram",
   "lastName" : "Khazayi",
-  "phoneNumber" : "09129323233",
-  "emailAddress" : "khazayee@sharif.edu",
+  "phoneNumber" : "09129730021",
+  "emailAddress" : "khazayi@sharif.edu",
   "password" : "1234",
-  "lastLogin" : 1659343382091,
+  "lastLogin" : null,
   "studentsUnderAdvice" : [ {
     "id" : "19101100",
     "departmentId" : "1",
@@ -37,7 +37,7 @@
     "phoneNumber" : "09192302103",
     "emailAddress" : "hamidi@sharif.edu",
     "password" : "1234",
-    "lastLogin" : 1659342781549,
+    "lastLogin" : "2022-08-01T18:57:59.2752426",
     "advisingProfessorId" : "80201200",
     "transcript" : {
       "courseScoreMap" : { }

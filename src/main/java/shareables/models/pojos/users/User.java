@@ -4,7 +4,7 @@ import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.media.Picture;
 import shareables.models.pojos.messaging.Messenger;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class User extends Identifiable {
     protected String departmentId;
@@ -17,7 +17,7 @@ public abstract class User extends Identifiable {
     protected String phoneNumber;
     protected String emailAddress;
     protected String password;
-    protected Date lastLogin;
+    protected LocalDateTime lastLogin;
 
     public User() {
         profilePicture = new Picture(); // sets the default profile picture
@@ -113,14 +113,14 @@ public abstract class User extends Identifiable {
     }
 
     public void updateLastLogin() {
-        lastLogin = new Date();
+        lastLogin = LocalDateTime.now();
     }
 
-    public Date getLastLogin() {
+    public LocalDateTime getLastLogin() {
         return lastLogin;
     }
 
-    public void setLastLogin(Date lastLogin) {
+    public void setLastLogin(LocalDateTime lastLogin) {
         this.lastLogin = lastLogin;
     }
 

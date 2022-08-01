@@ -20,7 +20,8 @@ public class WeeklyScheduleUtils {
                     Course course = (Course) e;
                     CourseDTO courseDTO = new CourseDTO(course.getCourseName(),
                             getCompressedNamesOfProfessors(course.getTeachingProfessors()),
-                            course.getWeeklyClassTimes());
+                            course.getWeeklyClassTimes(),
+                            course.getExamDate());
                     courseDTOs.add(courseDTO);
                 });
         return courseDTOs;
@@ -35,7 +36,8 @@ public class WeeklyScheduleUtils {
                     Course course = (Course) e;
                     CourseDTO courseDTO = new CourseDTO(course.getCourseName(),
                             getCompressedNamesOfProfessors(course.getTeachingProfessors()),
-                            course.getWeeklyClassTimes());
+                            course.getWeeklyClassTimes(),
+                            course.getExamDate());
                     courseDTOs.add(courseDTO);
                 });
         return courseDTOs;
@@ -48,7 +50,7 @@ public class WeeklyScheduleUtils {
     private static String getCompressedNamesOfProfessors(List<Professor> professors) {
         StringBuilder stringBuilder = new StringBuilder();
         professors.stream().forEach(e -> getName(stringBuilder, e).append(", "));
-        return stringBuilder.delete(stringBuilder.length() - 3, stringBuilder.length() - 1).toString();
+        return stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1).toString();
     }
 
     private static StringBuilder getName(StringBuilder stringBuilder, Professor professor) {

@@ -2,6 +2,9 @@ package client.gui.menus.main;
 
 import client.gui.MainFrame;
 import client.gui.menus.profile.StudentProfile;
+import client.gui.menus.services.StudentExamsList;
+import client.gui.menus.services.StudentWeeklySchedule;
+import client.gui.menus.services.requests.submission.DormSubmission;
 import client.locallogic.main.UserGetter;
 import shareables.models.pojos.users.students.Student;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -205,8 +208,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners",  getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new StudentWeeklySchedule(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new StudentWeeklySchedule(mainFrame, mainMenu, user));
             }
         });
 
@@ -215,8 +217,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new StudentExamsList(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new StudentExamsList(mainFrame, mainMenu, user));
             }
         });
 
@@ -268,8 +269,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dorm requests subsection in academic requests",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new DormSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new DormSubmission(mainFrame, mainMenu, user));
             }
         });
 

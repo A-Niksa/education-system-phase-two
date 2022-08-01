@@ -6,6 +6,7 @@ import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 import shareables.utils.timekeeping.WeekTime;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Course extends Identifiable {
     private List<Student> TAs;
     private List<Student> students;
     private List<WeekTime> weeklyClassTimes;
-    private Date examDate;
+    private LocalDateTime examDate;
     private String termIdentifier; // such as "20182" or "20201"
     private int numberOfCredits;
     private boolean isActive; // shows whether the course is being currently taught
@@ -141,11 +142,11 @@ public class Course extends Identifiable {
         this.departmentId = departmentId;
     }
 
-    public Date getExamDate() {
+    public LocalDateTime getExamDate() {
         return examDate;
     }
 
-    public void setExamDate(Date examDate) {
+    public void setExamDate(LocalDateTime examDate) {
         this.examDate = examDate;
     }
 

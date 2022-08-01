@@ -9,6 +9,8 @@ import shareables.models.pojos.messaging.Messenger;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 
 public class IdGenerator {
@@ -45,13 +47,13 @@ public class IdGenerator {
     }
 
     public String nextId(IdentifiableWithTime identifiableWithTime, SequentialIdGenerator sequentialIdGenerator) {
-        Date date = identifiableWithTime.getDate();
+        LocalDateTime currentDate = identifiableWithTime.getDate();
         String sequentialId = String.format("%04d", sequentialIdGenerator.nextSequentialId());
-        return date.getTime() + sequentialId;
+        return currentDate.toEpochSecond(ZoneOffset.UTC) + sequentialId;
     }
 
     public String nextId(IdentifiableWithTime identifiableWithTime) {
-        Date date = identifiableWithTime.getDate();
-        return date.getTime() + "";
+        LocalDateTime currentDate = identifiableWithTime.getDate();
+        return currentDate.toEpochSecond(ZoneOffset.UTC) + "";
     }
 }

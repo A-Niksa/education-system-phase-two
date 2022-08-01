@@ -80,6 +80,7 @@ public class ProfessorWeeklySchedule extends PanelTemplate {
             weekdayPanels.add(new JPanel());
             weekdayTables.add(new JTable(getTableData(weekday), columns));
         }
+        tabbedPane = new JTabbedPane();
     }
 
     private void alignTable(JTable table, JPanel panel) {

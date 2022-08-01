@@ -57,6 +57,11 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response askForDorm() {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_DORM);
+        return client.sendAndListen(request);
+    }
+
     public int getId() { // same as the id of the client
         return client.getId();
     }

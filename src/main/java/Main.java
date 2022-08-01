@@ -9,14 +9,17 @@ import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
+import shareables.utils.timekeeping.DayTime;
+import shareables.utils.timekeeping.WeekTime;
+import shareables.utils.timekeeping.Weekday;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Main {
     private static final DatabaseManager manager = new DatabaseManager();
 
     public static void main(String[] args) {
-        createTestData();
+        createTestData(); // TODO: cleaning the directories
 //        manager.loadDatabase();
 //        Student student = (Student) manager.get(DatasetIdentifier.STUDENTS, "19101100");
 //        System.out.println(student);
@@ -40,7 +43,7 @@ public class Main {
         hamidi.setEmailAddress("hamidi@sharif.edu");
         hamidi.setAdvisingProfessorId(khazayi.getId());
         hamidi.setPassword("1234");
-        hamidi.setLastLogin(new Date());
+        hamidi.updateLastLogin();
         khazayi.addToStudentsUnderAdvice(hamidi);
         mathDepartment.setDeputy(khazayi);
         mathDepartment.addToStudents(hamidi);
@@ -55,7 +58,7 @@ public class Main {
         mathDepartment.setDean(fanaei);
         mathDepartment.addToProfessors(khazayi);
         mathDepartment.addToProfessors(fanaei);
-        Student rezaei = new Student(2018, DegreeLevel.UNDERGRADUATE, mathDepartment.getId());
+        Student rezaei = new Student(2018, DegreeLevel.GRADUATE, mathDepartment.getId());
         rezaei.setNationalId("0152902202");
         rezaei.setFirstName("Arash");
         rezaei.setLastName("Rezaei");
@@ -63,7 +66,6 @@ public class Main {
         rezaei.setEmailAddress("rezaei@sharif.edu");
         rezaei.setAdvisingProfessorId(fanaei.getId());
         rezaei.setPassword("5678");
-        rezaei.setStudentStatus(StudentStatus.DROPPED_OUT);
         Course complexAnalysis = new Course(mathDepartment.getId());
         complexAnalysis.setCourseName("Complex Analysis");
         complexAnalysis.addToTeachingProfessors(khazayi);
@@ -73,6 +75,13 @@ public class Main {
         complexAnalysis.setNumberOfCredits(4);
         complexAnalysis.setTermIdentifier("20222");
         complexAnalysis.setActive(true);
+        complexAnalysis.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
+        WeekTime firstWeekTime = new WeekTime(Weekday.SUNDAY, new DayTime(14, 30, 0),
+                new DayTime(16, 30, 0));
+        WeekTime secondWeekTime = new WeekTime(Weekday.TUESDAY, new DayTime(14, 30, 0),
+                new DayTime(16, 30, 0));
+        complexAnalysis.addToWeeklyClassTimes(firstWeekTime);
+        complexAnalysis.addToWeeklyClassTimes(secondWeekTime);
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);

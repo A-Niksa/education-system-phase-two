@@ -1,12 +1,13 @@
 package shareables.models.idgeneration;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public abstract class IdentifiableWithTime extends Identifiable {
-    protected Date date;
+    protected LocalDateTime date;
 
     public IdentifiableWithTime() {
-        date = new Date();
+        date = LocalDateTime.now();
     }
 
     @Override
@@ -18,11 +19,11 @@ public abstract class IdentifiableWithTime extends Identifiable {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

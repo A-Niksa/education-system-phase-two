@@ -61,4 +61,10 @@ public class ResponseHandler {
         response.put("courseDTOs", courseDTOs);
         clientHandler.respond(response);
     }
+
+    public void dormRequestDetermined(ClientHandler clientHandler, boolean willGetDorm) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("willGetDorm", willGetDorm);
+        clientHandler.respond(response);
+    }
 }

@@ -3,6 +3,8 @@ package server.network.authentication;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Base64;
 import java.util.Date;
 
@@ -40,8 +42,8 @@ public class AuthTokenGenerator {
     }
 
     private byte[] getCurrentDateString() {
-        Date currentDate = new Date();
-        String currentDateString = currentDate.getTime() + "";
+        LocalDateTime currentDate = LocalDateTime.now();
+        String currentDateString = currentDate.toEpochSecond(ZoneOffset.UTC) + "";
         return currentDateString.getBytes();
     }
 }

@@ -11,6 +11,7 @@ import shareables.utils.objectmapping.ObjectMapperUtils;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ClientHandler {
@@ -64,14 +65,22 @@ public class ClientHandler {
     private void startRequestListenerThread() {
         Thread thread = new Thread(() -> {
             while (true) {
-                String requestString = in.nextLine();
+                String requestString = null;
                 try {
+                    requestString = in.nextLine();
+                } catch (NoSuchElementException e) {
+                    MasterLogger.serverInfo("Client (id: " + id + ") disconnected", "startRequestListenerMethod",
+                            getClass());
+                    break;
+                }
+                try { // TODO: breaking down try/catch blocks to smaller blocks
                     Request request = objectMapper.readValue(requestString, Request.class);
                     if (!request.getAuthToken().equals(authToken)) continue;
                     server.handleRequest(id, request);
                 } catch (JsonProcessingException e) {
                     MasterLogger.serverInfo("Client (id: " + id + ") disconnected", "startRequestListenerMethod",
                             getClass());
+                    break;
                 }
             }
         });

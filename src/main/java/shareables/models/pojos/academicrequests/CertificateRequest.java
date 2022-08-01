@@ -1,7 +1,10 @@
 package shareables.models.pojos.academicrequests;
 
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.utils.timekeeping.FormattingUtils;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class CertificateRequest extends AcademicRequest {
@@ -15,10 +18,11 @@ public class CertificateRequest extends AcademicRequest {
         String studentName = requestingStudent.getFirstName() + " " + requestingStudent.getLastName();
         String studentId = requestingStudent.getId();
         DepartmentName majorName = AcademicRequestUtils.getDepartmentName(requestingStudent.getDepartmentId());
-        Date currentDate = new Date();
+        LocalDateTime currentDate = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = FormattingUtils.getStandardDateTimeFormatter();
         certificateText = "It is hereby certified that " + studentName + " (student ID: " + studentId +
                 ") is currently a student of Sharif University of Technology and is majoring in " + majorName + "." +
-                "\nDate of Certification: " + currentDate;
+                "\nDate of Certification: " + dateTimeFormatter.format(currentDate);
     }
 
     public String getCertificateText() {

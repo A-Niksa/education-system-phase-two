@@ -6,14 +6,17 @@ import server.database.management.DatabaseManager;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 
 public class LoginUtils {
     public static boolean hasBeenTooLongSinceLastLogin(User user) {
         if (user.getLastLogin() == null) return false;
-        Date currentDate = new Date();
-        double differenceInMillis = currentDate.getTime() - user.getLastLogin().getTime();
-        double differenceInHours = differenceInMillis / (1000 * 3600);
+        LocalDateTime currentDate = LocalDateTime.now();
+        double differenceInSeconds = currentDate.toEpochSecond(ZoneOffset.UTC) -
+                user.getLastLogin().toEpochSecond(ZoneOffset.UTC);
+        double differenceInHours = differenceInSeconds / (3600);
         return differenceInHours >= ConfigManager.getDouble(ConfigFileIdentifier.CONSTANTS,
                 "minimumTimeForChangingPassword");
     }

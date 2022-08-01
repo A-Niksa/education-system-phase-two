@@ -11,7 +11,9 @@ public enum ConfigFileIdentifier {
     GUI_STUDENT_MAIN("guiStudentMainPath"),
     GUI_PROFESSOR_MAIN("guiProfessorMainPath"),
     GUI_PROFILE("guiProfilePath"),
-    GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath");
+    GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath"),
+    GUI_EXAMS_LIST("guiExamsListPath"),
+    GUI_DORM_SUBMISSION("guiDormSubmission");
 
     private String configKeyString;
 
