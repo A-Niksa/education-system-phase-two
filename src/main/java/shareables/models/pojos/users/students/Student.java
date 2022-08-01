@@ -1,6 +1,5 @@
 package shareables.models.pojos.users.students;
 
-import shareables.models.idgeneration.IdGenerator;
 import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.abstractions.Transcript;
 import shareables.models.pojos.users.User;
@@ -61,8 +60,8 @@ public class Student extends User {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
-    public double calculateGPA() {
-        return transcript.calculateGPA();
+    public String calculateAndGetGPAString() {
+        return transcript.calculateAndGetGPAString();
     }
 
     public Transcript getTranscript() {

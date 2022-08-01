@@ -45,6 +45,18 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getStudentCourseDTOs(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSE_DTOS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response getProfessorCourseDTOs(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_COURSE_DTOS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
     public int getId() { // same as the id of the client
         return client.getId();
     }

@@ -2,16 +2,18 @@ package client.locallogic.login;
 
 import shareables.utils.images.ImageIdentifier;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class CaptchaManager {
     private int captchaIndex;
     private Captcha currentCaptcha;
-    private LinkedList<Captcha> captchasList;
+    private List<Captcha> captchasList;
 
     public CaptchaManager() {
         captchaIndex = 0;
-        captchasList = new LinkedList<>();
+        captchasList = new ArrayList<>();
         getAllCaptchas();
     }
 

@@ -29,6 +29,12 @@ public class RequestMapper {
             case CHANGE_PHONE_NUMBER:
                 requestHandler.changePhoneNumber(clientHandler, request);
                 break;
+            case GET_STUDENT_COURSE_DTOS:
+                requestHandler.getStudentCourseDTOs(clientHandler, request);
+                break;
+            case GET_PROFESSOR_COURSE_DTOS:
+                requestHandler.getProfessorCourseDTOs(clientHandler, request);
+                break;
         }
     }
 }

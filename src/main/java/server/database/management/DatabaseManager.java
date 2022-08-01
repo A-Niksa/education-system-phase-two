@@ -6,6 +6,7 @@ import shareables.models.idgeneration.Identifiable;
 import shareables.utils.logging.MasterLogger;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -54,6 +55,15 @@ public class DatabaseManager {
         MasterLogger.serverInfo("Fetched identifiable (id: " + identifiableId + ")", "get",
                 getClass());
         return getDataset(datasetIdentifier).get(identifiableId);
+    }
+
+    /**
+     * gets the identifiables list of a particular dataset
+     */
+    public List<Identifiable> getIdentifiables(DatasetIdentifier datasetIdentifier) {
+        MasterLogger.serverInfo("Fetched identifiables list from " + datasetIdentifier,
+                "getIdentifiables", getClass());
+        return getDataset(datasetIdentifier).getIdentifiables();
     }
 
     /**

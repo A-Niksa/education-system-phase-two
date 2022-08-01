@@ -18,10 +18,15 @@ public class Transcript {
         courseScoreMap.entrySet().removeIf(e -> e.getKey().getId().equals(course.getId()));
     }
 
-    public double calculateGPA() {
+    private double calculateGPA() {
         double GPA = -1.0; // -1.0 is equivalent to N/A
         return GPA;
         // TODO: calculating GPA
+    }
+
+    public String calculateAndGetGPAString() {
+        double GPA = calculateGPA();
+        return GPA == -1.0 ? "N/A" : String.valueOf(GPA);
     }
 
     public Map<Course, Score> getCourseScoreMap() {

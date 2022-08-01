@@ -18,7 +18,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class StudentProfile extends PanelTemplate {
     private Student student;
@@ -34,7 +34,7 @@ public class StudentProfile extends PanelTemplate {
     private JLabel yearOfEntry;
     private JLabel degreeLevel;
     private JLabel studentStatus;
-    private LinkedList<JLabel> labelsList;
+    private ArrayList<JLabel> labelsList;
     private JSeparator separator;
     private JLabel enterNewEmailAddress;
     private JTextField newEmailAddress;
@@ -47,7 +47,7 @@ public class StudentProfile extends PanelTemplate {
         super(mainFrame, mainMenu);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_PROFILE;
-        labelsList = new LinkedList<>();
+        labelsList = new ArrayList<>();
         drawPanel();
     }
 
@@ -70,7 +70,7 @@ public class StudentProfile extends PanelTemplate {
                 + student.getEmailAddress());
         labelsList.add(emailAddress);
         totalGPA = new JLabel(ConfigManager.getString(configIdentifier, "totalGPAMessage")
-                + student.calculateGPA());
+                + student.calculateAndGetGPAString());
         labelsList.add(totalGPA);
         department = new JLabel(ConfigManager.getString(configIdentifier, "departmentMessage")
                 + DepartmentGetter.getDepartmentName(student.getDepartmentId()));

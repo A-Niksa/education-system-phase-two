@@ -4,8 +4,10 @@ import shareables.models.idgeneration.Identifiable;
 import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
+import shareables.utils.timekeeping.WeekTime;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Course extends Identifiable {
@@ -15,15 +17,17 @@ public class Course extends Identifiable {
     }
 
     private String departmentId;
+    private String courseName;
     private List<Professor> teachingProfessors;
     private List<Student> TAs;
     private List<Student> students;
+    private List<WeekTime> weeklyClassTimes;
+    private Date examDate;
     private String termIdentifier; // such as "20182" or "20201"
     private int numberOfCredits;
     private boolean isActive; // shows whether the course is being currently taught
 
     public Course() {
-
     }
 
     public Course(String departmentId) {
@@ -32,7 +36,16 @@ public class Course extends Identifiable {
         teachingProfessors = new ArrayList<>();
         TAs = new ArrayList<>();
         students = new ArrayList<>();
+        weeklyClassTimes = new ArrayList<>();
         initializeId();
+    }
+
+    public void addToWeeklyClassTimes(WeekTime weekTime) {
+        weeklyClassTimes.add(weekTime);
+    }
+
+    public void removeFromWeeklyClassTimes(WeekTime weekTime) {
+        weeklyClassTimes.removeIf(e -> e.equals(weekTime));
     }
 
     public void addToTeachingProfessors(Professor professor) {
@@ -126,5 +139,25 @@ public class Course extends Identifiable {
 
     public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
+    }
+
+    public Date getExamDate() {
+        return examDate;
+    }
+
+    public void setExamDate(Date examDate) {
+        this.examDate = examDate;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public List<WeekTime> getWeeklyClassTimes() {
+        return weeklyClassTimes;
     }
 }

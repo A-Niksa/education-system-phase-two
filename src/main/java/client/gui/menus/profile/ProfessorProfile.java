@@ -17,7 +17,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class ProfessorProfile extends PanelTemplate {
     private Professor professor;
@@ -30,7 +32,7 @@ public class ProfessorProfile extends PanelTemplate {
     private JLabel department;
     private JLabel officeNumber;
     private JLabel academicLevel;
-    private LinkedList<JLabel> labelsList;
+    private ArrayList<JLabel> labelsList;
     private JSeparator separator;
     private JLabel enterNewEmailAddress;
     private JTextField newEmailAddress;
@@ -50,7 +52,7 @@ public class ProfessorProfile extends PanelTemplate {
     protected void initializeComponents() {
         ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(professor.getProfilePicture());
         profilePicture = new JLabel(profilePictureIcon);
-        labelsList = new LinkedList<>();
+        labelsList = new ArrayList<>();
         name = new JLabel(ConfigManager.getString(configIdentifier, "nameMessage") +
                 professor.getFirstName() + " " + professor.getLastName());
         labelsList.add(name);

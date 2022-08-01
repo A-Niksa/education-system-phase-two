@@ -10,7 +10,8 @@ public enum ConfigFileIdentifier {
     GUI_MAIN("guiMainPath"),
     GUI_STUDENT_MAIN("guiStudentMainPath"),
     GUI_PROFESSOR_MAIN("guiProfessorMainPath"),
-    GUI_PROFILE("guiProfilePath");
+    GUI_PROFILE("guiProfilePath"),
+    GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath");
 
     private String configKeyString;
 

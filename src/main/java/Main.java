@@ -65,6 +65,7 @@ public class Main {
         rezaei.setPassword("5678");
         rezaei.setStudentStatus(StudentStatus.DROPPED_OUT);
         Course complexAnalysis = new Course(mathDepartment.getId());
+        complexAnalysis.setCourseName("Complex Analysis");
         complexAnalysis.addToTeachingProfessors(khazayi);
         complexAnalysis.addToTeachingProfessors(fanaei);
         complexAnalysis.addToStudents(hamidi);
