@@ -1,6 +1,6 @@
 package shareables.models.pojos.users.students;
 
-public enum DegreeLevel {
+public enum DegreeLevel { // can correspond to degree level as well
     UNDERGRADUATE("Undergraduate"),
     GRADUATE("Graduate"),
     PHD("PhD");
