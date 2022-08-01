@@ -9,13 +9,11 @@ import shareables.network.DTOs.CourseDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
-import shareables.utils.timekeeping.Weekday;
+import shareables.utils.timing.timekeeping.Weekday;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class ProfessorWeeklySchedule extends PanelTemplate {
     private Professor professor;

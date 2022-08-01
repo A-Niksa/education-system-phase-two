@@ -1,7 +1,7 @@
 package server.network.clienthandling;
 
 import server.network.clienthandling.logicutils.AcademicRequestUtils;
-import server.network.clienthandling.logicutils.CourseViewUtils;
+import server.network.clienthandling.logicutils.EnrolmentUtils;
 import server.network.clienthandling.logicutils.LoginUtils;
 import server.network.clienthandling.logicutils.WeeklyScheduleUtils;
 import shareables.models.pojos.users.User;
@@ -10,9 +10,9 @@ import shareables.models.pojos.users.students.Student;
 import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.requests.Request;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RequestHandler { // TODO: logging, perhaps?
@@ -24,7 +24,7 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler = new ResponseHandler();
     }
 
-    public void logIn(ClientHandler clientHandler, Request request) {
+    public void logIn(ClientHandler clientHandler, Request request) { // TODO: two people logging in at the same time
         User user = LoginUtils.getUser(databaseManager, (String) request.get("username"));
         if (user == null ||
                 !request.get("username").equals(user.getId()) || !request.get("password").equals(user.getPassword())) {
@@ -80,8 +80,19 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void getActiveCourseDTOs(ClientHandler clientHandler, Request request) {
-        List<CourseDTO> activeCourseDTOs = CourseViewUtils.getActiveCourseDTOs(databaseManager);
+        List<CourseDTO> activeCourseDTOs = EnrolmentUtils.getActiveCourseDTOs(databaseManager);
         responseHandler.courseDTOsAcquired(clientHandler, activeCourseDTOs);
+    }
+
+    public void getDepartmentCourseDTOs(ClientHandler clientHandler, Request request) {
+        List<CourseDTO> departmentCourseDTOs = EnrolmentUtils.getDepartmentCourseDTOs(databaseManager,
+                (String) request.get("departmentId"));
+        responseHandler.courseDTOsAcquired(clientHandler, departmentCourseDTOs);
+    }
+
+    public void getProfessorDTOs(ClientHandler clientHandler, Request request) {
+        List<ProfessorDTO> professorDTOs = EnrolmentUtils.getProfessorDTOs(databaseManager);
+        responseHandler.professorDTOsAcquired(clientHandler, professorDTOs);
     }
 
     public void askForDorm(ClientHandler clientHandler, Request request) {

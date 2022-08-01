@@ -1,4 +1,4 @@
-package shareables.utils.timekeeping;
+package shareables.utils.timing.timekeeping;
 
 import java.time.LocalDateTime;
 

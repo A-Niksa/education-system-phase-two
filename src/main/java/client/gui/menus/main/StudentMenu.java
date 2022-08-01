@@ -2,6 +2,7 @@ package client.gui.menus.main;
 
 import client.gui.MainFrame;
 import client.gui.menus.enrolment.viewing.CoursesListView;
+import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.profile.StudentProfile;
 import client.gui.menus.services.StudentExamsList;
 import client.gui.menus.services.StudentWeeklySchedule;
@@ -178,8 +179,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professors list in educational services",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu));
+                mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu));
             }
         });
 

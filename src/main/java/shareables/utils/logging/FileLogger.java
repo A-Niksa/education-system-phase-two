@@ -5,7 +5,7 @@ import shareables.utils.config.ConfigManager;
 
 import java.io.*;
 
-import static shareables.utils.timekeeping.TimeManager.getTime;
+import static shareables.utils.timing.timekeeping.TimeManager.getTime;
 
 public class FileLogger extends StreamLogger {
     public FileLogger() {

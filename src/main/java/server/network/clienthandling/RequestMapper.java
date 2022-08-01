@@ -38,6 +38,12 @@ public class RequestMapper {
             case GET_ACTIVE_COURSE_DTOS:
                 requestHandler.getActiveCourseDTOs(clientHandler, request);
                 break;
+            case GET_DEPARTMENT_COURSE_DTOS:
+                requestHandler.getDepartmentCourseDTOs(clientHandler, request);
+                break;
+            case GET_PROFESSOR_DTOS:
+                requestHandler.getProfessorDTOs(clientHandler, request);
+                break;
             case ASK_FOR_DORM:
                 requestHandler.askForDorm(clientHandler, request);
                 break;

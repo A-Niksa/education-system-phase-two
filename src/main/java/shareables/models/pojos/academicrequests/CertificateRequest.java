@@ -1,11 +1,10 @@
 package shareables.models.pojos.academicrequests;
 
 import shareables.models.pojos.abstractions.DepartmentName;
-import shareables.utils.timekeeping.FormattingUtils;
+import shareables.utils.timing.formatting.FormattingUtils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class CertificateRequest extends AcademicRequest {
     private String certificateText;

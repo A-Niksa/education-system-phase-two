@@ -1,4 +1,6 @@
-package shareables.utils.timekeeping;
+package shareables.utils.timing.formatting;
+
+import shareables.utils.timing.timekeeping.Timestamp;
 
 public class TimestampParser {
     private static TimestampParser timestampParser;

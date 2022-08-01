@@ -36,7 +36,7 @@ public class CoursesListView extends PanelTemplate {
 
     public CoursesListView(MainFrame mainFrame, MainMenu mainMenu) {
         super(mainFrame, mainMenu);
-        configIdentifier = ConfigFileIdentifier.GUI_COURSES_LIST_VIEW;
+        configIdentifier = ConfigFileIdentifier.GUI_LIST_VIEW;
         initializeActiveCourseDTOs();
         initializeColumns();
         initializeCourseLevels();

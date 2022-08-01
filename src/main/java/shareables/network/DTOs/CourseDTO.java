@@ -1,13 +1,11 @@
 package shareables.network.DTOs;
 
 import shareables.models.pojos.users.students.DegreeLevel;
-import shareables.utils.timekeeping.FormattingUtils;
-import shareables.utils.timekeeping.WeekTime;
+import shareables.utils.timing.formatting.FormattingUtils;
+import shareables.utils.timing.timekeeping.WeekTime;
 
-import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 public class CourseDTO {

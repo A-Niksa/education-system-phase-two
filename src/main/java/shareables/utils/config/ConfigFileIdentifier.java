@@ -14,7 +14,9 @@ public enum ConfigFileIdentifier {
     GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath"),
     GUI_EXAMS_LIST("guiExamsListPath"),
     GUI_DORM_SUBMISSION("guiDormSubmission"),
-    GUI_COURSES_LIST_VIEW("guiCoursesListView");
+    GUI_LIST_VIEW("guiListView"),
+    GUI_LIST_MANAGER("guiListManager"),
+    GUI_LIST_EDITOR("guiListEditor");
 
     private String configKeyString;
 

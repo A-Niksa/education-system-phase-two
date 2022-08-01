@@ -1,4 +1,6 @@
-package shareables.utils.timekeeping;
+package shareables.utils.timing.timekeeping;
+
+import shareables.utils.timing.formatting.FormattingUtils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

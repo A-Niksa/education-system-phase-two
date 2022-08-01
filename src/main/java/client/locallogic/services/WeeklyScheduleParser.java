@@ -1,8 +1,8 @@
 package client.locallogic.services;
 
 import shareables.network.DTOs.CourseDTO;
-import shareables.utils.timekeeping.WeekTime;
-import shareables.utils.timekeeping.Weekday;
+import shareables.utils.timing.timekeeping.WeekTime;
+import shareables.utils.timing.timekeeping.Weekday;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package shareables.utils.timekeeping;
+package shareables.utils.timing.timekeeping;
 
 public class DayTime {
     private int hour;

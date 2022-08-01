@@ -2,7 +2,7 @@ package shareables.utils.logging;
 
 import java.io.PrintStream;
 
-import static shareables.utils.timekeeping.TimeManager.getTime;
+import static shareables.utils.timing.timekeeping.TimeManager.getTime;
 
 public interface BasicLogger {
     public default void log(int callerId, LoggerCaller loggerCaller, LogIdentifier logIdentifier, String message,

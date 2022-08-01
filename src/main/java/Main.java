@@ -7,11 +7,10 @@ import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
-import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
-import shareables.utils.timekeeping.DayTime;
-import shareables.utils.timekeeping.WeekTime;
-import shareables.utils.timekeeping.Weekday;
+import shareables.utils.timing.timekeeping.DayTime;
+import shareables.utils.timing.timekeeping.WeekTime;
+import shareables.utils.timing.timekeeping.Weekday;
 
 import java.time.LocalDateTime;
 

@@ -3,6 +3,7 @@ package server.network.clienthandling;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -59,6 +60,12 @@ public class ResponseHandler {
     public void courseDTOsAcquired(ClientHandler clientHandler, List<CourseDTO> courseDTOs) {
         Response response = new Response(ResponseStatus.OK);
         response.put("courseDTOs", courseDTOs);
+        clientHandler.respond(response);
+    }
+
+    public void professorDTOsAcquired(ClientHandler clientHandler, List<ProfessorDTO> professorDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("professorDTOs", professorDTOs);
         clientHandler.respond(response);
     }
 

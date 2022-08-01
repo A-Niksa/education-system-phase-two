@@ -9,13 +9,12 @@ import shareables.models.pojos.users.User;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
-import shareables.utils.timekeeping.FormattingUtils;
+import shareables.utils.timing.formatting.FormattingUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.time.format.DateTimeFormatter;
 
 public class MainMenu extends JPanel {

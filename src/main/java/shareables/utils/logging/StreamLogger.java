@@ -2,8 +2,6 @@ package shareables.utils.logging;
 
 import java.io.PrintStream;
 
-import static shareables.utils.timekeeping.TimeManager.getTime;
-
 public class StreamLogger implements Logger {
     private PrintStream printStream;
 

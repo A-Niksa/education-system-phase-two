@@ -5,11 +5,10 @@ import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
-import shareables.utils.timekeeping.WeekTime;
+import shareables.utils.timing.timekeeping.WeekTime;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Course extends Identifiable {

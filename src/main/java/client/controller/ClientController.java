@@ -57,6 +57,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getDepartmentCourseDTOs(String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_COURSE_DTOS,
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
     public Response askForDorm() {
         Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_DORM);
         return client.sendAndListen(request);
@@ -64,6 +70,11 @@ public class ClientController {
 
     public Response getActiveCourseDTOs() {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_ACTIVE_COURSE_DTOS);
+        return client.sendAndListen(request);
+    }
+
+    public Response getProfessorDTOs() {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_DTOS);
         return client.sendAndListen(request);
     }
 

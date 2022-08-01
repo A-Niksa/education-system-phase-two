@@ -1,4 +1,4 @@
-package shareables.utils.timekeeping;
+package shareables.utils.timing.formatting;
 
 import java.time.format.DateTimeFormatter;
 
