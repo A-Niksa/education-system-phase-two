@@ -62,7 +62,7 @@ public class Server {
                         authTokenGenerator.generateAuthToken(), socket, this);
                 currentClientHandlerId++;
                 activeClientHandlers.add(clientHandler);
-            } catch (IOException e) {  // TODO: handling the exception (and other exceptions associated with the network)
+            } catch (IOException e) {  // TODO: handling the exception (along with exceptions associated with the network)
                 e.printStackTrace();
             }
         }
