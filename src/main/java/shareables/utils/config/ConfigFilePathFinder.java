@@ -4,30 +4,7 @@ public class ConfigFilePathFinder {
     public String getPath(ConfigFileIdentifier configFileIdentifier, ConfigReader configReader) {
         openConfigPathsProperties(configReader);
         String configFilesFolderPath = getConfigFilesFolderPath(configReader);
-
-        String configKeyString;
-        switch (configFileIdentifier) {
-            case CONSTANTS:
-                configKeyString = "constantsPath";
-                break;
-            case TEXTS:
-                configKeyString = "textsPath";
-                break;
-            case ADDRESSES:
-                configKeyString = "addressesPath";
-                break;
-            case NETWORK:
-                configKeyString = "networkPath";
-                break;
-            case GUI:
-                configKeyString = "GUIPath";
-                break;
-            case GUI_LOGIN:
-                configKeyString = "GUILoginPath";
-                break;
-            default:
-                configKeyString = null;
-        }
+        String configKeyString = configFileIdentifier.getConfigKeyString();
         return configFilesFolderPath + configReader.getProperty(configKeyString);
     }
 

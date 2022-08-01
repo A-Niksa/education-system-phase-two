@@ -6,11 +6,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class ObjectMapperUtils {
-    public static ObjectMapper getCustomObjectMapper() {
+    public static ObjectMapper getNetworkObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT);
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        return objectMapper;
+    }
+
+    public static ObjectMapper getDatabaseObjectMapper() {
+        ObjectMapper objectMapper = getNetworkObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         return objectMapper;
     }
 }

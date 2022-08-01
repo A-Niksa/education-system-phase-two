@@ -20,12 +20,12 @@ public abstract class User extends Identifiable {
     protected Date lastLogin;
 
     public User() {
-        // TODO: setting default profile picture
+        profilePicture = new Picture(); // sets the default profile picture
     }
 
     public User(UserIdentifier userIdentifier) {
-        // TODO: setting default profile picture
         this.userIdentifier = userIdentifier;
+        profilePicture = new Picture(); // sets the default profile picture
     }
 
     protected void initializeMessenger(String id) {
@@ -110,6 +110,10 @@ public abstract class User extends Identifiable {
 
     public void setUserIdentifier(UserIdentifier userIdentifier) {
         this.userIdentifier = userIdentifier;
+    }
+
+    public void updateLastLogin() {
+        lastLogin = new Date();
     }
 
     public Date getLastLogin() {

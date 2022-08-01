@@ -1,6 +1,7 @@
 package server;
 
 import server.network.Server;
+import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 

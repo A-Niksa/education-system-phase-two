@@ -1,6 +1,5 @@
 package server.database.management;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import server.database.datasets.Dataset;
 import server.database.datasets.DatasetIdentifier;
@@ -18,7 +17,7 @@ public class DatabaseWriter { // save in this context refers to saving to file
 
     public DatabaseWriter(Map<DatasetIdentifier, Dataset> identifierDatasetMap) {
         this.identifierDatasetMap = identifierDatasetMap;
-        objectMapper = ObjectMapperUtils.getCustomObjectMapper();
+        objectMapper = ObjectMapperUtils.getDatabaseObjectMapper();
     }
 
     public void saveDatabase() {

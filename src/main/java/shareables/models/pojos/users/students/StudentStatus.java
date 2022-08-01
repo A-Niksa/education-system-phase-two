@@ -1,7 +1,17 @@
 package shareables.models.pojos.users.students;
 
 public enum StudentStatus {
-    CURRENTLY_STUDYING,
-    GRADUATED,
-    DROPPED_OUT
+    CURRENTLY_STUDYING("Currently studying"),
+    GRADUATED("Graduated"),
+    DROPPED_OUT("Dropped out");
+
+    private String studentStatusString;
+
+    private StudentStatus(String studentStatusString) {
+        this.studentStatusString = studentStatusString;
+    }
+
+    public String toString() {
+        return studentStatusString;
+    }
 }

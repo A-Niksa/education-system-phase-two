@@ -1,6 +1,5 @@
 package shareables.models.pojos.users.professors;
 
-import shareables.models.idgeneration.IdGenerator;
 import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -16,7 +15,7 @@ public class Professor extends User {
     }
 
     private List<Student> studentsUnderAdvice;
-    private String roomNumber;
+    private String officeNumber;
     private AcademicLevel academicLevel;
     private AcademicRole academicRole;
 
@@ -54,12 +53,12 @@ public class Professor extends User {
         this.studentsUnderAdvice = studentsUnderAdvice;
     }
 
-    public String getRoomNumber() {
-        return roomNumber;
+    public String getOfficeNumber() {
+        return officeNumber;
     }
 
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setOfficeNumber(String officeNumber) {
+        this.officeNumber = officeNumber;
     }
 
     public AcademicLevel getAcademicLevel() {

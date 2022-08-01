@@ -21,7 +21,7 @@ public class ServerController {
 
     public ServerController(int port) {
         this.port = port;
-        objectMapper = ObjectMapperUtils.getCustomObjectMapper();
+        objectMapper = ObjectMapperUtils.getNetworkObjectMapper();
     }
 
     public void attemptConnectionToServer() {

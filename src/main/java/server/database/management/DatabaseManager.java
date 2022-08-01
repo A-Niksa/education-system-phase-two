@@ -30,32 +30,40 @@ public class DatabaseManager {
 
     public void loadDatabase() {
         databaseReader.loadDatabase();
-        MasterLogger.serverInfo("loaded database", "loadDatabase", DatabaseManager.class);
+        MasterLogger.serverInfo("Loaded database from resources", "loadDatabase", getClass());
     }
 
     public void saveDatabase() {
         databaseWriter.saveDatabase();
-        MasterLogger.serverInfo("saved database to resources", "saveDatabase", DatabaseManager.class);
+        MasterLogger.serverInfo("Saved database to resources", "saveDatabase", getClass());
     }
 
     public void save(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
         getDataset(datasetIdentifier).save(identifiable);
+        MasterLogger.serverInfo("Saved identifiable (id: " + identifiable.getId() + ")", "save",
+                getClass());
     }
 
     public void remove(DatasetIdentifier datasetIdentifier, String identifiableId) {
         getDataset(datasetIdentifier).remove(identifiableId);
+        MasterLogger.serverInfo("Removed identifiable (id: " + identifiableId + ")", "remove",
+                getClass());
     }
 
     public Identifiable get(DatasetIdentifier datasetIdentifier, String identifiableId) {
+        MasterLogger.serverInfo("Fetched identifiable (id: " + identifiableId + ")", "get",
+                getClass());
         return getDataset(datasetIdentifier).get(identifiableId);
     }
 
     /**
-     * works under the condition that the id of t does not change
+     * works under the condition that the id of the identifiable does not change
      */
     public void update(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
         remove(datasetIdentifier, identifiable.getId());
         save(datasetIdentifier, identifiable);
+        MasterLogger.serverInfo("Updated identifiable (id: " + identifiable.getId() + ")", "update",
+                getClass());
     }
 
     private Dataset getDataset(DatasetIdentifier datasetIdentifier) {

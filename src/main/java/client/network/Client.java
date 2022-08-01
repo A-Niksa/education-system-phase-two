@@ -1,6 +1,6 @@
 package client.network;
 
-import client.GUI.MainFrame;
+import client.gui.MainFrame;
 import client.controller.ClientController;
 import shareables.network.requests.Request;
 import shareables.network.responses.Response;

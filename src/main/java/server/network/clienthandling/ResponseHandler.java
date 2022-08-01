@@ -1,5 +1,6 @@
 package server.network.clienthandling;
 
+import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -42,6 +43,12 @@ public class ResponseHandler {
 
     public void newPasswordIsSameAsOldOne(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "newPasswordIsSameAsOldOne"));
+        clientHandler.respond(response);
+    }
+
+    public void userAcquired(ClientHandler clientHandler, User user) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("user", user);
         clientHandler.respond(response);
     }
 }

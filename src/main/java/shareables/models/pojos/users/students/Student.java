@@ -61,6 +61,10 @@ public class Student extends User {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
+    public double calculateGPA() {
+        return transcript.calculateGPA();
+    }
+
     public Transcript getTranscript() {
         return transcript;
     }

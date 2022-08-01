@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import server.network.Server;
 import shareables.network.requests.Request;
 import shareables.network.responses.Response;
+import shareables.utils.logging.MasterLogger;
 import shareables.utils.objectmapping.ObjectMapperUtils;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class ClientHandler {
         this.authToken = authToken;
         this.socket = socket;
         this.server = server;
-        objectMapper = ObjectMapperUtils.getCustomObjectMapper();
+        objectMapper = ObjectMapperUtils.getNetworkObjectMapper();
         initializeIOStreams();
         sendAuthTokenToClient();
         startRequestListenerThread();
@@ -69,7 +70,8 @@ public class ClientHandler {
                     if (!request.getAuthToken().equals(authToken)) continue;
                     server.handleRequest(id, request);
                 } catch (JsonProcessingException e) {
-                    e.printStackTrace();
+                    MasterLogger.serverInfo("Client (id: " + id + ") disconnected", "startRequestListenerMethod",
+                            getClass());
                 }
             }
         });

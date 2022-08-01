@@ -23,7 +23,7 @@ public class DatabaseReader {
 
     public DatabaseReader(Map<DatasetIdentifier, Dataset> identifierDatasetMap) {
         this.identifierDatasetMap = identifierDatasetMap;
-        objectMapper = ObjectMapperUtils.getCustomObjectMapper();
+        objectMapper = ObjectMapperUtils.getDatabaseObjectMapper();
     }
 
     public void loadDatabase() {

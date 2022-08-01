@@ -27,9 +27,19 @@ public class Server {
         this.port = port;
         activeClientHandlers = new ArrayList<>();
         currentClientHandlerId = 0;
-        databaseManager = new DatabaseManager();
         authTokenGenerator = new AuthTokenGenerator();
+        databaseManager = new DatabaseManager();
         requestMapper = new RequestMapper(databaseManager);
+        setShutdownHook(databaseManager);
+        loadDatabase();
+    }
+
+    private void loadDatabase() {
+        databaseManager.loadDatabase();
+    }
+
+    private void setShutdownHook(DatabaseManager databaseManager) {
+        Runtime.getRuntime().addShutdownHook(new Thread(new ServerShutdownHook(databaseManager)));
     }
 
     public void start() {
@@ -46,12 +56,13 @@ public class Server {
         while (isActive) {
             try {
                 Socket socket = serverSocket.accept();
-                MasterLogger.serverInfo("Connection established with new client", "awaitConnection", Server.class);
+                MasterLogger.serverInfo("Connection established with new client (id: " + currentClientHandlerId,
+                        "awaitConnection", Server.class);
                 ClientHandler clientHandler = new ClientHandler(currentClientHandlerId,
                         authTokenGenerator.generateAuthToken(), socket, this);
                 currentClientHandlerId++;
                 activeClientHandlers.add(clientHandler);
-            } catch (IOException e) {
+            } catch (IOException e) {  // TODO: handling the exception (and other exceptions associated with the network)
                 e.printStackTrace();
             }
         }

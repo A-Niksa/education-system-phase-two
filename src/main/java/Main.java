@@ -2,7 +2,6 @@ import server.database.datasets.DatasetIdentifier;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.abstractions.DepartmentName;
-import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
@@ -31,7 +30,7 @@ public class Main {
         khazayi.setLastName("Khazayi");
         khazayi.setPhoneNumber("09129730021");
         khazayi.setEmailAddress("khazayi@sharif.edu");
-        khazayi.setRoomNumber("105");
+        khazayi.setOfficeNumber("105");
         khazayi.setPassword("1234");
         Student hamidi = new Student(2019, DegreeLevel.UNDERGRADUATE, mathDepartment.getId());
         hamidi.setNationalId("0150802202");
@@ -51,7 +50,7 @@ public class Main {
         fanaei.setLastName("Fanaei");
         fanaei.setPhoneNumber("09129730321");
         fanaei.setEmailAddress("fanaei@sharif.edu");
-        fanaei.setRoomNumber("107");
+        fanaei.setOfficeNumber("107");
         fanaei.setPassword("1234");
         mathDepartment.setDean(fanaei);
         mathDepartment.addToProfessors(khazayi);

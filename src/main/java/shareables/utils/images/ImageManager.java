@@ -2,7 +2,6 @@ package shareables.utils.images;
 
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
-import shareables.utils.logging.MasterLogger;
 
 import java.awt.*;
 
@@ -27,11 +26,15 @@ public class ImageManager {
     }
 
     private Image getImageByInstance(ImageIdentifier imageIdentifier) {
-        ImageLoader imageLoader = (identifier) -> Toolkit.getDefaultToolkit().getImage(getImagePath(identifier));
+        ImageLoader imageLoader = (identifier) -> Toolkit.getDefaultToolkit().getImage(getImagePathByInstance(identifier));
         return imageCache.getImageFromCache(imageIdentifier, imageLoader);
     }
 
-    private String getImagePath(ImageIdentifier imageIdentifier) {
+    public static String getImagePath(ImageIdentifier imageIdentifier) {
+        return getInstance().getImagePathByInstance(imageIdentifier);
+    }
+
+    private String getImagePathByInstance(ImageIdentifier imageIdentifier) {
         String imagesFolderPath = getImagesFolderPath();
         String configKeyString = imageIdentifierParser.getConfigKeyString(imageIdentifier);
         return imagesFolderPath + ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, configKeyString);
