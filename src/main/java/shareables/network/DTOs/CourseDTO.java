@@ -16,7 +16,7 @@ public class CourseDTO {
     private int numberOfCredits;
     private List<WeekTime> weeklyClassTimes;
     private LocalDateTime examDate;
-    private DegreeLevel courseLevel;
+    private DegreeLevel degreeLevel;
 
     public CourseDTO() {
     }
@@ -82,11 +82,11 @@ public class CourseDTO {
         this.examDate = examDate;
     }
 
-    public DegreeLevel getCourseLevel() {
-        return courseLevel;
+    public DegreeLevel getDegreeLevel() {
+        return degreeLevel;
     }
 
-    public void setCourseLevel(DegreeLevel courseLevel) {
-        this.courseLevel = courseLevel;
+    public void setDegreeLevel(DegreeLevel degreeLevel) {
+        this.degreeLevel = degreeLevel;
     }
 }

@@ -1,6 +1,7 @@
 package client.gui.menus.main;
 
 import client.gui.MainFrame;
+import client.gui.menus.enrolment.management.CoursesListManager;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.profile.ProfessorProfile;
@@ -141,8 +142,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the courses list in educational services",
                         "connectListeners", getClass());
                 if (role == AcademicRole.DEPUTY) {
-                    // TODO
-//                    mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professorUser));
+                    mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professor));
                 } else {
                     mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu));
                 }

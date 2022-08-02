@@ -38,7 +38,7 @@ public class CoursesListEditor extends PanelTemplate {
     }
 
     private void initializeDepartmentCourseDTOs() {
-        Response response = clientController.getDepartmentCourseDTOs(professor.getId());
+        Response response = clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
         departmentCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
     }
 
@@ -49,7 +49,7 @@ public class CoursesListEditor extends PanelTemplate {
         columns[2] = ConfigManager.getString(configIdentifier, "examDateAndTimeCol");
         columns[3] = ConfigManager.getString(configIdentifier, "nameOfProfessorsCol");
         columns[4] = ConfigManager.getString(configIdentifier, "numberOfCreditsCol");
-        columns[5] = ConfigManager.getString(configIdentifier, "courseLevelCol");
+        columns[5] = ConfigManager.getString(configIdentifier, "degreeLevelCol");
     }
 
     private void setTableData() {
@@ -63,7 +63,7 @@ public class CoursesListEditor extends PanelTemplate {
                     courseDTO.fetchFormattedExamDate(),
                     courseDTO.getCompressedNamesOfProfessors(),
                     courseDTO.getNumberOfCredits() + "",
-                    courseDTO.getCourseLevel().toString()};
+                    courseDTO.getDegreeLevel().toString()};
         }
     }
 

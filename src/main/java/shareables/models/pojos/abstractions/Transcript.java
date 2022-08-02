@@ -4,18 +4,18 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Transcript {
-    private Map<Course, Score> courseScoreMap; // includes failed courses as well
+    private Map<String, Score> courseIdScoreMap; // includes failed courses as well
 
     public Transcript() {
-        courseScoreMap = new LinkedHashMap<>();
+        courseIdScoreMap = new LinkedHashMap<>();
     }
 
-    public void put(Course course, Score score) {
-        courseScoreMap.put(course, score);
+    public void put(String courseId, Score score) {
+        courseIdScoreMap.put(courseId, score);
     }
 
-    public void remove(Course course) {
-        courseScoreMap.entrySet().removeIf(e -> e.getKey().getId().equals(course.getId()));
+    public void remove(String courseId) {
+        courseIdScoreMap.entrySet().removeIf(e -> e.getKey().equals(courseId));
     }
 
     private double fetchGPA() {
@@ -29,11 +29,11 @@ public class Transcript {
         return GPA == -1.0 ? "N/A" : String.valueOf(GPA);
     }
 
-    public Map<Course, Score> getCourseScoreMap() {
-        return courseScoreMap;
+    public Map<String, Score> getCourseIdScoreMap() {
+        return courseIdScoreMap;
     }
 
-    public void setCourseScoreMap(Map<Course, Score> courseScoreMap) {
-        this.courseScoreMap = courseScoreMap;
+    public void setCourseIdScoreMap(Map<String, Score> courseIdScoreMap) {
+        this.courseIdScoreMap = courseIdScoreMap;
     }
 }

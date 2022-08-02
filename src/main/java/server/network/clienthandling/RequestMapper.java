@@ -54,13 +54,16 @@ public class RequestMapper {
                 requestHandler.changeCourseNumberOfCredits(clientHandler, request);
                 break;
             case CHANGE_COURSE_LEVEL:
-                requestHandler.changeCourseLevel(clientHandler, request);
+                requestHandler.changeDegreeLevel(clientHandler, request);
                 break;
             case CHANGE_COURSE_TEACHING_PROFESSORS:
                 requestHandler.changeCourseTeachingProfessors(clientHandler, request);
                 break;
             case REMOVE_COURSE:
                 requestHandler.removeCourse(clientHandler, request);
+                break;
+            case ADD_COURSE:
+                requestHandler.addCourse(clientHandler, request);
                 break;
         }
     }

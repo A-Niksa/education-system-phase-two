@@ -111,9 +111,9 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler.requestSuccessful(clientHandler);
     }
 
-    public void changeCourseLevel(ClientHandler clientHandler, Request request) {
+    public void changeDegreeLevel(ClientHandler clientHandler, Request request) {
         Course course = IdentifiableEditingUtils.getCourse(databaseManager, (String) request.get("courseId"));
-        course.setCourseLevel((DegreeLevel) request.get("newCourseLevel"));
+        course.setDegreeLevel((DegreeLevel) request.get("newDegreeLevel"));
         responseHandler.requestSuccessful(clientHandler);
     }
 
@@ -133,5 +133,16 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void removeCourse(ClientHandler clientHandler, Request request) {
         IdentifiableEditingUtils.removeCourse(databaseManager, (String) request.get("courseId"));
         responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void addCourse(ClientHandler clientHandler, Request request) {
+        String[] teachingProfessorNames = (String[]) request.get("teachingProfessorNames");
+        if (!IdentifiableEditingUtils.professorsExistInDepartment(databaseManager, teachingProfessorNames,
+                (String) request.get("departmentId"))) {
+            responseHandler.professorsDoNotExistInDepartment(clientHandler);
+        } else {
+            String id = CourseAdditionUtils.addCourseAndReturnId(databaseManager, request);
+            responseHandler.courseAdded(clientHandler, id);
+        }
     }
 }

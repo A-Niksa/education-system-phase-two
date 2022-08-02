@@ -41,13 +41,11 @@
       "phoneNumber" : "09192302103",
       "emailAddress" : "hamidi@sharif.edu",
       "password" : "1234",
-      "lastLogin" : "2022-08-01T20:36:45.7214413",
+      "lastLogin" : "2022-08-02T16:26:20.8365016",
       "advisingProfessorId" : "80201200",
       "transcript" : {
-        "courseScoreMap" : { }
+        "courseIdScoreMap" : { }
       },
-      "currentCoursesIds" : [ ],
-      "assistingCoursesIds" : [ ],
       "degreeLevel" : "UNDERGRADUATE",
       "studentStatus" : "CURRENTLY_STUDYING",
       "yearOfEntry" : 2019
@@ -102,10 +100,8 @@
     "lastLogin" : null,
     "advisingProfessorId" : "90201301",
     "transcript" : {
-      "courseScoreMap" : { }
+      "courseIdScoreMap" : { }
     },
-    "currentCoursesIds" : [ ],
-    "assistingCoursesIds" : [ ],
     "degreeLevel" : "GRADUATE",
     "studentStatus" : "CURRENTLY_STUDYING",
     "yearOfEntry" : 2018
@@ -129,13 +125,11 @@
     "phoneNumber" : "09192302103",
     "emailAddress" : "hamidi@sharif.edu",
     "password" : "1234",
-    "lastLogin" : "2022-08-01T20:36:45.7214413",
+    "lastLogin" : "2022-08-02T16:26:20.8365016",
     "advisingProfessorId" : "80201200",
     "transcript" : {
-      "courseScoreMap" : { }
+      "courseIdScoreMap" : { }
     },
-    "currentCoursesIds" : [ ],
-    "assistingCoursesIds" : [ ],
     "degreeLevel" : "UNDERGRADUATE",
     "studentStatus" : "CURRENTLY_STUDYING",
     "yearOfEntry" : 2019
@@ -166,10 +160,13 @@
     }
   } ],
   "examDate" : "2022-11-21T09:30:00",
-  "termIdentifier" : "20222",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
   "numberOfCredits" : 4,
   "isActive" : true,
-  "courseLevel" : "UNDERGRADUATE",
+  "degreeLevel" : "UNDERGRADUATE",
   "active" : true,
   "tas" : [ {
     "id" : "18101202",
@@ -193,10 +190,8 @@
     "lastLogin" : null,
     "advisingProfessorId" : "90201301",
     "transcript" : {
-      "courseScoreMap" : { }
+      "courseIdScoreMap" : { }
     },
-    "currentCoursesIds" : [ ],
-    "assistingCoursesIds" : [ ],
     "degreeLevel" : "GRADUATE",
     "studentStatus" : "CURRENTLY_STUDYING",
     "yearOfEntry" : 2018

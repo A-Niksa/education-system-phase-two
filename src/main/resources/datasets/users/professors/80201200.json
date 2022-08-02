@@ -37,13 +37,11 @@
     "phoneNumber" : "09192302103",
     "emailAddress" : "hamidi@sharif.edu",
     "password" : "1234",
-    "lastLogin" : "2022-08-01T20:36:45.7214413",
+    "lastLogin" : "2022-08-02T16:28:05.3649058",
     "advisingProfessorId" : "80201200",
     "transcript" : {
-      "courseScoreMap" : { }
+      "courseIdScoreMap" : { }
     },
-    "currentCoursesIds" : [ ],
-    "assistingCoursesIds" : [ ],
     "degreeLevel" : "UNDERGRADUATE",
     "studentStatus" : "CURRENTLY_STUDYING",
     "yearOfEntry" : 2019

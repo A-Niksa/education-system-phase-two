@@ -23,10 +23,11 @@ public class CoursesListManager extends CoursesListView {
         configIdentifier = ConfigFileIdentifier.GUI_LIST_MANAGER;
         setEditorButton();
         connectEditorListener();
+        drawPanel();
     }
 
     private void setEditorButton() {
-        openEditor = new JButton("Editor");
+        openEditor = new JButton(ConfigManager.getString(configIdentifier, "openEditorM"));
         openEditor.setBounds(ConfigManager.getInt(configIdentifier, "openEditorX"),
                 ConfigManager.getInt(configIdentifier, "openEditorY"),
                 ConfigManager.getInt(configIdentifier, "openEditorW"),

@@ -3,6 +3,7 @@ package client.gui.menus.enrolment.viewing;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
+import client.gui.utils.EnumArrayUtils;
 import client.locallogic.enrolment.CourseFilteringTool;
 import client.locallogic.enrolment.FilterKey;
 import client.locallogic.profile.DepartmentGetter;
@@ -24,14 +25,14 @@ public class CoursesListView extends PanelTemplate {
     private JTable coursesTable;
     private JScrollPane scrollPane;
     private String[] columns;
-    private String[] courseLevels;
+    private String[] degreeLevels;
     private String[][] data;
     private JTextField courseIdFilterField;
     private JButton filterOnCourseId;
     private JTextField numberOfCreditsFilterField;
     private JButton filterOnNumberOfCredits;
-    private JComboBox<String> courseLevelFilterCombo;
-    private JButton filterOnCourseLevel;
+    private JComboBox<String> degreeLevelFilterCombo;
+    private JButton filterOnDegreeLevel;
     private JButton resetButton;
 
     public CoursesListView(MainFrame mainFrame, MainMenu mainMenu) {
@@ -39,7 +40,7 @@ public class CoursesListView extends PanelTemplate {
         configIdentifier = ConfigFileIdentifier.GUI_LIST_VIEW;
         initializeActiveCourseDTOs();
         initializeColumns();
-        initializeCourseLevels();
+        degreeLevels = EnumArrayUtils.initializeDegreeLevels();
         setTableData(activeCourseDTOs);
         drawPanel();
     }
@@ -47,13 +48,6 @@ public class CoursesListView extends PanelTemplate {
     private void initializeActiveCourseDTOs() {
         Response response = clientController.getActiveCourseDTOs();
         activeCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
-    }
-
-    private void initializeCourseLevels() {
-        courseLevels = new String[3];
-        courseLevels[0] = ConfigManager.getString(configIdentifier, "undergraduate");
-        courseLevels[1] = ConfigManager.getString(configIdentifier, "graduate");
-        courseLevels[2] = ConfigManager.getString(configIdentifier, "phd");
     }
 
     private void initializeColumns() {
@@ -64,7 +58,7 @@ public class CoursesListView extends PanelTemplate {
         columns[3] = ConfigManager.getString(configIdentifier, "examDateAndTimeCol");
         columns[4] = ConfigManager.getString(configIdentifier, "nameOfProfessorsCol");
         columns[5] = ConfigManager.getString(configIdentifier, "numberOfCreditsCol");
-        columns[6] = ConfigManager.getString(configIdentifier, "courseLevelCol");
+        columns[6] = ConfigManager.getString(configIdentifier, "degreeLevelCol");
     }
 
     private void setTableData(ArrayList<CourseDTO> courseDTOs) {
@@ -80,7 +74,7 @@ public class CoursesListView extends PanelTemplate {
                     courseDTO.fetchFormattedExamDate(),
                     courseDTO.getCompressedNamesOfProfessors(),
                     courseDTO.getNumberOfCredits() + "",
-                    courseDTO.getCourseLevel().toString()};
+                    courseDTO.getDegreeLevel().toString()};
         }
     }
 
@@ -92,8 +86,8 @@ public class CoursesListView extends PanelTemplate {
         numberOfCreditsFilterField = new JTextField(ConfigManager.getString(configIdentifier,
                 "numberOfCreditsFilterFieldM"));
         filterOnNumberOfCredits = new JButton(ConfigManager.getString(configIdentifier, "filterButtonM"));
-        courseLevelFilterCombo = new JComboBox<>(courseLevels);
-        filterOnCourseLevel = new JButton(ConfigManager.getString(configIdentifier, "filterButtonM"));
+        degreeLevelFilterCombo = new JComboBox<>(degreeLevels);
+        filterOnDegreeLevel = new JButton(ConfigManager.getString(configIdentifier, "filterButtonM"));
         resetButton = new JButton(ConfigManager.getString(configIdentifier, "resetButtonM"));
     }
 
@@ -132,16 +126,16 @@ public class CoursesListView extends PanelTemplate {
         add(filterOnNumberOfCredits);
         currentX += incrementOfX;
 
-        courseLevelFilterCombo.setBounds(currentX,
-                ConfigManager.getInt(configIdentifier, "courseLevelFilterComboY"),
-                ConfigManager.getInt(configIdentifier, "courseLevelFilterComboW"),
-                ConfigManager.getInt(configIdentifier, "courseLevelFilterComboH"));
-        add(courseLevelFilterCombo);
-        filterOnCourseLevel.setBounds(currentX + spacingOfX,
-                ConfigManager.getInt(configIdentifier, "filterOnCourseLevelY"),
-                ConfigManager.getInt(configIdentifier, "filterOnCourseLevelW"),
-                ConfigManager.getInt(configIdentifier, "filterOnCourseLevelH"));
-        add(filterOnCourseLevel);
+        degreeLevelFilterCombo.setBounds(currentX,
+                ConfigManager.getInt(configIdentifier, "degreeLevelFilterComboY"),
+                ConfigManager.getInt(configIdentifier, "degreeLevelFilterComboW"),
+                ConfigManager.getInt(configIdentifier, "degreeLevelFilterComboH"));
+        add(degreeLevelFilterCombo);
+        filterOnDegreeLevel.setBounds(currentX + spacingOfX,
+                ConfigManager.getInt(configIdentifier, "filterOnDegreeLevelY"),
+                ConfigManager.getInt(configIdentifier, "filterOnDegreeLevelW"),
+                ConfigManager.getInt(configIdentifier, "filterOnDegreeLevelH"));
+        add(filterOnDegreeLevel);
         currentX += ConfigManager.getInt(configIdentifier, "largeIncX");
 
         resetButton.setBounds(currentX, ConfigManager.getInt(configIdentifier, "resetButtonY"),
@@ -178,13 +172,13 @@ public class CoursesListView extends PanelTemplate {
             }
         });
 
-        filterOnCourseLevel.addActionListener(new ActionListener() {
+        filterOnDegreeLevel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String desiredCourseLevel = (String) courseLevelFilterCombo.getSelectedItem();
+                String desiredDegreeLevel = (String) degreeLevelFilterCombo.getSelectedItem();
                 MasterLogger.clientInfo(clientController.getId(), "Filtered courses based on course level: "
-                        + desiredCourseLevel, "connectListeners", getClass());
-                setTableData(CourseFilteringTool.getFilteredCourseDTOs(FilterKey.COURSE_LEVEL, desiredCourseLevel,
+                        + desiredDegreeLevel, "connectListeners", getClass());
+                setTableData(CourseFilteringTool.getFilteredCourseDTOs(FilterKey.COURSE_LEVEL, desiredDegreeLevel,
                         activeCourseDTOs));
                 DefaultTableModel tableModel = new DefaultTableModel(data, columns);
                 coursesTable.setModel(tableModel);

@@ -17,7 +17,8 @@ public enum ConfigFileIdentifier {
     GUI_LIST_VIEW("guiListView"),
     GUI_LIST_MANAGER("guiListManager"),
     GUI_LIST_EDITOR("guiListEditor"),
-    GUI_COURSE_EDITOR("guiCourseEditor");
+    GUI_COURSE_EDITOR("guiCourseEditor"),
+    GUI_COURSE_ADDER("guiCourseAdder");
 
     private String configKeyString;
 

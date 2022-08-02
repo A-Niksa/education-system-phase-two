@@ -6,11 +6,6 @@ import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 
 public abstract class AcademicRequest extends IdentifiableWithTime {
-    private static SequentialIdGenerator sequentialIdGenerator;
-    static {
-        sequentialIdGenerator = getNewSequentialIdGenerator();
-    }
-
     protected AcademicRequestIdentifier requestIdentifier;
     protected Student requestingStudent;
     protected Professor receivingProfessor;
@@ -19,7 +14,6 @@ public abstract class AcademicRequest extends IdentifiableWithTime {
     public AcademicRequest(AcademicRequestIdentifier requestIdentifier) {
         this.requestIdentifier = requestIdentifier;
         academicRequestStatus = AcademicRequestStatus.SUBMITTED; // default value
-        initializeId();
     }
 
     public Student getRequestingStudent() {

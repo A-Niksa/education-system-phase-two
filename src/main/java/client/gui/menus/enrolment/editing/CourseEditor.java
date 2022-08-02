@@ -3,8 +3,9 @@ package client.gui.menus.enrolment.editing;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
+import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
-import client.locallogic.enrolment.CourseLevelGetter;
+import client.locallogic.enrolment.DegreeLevelGetter;
 import client.locallogic.enrolment.NamesParser;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.DegreeLevel;
@@ -30,9 +31,9 @@ public class CourseEditor extends PanelTemplate {
     private JButton changeTeachingProfessors;
     private JTextField newNumberOfCredits;
     private JButton changeNumberOfCredits;
-    private JComboBox<String> newCourseLevel;
-    private String[] courseLevels;
-    private JButton changeCourseLevel;
+    private JComboBox<String> newDegreeLevel;
+    private String[] degreeLevels;
+    private JButton changeDegreeLevel;
     private JButton goBackButton;
     private JButton removeCourse;
 
@@ -41,15 +42,8 @@ public class CourseEditor extends PanelTemplate {
         this.deputy = deputy;
         this.courseDTO = courseDTO;
         configIdentifier = ConfigFileIdentifier.GUI_COURSE_EDITOR;
-        initializeCourseLevels();
+        degreeLevels = EnumArrayUtils.initializeDegreeLevels();
         drawPanel();
-    }
-
-    private void initializeCourseLevels() {
-        courseLevels = new String[3];
-        courseLevels[0] = ConfigManager.getString(configIdentifier, "undergraduate");
-        courseLevels[1] = ConfigManager.getString(configIdentifier, "graduate");
-        courseLevels[2] = ConfigManager.getString(configIdentifier, "phd");
     }
 
     @Override
@@ -64,8 +58,8 @@ public class CourseEditor extends PanelTemplate {
         changeTeachingProfessors = new JButton(ConfigManager.getString(configIdentifier, "changeButtonM"));
         newNumberOfCredits = new JTextField(ConfigManager.getString(configIdentifier, "newNumberOfCreditsM"));
         changeNumberOfCredits = new JButton(ConfigManager.getString(configIdentifier, "changeButtonM"));
-        newCourseLevel = new JComboBox<>(courseLevels);
-        changeCourseLevel = new JButton(ConfigManager.getString(configIdentifier, "changeButtonM"));
+        newDegreeLevel = new JComboBox<>(degreeLevels);
+        changeDegreeLevel = new JButton(ConfigManager.getString(configIdentifier, "changeButtonM"));
 
         removeCourse = new JButton(ConfigManager.getString(configIdentifier, "removeCourseM"));
     }
@@ -119,13 +113,13 @@ public class CourseEditor extends PanelTemplate {
         add(changeNumberOfCredits);
         currentY += incrementOfY;
 
-        newCourseLevel.setBounds(currentX, currentY, ConfigManager.getInt(configIdentifier, "newCourseLevelW"),
-                ConfigManager.getInt(configIdentifier, "newCourseLevelH"));
-        add(newCourseLevel);
-        changeCourseLevel.setBounds(currentX + incrementOfX, currentY,
-                ConfigManager.getInt(configIdentifier, "changeCourseLevelW"),
-                ConfigManager.getInt(configIdentifier, "changeCourseLevelH"));
-        add(changeCourseLevel);
+        newDegreeLevel.setBounds(currentX, currentY, ConfigManager.getInt(configIdentifier, "newDegreeLevelW"),
+                ConfigManager.getInt(configIdentifier, "newDegreeLevelH"));
+        add(newDegreeLevel);
+        changeDegreeLevel.setBounds(currentX + incrementOfX, currentY,
+                ConfigManager.getInt(configIdentifier, "changeDegreeLevelW"),
+                ConfigManager.getInt(configIdentifier, "changeDegreeLevelH"));
+        add(changeDegreeLevel);
         currentY += incrementOfY;
 
         removeCourse.setBounds(currentX, currentY, ConfigManager.getInt(configIdentifier, "removeCourseW"),
@@ -190,15 +184,15 @@ public class CourseEditor extends PanelTemplate {
             }
         });
 
-        changeCourseLevel.addActionListener(new ActionListener() {
+        changeDegreeLevel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String courseLevelString = (String) newCourseLevel.getSelectedItem();
-                DegreeLevel courseLevel = CourseLevelGetter.getCourseLevel(courseLevelString);
-                Response response = clientController.changeCourseLevel(courseDTO.getId(), courseLevel);
+                String degreeLevelString = (String) newDegreeLevel.getSelectedItem();
+                DegreeLevel degreeLevel = DegreeLevelGetter.getDegreeLevel(degreeLevelString);
+                Response response = clientController.changeDegreeLevel(courseDTO.getId(), degreeLevel);
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), courseDTO.getCourseName() + "'s level changed to "
-                            + courseLevelString, "connectListeners", getClass());
+                            + degreeLevelString, "connectListeners", getClass());
                 }
             }
         });

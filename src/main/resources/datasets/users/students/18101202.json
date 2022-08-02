@@ -20,10 +20,8 @@
   "lastLogin" : null,
   "advisingProfessorId" : "90201301",
   "transcript" : {
-    "courseScoreMap" : { }
+    "courseIdScoreMap" : { }
   },
-  "currentCoursesIds" : [ ],
-  "assistingCoursesIds" : [ ],
   "degreeLevel" : "GRADUATE",
   "studentStatus" : "CURRENTLY_STUDYING",
   "yearOfEntry" : 2018

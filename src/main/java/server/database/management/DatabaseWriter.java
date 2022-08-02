@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import server.database.datasets.Dataset;
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.Identifiable;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 import shareables.utils.objectmapping.ObjectMapperUtils;
 
 import java.io.File;
@@ -14,14 +16,25 @@ import java.util.Map;
 public class DatabaseWriter { // save in this context refers to saving to file
     private Map<DatasetIdentifier, Dataset> identifierDatasetMap;
     private ObjectMapper objectMapper;
+    private File datasetsDirectory;
 
     public DatabaseWriter(Map<DatasetIdentifier, Dataset> identifierDatasetMap) {
         this.identifierDatasetMap = identifierDatasetMap;
         objectMapper = ObjectMapperUtils.getDatabaseObjectMapper();
+        datasetsDirectory = new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "datasetsFolderPath"));
     }
 
     public void saveDatabase() {
+        purgeDirectory(datasetsDirectory);
         identifierDatasetMap.entrySet().stream().parallel().forEach(this::saveDataset);
+    }
+
+    // TODO: should be private
+    public void purgeDirectory(File directory) {
+        for (File file : directory.listFiles()) {
+            if (file.isDirectory()) purgeDirectory(file);
+            else file.delete();
+        }
     }
 
     private void saveDataset(Map.Entry<DatasetIdentifier, Dataset> identifierDatasetEntry) {

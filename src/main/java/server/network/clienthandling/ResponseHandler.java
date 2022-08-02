@@ -9,7 +9,6 @@ import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseHandler {
@@ -78,6 +77,13 @@ public class ResponseHandler {
     public void professorsDoNotExistInDepartment(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "professorsDoNotExistInDepartment"));
+        clientHandler.respond(response);
+    }
+
+    public void courseAdded(ClientHandler clientHandler, String id) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "addedCourseFirstHalf") + id +
+                ConfigManager.getString(ConfigFileIdentifier.TEXTS, "addedCourseSecondHalf"));
         clientHandler.respond(response);
     }
 }

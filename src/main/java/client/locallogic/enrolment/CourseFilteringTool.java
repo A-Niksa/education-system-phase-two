@@ -35,11 +35,11 @@ public class CourseFilteringTool {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static ArrayList<CourseDTO> getLevelFilteredCourseDTOs(String courseLevel, ArrayList<CourseDTO> allCourseDTOs) {
+    private static ArrayList<CourseDTO> getLevelFilteredCourseDTOs(String degreeLevel, ArrayList<CourseDTO> allCourseDTOs) {
         return allCourseDTOs.stream()
-                .filter(e -> e.getCourseLevel()
+                .filter(e -> e.getDegreeLevel()
                         .toString()
-                        .equals(courseLevel))
+                        .equals(degreeLevel))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 }

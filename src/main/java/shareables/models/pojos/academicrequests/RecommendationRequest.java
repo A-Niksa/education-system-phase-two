@@ -1,10 +1,19 @@
 package shareables.models.pojos.academicrequests;
 
+import server.database.datasets.DatasetIdentifier;
+import shareables.models.idgeneration.SequentialIdGenerator;
+
 public class RecommendationRequest extends AcademicRequest {
+    private static SequentialIdGenerator sequentialIdGenerator;
+    static {
+        sequentialIdGenerator = getNewSequentialIdGenerator(DatasetIdentifier.RECOMMENDATION_REQUESTS);
+    }
+
     private String recommendationText;
 
     public RecommendationRequest() {
         super(AcademicRequestIdentifier.RECOMMENDATION);
+        initializeId(sequentialIdGenerator);
     }
 
     public void saveGeneratedRecommendationText() {

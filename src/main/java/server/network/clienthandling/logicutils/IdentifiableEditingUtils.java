@@ -36,8 +36,7 @@ public class IdentifiableEditingUtils {
     }
 
     private static void removeCourseFromCoursesDataset(DatabaseManager databaseManager, String id) {
-        List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
-        courses.removeIf(e -> e.getId().equals(id));
+        databaseManager.remove(DatasetIdentifier.COURSES, id);
     }
 
     public static boolean professorsExistInDepartment(DatabaseManager databaseManager, String[] newTeachingProfessorNames,
@@ -61,7 +60,7 @@ public class IdentifiableEditingUtils {
         course.setTeachingProfessors(newTeachingProfessors);
     }
 
-    private static List<Professor> getProfessorsByNames(DatabaseManager databaseManager, String[] professorNames,
+    public static List<Professor> getProfessorsByNames(DatabaseManager databaseManager, String[] professorNames,
                                                         String departmentId) {
         List<Identifiable> professors = databaseManager.getIdentifiables(DatasetIdentifier.PROFESSORS);
         List<Professor> selectedProfessors = new ArrayList<>();

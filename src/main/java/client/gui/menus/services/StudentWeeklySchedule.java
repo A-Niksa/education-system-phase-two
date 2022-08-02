@@ -3,6 +3,7 @@ package client.gui.menus.services;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
+import client.gui.utils.EnumArrayUtils;
 import client.locallogic.services.WeeklyScheduleParser;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
@@ -30,25 +31,14 @@ public class StudentWeeklySchedule extends PanelTemplate {
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_WEEKLY_SCHEDULE;
         initializeCourseDTOs();
-        initializeWeekdaysArray();
         initializeColumnsArray();
+        weekdays = EnumArrayUtils.initializeWeekdays();
         drawPanel();
     }
 
     private void initializeCourseDTOs() {
         Response response = clientController.getStudentCourseDTOs(student.getId());
         courseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
-    }
-
-    private void initializeWeekdaysArray() {
-        weekdays = new String[7];
-        weekdays[0] = ConfigManager.getString(configIdentifier, "saturday");
-        weekdays[1] = ConfigManager.getString(configIdentifier, "sunday");
-        weekdays[2] = ConfigManager.getString(configIdentifier, "monday");
-        weekdays[3] = ConfigManager.getString(configIdentifier, "tuesday");
-        weekdays[4] = ConfigManager.getString(configIdentifier, "wednesday");
-        weekdays[5] = ConfigManager.getString(configIdentifier, "thursday");
-        weekdays[6] = ConfigManager.getString(configIdentifier, "friday");
     }
 
     private void initializeColumnsArray() {

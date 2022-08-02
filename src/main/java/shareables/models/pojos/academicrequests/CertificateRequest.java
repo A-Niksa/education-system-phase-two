@@ -1,5 +1,6 @@
 package shareables.models.pojos.academicrequests;
 
+import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.utils.timing.formatting.FormattingUtils;
 
@@ -7,10 +8,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CertificateRequest extends AcademicRequest {
+    private static SequentialIdGenerator sequentialIdGenerator;
+    static {
+        sequentialIdGenerator = getNewSequentialIdGenerator();
+    }
+
     private String certificateText;
 
     public CertificateRequest() {
         super(AcademicRequestIdentifier.CERTIFICATE);
+        initializeId(sequentialIdGenerator);
     }
 
     public void saveGeneratedCertificateText() {

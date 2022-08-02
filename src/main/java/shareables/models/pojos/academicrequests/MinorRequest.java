@@ -1,8 +1,15 @@
 package shareables.models.pojos.academicrequests;
 
+import server.database.datasets.DatasetIdentifier;
+import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.users.professors.Professor;
 
 public class MinorRequest extends AcademicRequest {
+    private static SequentialIdGenerator sequentialIdGenerator;
+    static {
+        sequentialIdGenerator = getNewSequentialIdGenerator(DatasetIdentifier.MINOR_REQUESTS);
+    }
+
     private Professor originDeputy; // deputy of the student's department
     private Professor targetDeputy; // deputy of the student's desired department
     private AcademicRequestStatus academicRequestStatusAtOrigin;
@@ -10,6 +17,7 @@ public class MinorRequest extends AcademicRequest {
 
     public MinorRequest() {
         super(AcademicRequestIdentifier.MINOR);
+        initializeId(sequentialIdGenerator);
         academicRequestStatusAtOrigin = AcademicRequestStatus.SUBMITTED; // default value
         academicRequestStatusAtTarget = AcademicRequestStatus.SUBMITTED; // default value
     }

@@ -1,5 +1,6 @@
 package shareables.models.pojos.users.professors;
 
+import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -11,7 +12,7 @@ import java.util.List;
 public class Professor extends User {
     private static SequentialIdGenerator sequentialIdGenerator;
     static {
-        sequentialIdGenerator = getNewSequentialIdGenerator();
+        sequentialIdGenerator = getNewSequentialIdGenerator(DatasetIdentifier.PROFESSORS);
     }
 
     private List<Student> studentsUnderAdvice;

@@ -79,4 +79,9 @@ public class DatabaseManager {
     private Dataset getDataset(DatasetIdentifier datasetIdentifier) {
         return identifierDatasetMap.get(datasetIdentifier);
     }
+
+    // TODO: should be removed ->
+    public DatabaseWriter getDatabaseWriter() {
+        return databaseWriter;
+    }
 }

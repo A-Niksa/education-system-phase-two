@@ -1,5 +1,6 @@
 package shareables.models.pojos.abstractions;
 
+import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.users.professors.Professor;
@@ -14,7 +15,7 @@ import java.util.List;
 public class Course extends Identifiable {
     private static SequentialIdGenerator sequentialIdGenerator;
     static {
-        sequentialIdGenerator = getNewSequentialIdGenerator();
+        sequentialIdGenerator = getNewSequentialIdGenerator(DatasetIdentifier.COURSES);
     }
 
     private String departmentId;
@@ -24,17 +25,18 @@ public class Course extends Identifiable {
     private List<Student> students;
     private List<WeekTime> weeklyClassTimes;
     private LocalDateTime examDate;
-    private String termIdentifier; // such as "20182" or "20201"
+    private TermIdentifier termIdentifier; // such as "20182" or "20201"
     private int numberOfCredits;
     private boolean isActive; // shows whether the course is being currently taught
-    private DegreeLevel courseLevel;
+    private DegreeLevel degreeLevel;
 
     public Course() {
     }
 
-    public Course(String departmentId) {
+    public Course(String departmentId, TermIdentifier termIdentifier) {
         this.departmentId = departmentId;
-        isActive = false; // default value
+        this.termIdentifier = termIdentifier;
+        isActive = termIdentifier.courseIsActive(); // will be active if the term id matches the current semester
         teachingProfessors = new ArrayList<>();
         TAs = new ArrayList<>();
         students = new ArrayList<>();
@@ -127,11 +129,11 @@ public class Course extends Identifiable {
         isActive = active;
     }
 
-    public String getTermIdentifier() {
+    public TermIdentifier getTermIdentifier() {
         return termIdentifier;
     }
 
-    public void setTermIdentifier(String termIdentifier) {
+    public void setTermIdentifier(TermIdentifier termIdentifier) {
         this.termIdentifier = termIdentifier;
     }
 
@@ -163,11 +165,15 @@ public class Course extends Identifiable {
         return weeklyClassTimes;
     }
 
-    public DegreeLevel getCourseLevel() {
-        return courseLevel;
+    public DegreeLevel getDegreeLevel() {
+        return degreeLevel;
     }
 
-    public void setCourseLevel(DegreeLevel courseLevel) {
-        this.courseLevel = courseLevel;
+    public void setDegreeLevel(DegreeLevel degreeLevel) {
+        this.degreeLevel = degreeLevel;
+    }
+
+    public void setWeeklyClassTimes(List<WeekTime> weeklyClassTimes) {
+        this.weeklyClassTimes = weeklyClassTimes;
     }
 }

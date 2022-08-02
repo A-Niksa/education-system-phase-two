@@ -45,7 +45,7 @@ public class WeeklyScheduleUtils {
         courseDTO.setWeeklyClassTimes(course.getWeeklyClassTimes());
         courseDTO.setExamDate(course.getExamDate());
         courseDTO.setNumberOfCredits(course.getNumberOfCredits());
-        courseDTO.setCourseLevel(course.getCourseLevel());
+        courseDTO.setDegreeLevel(course.getDegreeLevel());
         courseDTO.setDepartmentId(course.getDepartmentId());
         return courseDTO;
     }

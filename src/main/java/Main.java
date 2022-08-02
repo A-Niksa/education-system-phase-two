@@ -2,22 +2,27 @@ import server.database.datasets.DatasetIdentifier;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.abstractions.TermIdentifier;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import server.database.management.DatabaseManager;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 import shareables.utils.timing.timekeeping.DayTime;
 import shareables.utils.timing.timekeeping.WeekTime;
 import shareables.utils.timing.timekeeping.Weekday;
 
+import java.io.File;
 import java.time.LocalDateTime;
 
 public class Main {
     private static final DatabaseManager manager = new DatabaseManager();
 
     public static void main(String[] args) {
+        manager.getDatabaseWriter().purgeDirectory(new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "datasetsFolderPath")));
         createTestData(); // TODO: cleaning the directories
 //        manager.loadDatabase();
 //        Student student = (Student) manager.get(DatasetIdentifier.STUDENTS, "19101100");
@@ -65,16 +70,15 @@ public class Main {
         rezaei.setEmailAddress("rezaei@sharif.edu");
         rezaei.setAdvisingProfessorId(fanaei.getId());
         rezaei.setPassword("5678");
-        Course complexAnalysis = new Course(mathDepartment.getId());
+        Course complexAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2));
         complexAnalysis.setCourseName("Complex Analysis");
         complexAnalysis.addToTeachingProfessors(khazayi);
         complexAnalysis.addToTeachingProfessors(fanaei);
         complexAnalysis.addToStudents(hamidi);
         complexAnalysis.addToTAs(rezaei);
         complexAnalysis.setNumberOfCredits(4);
-        complexAnalysis.setTermIdentifier("20222");
-        complexAnalysis.setActive(true);
-        complexAnalysis.setCourseLevel(DegreeLevel.UNDERGRADUATE);
+//        complexAnalysis.setActive(true);
+        complexAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
         complexAnalysis.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
         WeekTime firstWeekTime = new WeekTime(Weekday.SUNDAY, new DayTime(14, 30, 0),
                 new DayTime(16, 30, 0));

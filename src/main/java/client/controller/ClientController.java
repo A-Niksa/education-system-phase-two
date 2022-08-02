@@ -2,6 +2,7 @@ package client.controller;
 
 import client.network.Client;
 import shareables.models.pojos.users.students.DegreeLevel;
+import shareables.network.blueprints.Blueprint;
 import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;
 import shareables.network.responses.Response;
@@ -92,9 +93,9 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
-    public Response changeCourseLevel(String courseId, DegreeLevel newCourseLevel) {
+    public Response changeDegreeLevel(String courseId, DegreeLevel newDegreeLevel) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_COURSE_LEVEL,
-                new StringObjectMap("courseId", courseId), new StringObjectMap("newCourseLevel", newCourseLevel));
+                new StringObjectMap("courseId", courseId), new StringObjectMap("newDegreeLevel", newDegreeLevel));
         return client.sendAndListen(request);
     }
 
@@ -108,6 +109,11 @@ public class ClientController {
     public Response removeCourse(String courseId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.REMOVE_COURSE,
                 new StringObjectMap("courseId", courseId));
+        return client.sendAndListen(request);
+    }
+
+    public Response addCourse(Blueprint blueprint) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_COURSE, blueprint.getFields());
         return client.sendAndListen(request);
     }
 
