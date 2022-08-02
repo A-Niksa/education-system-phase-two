@@ -50,6 +50,12 @@ public class RequestMapper {
             case ASK_FOR_CERTIFICATE:
                 requestHandler.askForCertificate(clientHandler, request);
                 break;
+            case GET_DEFENSE_TIME:
+                requestHandler.getDefenseTime(clientHandler, request);
+                break;
+            case ASK_FOR_DEFENSE_TIME:
+                requestHandler.askForDefenseTime(clientHandler, request);
+                break;
             case CHANGE_COURSE_NAME:
                 requestHandler.changeCourseName(clientHandler, request);
                 break;

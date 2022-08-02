@@ -9,6 +9,7 @@ import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ResponseHandler {
@@ -80,6 +81,17 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
+    public void defenseTimeNotFound(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "defenseTimeNotFound"));
+        clientHandler.respond(response);
+    }
+
+    public void defenseTimeAcquired(ClientHandler clientHandler, LocalDateTime defenseTime) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("defenseTime", defenseTime);
+        clientHandler.respond(response);
+    }
+
     public void professorsDoNotExistInDepartment(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "professorsDoNotExistInDepartment"));
@@ -90,6 +102,11 @@ public class ResponseHandler {
         Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "addedCourseFirstHalf") + id +
                 ConfigManager.getString(ConfigFileIdentifier.TEXTS, "addedCourseSecondHalf"));
+        clientHandler.respond(response);
+    }
+
+    public void dateIsSoonerThanNow(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "dateIsSoonerThanNow"));
         clientHandler.respond(response);
     }
 }

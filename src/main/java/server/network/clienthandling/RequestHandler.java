@@ -12,6 +12,8 @@ import shareables.network.DTOs.CourseDTO;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.requests.Request;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class RequestHandler { // TODO: logging, perhaps?
@@ -102,6 +104,26 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void askForCertificate(ClientHandler clientHandler, Request request) {
         String certificateText = AcademicRequestUtils.getCertificateText(databaseManager, (String) request.get("username"));
         responseHandler.certificateGenerated(clientHandler, certificateText);
+    }
+
+    public void getDefenseTime(ClientHandler clientHandler, Request request) {
+        // defense time can be null as well:
+        LocalDateTime defenseTime = AcademicRequestUtils.getDefenseTime(databaseManager, (String) request.get("username"));
+        if (defenseTime == null) {
+            responseHandler.defenseTimeNotFound(clientHandler);
+        } else {
+            responseHandler.defenseTimeAcquired(clientHandler, defenseTime);
+        }
+    }
+
+    public void askForDefenseTime(ClientHandler clientHandler, Request request) {
+        Date date = (Date) request.get("date");
+        if (AcademicRequestUtils.dateIsSoonerThanNow(date, (int) request.get("hour"), (int) request.get("minute"))) {
+            responseHandler.dateIsSoonerThanNow(clientHandler);
+        } else {
+            AcademicRequestUtils.reserveDefenseTime(databaseManager, request);
+            responseHandler.requestSuccessful(clientHandler);
+        }
     }
 
     public void changeCourseName(ClientHandler clientHandler, Request request) {

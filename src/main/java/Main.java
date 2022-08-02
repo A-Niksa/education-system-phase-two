@@ -62,7 +62,7 @@ public class Main {
         mathDepartment.setDean(fanaei);
         mathDepartment.addToProfessors(khazayi);
         mathDepartment.addToProfessors(fanaei);
-        Student rezaei = new Student(2018, DegreeLevel.GRADUATE, mathDepartment.getId());
+        Student rezaei = new Student(2018, DegreeLevel.PHD, mathDepartment.getId());
         rezaei.setNationalId("0152902202");
         rezaei.setFirstName("Arash");
         rezaei.setLastName("Rezaei");

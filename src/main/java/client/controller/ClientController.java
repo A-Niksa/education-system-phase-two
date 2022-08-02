@@ -7,6 +7,8 @@ import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;
 import shareables.network.responses.Response;
 
+import java.util.Date;
+
 public class ClientController {
     private Client client;
     private RequestGenerator requestGenerator;
@@ -73,6 +75,19 @@ public class ClientController {
     public Response askForCertificate(String username) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_CERTIFICATE,
                 new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDefenseTime(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEFENSE_TIME,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response askForDefenseTime(String username, Date date, int hour, int minute) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_DEFENSE_TIME,
+                new StringObjectMap("username", username), new StringObjectMap("date", date),
+                new StringObjectMap("hour", hour), new StringObjectMap("minute", minute));
         return client.sendAndListen(request);
     }
 

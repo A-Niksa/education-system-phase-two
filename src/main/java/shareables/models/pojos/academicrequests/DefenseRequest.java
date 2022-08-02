@@ -3,7 +3,7 @@ package shareables.models.pojos.academicrequests;
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.SequentialIdGenerator;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class DefenseRequest extends AcademicRequest {
     private static SequentialIdGenerator sequentialIdGenerator;
@@ -11,18 +11,18 @@ public class DefenseRequest extends AcademicRequest {
         sequentialIdGenerator = getNewSequentialIdGenerator(DatasetIdentifier.DEFENSE_REQUESTS);
     }
 
-    private Date requestedDefenseDate;
+    private LocalDateTime requestedDefenseTime;
 
     public DefenseRequest() {
         super(AcademicRequestIdentifier.DEFENSE);
         initializeId(sequentialIdGenerator);
     }
 
-    public Date getRequestedDefenseDate() {
-        return requestedDefenseDate;
+    public LocalDateTime getRequestedDefenseTime() {
+        return requestedDefenseTime;
     }
 
-    public void setRequestedDefenseDate(Date requestedDefenseDate) {
-        this.requestedDefenseDate = requestedDefenseDate;
+    public void setRequestedDefenseTime(LocalDateTime requestedDefenseTime) {
+        this.requestedDefenseTime = requestedDefenseTime;
     }
 }

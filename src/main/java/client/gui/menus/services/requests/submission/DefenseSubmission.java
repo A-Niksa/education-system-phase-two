@@ -3,13 +3,17 @@ package client.gui.menus.services.requests.submission;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
+import client.gui.utils.ErrorUtils;
+import client.locallogic.services.LocalDateTimeFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 import shareables.utils.timing.formatting.DateLabelFormatter;
 
 import javax.swing.*;
@@ -22,6 +26,7 @@ import java.util.Properties;
 
 public class DefenseSubmission extends PanelTemplate {
     private Student student;
+    private LocalDateTime defenseTime;
     private UtilDateModel dateModel;
     private Properties properties;
     private JDatePanelImpl datePanel;
@@ -37,7 +42,13 @@ public class DefenseSubmission extends PanelTemplate {
         super(mainFrame, mainMenu);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_DEFENSE_SUBMISSION;
+        updateDefenseTime();
         drawPanel();
+    }
+
+    private void updateDefenseTime() {
+        Response response = clientController.getDefenseTime(student.getId());
+        defenseTime = (LocalDateTime) response.get("defenseTime");
     }
 
     @Override
@@ -58,11 +69,9 @@ public class DefenseSubmission extends PanelTemplate {
     }
 
     private void setDatePicker() {
-        String currentDate = TimeManager.getDate();
-        int year = Integer.parseInt(currentDate.substring(0, 4));
-        int month = Integer.parseInt(currentDate.substring(5, 7)) - 1;
-        int day = Integer.parseInt(currentDate.substring(8, 10));
-        dateModel.setDate(year, month, day);
+        LocalDateTime currentTime = LocalDateTime.now();
+        dateModel.setDate(currentTime.getYear(), currentTime.getMonthValue() - 1, currentTime.getDayOfMonth());
+        // TODO: making sure the -1 problem isn't present elsewhere
         dateModel.setSelected(true);
     }
 
@@ -116,9 +125,9 @@ public class DefenseSubmission extends PanelTemplate {
     }
 
     private void setDefenseSlotLabels() {
-        if (student.getDefenseTime() != null) {
-            defenseSlotPrompt.setText("Appointed Defense Slot:");
-            String defenseTimeText = student.getDefenseTimeString();
+        if (defenseTime != null) {
+            defenseSlotPrompt.setText(ConfigManager.getString(configIdentifier, "appointedDefenseSlotPromptM"));
+            String defenseTimeText = LocalDateTimeFormatter.formatExtensively(defenseTime);
             defenseSlotInformation.setText(defenseTimeText);
         } else {
             defenseSlotPrompt.setText("");
@@ -132,29 +141,34 @@ public class DefenseSubmission extends PanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Date selectedDate = dateModel.getValue();
-                String selectedHour = hourPicker.getText();
-                if (selectedHour.equals("Hour...")) {
-                    selectedHour = "00";
+                String selectedHourString = hourPicker.getText();
+                int selectedHour;
+                if (selectedHourString.equals(ConfigManager.getString(configIdentifier, "hourPickerM"))) {
+                    selectedHour = 0;
+                } else {
+                    selectedHour = Integer.parseInt(selectedHourString);
                 }
-                String selectedMinute = minutePicker.getText();
-                if (selectedMinute.equals("Minute...")) {
-                    selectedMinute = "00";
-                }
-
-                DefenseRequest request = new DefenseRequest(student, selectedDate, selectedHour, selectedMinute);
-                MasterLogger.info("submitted thesis defense time", getClass());
-
-                LocalDateTime defenseTime = request.getLocalDateTimeOfDefense();
-                if (defenseTime.compareTo(LocalDateTime.now()) < 0) {
-                    MasterLogger.error("thesis time selected to be earlier than now", getClass());
-                    JOptionPane.showMessageDialog(mainFrame,
-                            "Invalid time. You cannot choose a time earlier than now.");
-                    request.nullifyDefenseTime();
-                    return;
+                String selectedMinuteString = minutePicker.getText();
+                int selectedMinute;
+                if (selectedMinuteString.equals(ConfigManager.getString(configIdentifier, "minutePickerM"))) {
+                    selectedMinute = 0;
+                } else {
+                    selectedMinute = Integer.parseInt(selectedMinuteString);
                 }
 
-                MasterLogger.info("thesis defense time has been successfully set", getClass());
-                setDefenseSlotLabels();
+                MasterLogger.clientInfo(clientController.getId(), "Submitted thesis defense time",
+                        "connectListeners", getClass());
+                Response response = clientController.askForDefenseTime(student.getId(), selectedDate, selectedHour,
+                        selectedMinute);
+                if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                    MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                            "connectListeners", getClass());
+                } else {
+                    MasterLogger.clientInfo(clientController.getId(), "Defense time has been successfully set",
+                            "connectListeners", getClass());
+                    updateDefenseTime();
+                    setDefenseSlotLabels();
+                }
             }
         });
     }
