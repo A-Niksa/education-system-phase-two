@@ -1,12 +1,10 @@
-package server.network.clienthandling.logicutils;
+package server.network.clienthandling.logicutils.services;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
-import shareables.models.pojos.academicrequests.AcademicRequestStatus;
-import shareables.models.pojos.academicrequests.CertificateRequest;
-import shareables.models.pojos.academicrequests.DefenseRequest;
-import shareables.models.pojos.academicrequests.DormRequest;
+import shareables.models.pojos.academicrequests.*;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.requests.Request;
 
@@ -15,7 +13,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-public class AcademicRequestUtils {
+public class RequestSubmissionUtils {
     public static boolean willGetDorm() {
         DormRequest dormRequest = new DormRequest();
         return dormRequest.getRequestStatus() == AcademicRequestStatus.ACCEPTED;
@@ -23,7 +21,7 @@ public class AcademicRequestUtils {
 
     public static String getCertificateText(DatabaseManager databaseManager, String studentId) {
         CertificateRequest certificateRequest = new CertificateRequest();
-        Student student = (Student) LoginUtils.getUser(databaseManager, studentId);
+        Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
         certificateRequest.setRequestingStudent(student);
         certificateRequest.saveGeneratedCertificateText();
         return certificateRequest.fetchFormattedCertificateText();
@@ -53,7 +51,7 @@ public class AcademicRequestUtils {
             LocalDateTime defenseTime = convertDateToLocalDateTime((Date) request.get("date"), (int) request.get("hour"),
                     (int) request.get("minute"));
             defenseRequest.setRequestedDefenseTime(defenseTime);
-            Student student = (Student) LoginUtils.getUser(databaseManager, (String) request.get("username"));
+            Student student = IdentifiableFetchingUtils.getStudent(databaseManager, (String) request.get("username"));
             defenseRequest.setRequestingStudent(student);
             databaseManager.save(DatasetIdentifier.DEFENSE_REQUESTS, defenseRequest);
         }
@@ -66,5 +64,31 @@ public class AcademicRequestUtils {
                 .filter(e -> e.getRequestingStudent().getId().equals(studentId))
                 .findAny().orElse(null);
         return studentDefenseRequest;
+    }
+
+    public static boolean studentHasSubmittedDroppingOutRequest(DatabaseManager databaseManager, String studentId) {
+        DroppingOutRequest droppingOutRequest = getDroppingOutRequest(databaseManager, studentId);
+        return droppingOutRequest != null;
+    }
+
+    public static DroppingOutRequest getDroppingOutRequest(DatabaseManager databaseManager, String studentId) {
+        List<Identifiable> droppingOutRequests = databaseManager.getIdentifiables(DatasetIdentifier.DROPPING_OUT_REQUESTS);
+        DroppingOutRequest droppingOutRequest = droppingOutRequests.stream()
+                .map(e -> (DroppingOutRequest) e)
+                .filter(e -> e.getRequestingStudent().getId().equals(studentId))
+                .findAny().orElse(null);
+        return droppingOutRequest;
+    }
+
+    public static void submitDroppingOutRequest(DatabaseManager databaseManager, String studentId) {
+        DroppingOutRequest droppingOutRequest = getDroppingOutRequest(databaseManager, studentId);
+        if (droppingOutRequest == null) {
+            DroppingOutRequest newDroppingOutRequest = new DroppingOutRequest();
+            Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
+            newDroppingOutRequest.setRequestingStudent(student);
+            newDroppingOutRequest.setReceivingProfessor(IdentifiableFetchingUtils.getDepartmentDeputy(databaseManager,
+                    student.getDepartmentId()));
+            databaseManager.save(DatasetIdentifier.DROPPING_OUT_REQUESTS, newDroppingOutRequest);
+        }
     }
 }

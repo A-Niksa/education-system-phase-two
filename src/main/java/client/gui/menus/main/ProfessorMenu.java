@@ -7,6 +7,7 @@ import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.profile.ProfessorProfile;
 import client.gui.menus.services.ProfessorExamsList;
 import client.gui.menus.services.ProfessorWeeklySchedule;
+import client.gui.menus.services.requests.management.DroppingOutManager;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -196,8 +197,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dropping out subsection in academic requests",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, professorUser));
+                mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, professor));
             }
         });
 

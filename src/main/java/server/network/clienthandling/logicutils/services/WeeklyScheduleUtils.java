@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils;
+package server.network.clienthandling.logicutils.services;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
@@ -37,7 +37,7 @@ public class WeeklyScheduleUtils {
         return courseDTOs;
     }
 
-    static CourseDTO initializeCourseDTO(Course course) {
+    public static CourseDTO initializeCourseDTO(Course course) {
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setId(course.getId());
         courseDTO.setCourseName(course.getCourseName());

@@ -56,6 +56,12 @@ public class RequestMapper {
             case ASK_FOR_DEFENSE_TIME:
                 requestHandler.askForDefenseTime(clientHandler, request);
                 break;
+            case GET_DROPPING_OUT_SUBMISSION_STATUS:
+                requestHandler.getDroppingOutSubmissionStatus(clientHandler, request);
+                break;
+            case ASK_FOR_DROPPING_OUT:
+                requestHandler.askForDroppingOut(clientHandler, request);
+                break;
             case CHANGE_COURSE_NAME:
                 requestHandler.changeCourseName(clientHandler, request);
                 break;
@@ -73,6 +79,15 @@ public class RequestMapper {
                 break;
             case ADD_COURSE:
                 requestHandler.addCourse(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_DROPPING_OUT_REQUEST_DTOS:
+                requestHandler.getDepartmentDroppingOutRequestDTOs(clientHandler, request);
+                break;
+            case ACCEPT_DROPPING_OUT_REQUEST:
+                requestHandler.acceptDroppingOutRequest(clientHandler, request);
+                break;
+            case DECLINE_DROPPING_OUT_REQUEST:
+                requestHandler.declineDroppingOutRequest(clientHandler, request);
                 break;
         }
     }

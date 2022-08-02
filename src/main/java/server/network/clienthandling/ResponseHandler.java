@@ -4,6 +4,7 @@ import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.CourseDTO;
 import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.DTOs.RequestDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -98,15 +99,27 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
-    public void courseAdded(ClientHandler clientHandler, String id) {
+    public void courseAdded(ClientHandler clientHandler, String courseId) {
         Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
-                "addedCourseFirstHalf") + id +
+                "addedCourseFirstHalf") + courseId +
                 ConfigManager.getString(ConfigFileIdentifier.TEXTS, "addedCourseSecondHalf"));
         clientHandler.respond(response);
     }
 
     public void dateIsSoonerThanNow(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "dateIsSoonerThanNow"));
+        clientHandler.respond(response);
+    }
+
+    public void droppingOutSubmissionStatusAcquired(ClientHandler clientHandler, boolean academicRequestHasBeenSubmitted) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("academicRequestHasBeenSubmitted", academicRequestHasBeenSubmitted);
+        clientHandler.respond(response);
+    }
+
+    public void requestDTOsAcquired(ClientHandler clientHandler, List<RequestDTO> requestDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("requestDTOs", requestDTOs);
         clientHandler.respond(response);
     }
 }

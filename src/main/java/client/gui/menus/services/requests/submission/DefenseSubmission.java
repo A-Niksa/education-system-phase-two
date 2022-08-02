@@ -4,6 +4,7 @@ import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
+import client.locallogic.general.DatePickerConfigurationTool;
 import client.locallogic.services.LocalDateTimeFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -68,16 +69,9 @@ public class DefenseSubmission extends PanelTemplate {
         defenseSlotInformation = new JLabel();
     }
 
-    private void setDatePicker() {
-        LocalDateTime currentTime = LocalDateTime.now();
-        dateModel.setDate(currentTime.getYear(), currentTime.getMonthValue() - 1, currentTime.getDayOfMonth());
-        // TODO: making sure the -1 problem isn't present elsewhere
-        dateModel.setSelected(true);
-    }
-
     @Override
     protected void alignComponents() {
-        setDatePicker();
+        DatePickerConfigurationTool.configureInitialDateOfDatePicker(dateModel);
         datePicker.setBounds(ConfigManager.getInt(configIdentifier, "datePickerX"),
                 ConfigManager.getInt(configIdentifier, "datePickerY"),
                 ConfigManager.getInt(configIdentifier, "datePickerW"),

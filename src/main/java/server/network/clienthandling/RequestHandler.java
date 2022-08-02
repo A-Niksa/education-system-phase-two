@@ -1,6 +1,12 @@
 package server.network.clienthandling;
 
-import server.network.clienthandling.logicutils.*;
+import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
+import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUtils;
+import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
+import server.network.clienthandling.logicutils.login.LoginUtils;
+import server.network.clienthandling.logicutils.services.RequestManagementUtils;
+import server.network.clienthandling.logicutils.services.RequestSubmissionUtils;
+import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -10,6 +16,7 @@ import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 import shareables.network.DTOs.CourseDTO;
 import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.DTOs.RequestDTO;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
@@ -97,18 +104,18 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void askForDorm(ClientHandler clientHandler, Request request) {
-        boolean willGetDorm = AcademicRequestUtils.willGetDorm();
+        boolean willGetDorm = RequestSubmissionUtils.willGetDorm();
         responseHandler.dormRequestDetermined(clientHandler, willGetDorm);
     }
 
     public void askForCertificate(ClientHandler clientHandler, Request request) {
-        String certificateText = AcademicRequestUtils.getCertificateText(databaseManager, (String) request.get("username"));
+        String certificateText = RequestSubmissionUtils.getCertificateText(databaseManager, (String) request.get("username"));
         responseHandler.certificateGenerated(clientHandler, certificateText);
     }
 
     public void getDefenseTime(ClientHandler clientHandler, Request request) {
         // defense time can be null as well:
-        LocalDateTime defenseTime = AcademicRequestUtils.getDefenseTime(databaseManager, (String) request.get("username"));
+        LocalDateTime defenseTime = RequestSubmissionUtils.getDefenseTime(databaseManager, (String) request.get("username"));
         if (defenseTime == null) {
             responseHandler.defenseTimeNotFound(clientHandler);
         } else {
@@ -118,12 +125,23 @@ public class RequestHandler { // TODO: logging, perhaps?
 
     public void askForDefenseTime(ClientHandler clientHandler, Request request) {
         Date date = (Date) request.get("date");
-        if (AcademicRequestUtils.dateIsSoonerThanNow(date, (int) request.get("hour"), (int) request.get("minute"))) {
+        if (RequestSubmissionUtils.dateIsSoonerThanNow(date, (int) request.get("hour"), (int) request.get("minute"))) {
             responseHandler.dateIsSoonerThanNow(clientHandler);
         } else {
-            AcademicRequestUtils.reserveDefenseTime(databaseManager, request);
+            RequestSubmissionUtils.reserveDefenseTime(databaseManager, request);
             responseHandler.requestSuccessful(clientHandler);
         }
+    }
+
+    public void getDroppingOutSubmissionStatus(ClientHandler clientHandler, Request request) {
+        boolean academicRequestHasBeenSubmitted = RequestSubmissionUtils.studentHasSubmittedDroppingOutRequest(
+                databaseManager, (String) request.get("username"));
+        responseHandler.droppingOutSubmissionStatusAcquired(clientHandler, academicRequestHasBeenSubmitted);
+    }
+
+    public void askForDroppingOut(ClientHandler clientHandler, Request request) {
+        RequestSubmissionUtils.submitDroppingOutRequest(databaseManager, (String) request.get("username"));
+        responseHandler.requestSuccessful(clientHandler);
     }
 
     public void changeCourseName(ClientHandler clientHandler, Request request) {
@@ -168,8 +186,25 @@ public class RequestHandler { // TODO: logging, perhaps?
                 (String) request.get("departmentId"))) {
             responseHandler.professorsDoNotExistInDepartment(clientHandler);
         } else {
-            String id = CourseAdditionUtils.addCourseAndReturnId(databaseManager, request);
-            responseHandler.courseAdded(clientHandler, id);
+            String courseId = CourseAdditionUtils.addCourseAndReturnId(databaseManager, request);
+            responseHandler.courseAdded(clientHandler, courseId);
         }
+    }
+
+    public void getDepartmentDroppingOutRequestDTOs(ClientHandler clientHandler, Request request) {
+        List<RequestDTO> departmentDroppingOutRequestDTOs = RequestManagementUtils.getDroppingOutRequestDTOs(databaseManager,
+                (String) request.get("departmentId"));
+        responseHandler.requestDTOsAcquired(clientHandler, departmentDroppingOutRequestDTOs);
+    }
+
+    public void acceptDroppingOutRequest(ClientHandler clientHandler, Request request) {
+        RequestManagementUtils.acceptDroppingOutRequest(databaseManager, (String) request.get("requestingStudentId"),
+                (String) request.get("academicRequestId"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void declineDroppingOutRequest(ClientHandler clientHandler, Request request) {
+        RequestManagementUtils.removeDroppingOutRequest(databaseManager, (String) request.get("academicRequestId"));
+        responseHandler.requestSuccessful(clientHandler);
     }
 }

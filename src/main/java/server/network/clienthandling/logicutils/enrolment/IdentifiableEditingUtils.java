@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils;
+package server.network.clienthandling.logicutils.enrolment;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
@@ -13,30 +13,30 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class IdentifiableEditingUtils {
-    public static Course getCourse(DatabaseManager databaseManager, String id) {
-        return (Course) databaseManager.get(DatasetIdentifier.COURSES, id);
+    public static Course getCourse(DatabaseManager databaseManager, String courseId) {
+        return (Course) databaseManager.get(DatasetIdentifier.COURSES, courseId);
     }
 
-    public static void removeCourse(DatabaseManager databaseManager, String id) {
-        removeCourseFromDepartment(databaseManager, id);
-        removeCourseFromCoursesDataset(databaseManager, id);
+    public static void removeCourse(DatabaseManager databaseManager, String courseId) {
+        removeCourseFromDepartment(databaseManager, courseId);
+        removeCourseFromCoursesDataset(databaseManager, courseId);
     }
 
-    private static void removeCourseFromDepartment(DatabaseManager databaseManager, String id) {
+    private static void removeCourseFromDepartment(DatabaseManager databaseManager, String courseId) {
         List<Identifiable> departments = databaseManager.getIdentifiables(DatasetIdentifier.DEPARTMENTS);
         departments.parallelStream()
-                .filter(e -> departmentHasCourse((Department) e, id))
-                .forEach(e -> ((Department) e).removeFromCourses(id));
+                .filter(e -> departmentHasCourse((Department) e, courseId))
+                .forEach(e -> ((Department) e).removeFromCourses(courseId));
     }
 
-    private static boolean departmentHasCourse(Department department, String id) {
+    private static boolean departmentHasCourse(Department department, String courseId) {
         return department.getCourses()
                 .stream()
-                .anyMatch(e -> e.getId().equals(id));
+                .anyMatch(e -> e.getId().equals(courseId));
     }
 
-    private static void removeCourseFromCoursesDataset(DatabaseManager databaseManager, String id) {
-        databaseManager.remove(DatasetIdentifier.COURSES, id);
+    private static void removeCourseFromCoursesDataset(DatabaseManager databaseManager, String courseId) {
+        databaseManager.remove(DatasetIdentifier.COURSES, courseId);
     }
 
     public static boolean professorsExistInDepartment(DatabaseManager databaseManager, String[] newTeachingProfessorNames,

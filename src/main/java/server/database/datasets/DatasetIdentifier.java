@@ -13,22 +13,25 @@ import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
 public enum DatasetIdentifier {
-    STUDENTS("studentsFolderPath", Student.class),
-    PROFESSORS("professorsFolderPath", Professor.class),
-    COURSES("coursesFolderPath", Course.class),
-    DEPARTMENTS("departmentsFolderPath", Department.class),
-    DEFENSE_REQUESTS("defenseRequestsFolderPath", DefenseRequest.class),
-    DROPPING_OUT_REQUESTS("droppingOutRequestsFolderPath", DroppingOutRequest.class),
-    MINOR_REQUESTS("minorRequestsFolderPath", MinorRequest.class),
-    RECOMMENDATION_REQUESTS("recommendationRequestsFolderPath", RecommendationRequest.class);
+    STUDENTS("studentsFolderPath", Student.class, "Students Dataset"),
+    PROFESSORS("professorsFolderPath", Professor.class, "Professors Dataset"),
+    COURSES("coursesFolderPath", Course.class, "Courses Dataset"),
+    DEPARTMENTS("departmentsFolderPath", Department.class, "Departments Dataset"),
+    DEFENSE_REQUESTS("defenseRequestsFolderPath", DefenseRequest.class, "Defense Requests Dataset"),
+    DROPPING_OUT_REQUESTS("droppingOutRequestsFolderPath", DroppingOutRequest.class, "Drop-out Requests Dataset"),
+    MINOR_REQUESTS("minorRequestsFolderPath", MinorRequest.class, "Minor Requests Dataset"),
+    RECOMMENDATION_REQUESTS("recommendationRequestsFolderPath", RecommendationRequest.class,
+            "Recommendation Requests Dataset");
 
     private String folderPath;
     private Class<? extends Identifiable> classLiteral;
+    private String datasetName;
 
-    private DatasetIdentifier(String pathConfigKeyString, Class<? extends Identifiable> classLiteral) {
+    private DatasetIdentifier(String pathConfigKeyString, Class<? extends Identifiable> classLiteral, String datasetName) {
         folderPath = ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "datasetsFolderPath") +
                 ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, pathConfigKeyString);
         this.classLiteral = classLiteral;
+        this.datasetName = datasetName;
     }
 
     public String getFolderPath() {
@@ -37,5 +40,10 @@ public enum DatasetIdentifier {
 
     public Class<?> getClassLiteral() {
         return classLiteral;
+    }
+
+    @Override
+    public String toString() {
+        return datasetName;
     }
 }

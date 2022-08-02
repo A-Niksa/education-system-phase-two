@@ -26,7 +26,7 @@ public class RecommendationRequest extends AcademicRequest {
 
 
     public String getRecommendationText() {
-        return AcademicRequestUtils.convertToHTMLFormat(recommendationText);
+        return AcademicRequestSubmissionUtils.convertToHTMLFormat(recommendationText);
     }
 
     public void setRecommendationText(String recommendationText) {

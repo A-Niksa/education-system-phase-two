@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils;
+package server.network.clienthandling.logicutils.login;
 
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.pojos.users.User;
@@ -21,9 +21,9 @@ public class LoginUtils {
                 "minimumTimeForChangingPassword");
     }
 
-    public static User getUser(DatabaseManager databaseManager, String id) {
-        User user = (User) databaseManager.get(DatasetIdentifier.STUDENTS, id);
-        if (user == null) user = (User) databaseManager.get(DatasetIdentifier.PROFESSORS, id);
+    public static User getUser(DatabaseManager databaseManager, String userId) {
+        User user = (User) databaseManager.get(DatasetIdentifier.STUDENTS, userId);
+        if (user == null) user = (User) databaseManager.get(DatasetIdentifier.PROFESSORS, userId);
         // TODO: adding cases for mohseni and admin
         return user;
     }

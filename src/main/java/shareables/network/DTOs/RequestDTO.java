@@ -1,0 +1,34 @@
+package shareables.network.DTOs;
+
+public class RequestDTO {
+    private String id;
+    private String requestingStudentId;
+    private String requestingStudentName;
+
+    public RequestDTO() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getRequestingStudentId() {
+        return requestingStudentId;
+    }
+
+    public void setRequestingStudentId(String requestingStudentId) {
+        this.requestingStudentId = requestingStudentId;
+    }
+
+    public String getRequestingStudentName() {
+        return requestingStudentName;
+    }
+
+    public void setRequestingStudentName(String requestingStudentName) {
+        this.requestingStudentName = requestingStudentName;
+    }
+}

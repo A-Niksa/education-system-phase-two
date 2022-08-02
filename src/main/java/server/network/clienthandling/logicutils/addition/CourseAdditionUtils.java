@@ -1,7 +1,8 @@
-package server.network.clienthandling.logicutils;
+package server.network.clienthandling.logicutils.addition;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.TermIdentifier;
 import shareables.models.pojos.users.professors.Professor;

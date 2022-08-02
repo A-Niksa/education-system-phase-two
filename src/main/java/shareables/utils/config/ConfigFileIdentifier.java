@@ -16,11 +16,13 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_DORM_SUBMISSION("guiDormSubmission"),
     GUI_CERTIFICATE_SUBMISSION("guiCertificateSubmissionPath"),
     GUI_DEFENSE_SUBMISSION("guiDefenseSubmissionPath"),
+    GUI_DROPPING_OUT_SUBMISSION("guiDroppingOutSubmissionPath"),
     GUI_LIST_VIEW("guiListViewPath"),
     GUI_LIST_MANAGER("guiListManagerPath"),
     GUI_LIST_EDITOR("guiListEditorPath"),
     GUI_COURSE_EDITOR("guiCourseEditorPath"),
-    GUI_COURSE_ADDER("guiCourseAdderPath");
+    GUI_COURSE_ADDER("guiCourseAdderPath"),
+    GUI_REQUEST_MANAGER("guiRequestManagerPath");
 
     private String configKeyString;
 

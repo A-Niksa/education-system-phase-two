@@ -2,7 +2,7 @@ package shareables.models.pojos.academicrequests;
 
 import shareables.models.pojos.abstractions.DepartmentName;
 
-public class AcademicRequestUtils {
+public class AcademicRequestSubmissionUtils {
     public static String convertToHTMLFormat(String text) {
         return "<html>" + text.replaceAll("\n", "<br>");
     }

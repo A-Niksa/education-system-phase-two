@@ -9,6 +9,7 @@ import client.gui.menus.services.StudentWeeklySchedule;
 import client.gui.menus.services.requests.submission.CertificateSubmission;
 import client.gui.menus.services.requests.submission.DefenseSubmission;
 import client.gui.menus.services.requests.submission.DormSubmission;
+import client.gui.menus.services.requests.submission.DroppingOutSubmission;
 import client.locallogic.main.UserGetter;
 import shareables.models.pojos.users.students.Student;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -229,8 +230,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(),
                         "Opened the dropping out subsection in academic requests", "connectListeners",
                         getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new DroppingOutSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new DroppingOutSubmission(mainFrame, mainMenu, user));
             }
         });
 

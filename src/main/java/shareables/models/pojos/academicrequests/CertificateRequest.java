@@ -23,7 +23,7 @@ public class CertificateRequest extends AcademicRequest {
     public void saveGeneratedCertificateText() {
         String studentName = requestingStudent.fetchName();
         String studentId = requestingStudent.getId();
-        DepartmentName majorName = AcademicRequestUtils.getDepartmentName(requestingStudent.getDepartmentId());
+        DepartmentName majorName = AcademicRequestSubmissionUtils.getDepartmentName(requestingStudent.getDepartmentId());
         LocalDateTime currentDate = LocalDateTime.now();
         DateTimeFormatter dateTimeFormatter = FormattingUtils.getStandardDateTimeFormatter();
         certificateText = "It is hereby certified that " + studentName + " (student ID: " + studentId +
@@ -32,7 +32,7 @@ public class CertificateRequest extends AcademicRequest {
     }
 
     public String fetchFormattedCertificateText() {
-        return AcademicRequestUtils.convertToHTMLFormat(certificateText);
+        return AcademicRequestSubmissionUtils.convertToHTMLFormat(certificateText);
     }
 
     public String getCertificateText() {

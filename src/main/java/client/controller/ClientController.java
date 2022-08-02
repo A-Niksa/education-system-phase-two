@@ -91,6 +91,18 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getDroppingOutSubmissionStatus(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DROPPING_OUT_SUBMISSION_STATUS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response askForDroppingOut(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_DROPPING_OUT,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
     public Response getActiveCourseDTOs() {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_ACTIVE_COURSE_DTOS);
         return client.sendAndListen(request);
@@ -140,5 +152,24 @@ public class ClientController {
 
     public int getId() { // same as the id of the client
         return client.getId();
+    }
+
+    public Response getDepartmentDroppingOutRequestDTOs(String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_DROPPING_OUT_REQUEST_DTOS,
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response acceptDroppingOutRequest(String requestingStudentId, String academicRequestId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ACCEPT_DROPPING_OUT_REQUEST,
+                new StringObjectMap("requestingStudentId", requestingStudentId),
+                new StringObjectMap("academicRequestId", academicRequestId));
+        return client.sendAndListen(request);
+    }
+
+    public Response declineDroppingOutRequest(String academicRequestId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DECLINE_DROPPING_OUT_REQUEST,
+                new StringObjectMap("academicRequestId", academicRequestId));
+        return client.sendAndListen(request);
     }
 }

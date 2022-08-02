@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils;
+package server.network.clienthandling.logicutils.enrolment;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static server.network.clienthandling.logicutils.WeeklyScheduleUtils.initializeCourseDTO;
+import static server.network.clienthandling.logicutils.services.WeeklyScheduleUtils.initializeCourseDTO;
 
 public class IdentifiableViewingUtils {
     public static List<CourseDTO> getActiveCourseDTOs(DatabaseManager databaseManager) {

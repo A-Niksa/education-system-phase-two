@@ -17,7 +17,7 @@
   "phoneNumber" : "09129730021",
   "emailAddress" : "khazayi@sharif.edu",
   "password" : "1234",
-  "lastLogin" : null,
+  "lastLogin" : "2022-08-03T00:38:56.8613157",
   "studentsUnderAdvice" : [ {
     "id" : "19101100",
     "departmentId" : "1",
@@ -37,7 +37,7 @@
     "phoneNumber" : "09192302103",
     "emailAddress" : "hamidi@sharif.edu",
     "password" : "1234",
-    "lastLogin" : "2022-08-02T19:37:11.372708",
+    "lastLogin" : "2022-08-03T00:19:37.6767729",
     "advisingProfessorId" : "80201200",
     "transcript" : {
       "courseIdScoreMap" : { }

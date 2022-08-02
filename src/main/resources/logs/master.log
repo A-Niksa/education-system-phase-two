@@ -1402,3 +1402,180 @@
 2022/08/02 | 19:38:25 - INFO - 1 - CLIENT - Opened the defense slot selection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$13
 2022/08/02 | 19:38:25 - INFO - 0 - SERVER - Fetched identifiables list from DEFENSE_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
 2022/08/02 | 19:38:27 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/02 | 21:54:55 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/02 | 21:54:55 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/02 | 21:55:04 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/02 | 21:55:05 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/02 | 21:55:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 21:55:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 21:55:17 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/02 | 21:55:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 21:55:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 21:55:19 - INFO - 1 - CLIENT - Opened the courses list in educational services - connectListeners - client.gui.menus.main.ProfessorMenu$2
+2022/08/02 | 21:55:19 - INFO - 0 - SERVER - Fetched identifiables list from COURSES - getIdentifiables - server.database.management.DatabaseManager
+2022/08/02 | 21:55:21 - INFO - 1 - CLIENT - Opened courses list editor - connectEditorListener - client.gui.menus.enrolment.management.CoursesListManager$1
+2022/08/02 | 21:55:21 - INFO - 0 - SERVER - Fetched identifiables list from COURSES - getIdentifiables - server.database.management.DatabaseManager
+2022/08/02 | 21:55:21 - INFO - 1 - CLIENT - Opened the course addition section - connectListeners - client.gui.menus.enrolment.editing.CoursesListEditor$2
+2022/08/02 | 21:55:33 - INFO - 0 - SERVER - Client (id: 0) disconnected - startRequestListenerMethod - server.network.clienthandling.ClientHandler
+2022/08/02 | 21:55:33 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:19:37 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:19:37 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:19:37 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:19:37 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:19:37 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:19:37 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:19:37 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:19:46 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/03 | 00:19:47 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:20:33 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/03 | 00:20:34 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/03 | 00:20:41 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:20:42 - ERROR - 1 - CLIENT - Wrong username or password - alignComponents - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:20:46 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:20:46 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:20:46 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:20:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:20:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:20:50 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$8
+2022/08/03 | 00:20:50 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:21:25 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:21:32 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/03 | 00:21:32 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:21:35 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/03 | 00:21:36 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/03 | 00:21:49 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:21:49 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:21:49 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:21:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:21:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:21:53 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$8
+2022/08/03 | 00:21:53 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:21:55 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:21:55 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:21:55 - INFO - 0 - SERVER - Fetched identifiables list from DEPARTMENTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:21:55 - INFO - 0 - SERVER - Saved identifiable (id: 16594861150000) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:21:55 - INFO - 1 - CLIENT - Submitted a drop-out request - connectListeners - client.gui.menus.services.requests.submission.DroppingOutSubmission$1
+2022/08/03 | 00:21:55 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:21:57 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/03 | 00:22:00 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$8
+2022/08/03 | 00:22:00 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:22:02 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/03 | 00:22:03 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/03 | 00:22:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:22:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:22:11 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:22:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:22:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:22:14 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$7
+2022/08/03 | 00:22:14 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:23:13 - INFO - 0 - SERVER - Client (id: 0) disconnected - startRequestListenerMethod - server.network.clienthandling.ClientHandler
+2022/08/03 | 00:23:15 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:23:38 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/03 | 00:23:38 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:23:40 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/03 | 00:23:40 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/03 | 00:23:48 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:23:48 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:23:48 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:23:48 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:23:48 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:23:51 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$8
+2022/08/03 | 00:23:51 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:23:51 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:23:51 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:23:51 - INFO - 0 - SERVER - Fetched identifiables list from DEPARTMENTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:23:51 - INFO - 0 - SERVER - Saved identifiable (id: 16594862310002) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:23:51 - INFO - 1 - CLIENT - Submitted a drop-out request - connectListeners - client.gui.menus.services.requests.submission.DroppingOutSubmission$1
+2022/08/03 | 00:23:51 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:23:52 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/03 | 00:23:53 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/03 | 00:23:54 - INFO - 0 - SERVER - Client (id: 0) disconnected - startRequestListenerMethod - server.network.clienthandling.ClientHandler
+2022/08/03 | 00:23:55 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:25:08 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/03 | 00:25:09 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:26:01 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/03 | 00:26:01 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/03 | 00:26:21 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:21 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:22 - ERROR - 1 - CLIENT - Wrong username or password - alignComponents - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:26:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:43 - ERROR - 1 - CLIENT - Wrong username or password - alignComponents - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:26:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:47 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:26:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:26:50 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$7
+2022/08/03 | 00:26:50 - INFO - 0 - SERVER - Fetched identifiables list from DROPPING_OUT_REQUESTS - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:35:42 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:35:50 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/03 | 00:35:50 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:35:53 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/03 | 00:35:53 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/03 | 00:36:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:36:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:36:03 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:36:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:36:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:36:05 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$7
+2022/08/03 | 00:36:05 - INFO - 0 - SERVER - Fetched identifiables list from Drop-out Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:37:34 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:37:41 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/03 | 00:37:42 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:37:48 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/03 | 00:37:48 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/03 | 00:37:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:37:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:37:59 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:37:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:37:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:38:05 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$7
+2022/08/03 | 00:38:05 - INFO - 0 - SERVER - Fetched identifiables list from Drop-out Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:38:36 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:38:45 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/03 | 00:38:46 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:38:49 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/03 | 00:38:49 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/03 | 00:38:56 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:38:56 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:38:56 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:38:56 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:38:56 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:38:59 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$7
+2022/08/03 | 00:38:59 - INFO - 0 - SERVER - Fetched identifiables list from Drop-out Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:39:05 - INFO - 0 - SERVER - Removed identifiable (id: 16594861150000) - remove - server.database.management.DatabaseManager
+2022/08/03 | 00:39:05 - INFO - 1 - CLIENT - Dropping request (requesting student ID: Arash Rezaei) has been declined by the operating deputy (ID: 80201200) - setDeclineListener - client.gui.menus.services.requests.management.DroppingOutManager$2
+2022/08/03 | 00:39:09 - INFO - 0 - SERVER - Fetched identifiable (id: 16594862310002) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:39:09 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:39:09 - INFO - 1 - CLIENT - Dropping out request (requesting student ID: 19101100) has been accepted by the operating deputy (ID: 80201200) - setApproveListener - client.gui.menus.services.requests.management.DroppingOutManager$1
+2022/08/03 | 00:39:10 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/03 | 00:39:11 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/03 | 00:39:44 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:39:46 - ERROR - 1 - CLIENT - Dropped out; cannot log in - alignComponents - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:40:22 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:40:24 - ERROR - 1 - CLIENT - Wrong username or password - alignComponents - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:40:27 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:40:27 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/03 | 00:40:27 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:40:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:40:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:40:31 - INFO - 1 - CLIENT - Opened the dropping out subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$8
+2022/08/03 | 00:40:31 - INFO - 0 - SERVER - Fetched identifiables list from Drop-out Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:40:32 - INFO - 0 - SERVER - Fetched identifiables list from Drop-out Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:40:32 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/03 | 00:40:32 - INFO - 0 - SERVER - Fetched identifiables list from Departments Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:40:32 - INFO - 0 - SERVER - Saved identifiable (id: 16594872320004) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:40:32 - INFO - 1 - CLIENT - Submitted a drop-out request - connectListeners - client.gui.menus.services.requests.submission.DroppingOutSubmission$1
+2022/08/03 | 00:40:32 - INFO - 0 - SERVER - Fetched identifiables list from Drop-out Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/03 | 00:40:33 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/03 | 00:40:33 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/03 | 00:40:35 - INFO - 0 - SERVER - Client (id: 0) disconnected - startRequestListenerMethod - server.network.clienthandling.ClientHandler
+2022/08/03 | 00:40:36 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/03 | 00:41:04 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:41:04 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:41:04 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:41:04 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:41:04 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:41:04 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/03 | 00:41:04 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
