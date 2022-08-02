@@ -15,11 +15,12 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_EXAMS_LIST("guiExamsListPath"),
     GUI_DORM_SUBMISSION("guiDormSubmission"),
     GUI_CERTIFICATE_SUBMISSION("guiCertificateSubmissionPath"),
-    GUI_LIST_VIEW("guiListView"),
-    GUI_LIST_MANAGER("guiListManager"),
-    GUI_LIST_EDITOR("guiListEditor"),
-    GUI_COURSE_EDITOR("guiCourseEditor"),
-    GUI_COURSE_ADDER("guiCourseAdder");
+    GUI_DEFENSE_SUBMISSION("guiDefenseSubmissionPath"),
+    GUI_LIST_VIEW("guiListViewPath"),
+    GUI_LIST_MANAGER("guiListManagerPath"),
+    GUI_LIST_EDITOR("guiListEditorPath"),
+    GUI_COURSE_EDITOR("guiCourseEditorPath"),
+    GUI_COURSE_ADDER("guiCourseAdderPath");
 
     private String configKeyString;
 

@@ -8,6 +8,9 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
+import shareables.utils.timing.formatting.DateLabelFormatter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,6 +36,7 @@ public class DefenseSubmission extends PanelTemplate {
     public DefenseSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
         super(mainFrame, mainMenu);
         student = (Student) user;
+        configIdentifier = ConfigFileIdentifier.GUI_DEFENSE_SUBMISSION;
         drawPanel();
     }
 
@@ -40,14 +44,14 @@ public class DefenseSubmission extends PanelTemplate {
     protected void initializeComponents() {
         dateModel = new UtilDateModel();
         properties = new Properties();
-        properties.put("text.today", "Today");
-        properties.put("text.month", "Month");
-        properties.put("text.year", "Year");
+        properties.put("text.today", ConfigManager.getString(configIdentifier, "propertiesTextTodayM"));
+        properties.put("text.month", ConfigManager.getString(configIdentifier, "propertiesTextMonthM"));
+        properties.put("text.year", ConfigManager.getString(configIdentifier, "propertiesTextYearM"));
         datePanel = new JDatePanelImpl(dateModel, properties);
         datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-        hourPicker = new JTextField("Hour...");
-        minutePicker = new JTextField("Minute...");
-        setDefenseSlot = new JButton("Set Defense Slot");
+        hourPicker = new JTextField(ConfigManager.getString(configIdentifier, "hourPickerM"));
+        minutePicker = new JTextField(ConfigManager.getString(configIdentifier, "minutePickerM"));
+        setDefenseSlot = new JButton(ConfigManager.getString(configIdentifier, "setDefenseSlotM"));
         separator = new JSeparator();
         defenseSlotPrompt = new JLabel();
         defenseSlotInformation = new JLabel();
@@ -65,26 +69,48 @@ public class DefenseSubmission extends PanelTemplate {
     @Override
     protected void alignComponents() {
         setDatePicker();
-        datePicker.setBounds(100, 230, 300, 30);
+        datePicker.setBounds(ConfigManager.getInt(configIdentifier, "datePickerX"),
+                ConfigManager.getInt(configIdentifier, "datePickerY"),
+                ConfigManager.getInt(configIdentifier, "datePickerW"),
+                ConfigManager.getInt(configIdentifier, "datePickerH"));
         add(datePicker);
 
-        hourPicker.setBounds(100, 278, 145, 30);
+        hourPicker.setBounds(ConfigManager.getInt(configIdentifier, "hourPickerX"),
+                ConfigManager.getInt(configIdentifier, "hourPickerY"),
+                ConfigManager.getInt(configIdentifier, "hourPickerW"),
+                ConfigManager.getInt(configIdentifier, "hourPickerH"));
         add(hourPicker);
-        minutePicker.setBounds(255, 278, 145, 30);
+        minutePicker.setBounds(ConfigManager.getInt(configIdentifier, "minutePickerX"),
+                ConfigManager.getInt(configIdentifier, "minutePickerY"),
+                ConfigManager.getInt(configIdentifier, "minutePickerW"),
+                ConfigManager.getInt(configIdentifier, "minutePickerH"));
         add(minutePicker);
-        setDefenseSlot.setBounds(100, 325, 300, 35);
+        setDefenseSlot.setBounds(ConfigManager.getInt(configIdentifier, "setDefenseSlotX"),
+                ConfigManager.getInt(configIdentifier, "setDefenseSlotY"),
+                ConfigManager.getInt(configIdentifier, "setDefenseSlotW"),
+                ConfigManager.getInt(configIdentifier, "setDefenseSlotH"));
         add(setDefenseSlot);
 
         separator.setOrientation(SwingConstants.VERTICAL);
         separator.setBackground(Color.BLACK);
         separator.setForeground(Color.BLACK);
-        separator.setBounds(490, 175, 15, 250);
+        separator.setBounds(ConfigManager.getInt(configIdentifier, "separatorX"),
+                ConfigManager.getInt(configIdentifier, "separatorY"),
+                ConfigManager.getInt(configIdentifier, "separatorW"),
+                ConfigManager.getInt(configIdentifier, "separatorH"));
         add(separator);
 
-        defenseSlotPrompt.setBounds(505, 175, 300, 40);
+        defenseSlotPrompt.setBounds(ConfigManager.getInt(configIdentifier, "defenseSlotPromptX"),
+                ConfigManager.getInt(configIdentifier, "defenseSlotPromptY"),
+                ConfigManager.getInt(configIdentifier, "defenseSlotPromptW"),
+                ConfigManager.getInt(configIdentifier, "defenseSlotPromptH"));
         add(defenseSlotPrompt);
-        defenseSlotInformation.setBounds(612, 280, 350, 60);
-        defenseSlotInformation.setFont(new Font("", Font.BOLD, 19));
+        defenseSlotInformation.setBounds(ConfigManager.getInt(configIdentifier, "defenseSlotInformationX"),
+                ConfigManager.getInt(configIdentifier, "defenseSlotInformationY"),
+                ConfigManager.getInt(configIdentifier, "defenseSlotInformationW"),
+                ConfigManager.getInt(configIdentifier, "defenseSlotInformationH"));
+        defenseSlotInformation.setFont(new Font("", Font.BOLD,
+                ConfigManager.getInt(configIdentifier, "defenseSlotInformationFontSize")));
         add(defenseSlotInformation);
         setDefenseSlotLabels();
     }
