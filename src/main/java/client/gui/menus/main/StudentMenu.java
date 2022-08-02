@@ -6,6 +6,7 @@ import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.profile.StudentProfile;
 import client.gui.menus.services.StudentExamsList;
 import client.gui.menus.services.StudentWeeklySchedule;
+import client.gui.menus.services.requests.submission.CertificateSubmission;
 import client.gui.menus.services.requests.submission.DormSubmission;
 import client.locallogic.main.UserGetter;
 import shareables.models.pojos.users.students.Student;
@@ -238,8 +239,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(),
                         "Opened the enrolment certificate subsection in academic requests", "connectListeners",
                         getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new CertificateSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new CertificateSubmission(mainFrame, mainMenu, user));
             }
         });
 

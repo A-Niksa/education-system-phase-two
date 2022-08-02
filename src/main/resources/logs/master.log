@@ -938,3 +938,39 @@
 2022/08/02 | 16:28:05 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
 2022/08/02 | 16:28:05 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
 2022/08/02 | 16:28:05 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/02 | 17:46:05 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/02 | 17:46:06 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/02 | 17:46:09 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/02 | 17:46:10 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/02 | 17:46:16 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:46:16 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/02 | 17:46:16 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:46:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:46:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:46:20 - INFO - 1 - CLIENT - Opened the enrolment certificate subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$9
+2022/08/02 | 17:46:23 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/02 | 17:46:46 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/02 | 17:46:47 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/02 | 17:46:52 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/02 | 17:46:53 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/02 | 17:47:01 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:47:01 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/02 | 17:47:01 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:47:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:47:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:47:04 - INFO - 1 - CLIENT - Opened the enrolment certificate subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$9
+2022/08/02 | 17:47:26 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/02 | 17:47:33 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/02 | 17:47:34 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/02 | 17:47:51 - INFO - 0 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/02 | 17:47:52 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/02 | 17:48:00 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:48:00 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/02 | 17:48:00 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:48:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:48:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:48:18 - INFO - 1 - CLIENT - Opened the enrolment certificate subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$9
+2022/08/02 | 17:48:19 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/02 | 17:48:20 - INFO - 1 - CLIENT - Received an enrolment certificate - connectListeners - client.gui.menus.services.requests.submission.CertificateSubmission$1
+2022/08/02 | 17:48:27 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/02 | 17:48:30 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager

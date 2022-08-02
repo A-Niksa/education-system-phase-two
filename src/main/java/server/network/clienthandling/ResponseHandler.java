@@ -74,6 +74,12 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
+    public void certificateGenerated(ClientHandler clientHandler, String certificateText) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("certificateText", certificateText);
+        clientHandler.respond(response);
+    }
+
     public void professorsDoNotExistInDepartment(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "professorsDoNotExistInDepartment"));

@@ -99,6 +99,11 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler.dormRequestDetermined(clientHandler, willGetDorm);
     }
 
+    public void askForCertificate(ClientHandler clientHandler, Request request) {
+        String certificateText = AcademicRequestUtils.getCertificateText(databaseManager, (String) request.get("username"));
+        responseHandler.certificateGenerated(clientHandler, certificateText);
+    }
+
     public void changeCourseName(ClientHandler clientHandler, Request request) {
         Course course = IdentifiableEditingUtils.getCourse(databaseManager, (String) request.get("courseId"));
         course.setCourseName((String) request.get("newCourseName"));

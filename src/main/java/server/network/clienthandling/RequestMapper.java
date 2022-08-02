@@ -47,6 +47,9 @@ public class RequestMapper {
             case ASK_FOR_DORM:
                 requestHandler.askForDorm(clientHandler, request);
                 break;
+            case ASK_FOR_CERTIFICATE:
+                requestHandler.askForCertificate(clientHandler, request);
+                break;
             case CHANGE_COURSE_NAME:
                 requestHandler.changeCourseName(clientHandler, request);
                 break;

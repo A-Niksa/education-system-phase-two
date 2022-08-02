@@ -1,6 +1,6 @@
 package shareables.utils.config;
 
-public enum ConfigFileIdentifier {
+public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals for exceptions
     CONSTANTS("constantsPath"),
     TEXTS("textsPath"),
     ADDRESSES("addressesPath"),
@@ -14,6 +14,7 @@ public enum ConfigFileIdentifier {
     GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath"),
     GUI_EXAMS_LIST("guiExamsListPath"),
     GUI_DORM_SUBMISSION("guiDormSubmission"),
+    GUI_CERTIFICATE_SUBMISSION("guiCertificateSubmissionPath"),
     GUI_LIST_VIEW("guiListView"),
     GUI_LIST_MANAGER("guiListManager"),
     GUI_LIST_EDITOR("guiListEditor"),

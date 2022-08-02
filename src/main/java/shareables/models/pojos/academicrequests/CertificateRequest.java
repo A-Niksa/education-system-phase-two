@@ -31,8 +31,12 @@ public class CertificateRequest extends AcademicRequest {
                 "\nDate of Certification: " + dateTimeFormatter.format(currentDate);
     }
 
-    public String getCertificateText() {
+    public String fetchFormattedCertificateText() {
         return AcademicRequestUtils.convertToHTMLFormat(certificateText);
+    }
+
+    public String getCertificateText() {
+        return certificateText;
     }
 
     public void setCertificateText(String certificateText) {
