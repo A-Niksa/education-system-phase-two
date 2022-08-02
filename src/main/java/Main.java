@@ -82,6 +82,7 @@ public class Main {
                 new DayTime(16, 30, 0));
         complexAnalysis.addToWeeklyClassTimes(firstWeekTime);
         complexAnalysis.addToWeeklyClassTimes(secondWeekTime);
+        mathDepartment.addToCourses(complexAnalysis);
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);

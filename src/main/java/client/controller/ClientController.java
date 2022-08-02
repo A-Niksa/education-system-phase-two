@@ -1,6 +1,7 @@
 package client.controller;
 
 import client.network.Client;
+import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;
 import shareables.network.responses.Response;
@@ -75,6 +76,38 @@ public class ClientController {
 
     public Response getProfessorDTOs() {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_DTOS);
+        return client.sendAndListen(request);
+    }
+
+    public Response changeCourseName(String courseId, String newCourseName) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_COURSE_NAME,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("newCourseName", newCourseName));
+        return client.sendAndListen(request);
+    }
+
+    public Response changeCourseNumberOfCredits(String courseId, int newNumberOfCredits) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_COURSE_NUMBER_OF_CREDITS,
+                new StringObjectMap("courseId", courseId),
+                new StringObjectMap("newNumberOfCredits", newNumberOfCredits));
+        return client.sendAndListen(request);
+    }
+
+    public Response changeCourseLevel(String courseId, DegreeLevel newCourseLevel) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_COURSE_LEVEL,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("newCourseLevel", newCourseLevel));
+        return client.sendAndListen(request);
+    }
+
+    public Response changeTeachingProfessors(String courseId, String[] newTeachingProfessorNames) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_COURSE_TEACHING_PROFESSORS,
+                new StringObjectMap("courseId", courseId),
+                new StringObjectMap("newTeachingProfessorNames", newTeachingProfessorNames));
+        return client.sendAndListen(request);
+    }
+
+    public Response removeCourse(String courseId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.REMOVE_COURSE,
+                new StringObjectMap("courseId", courseId));
         return client.sendAndListen(request);
     }
 

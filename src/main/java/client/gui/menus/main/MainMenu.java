@@ -49,7 +49,7 @@ public class MainMenu extends JPanel {
         lastLoginTime = new JLabel("Last Login: " + dateTimeFormatter.format(user.getLastLogin()));
         ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(user.getProfilePicture());
         profilePicture = new JLabel(profilePictureIcon);
-        nameLabel = new JLabel(user.getFirstName() + " " + user.getLastName());
+        nameLabel = new JLabel(user.fetchName());
         emailAddressLabel = new JLabel(user.getEmailAddress());
         logOutButton = new JButton(ConfigManager.getString(configIdentifier, "logOutButtonMessage"));
     }

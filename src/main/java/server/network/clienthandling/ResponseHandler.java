@@ -74,4 +74,10 @@ public class ResponseHandler {
         response.put("willGetDorm", willGetDorm);
         clientHandler.respond(response);
     }
+
+    public void professorsDoNotExistInDepartment(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "professorsDoNotExistInDepartment"));
+        clientHandler.respond(response);
+    }
 }

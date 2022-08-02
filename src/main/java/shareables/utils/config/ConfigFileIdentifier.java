@@ -16,7 +16,8 @@ public enum ConfigFileIdentifier {
     GUI_DORM_SUBMISSION("guiDormSubmission"),
     GUI_LIST_VIEW("guiListView"),
     GUI_LIST_MANAGER("guiListManager"),
-    GUI_LIST_EDITOR("guiListEditor");
+    GUI_LIST_EDITOR("guiListEditor"),
+    GUI_COURSE_EDITOR("guiCourseEditor");
 
     private String configKeyString;
 

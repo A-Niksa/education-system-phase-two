@@ -17,8 +17,6 @@ public class Student extends User {
 
     private String advisingProfessorId;
     private Transcript transcript;
-    private List<String> currentCoursesIds;
-    private List<String> assistingCoursesIds; // list of courses where the student is a TA
     private DegreeLevel degreeLevel;
     private StudentStatus studentStatus;
     private int yearOfEntry;
@@ -32,27 +30,9 @@ public class Student extends User {
         this.degreeLevel = degreeLevel;
         this.departmentId = departmentId;
         transcript = new Transcript();
-        currentCoursesIds = new ArrayList<>();
-        assistingCoursesIds = new ArrayList<>();
         studentStatus = StudentStatus.CURRENTLY_STUDYING; // default value
         initializeId();
         initializeMessenger(id);
-    }
-
-    public void addToCurrentCoursesIds(String courseId) {
-        currentCoursesIds.add(courseId);
-    }
-
-    public void removeFromCurrentCourses(String courseId) {
-        currentCoursesIds.removeIf(e -> e.equals(courseId));
-    }
-
-    public void addToAssistingCoursesIds(String courseId) {
-        assistingCoursesIds.add(courseId);
-    }
-
-    public void removeFromAssistingCourses(String courseId) {
-        assistingCoursesIds.removeIf(e -> e.equals(courseId));
     }
 
     @Override
@@ -100,22 +80,6 @@ public class Student extends User {
         this.advisingProfessorId = advisingProfessorId;
     }
 
-    public List<String> getCurrentCoursesIds() {
-        return currentCoursesIds;
-    }
-
-    public void setCurrentCoursesIds(List<String> currentCoursesIds) {
-        this.currentCoursesIds = currentCoursesIds;
-    }
-
-    public List<String> getAssistingCoursesIds() {
-        return assistingCoursesIds;
-    }
-
-    public void setAssistingCoursesIds(List<String> assistingCoursesIds) {
-        this.assistingCoursesIds = assistingCoursesIds;
-    }
-
     public int getYearOfEntry() {
         return yearOfEntry;
     }
@@ -126,8 +90,6 @@ public class Student extends User {
         return "Student{" +
                 "advisingProfessorId='" + advisingProfessorId + '\'' +
                 ", transcript=" + transcript +
-                ", currentCoursesIds=" + currentCoursesIds +
-                ", assistingCoursesIds=" + assistingCoursesIds +
                 ", degreeLevel=" + degreeLevel +
                 ", studentStatus=" + studentStatus +
                 ", yearOfEntry=" + yearOfEntry +

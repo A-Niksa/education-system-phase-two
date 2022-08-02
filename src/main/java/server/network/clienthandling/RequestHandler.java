@@ -1,11 +1,10 @@
 package server.network.clienthandling;
 
-import server.network.clienthandling.logicutils.AcademicRequestUtils;
-import server.network.clienthandling.logicutils.EnrolmentUtils;
-import server.network.clienthandling.logicutils.LoginUtils;
-import server.network.clienthandling.logicutils.WeeklyScheduleUtils;
+import server.network.clienthandling.logicutils.*;
+import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
+import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
@@ -80,23 +79,59 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void getActiveCourseDTOs(ClientHandler clientHandler, Request request) {
-        List<CourseDTO> activeCourseDTOs = EnrolmentUtils.getActiveCourseDTOs(databaseManager);
+        List<CourseDTO> activeCourseDTOs = IdentifiableViewingUtils.getActiveCourseDTOs(databaseManager);
         responseHandler.courseDTOsAcquired(clientHandler, activeCourseDTOs);
     }
 
     public void getDepartmentCourseDTOs(ClientHandler clientHandler, Request request) {
-        List<CourseDTO> departmentCourseDTOs = EnrolmentUtils.getDepartmentCourseDTOs(databaseManager,
+        List<CourseDTO> departmentCourseDTOs = IdentifiableViewingUtils.getDepartmentCourseDTOs(databaseManager,
                 (String) request.get("departmentId"));
         responseHandler.courseDTOsAcquired(clientHandler, departmentCourseDTOs);
     }
 
     public void getProfessorDTOs(ClientHandler clientHandler, Request request) {
-        List<ProfessorDTO> professorDTOs = EnrolmentUtils.getProfessorDTOs(databaseManager);
+        List<ProfessorDTO> professorDTOs = IdentifiableViewingUtils.getProfessorDTOs(databaseManager);
         responseHandler.professorDTOsAcquired(clientHandler, professorDTOs);
     }
 
     public void askForDorm(ClientHandler clientHandler, Request request) {
         boolean willGetDorm = AcademicRequestUtils.willGetDorm();
         responseHandler.dormRequestDetermined(clientHandler, willGetDorm);
+    }
+
+    public void changeCourseName(ClientHandler clientHandler, Request request) {
+        Course course = IdentifiableEditingUtils.getCourse(databaseManager, (String) request.get("courseId"));
+        course.setCourseName((String) request.get("newCourseName"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void changeCourseNumberOfCredits(ClientHandler clientHandler, Request request) {
+        Course course = IdentifiableEditingUtils.getCourse(databaseManager, (String) request.get("courseId"));
+        course.setNumberOfCredits((int) request.get("newNumberOfCredits"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void changeCourseLevel(ClientHandler clientHandler, Request request) {
+        Course course = IdentifiableEditingUtils.getCourse(databaseManager, (String) request.get("courseId"));
+        course.setCourseLevel((DegreeLevel) request.get("newCourseLevel"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void changeCourseTeachingProfessors(ClientHandler clientHandler, Request request) {
+        Course course = IdentifiableEditingUtils.getCourse(databaseManager, (String) request.get("courseId"));
+        String[] newTeachingProfessorNames = (String[]) request.get("newTeachingProfessorNames");
+        if (!IdentifiableEditingUtils.professorsExistInDepartment(databaseManager, newTeachingProfessorNames
+                , course.getDepartmentId())) {
+            responseHandler.professorsDoNotExistInDepartment(clientHandler);
+        } else {
+            IdentifiableEditingUtils.changeTeachingProfessors(databaseManager, course, newTeachingProfessorNames,
+                    course.getDepartmentId());
+            responseHandler.requestSuccessful(clientHandler);
+        }
+    }
+
+    public void removeCourse(ClientHandler clientHandler, Request request) {
+        IdentifiableEditingUtils.removeCourse(databaseManager, (String) request.get("courseId"));
+        responseHandler.requestSuccessful(clientHandler);
     }
 }

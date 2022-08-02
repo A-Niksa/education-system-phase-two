@@ -14,7 +14,7 @@ import java.util.function.Predicate;
 
 import static server.network.clienthandling.logicutils.WeeklyScheduleUtils.initializeCourseDTO;
 
-public class EnrolmentUtils {
+public class IdentifiableViewingUtils {
     public static List<CourseDTO> getActiveCourseDTOs(DatabaseManager databaseManager) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         Predicate<Identifiable> predicate = e -> ((Course) e).isActive();
@@ -55,7 +55,7 @@ public class EnrolmentUtils {
 
     private static ProfessorDTO initializeProfessorDTO(Professor professor) {
         ProfessorDTO professorDTO = new ProfessorDTO();
-        professorDTO.setName(professor.getFirstName() + " " + professor.getLastName());
+        professorDTO.setName(professor.fetchName());
         professorDTO.setEmailAddress(professor.getEmailAddress());
         professorDTO.setOfficeNumber(professor.getOfficeNumber());
         professorDTO.setAcademicLevel(professor.getAcademicLevel());

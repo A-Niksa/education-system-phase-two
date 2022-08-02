@@ -56,7 +56,7 @@ public class StudentProfile extends PanelTemplate {
         ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(student.getProfilePicture());
         profilePicture = new JLabel(profilePictureIcon);
         name = new JLabel(ConfigManager.getString(configIdentifier, "nameMessage") +
-                student.getFirstName() + " " + student.getLastName());
+                student.fetchName());
         labelsList.add(name);
         nationalId = new JLabel(ConfigManager.getString(configIdentifier, "nationalIdMessage")
                 + student.getNationalId());

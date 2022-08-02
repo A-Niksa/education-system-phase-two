@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Department extends Identifiable {
     private String id;
+    private List<Course> courses;
     private List<Professor> professors;
     private List<Student> students;
     private Professor dean;
@@ -21,9 +22,18 @@ public class Department extends Identifiable {
 
     public Department(DepartmentName departmentName) {
         this.departmentName = departmentName;
+        courses = new ArrayList<>();
         professors = new ArrayList<>();
         students = new ArrayList<>();
         initializeId();
+    }
+
+    public void addToCourses(Course course) {
+        courses.add(course);
+    }
+
+    public void removeFromCourses(String courseId) {
+        courses.removeIf(e -> e.getId().equals(courseId));
     }
 
     public void addToProfessors(Professor professor) {
@@ -93,5 +103,9 @@ public class Department extends Identifiable {
 
     public void setDepartmentName(DepartmentName departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
     }
 }

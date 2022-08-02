@@ -56,6 +56,10 @@ public abstract class User extends Identifiable {
         this.nationalId = nationalId;
     }
 
+    public String fetchName() {
+        return firstName + " " + lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -14,6 +14,6 @@ public class UserGetter {
 
     public static String getAdvisingProfessorName(Student student, ClientController clientController) {
         Professor advisingProfessor = (Professor) UserGetter.getUser(student.getAdvisingProfessorId(), clientController);
-        return advisingProfessor.getFirstName() + " " + advisingProfessor.getLastName();
+        return advisingProfessor.fetchName();
     }
 }

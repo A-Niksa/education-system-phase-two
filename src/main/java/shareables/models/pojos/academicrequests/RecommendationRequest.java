@@ -8,11 +8,11 @@ public class RecommendationRequest extends AcademicRequest {
     }
 
     public void saveGeneratedRecommendationText() {
-        String professorName = receivingProfessor.getFirstName() + " " + receivingProfessor.getLastName();
-        String studentName = requestingStudent.getFirstName() + " " + requestingStudent.getLastName();
+        String professorName = receivingProfessor.fetchName();
+        String studentName = requestingStudent.fetchName();
         recommendationText = "I, " + professorName + ", hereby declare that " + studentName + " has been one of" +
                 " my students and based on the level of excellence he has demonstrated in a plethora of different aspects" +
-                " at the courses I have taught, I recommend him to be admitted to your academic program.";
+                " at the courses I have taught, I recommend him to be admitted to your academic program."; // TODO: config
     }
 
 

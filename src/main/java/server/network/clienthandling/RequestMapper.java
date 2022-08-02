@@ -47,6 +47,21 @@ public class RequestMapper {
             case ASK_FOR_DORM:
                 requestHandler.askForDorm(clientHandler, request);
                 break;
+            case CHANGE_COURSE_NAME:
+                requestHandler.changeCourseName(clientHandler, request);
+                break;
+            case CHANGE_COURSE_NUMBER_OF_CREDITS:
+                requestHandler.changeCourseNumberOfCredits(clientHandler, request);
+                break;
+            case CHANGE_COURSE_LEVEL:
+                requestHandler.changeCourseLevel(clientHandler, request);
+                break;
+            case CHANGE_COURSE_TEACHING_PROFESSORS:
+                requestHandler.changeCourseTeachingProfessors(clientHandler, request);
+                break;
+            case REMOVE_COURSE:
+                requestHandler.removeCourse(clientHandler, request);
+                break;
         }
     }
 }

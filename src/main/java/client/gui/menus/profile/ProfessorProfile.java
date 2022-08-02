@@ -18,8 +18,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class ProfessorProfile extends PanelTemplate {
     private Professor professor;
@@ -54,7 +52,7 @@ public class ProfessorProfile extends PanelTemplate {
         profilePicture = new JLabel(profilePictureIcon);
         labelsList = new ArrayList<>();
         name = new JLabel(ConfigManager.getString(configIdentifier, "nameMessage") +
-                professor.getFirstName() + " " + professor.getLastName());
+                professor.fetchName());
         labelsList.add(name);
         nationalId = new JLabel(ConfigManager.getString(configIdentifier, "nationalIdMessage")
                 + professor.getNationalId());

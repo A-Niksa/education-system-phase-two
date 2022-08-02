@@ -14,7 +14,7 @@ public class CertificateRequest extends AcademicRequest {
     }
 
     public void saveGeneratedCertificateText() {
-        String studentName = requestingStudent.getFirstName() + " " + requestingStudent.getLastName();
+        String studentName = requestingStudent.fetchName();
         String studentId = requestingStudent.getId();
         DepartmentName majorName = AcademicRequestUtils.getDepartmentName(requestingStudent.getDepartmentId());
         LocalDateTime currentDate = LocalDateTime.now();
