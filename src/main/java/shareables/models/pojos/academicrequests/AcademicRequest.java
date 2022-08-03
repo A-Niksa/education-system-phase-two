@@ -7,8 +7,8 @@ import shareables.models.pojos.users.students.Student;
 
 public abstract class AcademicRequest extends IdentifiableWithTime {
     protected AcademicRequestIdentifier requestIdentifier;
-    protected Student requestingStudent;
-    protected Professor receivingProfessor;
+    protected String requestingStudentId;
+    protected String receivingProfessorId;
     protected AcademicRequestStatus academicRequestStatus;
 
     public AcademicRequest(AcademicRequestIdentifier requestIdentifier) {
@@ -16,20 +16,20 @@ public abstract class AcademicRequest extends IdentifiableWithTime {
         academicRequestStatus = AcademicRequestStatus.SUBMITTED; // default value
     }
 
-    public Student getRequestingStudent() {
-        return requestingStudent;
+    public String getRequestingStudentId() {
+        return requestingStudentId;
     }
 
-    public void setRequestingStudent(Student requestingStudent) {
-        this.requestingStudent = requestingStudent;
+    public void setRequestingStudentId(String requestingStudentId) {
+        this.requestingStudentId = requestingStudentId;
     }
 
-    public Professor getReceivingProfessor() {
-        return receivingProfessor;
+    public String getReceivingProfessorId() {
+        return receivingProfessorId;
     }
 
-    public void setReceivingProfessor(Professor receivingProfessor) {
-        this.receivingProfessor = receivingProfessor;
+    public void setReceivingProfessorId(String receivingProfessorId) {
+        this.receivingProfessorId = receivingProfessorId;
     }
 
     public AcademicRequestStatus getRequestStatus() {

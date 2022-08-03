@@ -3,12 +3,21 @@ package shareables.network.DTOs;
 import shareables.models.pojos.users.professors.AcademicLevel;
 
 public class ProfessorDTO {
+    private String id;
     private String name;
     private String emailAddress;
     private String officeNumber;
     private AcademicLevel academicLevel;
 
     public ProfessorDTO() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

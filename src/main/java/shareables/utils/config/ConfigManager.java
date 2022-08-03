@@ -40,8 +40,12 @@ public class ConfigManager {
         return getInstance().getValue(configFileIdentifier, configKeyString);
     }
 
+    public static String getConfigPath(ConfigFileIdentifier configFileIdentifier) {
+        return getInstance().configFilePathFinder.getPath(configFileIdentifier, getInstance().configReader);
+    }
+
     private String getValue(ConfigFileIdentifier configFileIdentifier, String configKeyString) {
-        String configPath = configFilePathFinder.getPath(configFileIdentifier, configReader);
+        String configPath = getConfigPath(configFileIdentifier);
         configReader.initializeFileReader(configPath);
         return configReader.getProperty(configKeyString);
     }

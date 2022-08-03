@@ -55,6 +55,7 @@ public class IdentifiableViewingUtils {
 
     private static ProfessorDTO initializeProfessorDTO(Professor professor) {
         ProfessorDTO professorDTO = new ProfessorDTO();
+        professorDTO.setId(professor.getId());
         professorDTO.setName(professor.fetchName());
         professorDTO.setEmailAddress(professor.getEmailAddress());
         professorDTO.setOfficeNumber(professor.getOfficeNumber());

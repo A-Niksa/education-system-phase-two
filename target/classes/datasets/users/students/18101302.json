@@ -17,7 +17,7 @@
   "phoneNumber" : "09192302110",
   "emailAddress" : "rezaei@sharif.edu",
   "password" : "5678",
-  "lastLogin" : "2022-08-03T00:40:27.4579944",
+  "lastLogin" : null,
   "advisingProfessorId" : "90201301",
   "transcript" : {
     "courseIdScoreMap" : { }

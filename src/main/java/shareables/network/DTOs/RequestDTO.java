@@ -4,6 +4,7 @@ public class RequestDTO {
     private String id;
     private String requestingStudentId;
     private String requestingStudentName;
+    private String requestingStudentGPAString;
 
     public RequestDTO() {
     }
@@ -30,5 +31,13 @@ public class RequestDTO {
 
     public void setRequestingStudentName(String requestingStudentName) {
         this.requestingStudentName = requestingStudentName;
+    }
+
+    public String getRequestingStudentGPAString() {
+        return requestingStudentGPAString;
+    }
+
+    public void setRequestingStudentGPAString(String requestingStudentGPAString) {
+        this.requestingStudentGPAString = requestingStudentGPAString;
     }
 }

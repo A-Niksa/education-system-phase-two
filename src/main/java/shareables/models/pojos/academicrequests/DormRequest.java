@@ -23,7 +23,7 @@ public class DormRequest extends AcademicRequest {
         if (randomGenerator.nextBoolean()) {
             academicRequestStatus = AcademicRequestStatus.ACCEPTED;
         } else {
-            academicRequestStatus = AcademicRequestStatus.REJECTED;
+            academicRequestStatus = AcademicRequestStatus.DECLINED;
         }
     }
 }

@@ -172,4 +172,35 @@ public class ClientController {
                 new StringObjectMap("academicRequestId", academicRequestId));
         return client.sendAndListen(request);
     }
+
+    public Response askForRecommendation(String requestingStudentId, String receivingProfessorId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_RECOMMENDATION,
+                new StringObjectMap("requestingStudentId", requestingStudentId),
+                new StringObjectMap("receivingProfessorId", receivingProfessorId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getStudentRecommendationTexts(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_RECOMMENDATION_TEXTS,
+                new StringObjectMap("username", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getProfessorRecommendationRequestDTOs(String receivingProfessorId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_RECOMMENDATION_REQUEST_DTOS,
+                new StringObjectMap("receivingProfessorId", receivingProfessorId));
+        return client.sendAndListen(request);
+    }
+
+    public Response acceptRecommendationRequest(String academicRequestId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ACCEPT_RECOMMENDATION_REQUEST,
+                new StringObjectMap("academicRequestId", academicRequestId));
+        return client.sendAndListen(request);
+    }
+
+    public Response declineRecommendationRequest(String academicRequestId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DECLINE_RECOMMENDATION_REQUEST,
+                new StringObjectMap("academicRequestId", academicRequestId));
+        return client.sendAndListen(request);
+    }
 }

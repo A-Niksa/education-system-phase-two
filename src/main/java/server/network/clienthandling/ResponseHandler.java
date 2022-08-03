@@ -122,4 +122,17 @@ public class ResponseHandler {
         response.put("requestDTOs", requestDTOs);
         clientHandler.respond(response);
     }
+
+    public void professorDoesNotExist(ClientHandler clientHandler, String professorId) {
+        Response response = new Response(
+                ConfigManager.getString(ConfigFileIdentifier.TEXTS, "professorDoesNotExistFirstHalf") +
+                professorId + ConfigManager.getString(ConfigFileIdentifier.TEXTS, "professorDoesNotExistSecondHalf"));
+        clientHandler.respond(response);
+    }
+
+    public void recommendationTextsAcquired(ClientHandler clientHandler, List<String> recommendationTexts) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("recommendationTexts", recommendationTexts);
+        clientHandler.respond(response);
+    }
 }

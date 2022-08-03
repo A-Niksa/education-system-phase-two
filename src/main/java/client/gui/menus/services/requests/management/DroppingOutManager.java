@@ -57,13 +57,15 @@ public class DroppingOutManager extends RequestManager {
                 Response response = clientController.acceptDroppingOutRequest(requestDTO.getRequestingStudentId(),
                         requestDTO.getId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
-                    MasterLogger.clientInfo(clientController.getId(), "Dropping out request (requesting student ID: " +
-                            requestDTO.getRequestingStudentId() + ") has been accepted by the operating deputy (ID: " +
+                    MasterLogger.clientInfo(clientController.getId(), "Dropping out request (ID: " +
+                            requestDTO.getRequestingStudentId() + ") has been accepted by the department deputy (ID: " +
                             professor.getId() + ")", "setApproveListener", getClass());
                 }
             }
         });
     }
+
+    // TODO: unrelated but resolving the sequential id bug (100 -> 302)
 
     @Override
     protected void setDeclineListener(int index) {
@@ -74,8 +76,8 @@ public class DroppingOutManager extends RequestManager {
                 RequestDTO requestDTO = requestDTOs.get(index);
                 Response response = clientController.declineDroppingOutRequest(requestDTO.getId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
-                    MasterLogger.clientInfo(clientController.getId(), "Dropping request (requesting student ID: " +
-                            requestDTO.getRequestingStudentId() + ") has been declined by the operating deputy (ID: " +
+                    MasterLogger.clientInfo(clientController.getId(), "Dropping request (ID: " +
+                            requestDTO.getRequestingStudentId() + ") has been declined by the department deputy (ID: " +
                             professor.getId() + ")", "setDeclineListener", getClass());
                 }
             }

@@ -2,14 +2,17 @@ package server.network.clienthandling.logicutils.services;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.general.EnumStringMappingUtils;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.academicrequests.*;
+import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,8 +25,9 @@ public class RequestSubmissionUtils {
     public static String getCertificateText(DatabaseManager databaseManager, String studentId) {
         CertificateRequest certificateRequest = new CertificateRequest();
         Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
-        certificateRequest.setRequestingStudent(student);
-        certificateRequest.saveGeneratedCertificateText();
+        certificateRequest.setRequestingStudentId(studentId);
+        certificateRequest.saveGeneratedCertificateText(student.fetchName(),
+                EnumStringMappingUtils.getDepartmentName(student.getDepartmentId()));
         return certificateRequest.fetchFormattedCertificateText();
     }
 
@@ -51,8 +55,7 @@ public class RequestSubmissionUtils {
             LocalDateTime defenseTime = convertDateToLocalDateTime((Date) request.get("date"), (int) request.get("hour"),
                     (int) request.get("minute"));
             defenseRequest.setRequestedDefenseTime(defenseTime);
-            Student student = IdentifiableFetchingUtils.getStudent(databaseManager, (String) request.get("username"));
-            defenseRequest.setRequestingStudent(student);
+            defenseRequest.setRequestingStudentId((String) request.get("username"));
             databaseManager.save(DatasetIdentifier.DEFENSE_REQUESTS, defenseRequest);
         }
     }
@@ -61,7 +64,7 @@ public class RequestSubmissionUtils {
         List<Identifiable> defenseRequests = databaseManager.getIdentifiables(DatasetIdentifier.DEFENSE_REQUESTS);
         DefenseRequest studentDefenseRequest = defenseRequests.stream()
                 .map(e -> (DefenseRequest) e)
-                .filter(e -> e.getRequestingStudent().getId().equals(studentId))
+                .filter(e -> e.getRequestingStudentId().equals(studentId))
                 .findAny().orElse(null);
         return studentDefenseRequest;
     }
@@ -75,9 +78,20 @@ public class RequestSubmissionUtils {
         List<Identifiable> droppingOutRequests = databaseManager.getIdentifiables(DatasetIdentifier.DROPPING_OUT_REQUESTS);
         DroppingOutRequest droppingOutRequest = droppingOutRequests.stream()
                 .map(e -> (DroppingOutRequest) e)
-                .filter(e -> e.getRequestingStudent().getId().equals(studentId))
+                .filter(e -> e.getRequestingStudentId().equals(studentId))
                 .findAny().orElse(null);
         return droppingOutRequest;
+    }
+
+    public static RecommendationRequest getRecommendationRequest(DatabaseManager databaseManager, String requestingStudentId,
+                                                                 String receivingProfessorId) {
+        List<Identifiable> recommendationRequests = databaseManager.getIdentifiables(DatasetIdentifier.RECOMMENDATION_REQUESTS);
+        RecommendationRequest recommendationRequest = recommendationRequests.stream()
+                .map(e -> (RecommendationRequest) e)
+                .filter(e -> e.getRequestingStudentId().equals(requestingStudentId) &&
+                        e.getReceivingProfessorId().equals(receivingProfessorId))
+                .findAny().orElse(null);
+        return recommendationRequest;
     }
 
     public static void submitDroppingOutRequest(DatabaseManager databaseManager, String studentId) {
@@ -85,10 +99,37 @@ public class RequestSubmissionUtils {
         if (droppingOutRequest == null) {
             DroppingOutRequest newDroppingOutRequest = new DroppingOutRequest();
             Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
-            newDroppingOutRequest.setRequestingStudent(student);
-            newDroppingOutRequest.setReceivingProfessor(IdentifiableFetchingUtils.getDepartmentDeputy(databaseManager,
-                    student.getDepartmentId()));
+            newDroppingOutRequest.setRequestingStudentId(studentId);
+            newDroppingOutRequest.setReceivingProfessorId(IdentifiableFetchingUtils.getDepartmentDeputy(databaseManager,
+                    student.getDepartmentId()).getId());
             databaseManager.save(DatasetIdentifier.DROPPING_OUT_REQUESTS, newDroppingOutRequest);
         }
+    }
+
+    public static boolean professorExists(DatabaseManager databaseManager, String professorId) {
+        Professor professor = IdentifiableFetchingUtils.getProfessor(databaseManager, professorId);
+        return professor != null;
+    }
+
+    public static void submitRecommendationRequest(DatabaseManager databaseManager, String requestingStudentId,
+                                                   String receivingProfessorId) {
+        RecommendationRequest recommendationRequest = getRecommendationRequest(databaseManager, requestingStudentId,
+                receivingProfessorId);
+        if (recommendationRequest == null) {
+            RecommendationRequest newRecommendationRequest = new RecommendationRequest();
+            newRecommendationRequest.setRequestingStudentId(requestingStudentId);
+            newRecommendationRequest.setReceivingProfessorId(receivingProfessorId);
+            databaseManager.save(DatasetIdentifier.RECOMMENDATION_REQUESTS, newRecommendationRequest);
+        }
+    }
+
+    public static List<String> getStudentRecommendationTexts(DatabaseManager databaseManager, String username) {
+        List<Identifiable> recommendationRequests = databaseManager.getIdentifiables(DatasetIdentifier.RECOMMENDATION_REQUESTS);
+        List<String> recommendationTexts = new ArrayList<>();
+        recommendationRequests.stream()
+                .map(e -> (RecommendationRequest) e)
+                .filter(e -> e.getRequestStatus() == AcademicRequestStatus.ACCEPTED)
+                .forEach(e -> recommendationTexts.add(e.fetchFormattedRecommendationText()));
+        return recommendationTexts;
     }
 }

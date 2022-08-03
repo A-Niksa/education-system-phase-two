@@ -2,6 +2,8 @@ package shareables.models.pojos.academicrequests;
 
 import shareables.models.idgeneration.SequentialIdGenerator;
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 import shareables.utils.timing.formatting.FormattingUtils;
 
 import java.time.LocalDateTime;
@@ -14,21 +16,21 @@ public class CertificateRequest extends AcademicRequest {
     }
 
     private String certificateText;
+    private ConfigFileIdentifier configIdentifier;
 
     public CertificateRequest() {
         super(AcademicRequestIdentifier.CERTIFICATE);
         initializeId(sequentialIdGenerator);
+        configIdentifier = ConfigFileIdentifier.ACADEMIC_REQUEST_TEXTS;
     }
 
-    public void saveGeneratedCertificateText() {
-        String studentName = requestingStudent.fetchName();
-        String studentId = requestingStudent.getId();
-        DepartmentName majorName = AcademicRequestSubmissionUtils.getDepartmentName(requestingStudent.getDepartmentId());
+    public void saveGeneratedCertificateText(String requestingStudentName, DepartmentName departmentName) {
         LocalDateTime currentDate = LocalDateTime.now();
         DateTimeFormatter dateTimeFormatter = FormattingUtils.getStandardDateTimeFormatter();
-        certificateText = "It is hereby certified that " + studentName + " (student ID: " + studentId +
-                ") is currently a student of Sharif University of Technology and is majoring in " + majorName + "." +
-                "\nDate of Certification: " + dateTimeFormatter.format(currentDate);
+        certificateText = ConfigManager.getString(configIdentifier, "certificateText1") + requestingStudentName +
+                ConfigManager.getString(configIdentifier, "certificateText2") + requestingStudentId +
+                ConfigManager.getString(configIdentifier, "certificateText3") + departmentName +
+                ConfigManager.getString(configIdentifier, "certificateText4") + dateTimeFormatter.format(currentDate);
     }
 
     public String fetchFormattedCertificateText() {

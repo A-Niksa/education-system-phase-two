@@ -1,5 +1,6 @@
 package server.network.clienthandling;
 
+import server.database.datasets.DatasetIdentifier;
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
@@ -204,7 +205,40 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void declineDroppingOutRequest(ClientHandler clientHandler, Request request) {
-        RequestManagementUtils.removeDroppingOutRequest(databaseManager, (String) request.get("academicRequestId"));
+        RequestManagementUtils.declineDroppingOutRequest(databaseManager, (String) request.get("academicRequestId"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void askForRecommendation(ClientHandler clientHandler, Request request) {
+        String receivingProfessorId = (String) request.get("receivingProfessorId");
+        if (!RequestSubmissionUtils.professorExists(databaseManager, receivingProfessorId)) {
+            responseHandler.professorDoesNotExist(clientHandler, receivingProfessorId);
+        } else {
+            RequestSubmissionUtils.submitRecommendationRequest(databaseManager,
+                    (String) request.get("requestingStudentId"), receivingProfessorId);
+            responseHandler.requestSuccessful(clientHandler);
+        }
+    }
+
+    public void getStudentRecommendationTexts(ClientHandler clientHandler, Request request) {
+        List<String> studentRecommendationTexts = RequestSubmissionUtils.getStudentRecommendationTexts(databaseManager,
+                (String) request.get("username"));
+        responseHandler.recommendationTextsAcquired(clientHandler, studentRecommendationTexts);
+    }
+
+    public void getProfessorRecommendationRequestDTOs(ClientHandler clientHandler, Request request) {
+        List<RequestDTO> professorRecommendationRequestDTOs = RequestManagementUtils.getProfessorRecommendationRequestDTOs(
+                databaseManager, (String) request.get("receivingProfessorId"));
+        responseHandler.requestDTOsAcquired(clientHandler, professorRecommendationRequestDTOs);
+    }
+
+    public void acceptRecommendationRequest(ClientHandler clientHandler, Request request) {
+        RequestManagementUtils.acceptRecommendationRequest(databaseManager, (String) request.get("academicRequestId"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void declineRecommendationRequest(ClientHandler clientHandler, Request request) {
+        RequestManagementUtils.declineRecommendationRequest(databaseManager, (String) request.get("academicRequestId"));
         responseHandler.requestSuccessful(clientHandler);
     }
 }

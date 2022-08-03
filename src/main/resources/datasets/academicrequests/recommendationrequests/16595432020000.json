@@ -1,0 +1,11 @@
+{
+  "id" : "16595432020000",
+  "date" : "2022-08-03T16:13:22.4921192",
+  "requestIdentifier" : "RECOMMENDATION",
+  "requestingStudentId" : "19101100",
+  "receivingProfessorId" : "90201301",
+  "academicRequestStatus" : "ACCEPTED",
+  "recommendationText" : "I, Hamidreza Fanaei, hereby declare that Aref Hamidi has been one of my students and based on the level of excellence he has demonstrated in a plethora of different aspects at the courses I have taught, I recommend him to be admitted to your academic program.",
+  "configIdentifier" : "ACADEMIC_REQUEST_TEXTS",
+  "requestStatus" : "ACCEPTED"
+}

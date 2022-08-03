@@ -10,6 +10,7 @@ import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import server.database.management.DatabaseManager;
 import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigIdSupplier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.timing.timekeeping.DayTime;
 import shareables.utils.timing.timekeeping.WeekTime;
@@ -22,6 +23,7 @@ public class Main {
     private static final DatabaseManager manager = new DatabaseManager();
 
     public static void main(String[] args) {
+        ConfigIdSupplier.resetCurrentClientId();
         manager.getDatabaseWriter().purgeDirectory(new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "datasetsFolderPath")));
         createTestData(); // TODO: cleaning the directories
 //        manager.loadDatabase();

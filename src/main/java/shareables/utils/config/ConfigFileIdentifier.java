@@ -3,8 +3,11 @@ package shareables.utils.config;
 public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals for exceptions
     CONSTANTS("constantsPath"),
     TEXTS("textsPath"),
+    ACADEMIC_REQUEST_TEXTS("academicRequestTextsPath"),
     ADDRESSES("addressesPath"),
     NETWORK("networkPath"),
+    ID_GENERATION("idGenerationPath"),
+
     GUI("guiPath"),
     GUI_LOGIN("guiLoginPath"),
     GUI_MAIN("guiMainPath"),
@@ -13,7 +16,7 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_PROFILE("guiProfilePath"),
     GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath"),
     GUI_EXAMS_LIST("guiExamsListPath"),
-    GUI_DORM_SUBMISSION("guiDormSubmission"),
+    GUI_DORM_SUBMISSION("guiDormSubmissionPath"),
     GUI_CERTIFICATE_SUBMISSION("guiCertificateSubmissionPath"),
     GUI_DEFENSE_SUBMISSION("guiDefenseSubmissionPath"),
     GUI_DROPPING_OUT_SUBMISSION("guiDroppingOutSubmissionPath"),
@@ -22,7 +25,9 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_LIST_EDITOR("guiListEditorPath"),
     GUI_COURSE_EDITOR("guiCourseEditorPath"),
     GUI_COURSE_ADDER("guiCourseAdderPath"),
-    GUI_REQUEST_MANAGER("guiRequestManagerPath");
+    GUI_REQUEST_MANAGER("guiRequestManagerPath"),
+    GUI_RECOMMENDATION_SUBMISSION("guiRecommendationSubmissionPath");
+
 
     private String configKeyString;
 

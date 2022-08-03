@@ -2,6 +2,8 @@ package shareables.models.pojos.academicrequests;
 
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.SequentialIdGenerator;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 
 public class RecommendationRequest extends AcademicRequest {
     private static SequentialIdGenerator sequentialIdGenerator;
@@ -10,23 +12,26 @@ public class RecommendationRequest extends AcademicRequest {
     }
 
     private String recommendationText;
+    private ConfigFileIdentifier configIdentifier;
 
     public RecommendationRequest() {
         super(AcademicRequestIdentifier.RECOMMENDATION);
         initializeId(sequentialIdGenerator);
+        configIdentifier = ConfigFileIdentifier.ACADEMIC_REQUEST_TEXTS;
     }
 
-    public void saveGeneratedRecommendationText() {
-        String professorName = receivingProfessor.fetchName();
-        String studentName = requestingStudent.fetchName();
-        recommendationText = "I, " + professorName + ", hereby declare that " + studentName + " has been one of" +
-                " my students and based on the level of excellence he has demonstrated in a plethora of different aspects" +
-                " at the courses I have taught, I recommend him to be admitted to your academic program."; // TODO: config
+    public void saveGeneratedRecommendationText(String receivingProfessorName, String requestingStudentName) {
+        recommendationText = ConfigManager.getString(configIdentifier, "recommendationText1") + receivingProfessorName
+                + ConfigManager.getString(configIdentifier, "recommendationText2") + requestingStudentName
+                + ConfigManager.getString(configIdentifier, "recommendationText3");
     }
 
+    public String fetchFormattedRecommendationText() {
+        return AcademicRequestSubmissionUtils.convertToHTMLFormat(recommendationText);
+    }
 
     public String getRecommendationText() {
-        return AcademicRequestSubmissionUtils.convertToHTMLFormat(recommendationText);
+        return recommendationText;
     }
 
     public void setRecommendationText(String recommendationText) {

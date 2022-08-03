@@ -62,6 +62,15 @@ public class RequestMapper {
             case ASK_FOR_DROPPING_OUT:
                 requestHandler.askForDroppingOut(clientHandler, request);
                 break;
+            case ASK_FOR_RECOMMENDATION:
+                requestHandler.askForRecommendation(clientHandler, request);
+                break;
+            case GET_STUDENT_RECOMMENDATION_TEXTS:
+                requestHandler.getStudentRecommendationTexts(clientHandler, request);
+                break;
+            case GET_PROFESSOR_RECOMMENDATION_REQUEST_DTOS:
+                requestHandler.getProfessorRecommendationRequestDTOs(clientHandler, request);
+                break;
             case CHANGE_COURSE_NAME:
                 requestHandler.changeCourseName(clientHandler, request);
                 break;
@@ -88,6 +97,12 @@ public class RequestMapper {
                 break;
             case DECLINE_DROPPING_OUT_REQUEST:
                 requestHandler.declineDroppingOutRequest(clientHandler, request);
+                break;
+            case ACCEPT_RECOMMENDATION_REQUEST:
+                requestHandler.acceptRecommendationRequest(clientHandler, request);
+                break;
+            case DECLINE_RECOMMENDATION_REQUEST:
+                requestHandler.declineRecommendationRequest(clientHandler, request);
                 break;
         }
     }
