@@ -7,12 +7,14 @@ import client.gui.utils.ErrorUtils;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +25,7 @@ public class RecommendationSubmission extends PanelTemplate {
     private ArrayList<ProfessorDTO> professorDTOs;
     private JTextField recommendingProfessorId;
     private JButton submitRequest;
+    private DefaultTableModel tableModel;
     private JTable professorsTable;
     private String[] columns;
     private String[][] data;
@@ -33,9 +36,9 @@ public class RecommendationSubmission extends PanelTemplate {
 
     public RecommendationSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
         super(mainFrame, mainMenu);
-        updateProfessorDTOs();
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_RECOMMENDATION_SUBMISSION;
+        updateProfessorDTOs();
         initializeColumns();
         setTableData();
         drawPanel();
@@ -50,6 +53,7 @@ public class RecommendationSubmission extends PanelTemplate {
     }
 
     private void updateProfessorDTOs() {
+        clientController.getProfessorDTOs(); // to rule out incomplete data
         Response response = clientController.getProfessorDTOs();
         professorDTOs = (ArrayList<ProfessorDTO>) response.get("professorDTOs");
     }
@@ -70,7 +74,8 @@ public class RecommendationSubmission extends PanelTemplate {
     protected void initializeComponents() {
         recommendingProfessorId = new JTextField(ConfigManager.getString(configIdentifier, "recommendingProfessorIdM"));
         submitRequest = new JButton(ConfigManager.getString(configIdentifier, "submitRequestM"));
-        professorsTable = new JTable(data, columns);
+        tableModel = new DefaultTableModel(data, columns);
+        professorsTable = new JTable(tableModel);
         separator = new JSeparator();
         currentRecommendationsPrompt = new JLabel(
                 ConfigManager.getString(configIdentifier, "currentRecommendationsPromptM"));

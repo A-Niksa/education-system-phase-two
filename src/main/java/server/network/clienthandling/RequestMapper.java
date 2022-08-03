@@ -71,6 +71,12 @@ public class RequestMapper {
             case GET_PROFESSOR_RECOMMENDATION_REQUEST_DTOS:
                 requestHandler.getProfessorRecommendationRequestDTOs(clientHandler, request);
                 break;
+            case GET_STUDENT_MINOR_REQUEST_DTOS:
+                requestHandler.getStudentMinorRequestDTOs(clientHandler, request);
+                break;
+            case ASK_FOR_MINOR:
+                requestHandler.askForMinor(clientHandler, request);
+                break;
             case CHANGE_COURSE_NAME:
                 requestHandler.changeCourseName(clientHandler, request);
                 break;

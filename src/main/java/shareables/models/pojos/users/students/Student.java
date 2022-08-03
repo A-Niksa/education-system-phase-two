@@ -20,6 +20,7 @@ public class Student extends User {
     private DegreeLevel degreeLevel;
     private StudentStatus studentStatus;
     private int yearOfEntry;
+    private String minorDepartmentId;
 
     public Student() {
     }
@@ -38,6 +39,10 @@ public class Student extends User {
     @Override
     protected void initializeId() { // should only be called after the necessary constructor fields are filled (non-null)
         id = idGenerator.nextId(this, sequentialIdGenerator);
+    }
+
+    public double fetchGPA() {
+        return transcript.fetchGPA();
     }
 
     public String fetchGPAString() {
@@ -82,6 +87,14 @@ public class Student extends User {
 
     public int getYearOfEntry() {
         return yearOfEntry;
+    }
+
+    public String getMinorDepartmentId() {
+        return minorDepartmentId;
+    }
+
+    public void setMinorDepartmentId(String minorDepartmentId) {
+        this.minorDepartmentId = minorDepartmentId;
     }
 
     // TODO: should be removed

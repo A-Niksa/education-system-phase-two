@@ -8,6 +8,8 @@ import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.academicrequests.*;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.MinorRequestDTO;
+import shareables.network.DTOs.RequestDTO;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;

@@ -1,9 +1,19 @@
 package client.gui.utils;
 
+import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.utils.timing.timekeeping.Weekday;
 
 public class EnumArrayUtils {
+    public static String[] initializeDepartmentNameStrings() {
+        String[] departmentNameStrings = new String[DepartmentName.values().length];
+        int index = 0;
+        for (DepartmentName departmentName : DepartmentName.values()) {
+            departmentNameStrings[index++] = departmentName.toString();
+        }
+        return departmentNameStrings;
+    }
+
     public static String[] initializeDegreeLevels() {
         String[] degreeLevels = new String[3];
         int index = 0;

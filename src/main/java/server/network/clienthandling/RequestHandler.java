@@ -1,10 +1,10 @@
 package server.network.clienthandling;
 
-import server.database.datasets.DatasetIdentifier;
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
+import server.network.clienthandling.logicutils.services.MinorSubmissionUtils;
 import server.network.clienthandling.logicutils.services.RequestManagementUtils;
 import server.network.clienthandling.logicutils.services.RequestSubmissionUtils;
 import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
@@ -240,5 +240,30 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void declineRecommendationRequest(ClientHandler clientHandler, Request request) {
         RequestManagementUtils.declineRecommendationRequest(databaseManager, (String) request.get("academicRequestId"));
         responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void getStudentMinorRequestDTOs(ClientHandler clientHandler, Request request) {
+        List<RequestDTO> studentMinorRequestDTOs = MinorSubmissionUtils.getStudentMinorRequestDTOs(databaseManager,
+                (String) request.get("username"));
+        responseHandler.requestDTOsAcquired(clientHandler, studentMinorRequestDTOs);
+    }
+
+    public void askForMinor(ClientHandler clientHandler, Request request) {
+        String requestingStudentId = (String) request.get("requestingStudentId");
+        String originDepartmentId = (String) request.get("originDepartmentId");
+        String targetDepartmentNameString = (String) request.get("targetDepartmentNameString");
+        if (!MinorSubmissionUtils.studentHasSufficientlyHighGPAForMinor(databaseManager, requestingStudentId)) {
+            responseHandler.studentGPAIsNotHighEnough(clientHandler);
+        } else if (MinorSubmissionUtils.targetDepartmentIsSameAsCurrentDepartment(originDepartmentId,
+                targetDepartmentNameString)) {
+            responseHandler.targetDepartmentIsTheCurrentDepartment(clientHandler);
+        } else if (MinorSubmissionUtils.isCurrentlyMinoringAtTargetDepartment(databaseManager, requestingStudentId,
+                targetDepartmentNameString)) {
+            responseHandler.currentlyMinoringAtTargetDepartment(clientHandler);
+        } else {
+            MinorSubmissionUtils.submitMinorRequest(databaseManager, requestingStudentId, originDepartmentId,
+                    targetDepartmentNameString);
+            responseHandler.requestSuccessful(clientHandler);
+        }
     }
 }

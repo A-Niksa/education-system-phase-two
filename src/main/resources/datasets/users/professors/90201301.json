@@ -17,7 +17,7 @@
   "phoneNumber" : "09129730321",
   "emailAddress" : "fanaei@sharif.edu",
   "password" : "1234",
-  "lastLogin" : "2022-08-03T16:13:50.5574023",
+  "lastLogin" : null,
   "studentsUnderAdvice" : [ ],
   "officeNumber" : "107",
   "academicLevel" : "FULL",

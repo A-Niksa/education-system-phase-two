@@ -2,7 +2,6 @@ package shareables.models.pojos.academicrequests;
 
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.SequentialIdGenerator;
-import shareables.models.pojos.users.professors.Professor;
 
 public class MinorRequest extends AcademicRequest {
     private static SequentialIdGenerator sequentialIdGenerator;
@@ -10,8 +9,8 @@ public class MinorRequest extends AcademicRequest {
         sequentialIdGenerator = getNewSequentialIdGenerator(DatasetIdentifier.MINOR_REQUESTS);
     }
 
-    private Professor originDeputy; // deputy of the student's department
-    private Professor targetDeputy; // deputy of the student's desired department
+    private String originDepartmentId; // deputy of the student's department
+    private String targetDepartmentId; // deputy of the student's desired department
     private AcademicRequestStatus academicRequestStatusAtOrigin;
     private AcademicRequestStatus academicRequestStatusAtTarget;
 
@@ -22,20 +21,20 @@ public class MinorRequest extends AcademicRequest {
         academicRequestStatusAtTarget = AcademicRequestStatus.SUBMITTED; // default value
     }
 
-    public Professor getOriginDeputy() {
-        return originDeputy;
+    public String getOriginDepartmentId() {
+        return originDepartmentId;
     }
 
-    public void setOriginDeputy(Professor originDeputy) {
-        this.originDeputy = originDeputy;
+    public void setOriginDepartmentId(String originDepartmentId) {
+        this.originDepartmentId = originDepartmentId;
     }
 
-    public Professor getTargetDeputy() {
-        return targetDeputy;
+    public String getTargetDepartmentId() {
+        return targetDepartmentId;
     }
 
-    public void setTargetDeputy(Professor targetDeputy) {
-        this.targetDeputy = targetDeputy;
+    public void setTargetDepartmentId(String targetDepartmentId) {
+        this.targetDepartmentId = targetDepartmentId;
     }
 
     public AcademicRequestStatus getRequestStatusAtOrigin() {

@@ -203,4 +203,18 @@ public class ClientController {
                 new StringObjectMap("academicRequestId", academicRequestId));
         return client.sendAndListen(request);
     }
+
+    public Response getStudentMinorRequestDTOs(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_MINOR_REQUEST_DTOS,
+                new StringObjectMap("username", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response askForMinor(String requestingStudentId, String originDepartmentId, String targetDepartmentNameString) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_MINOR,
+                new StringObjectMap("requestingStudentId", requestingStudentId),
+                new StringObjectMap("originDepartmentId", originDepartmentId),
+                new StringObjectMap("targetDepartmentNameString", targetDepartmentNameString));
+        return client.sendAndListen(request);
+    }
 }

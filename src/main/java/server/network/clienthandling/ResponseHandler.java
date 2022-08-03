@@ -135,4 +135,24 @@ public class ResponseHandler {
         response.put("recommendationTexts", recommendationTexts);
         clientHandler.respond(response);
     }
+
+    public void studentGPAIsNotHighEnough(ClientHandler clientHandler) {
+        Response response = new Response(
+                ConfigManager.getString(ConfigFileIdentifier.TEXTS, "GPANotHighEnoughFirstHalf")
+                + ConfigManager.getDouble(ConfigFileIdentifier.TEXTS, "minimumMinorGPA")
+                + ConfigManager.getDouble(ConfigFileIdentifier.TEXTS, "GPANotHighEnoughSecondHalf"));
+        clientHandler.respond(response);
+    }
+
+    public void targetDepartmentIsTheCurrentDepartment(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "targetDepartmentIsTheCurrentDepartment"));
+        clientHandler.respond(response);
+    }
+
+    public void currentlyMinoringAtTargetDepartment(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "currentlyMinoringAtTargetDepartment"));
+        clientHandler.respond(response);
+    }
 }
