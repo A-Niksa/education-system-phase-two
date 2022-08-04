@@ -125,6 +125,12 @@ public class RequestMapper {
             case GET_STUDENT_COURSE_SCORE_DTOS:
                 requestHandler.getStudentCourseScoreDTOs(clientHandler, request);
                 break;
+            case GET_STUDENT_TEMPORARY_COURSE_SCORE_DTOS:
+                requestHandler.getStudentTemporaryCourseScoreDTOs(clientHandler, request);
+                break;
+            case SUBMIT_PROTEST:
+                requestHandler.submitProtest(clientHandler, request);
+                break;
         }
     }
 }

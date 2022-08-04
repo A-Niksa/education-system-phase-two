@@ -41,18 +41,22 @@
       "phoneNumber" : "09192302103",
       "emailAddress" : "hamidi@sharif.edu",
       "password" : "1234",
-      "lastLogin" : "2022-08-04T13:18:10.5997177",
+      "lastLogin" : "2022-08-04T14:50:07.4220714",
       "advisingProfessorId" : "80201200",
       "transcript" : {
         "courseIdScoreMap" : {
           "1000" : {
             "score" : 20.0,
-            "isFinalized" : true,
-            "finalized" : true
+            "isFinalized" : false,
+            "studentProtest" : null,
+            "professorResponse" : null,
+            "finalized" : false
           },
           "2002" : {
-            "score" : 20.0,
+            "score" : 19.0,
             "isFinalized" : false,
+            "studentProtest" : null,
+            "professorResponse" : null,
             "finalized" : false
           }
         },
@@ -142,18 +146,22 @@
     "phoneNumber" : "09192302103",
     "emailAddress" : "hamidi@sharif.edu",
     "password" : "1234",
-    "lastLogin" : "2022-08-04T13:18:10.5997177",
+    "lastLogin" : "2022-08-04T14:50:07.4220714",
     "advisingProfessorId" : "80201200",
     "transcript" : {
       "courseIdScoreMap" : {
         "1000" : {
           "score" : 20.0,
-          "isFinalized" : true,
-          "finalized" : true
+          "isFinalized" : false,
+          "studentProtest" : null,
+          "professorResponse" : null,
+          "finalized" : false
         },
         "2002" : {
-          "score" : 20.0,
+          "score" : 19.0,
           "isFinalized" : false,
+          "studentProtest" : null,
+          "professorResponse" : null,
           "finalized" : false
         }
       },

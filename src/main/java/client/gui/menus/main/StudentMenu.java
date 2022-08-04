@@ -8,6 +8,7 @@ import client.gui.menus.services.StudentExamsList;
 import client.gui.menus.services.StudentWeeklySchedule;
 import client.gui.menus.services.requests.submission.*;
 import client.gui.menus.standing.CurrentStandingView;
+import client.gui.menus.standing.TemporaryStandingView;
 import client.locallogic.main.UserGetter;
 import shareables.models.pojos.users.students.Student;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -189,8 +190,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
                         "connectListeners",  getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new TemporaryStandingView(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new TemporaryStandingView(mainFrame, mainMenu, user));
             }
         });
 

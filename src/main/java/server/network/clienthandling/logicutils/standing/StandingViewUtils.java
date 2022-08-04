@@ -1,6 +1,7 @@
 package server.network.clienthandling.logicutils.standing;
 
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.ClientHandler;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Score;
@@ -55,5 +56,39 @@ public class StandingViewUtils {
                     courseScoreDTOs.add(courseScoreDTO);
                 });
         return courseScoreDTOs;
+    }
+
+    public static List<CourseScoreDTO> getStudentTemporaryCourseScoreDTOs(DatabaseManager databaseManager, String studentId) {
+        Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
+        Map<String, Score> courseIdScoreMap = student.getTranscript().getCourseIdScoreMap();
+        List<CourseScoreDTO> courseScoreDTOs = new ArrayList<>();
+        courseIdScoreMap.entrySet().stream()
+                .filter(e -> !e.getValue().isFinalized())
+                .forEach(e -> {
+                    Course course = IdentifiableFetchingUtils.getCourse(databaseManager, e.getKey());
+                    CourseScoreDTO courseScoreDTO = new CourseScoreDTO();
+                    courseScoreDTO.setCourseId(course.getId());
+                    courseScoreDTO.setCourseName(course.getCourseName());
+                    courseScoreDTO.setScore(e.getValue().getScore());
+                    courseScoreDTO.setStudentProtest(e.getValue().getStudentProtest());
+                    courseScoreDTO.setProfessorResponse(e.getValue().getProfessorResponse());
+                    courseScoreDTOs.add(courseScoreDTO);
+                });
+        return courseScoreDTOs;
+    }
+
+    public static void submitProtest(DatabaseManager databaseManager, String protestingStudentId, String courseId,
+                                     String protest) {
+        Student student = IdentifiableFetchingUtils.getStudent(databaseManager, protestingStudentId);
+        Score studentScoreInCourse = getStudentCourseScore(student.getTranscript().getCourseIdScoreMap(), courseId);
+        studentScoreInCourse.setStudentProtest(protest);
+    }
+
+    private static Score getStudentCourseScore(Map<String, Score> courseIdScoreMap, String courseId) {
+        return courseIdScoreMap.entrySet().stream()
+                .filter(e -> e.getKey().equals(courseId) &&
+                                !e.getValue().isFinalized())
+                .map(Map.Entry::getValue)
+                .findAny().orElse(null);
     }
 }

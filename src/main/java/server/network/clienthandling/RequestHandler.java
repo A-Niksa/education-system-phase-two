@@ -296,4 +296,18 @@ public class RequestHandler { // TODO: logging, perhaps?
                 (String) request.get("username"));
         responseHandler.courseScoreDTOsAcquired(clientHandler, studentCourseScoreDTOs);
     }
+
+    public void getStudentTemporaryCourseScoreDTOs(ClientHandler clientHandler, Request request) {
+        List<CourseScoreDTO> studentTemporaryCourseScoreDTOs = StandingViewUtils.getStudentTemporaryCourseScoreDTOs(
+                databaseManager, (String) request.get("username"));
+        responseHandler.courseScoreDTOsAcquired(clientHandler, studentTemporaryCourseScoreDTOs);
+    }
+
+    public void submitProtest(ClientHandler clientHandler, Request request) {
+        String protestingStudentId = (String) request.get("username");
+        String courseId = (String) request.get("courseId");
+        String protest = (String) request.get("protest");
+        StandingViewUtils.submitProtest(databaseManager, protestingStudentId, courseId, protest);
+        responseHandler.requestSuccessful(clientHandler);
+    }
 }

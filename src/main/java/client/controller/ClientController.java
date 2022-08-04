@@ -249,4 +249,17 @@ public class ClientController {
                 new StringObjectMap("username", studentId));
         return client.sendAndListen(request);
     }
+
+    public Response getStudentTemporaryCourseScoreDTOs(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_TEMPORARY_COURSE_SCORE_DTOS,
+                new StringObjectMap("username", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response submitProtest(String courseId, String protestingStudentId, String protest) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SUBMIT_PROTEST,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("username", protestingStudentId),
+                new StringObjectMap("protest", protest));
+        return client.sendAndListen(request);
+    }
 }

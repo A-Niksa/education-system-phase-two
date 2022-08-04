@@ -3,6 +3,8 @@ package shareables.models.pojos.abstractions;
 public class Score {
     private double score;
     private boolean isFinalized;
+    private String studentProtest;
+    private String professorResponse;
 
     public Score() {
         isFinalized = false; // default value
@@ -31,5 +33,21 @@ public class Score {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public String getStudentProtest() {
+        return studentProtest;
+    }
+
+    public void setStudentProtest(String studentProtest) {
+        this.studentProtest = studentProtest;
+    }
+
+    public String getProfessorResponse() {
+        return professorResponse;
+    }
+
+    public void setProfessorResponse(String professorResponse) {
+        this.professorResponse = professorResponse;
     }
 }
