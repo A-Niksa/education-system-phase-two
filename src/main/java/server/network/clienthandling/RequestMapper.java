@@ -119,6 +119,12 @@ public class RequestMapper {
             case DECLINE_RECOMMENDATION_REQUEST:
                 requestHandler.declineRecommendationRequest(clientHandler, request);
                 break;
+            case GET_STUDENT_TRANSCRIPT_DTO:
+                requestHandler.getStudentTranscriptDTO(clientHandler, request);
+                break;
+            case GET_STUDENT_COURSE_SCORE_DTOS:
+                requestHandler.getStudentCourseScoreDTOs(clientHandler, request);
+                break;
         }
     }
 }

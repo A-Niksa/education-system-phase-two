@@ -21,7 +21,9 @@ public class Dataset {
     }
 
     public Identifiable get(String identifiableId) {
-        return identifiables.stream().filter(e -> e.getId().equals(identifiableId)).findAny().orElse(null);
+        return identifiables.stream()
+                .filter(e -> e.getId().equals(identifiableId))
+                .findAny().orElse(null);
     }
 
     public List<Identifiable> getIdentifiables() {

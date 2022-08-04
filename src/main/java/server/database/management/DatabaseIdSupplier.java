@@ -15,7 +15,6 @@ public class DatabaseIdSupplier {
     private static DatabaseIdSupplier databaseIdSupplier;
 
     private DatabaseIdSupplier() {
-
     }
 
     private static DatabaseIdSupplier getInstance() {

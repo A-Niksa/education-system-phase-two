@@ -39,6 +39,7 @@ public class IdGenerator {
     public String nextId(Course course, SequentialIdGenerator sequentialIdGenerator) {
         String departmentId = course.getDepartmentId();
         String sequentialId = String.format("%03d", sequentialIdGenerator.nextSequentialId());
+        // TODO: resolving the wrong sequential id bug (not just for courses)
         return departmentId + sequentialId;
     }
 

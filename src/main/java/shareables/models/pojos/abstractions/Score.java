@@ -21,6 +21,10 @@ public class Score {
         isFinalized = finalized;
     }
 
+    public String fetchScoreString() {
+        return isFinalized ? String.valueOf(score) : "N/A";
+    }
+
     public double getScore() {
         return score;
     }

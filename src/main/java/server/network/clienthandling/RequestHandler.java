@@ -5,6 +5,7 @@ import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUti
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.services.*;
+import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -12,9 +13,7 @@ import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
-import shareables.network.DTOs.CourseDTO;
-import shareables.network.DTOs.ProfessorDTO;
-import shareables.network.DTOs.RequestDTO;
+import shareables.network.DTOs.*;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
@@ -284,5 +283,17 @@ public class RequestHandler { // TODO: logging, perhaps?
         String decliningDepartmentId = (String) request.get("departmentId");
         MinorManagementUtils.declineMinorRequest(databaseManager, academicRequestId, decliningDepartmentId);
         responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void getStudentTranscriptDTO(ClientHandler clientHandler, Request request) {
+        TranscriptDTO studentTranscriptDTO = StandingViewUtils.getStudentTranscriptDTO(databaseManager,
+                (String) request.get("username"));
+        responseHandler.transcriptDTOAcquired(clientHandler, studentTranscriptDTO);
+    }
+
+    public void getStudentCourseScoreDTOs(ClientHandler clientHandler, Request request) {
+        List<CourseScoreDTO> studentCourseScoreDTOs = StandingViewUtils.getStudentCourseScoreDTOs(databaseManager,
+                (String) request.get("username"));
+        responseHandler.courseScoreDTOsAcquired(clientHandler, studentCourseScoreDTOs);
     }
 }

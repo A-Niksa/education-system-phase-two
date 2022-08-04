@@ -4,6 +4,7 @@ import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import shareables.models.idgeneration.Identifiable;
+import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
@@ -24,10 +25,10 @@ public class IdentifiableFetchingUtils {
     }
 
     private static Department getDepartment(DatabaseManager databaseManager, String departmentId) {
-        List<Identifiable> departments = databaseManager.getIdentifiables(DatasetIdentifier.DEPARTMENTS);
-        return departments.stream()
-                .map(e -> (Department) e)
-                .filter(e -> e.getId().equals(departmentId))
-                .findAny().orElse(null);
+        return (Department) databaseManager.get(DatasetIdentifier.DEPARTMENTS, departmentId);
+    }
+
+    public static Course getCourse(DatabaseManager databaseManager, String courseId) {
+        return (Course) databaseManager.get(DatasetIdentifier.COURSES, courseId);
     }
 }

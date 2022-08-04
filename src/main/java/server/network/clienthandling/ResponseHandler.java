@@ -2,9 +2,7 @@ package server.network.clienthandling;
 
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
-import shareables.network.DTOs.CourseDTO;
-import shareables.network.DTOs.ProfessorDTO;
-import shareables.network.DTOs.RequestDTO;
+import shareables.network.DTOs.*;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -159,6 +157,18 @@ public class ResponseHandler {
     public void cannotMinorAtTwoPlaces(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "cannotMinorAtTwoPlaces"));
+        clientHandler.respond(response);
+    }
+
+    public void transcriptDTOAcquired(ClientHandler clientHandler, TranscriptDTO transcriptDTO) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("transcriptDTO", transcriptDTO);
+        clientHandler.respond(response);
+    }
+
+    public void courseScoreDTOsAcquired(ClientHandler clientHandler, List<CourseScoreDTO> courseScoreDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("courseScoreDTOs", courseScoreDTOs);
         clientHandler.respond(response);
     }
 }

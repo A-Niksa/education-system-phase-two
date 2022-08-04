@@ -85,8 +85,9 @@ public class Main {
                 new DayTime(16, 30, 0));
         complexAnalysis.addToWeeklyClassTimes(firstWeekTime);
         complexAnalysis.addToWeeklyClassTimes(secondWeekTime);
-//        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(true, 20.0));
+        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(true, 20.0));
         hamidi.getTranscript().setGPA(20.0);
+        // TODO: remembering to update the student gpa in test data package
         mathDepartment.addToCourses(complexAnalysis);
 
         Department physicsDepartment = new Department(DepartmentName.PHYSICS);
@@ -100,12 +101,25 @@ public class Main {
         rahvar.setPassword("1234");
         physicsDepartment.setDeputy(rahvar);
         physicsDepartment.addToProfessors(rahvar);
+        Course analyticalMechanics = new Course(physicsDepartment.getId(), new TermIdentifier(2022, 2));
+        analyticalMechanics.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
+        analyticalMechanics.setCourseName("Analytical Mechanics");
+        analyticalMechanics.addToTeachingProfessors(rahvar);
+        analyticalMechanics.addToStudents(hamidi);
+        analyticalMechanics.addToTAs(rezaei);
+        analyticalMechanics.setNumberOfCredits(3);
+        analyticalMechanics.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
+        analyticalMechanics.addToWeeklyClassTimes(firstWeekTime);
+        analyticalMechanics.addToWeeklyClassTimes(secondWeekTime);
+        physicsDepartment.addToCourses(analyticalMechanics);
+        hamidi.getTranscript().put(analyticalMechanics.getId(), new Score(false, 20.0));
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);
         manager.save(DatasetIdentifier.PROFESSORS, khazayi);
         manager.save(DatasetIdentifier.PROFESSORS, fanaei);
         manager.save(DatasetIdentifier.COURSES, complexAnalysis);
+        manager.save(DatasetIdentifier.COURSES, analyticalMechanics);
         manager.save(DatasetIdentifier.DEPARTMENTS, mathDepartment);
         manager.save(DatasetIdentifier.PROFESSORS, rahvar);
         manager.save(DatasetIdentifier.DEPARTMENTS, physicsDepartment);

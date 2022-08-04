@@ -237,4 +237,16 @@ public class ClientController {
                 new StringObjectMap("departmentId", departmentId));
         return client.sendAndListen(request);
     }
+
+    public Response getStudentTranscriptDTO(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_TRANSCRIPT_DTO,
+                new StringObjectMap("username", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getStudentCourseScoreDTOs(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSE_SCORE_DTOS,
+                new StringObjectMap("username", studentId));
+        return client.sendAndListen(request);
+    }
 }
