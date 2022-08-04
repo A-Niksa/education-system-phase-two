@@ -18,24 +18,25 @@ public class IdentifiableViewingUtils {
     public static List<CourseDTO> getActiveCourseDTOs(DatabaseManager databaseManager) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         Predicate<Identifiable> predicate = e -> ((Course) e).isActive();
-        List<CourseDTO> activeCourseDTOs = getCourseDTOsByPredicate(courses, predicate);
+        List<CourseDTO> activeCourseDTOs = getCourseDTOsByPredicate(databaseManager, courses, predicate);
         return activeCourseDTOs;
     }
 
     public static List<CourseDTO> getDepartmentCourseDTOs(DatabaseManager databaseManager, String departmentId) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         Predicate<Identifiable> predicate = e -> ((Course) e).getDepartmentId().equals(departmentId);
-        List<CourseDTO> departmentCourseDTOs = getCourseDTOsByPredicate(courses, predicate);
+        List<CourseDTO> departmentCourseDTOs = getCourseDTOsByPredicate(databaseManager, courses, predicate);
         return departmentCourseDTOs;
     }
 
-    public static List<CourseDTO> getCourseDTOsByPredicate(List<Identifiable> courses, Predicate<Identifiable> predicate) {
+    public static List<CourseDTO> getCourseDTOsByPredicate(DatabaseManager databaseManager, List<Identifiable> courses,
+                                                           Predicate<Identifiable> predicate) {
         List<CourseDTO> courseDTOs = new ArrayList<>();
         courses.parallelStream()
                 .filter(predicate)
                 .forEach(e -> {
                     Course course = (Course) e;
-                    CourseDTO courseDTO = initializeCourseDTO(course);
+                    CourseDTO courseDTO = initializeCourseDTO(databaseManager, course);
                     courseDTOs.add(courseDTO);
                 });
         return courseDTOs;

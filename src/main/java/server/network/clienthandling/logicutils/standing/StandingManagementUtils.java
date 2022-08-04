@@ -23,7 +23,7 @@ public class StandingManagementUtils {
         List<String> activeCourseNamesList = new ArrayList<>();
         courses.stream()
                 .map(e -> (Course) e)
-                .filter(e -> professorIsInTeachingProfessors(e.getTeachingProfessors(), professorId))
+                .filter(e -> e.getTeachingProfessorIds().contains(professorId))
                 .forEach(e -> {
                     String courseName = e.getCourseName();
                     activeCourseNamesList.add(courseName);
@@ -31,31 +31,31 @@ public class StandingManagementUtils {
         return activeCourseNamesList.toArray(new String[0]);
     }
 
-    private static boolean professorIsInTeachingProfessors(List<Professor> teachingProfessors, String professorId) {
-        return teachingProfessors.stream()
-                .anyMatch(e -> e.getId().equals(professorId));
-    }
-
     public static List<CourseScoreDTO> getCourseScoreDTOsForCourse(DatabaseManager databaseManager, String departmentId,
                                                                    String courseName) {
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
-        List<Course> departmentCourses = department.getCourses();
+        List<String> departmentCourseIds = department.getCourseIds();
         List<CourseScoreDTO> courseScoreDTOs = new ArrayList<>();
-        departmentCourses.stream()
+        departmentCourseIds.stream()
+                .map(e -> IdentifiableFetchingUtils.getCourse(databaseManager, e))
                 .filter(e -> e.getCourseName().equals(courseName))
                 .forEach(e -> {
-                    courseScoreDTOs.addAll(extractCourseScoreDTOsFromCourseTranscripts(e));
+                    courseScoreDTOs.addAll(extractCourseScoreDTOsFromCourseTranscripts(e, databaseManager));
                 });
         return courseScoreDTOs;
     }
 
-    private static List<CourseScoreDTO> extractCourseScoreDTOsFromCourseTranscripts(Course course) {
-        List<Student> courseStudents = course.getStudents();
+    private static List<CourseScoreDTO> extractCourseScoreDTOsFromCourseTranscripts(Course course,
+                                                                                    DatabaseManager databaseManager) {
+        List<String> courseStudentIds = course.getStudentIds();
         List<CourseScoreDTO> extractedCourseScoreDTOs = new ArrayList<>();
-        courseStudents.forEach(e -> {
+        courseStudentIds.stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
+                .forEach(e -> {
                     CourseScoreDTO courseScoreDTO = new CourseScoreDTO();
                     courseScoreDTO.setStudentId(e.getId());
                     courseScoreDTO.setStudentName(e.fetchName());
+                    courseScoreDTO.setCourseId(course.getId());
                     Score studentScoreInCourse = getStudentScoreInCourse(e, course.getId());
                     if (studentScoreInCourse != null) {
                         courseScoreDTO.setFinalized(studentScoreInCourse.isFinalized());
@@ -79,7 +79,8 @@ public class StandingManagementUtils {
     public static void respondToProtest(DatabaseManager databaseManager, String courseId, String protestingStudentId,
                                         String responseToProtest) {
         Course course = IdentifiableFetchingUtils.getCourse(databaseManager, courseId);
-        Student protestingStudent = course.getStudents().stream()
+        Student protestingStudent = course.getStudentIds().stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
                 .filter(e -> e.getId().equals(protestingStudentId))
                 .findAny().orElse(null);
         Map<String, Score> courseIdScoreMap = protestingStudent.getTranscript().getCourseIdScoreMap();
@@ -93,17 +94,20 @@ public class StandingManagementUtils {
     public static void saveTemporaryScores(DatabaseManager databaseManager, String departmentId, String courseName,
                                            Map<String, Double> temporaryScoresMap) {
         Course course = getCourse(databaseManager, departmentId, courseName);
-        List<Student> courseStudents = course.getStudents();
-        courseStudents.forEach(e -> {
-            Score score = new Score(false, temporaryScoresMap.get(e.getId()));
-            e.getTranscript().put(course.getId(), score);
-        });
+        List<String> courseStudentIds = course.getStudentIds();
+        courseStudentIds.stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
+                .forEach(e -> {
+                    Score score = new Score(false, temporaryScoresMap.get(e.getId()));
+                    e.getTranscript().put(course.getId(), score);
+                });
     }
 
     private static Course getCourse(DatabaseManager databaseManager, String departmentId, String courseName) {
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
-        List<Course> departmentCourses = department.getCourses();
-        return departmentCourses.stream()
+        List<String> departmentCourseIds = department.getCourseIds();
+        return departmentCourseIds.stream()
+                .map(e -> IdentifiableFetchingUtils.getCourse(databaseManager, e))
                 .filter(e -> e.getCourseName().equals(courseName))
                 .findAny().orElse(null);
     }
@@ -111,38 +115,40 @@ public class StandingManagementUtils {
     public static boolean allStudentsHaveBeenTemporaryScores(DatabaseManager databaseManager, String departmentId,
                                                              String courseName) {
         Course course = getCourse(databaseManager, departmentId, courseName);
-        int numberOfCourseStudents = course.getStudents().size();
-        int numberOfStudentsWithTemporaryScores = getNumberOfStudentsWithTemporaryScores(course);
+        int numberOfCourseStudents = course.getStudentIds().size();
+        int numberOfStudentsWithTemporaryScores = getNumberOfStudentsWithTemporaryScores(databaseManager, course);
         return numberOfCourseStudents == numberOfStudentsWithTemporaryScores;
     }
 
-    private static int getNumberOfStudentsWithTemporaryScores(Course course) {
-        return (int) getCourseScoreEntriesStream(course)
+    private static int getNumberOfStudentsWithTemporaryScores(DatabaseManager databaseManager, Course course) {
+        return (int) getCourseScoreEntriesStream(databaseManager, course)
                 .count(); // casting is permissible since the number of students is of course less than Integer.MAX_VALUE
     }
 
     public static void finalizeScores(DatabaseManager databaseManager, String departmentId, String courseName) {
         Course course = getCourse(databaseManager, departmentId, courseName);
-        getCourseScoreEntriesStream(course)
+        getCourseScoreEntriesStream(databaseManager, course)
                 .forEach(e -> e.getValue().setFinalized(true));
-        List<Student> courseStudents = course.getStudents();
-        updateCourseStudentGPAs(databaseManager, courseStudents);
+        List<String> courseStudentIds = course.getStudentIds();
+        updateCourseStudentGPAs(databaseManager, courseStudentIds);
     }
 
-    private static void updateCourseStudentGPAs(DatabaseManager databaseManager, List<Student> courseStudents) {
-        courseStudents.forEach(e -> {
-            Transcript transcript = e.getTranscript();
-            Map<String, Score> courseIdScoreMap = transcript.getCourseIdScoreMap();
-            transcript.setGPA(CalculationOfGPAUtils.calculateGPA(databaseManager, courseIdScoreMap));
-        });
+    private static void updateCourseStudentGPAs(DatabaseManager databaseManager, List<String> courseStudentIds) {
+        courseStudentIds.stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
+                .forEach(e -> {
+                    Transcript transcript = e.getTranscript();
+                    Map<String, Score> courseIdScoreMap = transcript.getCourseIdScoreMap();
+                    transcript.setGPA(CalculationOfGPAUtils.calculateGPA(databaseManager, courseIdScoreMap));
+                });
     }
 
-    private static Stream<Map.Entry<String, Score>> getCourseScoreEntriesStream(Course course) {
-        List<Student> courseStudents = course.getStudents();
-        return courseStudents.stream()
+    private static Stream<Map.Entry<String, Score>> getCourseScoreEntriesStream(DatabaseManager databaseManager, Course course) {
+        List<String> courseStudentIds = course.getStudentIds();
+        return courseStudentIds.stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
                 .map(Student::getTranscript)
                 .flatMap(e -> e.getCourseIdScoreMap().entrySet().stream())
-                .filter(e -> e.getKey().equals(course.getId())
-                        && e.getValue().isFinalized());
+                .filter(e -> e.getKey().equals(course.getId()));
     }
 }

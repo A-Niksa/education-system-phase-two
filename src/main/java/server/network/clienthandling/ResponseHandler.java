@@ -172,9 +172,9 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
-    public void courseNamesAcquired(ClientHandler clientHandler, String[] courseNames) {
+    public void stringArrayAcquired(ClientHandler clientHandler, String[] stringArray) {
         Response response = new Response(ResponseStatus.OK);
-        response.put("courseNames", courseNames);
+        response.put("stringArray", stringArray);
         clientHandler.respond(response);
     }
 

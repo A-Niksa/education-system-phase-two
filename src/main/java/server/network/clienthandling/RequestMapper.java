@@ -146,6 +146,21 @@ public class RequestMapper {
             case FINALIZE_SCORES:
                 requestHandler.finalizeScores(clientHandler, request);
                 break;
+            case GET_COURSE_SCORE_DTOS_FOR_PROFESSOR:
+                requestHandler.getCourseScoreDTOsForProfessor(clientHandler, request);
+                break;
+            case GET_COURSE_SCORE_DTOS_FOR_STUDENT:
+                requestHandler.getCourseScoreDTOsForStudent(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_COURSE_NAMES:
+                requestHandler.getDepartmentCourseNames(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_PROFESSOR_NAMES:
+                requestHandler.getDepartmentProfessorNames(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_STUDENT_IDS:
+                requestHandler.getDepartmentStudentIds(clientHandler, request);
+                break;
         }
     }
 }

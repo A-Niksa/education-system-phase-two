@@ -39,13 +39,13 @@ public class DatabaseManager {
         MasterLogger.serverInfo("Saved database to resources", "saveDatabase", getClass());
     }
 
-    public void save(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
+    public synchronized void save(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
         getDataset(datasetIdentifier).save(identifiable);
         MasterLogger.serverInfo("Saved identifiable (id: " + identifiable.getId() + ")", "save",
                 getClass());
     }
 
-    public void remove(DatasetIdentifier datasetIdentifier, String identifiableId) {
+    public synchronized void remove(DatasetIdentifier datasetIdentifier, String identifiableId) {
         getDataset(datasetIdentifier).remove(identifiableId);
         MasterLogger.serverInfo("Removed identifiable (id: " + identifiableId + ")", "remove",
                 getClass());
@@ -69,7 +69,7 @@ public class DatabaseManager {
     /**
      * works under the condition that the id of the identifiable does not change
      */
-    public void update(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
+    public synchronized void update(DatasetIdentifier datasetIdentifier, Identifiable identifiable) {
         remove(datasetIdentifier, identifiable.getId());
         save(datasetIdentifier, identifiable);
         MasterLogger.serverInfo("Updated identifiable (id: " + identifiable.getId() + ")", "update",

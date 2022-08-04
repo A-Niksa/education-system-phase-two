@@ -6,6 +6,7 @@ import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUti
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
+import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.User;
@@ -316,7 +317,7 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void getProfessorActiveCourseNames(ClientHandler clientHandler, Request request) {
         String[] professorActiveCourseNames = StandingManagementUtils.getProfessorActiveCourseNames(databaseManager,
                 (String) request.get("username"));
-        responseHandler.courseNamesAcquired(clientHandler, professorActiveCourseNames);
+        responseHandler.stringArrayAcquired(clientHandler, professorActiveCourseNames);
     }
 
     public void getCourseScoreDTOsForCourse(ClientHandler clientHandler, Request request) {
@@ -352,5 +353,39 @@ public class RequestHandler { // TODO: logging, perhaps?
             StandingManagementUtils.finalizeScores(databaseManager, departmentId, courseName);
             responseHandler.requestSuccessful(clientHandler);
         }
+    }
+
+    public void getCourseScoreDTOsForProfessor(ClientHandler clientHandler, Request request) {
+        String departmentId = (String) request.get("departmentId");
+        String professorName = (String) request.get("professorName");
+        List<CourseScoreDTO> courseScoreDTOsForProfessor = StandingMasteryUtils.getCourseScoreDTOsForProfessor(databaseManager,
+                departmentId, professorName);
+        responseHandler.courseScoreDTOsAcquired(clientHandler, courseScoreDTOsForProfessor);
+    }
+
+    public void getCourseScoreDTOsForStudent(ClientHandler clientHandler, Request request) {
+        String departmentId = (String) request.get("departmentId");
+        String studentId = (String) request.get("studentId");
+        List<CourseScoreDTO> courseScoreDTOsForStudent = StandingMasteryUtils.getCourseScoreDTOsForStudent(databaseManager,
+                departmentId, studentId);
+        responseHandler.courseScoreDTOsAcquired(clientHandler, courseScoreDTOsForStudent);
+    }
+
+    public void getDepartmentCourseNames(ClientHandler clientHandler, Request request) {
+        String[] departmentCourseNames = StandingMasteryUtils.getDepartmentCourseNames(databaseManager,
+                (String) request.get("departmentId"));
+        responseHandler.stringArrayAcquired(clientHandler, departmentCourseNames);
+    }
+
+    public void getDepartmentProfessorNames(ClientHandler clientHandler, Request request) {
+        String[] departmentProfessorNames = StandingMasteryUtils.getDepartmentProfessorNames(databaseManager,
+                (String) request.get("departmentId"));
+        responseHandler.stringArrayAcquired(clientHandler, departmentProfessorNames);
+    }
+
+    public void getDepartmentStudentIds(ClientHandler clientHandler, Request request) {
+        String[] departmentStudentIds = StandingMasteryUtils.getDepartmentStudentIds(databaseManager,
+                (String) request.get("departmentId"));
+        responseHandler.stringArrayAcquired(clientHandler, departmentStudentIds);
     }
 }

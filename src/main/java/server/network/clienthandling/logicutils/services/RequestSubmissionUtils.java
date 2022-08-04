@@ -8,8 +8,6 @@ import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.academicrequests.*;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.MinorRequestDTO;
-import shareables.network.DTOs.RequestDTO;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
@@ -102,8 +100,8 @@ public class RequestSubmissionUtils {
             DroppingOutRequest newDroppingOutRequest = new DroppingOutRequest();
             Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
             newDroppingOutRequest.setRequestingStudentId(studentId);
-            newDroppingOutRequest.setReceivingProfessorId(IdentifiableFetchingUtils.getDepartmentDeputy(databaseManager,
-                    student.getDepartmentId()).getId());
+            newDroppingOutRequest.setReceivingProfessorId(IdentifiableFetchingUtils.getDepartmentDeputyId(databaseManager,
+                    student.getDepartmentId()));
             databaseManager.save(DatasetIdentifier.DROPPING_OUT_REQUESTS, newDroppingOutRequest);
         }
     }

@@ -102,6 +102,7 @@ public class TemporaryStandingManager extends PanelTemplate {
     }
 
     public void updateTable() {
+        updateCourseScoreDTOsForSelectedCourse();
         setTableData();
         tableModel.setDataVector(data, columns);
     }
@@ -113,7 +114,7 @@ public class TemporaryStandingManager extends PanelTemplate {
 
     private void updateCourseNames() {
         Response response = clientController.getProfessorActiveCourseNames(professor.getId());
-        activeCourseNames = (String[]) response.get("courseNames");
+        activeCourseNames = (String[]) response.get("stringArray");
     }
 
     void setTableData() {

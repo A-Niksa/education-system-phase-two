@@ -45,7 +45,7 @@ public class MinorManagementUtils {
     private static boolean professorIsInDepartmentAsDeputy(DatabaseManager databaseManager, String departmentId,
                                                            String professorId) {
         Department department = (Department) databaseManager.get(DatasetIdentifier.DEPARTMENTS, departmentId);
-        return department.getDeputy().getId().equals(professorId);
+        return department.getDeputyId().equals(professorId);
     }
 
     public static void acceptMinorRequest(DatabaseManager databaseManager, String academicRequestId, String acceptingDepartmentId) {

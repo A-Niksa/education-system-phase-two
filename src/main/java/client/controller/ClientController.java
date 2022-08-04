@@ -297,4 +297,34 @@ public class ClientController {
                 new StringObjectMap("courseName", courseName));
         return client.sendAndListen(request);
     }
+
+    public Response getCourseScoreDTOsForProfessor(String departmentId, String professorName) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_COURSE_SCORE_DTOS_FOR_PROFESSOR,
+                new StringObjectMap("departmentId", departmentId), new StringObjectMap("professorName", professorName));
+        return client.sendAndListen(request);
+    }
+
+    public Response getCourseScoreDTOsForStudent(String departmentId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_COURSE_SCORE_DTOS_FOR_STUDENT,
+                new StringObjectMap("departmentId", departmentId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDepartmentStudentIds(String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_STUDENT_IDS,
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDepartmentProfessorNames(String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_PROFESSOR_NAMES,
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDepartmentCourseNames(String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_COURSE_NAMES,
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
 }

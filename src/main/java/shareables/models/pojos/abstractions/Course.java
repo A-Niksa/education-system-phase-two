@@ -20,9 +20,9 @@ public class Course extends Identifiable {
 
     private String departmentId;
     private String courseName;
-    private List<Professor> teachingProfessors;
-    private List<Student> TAs;
-    private List<Student> students;
+    private List<String> teachingProfessorIds;
+    private List<String> teachingAssistantIds;
+    private List<String> studentIds;
     private List<WeekTime> weeklyClassTimes;
     private LocalDateTime examDate;
     private TermIdentifier termIdentifier; // such as "20182" or "20201"
@@ -37,9 +37,9 @@ public class Course extends Identifiable {
         this.departmentId = departmentId;
         this.termIdentifier = termIdentifier;
         isActive = termIdentifier.courseIsActive(); // will be active if the term id matches the current semester
-        teachingProfessors = new ArrayList<>();
-        TAs = new ArrayList<>();
-        students = new ArrayList<>();
+        teachingProfessorIds = new ArrayList<>();
+        teachingAssistantIds = new ArrayList<>();
+        studentIds = new ArrayList<>();
         weeklyClassTimes = new ArrayList<>();
         initializeId();
     }
@@ -52,28 +52,28 @@ public class Course extends Identifiable {
         weeklyClassTimes.removeIf(e -> e.equals(weekTime));
     }
 
-    public void addToTeachingProfessors(Professor professor) {
-        teachingProfessors.add(professor);
+    public void addToTeachingProfessorIds(String professorId) {
+        teachingProfessorIds.add(professorId);
     }
 
-    public void removeFromTeachingProfessors(String professorId) {
-        teachingProfessors.removeIf(e -> e.getId().equals(professorId));
+    public void removeFromTeachingProfessorIds(String professorId) {
+        teachingProfessorIds.removeIf(e -> e.equals(professorId));
     }
 
-    public void addToTAs(Student student) {
-        TAs.add(student);
+    public void addToTeachingAssistantIds(String studentId) {
+        teachingAssistantIds.add(studentId);
     }
 
-    public void removeFromTAs(String studentId) {
-        TAs.removeIf(e -> e.getId().equals(studentId));
+    public void removeFromTeachingAssistantIds(String studentId) {
+        teachingAssistantIds.removeIf(e -> e.equals(studentId));
     }
 
-    public void addToStudents(Student student) {
-        students.add(student);
+    public void addToStudentIds(String studentId) {
+        studentIds.add(studentId);
     }
 
-    public void removeFromStudents(String studentId) {
-        students.removeIf(e -> e.getId().equals(studentId));
+    public void removeFromStudentIds(String studentId) {
+        studentIds.removeIf(e -> e.equals(studentId));
     }
 
     @Override
@@ -89,28 +89,28 @@ public class Course extends Identifiable {
         this.id = id;
     }
 
-    public List<Professor> getTeachingProfessors() {
-        return teachingProfessors;
+    public List<String> getTeachingProfessorIds() {
+        return teachingProfessorIds;
     }
 
-    public void setTeachingProfessors(List<Professor> teachingProfessors) {
-        this.teachingProfessors = teachingProfessors;
+    public void setTeachingProfessorIds(List<String> teachingProfessorIds) {
+        this.teachingProfessorIds = teachingProfessorIds;
     }
 
-    public List<Student> getTAs() {
-        return TAs;
+    public List<String> getTeachingAssistantIds() {
+        return teachingAssistantIds;
     }
 
-    public void setTAs(List<Student> TAs) {
-        this.TAs = TAs;
+    public void setTeachingAssistantIds(List<String> teachingAssistantIds) {
+        this.teachingAssistantIds = teachingAssistantIds;
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public List<String> getStudentIds() {
+        return studentIds;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setStudentIds(List<String> studentIds) {
+        this.studentIds = studentIds;
     }
 
     public int getNumberOfCredits() {

@@ -12,6 +12,6 @@ public class ScoreFormatUtils {
     }
 
     public static String getScoreString(Double score) {
-        return score == null ? "N/A" : String.valueOf(score);
+        return score == -1.0 ? "N/A" : String.valueOf(score);
     }
 }

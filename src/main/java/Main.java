@@ -48,8 +48,8 @@ public class Main {
         hamidi.setPassword("1234");
         hamidi.updateLastLogin();
         khazayi.addToStudentsUnderAdvice(hamidi);
-        mathDepartment.setDeputy(khazayi);
-        mathDepartment.addToStudents(hamidi);
+        mathDepartment.setDeputyId(khazayi.getId());
+        mathDepartment.addToStudentIds(hamidi.getId());
         Professor fanaei = new Professor(AcademicRole.DEAN, AcademicLevel.FULL, mathDepartment.getId());
         fanaei.setNationalId("015033904");
         fanaei.setFirstName("Hamidreza");
@@ -58,9 +58,9 @@ public class Main {
         fanaei.setEmailAddress("fanaei@sharif.edu");
         fanaei.setOfficeNumber("107");
         fanaei.setPassword("1234");
-        mathDepartment.setDean(fanaei);
-        mathDepartment.addToProfessors(khazayi);
-        mathDepartment.addToProfessors(fanaei);
+        mathDepartment.setDeanId(fanaei.getId());
+        mathDepartment.addToProfessorIds(khazayi.getId());
+        mathDepartment.addToProfessorIds(fanaei.getId());
         Student rezaei = new Student(2018, DegreeLevel.PHD, mathDepartment.getId());
         rezaei.setNationalId("0152902202");
         rezaei.setFirstName("Arash");
@@ -71,10 +71,10 @@ public class Main {
         rezaei.setPassword("5678");
         Course complexAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2));
         complexAnalysis.setCourseName("Complex Analysis");
-        complexAnalysis.addToTeachingProfessors(khazayi);
-        complexAnalysis.addToTeachingProfessors(fanaei);
-        complexAnalysis.addToStudents(hamidi);
-        complexAnalysis.addToTAs(rezaei);
+        complexAnalysis.addToTeachingProfessorIds(khazayi.getId());
+        complexAnalysis.addToTeachingProfessorIds(fanaei.getId());
+        complexAnalysis.addToStudentIds(hamidi.getId());
+        complexAnalysis.addToStudentIds(rezaei.getId());
 //        complexAnalysis.addToTAs(rezaei);
         complexAnalysis.setNumberOfCredits(4);
 //        complexAnalysis.setActive(true);
@@ -89,7 +89,7 @@ public class Main {
 //        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(false, 20.0));
 //        hamidi.getTranscript().setGPA(20.0);
         // TODO: remembering to update the student gpa in test data package
-        mathDepartment.addToCourses(complexAnalysis);
+        mathDepartment.addToCourseIDs(complexAnalysis.getId());
 
         Department physicsDepartment = new Department(DepartmentName.PHYSICS);
         Professor rahvar = new Professor(AcademicRole.DEPUTY, AcademicLevel.FULL, physicsDepartment.getId());
@@ -100,20 +100,20 @@ public class Main {
         rahvar.setEmailAddress("rahvar@sharif.edu");
         rahvar.setOfficeNumber("205");
         rahvar.setPassword("1234");
-        physicsDepartment.setDeputy(rahvar);
-        physicsDepartment.addToProfessors(rahvar);
+        physicsDepartment.setDeputyId(rahvar.getId());
+        physicsDepartment.addToProfessorIds(rahvar.getId());
         Course analyticalMechanics = new Course(physicsDepartment.getId(), new TermIdentifier(2022, 2));
         analyticalMechanics.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
         analyticalMechanics.setCourseName("Analytical Mechanics");
-        analyticalMechanics.addToTeachingProfessors(rahvar);
-        analyticalMechanics.addToStudents(hamidi);
-        analyticalMechanics.addToTAs(rezaei);
+        analyticalMechanics.addToTeachingProfessorIds(rahvar.getId());
+        analyticalMechanics.addToStudentIds(hamidi.getId());
+        analyticalMechanics.addToTeachingAssistantIds(rezaei.getId());
         analyticalMechanics.setNumberOfCredits(3);
         analyticalMechanics.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
         analyticalMechanics.addToWeeklyClassTimes(firstWeekTime);
         analyticalMechanics.addToWeeklyClassTimes(secondWeekTime);
-        analyticalMechanics.addToStudents(rezaei);
-        physicsDepartment.addToCourses(analyticalMechanics);
+        analyticalMechanics.addToStudentIds(rezaei.getId());
+        physicsDepartment.addToCourseIDs(analyticalMechanics.getId());
 //        hamidi.getTranscript().put(analyticalMechanics.getId(), new Score(false, 19.0));
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);

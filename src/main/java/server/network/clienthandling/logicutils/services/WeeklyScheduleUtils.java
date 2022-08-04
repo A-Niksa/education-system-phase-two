@@ -2,6 +2,7 @@ package server.network.clienthandling.logicutils.services;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.professors.Professor;
@@ -18,7 +19,7 @@ public class WeeklyScheduleUtils {
                 .filter(e -> studentIsEnrolledInCourse(username, (Course) e))
                 .forEach(e -> {
                     Course course = (Course) e;
-                    CourseDTO courseDTO = initializeCourseDTO(course);
+                    CourseDTO courseDTO = initializeCourseDTO(databaseManager, course);
                     courseDTOs.add(courseDTO);
                 });
         return courseDTOs;
@@ -31,17 +32,18 @@ public class WeeklyScheduleUtils {
                 .filter(e -> professorIsTeachingCourse(username, (Course) e))
                 .forEach(e -> {
                     Course course = (Course) e;
-                    CourseDTO courseDTO = initializeCourseDTO(course);
+                    CourseDTO courseDTO = initializeCourseDTO(databaseManager, course);
                     courseDTOs.add(courseDTO);
                 });
         return courseDTOs;
     }
 
-    public static CourseDTO initializeCourseDTO(Course course) {
+    public static CourseDTO initializeCourseDTO(DatabaseManager databaseManager, Course course) {
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setId(course.getId());
         courseDTO.setCourseName(course.getCourseName());
-        courseDTO.setCompressedNamesOfProfessors(getCompressedNamesOfProfessors(course.getTeachingProfessors()));
+        courseDTO.setCompressedNamesOfProfessors(getCompressedNamesOfProfessors(databaseManager,
+                course.getTeachingProfessorIds()));
         courseDTO.setWeeklyClassTimes(course.getWeeklyClassTimes());
         courseDTO.setExamDate(course.getExamDate());
         courseDTO.setNumberOfCredits(course.getNumberOfCredits());
@@ -51,12 +53,14 @@ public class WeeklyScheduleUtils {
     }
 
     private static boolean professorIsTeachingCourse(String username, Course course) {
-        return course.getTeachingProfessors().stream().anyMatch(e -> e.getId().equals(username));
+        return course.getTeachingProfessorIds().stream().anyMatch(e -> e.equals(username));
     }
 
-    private static String getCompressedNamesOfProfessors(List<Professor> professors) {
+    private static String getCompressedNamesOfProfessors(DatabaseManager databaseManager, List<String> professorIds) {
         StringBuilder stringBuilder = new StringBuilder();
-        professors.stream().forEach(e -> getName(stringBuilder, e).append(", "));
+        professorIds.stream()
+                .map(e -> IdentifiableFetchingUtils.getProfessor(databaseManager, e))
+                .forEach(e -> getName(stringBuilder, e).append(", "));
         return stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length() - 1).toString();
     }
 
@@ -65,6 +69,6 @@ public class WeeklyScheduleUtils {
     }
 
     private static boolean studentIsEnrolledInCourse(String username, Course course) {
-        return course.getStudents().parallelStream().anyMatch(e -> e.getId().equals(username));
+        return course.getStudentIds().parallelStream().anyMatch(e -> e.equals(username));
     }
 }

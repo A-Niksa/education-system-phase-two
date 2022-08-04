@@ -1,19 +1,17 @@
 package shareables.models.pojos.abstractions;
 
 import shareables.models.idgeneration.Identifiable;
-import shareables.models.pojos.users.professors.Professor;
-import shareables.models.pojos.users.students.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Department extends Identifiable {
     private String id;
-    private List<Course> courses;
-    private List<Professor> professors;
-    private List<Student> students;
-    private Professor dean;
-    private Professor deputy;
+    private List<String> courseIds;
+    private List<String> professorIds;
+    private List<String> studentIds;
+    private String deanId;
+    private String deputyId;
     private DepartmentName departmentName;
 
     public Department() {
@@ -22,34 +20,34 @@ public class Department extends Identifiable {
 
     public Department(DepartmentName departmentName) {
         this.departmentName = departmentName;
-        courses = new ArrayList<>();
-        professors = new ArrayList<>();
-        students = new ArrayList<>();
+        courseIds = new ArrayList<>();
+        professorIds = new ArrayList<>();
+        studentIds = new ArrayList<>();
         initializeId();
     }
 
-    public void addToCourses(Course course) {
-        courses.add(course);
+    public void addToCourseIDs(String courseId) {
+        courseIds.add(courseId);
     }
 
-    public void removeFromCourses(String courseId) {
-        courses.removeIf(e -> e.getId().equals(courseId));
+    public void removeFromCourseIds(String courseId) {
+        courseIds.removeIf(e -> e.equals(courseId));
     }
 
-    public void addToProfessors(Professor professor) {
-        professors.add(professor);
+    public void addToProfessorIds(String professorId) {
+        professorIds.add(professorId);
     }
 
     public void removeFromProfessors(String professorId) {
-        professors.removeIf(e -> e.getId().equals(professorId));
+        professorIds.removeIf(e -> e.equals(professorId));
     }
 
-    public void addToStudents(Student student) {
-        students.add(student);
+    public void addToStudentIds(String studentId) {
+        studentIds.add(studentId);
     }
 
-    public void removeFromStudents(String studentId) {
-        students.removeIf(e -> e.getId().equals(studentId));
+    public void removeFromStudentIds(String studentId) {
+        studentIds.removeIf(e -> e.equals(studentId));
     }
 
     @Override
@@ -65,36 +63,40 @@ public class Department extends Identifiable {
         this.id = id;
     }
 
-    public List<Professor> getProfessors() {
-        return professors;
+    public void setCourseIds(List<String> courseIds) {
+        this.courseIds = courseIds;
     }
 
-    public void setProfessors(List<Professor> professors) {
-        this.professors = professors;
+    public List<String> getProfessorIds() {
+        return professorIds;
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public void setProfessorIds(List<String> professorIds) {
+        this.professorIds = professorIds;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public List<String> getStudentIds() {
+        return studentIds;
     }
 
-    public Professor getDean() {
-        return dean;
+    public void setStudentIds(List<String> studentIds) {
+        this.studentIds = studentIds;
     }
 
-    public void setDean(Professor dean) {
-        this.dean = dean;
+    public String getDeanId() {
+        return deanId;
     }
 
-    public Professor getDeputy() {
-        return deputy;
+    public void setDeanId(String deanId) {
+        this.deanId = deanId;
     }
 
-    public void setDeputy(Professor deputy) {
-        this.deputy = deputy;
+    public String getDeputyId() {
+        return deputyId;
+    }
+
+    public void setDeputyId(String deputyId) {
+        this.deputyId = deputyId;
     }
 
     public DepartmentName getDepartmentName() {
@@ -105,7 +107,7 @@ public class Department extends Identifiable {
         this.departmentName = departmentName;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<String> getCourseIds() {
+        return courseIds;
     }
 }

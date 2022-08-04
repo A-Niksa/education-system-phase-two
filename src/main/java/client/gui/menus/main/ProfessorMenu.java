@@ -38,6 +38,7 @@ public class ProfessorMenu extends MainMenu {
     private JMenuItem minor;
     private JMenuItem droppingOut;
     private JMenuItem temporaryScores;
+    private JMenuItem temporaryScoresForDeputy;
     private JMenuItem viewStudentsAcademicStanding;
     private JMenuItem editUserProfile;
     private JButton addStudent;
@@ -68,6 +69,8 @@ public class ProfessorMenu extends MainMenu {
         minor = new JMenuItem(ConfigManager.getString(configIdentifier, "minorMessage"));
         droppingOut = new JMenuItem(ConfigManager.getString(configIdentifier, "droppingOutMessage"));
         temporaryScores = new JMenuItem(ConfigManager.getString(configIdentifier, "temporaryScoresMessage"));
+        temporaryScoresForDeputy = new JMenuItem(ConfigManager.getString(configIdentifier,
+                "temporaryScoresForDeputyMessage"));
         viewStudentsAcademicStanding = new JMenuItem(ConfigManager.getString(configIdentifier,
                 "viewStudentsAcademicStandingMessage"));
         editUserProfile = new JMenuItem(ConfigManager.getString(configIdentifier, "editUserProfileMessage"));
@@ -115,6 +118,7 @@ public class ProfessorMenu extends MainMenu {
         academicStanding.add(temporaryScores);
 
         if (role == AcademicRole.DEPUTY) {
+            academicStanding.add(temporaryScoresForDeputy);
             academicStanding.add(viewStudentsAcademicStanding);
         }
     }
@@ -212,19 +216,22 @@ public class ProfessorMenu extends MainMenu {
             }
         });
 
+        temporaryScoresForDeputy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores for deputies in academic standing",
+                        "connectListeners", getClass());
+                // TODO
+                // mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, professorUser));
+            }
+        });
+
         temporaryScores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (role == AcademicRole.DEPUTY) {
-                    MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
-                            "connectListeners", getClass());
-                    // TODO
-//                    mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, professorUser));
-                } else { // NORMAL or DEAN by design
-                    MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
-                            "connectListeners", getClass());
-                    mainFrame.setCurrentPanel(new TemporaryStandingManager(mainFrame, mainMenu, professor));
-                }
+                MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
+                        "connectListeners", getClass());
+                mainFrame.setCurrentPanel(new TemporaryStandingManager(mainFrame, mainMenu, professor));
             }
         });
 

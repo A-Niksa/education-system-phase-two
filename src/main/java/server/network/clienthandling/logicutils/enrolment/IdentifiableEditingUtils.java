@@ -10,7 +10,6 @@ import shareables.models.pojos.users.professors.Professor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class IdentifiableEditingUtils {
     public static Course getCourse(DatabaseManager databaseManager, String courseId) {
@@ -26,13 +25,13 @@ public class IdentifiableEditingUtils {
         List<Identifiable> departments = databaseManager.getIdentifiables(DatasetIdentifier.DEPARTMENTS);
         departments.parallelStream()
                 .filter(e -> departmentHasCourse((Department) e, courseId))
-                .forEach(e -> ((Department) e).removeFromCourses(courseId));
+                .forEach(e -> ((Department) e).removeFromCourseIds(courseId));
     }
 
     private static boolean departmentHasCourse(Department department, String courseId) {
-        return department.getCourses()
+        return department.getCourseIds()
                 .stream()
-                .anyMatch(e -> e.getId().equals(courseId));
+                .anyMatch(e -> e.equals(courseId));
     }
 
     private static void removeCourseFromCoursesDataset(DatabaseManager databaseManager, String courseId) {
@@ -55,21 +54,21 @@ public class IdentifiableEditingUtils {
 
     public static void changeTeachingProfessors(DatabaseManager databaseManager, Course course,
                                                 String[] newTeachingProfessorNames, String departmentId) {
-        List<Professor> newTeachingProfessors = getProfessorsByNames(databaseManager, newTeachingProfessorNames,
+        List<String> newTeachingProfessorIds = getProfessorIdsByNames(databaseManager, newTeachingProfessorNames,
                 departmentId);
-        course.setTeachingProfessors(newTeachingProfessors);
+        course.setTeachingProfessorIds(newTeachingProfessorIds);
     }
 
-    public static List<Professor> getProfessorsByNames(DatabaseManager databaseManager, String[] professorNames,
-                                                        String departmentId) {
+    public static List<String> getProfessorIdsByNames(DatabaseManager databaseManager, String[] professorNames,
+                                                         String departmentId) {
         List<Identifiable> professors = databaseManager.getIdentifiables(DatasetIdentifier.PROFESSORS);
-        List<Professor> selectedProfessors = new ArrayList<>();
+        List<String> selectedProfessorIds = new ArrayList<>();
         professors.parallelStream()
                 .filter(e -> {
                     Professor professor = (Professor) e;
                     return professorIsInProfessorsArray(professor.fetchName(), professorNames) &&
                             professor.getDepartmentId().equals(departmentId);
-                }).forEach(e -> selectedProfessors.add((Professor) e));
-        return selectedProfessors;
+                }).forEach(e -> selectedProfessorIds.add(((Professor) e).getId()));
+        return selectedProfessorIds;
     }
 }
