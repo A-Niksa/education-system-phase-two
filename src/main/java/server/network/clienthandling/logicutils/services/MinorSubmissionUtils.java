@@ -35,13 +35,13 @@ public class MinorSubmissionUtils {
         return minorRequestDTOs;
     }
 
-    private static AcademicRequestStatus determineMinorRequestStatus(MinorRequest minorRequest) {
+    public static AcademicRequestStatus determineMinorRequestStatus(MinorRequest minorRequest) {
         AcademicRequestStatus academicRequestStatusAtOrigin = minorRequest.getRequestStatusAtOrigin();
         AcademicRequestStatus academicRequestStatusAtTarget = minorRequest.getRequestStatusAtTarget();
         if (academicRequestStatusAtOrigin == AcademicRequestStatus.DECLINED ||
                 academicRequestStatusAtTarget == AcademicRequestStatus.DECLINED) {
             return AcademicRequestStatus.DECLINED;
-        } else if (academicRequestStatusAtOrigin == AcademicRequestStatus.ACCEPTED ||
+        } else if (academicRequestStatusAtOrigin == AcademicRequestStatus.ACCEPTED &&
             academicRequestStatusAtTarget == AcademicRequestStatus.ACCEPTED) {
             return AcademicRequestStatus.ACCEPTED;
         } else {
@@ -89,7 +89,8 @@ public class MinorSubmissionUtils {
                                                                 String targetDepartmentNameString) {
         Student student = IdentifiableFetchingUtils.getStudent(databaseManager, requestingStudentId);
         String targetDepartmentId = getDepartmentId(targetDepartmentNameString);
-        return student.getMinorDepartmentId().equals(targetDepartmentId);
+        return student.getMinorDepartmentId() != null &&
+                student.getMinorDepartmentId().equals(targetDepartmentId);
     }
 
     public static void submitMinorRequest(DatabaseManager databaseManager, String requestingStudentId, String originDepartmentId,
@@ -100,5 +101,10 @@ public class MinorSubmissionUtils {
         minorRequest.setOriginDepartmentId(originDepartmentId);
         minorRequest.setTargetDepartmentId(targetDepartmentId);
         databaseManager.save(DatasetIdentifier.MINOR_REQUESTS, minorRequest);
+    }
+
+    public static boolean studentIsMinoringSomewhere(DatabaseManager databaseManager, String requestingStudentId) {
+        Student student = IdentifiableFetchingUtils.getStudent(databaseManager, requestingStudentId);
+        return student.getMinorDepartmentId() != null;
     }
 }

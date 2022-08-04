@@ -256,8 +256,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new MinorSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new MinorSubmission(mainFrame, mainMenu, user));
             }
         });
 

@@ -6,7 +6,6 @@ import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.profile.DepartmentGetter;
-import client.locallogic.services.GPARequirementChecker;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.MinorRequestDTO;
@@ -23,7 +22,7 @@ import java.util.ArrayList;
 
 public class MinorSubmission extends PanelTemplate {
     private Student student;
-    private ArrayList<MinorRequestDTO> minorRequestDTOs;
+    private ArrayList<MinorRequestDTO> studentMinorRequestDTOs;
     private DefaultTableModel dataModel;
     private JTable requestsTable;
     private JScrollPane scrollPane;
@@ -39,6 +38,7 @@ public class MinorSubmission extends PanelTemplate {
         configIdentifier = ConfigFileIdentifier.GUI_MINOR_SUBMISSION;
         departmentNameStrings = EnumArrayUtils.initializeDepartmentNameStrings();
         updateMinorRequestDTOs();
+        initializeColumns();
         setTableData();
         drawPanel();
     }
@@ -52,14 +52,14 @@ public class MinorSubmission extends PanelTemplate {
 
     private void updateMinorRequestDTOs() {
         Response response = clientController.getStudentMinorRequestDTOs(student.getId());
-        minorRequestDTOs = (ArrayList<MinorRequestDTO>) response.get("requestDTOs");
+        studentMinorRequestDTOs = (ArrayList<MinorRequestDTO>) response.get("requestDTOs");
     }
 
     private void setTableData() {
-        data = new String[minorRequestDTOs.size()][];
+        data = new String[studentMinorRequestDTOs.size()][];
         MinorRequestDTO minorRequestDTO;
-        for (int i = 0; i < minorRequestDTOs.size(); i++) {
-            minorRequestDTO = minorRequestDTOs.get(i);
+        for (int i = 0; i < studentMinorRequestDTOs.size(); i++) {
+            minorRequestDTO = studentMinorRequestDTOs.get(i);
 
             data[i] = new String[]{DepartmentGetter.getDepartmentName(minorRequestDTO.getOriginDepartmentId()).toString(),
                     DepartmentGetter.getDepartmentName(minorRequestDTO.getTargetDepartmentId()).toString(),
@@ -68,6 +68,7 @@ public class MinorSubmission extends PanelTemplate {
     }
 
     private void updateTable() {
+        updateMinorRequestDTOs();
         setTableData();
         dataModel.setDataVector(data, columns);
     }

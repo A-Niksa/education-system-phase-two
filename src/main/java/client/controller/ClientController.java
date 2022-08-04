@@ -217,4 +217,24 @@ public class ClientController {
                 new StringObjectMap("targetDepartmentNameString", targetDepartmentNameString));
         return client.sendAndListen(request);
     }
+
+    public Response getProfessorMinorRequestDTOs(String professorId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_MINOR_REQUEST_DTOS,
+                new StringObjectMap("username", professorId));
+        return client.sendAndListen(request);
+    }
+
+    public Response acceptMinorRequest(String academicRequestId, String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ACCEPT_MINOR_REQUEST,
+                new StringObjectMap("academicRequestId", academicRequestId),
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response declineMinorRequest(String academicRequestId, String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DECLINE_MINOR_REQUEST,
+                new StringObjectMap("academicRequestId", academicRequestId),
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
 }

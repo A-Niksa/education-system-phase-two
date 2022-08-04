@@ -17,7 +17,7 @@ public abstract class RequestManager extends PanelTemplate {
     protected String[] columns;
     protected String[][] data;
     protected ArrayList<RequestDTO> requestDTOs;
-    protected ArrayList<JButton> approveButtonsList;
+    protected ArrayList<JButton> acceptButtonsList;
     protected ArrayList<JButton> declineButtonsList;
 
     public RequestManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
@@ -44,14 +44,14 @@ public abstract class RequestManager extends PanelTemplate {
 
     @Override
     protected void initializeComponents() {
-        approveButtonsList = new ArrayList<>();
+        acceptButtonsList = new ArrayList<>();
         declineButtonsList = new ArrayList<>();
 
         requestDTOsTable = new JTable(data, columns);
 
         for (int i = 0; i < requestDTOs.size(); i++) {
             JButton approveButton = new JButton(ConfigManager.getString(configIdentifier, "approveButtonM"));
-            approveButtonsList.add(approveButton);
+            acceptButtonsList.add(approveButton);
             JButton declineButton = new JButton(ConfigManager.getString(configIdentifier, "declineButtonM"));
             declineButtonsList.add(declineButton);
         }
@@ -75,7 +75,7 @@ public abstract class RequestManager extends PanelTemplate {
         int incrementOfY = ConfigManager.getInt(configIdentifier, "incY");
         JButton approveButton, declineButton;
         for (int i = 0; i < requestDTOs.size(); i++) {
-            approveButton = approveButtonsList.get(i);
+            approveButton = acceptButtonsList.get(i);
             declineButton = declineButtonsList.get(i);
             approveButton.setBounds(currentX, currentY, buttonWidth, buttonHeight);
             declineButton.setBounds(currentX + incrementOfX, currentY, buttonWidth, buttonHeight);
@@ -88,12 +88,12 @@ public abstract class RequestManager extends PanelTemplate {
     @Override
     protected void connectListeners() {
         for (int i = 0; i < requestDTOs.size(); i++) {
-            setApproveListener(i);
+            setAcceptListener(i);
             setDeclineListener(i);
         }
     }
 
-    protected abstract void setApproveListener(int index);
+    protected abstract void setAcceptListener(int index);
 
     protected abstract void setDeclineListener(int index);
 }

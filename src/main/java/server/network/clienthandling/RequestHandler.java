@@ -4,10 +4,7 @@ import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
-import server.network.clienthandling.logicutils.services.MinorSubmissionUtils;
-import server.network.clienthandling.logicutils.services.RequestManagementUtils;
-import server.network.clienthandling.logicutils.services.RequestSubmissionUtils;
-import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
+import server.network.clienthandling.logicutils.services.*;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -260,10 +257,32 @@ public class RequestHandler { // TODO: logging, perhaps?
         } else if (MinorSubmissionUtils.isCurrentlyMinoringAtTargetDepartment(databaseManager, requestingStudentId,
                 targetDepartmentNameString)) {
             responseHandler.currentlyMinoringAtTargetDepartment(clientHandler);
-        } else {
+        } else if (MinorSubmissionUtils.studentIsMinoringSomewhere(databaseManager, requestingStudentId)) {
+            responseHandler.cannotMinorAtTwoPlaces(clientHandler);
+        } else  {
             MinorSubmissionUtils.submitMinorRequest(databaseManager, requestingStudentId, originDepartmentId,
                     targetDepartmentNameString);
             responseHandler.requestSuccessful(clientHandler);
         }
+    }
+
+    public void getProfessorMinorRequestDTOs(ClientHandler clientHandler, Request request) {
+        List<RequestDTO> professorMinorRequestDTOs = MinorManagementUtils.getProfessorMinorRequestDTOs(databaseManager,
+                (String) request.get("username"));
+        responseHandler.requestDTOsAcquired(clientHandler, professorMinorRequestDTOs);
+    }
+
+    public void acceptMinorRequest(ClientHandler clientHandler, Request request) {
+        String academicRequestId = (String) request.get("academicRequestId");
+        String acceptingDepartmentId = (String) request.get("departmentId");
+        MinorManagementUtils.acceptMinorRequest(databaseManager, academicRequestId, acceptingDepartmentId);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void declineMinorRequest(ClientHandler clientHandler, Request request) {
+        String academicRequestId = (String) request.get("academicRequestId");
+        String decliningDepartmentId = (String) request.get("departmentId");
+        MinorManagementUtils.declineMinorRequest(databaseManager, academicRequestId, decliningDepartmentId);
+        responseHandler.requestSuccessful(clientHandler);
     }
 }

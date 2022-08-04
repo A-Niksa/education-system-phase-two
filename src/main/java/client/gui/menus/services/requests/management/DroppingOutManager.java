@@ -48,8 +48,8 @@ public class DroppingOutManager extends RequestManager {
     }
 
     @Override
-    protected void setApproveListener(int index) {
-        JButton approveButton = approveButtonsList.get(index);
+    protected void setAcceptListener(int index) {
+        JButton approveButton = acceptButtonsList.get(index);
         approveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

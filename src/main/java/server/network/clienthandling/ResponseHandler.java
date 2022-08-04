@@ -139,8 +139,8 @@ public class ResponseHandler {
     public void studentGPAIsNotHighEnough(ClientHandler clientHandler) {
         Response response = new Response(
                 ConfigManager.getString(ConfigFileIdentifier.TEXTS, "GPANotHighEnoughFirstHalf")
-                + ConfigManager.getDouble(ConfigFileIdentifier.TEXTS, "minimumMinorGPA")
-                + ConfigManager.getDouble(ConfigFileIdentifier.TEXTS, "GPANotHighEnoughSecondHalf"));
+                + ConfigManager.getDouble(ConfigFileIdentifier.CONSTANTS, "minimumMinorGPA")
+                + ConfigManager.getString(ConfigFileIdentifier.TEXTS, "GPANotHighEnoughSecondHalf"));
         clientHandler.respond(response);
     }
 
@@ -153,6 +153,12 @@ public class ResponseHandler {
     public void currentlyMinoringAtTargetDepartment(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "currentlyMinoringAtTargetDepartment"));
+        clientHandler.respond(response);
+    }
+
+    public void cannotMinorAtTwoPlaces(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "cannotMinorAtTwoPlaces"));
         clientHandler.respond(response);
     }
 }

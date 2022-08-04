@@ -26,7 +26,7 @@ public class Server {
     public Server(int port) {
         this.port = port;
         activeClientHandlers = new ArrayList<>();
-        currentClientHandlerId = 0;
+        currentClientHandlerId = 0; // TODO: resetting this in config
         authTokenGenerator = new AuthTokenGenerator();
         databaseManager = new DatabaseManager();
         requestMapper = new RequestMapper(databaseManager);

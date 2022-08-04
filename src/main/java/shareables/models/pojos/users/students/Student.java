@@ -6,9 +6,6 @@ import shareables.models.pojos.abstractions.Transcript;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Student extends User {
     private static SequentialIdGenerator sequentialIdGenerator;
     static {
@@ -42,7 +39,7 @@ public class Student extends User {
     }
 
     public double fetchGPA() {
-        return transcript.fetchGPA();
+        return transcript.getGPA();
     }
 
     public String fetchGPAString() {

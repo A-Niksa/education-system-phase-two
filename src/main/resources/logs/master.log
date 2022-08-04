@@ -9751,3 +9751,430 @@
 2022/08/03 | 19:55:09 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
 2022/08/03 | 19:55:09 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
 2022/08/03 | 19:55:09 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 80202301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:06:32 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:06:45 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:06:46 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:06:49 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:06:49 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:06:59 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:07:39 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:07:40 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:07:43 - INFO - 2 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:07:44 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:08:27 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:08:34 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:08:35 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:08:38 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:08:38 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:09:15 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:15 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:15 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:09:15 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:15 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:17 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/04 | 11:09:23 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:23 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:09:23 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:23 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:23 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:27 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:09:27 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:09:30 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:09:36 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:18:51 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:18:51 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:18:53 - INFO - 2 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:18:53 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:19:04 - INFO - 2 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:19:10 - INFO - 2 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:19:10 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:19:13 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:19:54 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:20:38 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:20:39 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:20:40 - INFO - 3 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:20:40 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:20:47 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:20:47 - INFO - 3 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:20:47 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:20:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:20:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:20:52 - INFO - 3 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:20:52 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:21:17 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:05 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:22:14 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:22:15 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:22:21 - INFO - 4 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:22:21 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:22:28 - INFO - 0 - SERVER - Fetched identifiable (id: 19100101) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:28 - INFO - 0 - SERVER - Fetched identifiable (id: 19100101) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:29 - ERROR - 4 - CLIENT - Wrong username or password - alignComponents - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:22:34 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:34 - INFO - 4 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:22:34 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:34 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:34 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:39 - INFO - 4 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:22:39 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:22:41 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:22:42 - ERROR - 4 - CLIENT - GPA is not high enough (lower than 17.0) - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:22:44 - INFO - 4 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:22:46 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 80202301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:45 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:28:46 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:29:02 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:29:03 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:29:09 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:29:09 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:29:16 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:29:16 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:29:16 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:29:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:29:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:29:24 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:29:24 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:29:25 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:29:26 - ERROR - 1 - CLIENT - The target department is the same as the current department - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:29:29 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:29:29 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:30:04 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 80202301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:32:59 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:33:05 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:33:06 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:33:09 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:33:09 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:33:15 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:15 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:33:15 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:19 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:33:19 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:33:22 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:23 - ERROR - 1 - CLIENT - The target department is the same as the current department - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:33:25 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:25 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:25 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:25 - INFO - 0 - SERVER - Saved identifiable (id: 16596128050000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:33:25 - INFO - 1 - CLIENT - Submitted a request to minor at Economics - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:33:28 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:33:31 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:33:31 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:33:35 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:33:36 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/04 | 11:33:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:43 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:33:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:45 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:33:45 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:33:45 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:33:45 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:34:30 - INFO - 1 - CLIENT - Opened the recommendation letters subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$6
+2022/08/04 | 11:34:30 - INFO - 0 - SERVER - Fetched identifiables list from Recommendation Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:34:32 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:35:30 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 80202301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:33 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:36:40 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:36:41 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:36:44 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:36:44 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:36:50 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:36:50 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:36:50 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:36:50 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:36:50 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:36:53 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:36:53 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:36:56 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:36:56 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:36:56 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:36:56 - INFO - 0 - SERVER - Saved identifiable (id: 16596130160000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:36:56 - INFO - 1 - CLIENT - Submitted a request to minor at Physics - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:37:01 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:37:04 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:37:04 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:37:05 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:37:07 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:37:07 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:37:29 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:37:42 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:37:43 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:37:45 - INFO - 2 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:37:45 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:38:03 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:03 - INFO - 2 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:38:03 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:11 - INFO - 2 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:38:11 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:38:17 - INFO - 2 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:38:19 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 80202301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:28 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:38:40 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:38:41 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:38:46 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:38:46 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:38:53 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:53 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:38:53 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:55 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:38:55 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:38:58 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:58 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:58 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:38:58 - INFO - 0 - SERVER - Saved identifiable (id: 16596131380000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:38:58 - INFO - 1 - CLIENT - Submitted a request to minor at Physics - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:38:59 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:39:01 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:39:01 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:40:10 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 80202301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:18 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:40:24 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:40:25 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:40:29 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:40:29 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:40:32 - INFO - 2 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:40:33 - INFO - 0 - SERVER - Connection established with new client (id: 1 - awaitConnection - server.network.Server
+2022/08/04 | 11:40:38 - INFO - 3 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:40:38 - INFO - 0 - SERVER - Connection established with new client (id: 2 - awaitConnection - server.network.Server
+2022/08/04 | 11:40:45 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:40:45 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:40:45 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:40:46 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:40:46 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:40:48 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:40:48 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:40:49 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:40:49 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:40:49 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:40:49 - INFO - 0 - SERVER - Saved identifiable (id: 16596132490000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:40:49 - INFO - 1 - CLIENT - Submitted a request to minor at Physics - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:40:49 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:41:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:00 - INFO - 2 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:41:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:05 - INFO - 2 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:41:05 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:41:05 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:05 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:11 - INFO - 0 - SERVER - Fetched identifiable (id: 16596132490000) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:11 - INFO - 2 - CLIENT - Minor request (requesting student ID: 19101100) has been partially declined by the null (Department: Mathematics) - setDeclineListener - client.gui.menus.services.requests.management.MinorManager$2
+2022/08/04 | 11:41:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:22 - INFO - 3 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:41:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:26 - INFO - 3 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:41:27 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:41:27 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:27 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:27 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:28 - INFO - 0 - SERVER - Fetched identifiable (id: 16596132490000) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:28 - INFO - 3 - CLIENT - Minor request (requesting student ID: 19101100) has been partially accepted by the null (Department: Physics) - setAcceptListener - client.gui.menus.services.requests.management.MinorManager$1
+2022/08/04 | 11:41:31 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:41:33 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:41:33 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:41:37 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:37 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:37 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:37 - INFO - 0 - SERVER - Saved identifiable (id: 16596132970001) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:41:37 - INFO - 1 - CLIENT - Submitted a request to minor at Physics - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:41:37 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:41:40 - INFO - 2 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:41:44 - INFO - 2 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:41:44 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:41:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:44 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:41:44 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:42:04 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:42:52 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:42:53 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:42:54 - INFO - 4 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:42:54 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:42:59 - INFO - 5 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:43:00 - INFO - 0 - SERVER - Connection established with new client (id: 1 - awaitConnection - server.network.Server
+2022/08/04 | 11:43:08 - INFO - 6 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:43:09 - INFO - 0 - SERVER - Connection established with new client (id: 2 - awaitConnection - server.network.Server
+2022/08/04 | 11:43:16 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:16 - INFO - 4 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:43:16 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:18 - INFO - 4 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:43:18 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:43:19 - INFO - 4 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:43:25 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:25 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:25 - INFO - 5 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:43:25 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:25 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:28 - INFO - 5 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:43:28 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:43:28 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:28 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:28 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:32 - INFO - 0 - SERVER - Fetched identifiable (id: 16596132970001) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:32 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:32 - INFO - 5 - CLIENT - Minor request (requesting student ID: 19101100) has been partially accepted by the null (Department: Mathematics) - setAcceptListener - client.gui.menus.services.requests.management.MinorManager$1
+2022/08/04 | 11:43:32 - INFO - 5 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:43:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:42 - INFO - 6 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:43:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:46 - INFO - 4 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:43:46 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:43:50 - INFO - 4 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:43:53 - INFO - 6 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:43:53 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:43:53 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:53 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:53 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:53 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:43:55 - INFO - 6 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:44:03 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 18101302) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 80202301) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:44:11 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:46:00 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/04 | 11:46:00 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/04 | 11:46:01 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:46:02 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/04 | 11:46:04 - INFO - 2 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:46:05 - INFO - 0 - SERVER - Connection established with new client (id: 1 - awaitConnection - server.network.Server
+2022/08/04 | 11:46:11 - INFO - 3 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/04 | 11:46:11 - INFO - 0 - SERVER - Connection established with new client (id: 2 - awaitConnection - server.network.Server
+2022/08/04 | 11:46:21 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:21 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:46:21 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:21 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:21 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:28 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:46:28 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:46:30 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:30 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:30 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:30 - INFO - 0 - SERVER - Saved identifiable (id: 16596135900000) - save - server.database.management.DatabaseManager
+2022/08/04 | 11:46:30 - INFO - 1 - CLIENT - Submitted a request to minor at Physics - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:46:30 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:46:31 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:46:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:38 - INFO - 2 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:46:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:42 - INFO - 2 - CLIENT - Opened the recommendation letters subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$6
+2022/08/04 | 11:46:42 - INFO - 0 - SERVER - Fetched identifiables list from Recommendation Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:46:43 - INFO - 2 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:46:46 - INFO - 2 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:46:46 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:46:46 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:46 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:49 - INFO - 0 - SERVER - Fetched identifiable (id: 16596135900000) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:46:49 - INFO - 2 - CLIENT - Minor request (requesting student ID: 19101100) has been partially accepted by the null (Department: Mathematics) - setAcceptListener - client.gui.menus.services.requests.management.MinorManager$1
+2022/08/04 | 11:46:51 - INFO - 2 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:46:53 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:46:53 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:46:55 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:47:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:06 - ERROR - 3 - CLIENT - Wrong username or password - alignComponents - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:47:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:09 - INFO - 3 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/04 | 11:47:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80202301) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:11 - INFO - 3 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.ProfessorMenu$8
+2022/08/04 | 11:47:11 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:47:11 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:11 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:11 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:12 - INFO - 0 - SERVER - Fetched identifiable (id: 16596135900000) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:12 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:12 - INFO - 3 - CLIENT - Minor request (requesting student ID: 19101100) has been partially accepted by the null (Department: Physics) - setAcceptListener - client.gui.menus.services.requests.management.MinorManager$1
+2022/08/04 | 11:47:15 - INFO - 1 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/04 | 11:47:15 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/04 | 11:47:19 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:19 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:22 - ERROR - 1 - CLIENT - Has been previously minoring at the target department - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:47:24 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:24 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:24 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:47:32 - ERROR - 1 - CLIENT - Cannot request for another minor while studying towards a minor - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:48:42 - INFO - 3 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:48:49 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:48:49 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:48:49 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:48:51 - ERROR - 1 - CLIENT - Cannot request for another minor while currently studying towards a minor - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:48:53 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:48:53 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/04 | 11:48:57 - ERROR - 1 - CLIENT - Cannot request for a minor at the same department the student is minoring at - connectListeners - client.gui.menus.services.requests.submission.MinorSubmission$1
+2022/08/04 | 11:48:58 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/04 | 11:48:59 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/04 | 11:49:01 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager

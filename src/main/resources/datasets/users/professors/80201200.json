@@ -17,7 +17,7 @@
   "phoneNumber" : "09129730021",
   "emailAddress" : "khazayi@sharif.edu",
   "password" : "1234",
-  "lastLogin" : null,
+  "lastLogin" : "2022-08-04T11:46:38.0558134",
   "studentsUnderAdvice" : [ {
     "id" : "19101100",
     "departmentId" : "1",
@@ -37,14 +37,17 @@
     "phoneNumber" : "09192302103",
     "emailAddress" : "hamidi@sharif.edu",
     "password" : "1234",
-    "lastLogin" : "2022-08-03T19:55:09.0160523",
+    "lastLogin" : "2022-08-04T11:44:11.4277021",
     "advisingProfessorId" : "80201200",
     "transcript" : {
-      "courseIdScoreMap" : { }
+      "courseIdScoreMap" : { },
+      "GPA" : 20.0,
+      "gpa" : 20.0
     },
     "degreeLevel" : "UNDERGRADUATE",
     "studentStatus" : "CURRENTLY_STUDYING",
-    "yearOfEntry" : 2019
+    "yearOfEntry" : 2019,
+    "minorDepartmentId" : null
   } ],
   "officeNumber" : "105",
   "academicLevel" : "ASSOCIATE",

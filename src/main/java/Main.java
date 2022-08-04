@@ -1,8 +1,5 @@
 import server.database.datasets.DatasetIdentifier;
-import shareables.models.pojos.abstractions.Course;
-import shareables.models.pojos.abstractions.Department;
-import shareables.models.pojos.abstractions.DepartmentName;
-import shareables.models.pojos.abstractions.TermIdentifier;
+import shareables.models.pojos.abstractions.*;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
@@ -88,7 +85,21 @@ public class Main {
                 new DayTime(16, 30, 0));
         complexAnalysis.addToWeeklyClassTimes(firstWeekTime);
         complexAnalysis.addToWeeklyClassTimes(secondWeekTime);
+//        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(true, 20.0));
+        hamidi.getTranscript().setGPA(20.0);
         mathDepartment.addToCourses(complexAnalysis);
+
+        Department physicsDepartment = new Department(DepartmentName.PHYSICS);
+        Professor rahvar = new Professor(AcademicRole.DEPUTY, AcademicLevel.FULL, physicsDepartment.getId());
+        rahvar.setNationalId("015053903");
+        rahvar.setFirstName("Sohrab");
+        rahvar.setLastName("Rahvar");
+        rahvar.setPhoneNumber("09125730021");
+        rahvar.setEmailAddress("rahvar@sharif.edu");
+        rahvar.setOfficeNumber("205");
+        rahvar.setPassword("1234");
+        physicsDepartment.setDeputy(rahvar);
+        physicsDepartment.addToProfessors(rahvar);
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);
@@ -96,6 +107,8 @@ public class Main {
         manager.save(DatasetIdentifier.PROFESSORS, fanaei);
         manager.save(DatasetIdentifier.COURSES, complexAnalysis);
         manager.save(DatasetIdentifier.DEPARTMENTS, mathDepartment);
+        manager.save(DatasetIdentifier.PROFESSORS, rahvar);
+        manager.save(DatasetIdentifier.DEPARTMENTS, physicsDepartment);
         manager.saveDatabase();
     }
 }

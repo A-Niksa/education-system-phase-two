@@ -5,9 +5,11 @@ import java.util.Map;
 
 public class Transcript {
     private Map<String, Score> courseIdScoreMap; // includes failed courses as well
+    private double GPA;
 
     public Transcript() {
         courseIdScoreMap = new LinkedHashMap<>();
+        GPA = -1.0; // -1.0 is equivalent to N/A
     }
 
     public void put(String courseId, Score score) {
@@ -18,14 +20,17 @@ public class Transcript {
         courseIdScoreMap.entrySet().removeIf(e -> e.getKey().equals(courseId));
     }
 
-    public double fetchGPA() {
-        double GPA = -1.0; // -1.0 is equivalent to N/A
+    public double getGPA() {
         return GPA;
         // TODO: calculating GPA
     }
 
+    public void setGPA(double GPA) {
+        this.GPA = GPA;
+    }
+
     public String fetchGPAString() {
-        double GPA = fetchGPA();
+        double GPA = getGPA();
         return GPA == -1.0 ? "N/A" : String.valueOf(GPA);
     }
 

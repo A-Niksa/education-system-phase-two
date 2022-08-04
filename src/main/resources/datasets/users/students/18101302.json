@@ -20,9 +20,12 @@
   "lastLogin" : null,
   "advisingProfessorId" : "90201301",
   "transcript" : {
-    "courseIdScoreMap" : { }
+    "courseIdScoreMap" : { },
+    "GPA" : -1.0,
+    "gpa" : -1.0
   },
   "degreeLevel" : "PHD",
   "studentStatus" : "CURRENTLY_STUDYING",
-  "yearOfEntry" : 2018
+  "yearOfEntry" : 2018,
+  "minorDepartmentId" : null
 }

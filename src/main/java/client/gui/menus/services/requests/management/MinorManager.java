@@ -1,70 +1,76 @@
 package client.gui.menus.services.requests.management;
 
+import client.gui.MainFrame;
+import client.gui.menus.main.MainMenu;
+import client.locallogic.profile.DepartmentGetter;
+import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.MinorRequestDTO;
+import shareables.network.DTOs.RequestDTO;
+import shareables.network.responses.Response;
+import shareables.network.responses.ResponseStatus;
+import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MinorManager extends RequestManager {
-    public MinorManager(MainFrame mainFrame, MainMenu mainMenu, Professor operatingProfessor) {
-        super(mainFrame, mainMenu, operatingProfessor);
-        columns = new String[]{"Student ID", "Name and Surname", "GPA", "Origin Department",
-                "Target Department"};
+    public MinorManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
+        super(mainFrame, mainMenu, professor);
+        initializeColumns();
         drawInteractivePanel();
     }
 
     @Override
     protected void initializeColumns() {
-
+        columns = new String[5];
+        columns[0] = ConfigManager.getString(configIdentifier, "studentIdCol");
+        columns[1] = ConfigManager.getString(configIdentifier, "studentNameCol");
+        columns[2] = ConfigManager.getString(configIdentifier, "studentGPACol");
+        columns[3] = ConfigManager.getString(configIdentifier, "originDepartmentCol");
+        columns[4] = ConfigManager.getString(configIdentifier, "targetDepartmentCol");
     }
 
     @Override
     protected void setRequestsList() {
-        MinorsDB.ensureStatusesAreUpToDate();
-        requestsList = MinorsDB.getMinorRequestsOfDeputy(operatingProfessor);
+        Response response = clientController.getProfessorMinorRequestDTOs(professor.getId());
+        requestDTOs = (ArrayList<RequestDTO>) response.get("requestDTOs");
     }
 
     @Override
     protected void setRequestsTableData() {
-        data = new String[requestsList.size()][];
-        MinorRequest request;
-        Student requestingStudent;
-        for (int i = 0; i < requestsList.size(); i++) {
-            request = (MinorRequest) requestsList.get(i);
-            requestingStudent = request.getRequestingStudent();
-            data[i] = new String[]{requestingStudent.getStudentID(),
-                    requestingStudent.getFirstName() + " " + requestingStudent.getLastName(),
-                    requestingStudent.getTotalGPAString(),
-                    request.getOriginDepartmentName(),
-                    request.getTargetDepartmentName()};
+        data = new String[requestDTOs.size()][];
+        MinorRequestDTO minorRequestDTO;
+        for (int i = 0; i < requestDTOs.size(); i++) {
+            minorRequestDTO = (MinorRequestDTO) requestDTOs.get(i);
+            data[i] = new String[]{minorRequestDTO.getRequestingStudentId(),
+                    minorRequestDTO.getRequestingStudentName(),
+                    minorRequestDTO.getRequestingStudentGPAString(),
+                    DepartmentGetter.getDepartmentName(minorRequestDTO.getOriginDepartmentId()).toString(),
+                    DepartmentGetter.getDepartmentName(minorRequestDTO.getTargetDepartmentId()).toString()};
         }
     }
 
     @Override
-    protected void setApproveListener(int index) {
-        JButton approveButton = approveButtonsList.get(index);
+    protected void setAcceptListener(int index) {
+        JButton approveButton = acceptButtonsList.get(index);
         approveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MinorRequest request = (MinorRequest) requestsList.get(index);
-                Student requestingStudent = request.getRequestingStudent();
+                MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
+                Response response = clientController.acceptMinorRequest(minorRequestDTO.getId(), professor.getDepartmentId());
+                if (response.getResponseStatus() == ResponseStatus.OK) {
+                    DepartmentName departmentName = DepartmentGetter.getDepartmentName(professor.getDepartmentId());
+                    String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"
 
-                boolean deputyIsFromOriginDepartment = request.deputyIsFromOriginDepartment(operatingProfessor);
-
-                if (deputyIsFromOriginDepartment) {
-                    request.setOriginDepartmentResponded(true);
-                    request.setOriginDepartmentAccepted(true);
-                    MasterLogger.info("minor request (requesting student ID: " +
-                            requestingStudent.getStudentID() + ") has been partially accepted by the origin department "
-                            + "(Department: " + operatingProfessor.getDepartmentName() + ")", getClass());
-                } else { // deputy is from the target department by default
-                    request.setTargetDepartmentResponded(true);
-                    request.setTargetDepartmentAccepted(true);
-                    MasterLogger.info("minor request (requesting student ID: " +
-                            requestingStudent.getStudentID() + ") has been partially accepted by the target department "
-                            + "(Department: " + operatingProfessor.getDepartmentName() + ")", getClass());
+                    MasterLogger.clientInfo(clientController.getId(), "Minor request (requesting student ID: " +
+                            minorRequestDTO.getRequestingStudentId() + ") has been partially accepted by the " +
+                            departmentSide + " (Department: " + departmentName + ")", "setAcceptListener",
+                            getClass());
                 }
-
-                request.updateInDatabase();
             }
         });
     }
@@ -75,26 +81,17 @@ public class MinorManager extends RequestManager {
         declineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MinorRequest request = (MinorRequest) requestsList.get(index);
-                Student requestingStudent = request.getRequestingStudent();
+                MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
+                Response response = clientController.declineMinorRequest(minorRequestDTO.getId(), professor.getDepartmentId());
+                if (response.getResponseStatus() == ResponseStatus.OK) {
+                    DepartmentName departmentName = DepartmentGetter.getDepartmentName(professor.getDepartmentId());
+                    String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"
 
-                boolean deputyIsFromOriginDepartment = request.deputyIsFromOriginDepartment(operatingProfessor);
-
-                if (deputyIsFromOriginDepartment) {
-                    request.setOriginDepartmentResponded(true);
-                    request.setOriginDepartmentAccepted(false);
-                    MasterLogger.info("minor request (requesting student ID: " +
-                            requestingStudent.getStudentID() + ") has been partially declined by the origin department "
-                            + "(Department: " + operatingProfessor.getDepartmentName() + ")", getClass());
-                } else { // deputy is from the target department by default
-                    request.setTargetDepartmentResponded(true);
-                    request.setTargetDepartmentAccepted(false);
-                    MasterLogger.info("minor request (requesting student ID: " +
-                            requestingStudent.getStudentID() + ") has been partially declined by the target department "
-                            + "(Department: " + operatingProfessor.getDepartmentName() + ")", getClass());
+                    MasterLogger.clientInfo(clientController.getId(), "Minor request (requesting student ID: " +
+                                    minorRequestDTO.getRequestingStudentId() + ") has been partially declined by the " +
+                                    departmentSide + " (Department: " + departmentName + ")", "setDeclineListener",
+                            getClass());
                 }
-
-                request.updateInDatabase();
             }
         });
     }

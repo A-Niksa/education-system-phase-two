@@ -77,6 +77,15 @@ public class RequestMapper {
             case ASK_FOR_MINOR:
                 requestHandler.askForMinor(clientHandler, request);
                 break;
+            case GET_PROFESSOR_MINOR_REQUEST_DTOS:
+                requestHandler.getProfessorMinorRequestDTOs(clientHandler, request);
+                break;
+            case ACCEPT_MINOR_REQUEST:
+                requestHandler.acceptMinorRequest(clientHandler, request);
+                break;
+            case DECLINE_MINOR_REQUEST:
+                requestHandler.declineMinorRequest(clientHandler, request);
+                break;
             case CHANGE_COURSE_NAME:
                 requestHandler.changeCourseName(clientHandler, request);
                 break;

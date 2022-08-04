@@ -8,6 +8,7 @@ import client.gui.menus.profile.ProfessorProfile;
 import client.gui.menus.services.ProfessorExamsList;
 import client.gui.menus.services.ProfessorWeeklySchedule;
 import client.gui.menus.services.requests.management.DroppingOutManager;
+import client.gui.menus.services.requests.management.MinorManager;
 import client.gui.menus.services.requests.management.RecommendationManager;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
@@ -206,8 +207,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, professorUser));
+                mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, professor));
             }
         });
 
