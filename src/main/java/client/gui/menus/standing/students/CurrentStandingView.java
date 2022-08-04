@@ -1,4 +1,4 @@
-package client.gui.menus.standing;
+package client.gui.menus.standing.students;
 
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;

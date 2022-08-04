@@ -75,6 +75,7 @@ public class Main {
         complexAnalysis.addToTeachingProfessors(fanaei);
         complexAnalysis.addToStudents(hamidi);
         complexAnalysis.addToTAs(rezaei);
+//        complexAnalysis.addToTAs(rezaei);
         complexAnalysis.setNumberOfCredits(4);
 //        complexAnalysis.setActive(true);
         complexAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
@@ -85,8 +86,8 @@ public class Main {
                 new DayTime(16, 30, 0));
         complexAnalysis.addToWeeklyClassTimes(firstWeekTime);
         complexAnalysis.addToWeeklyClassTimes(secondWeekTime);
-        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(false, 20.0));
-        hamidi.getTranscript().setGPA(20.0);
+//        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(false, 20.0));
+//        hamidi.getTranscript().setGPA(20.0);
         // TODO: remembering to update the student gpa in test data package
         mathDepartment.addToCourses(complexAnalysis);
 
@@ -111,8 +112,9 @@ public class Main {
         analyticalMechanics.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
         analyticalMechanics.addToWeeklyClassTimes(firstWeekTime);
         analyticalMechanics.addToWeeklyClassTimes(secondWeekTime);
+        analyticalMechanics.addToStudents(rezaei);
         physicsDepartment.addToCourses(analyticalMechanics);
-        hamidi.getTranscript().put(analyticalMechanics.getId(), new Score(false, 19.0));
+//        hamidi.getTranscript().put(analyticalMechanics.getId(), new Score(false, 19.0));
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);

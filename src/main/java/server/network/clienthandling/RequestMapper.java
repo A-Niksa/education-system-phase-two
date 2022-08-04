@@ -131,6 +131,21 @@ public class RequestMapper {
             case SUBMIT_PROTEST:
                 requestHandler.submitProtest(clientHandler, request);
                 break;
+            case GET_PROFESSOR_ACTIVE_COURSE_NAMES:
+                requestHandler.getProfessorActiveCourseNames(clientHandler, request);
+                break;
+            case GET_COURSE_SCORE_DTOS_FOR_COURSE:
+                requestHandler.getCourseScoreDTOsForCourse(clientHandler, request);
+                break;
+            case RESPOND_TO_PROTEST:
+                requestHandler.respondToProtest(clientHandler, request);
+                break;
+            case SAVE_TEMPORARY_SCORES:
+                requestHandler.saveTemporaryScores(clientHandler, request);
+                break;
+            case FINALIZE_SCORES:
+                requestHandler.finalizeScores(clientHandler, request);
+                break;
         }
     }
 }

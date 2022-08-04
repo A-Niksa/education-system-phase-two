@@ -41,27 +41,12 @@
       "phoneNumber" : "09192302103",
       "emailAddress" : "hamidi@sharif.edu",
       "password" : "1234",
-      "lastLogin" : "2022-08-04T14:51:10.9447217",
+      "lastLogin" : "2022-08-04T19:16:54.9166046",
       "advisingProfessorId" : "80201200",
       "transcript" : {
-        "courseIdScoreMap" : {
-          "1000" : {
-            "score" : 20.0,
-            "isFinalized" : false,
-            "studentProtest" : null,
-            "professorResponse" : null,
-            "finalized" : false
-          },
-          "2002" : {
-            "score" : 19.0,
-            "isFinalized" : false,
-            "studentProtest" : null,
-            "professorResponse" : null,
-            "finalized" : false
-          }
-        },
-        "GPA" : 20.0,
-        "gpa" : 20.0
+        "courseIdScoreMap" : { },
+        "GPA" : -1.0,
+        "gpa" : -1.0
       },
       "degreeLevel" : "UNDERGRADUATE",
       "studentStatus" : "CURRENTLY_STUDYING",
@@ -146,27 +131,12 @@
     "phoneNumber" : "09192302103",
     "emailAddress" : "hamidi@sharif.edu",
     "password" : "1234",
-    "lastLogin" : "2022-08-04T14:51:10.9447217",
+    "lastLogin" : "2022-08-04T19:16:54.9166046",
     "advisingProfessorId" : "80201200",
     "transcript" : {
-      "courseIdScoreMap" : {
-        "1000" : {
-          "score" : 20.0,
-          "isFinalized" : false,
-          "studentProtest" : null,
-          "professorResponse" : null,
-          "finalized" : false
-        },
-        "2002" : {
-          "score" : 19.0,
-          "isFinalized" : false,
-          "studentProtest" : null,
-          "professorResponse" : null,
-          "finalized" : false
-        }
-      },
-      "GPA" : 20.0,
-      "gpa" : 20.0
+      "courseIdScoreMap" : { },
+      "GPA" : -1.0,
+      "gpa" : -1.0
     },
     "degreeLevel" : "UNDERGRADUATE",
     "studentStatus" : "CURRENTLY_STUDYING",

@@ -29,7 +29,6 @@ public class StandingViewUtils {
 
     private static int getNumberOfPassedCredits(DatabaseManager databaseManager, Map<String, Score> courseIdScoreMap) {
         double minimumPassingScore = ConfigManager.getDouble(ConfigFileIdentifier.CONSTANTS, "minimumPassingScore");
-        int numberOfPassedCredits = 0;
         return courseIdScoreMap.entrySet().stream()
                 .filter(e -> e.getValue().isFinalized())
                 .filter(e -> e.getValue().getScore() >= minimumPassingScore)
@@ -37,7 +36,7 @@ public class StandingViewUtils {
                 .sum();
     }
 
-    private static int getCourseNumberOfCredits(DatabaseManager databaseManager, String courseId) {
+    public static int getCourseNumberOfCredits(DatabaseManager databaseManager, String courseId) {
         Course course = IdentifiableFetchingUtils.getCourse(databaseManager, courseId);
         return course.getNumberOfCredits();
     }

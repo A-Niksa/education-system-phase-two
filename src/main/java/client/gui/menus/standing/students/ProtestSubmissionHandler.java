@@ -1,4 +1,4 @@
-package client.gui.menus.standing;
+package client.gui.menus.standing.students;
 
 
 import client.controller.ClientController;
@@ -12,7 +12,6 @@ import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

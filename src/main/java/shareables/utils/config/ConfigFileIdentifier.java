@@ -29,7 +29,8 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_RECOMMENDATION_SUBMISSION("guiRecommendationSubmissionPath"),
     GUI_MINOR_SUBMISSION("guiMinorSubmissionPath"),
     GUI_CURRENT_STANDING("guiCurrentStandingViewPath"),
-    GUI_TEMPORARY_STANDING_VIEW("guiTemporaryStandingViewPath");
+    GUI_TEMPORARY_STANDING_VIEW("guiTemporaryStandingViewPath"),
+    GUI_TEMPORARY_STANDING_MANAGER("guiTemporaryStandingManagerPath");
 
 
     private String configKeyString;

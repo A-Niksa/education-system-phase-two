@@ -7,6 +7,9 @@ public class CourseScoreDTO {
     private double score;
     private String studentProtest;
     private String professorResponse;
+    private String studentId;
+    private String studentName;
+    private boolean isFinalized; // refers to the state of the course and whether it has been finalized
 
     public CourseScoreDTO() {
     }
@@ -57,5 +60,29 @@ public class CourseScoreDTO {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public boolean isFinalized() {
+        return isFinalized;
+    }
+
+    public void setFinalized(boolean finalized) {
+        isFinalized = finalized;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 }

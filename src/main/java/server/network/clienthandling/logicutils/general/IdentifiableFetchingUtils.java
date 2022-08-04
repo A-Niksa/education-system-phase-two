@@ -24,7 +24,7 @@ public class IdentifiableFetchingUtils {
         return getDepartment(databaseManager, departmentId).getDeputy();
     }
 
-    private static Department getDepartment(DatabaseManager databaseManager, String departmentId) {
+    public static Department getDepartment(DatabaseManager databaseManager, String departmentId) {
         return (Department) databaseManager.get(DatasetIdentifier.DEPARTMENTS, departmentId);
     }
 

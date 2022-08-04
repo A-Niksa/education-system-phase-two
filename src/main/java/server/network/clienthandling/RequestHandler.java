@@ -5,6 +5,7 @@ import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUti
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.services.*;
+import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.User;
@@ -19,6 +20,7 @@ import shareables.network.requests.Request;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class RequestHandler { // TODO: logging, perhaps?
     private DatabaseManager databaseManager;
@@ -309,5 +311,46 @@ public class RequestHandler { // TODO: logging, perhaps?
         String protest = (String) request.get("protest");
         StandingViewUtils.submitProtest(databaseManager, protestingStudentId, courseId, protest);
         responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void getProfessorActiveCourseNames(ClientHandler clientHandler, Request request) {
+        String[] professorActiveCourseNames = StandingManagementUtils.getProfessorActiveCourseNames(databaseManager,
+                (String) request.get("username"));
+        responseHandler.courseNamesAcquired(clientHandler, professorActiveCourseNames);
+    }
+
+    public void getCourseScoreDTOsForCourse(ClientHandler clientHandler, Request request) {
+        String departmentId = (String) request.get("departmentId");
+        String courseName = (String) request.get("courseName");
+        List<CourseScoreDTO> courseScoreDTOsForCourse = StandingManagementUtils.getCourseScoreDTOsForCourse(databaseManager,
+                departmentId, courseName);
+        responseHandler.courseScoreDTOsAcquired(clientHandler, courseScoreDTOsForCourse);
+    }
+
+    public void respondToProtest(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String protestingStudentId = (String) request.get("studentId");
+        String responseToProtest = (String) request.get("protestResponse");
+        StandingManagementUtils.respondToProtest(databaseManager, courseId, protestingStudentId, responseToProtest);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void saveTemporaryScores(ClientHandler clientHandler, Request request) {
+        String departmentId = (String) request.get("departmentId");
+        String courseName = (String) request.get("courseName");
+        Map<String, Double> temporaryScoresMap = (Map<String, Double>) request.get("temporaryScoresMap");
+        StandingManagementUtils.saveTemporaryScores(databaseManager, departmentId, courseName, temporaryScoresMap);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void finalizeScores(ClientHandler clientHandler, Request request) {
+        String departmentId = (String) request.get("departmentId");
+        String courseName = (String) request.get("courseName");
+        if (!StandingManagementUtils.allStudentsHaveBeenTemporaryScores(databaseManager, departmentId, courseName)) {
+            responseHandler.notAllStudentsHaveBeenGivenTemporaryScores(clientHandler);
+        } else {
+            StandingManagementUtils.finalizeScores(databaseManager, departmentId, courseName);
+            responseHandler.requestSuccessful(clientHandler);
+        }
     }
 }

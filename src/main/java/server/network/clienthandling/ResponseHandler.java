@@ -171,4 +171,16 @@ public class ResponseHandler {
         response.put("courseScoreDTOs", courseScoreDTOs);
         clientHandler.respond(response);
     }
+
+    public void courseNamesAcquired(ClientHandler clientHandler, String[] courseNames) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("courseNames", courseNames);
+        clientHandler.respond(response);
+    }
+
+    public void notAllStudentsHaveBeenGivenTemporaryScores(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "notAllStudentsHaveBeenGivenTemporaryScores"));
+        clientHandler.respond(response);
+    }
 }

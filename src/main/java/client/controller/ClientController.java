@@ -8,6 +8,7 @@ import shareables.network.requests.RequestIdentifier;
 import shareables.network.responses.Response;
 
 import java.util.Date;
+import java.util.HashMap;
 
 public class ClientController {
     private Client client;
@@ -260,6 +261,40 @@ public class ClientController {
         Request request = requestGenerator.generateRequest(RequestIdentifier.SUBMIT_PROTEST,
                 new StringObjectMap("courseId", courseId), new StringObjectMap("username", protestingStudentId),
                 new StringObjectMap("protest", protest));
+        return client.sendAndListen(request);
+    }
+
+    public Response getProfessorActiveCourseNames(String professorId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_ACTIVE_COURSE_NAMES,
+                new StringObjectMap("username", professorId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getCourseScoreDTOsForCourse(String departmentId, String courseName) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_COURSE_SCORE_DTOS_FOR_COURSE,
+                new StringObjectMap("departmentId", departmentId), new StringObjectMap("courseName", courseName));
+        return client.sendAndListen(request);
+    }
+
+    public Response respondToProtest(String courseId, String studentId, String protestResponse) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.RESPOND_TO_PROTEST,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId),
+                new StringObjectMap("protestResponse", protestResponse));
+        return client.sendAndListen(request);
+    }
+
+    public Response saveTemporaryScores(String departmentId, String courseName,
+                                        HashMap<String, Double> studentIdTemporaryScoreMap) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SAVE_TEMPORARY_SCORES,
+                new StringObjectMap("departmentId", departmentId), new StringObjectMap("courseName", courseName),
+                new StringObjectMap("temporaryScoresMap", studentIdTemporaryScoreMap));
+        return client.sendAndListen(request);
+    }
+
+    public Response finalizeScores(String departmentId, String courseName) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.FINALIZE_SCORES,
+                new StringObjectMap("departmentId", departmentId),
+                new StringObjectMap("courseName", courseName));
         return client.sendAndListen(request);
     }
 }
