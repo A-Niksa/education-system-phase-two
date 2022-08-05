@@ -1,0 +1,42 @@
+{
+  "id" : "2003",
+  "departmentId" : "2",
+  "courseName" : "Analytical Mechanics",
+  "teachingProfessorIds" : [ "80202302" ],
+  "teachingAssistantIds" : [ "18101302" ],
+  "studentIds" : [ "19101100", "18101302" ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SUNDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "TUESDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-21T09:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 3,
+  "isActive" : true,
+  "degreeLevel" : "UNDERGRADUATE",
+  "active" : true
+}

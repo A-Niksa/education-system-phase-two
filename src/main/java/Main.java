@@ -69,6 +69,7 @@ public class Main {
         rezaei.setEmailAddress("rezaei@sharif.edu");
         rezaei.setAdvisingProfessorId(fanaei.getId());
         rezaei.setPassword("5678");
+        mathDepartment.addToStudentIds(rezaei.getId());
         Course complexAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2));
         complexAnalysis.setCourseName("Complex Analysis");
         complexAnalysis.addToTeachingProfessorIds(khazayi.getId());
@@ -88,8 +89,19 @@ public class Main {
         complexAnalysis.addToWeeklyClassTimes(secondWeekTime);
 //        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(false, 20.0));
 //        hamidi.getTranscript().setGPA(20.0);
-        // TODO: remembering to update the student gpa in test data package
+        // TODO: being careful not to add a student twice to a course in course picking stuff
         mathDepartment.addToCourseIDs(complexAnalysis.getId());
+        Course realAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2));
+        realAnalysis.setCourseName("Real Analysis");
+        realAnalysis.addToTeachingProfessorIds(fanaei.getId());
+        realAnalysis.addToStudentIds(hamidi.getId());
+        realAnalysis.addToTeachingAssistantIds(rezaei.getId());
+        realAnalysis.setNumberOfCredits(3);
+        realAnalysis.setDegreeLevel(DegreeLevel.GRADUATE);
+        realAnalysis.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
+        realAnalysis.addToWeeklyClassTimes(firstWeekTime);
+        realAnalysis.addToWeeklyClassTimes(secondWeekTime);
+        mathDepartment.addToCourseIDs(realAnalysis.getId());
 
         Department physicsDepartment = new Department(DepartmentName.PHYSICS);
         Professor rahvar = new Professor(AcademicRole.DEPUTY, AcademicLevel.FULL, physicsDepartment.getId());
@@ -121,6 +133,7 @@ public class Main {
         manager.save(DatasetIdentifier.PROFESSORS, khazayi);
         manager.save(DatasetIdentifier.PROFESSORS, fanaei);
         manager.save(DatasetIdentifier.COURSES, complexAnalysis);
+        manager.save(DatasetIdentifier.COURSES, realAnalysis);
         manager.save(DatasetIdentifier.COURSES, analyticalMechanics);
         manager.save(DatasetIdentifier.DEPARTMENTS, mathDepartment);
         manager.save(DatasetIdentifier.PROFESSORS, rahvar);

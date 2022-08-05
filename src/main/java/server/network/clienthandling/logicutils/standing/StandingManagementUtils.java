@@ -56,6 +56,7 @@ public class StandingManagementUtils {
                     courseScoreDTO.setStudentId(e.getId());
                     courseScoreDTO.setStudentName(e.fetchName());
                     courseScoreDTO.setCourseId(course.getId());
+                    courseScoreDTO.setCourseName(course.getCourseName());
                     Score studentScoreInCourse = getStudentScoreInCourse(e, course.getId());
                     if (studentScoreInCourse != null) {
                         courseScoreDTO.setFinalized(studentScoreInCourse.isFinalized());
@@ -103,7 +104,7 @@ public class StandingManagementUtils {
                 });
     }
 
-    private static Course getCourse(DatabaseManager databaseManager, String departmentId, String courseName) {
+    public static Course getCourse(DatabaseManager databaseManager, String departmentId, String courseName) {
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
         List<String> departmentCourseIds = department.getCourseIds();
         return departmentCourseIds.stream()

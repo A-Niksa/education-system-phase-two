@@ -73,7 +73,7 @@ public class StudentProfile extends PanelTemplate {
                 + student.fetchGPAString());
         labelsList.add(totalGPA);
         department = new JLabel(ConfigManager.getString(configIdentifier, "departmentMessage")
-                + DepartmentGetter.getDepartmentName(student.getDepartmentId()));
+                + DepartmentGetter.getDepartmentNameById(student.getDepartmentId()));
         labelsList.add(department);
         advisingProfessor = new JLabel(ConfigManager.getString(configIdentifier, "advisingProfessorMessage")
                 + UserGetter.getAdvisingProfessorName(student, clientController));

@@ -183,4 +183,16 @@ public class ResponseHandler {
                 "notAllStudentsHaveBeenGivenTemporaryScores"));
         clientHandler.respond(response);
     }
+
+    public void courseStatsDTOAcquired(ClientHandler clientHandler, CourseStatsDTO courseStatsDTO) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("courseStatsDTO", courseStatsDTO);
+        clientHandler.respond(response);
+    }
+
+    public void notAllStudentScoresHaveBeenFinalized(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "notAllStudentScoresHaveBeenFinalized"));
+        clientHandler.respond(response);
+    }
 }

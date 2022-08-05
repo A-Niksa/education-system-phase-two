@@ -61,8 +61,8 @@ public class MinorSubmission extends PanelTemplate {
         for (int i = 0; i < studentMinorRequestDTOs.size(); i++) {
             minorRequestDTO = studentMinorRequestDTOs.get(i);
 
-            data[i] = new String[]{DepartmentGetter.getDepartmentName(minorRequestDTO.getOriginDepartmentId()).toString(),
-                    DepartmentGetter.getDepartmentName(minorRequestDTO.getTargetDepartmentId()).toString(),
+            data[i] = new String[]{DepartmentGetter.getDepartmentNameById(minorRequestDTO.getOriginDepartmentId()).toString(),
+                    DepartmentGetter.getDepartmentNameById(minorRequestDTO.getTargetDepartmentId()).toString(),
                     minorRequestDTO.getAcademicRequestStatus().toString()};
         }
     }

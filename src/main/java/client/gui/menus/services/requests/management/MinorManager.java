@@ -49,8 +49,8 @@ public class MinorManager extends RequestManager {
             data[i] = new String[]{minorRequestDTO.getRequestingStudentId(),
                     minorRequestDTO.getRequestingStudentName(),
                     minorRequestDTO.getRequestingStudentGPAString(),
-                    DepartmentGetter.getDepartmentName(minorRequestDTO.getOriginDepartmentId()).toString(),
-                    DepartmentGetter.getDepartmentName(minorRequestDTO.getTargetDepartmentId()).toString()};
+                    DepartmentGetter.getDepartmentNameById(minorRequestDTO.getOriginDepartmentId()).toString(),
+                    DepartmentGetter.getDepartmentNameById(minorRequestDTO.getTargetDepartmentId()).toString()};
         }
     }
 
@@ -63,7 +63,7 @@ public class MinorManager extends RequestManager {
                 MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
                 Response response = clientController.acceptMinorRequest(minorRequestDTO.getId(), professor.getDepartmentId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
-                    DepartmentName departmentName = DepartmentGetter.getDepartmentName(professor.getDepartmentId());
+                    DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(professor.getDepartmentId());
                     String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"
 
                     MasterLogger.clientInfo(clientController.getId(), "Minor request (requesting student ID: " +
@@ -84,7 +84,7 @@ public class MinorManager extends RequestManager {
                 MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
                 Response response = clientController.declineMinorRequest(minorRequestDTO.getId(), professor.getDepartmentId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
-                    DepartmentName departmentName = DepartmentGetter.getDepartmentName(professor.getDepartmentId());
+                    DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(professor.getDepartmentId());
                     String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"
 
                     MasterLogger.clientInfo(clientController.getId(), "Minor request (requesting student ID: " +

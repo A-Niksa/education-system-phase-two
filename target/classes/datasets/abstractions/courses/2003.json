@@ -1,8 +1,8 @@
 {
-  "id" : "2002",
+  "id" : "2003",
   "departmentId" : "2",
   "courseName" : "Analytical Mechanics",
-  "teachingProfessorIds" : [ "80202301" ],
+  "teachingProfessorIds" : [ "80202302" ],
   "teachingAssistantIds" : [ "18101302" ],
   "studentIds" : [ "19101100", "18101302" ],
   "weeklyClassTimes" : [ {

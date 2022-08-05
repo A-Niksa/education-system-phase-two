@@ -161,6 +161,9 @@ public class RequestMapper {
             case GET_DEPARTMENT_STUDENT_IDS:
                 requestHandler.getDepartmentStudentIds(clientHandler, request);
                 break;
+            case GET_COURSE_STATS_DTO:
+                requestHandler.getCourseStatsDTO(clientHandler, request);
+                break;
         }
     }
 }

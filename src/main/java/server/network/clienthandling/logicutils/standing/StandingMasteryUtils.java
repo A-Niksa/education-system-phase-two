@@ -6,14 +6,20 @@ import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtil
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
+import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.abstractions.Score;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.CourseStatsDTO;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StandingMasteryUtils {
     public static List<CourseScoreDTO> getCourseScoreDTOsForProfessor(DatabaseManager databaseManager, String departmentId,
@@ -32,7 +38,7 @@ public class StandingMasteryUtils {
         List<String> departmentProfessorIds = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId)
                 .getProfessorIds();
         return departmentProfessorIds.stream()
-                .map(e -> IdentifiableFetchingUtils.getProfessor(databaseManager, professorName))
+                .map(e -> IdentifiableFetchingUtils.getProfessor(databaseManager, e))
                 .filter(prof -> prof.fetchName().equals(professorName))
                 .map(User::getId)
                 .findAny().orElse(null);
@@ -60,6 +66,7 @@ public class StandingMasteryUtils {
                 .forEach(e -> {
                     Course course = IdentifiableFetchingUtils.getCourse(databaseManager, e.getKey());
                     CourseScoreDTO courseScoreDTO = initializeCourseScoreDTO(course, e.getValue());
+                    courseScoreDTO.setStudentName(student.fetchName());
                     courseScoreDTOs.add(courseScoreDTO);
                 });
         return courseScoreDTOs;
@@ -98,5 +105,102 @@ public class StandingMasteryUtils {
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
         return department.getStudentIds()
                 .toArray(new String[0]);
+    }
+
+    public static CourseStatsDTO getCourseStatsDTO(DatabaseManager databaseManager, Course course) {
+        int numberOfPassingStudents = getNumberOfPassingStudents(databaseManager, course);
+        int numberOfFailingStudents = getNumberOfFailingStudents(numberOfPassingStudents, course);
+        double courseAverageScore = getCourseAverageScore(databaseManager, course);
+        double courseAverageWithoutFailingStudents = getCourseAverageScoreWithoutFailingStudents(databaseManager, course,
+                numberOfPassingStudents);
+        CourseStatsDTO courseStatsDTO = new CourseStatsDTO();
+        courseStatsDTO.setNumberOfPassingStudents(numberOfPassingStudents);
+        courseStatsDTO.setNumberOfFailingStudents(numberOfFailingStudents);
+        courseStatsDTO.setCourseAverageScore(courseAverageScore);
+        courseStatsDTO.setCourseAverageScoreWithoutFailingStudents(courseAverageWithoutFailingStudents);
+        return courseStatsDTO;
+    }
+
+    public static Course getCourse(DatabaseManager databaseManager, String courseName, DepartmentName departmentName) {
+        String departmentId = getDepartmentId(departmentName);
+        return StandingManagementUtils.getCourse(databaseManager, departmentId, courseName);
+    }
+
+    private static double getCourseAverageScoreWithoutFailingStudents(DatabaseManager databaseManager, Course course,
+                                                                      int numberOfPassingStudents) {
+        double averageWithoutFails = -1.0;
+        double minimumPassingScore = ConfigManager.getDouble(ConfigFileIdentifier.CONSTANTS, "minimumPassingScore");
+        double totalSumOfScoresWithoutFails = getCourseScoresStream(databaseManager, course)
+                .mapToDouble(Score::getScore)
+                .filter(score -> score >= minimumPassingScore)
+                .sum();
+        if (numberOfPassingStudents != 0) {
+            averageWithoutFails = totalSumOfScoresWithoutFails / numberOfPassingStudents;
+        }
+        return averageWithoutFails;
+    }
+
+    private static double getCourseAverageScore(DatabaseManager databaseManager, Course course) {
+        double average = -1.0;
+        int numberOfStudents = course.getStudentIds().size();
+        double totalSumOfScores = getCourseScoresStream(databaseManager, course)
+                .mapToDouble(Score::getScore)
+                .sum();
+        if (numberOfStudents != 0) {
+            average = totalSumOfScores / numberOfStudents;
+        }
+        return average;
+    }
+
+    private static int getNumberOfFailingStudents(int numberOfPassingStudents, Course course) {
+        return course.getStudentIds().size() - numberOfPassingStudents;
+    }
+
+    private static int getNumberOfPassingStudents(DatabaseManager databaseManager, Course course) {
+        double minimumPassingScore = ConfigManager.getDouble(ConfigFileIdentifier.CONSTANTS, "minimumPassingScore");
+        return (int) getCourseScoresStream(databaseManager, course)
+                .filter(e -> e.getScore() >= minimumPassingScore)
+                .count();
+    }
+
+    private static Stream<Score> getCourseScoresStream(DatabaseManager databaseManager, Course course) {
+        return course.getStudentIds().stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
+                .map(Student::getTranscript)
+                .flatMap(transcript -> transcript.getCourseIdScoreMap().entrySet().stream())
+                .filter(entry -> entry.getKey().equals(course.getId()))
+                .map(Map.Entry::getValue);
+    }
+
+    private static String getDepartmentId(DepartmentName departmentName) {
+        String departmentId;
+        switch (departmentName) {
+            case MATHEMATICS:
+                departmentId = "1";
+                break;
+            case PHYSICS:
+                departmentId = "2";
+                break;
+            case ECONOMICS:
+                departmentId = "3";
+                break;
+            case CHEMISTRY:
+                departmentId = "4";
+                break;
+            case AEROSPACE_ENGINEERING:
+                departmentId = "5";
+                break;
+            default:
+                departmentId = null; // added for explicitness
+        }
+        return departmentId;
+    }
+
+    public static boolean allStudentScoresHaveBeenFinalized(DatabaseManager databaseManager, Course course) {
+        int numberOfCourseStudents = course.getStudentIds().size();
+        int numberOfCourseStudentsWithFinalizedScores = (int) getCourseScoresStream(databaseManager, course)
+                .filter(Score::isFinalized)
+                .count();
+        return numberOfCourseStudents == numberOfCourseStudentsWithFinalizedScores;
     }
 }

@@ -66,7 +66,7 @@ public class ProfessorProfile extends PanelTemplate {
                 + professor.getEmailAddress());
         labelsList.add(emailAddress);
         department = new JLabel(ConfigManager.getString(configIdentifier, "departmentMessage")
-                + DepartmentGetter.getDepartmentName(professor.getDepartmentId()));
+                + DepartmentGetter.getDepartmentNameById(professor.getDepartmentId()));
         labelsList.add(department);
         officeNumber = new JLabel(ConfigManager.getString(configIdentifier, "officeNumberMessage") +
                 professor.getOfficeNumber());

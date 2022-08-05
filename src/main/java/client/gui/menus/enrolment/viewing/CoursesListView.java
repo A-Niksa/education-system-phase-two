@@ -67,7 +67,7 @@ public class CoursesListView extends PanelTemplate {
         DepartmentName departmentName;
         for (int i = 0; i < courseDTOs.size(); i++) {
             courseDTO = courseDTOs.get(i);
-            departmentName = DepartmentGetter.getDepartmentName(courseDTO.getDepartmentId());
+            departmentName = DepartmentGetter.getDepartmentNameById(courseDTO.getDepartmentId());
             data[i] = new String[]{courseDTO.getId(),
                     courseDTO.getCourseName(),
                     departmentName.toString(),

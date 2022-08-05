@@ -1,6 +1,7 @@
 package client.controller;
 
 import client.network.Client;
+import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.requests.Request;
@@ -325,6 +326,13 @@ public class ClientController {
     public Response getDepartmentCourseNames(String departmentId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_COURSE_NAMES,
                 new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getCourseStatsDTO(String courseName, DepartmentName departmentName) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_COURSE_STATS_DTO,
+                new StringObjectMap("courseName", courseName),
+                new StringObjectMap("departmentName", departmentName));
         return client.sendAndListen(request);
     }
 }

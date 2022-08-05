@@ -9,6 +9,7 @@ import server.network.clienthandling.logicutils.standing.StandingManagementUtils
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.Course;
+import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.students.DegreeLevel;
@@ -387,5 +388,17 @@ public class RequestHandler { // TODO: logging, perhaps?
         String[] departmentStudentIds = StandingMasteryUtils.getDepartmentStudentIds(databaseManager,
                 (String) request.get("departmentId"));
         responseHandler.stringArrayAcquired(clientHandler, departmentStudentIds);
+    }
+
+    public void getCourseStatsDTO(ClientHandler clientHandler, Request request) {
+        String courseName = (String) request.get("courseName");
+        DepartmentName departmentName = (DepartmentName) request.get("departmentName");
+        Course course = StandingMasteryUtils.getCourse(databaseManager, courseName, departmentName);
+        if (!StandingMasteryUtils.allStudentScoresHaveBeenFinalized(databaseManager, course)) {
+            responseHandler.notAllStudentScoresHaveBeenFinalized(clientHandler);
+        } else {
+            CourseStatsDTO courseStatsDTO = StandingMasteryUtils.getCourseStatsDTO(databaseManager, course);
+            responseHandler.courseStatsDTOAcquired(clientHandler, courseStatsDTO);
+        }
     }
 }

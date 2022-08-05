@@ -1,12 +1,15 @@
 package client.gui.menus.standing.deputies;
 
+import client.controller.ClientController;
 import client.gui.MainFrame;
-import gui.MainFrame;
-import logic.menus.standing.CourseStatsMaster;
-import logic.models.abstractions.Course;
-import utils.database.data.CoursesDB;
-import utils.logging.LogIdentifier;
-import utils.logging.MasterLogger;
+import client.gui.utils.ErrorUtils;
+import client.gui.utils.StatsViewHelper;
+import client.locallogic.profile.DepartmentGetter;
+import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.network.DTOs.CourseStatsDTO;
+import shareables.network.responses.Response;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,41 +19,34 @@ public class StatsViewHandler implements ActionListener {
     private MainFrame mainFrame;
     private TemporaryStandingMaster temporaryStandingMaster;
     private String courseName;
-    private String departmentName;
+    private String departmentNameString;
+    private ClientController clientController;
+    private ConfigFileIdentifier configIdentifier;
 
     public StatsViewHandler(MainFrame mainFrame, TemporaryStandingMaster temporaryStandingMaster, String courseName,
-                            String departmentName) {
+                            String departmentNameString, ClientController clientController,
+                            ConfigFileIdentifier configIdentifier) {
         this.mainFrame = mainFrame;
         this.temporaryStandingMaster = temporaryStandingMaster;
         this.courseName = courseName;
-        this.departmentName = departmentName;
+        this.departmentNameString = departmentNameString;
+        this.clientController = clientController;
+        this.configIdentifier = configIdentifier;
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        Course course = CoursesDB.getCourseWithName(courseName, departmentName);
-
-        if (!CourseStatsMaster.allScoresAreFinalized(course)) {
-            MasterLogger.log("cannot open course stats; the course scores have not been finalized",
-                    LogIdentifier.ERROR, "actionPerformed", "gui.standing.StatsViewHandler");
-            JOptionPane.showMessageDialog(mainFrame, "You cannot open the course statistics. The score of " +
-                    "this course have not been finalized.");
-            return;
+        DepartmentName departmentName = DepartmentGetter.getDepartmentNameByString(departmentNameString);
+        Response response = clientController.getCourseStatsDTO(courseName, departmentName);
+        if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+            MasterLogger.clientInfo(clientController.getId(), response.getErrorMessage(), "actionPerformed",
+                    getClass());
+        } else {
+            CourseStatsDTO courseStatsDTO = (CourseStatsDTO) response.get("courseStatsDTO");
+            String dialogMessage = StatsViewHelper.getStatsDialogMessage(configIdentifier, courseStatsDTO);
+            JOptionPane.showMessageDialog(mainFrame, dialogMessage);
+            MasterLogger.clientInfo(clientController.getId(), "Opened stats of " + courseName,
+                    "actionPerformed", getClass());
         }
-
-        int numberOfPassingStudents = CourseStatsMaster.getNumberOfPassingStudents(course);
-        int numberOfFailingStudents = CourseStatsMaster.getNumberOfFailingStudents(course);
-        String coursesAverageScore = CourseStatsMaster.getCoursesAverageScore(course);
-        String coursesAverageScoreWithoutFailingStudent =
-                CourseStatsMaster.getCoursesAverageScoreWithoutFailingStudents(course);
-
-        String optionPanelDialogMessage = "Number of Passing Students: " + numberOfPassingStudents + "\n" +
-                "Number of Failing Students: " + numberOfFailingStudents + "\n" +
-                "Average Score of Course: " + coursesAverageScore + "\n" +
-                "Average Score (Without Failing Students): " + coursesAverageScoreWithoutFailingStudent;
-
-        JOptionPane.showMessageDialog(mainFrame, optionPanelDialogMessage);
-        MasterLogger.log("deputy opened stats of " + courseName, LogIdentifier.INFO,
-                "actionPerformed", "gui.standing.StatsViewHandler");
     }
 }

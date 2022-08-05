@@ -52,7 +52,7 @@ public class TemporaryStandingMaster extends PanelTemplate {
     public TemporaryStandingMaster(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
         super(mainFrame, mainMenu);
         this.professor = professor;
-        departmentNameString = DepartmentGetter.getDepartmentName(professor.getDepartmentId()).toString();
+        departmentNameString = DepartmentGetter.getDepartmentNameById(professor.getDepartmentId()).toString();
         configIdentifier = ConfigFileIdentifier.GUI_TEMPORARY_STANDING_MASTER;
         drawPanel();
     }
@@ -87,6 +87,7 @@ public class TemporaryStandingMaster extends PanelTemplate {
             columns[3] = ConfigManager.getString(configIdentifier, "teachingProfessorResponseCol");
             columns[4] = ConfigManager.getString(configIdentifier, "finalizedCol");
         } else { // PROFESSOR_VIEW or STUDENT_VIEW by design
+            columns = new String[6];
             columns[0] = ConfigManager.getString(configIdentifier, "subjectCol");
             columns[1] = ConfigManager.getString(configIdentifier, "nameCol");
             columns[2] = ConfigManager.getString(configIdentifier, "currentScoreCol");
@@ -168,7 +169,7 @@ public class TemporaryStandingMaster extends PanelTemplate {
                     ConfigManager.getInt(configIdentifier, "statsButtonW"),
                     ConfigManager.getInt(configIdentifier, "statsButtonH"));
             statsButton.addActionListener(new StatsViewHandler(mainFrame, this, selectedCourseName,
-                    departmentNameString));
+                    departmentNameString, clientController, configIdentifier));
             add(statsButton);
         } else if (statsButton != null) {
             remove(statsButton);
@@ -202,7 +203,7 @@ public class TemporaryStandingMaster extends PanelTemplate {
 
     private void updateDepartmentCourseNames() {
         Response response = clientController.getDepartmentCourseNames(professor.getDepartmentId());
-        professorsNames = (String[]) response.get("stringArray");
+        coursesNames = (String[]) response.get("stringArray");
     }
 
     @Override
