@@ -44,6 +44,9 @@ public class RequestMapper {
             case GET_DEPARTMENT_COURSE_DTOS:
                 requestHandler.getDepartmentCourseDTOs(clientHandler, request);
                 break;
+            case GET_DEPARTMENT_PROFESSOR_DTOS:
+                requestHandler.getDepartmentProfessorDTOs(clientHandler, request);
+                break;
             case GET_PROFESSOR_DTOS:
                 requestHandler.getProfessorDTOs(clientHandler, request);
                 break;

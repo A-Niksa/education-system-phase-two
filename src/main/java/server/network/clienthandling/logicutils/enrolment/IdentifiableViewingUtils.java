@@ -44,8 +44,22 @@ public class IdentifiableViewingUtils {
 
     public static List<ProfessorDTO> getProfessorDTOs(DatabaseManager databaseManager) {
         List<Identifiable> professors = databaseManager.getIdentifiables(DatasetIdentifier.PROFESSORS);
+        List<ProfessorDTO> professorDTOs = getProfessorDTOsByPredicate(databaseManager, professors, e -> true);
+        return professorDTOs;
+    }
+
+    public static List<ProfessorDTO> getDepartmentProfessorDTOs(DatabaseManager databaseManager, String departmentId) {
+        List<Identifiable> professors = databaseManager.getIdentifiables(DatasetIdentifier.PROFESSORS);
+        Predicate<Identifiable> predicate = e -> ((Professor) e).getDepartmentId().equals(departmentId);
+        List<ProfessorDTO> professorDTOs = getProfessorDTOsByPredicate(databaseManager, professors, predicate);
+        return professorDTOs;
+    }
+
+    public static List<ProfessorDTO> getProfessorDTOsByPredicate(DatabaseManager databaseManager, List<Identifiable> professors,
+                                                           Predicate<Identifiable> predicate) {
         List<ProfessorDTO> professorDTOs = new ArrayList<>();
         professors.parallelStream()
+                .filter(predicate)
                 .forEach(e -> {
                     Professor professor = (Professor) e;
                     ProfessorDTO professorDTO = initializeProfessorDTO(professor);
@@ -61,6 +75,7 @@ public class IdentifiableViewingUtils {
         professorDTO.setEmailAddress(professor.getEmailAddress());
         professorDTO.setOfficeNumber(professor.getOfficeNumber());
         professorDTO.setAcademicLevel(professor.getAcademicLevel());
+        professorDTO.setAcademicRole(professor.getAcademicRole());
         return professorDTO;
     }
 }

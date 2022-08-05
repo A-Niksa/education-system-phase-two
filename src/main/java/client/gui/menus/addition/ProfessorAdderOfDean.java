@@ -12,11 +12,11 @@ import java.awt.event.ActionListener;
 
 public class ProfessorAdderOfDean extends ProfessorAdder {
     private JButton goBackButton;
-    private int clientHandlerId;
+    private int clientControllerId;
 
-    public ProfessorAdderOfDean(MainFrame mainFrame, MainMenu mainMenu, Professor professor, int clientHandlerId) {
+    public ProfessorAdderOfDean(MainFrame mainFrame, MainMenu mainMenu, Professor professor, int clientControllerId) {
         super(mainFrame, mainMenu, professor);
-        this.clientHandlerId = clientHandlerId;
+        this.clientControllerId = clientControllerId;
         initializeAndAlignBackButton();
         add(goBackButton);
         connectBackListener();
@@ -34,7 +34,7 @@ public class ProfessorAdderOfDean extends ProfessorAdder {
         goBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientHandlerId, "Went back to professors list editor",
+                MasterLogger.clientInfo(clientControllerId, "Went back to professors list editor",
                         "connectBackListener", getClass());
                 // TODO
                 // mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor));

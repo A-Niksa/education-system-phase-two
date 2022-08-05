@@ -1,6 +1,7 @@
 package shareables.network.DTOs;
 
 import shareables.models.pojos.users.professors.AcademicLevel;
+import shareables.models.pojos.users.professors.AcademicRole;
 
 public class ProfessorDTO {
     private String id;
@@ -8,6 +9,7 @@ public class ProfessorDTO {
     private String emailAddress;
     private String officeNumber;
     private AcademicLevel academicLevel;
+    private AcademicRole academicRole;
 
     public ProfessorDTO() {
     }
@@ -50,5 +52,13 @@ public class ProfessorDTO {
 
     public void setAcademicLevel(AcademicLevel academicLevel) {
         this.academicLevel = academicLevel;
+    }
+
+    public AcademicRole getAcademicRole() {
+        return academicRole;
+    }
+
+    public void setAcademicRole(AcademicRole academicRole) {
+        this.academicRole = academicRole;
     }
 }

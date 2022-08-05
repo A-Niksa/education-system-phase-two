@@ -75,6 +75,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getDepartmentProfessorDTOs(String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_PROFESSOR_DTOS,
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
     public Response askForDorm() {
         Request request = requestGenerator.generateRequest(RequestIdentifier.ASK_FOR_DORM);
         return client.sendAndListen(request);

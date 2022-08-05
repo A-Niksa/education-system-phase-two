@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class IdentifiableEditingUtils {
+public class CourseEditingUtils {
     public static Course getCourse(DatabaseManager databaseManager, String courseId) {
         return (Course) databaseManager.get(DatasetIdentifier.COURSES, courseId);
     }

@@ -31,13 +31,15 @@ public class CoursesListEditor extends PanelTemplate {
         super(mainFrame, mainMenu);
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_LIST_EDITOR;
-        initializeDepartmentCourseDTOs();
+        updateDepartmentCourseDTOs();
         initializeColumns();
         setTableData();
         drawPanel();
     }
 
-    private void initializeDepartmentCourseDTOs() {
+    private void updateDepartmentCourseDTOs() {
+        // duplicating request to avoid receiving lossy data:
+        clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
         Response response = clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
         departmentCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
     }
