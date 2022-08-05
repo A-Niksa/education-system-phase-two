@@ -129,6 +129,13 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
+    public void studentAdded(ClientHandler clientHandler, String studentId) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "addedStudentFirstHalf") + studentId +
+                ConfigManager.getString(ConfigFileIdentifier.TEXTS, "addedStudentSecondHalf"));
+        clientHandler.respond(response);
+    }
+
     public void dateIsSoonerThanNow(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "dateIsSoonerThanNow"));
         clientHandler.respond(response);

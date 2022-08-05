@@ -110,6 +110,9 @@ public class RequestMapper {
             case ADD_PROFESSOR:
                 requestHandler.addProfessor(clientHandler, request);
                 break;
+            case ADD_STUDENT:
+                requestHandler.addStudent(clientHandler, request);
+                break;
             case GET_DEPARTMENT_DROPPING_OUT_REQUEST_DTOS:
                 requestHandler.getDepartmentDroppingOutRequestDTOs(clientHandler, request);
                 break;

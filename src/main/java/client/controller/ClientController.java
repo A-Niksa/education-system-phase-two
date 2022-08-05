@@ -163,8 +163,9 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
-    public int getId() { // same as the id of the client
-        return client.getId();
+    public Response addStudent(Blueprint blueprint) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_STUDENT, blueprint.getFields());
+        return client.sendAndListen(request);
     }
 
     public Response getDepartmentDroppingOutRequestDTOs(String departmentId) {
@@ -363,5 +364,9 @@ public class ClientController {
                 new StringObjectMap("courseName", courseName),
                 new StringObjectMap("departmentName", departmentName));
         return client.sendAndListen(request);
+    }
+
+    public int getId() { // same as the id of the client
+        return client.getId();
     }
 }

@@ -4,6 +4,7 @@ import client.locallogic.general.EnumStringMapper;
 import shareables.models.pojos.abstractions.TermIdentifier;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.students.DegreeLevel;
+import shareables.models.pojos.users.students.StudentStatus;
 import shareables.network.blueprints.Blueprint;
 import shareables.utils.timing.timekeeping.WeekTime;
 
@@ -54,6 +55,28 @@ public class BlueprintGenerator {
         blueprint.put("officeNumber", officeNumber);
         blueprint.put("adviseeStudentIds", adviseeStudentIds);
         blueprint.put("academicLevel", academicLevel);
+        blueprint.put("departmentId", departmentId);
+        return blueprint;
+    }
+
+    public static Blueprint generateStudentBlueprint(String password, String nationalId, String firstName, String lastName,
+                                                     String phoneNumber, String emailAddress, int yearOfEntry,
+                                                     String studentStatusString, String degreeLevelString,
+                                                     String advisingProfessorName, String departmentId) {
+        StudentStatus studentStatus = StudentBlueprintHelper.getStudentStatus(studentStatusString);
+        DegreeLevel degreeLevel = EnumStringMapper.getDegreeLevel(degreeLevelString);
+
+        Blueprint blueprint = new Blueprint();
+        blueprint.put("password", password);
+        blueprint.put("nationalId", nationalId);
+        blueprint.put("firstName", firstName);
+        blueprint.put("lastName", lastName);
+        blueprint.put("phoneNumber", phoneNumber);
+        blueprint.put("emailAddress", emailAddress);
+        blueprint.put("yearOfEntry", yearOfEntry);
+        blueprint.put("studentStatus", studentStatus);
+        blueprint.put("degreeLevel", degreeLevel);
+        blueprint.put("advisingProfessorName", advisingProfessorName);
         blueprint.put("departmentId", departmentId);
         return blueprint;
     }

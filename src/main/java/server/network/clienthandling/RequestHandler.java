@@ -2,6 +2,7 @@ package server.network.clienthandling;
 
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
+import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
@@ -211,6 +212,11 @@ public class RequestHandler { // TODO: logging, perhaps?
             String professorId = ProfessorAdditionUtils.addProfessorAndReturnId(databaseManager, request);
             responseHandler.professorAdded(clientHandler, professorId);
         }
+    }
+
+    public void addStudent(ClientHandler clientHandler, Request request) {
+        String studentId = StudentAdditionUtils.addStudentAndReturnId(databaseManager, request);
+        responseHandler.studentAdded(clientHandler, studentId);
     }
 
     public void getDepartmentDroppingOutRequestDTOs(ClientHandler clientHandler, Request request) {
