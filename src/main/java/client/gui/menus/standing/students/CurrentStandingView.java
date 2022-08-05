@@ -37,12 +37,12 @@ public class CurrentStandingView extends PanelTemplate {
     }
 
     private void updateTranscriptDTO() {
-        Response response = clientController.getStudentTranscriptDTO(student.getId());
+        Response response = clientController.getStudentTranscriptDTOWithId(student.getId());
         transcriptDTO = (TranscriptDTO) response.get("transcriptDTO");
     }
 
     private void updateCourseScoreDTOs() {
-        Response response = clientController.getStudentCourseScoreDTOs(student.getId());
+        Response response = clientController.getStudentCourseScoreDTOsWithId(student.getId());
         courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
     }
 
@@ -64,8 +64,10 @@ public class CurrentStandingView extends PanelTemplate {
 
     @Override
     protected void initializeComponents() {
-        totalGPA = new JLabel("GPA: " + transcriptDTO.getGPAString());
-        numberOfPassedCredits = new JLabel("Number of Passed Credits: " + transcriptDTO.getNumberOfPassedCredits());
+        totalGPA = new JLabel(ConfigManager.getString(configIdentifier, "totalGPA")
+                + transcriptDTO.getGPAString());
+        numberOfPassedCredits = new JLabel(ConfigManager.getString(configIdentifier, "numberOfPassedCredits")
+                + transcriptDTO.getNumberOfPassedCredits());
         transcriptTable = new JTable(data, columns);
     }
 

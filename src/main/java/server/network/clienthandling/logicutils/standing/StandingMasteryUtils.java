@@ -107,6 +107,14 @@ public class StandingMasteryUtils {
                 .toArray(new String[0]);
     }
 
+    public static String[] getDepartmentStudentNames(DatabaseManager databaseManager, String departmentId) {
+        Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
+        return department.getStudentIds().stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
+                .map(User::fetchName)
+                .toArray(String[]::new);
+    }
+
     public static CourseStatsDTO getCourseStatsDTO(DatabaseManager databaseManager, Course course) {
         int numberOfPassingStudents = getNumberOfPassingStudents(databaseManager, course);
         int numberOfFailingStudents = getNumberOfFailingStudents(numberOfPassingStudents, course);

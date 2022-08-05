@@ -10,6 +10,7 @@ import client.gui.menus.services.ProfessorWeeklySchedule;
 import client.gui.menus.services.requests.management.DroppingOutManager;
 import client.gui.menus.services.requests.management.MinorManager;
 import client.gui.menus.services.requests.management.RecommendationManager;
+import client.gui.menus.standing.deputies.CurrentStandingMaster;
 import client.gui.menus.standing.deputies.TemporaryStandingMaster;
 import client.gui.menus.standing.professors.TemporaryStandingManager;
 import shareables.models.pojos.users.professors.AcademicRole;
@@ -240,8 +241,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened current student standings in academic standing",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new CurrentStandingMaster(mainFrame, mainMenu, professorUser));
+                mainFrame.setCurrentPanel(new CurrentStandingMaster(mainFrame, mainMenu, professor));
             }
         });
 

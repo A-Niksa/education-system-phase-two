@@ -119,11 +119,17 @@ public class RequestMapper {
             case DECLINE_RECOMMENDATION_REQUEST:
                 requestHandler.declineRecommendationRequest(clientHandler, request);
                 break;
-            case GET_STUDENT_TRANSCRIPT_DTO:
-                requestHandler.getStudentTranscriptDTO(clientHandler, request);
+            case GET_STUDENT_TRANSCRIPT_DTO_WITH_ID:
+                requestHandler.getStudentTranscriptDTOWithId(clientHandler, request);
                 break;
-            case GET_STUDENT_COURSE_SCORE_DTOS:
-                requestHandler.getStudentCourseScoreDTOs(clientHandler, request);
+            case GET_STUDENT_TRANSCRIPT_DTO_WITH_NAME:
+                requestHandler.getStudentTranscriptDTOWithName(clientHandler, request);
+                break;
+            case GET_STUDENT_COURSE_SCORE_DTOS_WITH_ID:
+                requestHandler.getStudentCourseScoreDTOsWithId(clientHandler, request);
+                break;
+            case GET_STUDENT_COURSE_SCORE_DTOS_WITH_NAME:
+                requestHandler.getStudentCourseScoreDTOsWithName(clientHandler, request);
                 break;
             case GET_STUDENT_TEMPORARY_COURSE_SCORE_DTOS:
                 requestHandler.getStudentTemporaryCourseScoreDTOs(clientHandler, request);
@@ -160,6 +166,9 @@ public class RequestMapper {
                 break;
             case GET_DEPARTMENT_STUDENT_IDS:
                 requestHandler.getDepartmentStudentIds(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_STUDENT_NAMES:
+                requestHandler.getDepartmentStudentNames(clientHandler, request);
                 break;
             case GET_COURSE_STATS_DTO:
                 requestHandler.getCourseStatsDTO(clientHandler, request);

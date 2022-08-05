@@ -240,15 +240,27 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
-    public Response getStudentTranscriptDTO(String studentId) {
-        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_TRANSCRIPT_DTO,
+    public Response getStudentTranscriptDTOWithId(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_TRANSCRIPT_DTO_WITH_ID,
                 new StringObjectMap("username", studentId));
         return client.sendAndListen(request);
     }
 
-    public Response getStudentCourseScoreDTOs(String studentId) {
-        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSE_SCORE_DTOS,
+    public Response getStudentTranscriptDTOWithName(String departmentId, String studentName) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_TRANSCRIPT_DTO_WITH_NAME,
+                new StringObjectMap("departmentId", departmentId), new StringObjectMap("studentName", studentName));
+        return client.sendAndListen(request);
+    }
+
+    public Response getStudentCourseScoreDTOsWithId(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSE_SCORE_DTOS_WITH_ID,
                 new StringObjectMap("username", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getStudentCourseScoreDTOsWithName(String departmentId, String studentName) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSE_SCORE_DTOS_WITH_NAME,
+                new StringObjectMap("departmentId", departmentId), new StringObjectMap("studentName", studentName));
         return client.sendAndListen(request);
     }
 
@@ -313,6 +325,12 @@ public class ClientController {
 
     public Response getDepartmentStudentIds(String departmentId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_STUDENT_IDS,
+                new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDepartmentStudentNames(String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_STUDENT_NAMES,
                 new StringObjectMap("departmentId", departmentId));
         return client.sendAndListen(request);
     }

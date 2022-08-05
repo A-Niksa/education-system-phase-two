@@ -20,6 +20,7 @@ import shareables.network.DTOs.*;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -289,15 +290,27 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler.requestSuccessful(clientHandler);
     }
 
-    public void getStudentTranscriptDTO(ClientHandler clientHandler, Request request) {
-        TranscriptDTO studentTranscriptDTO = StandingViewUtils.getStudentTranscriptDTO(databaseManager,
+    public void getStudentTranscriptDTOWithId(ClientHandler clientHandler, Request request) {
+        TranscriptDTO studentTranscriptDTO = StandingViewUtils.getStudentTranscriptDTOWithId(databaseManager,
                 (String) request.get("username"));
         responseHandler.transcriptDTOAcquired(clientHandler, studentTranscriptDTO);
     }
 
-    public void getStudentCourseScoreDTOs(ClientHandler clientHandler, Request request) {
-        List<CourseScoreDTO> studentCourseScoreDTOs = StandingViewUtils.getStudentCourseScoreDTOs(databaseManager,
+    public void getStudentTranscriptDTOWithName(ClientHandler clientHandler, Request request) {
+        TranscriptDTO studentTranscriptDTO = StandingViewUtils.getStudentTranscriptDTOWithName(databaseManager,
+                (String) request.get("departmentId"), (String) request.get("studentName"));
+        responseHandler.transcriptDTOAcquired(clientHandler, studentTranscriptDTO);
+    }
+
+    public void getStudentCourseScoreDTOsWithId(ClientHandler clientHandler, Request request) {
+        List<CourseScoreDTO> studentCourseScoreDTOs = StandingViewUtils.getStudentCourseScoreDTOsWithId(databaseManager,
                 (String) request.get("username"));
+        responseHandler.courseScoreDTOsAcquired(clientHandler, studentCourseScoreDTOs);
+    }
+
+    public void getStudentCourseScoreDTOsWithName(ClientHandler clientHandler, Request request) {
+        List<CourseScoreDTO> studentCourseScoreDTOs = StandingViewUtils.getStudentCourseScoreDTOsWithName(databaseManager,
+                (String) request.get("departmentId"), (String) request.get("studentName"));
         responseHandler.courseScoreDTOsAcquired(clientHandler, studentCourseScoreDTOs);
     }
 
@@ -388,6 +401,12 @@ public class RequestHandler { // TODO: logging, perhaps?
         String[] departmentStudentIds = StandingMasteryUtils.getDepartmentStudentIds(databaseManager,
                 (String) request.get("departmentId"));
         responseHandler.stringArrayAcquired(clientHandler, departmentStudentIds);
+    }
+
+    public void getDepartmentStudentNames(ClientHandler clientHandler, Request request) {
+        String[] departmentStudentNames = StandingMasteryUtils.getDepartmentStudentNames(databaseManager,
+                (String) request.get("departmentId"));
+        responseHandler.stringArrayAcquired(clientHandler, departmentStudentNames);
     }
 
     public void getCourseStatsDTO(ClientHandler clientHandler, Request request) {

@@ -1,9 +1,9 @@
 package server.network.clienthandling.logicutils.standing;
 
 import server.database.management.DatabaseManager;
-import server.network.clienthandling.ClientHandler;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Course;
+import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.abstractions.Score;
 import shareables.models.pojos.abstractions.Transcript;
 import shareables.models.pojos.users.students.Student;
@@ -17,14 +17,33 @@ import java.util.List;
 import java.util.Map;
 
 public class StandingViewUtils {
-    public static TranscriptDTO getStudentTranscriptDTO(DatabaseManager databaseManager, String studentId) {
+    public static TranscriptDTO getStudentTranscriptDTOWithId(DatabaseManager databaseManager, String studentId) {
         Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
+        return initializeTranscriptDTO(databaseManager, student);
+    }
+
+    public static TranscriptDTO getStudentTranscriptDTOWithName(DatabaseManager databaseManager, String departmentId,
+                                                                String studentName) {
+        Student student = getStudent(databaseManager, departmentId, studentName);
+        return initializeTranscriptDTO(databaseManager, student);
+    }
+
+    private static TranscriptDTO initializeTranscriptDTO(DatabaseManager databaseManager, Student student) {
         Transcript transcript = student.getTranscript();
         TranscriptDTO transcriptDTO = new TranscriptDTO();
         int numberOfPassedCredits = getNumberOfPassedCredits(databaseManager, transcript.getCourseIdScoreMap());
         transcriptDTO.setNumberOfPassedCredits(numberOfPassedCredits);
         transcriptDTO.setGPAString(transcript.fetchGPAString());
         return transcriptDTO;
+    }
+
+    private static Student getStudent(DatabaseManager databaseManager, String departmentId,
+                                      String studentName) {
+        Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
+        return department.getStudentIds().stream()
+                .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
+                .filter(student -> student.fetchName().equals(studentName))
+                .findAny().orElse(null);
     }
 
     private static int getNumberOfPassedCredits(DatabaseManager databaseManager, Map<String, Score> courseIdScoreMap) {
@@ -41,10 +60,22 @@ public class StandingViewUtils {
         return course.getNumberOfCredits();
     }
 
-    public static List<CourseScoreDTO> getStudentCourseScoreDTOs(DatabaseManager databaseManager, String studentId) {
+    public static List<CourseScoreDTO> getStudentCourseScoreDTOsWithId(DatabaseManager databaseManager, String studentId) {
         Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
+        return getStudentCourseScoreDTOs(databaseManager, student);
+    }
+
+    public static List<CourseScoreDTO> getStudentCourseScoreDTOsWithName(DatabaseManager databaseManager, String departmentId,
+                                                                         String studentName) {
+        Student student = getStudent(databaseManager, departmentId, studentName);
+        return getStudentCourseScoreDTOs(databaseManager, student);
+    }
+
+    private static List<CourseScoreDTO> getStudentCourseScoreDTOs(DatabaseManager databaseManager, Student student) {
         Map<String, Score> courseIdScoreMap = student.getTranscript().getCourseIdScoreMap();
         List<CourseScoreDTO> courseScoreDTOs = new ArrayList<>();
+        String studentId = student.getId();
+        String studentName = student.fetchName();
         courseIdScoreMap.entrySet()
                 .forEach(e -> {
                     Course course = IdentifiableFetchingUtils.getCourse(databaseManager, e.getKey());
@@ -52,6 +83,8 @@ public class StandingViewUtils {
                     courseScoreDTO.setCourseId(course.getId());
                     courseScoreDTO.setCourseName(course.getCourseName());
                     courseScoreDTO.setScoreString(e.getValue().fetchScoreString());
+                    courseScoreDTO.setStudentId(studentId);
+                    courseScoreDTO.setStudentName(studentName);
                     courseScoreDTOs.add(courseScoreDTO);
                 });
         return courseScoreDTOs;

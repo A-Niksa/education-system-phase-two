@@ -28,15 +28,15 @@ public class TemporaryStandingMaster extends PanelTemplate {
 
     private Professor professor;
     private String departmentNameString;
-    private String[] coursesNames;
+    private String[] courseNames;
     private JComboBox<String> coursesBox;
     private String selectedCourseName;
     private JButton viewCourse;
-    private String[] professorsNames;
+    private String[] professorNames;
     private JComboBox<String> professorsBox;
     private String selectedProfessorName;
     private JButton viewProfessor;
-    private String[] studentsIds;
+    private String[] studentIds;
     private JComboBox<String> studentsBox;
     private String selectedStudentId;
     private JButton viewStudent;
@@ -179,31 +179,31 @@ public class TemporaryStandingMaster extends PanelTemplate {
     @Override
     protected void initializeComponents() {
         updateDepartmentCourseNames();
-        coursesBox = new JComboBox<>(coursesNames);
+        coursesBox = new JComboBox<>(courseNames);
         viewCourse = new JButton(ConfigManager.getString(configIdentifier, "viewCourseM"));
 
         updateDepartmentProfessorNames();
-        professorsBox = new JComboBox<>(professorsNames);
+        professorsBox = new JComboBox<>(professorNames);
         viewProfessor = new JButton(ConfigManager.getString(configIdentifier, "viewProfessorM"));
 
         updateDepartmentStudentIds();
-        studentsBox = new JComboBox<>(studentsIds);
+        studentsBox = new JComboBox<>(studentIds);
         viewStudent = new JButton(ConfigManager.getString(configIdentifier, "viewStudentM"));
     }
 
     private void updateDepartmentStudentIds() {
         Response response = clientController.getDepartmentStudentIds(professor.getDepartmentId());
-        studentsIds = (String[]) response.get("stringArray");
+        studentIds = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentProfessorNames() {
         Response response = clientController.getDepartmentProfessorNames(professor.getDepartmentId());
-        professorsNames = (String[]) response.get("stringArray");
+        professorNames = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentCourseNames() {
         Response response = clientController.getDepartmentCourseNames(professor.getDepartmentId());
-        coursesNames = (String[]) response.get("stringArray");
+        courseNames = (String[]) response.get("stringArray");
     }
 
     @Override

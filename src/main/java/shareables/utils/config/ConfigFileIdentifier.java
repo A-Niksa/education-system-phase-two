@@ -31,7 +31,8 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_CURRENT_STANDING("guiCurrentStandingViewPath"),
     GUI_TEMPORARY_STANDING_VIEW("guiTemporaryStandingViewPath"),
     GUI_TEMPORARY_STANDING_MANAGER("guiTemporaryStandingManagerPath"),
-    GUI_TEMPORARY_STANDING_MASTER("guiTemporaryStandingMasterPath");
+    GUI_TEMPORARY_STANDING_MASTER("guiTemporaryStandingMasterPath"),
+    GUI_CURRENT_STANDING_MASTER("guiCurrentStandingMasterPath");
 
     private String configKeyString;
 

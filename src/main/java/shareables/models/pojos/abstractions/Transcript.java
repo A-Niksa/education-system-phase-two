@@ -31,7 +31,7 @@ public class Transcript {
 
     public String fetchGPAString() {
         double GPA = getGPA();
-        return GPA == -1.0 ? "N/A" : String.valueOf(GPA);
+        return GPA == -1.0 ? "N/A" : String.format("%.2f", GPA);
     }
 
     public Map<String, Score> getCourseIdScoreMap() {

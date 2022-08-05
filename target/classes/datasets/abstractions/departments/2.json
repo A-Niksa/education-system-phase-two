@@ -1,9 +1,9 @@
 {
   "id" : "2",
-  "courseIds" : [ "2002" ],
-  "professorIds" : [ "80202301" ],
+  "courseIds" : [ "2003" ],
+  "professorIds" : [ "80202302" ],
   "studentIds" : [ ],
   "deanId" : null,
-  "deputyId" : "80202301",
+  "deputyId" : "80202302",
   "departmentName" : "PHYSICS"
 }

@@ -12371,3 +12371,368 @@
 2022/08/05 | 11:52:40 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
 2022/08/05 | 11:52:49 - INFO - 3 - CLIENT - Opened stats of Real Analysis - actionPerformed - client.gui.menus.standing.deputies.StatsViewHandler
 2022/08/05 | 11:52:59 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:02:29 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:02:29 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:02:44 - INFO - 4 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:02:44 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:02:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:02:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:02:51 - INFO - 4 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:02:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:02:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:02:53 - INFO - 4 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:02:53 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:02:53 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:02:55 - INFO - 0 - SERVER - Fetched identifiable (id: null) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:02:55 - INFO - 0 - SERVER - Fetched identifiable (id: null) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:05:18 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:05:26 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:05:26 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:05:29 - INFO - 5 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:05:30 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:05:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:05:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:05:35 - INFO - 5 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:05:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:05:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:05:37 - INFO - 5 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:05:37 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:05:37 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:05:58 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:06:06 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:06:07 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:06:08 - INFO - 6 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:06:09 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:06:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:16 - INFO - 6 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:06:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:18 - INFO - 6 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:06:18 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:18 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:18 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:18 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:19 - INFO - 0 - SERVER - Fetched identifiable (id: null) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:19 - INFO - 0 - SERVER - Fetched identifiable (id: null) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:06:40 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:07:41 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:07:41 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:07:42 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:07:48 - INFO - 7 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:07:56 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:07:56 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:07:57 - INFO - 8 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:07:58 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:08:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:04 - INFO - 8 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:08:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:06 - INFO - 8 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:08:06 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:06 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:06 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:06 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:24 - INFO - 0 - SERVER - Fetched identifiable (id: null) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:24 - INFO - 0 - SERVER - Fetched identifiable (id: null) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:08:55 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:09:02 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:09:03 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:09:05 - INFO - 9 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:09:05 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:09:12 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:12 - INFO - 9 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:09:12 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:12 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:12 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:32 - INFO - 9 - CLIENT - Opened the minor requests subsection in academic requests - connectListeners - client.gui.menus.main.StudentMenu$11
+2022/08/05 | 13:09:32 - INFO - 0 - SERVER - Fetched identifiables list from Minor Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/05 | 13:09:34 - INFO - 9 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/05 | 13:09:36 - INFO - 9 - CLIENT - Opened current standing in academic standing - connectListeners - client.gui.menus.main.StudentMenu$5
+2022/08/05 | 13:09:36 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:36 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:36 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:36 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:36 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:37 - INFO - 9 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/05 | 13:09:41 - INFO - 9 - CLIENT - Opened current standing in academic standing - connectListeners - client.gui.menus.main.StudentMenu$5
+2022/08/05 | 13:09:41 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:41 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:41 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:41 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:09:41 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:01 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:12:08 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:12:08 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:12:09 - INFO - 10 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:12:10 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:12:15 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:15 - INFO - 10 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:12:15 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:18 - INFO - 10 - CLIENT - Opened current standing in academic standing - connectListeners - client.gui.menus.main.StudentMenu$5
+2022/08/05 | 13:12:18 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:18 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:18 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:18 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:18 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:20 - INFO - 10 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/05 | 13:12:20 - INFO - 10 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/05 | 13:12:29 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:29 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:29 - INFO - 10 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:12:29 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:29 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:30 - INFO - 10 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:12:30 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:30 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:30 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:30 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:31 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:31 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:31 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:31 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:31 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:31 - INFO - 10 - CLIENT - Opened the transcript of student (ID: 19101100) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$2
+2022/08/05 | 13:12:34 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:34 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:12:34 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:01 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:14:08 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:14:09 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:14:10 - INFO - 11 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:14:10 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:14:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:19 - INFO - 11 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:14:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:21 - INFO - 11 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:14:21 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:21 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:21 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:21 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:22 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:22 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:22 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:22 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:22 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:22 - INFO - 11 - CLIENT - Opened the transcript of student (ID: 19101100) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$2
+2022/08/05 | 13:14:24 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:24 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:24 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:24 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:14:38 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:14:47 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:14:48 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:15:07 - INFO - 12 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:15:08 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:15:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:13 - INFO - 12 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:15:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:14 - INFO - 12 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:15:14 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:14 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:14 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:14 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:20 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:48 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:15:57 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:16:21 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:16:21 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:16:48 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:16:48 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:16:49 - INFO - 13 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:16:50 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:17:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:00 - INFO - 13 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:17:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:00 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:02 - INFO - 13 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:17:02 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:02 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:02 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:02 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:03 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:03 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:03 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:28 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:17:34 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:17:35 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:17:39 - INFO - 14 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:17:39 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:17:46 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:46 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:46 - INFO - 14 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:17:46 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:46 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:47 - INFO - 14 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:17:47 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:47 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:47 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:47 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:17:48 - INFO - 14 - CLIENT - Opened the transcript of student (name: Aref Hamidi) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$3
+2022/08/05 | 13:18:32 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:18:39 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/05 | 13:18:39 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/05 | 13:18:43 - INFO - 15 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/05 | 13:18:43 - INFO - 0 - SERVER - Connection established with new client (id: 0 - awaitConnection - server.network.Server
+2022/08/05 | 13:18:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:49 - INFO - 15 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:18:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:50 - INFO - 15 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:18:50 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:50 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:50 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:50 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:51 - INFO - 15 - CLIENT - Opened the transcript of student (name: Aref Hamidi) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$3
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:56 - INFO - 15 - CLIENT - Opened the transcript of student (name: Arash Rezaei) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$3
+2022/08/05 | 13:18:59 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:59 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:59 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:59 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:18:59 - INFO - 15 - CLIENT - Opened the transcript of student (ID: 18101302) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$2
+2022/08/05 | 13:19:01 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:01 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:01 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:01 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:01 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:01 - INFO - 15 - CLIENT - Opened the transcript of student (ID: 19101100) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$2
+2022/08/05 | 13:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:04 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:04 - INFO - 15 - CLIENT - Opened the transcript of student (ID: 18101302) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$2
+2022/08/05 | 13:19:09 - INFO - 15 - CLIENT - Viewed the total GPA of the selected student - setSeeGPAButton - client.gui.menus.standing.deputies.CurrentStandingMaster$1
+2022/08/05 | 13:19:11 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:11 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:11 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:11 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:11 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:11 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:11 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:11 - INFO - 15 - CLIENT - Opened the transcript of student (name: Aref Hamidi) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$3
+2022/08/05 | 13:19:16 - INFO - 15 - CLIENT - Viewed the total GPA of the selected student - setSeeGPAButton - client.gui.menus.standing.deputies.CurrentStandingMaster$1
+2022/08/05 | 13:19:19 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:19 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:19 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:19 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:19 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:19 - INFO - 15 - CLIENT - Opened the transcript of student (ID: 19101100) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$2
+2022/08/05 | 13:19:21 - INFO - 15 - CLIENT - Viewed the total GPA of the selected student - setSeeGPAButton - client.gui.menus.standing.deputies.CurrentStandingMaster$1
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:27 - INFO - 15 - CLIENT - Opened the transcript of student (name: Arash Rezaei) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$3
+2022/08/05 | 13:19:29 - INFO - 15 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/05 | 13:19:34 - INFO - 15 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/05 | 13:19:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:43 - INFO - 15 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:19:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:48 - INFO - 15 - CLIENT - Opened temporary scores for deputies in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$9
+2022/08/05 | 13:19:48 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:48 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:48 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:48 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:48 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:48 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:52 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:52 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:52 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:52 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:52 - INFO - 15 - CLIENT - Deputy opened the scores tables of Analytical Mechanics - connectListeners - client.gui.menus.standing.deputies.TemporaryStandingMaster$1
+2022/08/05 | 13:19:55 - INFO - 15 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/05 | 13:19:57 - INFO - 15 - CLIENT - Opened temporary scores in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$10
+2022/08/05 | 13:19:57 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/05 | 13:19:57 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:57 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:57 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:57 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:19:57 - INFO - 15 - CLIENT - Opened the scoring table of Analytical Mechanics - connectListeners - client.gui.menus.standing.professors.TemporaryStandingManager$1
+2022/08/05 | 13:20:02 - INFO - 15 - CLIENT - Opened the temporary scoring option panel - actionPerformed - client.gui.menus.standing.professors.ScoreAdditionHandler
+2022/08/05 | 13:20:05 - INFO - 15 - CLIENT - Drafted a temporary score for the selected student - actionPerformed - client.gui.menus.standing.professors.ScoreAdditionHandler
+2022/08/05 | 13:20:05 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:05 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:05 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:05 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:06 - INFO - 15 - CLIENT - Opened the temporary scoring option panel - actionPerformed - client.gui.menus.standing.professors.ScoreAdditionHandler
+2022/08/05 | 13:20:06 - INFO - 15 - CLIENT - Drafted a temporary score for the selected student - actionPerformed - client.gui.menus.standing.professors.ScoreAdditionHandler
+2022/08/05 | 13:20:06 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:06 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:06 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:06 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:15 - INFO - 0 - SERVER - Fetched identifiable (id: 2) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:15 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:15 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:15 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:15 - INFO - 15 - CLIENT - Saved temporary scores of Analytical Mechanics - connectListeners - client.gui.menus.standing.professors.TemporaryStandingManager$2
+2022/08/05 | 13:20:16 - INFO - 15 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/05 | 13:20:16 - INFO - 15 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/05 | 13:20:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:22 - INFO - 15 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/05 | 13:20:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 15 - CLIENT - Opened current student standings in academic standing - connectListeners - client.gui.menus.main.ProfessorMenu$11
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:26 - INFO - 15 - CLIENT - Opened the transcript of student (ID: 19101100) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$2
+2022/08/05 | 13:20:31 - INFO - 15 - CLIENT - Viewed the total GPA of the selected student - setSeeGPAButton - client.gui.menus.standing.deputies.CurrentStandingMaster$1
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 18101302) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 0 - SERVER - Fetched identifiable (id: 2003) - get - server.database.management.DatabaseManager
+2022/08/05 | 13:20:33 - INFO - 15 - CLIENT - Opened the transcript of student (name: Arash Rezaei) - connectListeners - client.gui.menus.standing.deputies.CurrentStandingMaster$3
+2022/08/05 | 13:20:34 - INFO - 15 - CLIENT - Returned to the main menu - connectListeners - client.gui.PanelTemplate$1
+2022/08/05 | 13:20:34 - INFO - 15 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/05 | 13:20:36 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
