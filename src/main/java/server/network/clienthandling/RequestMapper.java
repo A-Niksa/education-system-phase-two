@@ -98,8 +98,8 @@ public class RequestMapper {
             case CHANGE_COURSE_NUMBER_OF_CREDITS:
                 requestHandler.changeCourseNumberOfCredits(clientHandler, request);
                 break;
-            case CHANGE_COURSE_LEVEL:
-                requestHandler.changeDegreeLevel(clientHandler, request);
+            case CHANGE_COURSE_DEGREE_LEVEL:
+                requestHandler.changeCourseDegreeLevel(clientHandler, request);
                 break;
             case CHANGE_COURSE_TEACHING_PROFESSORS:
                 requestHandler.changeCourseTeachingProfessors(clientHandler, request);
@@ -110,8 +110,23 @@ public class RequestMapper {
             case ADD_COURSE:
                 requestHandler.addCourse(clientHandler, request);
                 break;
+            case CHANGE_PROFESSOR_ACADEMIC_LEVEL:
+                requestHandler.changeProfessorAcademicLevel(clientHandler, request);
+                break;
+            case CHANGE_PROFESSOR_OFFICE_NUMBER:
+                requestHandler.changeProfessorOfficeNumber(clientHandler, request);
+                break;
+            case DEMOTE_FROM_DEPUTY:
+                requestHandler.demoteProfessorFromDeputyRole(clientHandler, request);
+                break;
+            case PROMOTE_TO_DEPUTY:
+                requestHandler.promoteProfessorToDeputyRole(clientHandler, request);
+                break;
             case ADD_PROFESSOR:
                 requestHandler.addProfessor(clientHandler, request);
+                break;
+            case REMOVE_PROFESSOR:
+                requestHandler.removeProfessor(clientHandler, request);
                 break;
             case ADD_STUDENT:
                 requestHandler.addStudent(clientHandler, request);

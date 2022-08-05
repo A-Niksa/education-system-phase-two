@@ -3,8 +3,15 @@ package client.gui.menus.enrolment.editing;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
+import client.gui.utils.EnumArrayUtils;
+import client.gui.utils.ErrorUtils;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.responses.Response;
+import shareables.network.responses.ResponseStatus;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,62 +20,92 @@ import java.awt.event.ActionListener;
 
 public class ProfessorEditor extends PanelTemplate {
     private Professor dean;
-    private ProfessorDTO professorDTOToEdit;
+    private ProfessorDTO professorToEditDTO;
     private JButton goBackButton;
     private JLabel professorName;
-    private JComboBox<String> newRank;
-    private JButton changeRank;
+    private String[] academicLevels;
+    private JComboBox<String> newAcademicLevel;
+    private JButton changeAcademicLevel;
     private JTextField newOfficeNumber;
     private JButton changeOfficeNumber;
     private JButton demoteFromDeputy;
     private JButton promoteToDeputy;
     private JButton removeProfessor;
 
-    public ProfessorEditor(MainFrame mainFrame, MainMenu mainMenu, Professor dean, ProfessorDTO professorDTOToEdit) {
+    public ProfessorEditor(MainFrame mainFrame, MainMenu mainMenu, Professor dean, ProfessorDTO professorToEditDTO) {
         super(mainFrame, mainMenu);
         this.dean = dean;
-        this.professorDTOToEdit = professorDTOToEdit;
+        this.professorToEditDTO = professorToEditDTO;
+        configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_EDITOR;
+        academicLevels = EnumArrayUtils.initializeAcademicLevels();
         drawPanel();
     }
 
     @Override
     protected void initializeComponents() {
-        goBackButton = new JButton("Back");
-        professorName = new JLabel(professorDTOToEdit.getFirstName() + " " + professorDTOToEdit.getLastName(),
-                SwingConstants.CENTER);
-        newRank = new JComboBox<>(new String[]{"Assistant Professor", "Associate Professor", "Full Professor"});
-        changeRank = new JButton("Change");
-        newOfficeNumber = new JTextField("New Office Number...");
-        changeOfficeNumber = new JButton("Change");
-        demoteFromDeputy = new JButton("Demote from Deputy");
-        promoteToDeputy = new JButton("Promote to Deputy");
-        removeProfessor = new JButton("Remove Professor");
+        goBackButton = new JButton(ConfigManager.getString(configIdentifier, "goBackButtonM"));
+        professorName = new JLabel(professorToEditDTO.getName(), SwingConstants.CENTER);
+        newAcademicLevel = new JComboBox<>(academicLevels);
+        changeAcademicLevel = new JButton(ConfigManager.getString(configIdentifier, "changeAcademicLevelM"));
+        newOfficeNumber = new JTextField(ConfigManager.getString(configIdentifier, "newOfficeNumberM"));
+        changeOfficeNumber = new JButton(ConfigManager.getString(configIdentifier, "changeOfficeNumberM"));
+        demoteFromDeputy = new JButton(ConfigManager.getString(configIdentifier, "demoteFromDeputyM"));
+        promoteToDeputy = new JButton(ConfigManager.getString(configIdentifier, "promoteToDeputyM"));
+        removeProfessor = new JButton(ConfigManager.getString(configIdentifier, "removeProfessorM"));
     }
 
     @Override
     protected void alignComponents() {
-        goBackButton.setBounds(140, 622, 80, 30);
+        goBackButton.setBounds(ConfigManager.getInt(configIdentifier, "goBackButtonX"),
+                ConfigManager.getInt(configIdentifier, "goBackButtonY"),
+                ConfigManager.getInt(configIdentifier, "goBackButtonW"),
+                ConfigManager.getInt(configIdentifier, "goBackButtonH"));
         add(goBackButton);
-
-        professorName.setBounds(405, 150, 200, 50);
-        professorName.setFont(new Font("", Font.BOLD, 16));
+        // TODO: perhaps adding advising professor editing?
+        professorName.setBounds(ConfigManager.getInt(configIdentifier, "professorNameX"),
+                ConfigManager.getInt(configIdentifier, "professorNameY"),
+                ConfigManager.getInt(configIdentifier, "professorNameW"),
+                ConfigManager.getInt(configIdentifier, "professorNameH"));
+        professorName.setFont(new Font("", Font.BOLD,
+                ConfigManager.getInt(configIdentifier, "professorNameFontSize")));
         add(professorName);
 
-        newRank.setBounds(300, 240, 250, 30);
-        add(newRank);
-        changeRank.setBounds(565, 240, 150, 30);
-        add(changeRank);
+        newAcademicLevel.setBounds(ConfigManager.getInt(configIdentifier, "newAcademicLevelX"),
+                ConfigManager.getInt(configIdentifier, "newAcademicLevelY"),
+                ConfigManager.getInt(configIdentifier, "newAcademicLevelW"),
+                ConfigManager.getInt(configIdentifier, "newAcademicLevelH"));
+        add(newAcademicLevel);
+        changeAcademicLevel.setBounds(ConfigManager.getInt(configIdentifier, "changeAcademicLevelX"),
+                ConfigManager.getInt(configIdentifier, "changeAcademicLevelY"),
+                ConfigManager.getInt(configIdentifier, "changeAcademicLevelW"),
+                ConfigManager.getInt(configIdentifier, "changeAcademicLevelH"));
+        add(changeAcademicLevel);
 
-        newOfficeNumber.setBounds(300, 285, 250, 30);
+        newOfficeNumber.setBounds(ConfigManager.getInt(configIdentifier, "newOfficeNumberX"),
+                ConfigManager.getInt(configIdentifier, "newOfficeNumberY"),
+                ConfigManager.getInt(configIdentifier, "newOfficeNumberW"),
+                ConfigManager.getInt(configIdentifier, "newOfficeNumberH"));
         add(newOfficeNumber);
-        changeOfficeNumber.setBounds(565, 285, 150, 30);
+        changeOfficeNumber.setBounds(ConfigManager.getInt(configIdentifier, "changeOfficeNumberX"),
+                ConfigManager.getInt(configIdentifier, "changeOfficeNumberY"),
+                ConfigManager.getInt(configIdentifier, "changeOfficeNumberW"),
+                ConfigManager.getInt(configIdentifier, "changeOfficeNumberH"));
         add(changeOfficeNumber);
 
-        demoteFromDeputy.setBounds(300, 330, 415, 30);
+        demoteFromDeputy.setBounds(ConfigManager.getInt(configIdentifier, "demoteFromDeputyX"),
+                ConfigManager.getInt(configIdentifier, "demoteFromDeputyY"),
+                ConfigManager.getInt(configIdentifier, "demoteFromDeputyW"),
+                ConfigManager.getInt(configIdentifier, "demoteFromDeputyH"));
         add(demoteFromDeputy);
-        promoteToDeputy.setBounds(300, 375, 415, 30);
+        promoteToDeputy.setBounds(ConfigManager.getInt(configIdentifier, "promoteToDeputyX"),
+                ConfigManager.getInt(configIdentifier, "promoteToDeputyY"),
+                ConfigManager.getInt(configIdentifier, "promoteToDeputyW"),
+                ConfigManager.getInt(configIdentifier, "promoteToDeputyH"));
         add(promoteToDeputy);
-        removeProfessor.setBounds(300, 420, 415, 30);
+        removeProfessor.setBounds(ConfigManager.getInt(configIdentifier, "removeProfessorX"),
+                ConfigManager.getInt(configIdentifier, "removeProfessorY"),
+                ConfigManager.getInt(configIdentifier, "removeProfessorW"),
+                ConfigManager.getInt(configIdentifier, "removeProfessorH"));
         add(removeProfessor);
     }
 
@@ -77,80 +114,86 @@ public class ProfessorEditor extends PanelTemplate {
         goBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.info("went back to professors list editor", getClass());
+                MasterLogger.clientInfo(clientController.getId(), "Went back to professors list editor",
+                        "connectListeners", getClass());
                 mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, dean));
             }
         });
 
-        changeRank.addActionListener(new ActionListener() {
+        changeAcademicLevel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String selectedRank = (String) newRank.getSelectedItem();
-                if (selectedRank.equals("Assistant Professor")) {
-                    professorDTOToEdit.setAcademicRank(Professor.AcademicRank.ASSISTANT);
-                } else if (selectedRank.equals("Associate Professor")) {
-                    professorDTOToEdit.setAcademicRank(Professor.AcademicRank.ASSOCIATE);
-                } else { // "Full Professor" by design
-                    professorDTOToEdit.setAcademicRank(Professor.AcademicRank.FULL);
+                String selectedAcademicLevel = (String) newAcademicLevel.getSelectedItem();
+                Response response = clientController.changeProfessorAcademicLevel(professorToEditDTO.getId(),
+                        selectedAcademicLevel);
+                if (response.getResponseStatus() == ResponseStatus.OK) {
+                    MasterLogger.clientInfo(clientController.getId(), professorName.getText() + "'s academic level" +
+                            " set to " + selectedAcademicLevel, "connectListeners", getClass());
                 }
-                professorDTOToEdit.updateInDatabase();
-                MasterLogger.info(professorName.getText() + "'s rank set to " + selectedRank, getClass());
             }
         });
+
+        // TODO: adding advisees editor?
 
         changeOfficeNumber.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                int newOfficeNumberInteger = Integer.parseInt(newOfficeNumber.getText());
-                professorDTOToEdit.setOfficeNumber(newOfficeNumberInteger);
-                professorDTOToEdit.updateInDatabase();
-                MasterLogger.info(professorName.getText() + "'s room set to " + newOfficeNumberInteger, getClass());
+                String selectedOfficeNumber = newOfficeNumber.getText();
+                Response response = clientController.changeProfessorOfficeNumber(professorToEditDTO.getId(),
+                        selectedOfficeNumber);
+                if (response.getResponseStatus() == ResponseStatus.OK) {
+                    MasterLogger.clientInfo(clientController.getId(), professorName.getText() +
+                            "'s office number set to " + selectedOfficeNumber, "connectListeners", getClass());
+                }
             }
         });
 
         demoteFromDeputy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (professorDTOToEdit.getAdministrativeRole() != Professor.AdministrativeRole.EDUCATION_DEPUTY) {
-                    JOptionPane.showMessageDialog(mainFrame, "The selected professor is not a deputy.");
-                    MasterLogger.error("professor selected for demotion to a normal professor is not a deputy",
-                            getClass());
-                    return;
+                Response response = clientController.demoteProfessorFromDeputyRole(professorToEditDTO.getId(),
+                        dean.getDepartmentId()); // we get the department id from the operating dean of the department
+                if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                    MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                            "connectListeners", getClass());
+                } else {
+                    MasterLogger.clientInfo(clientController.getId(), "Selected professor demoted to normal professor",
+                            "connectListeners", getClass());
                 }
-
-                professorDTOToEdit.setAdministrativeRole(Professor.AdministrativeRole.NORMAL);
-                Department department = DepartmentsDB.getProfessorsDepartment(professorDTOToEdit);
-                department.setEducationDeputy(null);
-                MasterLogger.info("professor demoted to normal professor", getClass());
             }
         });
 
         promoteToDeputy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (DeputyPromotionChecker.departmentHasDeputy(professorDTOToEdit)) {
-                    JOptionPane.showMessageDialog(mainFrame, "This department already has a deputy. Demote the" +
-                            " other deputy before adding a new one.");
-                    MasterLogger.error("cannot add a new deputy; department already has one", getClass());
-                    return;
+                Response response = clientController.promoteProfessorToDeputyRole(professorToEditDTO.getId(),
+                        dean.getDepartmentId());
+                if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                    MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                            "connectListeners", getClass());
+                } else {
+                    MasterLogger.clientInfo(clientController.getId(), "Selected professor promoted to deputy",
+                            "connectListeners", getClass());
                 }
-
-                Department department = DepartmentsDB.getProfessorsDepartment(professorDTOToEdit);
-                department.setEducationDeputy(professorDTOToEdit);
             }
         });
 
         removeProfessor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Department department = DepartmentsDB.getProfessorsDepartment(professorDTOToEdit);
-                if (professorDTOToEdit.getAdministrativeRole() == Professor.AdministrativeRole.EDUCATION_DEPUTY) {
-                    department.setEducationDeputy(null);
+                Response response = clientController.removeProfessor(professorToEditDTO.getId(),
+                        dean.getDepartmentId());
+                if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                    MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                            "connectListeners", getClass());
+                } else if (response.getUnsolicitedMessage() != null)  {
+                    JOptionPane.showMessageDialog(mainFrame, response.getUnsolicitedMessage());
+                    MasterLogger.clientInfo(clientController.getId(), response.getUnsolicitedMessage(),
+                            "connectListeners", getClass());
+                } else {
+                    MasterLogger.clientInfo(clientController.getId(), "Removed the selected professor",
+                            "connectListeners", getClass());
                 }
-
-                department.removeProfessor(professorDTOToEdit);
-                ProfessorsDB.removeFromDatabase(professorDTOToEdit);
-                MasterLogger.info("removed the selected professor", getClass());
             }
         });
     }

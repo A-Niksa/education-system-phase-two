@@ -19,6 +19,7 @@ public class Professor extends User {
     private String officeNumber;
     private AcademicLevel academicLevel;
     private AcademicRole academicRole;
+    private boolean isTemporaryDeputy;
 
     public Professor() {
     }
@@ -29,6 +30,7 @@ public class Professor extends User {
         this.academicLevel = academicLevel;
         this.departmentId = departmentId;
         adviseeStudentIds = new ArrayList<>();
+        isTemporaryDeputy = false; // default value
         initializeId();
         initializeMessenger(id);
     }
@@ -84,5 +86,13 @@ public class Professor extends User {
 
     public void setAcademicRole(AcademicRole academicRole) {
         this.academicRole = academicRole;
+    }
+
+    public boolean isTemporaryDeputy() {
+        return isTemporaryDeputy;
+    }
+
+    public void setTemporaryDeputy(boolean temporaryDeputy) {
+        isTemporaryDeputy = temporaryDeputy;
     }
 }

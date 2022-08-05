@@ -140,8 +140,8 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
-    public Response changeDegreeLevel(String courseId, DegreeLevel newDegreeLevel) {
-        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_COURSE_LEVEL,
+    public Response changeCourseDegreeLevel(String courseId, DegreeLevel newDegreeLevel) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_COURSE_DEGREE_LEVEL,
                 new StringObjectMap("courseId", courseId), new StringObjectMap("newDegreeLevel", newDegreeLevel));
         return client.sendAndListen(request);
     }
@@ -156,6 +156,38 @@ public class ClientController {
     public Response removeCourse(String courseId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.REMOVE_COURSE,
                 new StringObjectMap("courseId", courseId));
+        return client.sendAndListen(request);
+    }
+
+    public Response changeProfessorAcademicLevel(String professorId, String newAcademicLevelString) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_PROFESSOR_ACADEMIC_LEVEL,
+                new StringObjectMap("professorId", professorId),
+                new StringObjectMap("newAcademicLevelString", newAcademicLevelString));
+        return client.sendAndListen(request);
+    }
+
+    public Response changeProfessorOfficeNumber(String professorId, String newOfficeNumber) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_PROFESSOR_OFFICE_NUMBER,
+                new StringObjectMap("professorId", professorId),
+                new StringObjectMap("newOfficeNumber", newOfficeNumber));
+        return client.sendAndListen(request);
+    }
+
+    public Response demoteProfessorFromDeputyRole(String professorId, String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DEMOTE_FROM_DEPUTY,
+                new StringObjectMap("professorId", professorId), new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response promoteProfessorToDeputyRole(String professorId, String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.PROMOTE_TO_DEPUTY,
+                new StringObjectMap("professorId", professorId), new StringObjectMap("departmentId", departmentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response removeProfessor(String professorId, String departmentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.REMOVE_PROFESSOR,
+                new StringObjectMap("professorId", professorId), new StringObjectMap("departmentId", departmentId));
         return client.sendAndListen(request);
     }
 

@@ -5,6 +5,7 @@ import server.network.authentication.AuthTokenGenerator;
 import server.network.clienthandling.ClientHandler;
 import server.network.clienthandling.RequestMapper;
 import shareables.network.requests.Request;
+import shareables.utils.config.ConfigIdSupplier;
 import shareables.utils.logging.MasterLogger;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class Server {
     public Server(int port) {
         this.port = port;
         activeClientHandlers = new ArrayList<>();
-        currentClientHandlerId = 0; // TODO: resetting this in config
+        currentClientHandlerId = ConfigIdSupplier.getCurrentClientId(); // TODO: resetting this in config
         authTokenGenerator = new AuthTokenGenerator();
         databaseManager = new DatabaseManager();
         requestMapper = new RequestMapper(databaseManager);

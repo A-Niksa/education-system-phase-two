@@ -1,6 +1,7 @@
 package client.gui.menus.addition;
 
 import client.gui.MainFrame;
+import client.gui.menus.enrolment.editing.ProfessorsListEditor;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.utils.config.ConfigManager;
@@ -36,8 +37,7 @@ public class ProfessorAdderOfDean extends ProfessorAdder {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientControllerId, "Went back to professors list editor",
                         "connectBackListener", getClass());
-                // TODO
-                // mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor));
+                 mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor));
             }
         });
     }

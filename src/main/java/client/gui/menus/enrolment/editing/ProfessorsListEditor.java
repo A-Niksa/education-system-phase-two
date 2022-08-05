@@ -8,6 +8,7 @@ import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.responses.Response;
+import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
@@ -29,6 +30,7 @@ public class ProfessorsListEditor extends PanelTemplate {
     public ProfessorsListEditor(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
         super(mainFrame, mainMenu);
         this.professor = professor;
+        configIdentifier = ConfigFileIdentifier.GUI_LIST_EDITOR;
         updateDepartmentProfessorDTOs();
         initializeColumns();
         setTableData();
@@ -43,12 +45,13 @@ public class ProfessorsListEditor extends PanelTemplate {
     }
 
     private void initializeColumns() {
-        columns = new String[5];
-        columns[0] = ConfigManager.getString(configIdentifier, "nameAndSurnameCol");
-        columns[1] = ConfigManager.getString(configIdentifier, "academicLevelCol");
-        columns[2] = ConfigManager.getString(configIdentifier, "academicRoleCol");
-        columns[3] = ConfigManager.getString(configIdentifier, "officeNumberCol");
-        columns[4] = ConfigManager.getString(configIdentifier, "emailAddressCol");
+        columns = new String[6];
+        columns[0] = ConfigManager.getString(configIdentifier, "professorIdCol");
+        columns[1] = ConfigManager.getString(configIdentifier, "nameAndSurnameCol");
+        columns[2] = ConfigManager.getString(configIdentifier, "academicLevelCol");
+        columns[3] = ConfigManager.getString(configIdentifier, "academicRoleCol");
+        columns[4] = ConfigManager.getString(configIdentifier, "officeNumberCol");
+        columns[5] = ConfigManager.getString(configIdentifier, "emailAddressCol");
     }
 
     private void setTableData() {
@@ -56,7 +59,8 @@ public class ProfessorsListEditor extends PanelTemplate {
         ProfessorDTO departmentProfessorDTO;
         for (int i = 0; i < departmentProfessorDTOs.size(); i++) {
             departmentProfessorDTO = departmentProfessorDTOs.get(i);
-            data[i] = new String[]{departmentProfessorDTO.getName(),
+            data[i] = new String[]{departmentProfessorDTO.getId(),
+                    departmentProfessorDTO.getName(),
                     departmentProfessorDTO.getAcademicLevel().toString(),
                     departmentProfessorDTO.getAcademicRole().toString(),
                     departmentProfessorDTO.getOfficeNumber(),
@@ -92,7 +96,7 @@ public class ProfessorsListEditor extends PanelTemplate {
                 ConfigManager.getInt(configIdentifier, "addProfessorButtonH"));
         add(addProfessorButton);
 
-        professorsTable.setRowHeight(ConfigManager.getInt(configIdentifier, "tableRowH"));
+        professorsTable.setRowHeight(ConfigManager.getInt(configIdentifier, "tableRowHeight"));
         JScrollPane scrollPane = new JScrollPane(professorsTable);
         scrollPane.setBounds(ConfigManager.getInt(configIdentifier, "scrollPaneX"),
                 ConfigManager.getInt(configIdentifier, "scrollPaneY"),

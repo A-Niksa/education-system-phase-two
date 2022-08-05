@@ -5,6 +5,7 @@ import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
 import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
+import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
 import server.network.clienthandling.logicutils.services.*;
@@ -173,7 +174,7 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler.requestSuccessful(clientHandler);
     }
 
-    public void changeDegreeLevel(ClientHandler clientHandler, Request request) {
+    public void changeCourseDegreeLevel(ClientHandler clientHandler, Request request) {
         Course course = CourseEditingUtils.getCourse(databaseManager, (String) request.get("courseId"));
         course.setDegreeLevel((DegreeLevel) request.get("newDegreeLevel"));
         responseHandler.requestSuccessful(clientHandler);
@@ -451,6 +452,58 @@ public class RequestHandler { // TODO: logging, perhaps?
         } else {
             CourseStatsDTO courseStatsDTO = StandingMasteryUtils.getCourseStatsDTO(databaseManager, course);
             responseHandler.courseStatsDTOAcquired(clientHandler, courseStatsDTO);
+        }
+    }
+
+    public void changeProfessorAcademicLevel(ClientHandler clientHandler, Request request) {
+        ProfessorEditingUtils.changeProfessorAcademicLevel(databaseManager, (String) request.get("professorId"),
+                (String) request.get("newAcademicLevelString"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void changeProfessorOfficeNumber(ClientHandler clientHandler, Request request) {
+        ProfessorEditingUtils.changeProfessorOfficeNumber(databaseManager, (String) request.get("professorId"),
+                (String) request.get("newOfficeNumber"));
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void demoteProfessorFromDeputyRole(ClientHandler clientHandler, Request request) {
+        String professorId = (String) request.get("professorId");
+        String departmentId = (String) request.get("departmentId");
+        if (!ProfessorEditingUtils.isProfessorDepartmentDeputy(databaseManager, professorId, departmentId)) {
+            responseHandler.professorIsNotDepartmentDeputy(clientHandler);
+        } else {
+            ProfessorEditingUtils.demoteProfessorFromDeputyRole(databaseManager, professorId, departmentId);
+            responseHandler.requestSuccessful(clientHandler);
+        }
+    }
+
+    public void promoteProfessorToDeputyRole(ClientHandler clientHandler, Request request) {
+        String professorId = (String) request.get("professorId");
+        String departmentId = (String) request.get("departmentId");
+        if (ProfessorEditingUtils.isProfessorDepartmentDeputy(databaseManager, professorId, departmentId)) {
+            responseHandler.professorIsAlreadyDepartmentDeputy(clientHandler);
+        } else if (ProfessorEditingUtils.departmentHasDeputy(databaseManager, departmentId)) {
+            responseHandler.departmentAlreadyHasDeputy(clientHandler);
+        } else if (ProfessorEditingUtils.isProfessorDepartmentDean(databaseManager, professorId, departmentId)) {
+            responseHandler.cannotPromoteDeanToDeputy(clientHandler);
+        } else {
+            ProfessorEditingUtils.promoteProfessorToDeputyRole(databaseManager, professorId, departmentId);
+            responseHandler.requestSuccessful(clientHandler);
+        }
+    }
+
+    public void removeProfessor(ClientHandler clientHandler, Request request) {
+        String professorId = (String) request.get("professorId");
+        String departmentId = (String) request.get("departmentId");
+        if (ProfessorEditingUtils.isProfessorDepartmentDean(databaseManager, professorId, departmentId)) {
+            responseHandler.cannotRemoveDepartmentDean(clientHandler);
+        } else if (ProfessorEditingUtils.isProfessorDepartmentDeputy(databaseManager, professorId, departmentId)) {
+            ProfessorEditingUtils.removeProfessor(databaseManager, professorId, departmentId);
+            responseHandler.requestSuccessfulButDeanBecomesTemporaryDeputy(clientHandler);
+        } else {
+            ProfessorEditingUtils.removeProfessor(databaseManager, professorId, departmentId);
+            responseHandler.requestSuccessful(clientHandler);
         }
     }
 }

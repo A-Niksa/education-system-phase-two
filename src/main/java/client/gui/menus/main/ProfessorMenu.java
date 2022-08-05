@@ -4,6 +4,7 @@ import client.gui.MainFrame;
 import client.gui.menus.addition.ProfessorAdder;
 import client.gui.menus.addition.StudentAdder;
 import client.gui.menus.enrolment.management.CoursesListManager;
+import client.gui.menus.enrolment.management.ProfessorsListManager;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.profile.ProfessorProfile;
@@ -130,7 +131,7 @@ public class ProfessorMenu extends MainMenu {
     private void alignRequestsSubMenu() {
         studentRequestsSubMenu.add(recommendationLetter);
 
-        if (role == AcademicRole.DEPUTY) {
+        if (role == AcademicRole.DEPUTY || professor.isTemporaryDeputy()) {
             studentRequestsSubMenu.add(droppingOut);
             studentRequestsSubMenu.add(minor);
         }
@@ -167,8 +168,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professors list in educational services",
                         "connectListeners", getClass());
                 if (role == AcademicRole.DEAN) {
-                    // TODO
-//                    mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professorUser));
+                    mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor));
                 } else {
                     mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu));
                 }

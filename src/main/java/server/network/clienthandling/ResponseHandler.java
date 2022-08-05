@@ -227,4 +227,40 @@ public class ResponseHandler {
                 "notAllStudentScoresHaveBeenFinalized"));
         clientHandler.respond(response);
     }
+
+    public void professorIsNotDepartmentDeputy(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "professorIsNotDepartmentDeputy"));
+        clientHandler.respond(response);
+    }
+
+    public void professorIsAlreadyDepartmentDeputy(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "professorIsAlreadyDepartmentDeputy"));
+        clientHandler.respond(response);
+    }
+
+    public void departmentAlreadyHasDeputy(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "departmentAlreadyHasDeputy"));
+        clientHandler.respond(response);
+    }
+
+    public void cannotRemoveDepartmentDean(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "cannotRemoveDepartmentDean"));
+        clientHandler.respond(response);
+    }
+
+    public void requestSuccessfulButDeanBecomesTemporaryDeputy(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "deputyResponsibilitiesDelegatedToDean"));
+        clientHandler.respond(response);
+    }
+
+    public void cannotPromoteDeanToDeputy(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "cannotPromoteDeanToDeputy"));
+        clientHandler.respond(response);
+    }
 }

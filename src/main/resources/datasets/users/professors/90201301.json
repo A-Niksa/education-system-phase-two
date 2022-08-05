@@ -21,5 +21,7 @@
   "adviseeStudentIds" : [ ],
   "officeNumber" : "107",
   "academicLevel" : "FULL",
-  "academicRole" : "DEAN"
+  "academicRole" : "DEAN",
+  "isTemporaryDeputy" : false,
+  "temporaryDeputy" : false
 }

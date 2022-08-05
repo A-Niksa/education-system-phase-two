@@ -2,7 +2,7 @@
   "id" : "1000",
   "departmentId" : "1",
   "courseName" : "Complex Analysis",
-  "teachingProfessorIds" : [ "80201200", "90201301" ],
+  "teachingProfessorIds" : [ "90201301" ],
   "teachingAssistantIds" : [ ],
   "studentIds" : [ "19101100", "18101302" ],
   "weeklyClassTimes" : [ {

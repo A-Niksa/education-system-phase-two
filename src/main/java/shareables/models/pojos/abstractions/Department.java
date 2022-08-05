@@ -38,7 +38,7 @@ public class Department extends Identifiable {
         professorIds.add(professorId);
     }
 
-    public void removeFromProfessors(String professorId) {
+    public void removeFromProfessorIds(String professorId) {
         professorIds.removeIf(e -> e.equals(professorId));
     }
 

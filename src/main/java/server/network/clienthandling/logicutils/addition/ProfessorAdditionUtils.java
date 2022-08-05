@@ -16,12 +16,22 @@ import java.util.List;
 public class ProfessorAdditionUtils {
     public static boolean studentsDoNotExistInDepartment(DatabaseManager databaseManager, String[] studentIds,
                                                          String departmentId) {
+        if (studentIds.length == 1 &&
+                studentIds[0].equals("")) {
+            return false; // escaping the condition if the array is empty
+        }
+
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
         List<String> departmentStudentIds = department.getStudentIds();
         return Arrays.stream(studentIds).anyMatch(id -> !departmentStudentIds.contains(id));
     }
 
     public static boolean anyStudentAlreadyHasAnAdvisor(DatabaseManager databaseManager, String[] studentIds) {
+        if (studentIds.length == 1 &&
+                studentIds[0].equals("")) {
+            return false; // escaping the condition if the array is empty
+        }
+
         return Arrays.stream(studentIds)
                 .map(id -> IdentifiableFetchingUtils.getStudent(databaseManager, id))
                 .anyMatch(student -> student.getAdvisingProfessorId() != null);
@@ -40,11 +50,14 @@ public class ProfessorAdditionUtils {
         professor.setEmailAddress((String) request.get("emailAddress"));
         professor.setOfficeNumber((String) request.get("officeNumber"));
         String[] adviseeStudentIdsArray = (String[]) request.get("adviseeStudentIds");
-        List<String> adviseeStudentIdsList = new ArrayList<>(Arrays.asList(adviseeStudentIdsArray));
-        professor.setAdviseeStudentIds(adviseeStudentIdsList);
-        databaseManager.save(DatasetIdentifier.PROFESSORS, professor);
+        if (adviseeStudentIdsArray.length != 1 ||
+                !adviseeStudentIdsArray[0].equals("")) {
+            List<String> adviseeStudentIdsList = new ArrayList<>(Arrays.asList(adviseeStudentIdsArray));
+            professor.setAdviseeStudentIds(adviseeStudentIdsList);
+            updateAdvisingProfessorOfAdviseeStudents(databaseManager, adviseeStudentIdsList, professor.getId());
+        }
 
-        updateAdvisingProfessorOfAdviseeStudents(databaseManager, adviseeStudentIdsList, professor.getId());
+        databaseManager.save(DatasetIdentifier.PROFESSORS, professor);
 
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
         department.addToProfessorIds(professor.getId());

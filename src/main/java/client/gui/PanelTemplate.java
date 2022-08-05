@@ -3,6 +3,7 @@ package client.gui;
 import client.controller.ClientController;
 import client.gui.menus.main.MainMenu;
 import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
@@ -21,6 +22,7 @@ public abstract class PanelTemplate extends JPanel {
         this.mainFrame = mainFrame;
         this.mainMenu = mainMenu;
         clientController = mainFrame.getClientController();
+        configIdentifier = ConfigFileIdentifier.GUI_PANEL_TEMPLATE;
         configurePanel();
         initializeTemplateComponents();
         alignTemplateComponents();
@@ -39,13 +41,16 @@ public abstract class PanelTemplate extends JPanel {
     }
 
     private void initializeTemplateComponents() {
-        mainMenuButton = new JButton("Main Menu");
+        mainMenuButton = new JButton(ConfigManager.getString(configIdentifier, "mainMenuButtonM"));
     }
 
     protected abstract void initializeComponents();
 
     private void alignTemplateComponents() {
-        mainMenuButton.setBounds(15, 622, 110, 30);
+        mainMenuButton.setBounds(ConfigManager.getInt(configIdentifier, "mainMenuButtonX"),
+                ConfigManager.getInt(configIdentifier, "mainMenuButtonY"),
+                ConfigManager.getInt(configIdentifier, "mainMenuButtonW"),
+                ConfigManager.getInt(configIdentifier, "mainMenuButtonH"));
         add(mainMenuButton);
     }
 
@@ -58,6 +63,7 @@ public abstract class PanelTemplate extends JPanel {
                 MasterLogger.clientInfo(clientController.getId(), "Returned to the main menu",
                         "connectListeners", getClass());
                 mainFrame.setCurrentPanel(mainMenu);
+                // TODO: new mainMenu?
             }
         });
     }

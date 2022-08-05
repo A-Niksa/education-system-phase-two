@@ -189,7 +189,7 @@ public class CourseEditor extends PanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 String degreeLevelString = (String) newDegreeLevel.getSelectedItem();
                 DegreeLevel degreeLevel = DegreeLevelGetter.getDegreeLevel(degreeLevelString);
-                Response response = clientController.changeDegreeLevel(courseDTO.getId(), degreeLevel);
+                Response response = clientController.changeCourseDegreeLevel(courseDTO.getId(), degreeLevel);
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), courseDTO.getCourseName() + "'s level changed to "
                             + degreeLevelString, "connectListeners", getClass());
