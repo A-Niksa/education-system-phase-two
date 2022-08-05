@@ -46,6 +46,7 @@ public class CoursesListView extends PanelTemplate {
     }
 
     private void initializeActiveCourseDTOs() {
+        clientController.getActiveCourseDTOs(); // duplicating request to avoid receiving lossy data
         Response response = clientController.getActiveCourseDTOs();
         activeCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
     }

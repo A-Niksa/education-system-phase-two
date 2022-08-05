@@ -1,10 +1,20 @@
 package client.gui.utils;
 
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.utils.timing.timekeeping.Weekday;
 
 public class EnumArrayUtils {
+    public static String[] initializeAcademicLevels() {
+        String[] academicLevels = new String[AcademicLevel.values().length];
+        int index = 0;
+        for (AcademicLevel academicLevel : AcademicLevel.values()) {
+            academicLevels[index++] = academicLevel.toString();
+        }
+        return academicLevels;
+    }
+
     public static String[] initializeDepartmentNameStrings() {
         String[] departmentNameStrings = new String[DepartmentName.values().length];
         int index = 0;

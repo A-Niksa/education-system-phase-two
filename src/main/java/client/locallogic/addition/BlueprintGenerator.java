@@ -2,6 +2,7 @@ package client.locallogic.addition;
 
 import client.locallogic.general.EnumStringMapper;
 import shareables.models.pojos.abstractions.TermIdentifier;
+import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.network.blueprints.Blueprint;
 import shareables.utils.timing.timekeeping.WeekTime;
@@ -11,13 +12,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class BlueprintGenerator {
-    public static Blueprint generateBlueprint(String courseName, String termIdentifierString,
-                                              String[] teachingProfessorNamesArray, int numberOfCredits, String degreeLevelString,
-                                              String firstClassWeekdayString, int firstClassStartHour,
-                                              int firstClassStartMinute, int firstClassEndHour, int firstClassEndMinute,
-                                              String secondClassWeekdayString, int secondClassStartHour,
-                                              int secondClassStartMinute, int secondClassEndHour, int secondClassEndMinute,
-                                              Date selectedExamDate, int examHour, int examMinute, String departmentId) {
+    public static Blueprint generateCourseBlueprint(String courseName, String termIdentifierString,
+                                                    String[] teachingProfessorNamesArray, int numberOfCredits, String degreeLevelString,
+                                                    String firstClassWeekdayString, int firstClassStartHour,
+                                                    int firstClassStartMinute, int firstClassEndHour, int firstClassEndMinute,
+                                                    String secondClassWeekdayString, int secondClassStartHour,
+                                                    int secondClassStartMinute, int secondClassEndHour, int secondClassEndMinute,
+                                                    Date selectedExamDate, int examHour, int examMinute, String departmentId) {
         LocalDateTime examLocalDateTime = CourseBlueprintHelper.convertToLocalDateTime(selectedExamDate, examHour, examMinute);
         DegreeLevel degreeLevel = EnumStringMapper.getDegreeLevel(degreeLevelString);
         TermIdentifier termIdentifier = CourseBlueprintHelper.getTermIdentifier(termIdentifierString);
@@ -34,6 +35,26 @@ public class BlueprintGenerator {
         blueprint.put("examDate", examLocalDateTime);
         blueprint.put("departmentId", departmentId);
         blueprint.put("termIdentifier", termIdentifier);
+        return blueprint;
+    }
+
+    public static Blueprint generateProfessorBlueprint(String password, String nationalId, String firstName, String lastName,
+                                                       String phoneNumber, String emailAddress, String officeNumber,
+                                                       String[] adviseeStudentIds, String academicLevelString,
+                                                       String departmentId) {
+        AcademicLevel academicLevel = ProfessorBlueprintHelper.getAcademicLevelWithString(academicLevelString);
+
+        Blueprint blueprint = new Blueprint();
+        blueprint.put("password", password);
+        blueprint.put("nationalId", nationalId);
+        blueprint.put("firstName", firstName);
+        blueprint.put("lastName", lastName);
+        blueprint.put("phoneNumber", phoneNumber);
+        blueprint.put("emailAddress", emailAddress);
+        blueprint.put("officeNumber", officeNumber);
+        blueprint.put("adviseeStudentIds", adviseeStudentIds);
+        blueprint.put("academicLevel", academicLevel);
+        blueprint.put("departmentId", departmentId);
         return blueprint;
     }
 }

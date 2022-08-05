@@ -27,16 +27,18 @@ public class ProfessorsListView extends PanelTemplate {
     }
 
     private void initializeProfessorDTOs() {
+        clientController.getProfessorDTOs(); // duplicating request to avoid receiving lossy data
         Response response = clientController.getProfessorDTOs();
         professorDTOs = (ArrayList<ProfessorDTO>) response.get("professorDTOs");
     }
 
     private void initializeColumns() {
-        columns = new String[4];
-        columns[0] = ConfigManager.getString(configIdentifier, "nameAndSurnameCol");
-        columns[1] = ConfigManager.getString(configIdentifier, "academicLevelCol");
-        columns[2] = ConfigManager.getString(configIdentifier, "officeNumberCol");
-        columns[3] = ConfigManager.getString(configIdentifier, "emailAddressCol");
+        columns = new String[5];
+        columns[0] = ConfigManager.getString(configIdentifier, "professorIdCol");
+        columns[1] = ConfigManager.getString(configIdentifier, "nameAndSurnameCol");
+        columns[2] = ConfigManager.getString(configIdentifier, "academicLevelCol");
+        columns[3] = ConfigManager.getString(configIdentifier, "officeNumberCol");
+        columns[4] = ConfigManager.getString(configIdentifier, "emailAddressCol");
     }
 
     private void setTableData() {
@@ -44,7 +46,8 @@ public class ProfessorsListView extends PanelTemplate {
         ProfessorDTO professorDTO;
         for (int i = 0; i < professorDTOs.size(); i++) {
             professorDTO = professorDTOs.get(i);
-            data[i] = new String[]{professorDTO.getName(),
+            data[i] = new String[]{professorDTO.getId(),
+                    professorDTO.getName(),
                     professorDTO.getAcademicLevel().toString(),
                     professorDTO.getOfficeNumber() + "",
                     professorDTO.getEmailAddress()};

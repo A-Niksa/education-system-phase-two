@@ -56,6 +56,12 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
+    public void advisingProfessorNameAcquired(ClientHandler clientHandler, String advisingProfessorName) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("advisingProfessorName", advisingProfessorName);
+        clientHandler.respond(response);
+    }
+
     public void courseDTOsAcquired(ClientHandler clientHandler, List<CourseDTO> courseDTOs) {
         Response response = new Response(ResponseStatus.OK);
         response.put("courseDTOs", courseDTOs);
@@ -97,10 +103,29 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
+    public void studentsDoNotExistInDepartment(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "studentsDoNotExistInDepartment"));
+        clientHandler.respond(response);
+    }
+
+    public void atLeastOneStudentAlreadyHasAnAdvisor(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "atLeastOneStudentAlreadyHasAnAdvisor"));
+        clientHandler.respond(response);
+    }
+
     public void courseAdded(ClientHandler clientHandler, String courseId) {
         Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "addedCourseFirstHalf") + courseId +
                 ConfigManager.getString(ConfigFileIdentifier.TEXTS, "addedCourseSecondHalf"));
+        clientHandler.respond(response);
+    }
+
+    public void professorAdded(ClientHandler clientHandler, String professorId) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "addedProfessorFirstHalf") + professorId +
+                ConfigManager.getString(ConfigFileIdentifier.TEXTS, "addedProfessorSecondHalf"));
         clientHandler.respond(response);
     }
 

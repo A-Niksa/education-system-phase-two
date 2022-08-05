@@ -8,14 +8,12 @@ import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.addition.BlueprintGenerator;
 import client.locallogic.enrolment.NamesParser;
-import client.locallogic.general.DatePickerConfigurationTool;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.responses.Response;
-import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -217,14 +215,13 @@ public class CourseAdder extends PanelTemplate {
                 int examHour = Integer.parseInt(examHourField.getText());
                 int examMinute = Integer.parseInt(examMinuteField.getText());
 
-                Blueprint courseBlueprint = BlueprintGenerator.generateBlueprint(courseName, termIdentifierString,
+                Blueprint courseBlueprint = BlueprintGenerator.generateCourseBlueprint(courseName, termIdentifierString,
                         teachingProfessorNamesArray, numberOfCredits, degreeLevelString, firstClassWeekdayString,
                         firstClassStartHour, firstClassStartMinute, firstClassEndHour, firstClassEndMinute,
                         secondClassWeekdayString, secondClassStartHour, secondClassStartMinute, secondClassEndHour,
                         secondClassEndMinute, selectedExamDate, examHour, examMinute, professor.getDepartmentId());
                 Response response = clientController.addCourse(courseBlueprint);
-                if (response.getResponseStatus() == ResponseStatus.ERROR) {
-                    ErrorUtils.showErrorDialogIfNecessary(mainFrame, response);
+                if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());
                 } else {

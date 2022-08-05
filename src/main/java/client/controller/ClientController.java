@@ -39,6 +39,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getAdvisingProfessorName(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_ADVISING_PROFESSOR_NAME,
+                new StringObjectMap("username", studentId));
+        return client.sendAndListen(request);
+    }
+
     public Response changeEmailAddress(String username, String newEmailAddress) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_EMAIL_ADDRESS,
                 new StringObjectMap("username", username), new StringObjectMap("newEmailAddress", newEmailAddress));
@@ -149,6 +155,11 @@ public class ClientController {
 
     public Response addCourse(Blueprint blueprint) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_COURSE, blueprint.getFields());
+        return client.sendAndListen(request);
+    }
+
+    public Response addProfessor(Blueprint blueprint) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_PROFESSOR, blueprint.getFields());
         return client.sendAndListen(request);
     }
 

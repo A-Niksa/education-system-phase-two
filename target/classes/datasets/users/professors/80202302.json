@@ -18,7 +18,7 @@
   "emailAddress" : "rahvar@sharif.edu",
   "password" : "1234",
   "lastLogin" : null,
-  "studentsUnderAdvice" : [ ],
+  "adviseeStudentIds" : [ ],
   "officeNumber" : "205",
   "academicLevel" : "FULL",
   "academicRole" : "DEPUTY"

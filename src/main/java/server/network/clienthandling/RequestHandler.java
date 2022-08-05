@@ -1,9 +1,11 @@
 package server.network.clienthandling;
 
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
+import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
+import server.network.clienthandling.logicutils.main.MainMenuUtils;
 import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
@@ -20,7 +22,6 @@ import shareables.network.DTOs.*;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -65,6 +66,12 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void getUser(ClientHandler clientHandler, Request request) {
         User user = LoginUtils.getUser(databaseManager, (String) request.get("username"));
         responseHandler.userAcquired(clientHandler, user);
+    }
+
+    public void getAdvisingProfessorName(ClientHandler clientHandler, Request request) {
+        String advisingProfessorName = MainMenuUtils.getStudentAdvisingProfessorName(databaseManager,
+                (String) request.get("username"));
+        responseHandler.advisingProfessorNameAcquired(clientHandler, advisingProfessorName);
     }
 
     public void changeEmailAddress(ClientHandler clientHandler, Request request) {
@@ -190,6 +197,19 @@ public class RequestHandler { // TODO: logging, perhaps?
         } else {
             String courseId = CourseAdditionUtils.addCourseAndReturnId(databaseManager, request);
             responseHandler.courseAdded(clientHandler, courseId);
+        }
+    }
+
+    public void addProfessor(ClientHandler clientHandler, Request request) {
+        String[] adviseeStudentIds = (String[]) request.get("adviseeStudentIds");
+        if (ProfessorAdditionUtils.studentsDoNotExistInDepartment(databaseManager, adviseeStudentIds,
+                (String) request.get("departmentId"))) {
+            responseHandler.studentsDoNotExistInDepartment(clientHandler);
+        } else if (ProfessorAdditionUtils.anyStudentAlreadyHasAnAdvisor(databaseManager, adviseeStudentIds)) {
+            responseHandler.atLeastOneStudentAlreadyHasAnAdvisor(clientHandler);
+        } else {
+            String professorId = ProfessorAdditionUtils.addProfessorAndReturnId(databaseManager, request);
+            responseHandler.professorAdded(clientHandler, professorId);
         }
     }
 

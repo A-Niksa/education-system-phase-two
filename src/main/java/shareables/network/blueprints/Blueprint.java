@@ -12,8 +12,8 @@ public class Blueprint {
         fields = new ArrayList<>();
     }
 
-    public void put(String string, Object object) {
-        fields.add(new StringObjectMap(string, object));
+    public void put(String fieldName, Object fieldValue) {
+        fields.add(new StringObjectMap(fieldName, fieldValue));
     }
 
     public List<StringObjectMap> getFields() {

@@ -5,6 +5,8 @@ import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.responses.Response;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 
 public class UserGetter {
     public static User getUser(String username, ClientController clientController) {
@@ -13,7 +15,7 @@ public class UserGetter {
     }
 
     public static String getAdvisingProfessorName(Student student, ClientController clientController) {
-        Professor advisingProfessor = (Professor) UserGetter.getUser(student.getAdvisingProfessorId(), clientController);
-        return advisingProfessor.fetchName();
+        Response response = clientController.getAdvisingProfessorName(student.getId());
+        return (String) response.get("advisingProfessorName");
     }
 }

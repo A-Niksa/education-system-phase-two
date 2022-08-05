@@ -47,7 +47,7 @@ public class Main {
         hamidi.setAdvisingProfessorId(khazayi.getId());
         hamidi.setPassword("1234");
         hamidi.updateLastLogin();
-        khazayi.addToStudentsUnderAdvice(hamidi);
+        khazayi.addToAdviseeStudentIds(hamidi.getId());
         mathDepartment.setDeputyId(khazayi.getId());
         mathDepartment.addToStudentIds(hamidi.getId());
         Professor fanaei = new Professor(AcademicRole.DEAN, AcademicLevel.FULL, mathDepartment.getId());
@@ -67,7 +67,6 @@ public class Main {
         rezaei.setLastName("Rezaei");
         rezaei.setPhoneNumber("09192302110");
         rezaei.setEmailAddress("rezaei@sharif.edu");
-        rezaei.setAdvisingProfessorId(fanaei.getId());
         rezaei.setPassword("5678");
         mathDepartment.addToStudentIds(rezaei.getId());
         Course complexAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2));

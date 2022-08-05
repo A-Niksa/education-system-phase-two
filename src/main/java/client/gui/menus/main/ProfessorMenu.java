@@ -1,6 +1,7 @@
 package client.gui.menus.main;
 
 import client.gui.MainFrame;
+import client.gui.menus.addition.ProfessorAdder;
 import client.gui.menus.enrolment.management.CoursesListManager;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
@@ -260,8 +261,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
-                // TODO
-//                mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, professorUser));
+                mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, professor));
             }
         });
     }

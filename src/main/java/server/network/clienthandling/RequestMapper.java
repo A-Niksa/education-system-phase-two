@@ -23,6 +23,9 @@ public class RequestMapper {
             case GET_USER:
                 requestHandler.getUser(clientHandler, request);
                 break;
+            case GET_ADVISING_PROFESSOR_NAME:
+                requestHandler.getAdvisingProfessorName(clientHandler, request);
+                break;
             case CHANGE_EMAIL_ADDRESS:
                 requestHandler.changeEmailAddress(clientHandler, request);
                 break;
@@ -103,6 +106,9 @@ public class RequestMapper {
                 break;
             case ADD_COURSE:
                 requestHandler.addCourse(clientHandler, request);
+                break;
+            case ADD_PROFESSOR:
+                requestHandler.addProfessor(clientHandler, request);
                 break;
             case GET_DEPARTMENT_DROPPING_OUT_REQUEST_DTOS:
                 requestHandler.getDepartmentDroppingOutRequestDTOs(clientHandler, request);

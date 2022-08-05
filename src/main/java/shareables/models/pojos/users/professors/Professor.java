@@ -15,7 +15,7 @@ public class Professor extends User {
         sequentialIdGenerator = getNewSequentialIdGenerator(DatasetIdentifier.PROFESSORS);
     }
 
-    private List<Student> studentsUnderAdvice;
+    private List<String> adviseeStudentIds;
     private String officeNumber;
     private AcademicLevel academicLevel;
     private AcademicRole academicRole;
@@ -28,17 +28,17 @@ public class Professor extends User {
         this.academicRole = academicRole;
         this.academicLevel = academicLevel;
         this.departmentId = departmentId;
-        studentsUnderAdvice = new ArrayList<>();
+        adviseeStudentIds = new ArrayList<>();
         initializeId();
         initializeMessenger(id);
     }
 
-    public void addToStudentsUnderAdvice(Student student) {
-        studentsUnderAdvice.add(student);
+    public void addToAdviseeStudentIds(String studentId) {
+        adviseeStudentIds.add(studentId);
     }
 
-    public void removeFromStudentsUnderAdvice(String studentId) {
-        studentsUnderAdvice.removeIf(e -> e.getId().equals(studentId));
+    public void removeFromAdviseeStudentIds(String studentId) {
+        adviseeStudentIds.removeIf(e -> e.equals(studentId));
     }
 
     @Override
@@ -46,12 +46,20 @@ public class Professor extends User {
         id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
-    public List<Student> getStudentsUnderAdvice() {
-        return studentsUnderAdvice;
+    public static SequentialIdGenerator getSequentialIdGenerator() {
+        return sequentialIdGenerator;
     }
 
-    public void setStudentsUnderAdvice(List<Student> studentsUnderAdvice) {
-        this.studentsUnderAdvice = studentsUnderAdvice;
+    public static void setSequentialIdGenerator(SequentialIdGenerator sequentialIdGenerator) {
+        Professor.sequentialIdGenerator = sequentialIdGenerator;
+    }
+
+    public List<String> getAdviseeStudentIds() {
+        return adviseeStudentIds;
+    }
+
+    public void setAdviseeStudentIds(List<String> adviseeStudentIds) {
+        this.adviseeStudentIds = adviseeStudentIds;
     }
 
     public String getOfficeNumber() {
