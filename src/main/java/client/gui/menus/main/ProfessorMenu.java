@@ -16,6 +16,8 @@ import client.gui.menus.services.requests.management.RecommendationManager;
 import client.gui.menus.standing.deputies.CurrentStandingMaster;
 import client.gui.menus.standing.deputies.TemporaryStandingMaster;
 import client.gui.menus.standing.professors.TemporaryStandingManager;
+import client.gui.utils.ImageParsingUtils;
+import client.locallogic.main.DateStringFormatter;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -53,10 +55,20 @@ public class ProfessorMenu extends MainMenu {
         super(mainFrame, username);
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_MAIN;
         professor = (Professor) user;
-        role = professor.getAcademicRole();
+        role = offlineModeDTO.getAcademicRole();
         initializeComponents();
         alignComponents();
         connectListeners();
+    }
+
+    @Override
+    protected void updatePanel() {
+        lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
+        nameLabel.setText(offlineModeDTO.getName());
+        emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        profilePicture.setIcon(profilePictureIcon);
+        role = offlineModeDTO.getAcademicRole();
     }
 
     private void initializeComponents() {
@@ -131,7 +143,7 @@ public class ProfessorMenu extends MainMenu {
     private void alignRequestsSubMenu() {
         studentRequestsSubMenu.add(recommendationLetter);
 
-        if (role == AcademicRole.DEPUTY || professor.isTemporaryDeputy()) {
+        if (role == AcademicRole.DEPUTY || offlineModeDTO.isTemporaryDeputy()) {
             studentRequestsSubMenu.add(droppingOut);
             studentRequestsSubMenu.add(minor);
         }
@@ -145,6 +157,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the profile editor in the user profile",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorProfile(mainFrame, mainMenu, user));
             }
         });
@@ -154,6 +167,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the courses list in educational services",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 if (role == AcademicRole.DEPUTY) {
                     mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professor));
                 } else {
@@ -167,6 +181,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professors list in educational services",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 if (role == AcademicRole.DEAN) {
                     mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor));
                 } else {
@@ -180,6 +195,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, professor));
             }
         });
@@ -189,6 +205,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, professor));
             }
         });
@@ -198,6 +215,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the recommendation letters subsection in academic requests",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new RecommendationManager(mainFrame, mainMenu, professor));
             }
         });
@@ -207,6 +225,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dropping out subsection in academic requests",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, professor));
             }
         });
@@ -216,6 +235,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, professor));
             }
         });
@@ -225,6 +245,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores for deputies in academic standing",
                         "connectListeners", getClass());
+                stopPanelLoop();
                  mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, professor));
             }
         });
@@ -234,6 +255,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new TemporaryStandingManager(mainFrame, mainMenu, professor));
             }
         });
@@ -243,6 +265,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened current student standings in academic standing",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new CurrentStandingMaster(mainFrame, mainMenu, professor));
             }
         });
@@ -252,6 +275,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the student addition section",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new StudentAdder(mainFrame, mainMenu, professor));
             }
         });
@@ -261,8 +285,39 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, professor));
             }
         });
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+        listOfCourses.setEnabled(false);
+        listOfProfessors.setEnabled(false);
+        recommendationLetter.setEnabled(false);
+        minor.setEnabled(false);
+        droppingOut.setEnabled(false);
+        temporaryScores.setEnabled(false);
+        temporaryScoresForDeputy.setEnabled(false);
+        viewStudentsAcademicStanding.setEnabled(false);
+        addStudent.setEnabled(false);
+        addProfessor.setEnabled(false);
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        stopPanelLoop();
+        listOfCourses.setEnabled(true);
+        listOfProfessors.setEnabled(true);
+        recommendationLetter.setEnabled(true);
+        minor.setEnabled(true);
+        droppingOut.setEnabled(true);
+        temporaryScores.setEnabled(true);
+        temporaryScoresForDeputy.setEnabled(true);
+        viewStudentsAcademicStanding.setEnabled(true);
+        addStudent.setEnabled(true);
+        addProfessor.setEnabled(true);
     }
 }

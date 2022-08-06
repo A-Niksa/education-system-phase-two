@@ -126,6 +126,13 @@ public class LoginMenu extends JPanel {
             String captcha = captchaField.getText();
             String currentCaptcha = captchaLoader.getCurrentCaptchaString();
 
+            if (!clientController.isClientOnline()) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        ConfigManager.getString(configIdentifier, "clientNotConnected"));
+                clientController.attemptServerConnection();
+                return;
+            }
+
             Response response = clientController.logIn(username, password, captcha, currentCaptcha);
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),

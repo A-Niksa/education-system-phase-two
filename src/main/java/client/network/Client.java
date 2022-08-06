@@ -9,6 +9,7 @@ public class Client {
     private int id;
     private int port;
     private ServerController serverController;
+    private boolean isOnline;
 
     public Client(int id, int port) {
         this.id = id;
@@ -16,9 +17,13 @@ public class Client {
     }
 
     public void start() {
-        serverController = new ServerController(port);
-        serverController.attemptConnectionToServer();
+        startClientNetwork();
         new MainFrame(new ClientController(this));
+    }
+
+    public void startClientNetwork() {
+        serverController = new ServerController(port, id, this);
+        serverController.attemptConnectionToServer();
     }
 
     public Response sendAndListen(Request request) {
@@ -27,5 +32,18 @@ public class Client {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isOnline() {
+        serverController.pingServer();
+        return isOnline;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

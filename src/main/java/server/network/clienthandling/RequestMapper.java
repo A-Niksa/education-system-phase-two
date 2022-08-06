@@ -14,8 +14,14 @@ public class RequestMapper {
     public void mapRequestToHandlerMethod(ClientHandler clientHandler, Request request) {
         RequestIdentifier requestIdentifier = request.getRequestIdentifier();
         switch (requestIdentifier) {
+            case CONNECTION_PING:
+                requestHandler.respondToConnectionPing(clientHandler);
+                break;
             case LOG_IN:
                 requestHandler.logIn(clientHandler, request);
+                break;
+            case GET_OFFLINE_MODE_DTO:
+                requestHandler.getOfflineModeDTO(clientHandler, request);
                 break;
             case CHANGE_PASSWORD:
                 requestHandler.changePassword(clientHandler, request);

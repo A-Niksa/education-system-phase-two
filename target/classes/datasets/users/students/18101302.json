@@ -17,23 +17,18 @@
   "phoneNumber" : "09192302110",
   "emailAddress" : "rezaei@sharif.edu",
   "password" : "5678",
-  "lastLogin" : "2022-08-06T00:45:01.4697088",
+  "lastLogin" : null,
   "advisingProfessorId" : null,
   "transcript" : {
-    "courseIdScoreMap" : {
-      "1000" : {
-        "score" : 18.0,
-        "isFinalized" : true,
-        "studentProtest" : null,
-        "professorResponse" : null,
-        "finalized" : true
-      }
-    },
-    "GPA" : 18.0,
-    "gpa" : 18.0
+    "courseIdScoreMap" : { },
+    "GPA" : -1.0,
+    "gpa" : -1.0
   },
   "degreeLevel" : "PHD",
   "studentStatus" : "CURRENTLY_STUDYING",
   "yearOfEntry" : 2018,
-  "minorDepartmentId" : null
+  "minorDepartmentId" : null,
+  "isPermittedToEnrol" : false,
+  "enrolmentTime" : null,
+  "permittedToEnrol" : false
 }

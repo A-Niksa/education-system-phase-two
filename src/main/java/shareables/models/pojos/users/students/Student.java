@@ -6,6 +6,8 @@ import shareables.models.pojos.abstractions.Transcript;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 
+import java.time.LocalDateTime;
+
 public class Student extends User {
     private static SequentialIdGenerator sequentialIdGenerator;
     static {
@@ -18,6 +20,8 @@ public class Student extends User {
     private StudentStatus studentStatus;
     private int yearOfEntry;
     private String minorDepartmentId;
+    private boolean isPermittedToEnrol;
+    private LocalDateTime enrolmentTime;
 
     public Student() {
     }
@@ -29,6 +33,7 @@ public class Student extends User {
         this.departmentId = departmentId;
         transcript = new Transcript();
         studentStatus = StudentStatus.CURRENTLY_STUDYING; // default value
+        isPermittedToEnrol = true; // default value
         initializeId();
         initializeMessenger(id);
     }
@@ -92,6 +97,22 @@ public class Student extends User {
 
     public void setMinorDepartmentId(String minorDepartmentId) {
         this.minorDepartmentId = minorDepartmentId;
+    }
+
+    public boolean isPermittedToEnrol() {
+        return isPermittedToEnrol;
+    }
+
+    public void setPermittedToEnrol(boolean permittedToEnrol) {
+        isPermittedToEnrol = permittedToEnrol;
+    }
+
+    public LocalDateTime getEnrolmentTime() {
+        return enrolmentTime;
+    }
+
+    public void setEnrolmentTime(LocalDateTime enrolmentTime) {
+        this.enrolmentTime = enrolmentTime;
     }
 
     // TODO: should be removed

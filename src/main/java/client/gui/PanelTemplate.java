@@ -56,7 +56,7 @@ public abstract class PanelTemplate extends JPanel {
 
     protected abstract void alignComponents();
 
-    private void connectTemplateListeners() {
+    protected void connectTemplateListeners() {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

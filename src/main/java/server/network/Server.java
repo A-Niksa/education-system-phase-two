@@ -16,17 +16,17 @@ import java.util.List;
 
 public class Server {
     private ServerSocket serverSocket;
-    private List<ClientHandler> activeClientHandlers; // TODO: only includes active clientHandlers?
+    private List<ClientHandler> clientHandlers;
     private int currentClientHandlerId;
     private int port;
     private boolean isActive;
-    private final DatabaseManager databaseManager; // TODO: synchronizing db if necessary?
+    private final DatabaseManager databaseManager;
     private AuthTokenGenerator authTokenGenerator;
     private RequestMapper requestMapper;
 
     public Server(int port) {
         this.port = port;
-        activeClientHandlers = new ArrayList<>();
+        clientHandlers = new ArrayList<>();
         currentClientHandlerId = ConfigIdSupplier.getCurrentClientId(); // TODO: resetting this in config
         authTokenGenerator = new AuthTokenGenerator();
         databaseManager = new DatabaseManager();
@@ -57,12 +57,12 @@ public class Server {
         while (isActive) {
             try {
                 Socket socket = serverSocket.accept();
-                MasterLogger.serverInfo("Connection established with new client (id: " + currentClientHandlerId,
-                        "awaitConnection", Server.class);
+                MasterLogger.serverInfo("Connection established with new client (id: " + currentClientHandlerId
+                        + ")", "awaitConnection", Server.class);
                 ClientHandler clientHandler = new ClientHandler(currentClientHandlerId,
                         authTokenGenerator.generateAuthToken(), socket, this);
                 currentClientHandlerId++;
-                activeClientHandlers.add(clientHandler);
+                clientHandlers.add(clientHandler);
             } catch (IOException e) {  // TODO: handling the exception (along with exceptions associated with the network)
                 e.printStackTrace();
             }
@@ -75,7 +75,7 @@ public class Server {
     }
 
     private ClientHandler getClientHandler(int clientHandlerId) {
-        return activeClientHandlers.stream().filter(e -> e.getId() == clientHandlerId).findAny().orElse(null);
+        return clientHandlers.stream().filter(e -> e.getId() == clientHandlerId).findAny().orElse(null);
     }
 
     public DatabaseManager getDatabaseManager() {
@@ -90,12 +90,12 @@ public class Server {
         this.authTokenGenerator = authTokenGenerator;
     }
 
-    public List<ClientHandler> getActiveClientHandlers() {
-        return activeClientHandlers;
+    public List<ClientHandler> getClientHandlers() {
+        return clientHandlers;
     }
 
-    public void setActiveClientHandlers(List<ClientHandler> activeClientHandlers) {
-        this.activeClientHandlers = activeClientHandlers;
+    public void setClientHandlers(List<ClientHandler> clientHandlers) {
+        this.clientHandlers = clientHandlers;
     }
 
     public int getPort() {

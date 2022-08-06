@@ -47,6 +47,7 @@ public class Main {
         hamidi.setAdvisingProfessorId(khazayi.getId());
         hamidi.setPassword("1234");
         hamidi.updateLastLogin();
+        hamidi.setEnrolmentTime(LocalDateTime.now());
         khazayi.addToAdviseeStudentIds(hamidi.getId());
         mathDepartment.setDeputyId(khazayi.getId());
         mathDepartment.addToStudentIds(hamidi.getId());

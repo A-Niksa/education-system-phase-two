@@ -27,5 +27,8 @@
   "degreeLevel" : "PHD",
   "studentStatus" : "CURRENTLY_STUDYING",
   "yearOfEntry" : 2018,
-  "minorDepartmentId" : null
+  "minorDepartmentId" : null,
+  "isPermittedToEnrol" : false,
+  "enrolmentTime" : null,
+  "permittedToEnrol" : false
 }

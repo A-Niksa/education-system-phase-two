@@ -2,6 +2,8 @@ package shareables.network.requests;
 
 public enum RequestIdentifier {
     LOG_IN,
+    CONNECTION_PING,
+    GET_OFFLINE_MODE_DTO,
     CHANGE_PASSWORD,
     GET_USER,
     GET_ADVISING_PROFESSOR_NAME,

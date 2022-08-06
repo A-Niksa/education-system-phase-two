@@ -17,6 +17,7 @@ public class WeeklyScheduleUtils {
         List<CourseDTO> courseDTOs = new ArrayList<>();
         courses.parallelStream()
                 .filter(e -> studentIsEnrolledInCourse(username, (Course) e))
+                .filter(e -> ((Course) e).isActive())
                 .forEach(e -> {
                     Course course = (Course) e;
                     CourseDTO courseDTO = initializeCourseDTO(databaseManager, course);
@@ -30,6 +31,7 @@ public class WeeklyScheduleUtils {
         List<CourseDTO> courseDTOs = new ArrayList<>();
         courses.parallelStream()
                 .filter(e -> professorIsTeachingCourse(username, (Course) e))
+                .filter(e -> ((Course) e).isActive())
                 .forEach(e -> {
                     Course course = (Course) e;
                     CourseDTO courseDTO = initializeCourseDTO(databaseManager, course);

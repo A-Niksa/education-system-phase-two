@@ -9,7 +9,8 @@ import client.gui.menus.services.StudentWeeklySchedule;
 import client.gui.menus.services.requests.submission.*;
 import client.gui.menus.standing.students.CurrentStandingView;
 import client.gui.menus.standing.students.TemporaryStandingView;
-import client.locallogic.main.UserGetter;
+import client.gui.utils.ImageParsingUtils;
+import client.locallogic.main.DateStringFormatter;
 import shareables.models.pojos.users.students.Student;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -22,7 +23,7 @@ import java.awt.event.ActionListener;
 
 public class StudentMenu extends MainMenu {
     private Student student;
-    private JLabel academicStatusLabel;
+    private JLabel studentStatusLabel;
     private JLabel advisingProfessorName;
     private JLabel isAllowedToEnrol;
     private JLabel enrolmentTime;
@@ -46,6 +47,9 @@ public class StudentMenu extends MainMenu {
     private JMenuItem temporaryScores;
     private JMenuItem currentAcademicStanding;
     private JMenuItem editUserProfile;
+    private String studentStatusLabelPrompt;
+    private String advisingProfessorNamePrompt;
+    private String enrolmentTimePrompt;
 
     public StudentMenu(MainFrame mainFrame, String username) {
         super(mainFrame, username);
@@ -56,13 +60,31 @@ public class StudentMenu extends MainMenu {
         connectListeners();
     }
 
+    @Override
+    protected void updatePanel() {
+        lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
+        nameLabel.setText(offlineModeDTO.getName());
+        emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        profilePicture.setIcon(profilePictureIcon);
+        studentStatusLabel.setText(studentStatusLabelPrompt + offlineModeDTO.getStudentStatus().toString());
+        advisingProfessorName.setText(advisingProfessorNamePrompt + offlineModeDTO.getAdvisingProfessorName());
+        isAllowedToEnrol.setText(offlineModeDTO.getPermissionToEnrolPrompt());
+        enrolmentTime.setText(enrolmentTimePrompt + DateStringFormatter.formatEnrolmentTime(
+                offlineModeDTO.getEnrolmentTime()
+        ));
+    }
+
     private void initializeComponents() {
-        academicStatusLabel = new JLabel(ConfigManager.getString(configIdentifier, "academicStatusLabelMessage")
-                + student.getStudentStatus());
-        advisingProfessorName = new JLabel(ConfigManager.getString(configIdentifier, "advisingProfessorNameMessage")
-                + UserGetter.getAdvisingProfessorName(student, clientController));
-        isAllowedToEnrol = new JLabel(ConfigManager.getString(configIdentifier, "isAllowedToEnrolMessage"));
-        enrolmentTime = new JLabel(ConfigManager.getString(configIdentifier, "enrolmentTimeMessage"));
+        studentStatusLabelPrompt = ConfigManager.getString(configIdentifier, "academicStatusLabelMessage");
+        studentStatusLabel = new JLabel(studentStatusLabelPrompt + offlineModeDTO.getStudentStatus());
+        advisingProfessorNamePrompt = ConfigManager.getString(configIdentifier, "advisingProfessorNameMessage");
+        advisingProfessorName = new JLabel(advisingProfessorNamePrompt + offlineModeDTO.getAdvisingProfessorName());
+        isAllowedToEnrol = new JLabel(offlineModeDTO.getPermissionToEnrolPrompt());
+        enrolmentTimePrompt = ConfigManager.getString(configIdentifier, "enrolmentTimeMessage");
+        enrolmentTime = new JLabel(enrolmentTimePrompt + DateStringFormatter.formatEnrolmentTime(
+                offlineModeDTO.getEnrolmentTime()
+        ));
         separator = new JSeparator();
         menuBar = new JMenuBar();
         registrationAffairs = new JMenu(ConfigManager.getString(configIdentifier, "registrationAffairsMessage"));
@@ -87,11 +109,11 @@ public class StudentMenu extends MainMenu {
     }
 
     private void alignComponents() {
-        academicStatusLabel.setBounds(ConfigManager.getInt(configIdentifier, "academicStatusLabelX"),
+        studentStatusLabel.setBounds(ConfigManager.getInt(configIdentifier, "academicStatusLabelX"),
                 ConfigManager.getInt(configIdentifier, "academicStatusLabelY"),
                 ConfigManager.getInt(configIdentifier, "academicStatusLabelW"),
                 ConfigManager.getInt(configIdentifier, "academicStatusLabelH"));
-        add(academicStatusLabel);
+        add(studentStatusLabel);
         advisingProfessorName.setBounds(ConfigManager.getInt(configIdentifier, "advisingProfessorNameX"),
                 ConfigManager.getInt(configIdentifier, "advisingProfessorNameY"),
                 ConfigManager.getInt(configIdentifier, "advisingProfessorNameW"),
@@ -139,8 +161,7 @@ public class StudentMenu extends MainMenu {
         requestsSubMenu.add(droppingOut);
         requestsSubMenu.add(enrolmentCertificate);
 
-        Student studentUser = (Student) user;
-        switch (studentUser.getDegreeLevel()) {
+        switch (offlineModeDTO.getDegreeLevel()) {
             case UNDERGRADUATE:
                 requestsSubMenu.add(recommendationLetter);
                 requestsSubMenu.add(minor);
@@ -163,7 +184,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the profile editor in the user profile",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new StudentProfile(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new StudentProfile(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
 
@@ -277,5 +298,33 @@ public class StudentMenu extends MainMenu {
                 mainFrame.setCurrentPanel(new DefenseSubmission(mainFrame, mainMenu, user));
             }
         });
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+        listOfCourses.setEnabled(false);
+        listOfProfessors.setEnabled(false);
+        recommendationLetter.setEnabled(false);
+        enrolmentCertificate.setEnabled(false);
+        minor.setEnabled(false);
+        droppingOut.setEnabled(false);
+        dormitory.setEnabled(false);
+        defenseSlot.setEnabled(false);
+        temporaryScores.setEnabled(false);
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        startPanelLoop();
+        listOfCourses.setEnabled(true);
+        listOfProfessors.setEnabled(true);
+        recommendationLetter.setEnabled(true);
+        enrolmentCertificate.setEnabled(true);
+        minor.setEnabled(true);
+        droppingOut.setEnabled(true);
+        dormitory.setEnabled(true);
+        defenseSlot.setEnabled(true);
+        temporaryScores.setEnabled(true);
     }
 }

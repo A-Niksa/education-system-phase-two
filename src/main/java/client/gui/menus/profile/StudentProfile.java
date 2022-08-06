@@ -1,13 +1,13 @@
 package client.gui.menus.profile;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
+import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ImageParsingUtils;
-import client.locallogic.main.UserGetter;
-import client.locallogic.profile.DepartmentGetter;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class StudentProfile extends PanelTemplate {
+public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel {
     private Student student;
     private JLabel profilePicture;
     private JLabel name;
@@ -42,50 +42,63 @@ public class StudentProfile extends PanelTemplate {
     private JLabel enterNewPhoneNumber;
     private JTextField newPhoneNumber;
     private JButton changePhoneNumber;
+    private String nameMessage;
+    private String nationalIdMessage;
+    private String studentIdMessage;
+    private String phoneNumberMessage;
+    private String emailAddressMessage;
+    private String totalGPAMessage;
+    private String departmentMessage;
+    private String advisingProfessorMessage;
+    private String yearOfEntryMessage;
+    private String degreeLevelMessage;
+    private String studentStatusMessage;
 
-    public StudentProfile(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public StudentProfile(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_PROFILE;
         labelsList = new ArrayList<>();
+        startPinging(student.getId());
         drawPanel();
     }
 
     @Override
     protected void initializeComponents() {
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(student.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
         profilePicture = new JLabel(profilePictureIcon);
-        name = new JLabel(ConfigManager.getString(configIdentifier, "nameMessage") +
-                student.fetchName());
+        nameMessage = ConfigManager.getString(configIdentifier, "nameMessage");
+        name = new JLabel(nameMessage + offlineModeDTO.getName());
         labelsList.add(name);
-        nationalId = new JLabel(ConfigManager.getString(configIdentifier, "nationalIdMessage")
-                + student.getNationalId());
+        nationalIdMessage = ConfigManager.getString(configIdentifier, "nationalIdMessage");
+        nationalId = new JLabel(nationalIdMessage + offlineModeDTO.getNationalId());
         labelsList.add(nationalId);
-        studentId = new JLabel(ConfigManager.getString(configIdentifier, "studentIdMessage") + student.getId());
+        studentIdMessage = ConfigManager.getString(configIdentifier, "studentIdMessage");
+        studentId = new JLabel(studentIdMessage + offlineModeDTO.getId());
         labelsList.add(studentId);
-        phoneNumber = new JLabel(ConfigManager.getString(configIdentifier, "phoneNumberMessage")
-                + student.getPhoneNumber());
+        phoneNumberMessage = ConfigManager.getString(configIdentifier, "phoneNumberMessage");
+        phoneNumber = new JLabel(phoneNumberMessage + offlineModeDTO.getPhoneNumber());
         labelsList.add(phoneNumber);
-        emailAddress = new JLabel(ConfigManager.getString(configIdentifier, "emailAddressMessage")
-                + student.getEmailAddress());
+        emailAddressMessage = ConfigManager.getString(configIdentifier, "emailAddressMessage");
+        emailAddress = new JLabel(emailAddressMessage + offlineModeDTO.getEmailAddress());
         labelsList.add(emailAddress);
-        totalGPA = new JLabel(ConfigManager.getString(configIdentifier, "totalGPAMessage")
-                + student.fetchGPAString());
+        totalGPAMessage = ConfigManager.getString(configIdentifier, "totalGPAMessage");
+        totalGPA = new JLabel(totalGPAMessage + offlineModeDTO.getGPAString());
         labelsList.add(totalGPA);
-        department = new JLabel(ConfigManager.getString(configIdentifier, "departmentMessage")
-                + DepartmentGetter.getDepartmentNameById(student.getDepartmentId()));
+        departmentMessage = ConfigManager.getString(configIdentifier, "departmentMessage");
+        department = new JLabel(departmentMessage + offlineModeDTO.getDepartmentName());
         labelsList.add(department);
-        advisingProfessor = new JLabel(ConfigManager.getString(configIdentifier, "advisingProfessorMessage")
-                + UserGetter.getAdvisingProfessorName(student, clientController));
+        advisingProfessorMessage = ConfigManager.getString(configIdentifier, "advisingProfessorMessage");
+        advisingProfessor = new JLabel(advisingProfessorMessage + offlineModeDTO.getAdvisingProfessorName());
         labelsList.add(advisingProfessor);
-        yearOfEntry = new JLabel(ConfigManager.getString(configIdentifier, "yearOfEntryMessage") +
-                student.getYearOfEntry());
+        yearOfEntryMessage = ConfigManager.getString(configIdentifier, "yearOfEntryMessage");
+        yearOfEntry = new JLabel(yearOfEntryMessage + offlineModeDTO.getYearOfEntry());
         labelsList.add(yearOfEntry);
-        degreeLevel = new JLabel(ConfigManager.getString(configIdentifier, "degreeLevelMessage")
-                + student.getDegreeLevel());
+        degreeLevelMessage = ConfigManager.getString(configIdentifier, "degreeLevelMessage");
+        degreeLevel = new JLabel(degreeLevelMessage + offlineModeDTO.getDegreeLevel());
         labelsList.add(degreeLevel);
-        studentStatus = new JLabel(ConfigManager.getString(configIdentifier, "studentStatusMessage")
-                + student.getStudentStatus());
+        studentStatusMessage = ConfigManager.getString(configIdentifier, "studentStatusMessage");
+        studentStatus = new JLabel(studentStatusMessage + offlineModeDTO.getStudentStatus());
         labelsList.add(studentStatus);
         separator = new JSeparator();
         enterNewEmailAddress = new JLabel(ConfigManager.getString(configIdentifier, "enterNewEmailAddressMessage"));
@@ -184,5 +197,36 @@ public class StudentProfile extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        profilePicture.setIcon(profilePictureIcon);
+        name.setText(nameMessage + offlineModeDTO.getName());
+        nationalId.setText(nationalIdMessage + offlineModeDTO.getNationalId());
+        studentId.setText(studentIdMessage + offlineModeDTO.getId());
+        phoneNumber.setText(phoneNumberMessage + offlineModeDTO.getPhoneNumber());
+        emailAddress.setText(emailAddressMessage + offlineModeDTO.getEmailAddress());
+        totalGPA.setText(totalGPAMessage + offlineModeDTO.getGPAString());
+        department.setText(departmentMessage + offlineModeDTO.getDepartmentName());
+        advisingProfessor.setText(advisingProfessorMessage + offlineModeDTO.getAdvisingProfessorName());
+        yearOfEntry.setText(yearOfEntryMessage + offlineModeDTO.getYearOfEntry());
+        degreeLevel.setText(degreeLevelMessage + offlineModeDTO.getDegreeLevel());
+        studentStatus.setText(studentStatusMessage + offlineModeDTO.getStudentStatus());
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+        changeEmailAddress.setEnabled(false);
+        changePhoneNumber.setEnabled(false);
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        startPanelLoop();
+        changeEmailAddress.setEnabled(true);
+        changePhoneNumber.setEnabled(true);
     }
 }

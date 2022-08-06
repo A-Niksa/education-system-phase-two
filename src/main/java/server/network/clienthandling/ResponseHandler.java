@@ -17,6 +17,12 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
+    public void offlineModeDTOAcquired(ClientHandler clientHandler, OfflineModeDTO offlineModeDTO) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("offlineModeDTO", offlineModeDTO);
+        clientHandler.respond(response);
+    }
+
     public void wrongUsernameOrPassword(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "wrongUsernameOrPassword"));

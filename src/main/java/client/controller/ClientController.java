@@ -20,10 +20,20 @@ public class ClientController {
         requestGenerator = new RequestGenerator();
     }
 
+    public void attemptServerConnection() {
+        client.startClientNetwork();
+    }
+
     public Response logIn(String username, String password, String captcha, String currentCaptcha) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.LOG_IN,
                 new StringObjectMap("username", username), new StringObjectMap("password", password),
                 new StringObjectMap("captcha", captcha), new StringObjectMap("currentCaptcha", currentCaptcha));
+        return client.sendAndListen(request);
+    }
+
+    public Response getOfflineModeDTO(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_OFFLINE_MODE_DTO,
+                new StringObjectMap("username", username));
         return client.sendAndListen(request);
     }
 
@@ -404,7 +414,15 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public boolean isClientOnline() {
+        return client.isOnline();
+    }
+
     public int getId() { // same as the id of the client
         return client.getId();
+    }
+
+    public void setClientId(int nextClientId) {
+        client.setId(nextClientId);
     }
 }

@@ -6,6 +6,7 @@ import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
+import server.network.clienthandling.logicutils.general.OfflineModeUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
 import server.network.clienthandling.logicutils.services.*;
@@ -37,6 +38,10 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler = new ResponseHandler();
     }
 
+    public void respondToConnectionPing(ClientHandler clientHandler) {
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
     public void logIn(ClientHandler clientHandler, Request request) { // TODO: two people logging in at the same time
         User user = LoginUtils.getUser(databaseManager, (String) request.get("username"));
         if (user == null ||
@@ -53,6 +58,12 @@ public class RequestHandler { // TODO: logging, perhaps?
             user.updateLastLogin(); // setting last login to now
             responseHandler.validLogin(clientHandler, user.getUserIdentifier());
         }
+    }
+
+    public void getOfflineModeDTO(ClientHandler clientHandler, Request request) {
+        OfflineModeDTO offlineModeDTO = OfflineModeUtils.getOfflineModeDTO(databaseManager,
+                (String) request.get("username"));
+        responseHandler.offlineModeDTOAcquired(clientHandler, offlineModeDTO);
     }
 
     public void changePassword(ClientHandler clientHandler, Request request) {
