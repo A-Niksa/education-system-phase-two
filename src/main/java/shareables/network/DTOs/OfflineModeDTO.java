@@ -218,4 +218,33 @@ public class OfflineModeDTO {
     public void setAcademicRole(AcademicRole academicRole) {
         this.academicRole = academicRole;
     }
+
+    // TODO: to be removed
+    @Override
+    public String toString() {
+        return "OfflineModeDTO{" +
+                "lastLogin=" + lastLogin +
+                ", name='" + name + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", studentStatus=" + studentStatus +
+                ", advisingProfessorName='" + advisingProfessorName + '\'' +
+                ", permissionToEnrolPrompt='" + permissionToEnrolPrompt + '\'' +
+                ", isTemporaryDeputy=" + isTemporaryDeputy +
+                ", enrolmentTime=" + enrolmentTime +
+                ", profilePicture=" + profilePicture +
+                ", academicRole=" + academicRole +
+                ", id='" + id + '\'' +
+                ", nationalId='" + nationalId + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", GPAString='" + GPAString + '\'' +
+                ", officeNumber='" + officeNumber + '\'' +
+                ", yearOfEntry=" + yearOfEntry +
+                ", departmentName=" + departmentName +
+                ", degreeLevel=" + degreeLevel +
+                ", academicLevel=" + academicLevel +
+                ", offlineMessengerDTO=" + offlineMessengerDTO +
+                ", transcriptDTO=" + transcriptDTO +
+                ", courseDTOs=" + courseDTOs +
+                '}';
+    }
 }

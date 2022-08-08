@@ -147,11 +147,11 @@ public class LoginMenu extends JPanel {
             if (userIdentifier == UserIdentifier.STUDENT) {
                 MasterLogger.clientInfo(clientController.getId(), "Logged in as student",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new StudentMenu(mainFrame, username));
+                mainFrame.setCurrentPanel(new StudentMenu(mainFrame, username, null, true));
             } else if (userIdentifier == UserIdentifier.PROFESSOR) {
                 MasterLogger.clientInfo(clientController.getId(), "Logged in as professor",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new ProfessorMenu(mainFrame, username));
+                mainFrame.setCurrentPanel(new ProfessorMenu(mainFrame, username, null, true));
             }
         });
     }

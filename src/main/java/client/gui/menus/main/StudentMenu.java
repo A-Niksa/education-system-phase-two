@@ -11,7 +11,9 @@ import client.gui.menus.standing.students.CurrentStandingView;
 import client.gui.menus.standing.students.TemporaryStandingView;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.main.DateStringFormatter;
+import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -51,13 +53,24 @@ public class StudentMenu extends MainMenu {
     private String advisingProfessorNamePrompt;
     private String enrolmentTimePrompt;
 
-    public StudentMenu(MainFrame mainFrame, String username) {
-        super(mainFrame, username);
+    public StudentMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
+        super(mainFrame, username, MainMenuType.STUDENT, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_STUDENT_MAIN;
         student = (Student) user;
         initializeComponents();
         alignComponents();
         connectListeners();
+        startPingingIfOnline(username, this);
+    }
+
+    public StudentMenu(MainFrame mainFrame, User user, OfflineModeDTO offlineModeDTO, boolean isOnline) {
+        super(mainFrame, user, MainMenuType.STUDENT, offlineModeDTO, isOnline);
+        configIdentifier = ConfigFileIdentifier.GUI_STUDENT_MAIN;
+        student = (Student) user;
+        initializeComponents();
+        alignComponents();
+        connectListeners();
+        startPingingIfOnline(user.getId(), this);
     }
 
     @Override
@@ -184,7 +197,8 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the profile editor in the user profile",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new StudentProfile(mainFrame, mainMenu, user, offlineModeDTO));
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new StudentProfile(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
             }
         });
 
@@ -316,7 +330,7 @@ public class StudentMenu extends MainMenu {
 
     @Override
     public void enableOnlineComponents() {
-        startPanelLoop();
+        restartPanelLoop();
         listOfCourses.setEnabled(true);
         listOfProfessors.setEnabled(true);
         recommendationLetter.setEnabled(true);

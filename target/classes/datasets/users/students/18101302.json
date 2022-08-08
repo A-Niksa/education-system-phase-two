@@ -28,7 +28,7 @@
   "studentStatus" : "CURRENTLY_STUDYING",
   "yearOfEntry" : 2018,
   "minorDepartmentId" : null,
-  "isPermittedToEnrol" : false,
+  "isPermittedToEnrol" : true,
   "enrolmentTime" : null,
-  "permittedToEnrol" : false
+  "permittedToEnrol" : true
 }

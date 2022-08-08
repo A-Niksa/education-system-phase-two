@@ -54,13 +54,15 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
     private String degreeLevelMessage;
     private String studentStatusMessage;
 
-    public StudentProfile(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public StudentProfile(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+                          boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
+        this.isOnline = isOnline;
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_PROFILE;
         labelsList = new ArrayList<>();
-        startPinging(student.getId());
         drawPanel();
+        startPingingIfOnline(user.getId(), this);
     }
 
     @Override
@@ -225,7 +227,7 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
 
     @Override
     public void enableOnlineComponents() {
-        startPanelLoop();
+        restartPanelLoop();
         changeEmailAddress.setEnabled(true);
         changePhoneNumber.setEnabled(true);
     }

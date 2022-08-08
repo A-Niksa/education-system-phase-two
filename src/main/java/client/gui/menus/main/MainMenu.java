@@ -36,22 +36,46 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
     protected boolean isOnline;
     protected Runnable pingingTask;
     protected String lastLoginTimePrompt;
+    protected MainMenuType mainMenuType;
 
-    public MainMenu(MainFrame mainFrame, String username) {
+    public MainMenu(MainFrame mainFrame, String username, MainMenuType mainMenuType, OfflineModeDTO offlineModeDTO,
+                    boolean isOnline) {
         this.mainFrame = mainFrame;
+        this.mainMenuType = mainMenuType;
+        this.isOnline = isOnline;
         clientController = mainFrame.getClientController();
-        user = UserGetter.getUser(username, clientController);
+        initializeOfflineModeDTO(offlineModeDTO, username);
         configIdentifier = ConfigFileIdentifier.GUI_MAIN;
-        updateOfflineModeDTO(username);
-        startPinging(username);
         configurePanel();
         drawPanel();
     }
 
-    private void startPinging(String username) {
-        initializePingingTask(username);
+    public MainMenu(MainFrame mainFrame, User user, MainMenuType mainMenuType, OfflineModeDTO offlineModeDTO,
+                    boolean isOnline) {
+        this.mainFrame = mainFrame;
+        this.user = user;
+        this.mainMenuType = mainMenuType;
+        this.isOnline = isOnline;
+        clientController = mainFrame.getClientController();
+        initializeOfflineModeDTO(offlineModeDTO, user.getId());
+        configIdentifier = ConfigFileIdentifier.GUI_MAIN;
+        configurePanel();
+        drawPanel();
+    }
+
+    private void initializeOfflineModeDTO(OfflineModeDTO offlineModeDTO, String username) {
+        if (offlineModeDTO == null) updateOfflineModeDTO(username);
+        else this.offlineModeDTO = offlineModeDTO;
+    }
+
+    public void startPingingIfOnline(String userId, OfflinePanel offlinePanel) {
+        initializePingingTask(userId);
         initializePanelLoop();
-        startPanelLoop();
+        if (isOnline) {
+            startPanelLoop();
+        } else {
+            offlinePanel.goOffline(mainFrame, this, clientController);
+        }
     }
 
     private void checkIfClientIsOnline() {
@@ -62,6 +86,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         pingingTask = () -> {
             checkIfClientIsOnline();
             if (isOnline) {
+                user = UserGetter.getUser(username, clientController);
                 updateOfflineModeDTO(username);
                 updatePanel();
             } else {
@@ -71,6 +96,11 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         };
     }
 
+    private void notifyClientOfConnectionLoss() {
+        JOptionPane.showMessageDialog(mainFrame, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "connectionLoss"));
+    }
+
     protected abstract void updatePanel();
 
     protected void updateOfflineModeDTO(String userId) {
@@ -78,11 +108,6 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         if (response.getResponseStatus() == ResponseStatus.OK) {
             offlineModeDTO = (OfflineModeDTO) response.get("offlineModeDTO");
         }
-    }
-
-    private void notifyClientOfConnectionLoss() {
-        JOptionPane.showMessageDialog(mainFrame, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
-                "connectionLoss"));
     }
 
     private void initializePanelLoop() {
@@ -96,6 +121,15 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
 
     protected void stopPanelLoop() {
         panelLoop.stop();
+    }
+
+    protected void restartPanelLoop() {
+        panelLoop.restart();
+    }
+
+    protected void facilitateChangingPanel(OfflinePanel offlinePanel) {
+        offlinePanel.removeOfflineComponents((JPanel) offlinePanel);
+        stopPanelLoop();
     }
 
     public void drawPanel() {
@@ -161,5 +195,21 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
 
     public void setOfflineModeDTO(OfflineModeDTO offlineModeDTO) {
         this.offlineModeDTO = offlineModeDTO;
+    }
+
+    public MainMenuType getMainMenuType() {
+        return mainMenuType;
+    }
+
+    public String getUsername() {
+        return user.getId();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
     }
 }

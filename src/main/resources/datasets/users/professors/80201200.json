@@ -17,7 +17,7 @@
   "phoneNumber" : "09129730021",
   "emailAddress" : "khazayi@sharif.edu",
   "password" : "1234",
-  "lastLogin" : "2022-08-06T18:26:58.2531366",
+  "lastLogin" : null,
   "adviseeStudentIds" : [ "19101100" ],
   "officeNumber" : "105",
   "academicLevel" : "ASSOCIATE",

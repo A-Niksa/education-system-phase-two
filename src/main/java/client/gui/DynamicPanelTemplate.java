@@ -1,6 +1,8 @@
 package client.gui;
 
 import client.gui.menus.main.MainMenu;
+import client.gui.menus.main.ProfessorMenu;
+import client.gui.menus.main.StudentMenu;
 import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
@@ -36,9 +38,9 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
     }
 
     protected void startPingingIfOnline(String userId, OfflinePanel offlinePanel) {
-        if (clientController.isClientOnline()) {
-            initializePingingTask(userId);
-            initializePanelLoop();
+        initializePingingTask(userId);
+        initializePanelLoop();
+        if (isOnline) {
             startPanelLoop();
         } else {
             offlinePanel.goOffline(mainFrame, this, clientController);
@@ -69,10 +71,24 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
     }
 
     private void goToMainMenu() {
+        if (this instanceof OfflinePanel) facilitateChangingPanel((OfflinePanel) this);
         stopPanelLoop();
-        mainMenu.setOfflineModeDTO(offlineModeDTO);
-        mainMenu.drawPanel();
-        mainFrame.setCurrentPanel(mainMenu);
+        MainMenu newMainMenu;
+        switch (mainMenu.getMainMenuType()) {
+            case PROFESSOR:
+                newMainMenu = new ProfessorMenu(mainFrame, mainMenu.getUser(), offlineModeDTO, isOnline);
+                break;
+            case STUDENT:
+                newMainMenu = new StudentMenu(mainFrame, mainMenu.getUser(), offlineModeDTO, isOnline);
+                break;
+                // TODO: adding admin and mr. mohseni
+            default:
+                newMainMenu = null; // added for explicitness
+        }
+        mainFrame.setCurrentPanel(newMainMenu);
+        MasterLogger.clientInfo(clientController.getId(), "Returned to the main menu",
+                "connectListeners", getClass());
+        mainMenu = newMainMenu;
     }
 
     private void updateOfflineModeDTO(String userId) {
@@ -96,18 +112,26 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
         panelLoop.stop();
     }
 
+    protected void restartPanelLoop() {
+        panelLoop.restart();
+    }
+
+    protected void facilitateChangingPanel(OfflinePanel offlinePanel) {
+        offlinePanel.removeOfflineComponents((JPanel) offlinePanel);
+        stopPanelLoop();
+    }
+
     @Override
     protected void connectTemplateListeners() {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Returned to the main menu",
-                        "connectListeners", getClass());
-                stopPanelLoop();
-                mainMenu.setOfflineModeDTO(offlineModeDTO);
-                mainFrame.setCurrentPanel(mainMenu);
-                // TODO: new mainMenu?
+                goToMainMenu();
             }
         });
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
     }
 }

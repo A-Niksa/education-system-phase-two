@@ -96,10 +96,8 @@ public class ServerController {
         try {
             String responseString = in.nextLine();
             return objectMapper.readValue(responseString, Response.class);
-        } catch (NoSuchElementException e) {
-            MasterLogger.clientFatal(id, "Cannot connect to the server", "attemptConnectionToServer",
-                    getClass());
-            client.setOnline(false);
+        } catch (NoSuchElementException | IndexOutOfBoundsException e) {
+            goOffline("attemptConnectionToServer");
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

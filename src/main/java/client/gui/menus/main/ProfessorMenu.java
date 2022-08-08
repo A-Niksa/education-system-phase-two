@@ -18,8 +18,10 @@ import client.gui.menus.standing.deputies.TemporaryStandingMaster;
 import client.gui.menus.standing.professors.TemporaryStandingManager;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.main.DateStringFormatter;
+import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -51,14 +53,26 @@ public class ProfessorMenu extends MainMenu {
     private JButton addStudent;
     private JButton addProfessor;
 
-    public ProfessorMenu(MainFrame mainFrame, String username) {
-        super(mainFrame, username);
+    public ProfessorMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
+        super(mainFrame, username, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_MAIN;
         professor = (Professor) user;
         role = offlineModeDTO.getAcademicRole();
         initializeComponents();
         alignComponents();
         connectListeners();
+        startPingingIfOnline(username, this);
+    }
+
+    public ProfessorMenu(MainFrame mainFrame, User user, OfflineModeDTO offlineModeDTO, boolean isOnline) {
+        super(mainFrame, user, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
+        configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_MAIN;
+        professor = (Professor) user;
+        role = offlineModeDTO.getAcademicRole();
+        initializeComponents();
+        alignComponents();
+        connectListeners();
+        startPingingIfOnline(user.getId(), this);
     }
 
     @Override
@@ -308,7 +322,7 @@ public class ProfessorMenu extends MainMenu {
 
     @Override
     public void enableOnlineComponents() {
-        stopPanelLoop();
+        restartPanelLoop();
         listOfCourses.setEnabled(true);
         listOfProfessors.setEnabled(true);
         recommendationLetter.setEnabled(true);

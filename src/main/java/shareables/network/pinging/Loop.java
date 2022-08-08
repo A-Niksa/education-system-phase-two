@@ -10,9 +10,15 @@ public class Loop {
         this.fps = fps;
         this.updatable = updatable;
         running = false;
+        thread = new Thread(this::run);
     }
 
     public void start() {
+        running = true;
+        thread.start();
+    }
+
+    public void restart() {
         thread = new Thread(this::run);
         running = true;
         thread.start();

@@ -15,9 +15,9 @@
   "firstName" : "Aref",
   "lastName" : "Hamidi",
   "phoneNumber" : "09192302103",
-  "emailAddress" : "hamidi@sharif.edu",
-  "password" : "1234",
-  "lastLogin" : "2022-08-07T00:17:03.5079757",
+  "emailAddress" : "hamidee@sharif.edu",
+  "password" : "123",
+  "lastLogin" : "2022-08-08T15:46:47.3349449",
   "advisingProfessorId" : "80201200",
   "transcript" : {
     "courseIdScoreMap" : { },
@@ -28,7 +28,7 @@
   "studentStatus" : "CURRENTLY_STUDYING",
   "yearOfEntry" : 2019,
   "minorDepartmentId" : null,
-  "isPermittedToEnrol" : false,
-  "enrolmentTime" : null,
-  "permittedToEnrol" : false
+  "isPermittedToEnrol" : true,
+  "enrolmentTime" : "2022-08-07T11:07:40.6085448",
+  "permittedToEnrol" : true
 }

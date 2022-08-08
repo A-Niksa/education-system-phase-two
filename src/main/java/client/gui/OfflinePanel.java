@@ -1,6 +1,7 @@
 package client.gui;
 
 import client.controller.ClientController;
+import client.gui.menus.main.MainMenu;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigIdSupplier;
 import shareables.utils.config.ConfigManager;
@@ -33,13 +34,26 @@ public interface OfflinePanel {
             clientController.setClientId(ConfigIdSupplier.nextClientId());
             enableOnlineComponents();
             removeOfflineComponents(panel);
-            MasterLogger.clientInfo(clientController.getId(), "Gui configured for online mode",
-                    "refreshConnection", getClass());
-        } else {
+            updatePanelOnlineStatus(panel);
             MasterLogger.clientInfo(clientController.getId(), ConfigManager.getString(CONFIG_IDENTIFIER,
+                    "connectedToServer"), "refreshConnection", getClass());
+            JOptionPane.showMessageDialog(mainFrame,
+                    ConfigManager.getString(CONFIG_IDENTIFIER, "connectedToServer"));
+        } else {
+            MasterLogger.clientError(clientController.getId(), ConfigManager.getString(CONFIG_IDENTIFIER,
                     "cannotConnectToServer"), "refreshConnection", getClass());
             JOptionPane.showMessageDialog(mainFrame,
                     ConfigManager.getString(CONFIG_IDENTIFIER, "cannotConnectToServer"));
+        }
+    }
+
+    default void updatePanelOnlineStatus(JPanel panel) {
+        if (panel instanceof MainMenu) {
+            MainMenu mainMenu = (MainMenu) panel;
+            mainMenu.setOnline(true);
+        } else if (panel instanceof DynamicPanelTemplate) {
+            DynamicPanelTemplate dynamicPanelTemplate = (DynamicPanelTemplate) panel;
+            dynamicPanelTemplate.setOnline(true);
         }
     }
 
@@ -51,7 +65,7 @@ public interface OfflinePanel {
         alignOfflineComponents(panel);
         connectOfflineComponentListeners(mainFrame, panel, clientController);
         panel.repaint();
-        panel.validate();
+        panel.revalidate();
     }
 
     default void initializeOfflineComponents() {
@@ -84,7 +98,9 @@ public interface OfflinePanel {
     }
 
     default void removeOfflineComponents(JPanel panel) {
-        OFFLINE_COMPONENTS.forEach(e -> panel.remove(e));
+        OFFLINE_COMPONENTS.forEach(panel::remove);
         OFFLINE_COMPONENTS.clear();
+        panel.repaint();
+        panel.revalidate();
     }
 }

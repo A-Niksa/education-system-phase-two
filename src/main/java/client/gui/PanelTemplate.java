@@ -2,6 +2,8 @@ package client.gui;
 
 import client.controller.ClientController;
 import client.gui.menus.main.MainMenu;
+import client.gui.menus.main.ProfessorMenu;
+import client.gui.menus.main.StudentMenu;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -62,8 +64,19 @@ public abstract class PanelTemplate extends JPanel {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Returned to the main menu",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(mainMenu);
-                // TODO: new mainMenu?
+                MainMenu newMainMenu;
+                switch (mainMenu.getMainMenuType()) {
+                    case PROFESSOR:
+                        newMainMenu = new ProfessorMenu(mainFrame, mainMenu.getUsername(), null, true);
+                        break;
+                    case STUDENT:
+                        newMainMenu = new StudentMenu(mainFrame, mainMenu.getUsername(), null, true);
+                        break;
+                    default:
+                        newMainMenu = null; // added for explicitness
+                }
+                mainFrame.setCurrentPanel(newMainMenu);
+                mainMenu = newMainMenu;
             }
         });
     }
