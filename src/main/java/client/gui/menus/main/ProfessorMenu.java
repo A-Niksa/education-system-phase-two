@@ -57,11 +57,16 @@ public class ProfessorMenu extends MainMenu {
         super(mainFrame, username, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_MAIN;
         professor = (Professor) user;
-        role = offlineModeDTO.getAcademicRole();
+        initializeAcademicRole();
         initializeComponents();
         alignComponents();
         connectListeners();
         startPingingIfOnline(username, this);
+    }
+
+    private void initializeAcademicRole() {
+        if (offlineModeDTO != null) role = offlineModeDTO.getAcademicRole();
+        else role = professor.getAcademicRole();
     }
 
     public ProfessorMenu(MainFrame mainFrame, User user, OfflineModeDTO offlineModeDTO, boolean isOnline) {
@@ -171,8 +176,8 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the profile editor in the user profile",
                         "connectListeners", getClass());
-                stopPanelLoop();
-                mainFrame.setCurrentPanel(new ProfessorProfile(mainFrame, mainMenu, user));
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new ProfessorProfile(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
             }
         });
 

@@ -62,7 +62,7 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
         configIdentifier = ConfigFileIdentifier.GUI_PROFILE;
         labelsList = new ArrayList<>();
         drawPanel();
-        startPingingIfOnline(user.getId(), this);
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
     @Override

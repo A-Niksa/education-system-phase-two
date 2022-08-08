@@ -1,12 +1,15 @@
 package client.gui.menus.profile;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
+import client.gui.OfflinePanel;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.profile.DepartmentGetter;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -19,7 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ProfessorProfile extends PanelTemplate {
+public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePanel {
     private Professor professor;
     private JLabel profilePicture;
     private JLabel name;
@@ -38,12 +41,23 @@ public class ProfessorProfile extends PanelTemplate {
     private JLabel enterNewPhoneNumber;
     private JTextField newPhoneNumber;
     private JButton changePhoneNumber;
+    private String nameMessage;
+    private String nationalIdMessage;
+    private String professorIdMessage;
+    private String phoneNumberMessage;
+    private String emailAddressMessage;
+    private String departmentMessage;
+    private String officeNumberMessage;
+    private String academicLevelMessage;
 
-    public ProfessorProfile(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public ProfessorProfile(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+                            boolean isOnline) {
+        super(mainFrame, mainMenu, offlineModeDTO);
+        this.isOnline = isOnline;
         professor = (Professor) user;
         configIdentifier = ConfigFileIdentifier.GUI_PROFILE;
         drawPanel();
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
     @Override
@@ -51,28 +65,29 @@ public class ProfessorProfile extends PanelTemplate {
         ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(professor.getProfilePicture());
         profilePicture = new JLabel(profilePictureIcon);
         labelsList = new ArrayList<>();
-        name = new JLabel(ConfigManager.getString(configIdentifier, "nameMessage") +
-                professor.fetchName());
+        nameMessage = ConfigManager.getString(configIdentifier, "nameMessage");
+        name = new JLabel(nameMessage + professor.fetchName());
         labelsList.add(name);
-        nationalId = new JLabel(ConfigManager.getString(configIdentifier, "nationalIdMessage")
-                + professor.getNationalId());
+        nationalIdMessage = ConfigManager.getString(configIdentifier, "nationalIdMessage");
+        nationalId = new JLabel(nationalIdMessage + professor.getNationalId());
         labelsList.add(nationalId);
-        professorId = new JLabel(ConfigManager.getString(configIdentifier, "professorIdMessage") + professor.getId());
+        professorIdMessage = ConfigManager.getString(configIdentifier, "professorIdMessage");
+        professorId = new JLabel(professorIdMessage + professor.getId());
         labelsList.add(professorId);
-        phoneNumber = new JLabel(ConfigManager.getString(configIdentifier, "phoneNumberMessage")
-                + professor.getPhoneNumber());
+        phoneNumberMessage = ConfigManager.getString(configIdentifier, "phoneNumberMessage");
+        phoneNumber = new JLabel(phoneNumberMessage + professor.getPhoneNumber());
         labelsList.add(phoneNumber);
-        emailAddress = new JLabel(ConfigManager.getString(configIdentifier, "emailAddressMessage")
-                + professor.getEmailAddress());
+        emailAddressMessage = ConfigManager.getString(configIdentifier, "emailAddressMessage");
+        emailAddress = new JLabel(emailAddressMessage + professor.getEmailAddress());
         labelsList.add(emailAddress);
-        department = new JLabel(ConfigManager.getString(configIdentifier, "departmentMessage")
-                + DepartmentGetter.getDepartmentNameById(professor.getDepartmentId()));
+        departmentMessage = ConfigManager.getString(configIdentifier, "departmentMessage");
+        department = new JLabel(departmentMessage + offlineModeDTO.getDepartmentName());
         labelsList.add(department);
-        officeNumber = new JLabel(ConfigManager.getString(configIdentifier, "officeNumberMessage") +
-                professor.getOfficeNumber());
+        officeNumberMessage = ConfigManager.getString(configIdentifier, "officeNumberMessage");
+        officeNumber = new JLabel(officeNumberMessage + professor.getOfficeNumber());
         labelsList.add(officeNumber);
-        academicLevel = new JLabel(ConfigManager.getString(configIdentifier, "academicLevelMessage") +
-                professor.getAcademicLevel());
+        academicLevelMessage = ConfigManager.getString(configIdentifier, "academicLevelMessage");
+        academicLevel = new JLabel(academicLevelMessage + professor.getAcademicLevel());
         labelsList.add(academicLevel);
         separator = new JSeparator();
         enterNewEmailAddress = new JLabel(ConfigManager.getString(configIdentifier, "enterNewEmailAddressMessage"));
@@ -171,5 +186,33 @@ public class ProfessorProfile extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        profilePicture.setIcon(profilePictureIcon);
+        name.setText(nameMessage + offlineModeDTO.getName());
+        nationalId.setText(nationalIdMessage + offlineModeDTO.getNationalId());
+        professorId.setText(professorIdMessage + offlineModeDTO.getId());
+        phoneNumber.setText(phoneNumberMessage + offlineModeDTO.getPhoneNumber());
+        emailAddress.setText(emailAddressMessage + offlineModeDTO.getEmailAddress());
+        department.setText(departmentMessage + offlineModeDTO.getDepartmentName());
+        officeNumber.setText(officeNumberMessage + offlineModeDTO.getOfficeNumber());
+        academicLevel.setText(academicLevelMessage + offlineModeDTO.getAcademicLevel());
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+        changeEmailAddress.setEnabled(false);
+        changePhoneNumber.setEnabled(false);
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        restartPanelLoop();
+        changeEmailAddress.setEnabled(true);
+        changePhoneNumber.setEnabled(true);
     }
 }

@@ -193,10 +193,6 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         });
     }
 
-    public void setOfflineModeDTO(OfflineModeDTO offlineModeDTO) {
-        this.offlineModeDTO = offlineModeDTO;
-    }
-
     public MainMenuType getMainMenuType() {
         return mainMenuType;
     }
