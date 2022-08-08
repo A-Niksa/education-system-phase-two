@@ -40,6 +40,8 @@ public class OfflineModeUtils {
         offlineModeDTO.setTranscriptDTO(StandingViewUtils.getStudentTranscriptDTOWithId(databaseManager,
                 student.getId()));
         offlineModeDTO.setCourseDTOs(WeeklyScheduleUtils.getStudentCourseDTOs(databaseManager, student.getId()));
+        offlineModeDTO.setCourseScoreDTOs(StandingViewUtils.getStudentCourseScoreDTOsWithId(databaseManager,
+                student.getId()));
 
         String permissionToEnrolPrompt;
         if (student.isPermittedToEnrol()) {

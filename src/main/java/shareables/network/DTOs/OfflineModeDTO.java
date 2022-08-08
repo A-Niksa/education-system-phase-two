@@ -35,6 +35,7 @@ public class OfflineModeDTO {
     // messenger:
     private OfflineMessengerDTO offlineMessengerDTO;
     // current standing:
+    private List<CourseScoreDTO> courseScoreDTOs;
     private TranscriptDTO transcriptDTO;
     // weekly schedule and exams list:
     private List<CourseDTO> courseDTOs;
@@ -217,6 +218,14 @@ public class OfflineModeDTO {
 
     public void setAcademicRole(AcademicRole academicRole) {
         this.academicRole = academicRole;
+    }
+
+    public List<CourseScoreDTO> getCourseScoreDTOs() {
+        return courseScoreDTOs;
+    }
+
+    public void setCourseScoreDTOs(List<CourseScoreDTO> courseScoreDTOs) {
+        this.courseScoreDTOs = courseScoreDTOs;
     }
 
     // TODO: to be removed

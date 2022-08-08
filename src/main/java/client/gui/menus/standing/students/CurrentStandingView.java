@@ -1,39 +1,48 @@
 package client.gui.menus.standing.students;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
+import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.TranscriptDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class CurrentStandingView extends PanelTemplate {
+public class CurrentStandingView extends DynamicPanelTemplate implements OfflinePanel {
     private Student student;
     private ArrayList<CourseScoreDTO> courseScoreDTOs;
     private TranscriptDTO transcriptDTO;
     private JLabel totalGPA;
     private JLabel numberOfPassedCredits;
+    private DefaultTableModel tableModel;
     private JTable transcriptTable;
     private JScrollPane scrollPane;
     private String[] columns;
     private String[][] data;
+    private String totalGPAMessage;
+    private String numberOfPassedCreditsMessage;
 
-    public CurrentStandingView(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public CurrentStandingView(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+                               boolean isOnline) {
+        super(mainFrame, mainMenu, offlineModeDTO);
+        this.isOnline = isOnline;
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_CURRENT_STANDING;
         initializeColumns();
-        updateCourseScoreDTOs();
-        updateTranscriptDTO();
+        courseScoreDTOs = (ArrayList<CourseScoreDTO>) offlineModeDTO.getCourseScoreDTOs();
+        transcriptDTO = offlineModeDTO.getTranscriptDTO();
         setTableData();
         drawPanel();
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
     private void updateTranscriptDTO() {
@@ -64,11 +73,12 @@ public class CurrentStandingView extends PanelTemplate {
 
     @Override
     protected void initializeComponents() {
-        totalGPA = new JLabel(ConfigManager.getString(configIdentifier, "totalGPA")
-                + transcriptDTO.getGPAString());
-        numberOfPassedCredits = new JLabel(ConfigManager.getString(configIdentifier, "numberOfPassedCredits")
-                + transcriptDTO.getNumberOfPassedCredits());
-        transcriptTable = new JTable(data, columns);
+        totalGPAMessage = ConfigManager.getString(configIdentifier, "totalGPA");
+        totalGPA = new JLabel(totalGPAMessage + transcriptDTO.getGPAString());
+        numberOfPassedCreditsMessage = ConfigManager.getString(configIdentifier, "numberOfPassedCredits");
+        numberOfPassedCredits = new JLabel(numberOfPassedCreditsMessage + transcriptDTO.getNumberOfPassedCredits());
+        tableModel = new DefaultTableModel(data, columns);
+        transcriptTable = new JTable(tableModel);
     }
 
     @Override
@@ -95,5 +105,26 @@ public class CurrentStandingView extends PanelTemplate {
 
     @Override
     protected void connectListeners() {
+    }
+
+    @Override
+    protected void updatePanel() {
+        courseScoreDTOs = (ArrayList<CourseScoreDTO>) offlineModeDTO.getCourseScoreDTOs();
+        transcriptDTO = offlineModeDTO.getTranscriptDTO();
+        // TODO: removing updates
+        setTableData();
+        tableModel.setDataVector(data, columns);
+        totalGPA.setText(totalGPAMessage + transcriptDTO.getGPAString());
+        numberOfPassedCredits.setText(numberOfPassedCreditsMessage + transcriptDTO.getNumberOfPassedCredits());
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        restartPanelLoop();
     }
 }

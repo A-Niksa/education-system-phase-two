@@ -20,7 +20,6 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ServerController {
-    // TODO: should be removed ->
     public static int SO_TIMEOUT;
     static {
         SO_TIMEOUT = ConfigManager.getInt(ConfigFileIdentifier.NETWORK, "soTimeout");

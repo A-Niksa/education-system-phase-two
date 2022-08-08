@@ -60,7 +60,7 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
             } else {
                 notifyClientOfConnectionLoss();
                 goToMainMenu();
-                mainMenu.goOffline(mainFrame, this, clientController);
+                mainMenu.goOffline(mainFrame, mainMenu, clientController);
             }
         };
     }

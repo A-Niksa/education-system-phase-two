@@ -56,7 +56,6 @@ public class StudentMenu extends MainMenu {
     public StudentMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, username, MainMenuType.STUDENT, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_STUDENT_MAIN;
-        student = (Student) user;
         initializeComponents();
         alignComponents();
         connectListeners();
@@ -75,6 +74,7 @@ public class StudentMenu extends MainMenu {
 
     @Override
     protected void updatePanel() {
+        student = (Student) user;
         lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
         nameLabel.setText(offlineModeDTO.getName());
         emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
@@ -207,6 +207,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the courses list in educational services",
                         "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu));
             }
         });
@@ -216,6 +217,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professors list in educational services",
                         "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu));
             }
         });
@@ -225,6 +227,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
                         "connectListeners",  getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new TemporaryStandingView(mainFrame, mainMenu, user));
             }
         });
@@ -234,7 +237,8 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened current standing in academic standing",
                         "connectListeners",  getClass());
-                mainFrame.setCurrentPanel(new CurrentStandingView(mainFrame, mainMenu, user));
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new CurrentStandingView(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
             }
         });
 
@@ -243,6 +247,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners",  getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new StudentWeeklySchedule(mainFrame, mainMenu, user));
             }
         });
@@ -252,6 +257,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new StudentExamsList(mainFrame, mainMenu, user));
             }
         });
@@ -262,6 +268,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(),
                         "Opened the dropping out subsection in academic requests", "connectListeners",
                         getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new DroppingOutSubmission(mainFrame, mainMenu, user));
             }
         });
@@ -272,6 +279,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(),
                         "Opened the enrolment certificate subsection in academic requests", "connectListeners",
                         getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new CertificateSubmission(mainFrame, mainMenu, user));
             }
         });
@@ -282,6 +290,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(),
                         "Opened the recommendation letters subsection in academic requests", "connectListeners",
                         getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new RecommendationSubmission(mainFrame, mainMenu, user));
             }
         });
@@ -291,6 +300,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new MinorSubmission(mainFrame, mainMenu, user));
             }
         });
@@ -300,6 +310,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dorm requests subsection in academic requests",
                         "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new DormSubmission(mainFrame, mainMenu, user));
             }
         });
@@ -309,6 +320,7 @@ public class StudentMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the defense slot selection in academic requests",
                         "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new DefenseSubmission(mainFrame, mainMenu, user));
             }
         });

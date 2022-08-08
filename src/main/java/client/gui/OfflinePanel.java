@@ -65,7 +65,7 @@ public interface OfflinePanel {
         alignOfflineComponents(panel);
         connectOfflineComponentListeners(mainFrame, panel, clientController);
         panel.repaint();
-        panel.revalidate();
+        panel.validate();
     }
 
     default void initializeOfflineComponents() {
@@ -101,6 +101,6 @@ public interface OfflinePanel {
         OFFLINE_COMPONENTS.forEach(panel::remove);
         OFFLINE_COMPONENTS.clear();
         panel.repaint();
-        panel.revalidate();
+        panel.validate();
     }
 }

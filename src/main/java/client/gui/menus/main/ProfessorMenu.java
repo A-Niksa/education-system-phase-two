@@ -56,7 +56,6 @@ public class ProfessorMenu extends MainMenu {
     public ProfessorMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, username, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_MAIN;
-        professor = (Professor) user;
         initializeAcademicRole();
         initializeComponents();
         alignComponents();
@@ -82,6 +81,7 @@ public class ProfessorMenu extends MainMenu {
 
     @Override
     protected void updatePanel() {
+        professor = (Professor) user;
         lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
         nameLabel.setText(offlineModeDTO.getName());
         emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
@@ -186,7 +186,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the courses list in educational services",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 if (role == AcademicRole.DEPUTY) {
                     mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professor));
                 } else {
@@ -200,7 +200,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professors list in educational services",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 if (role == AcademicRole.DEAN) {
                     mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor));
                 } else {
@@ -214,7 +214,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, professor));
             }
         });
@@ -224,7 +224,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, professor));
             }
         });
@@ -234,7 +234,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the recommendation letters subsection in academic requests",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new RecommendationManager(mainFrame, mainMenu, professor));
             }
         });
@@ -244,7 +244,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dropping out subsection in academic requests",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, professor));
             }
         });
@@ -254,7 +254,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, professor));
             }
         });
@@ -264,7 +264,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores for deputies in academic standing",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                  mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, professor));
             }
         });
@@ -274,7 +274,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new TemporaryStandingManager(mainFrame, mainMenu, professor));
             }
         });
@@ -284,7 +284,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened current student standings in academic standing",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new CurrentStandingMaster(mainFrame, mainMenu, professor));
             }
         });
@@ -294,7 +294,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the student addition section",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new StudentAdder(mainFrame, mainMenu, professor));
             }
         });
@@ -304,7 +304,7 @@ public class ProfessorMenu extends MainMenu {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
-                stopPanelLoop();
+                facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, professor));
             }
         });
