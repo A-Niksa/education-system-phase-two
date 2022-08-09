@@ -1,7 +1,7 @@
 package client.gui.menus.services.requests.submission;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
@@ -9,6 +9,7 @@ import client.locallogic.profile.DepartmentGetter;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.MinorRequestDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -20,10 +21,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class MinorSubmission extends PanelTemplate {
+public class MinorSubmission extends DynamicPanelTemplate {
     private Student student;
     private ArrayList<MinorRequestDTO> studentMinorRequestDTOs;
-    private DefaultTableModel dataModel;
+    private DefaultTableModel tableModel;
     private JTable requestsTable;
     private JScrollPane scrollPane;
     private String[] columns;
@@ -32,8 +33,8 @@ public class MinorSubmission extends PanelTemplate {
     private JComboBox<String> departmentSelector;
     private JButton submitRequest;
 
-    public MinorSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public MinorSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_MINOR_SUBMISSION;
         departmentNameStrings = EnumArrayUtils.initializeDepartmentNameStrings();
@@ -41,6 +42,7 @@ public class MinorSubmission extends PanelTemplate {
         initializeColumns();
         setTableData();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     private void initializeColumns() {
@@ -51,7 +53,8 @@ public class MinorSubmission extends PanelTemplate {
     }
 
     private void updateMinorRequestDTOs() {
-        Response response = clientController.getStudentMinorRequestDTOs(student.getId());
+        Response response = clientController.getStudentMinorRequestDTOs(offlineModeDTO.getId());
+        if (response == null) return;
         studentMinorRequestDTOs = (ArrayList<MinorRequestDTO>) response.get("requestDTOs");
     }
 
@@ -70,13 +73,13 @@ public class MinorSubmission extends PanelTemplate {
     private void updateTable() {
         updateMinorRequestDTOs();
         setTableData();
-        dataModel.setDataVector(data, columns);
+        tableModel.setDataVector(data, columns);
     }
 
     @Override
     protected void initializeComponents() {
-        dataModel = new DefaultTableModel(data, columns);
-        requestsTable = new JTable(dataModel);
+        tableModel = new DefaultTableModel(data, columns);
+        requestsTable = new JTable(tableModel);
         departmentSelector = new JComboBox<>(departmentNameStrings);
         submitRequest = new JButton(ConfigManager.getString(configIdentifier, "submitRequestM"));
     }
@@ -110,7 +113,7 @@ public class MinorSubmission extends PanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String targetDepartmentNameString = (String) departmentSelector.getSelectedItem();
-                Response response = clientController.askForMinor(student.getId(), student.getDepartmentId(),
+                Response response = clientController.askForMinor(offlineModeDTO.getId(), student.getDepartmentId(),
                         targetDepartmentNameString);
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
@@ -124,5 +127,10 @@ public class MinorSubmission extends PanelTemplate {
                 // TODO: using a standard method instead of setTableData everywhere
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+        updateTable();
     }
 }

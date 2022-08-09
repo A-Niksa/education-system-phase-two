@@ -105,6 +105,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
 
     protected void updateOfflineModeDTO(String userId) {
         Response response = clientController.getOfflineModeDTO(userId);
+        if (response == null) return;
         if (response.getResponseStatus() == ResponseStatus.OK) {
             offlineModeDTO = (OfflineModeDTO) response.get("offlineModeDTO");
         }

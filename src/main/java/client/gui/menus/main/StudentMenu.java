@@ -291,7 +291,7 @@ public class StudentMenu extends MainMenu {
                         "Opened the recommendation letters subsection in academic requests", "connectListeners",
                         getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new RecommendationSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new RecommendationSubmission(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
 

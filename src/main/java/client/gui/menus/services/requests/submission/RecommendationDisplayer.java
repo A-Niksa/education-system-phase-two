@@ -33,11 +33,13 @@ public class RecommendationDisplayer {
 
     private void updateRecommendationTexts() {
         Response response = clientController.getStudentRecommendationTexts(student.getId());
+        if (response == null) return;
         recommendationTexts = (ArrayList<String>) response.get("recommendationTexts");
     }
 
     private void updateRecommendations() {
         updateRecommendationTexts();
+        currentRecommendations.clear();
         for (String recommendationText : recommendationTexts) {
             JLabel recommendationTextLabel = new JLabel(recommendationText);
             currentRecommendations.add(recommendationTextLabel);
@@ -52,6 +54,7 @@ public class RecommendationDisplayer {
         for (JLabel recommendationTextLabel : currentRecommendations) {
             recommendationTextLabel.setBounds(currentX, currentY, labelWidth, labelHeight);
             panel.add(recommendationTextLabel);
+            recommendationTextLabel.repaint();
             currentY += labelHeight;
         }
     }

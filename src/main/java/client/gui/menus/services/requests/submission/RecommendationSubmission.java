@@ -1,11 +1,13 @@
 package client.gui.menus.services.requests.submission;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
@@ -20,7 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class RecommendationSubmission extends PanelTemplate {
+public class RecommendationSubmission extends DynamicPanelTemplate {
     private Student student;
     private ArrayList<ProfessorDTO> professorDTOs;
     private JTextField recommendingProfessorId;
@@ -34,14 +36,15 @@ public class RecommendationSubmission extends PanelTemplate {
     private ArrayList<JLabel> currentRecommendations;
     private RecommendationDisplayer recommendationDisplayer;
 
-    public RecommendationSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public RecommendationSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_RECOMMENDATION_SUBMISSION;
         updateProfessorDTOs();
         initializeColumns();
         setTableData();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     private void initializeColumns() {
@@ -55,6 +58,7 @@ public class RecommendationSubmission extends PanelTemplate {
     private void updateProfessorDTOs() {
         clientController.getProfessorDTOs(); // to rule out incomplete data
         Response response = clientController.getProfessorDTOs();
+        if (response == null) return;
         professorDTOs = (ArrayList<ProfessorDTO>) response.get("professorDTOs");
     }
 
@@ -129,7 +133,7 @@ public class RecommendationSubmission extends PanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String selectedProfessorId = recommendingProfessorId.getText();
-                Response response = clientController.askForRecommendation(student.getId(), selectedProfessorId);
+                Response response = clientController.askForRecommendation(offlineModeDTO.getId(), selectedProfessorId);
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());
@@ -142,5 +146,15 @@ public class RecommendationSubmission extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+        updateProfessorDTOs();
+        setTableData();
+        // TODO: sorting the profs list perhaps (by id)?
+        tableModel.setDataVector(data, columns);
+        currentRecommendations.forEach(this::remove);
+        recommendationDisplayer.displayRecommendations();
     }
 }
