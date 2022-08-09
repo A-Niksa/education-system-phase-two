@@ -1,43 +1,49 @@
 package client.gui.menus.services;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
+import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.locallogic.services.WeeklyScheduleParser;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.timing.timekeeping.Weekday;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ProfessorWeeklySchedule extends PanelTemplate {
+public class ProfessorWeeklySchedule extends DynamicPanelTemplate implements OfflinePanel {
     private Professor professor;
     private ArrayList<CourseDTO> courseDTOs;
     private ArrayList<JPanel> weekdayPanels;
+    private ArrayList<DefaultTableModel> weekdayTableModels;
     private ArrayList<JTable> weekdayTables;
     private String[] weekdays;
     private String[] columns;
     private JTabbedPane tabbedPane;
 
-    public ProfessorWeeklySchedule(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public ProfessorWeeklySchedule(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO,
+                                   boolean isOnline) {
+        super(mainFrame, mainMenu, offlineModeDTO);
+        this.isOnline = isOnline;
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_WEEKLY_SCHEDULE;
-        initializeCourseDTOs();
+        updateCourseDTOs();
         weekdays = EnumArrayUtils.initializeWeekdays();
         initializeColumnsArray();
         drawPanel();
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
-    private void initializeCourseDTOs() {
-        Response response = clientController.getProfessorCourseDTOs(professor.getId());
-        courseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
+    private void updateCourseDTOs() {
+        courseDTOs = (ArrayList<CourseDTO>) offlineModeDTO.getCourseDTOs();
     }
 
     private void initializeColumnsArray() {
@@ -63,10 +69,14 @@ public class ProfessorWeeklySchedule extends PanelTemplate {
     @Override
     protected void initializeComponents() {
         weekdayPanels = new ArrayList<>();
+        weekdayTableModels = new ArrayList<>();
         weekdayTables = new ArrayList<>();
         for (Weekday weekday : Weekday.values()) {
             weekdayPanels.add(new JPanel());
-            weekdayTables.add(new JTable(getTableData(weekday), columns));
+            weekdayTableModels.add(new DefaultTableModel(getTableData(weekday), columns));
+            weekdayTables.add(new JTable(
+                    weekdayTableModels.get(weekdayTableModels.size() - 1)
+            ));
         }
         tabbedPane = new JTabbedPane();
     }
@@ -96,5 +106,24 @@ public class ProfessorWeeklySchedule extends PanelTemplate {
 
     @Override
     protected void connectListeners() {
+    }
+
+    @Override
+    protected void updatePanel() {
+        updateCourseDTOs();
+        for (Weekday weekday : Weekday.values()) {
+            weekdayTableModels.get(weekday.getIndex())
+                    .setDataVector(getTableData(weekday), columns);
+        }
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        restartPanelLoop();
     }
 }

@@ -29,7 +29,6 @@ public class StudentExamsList extends DynamicPanelTemplate implements OfflinePan
     public StudentExamsList(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
                             boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.offlineModeDTO = offlineModeDTO;
         this.isOnline = isOnline;
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_EXAMS_LIST;

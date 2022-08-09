@@ -26,7 +26,6 @@ public class ProfessorExamsList extends DynamicPanelTemplate implements OfflineP
     public ProfessorExamsList(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO,
                               boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.offlineModeDTO = offlineModeDTO;
         this.isOnline = isOnline;
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_EXAMS_LIST;

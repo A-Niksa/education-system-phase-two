@@ -215,7 +215,8 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, professor, offlineModeDTO,
+                        isOnline));
             }
         });
 

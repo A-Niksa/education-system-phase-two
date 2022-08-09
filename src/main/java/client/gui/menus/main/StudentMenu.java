@@ -248,7 +248,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners",  getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentWeeklySchedule(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new StudentWeeklySchedule(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
             }
         });
 
