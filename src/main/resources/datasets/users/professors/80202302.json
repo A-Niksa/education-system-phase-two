@@ -17,7 +17,7 @@
   "phoneNumber" : "09125730021",
   "emailAddress" : "rahvar@sharif.edu",
   "password" : "1234",
-  "lastLogin" : "2022-08-09T23:38:25.3943873",
+  "lastLogin" : null,
   "adviseeStudentIds" : [ ],
   "officeNumber" : "205",
   "academicLevel" : "FULL",

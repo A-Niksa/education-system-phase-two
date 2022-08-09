@@ -236,7 +236,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the recommendation letters subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new RecommendationManager(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new RecommendationManager(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
 
@@ -246,7 +246,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dropping out subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
 
@@ -256,7 +256,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
 

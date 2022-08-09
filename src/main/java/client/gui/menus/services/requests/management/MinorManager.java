@@ -6,6 +6,7 @@ import client.locallogic.profile.DepartmentGetter;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.MinorRequestDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.RequestDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -18,10 +19,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class MinorManager extends RequestManager {
-    public MinorManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu, professor);
+    public MinorManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, professor, offlineModeDTO);
         initializeColumns();
         drawInteractivePanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override
@@ -36,7 +38,8 @@ public class MinorManager extends RequestManager {
 
     @Override
     protected void setRequestsList() {
-        Response response = clientController.getProfessorMinorRequestDTOs(professor.getId());
+        Response response = clientController.getProfessorMinorRequestDTOs(offlineModeDTO.getId());
+        if (response == null) return;
         requestDTOs = (ArrayList<RequestDTO>) response.get("requestDTOs");
     }
 

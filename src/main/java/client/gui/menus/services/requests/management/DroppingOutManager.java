@@ -3,6 +3,7 @@ package client.gui.menus.services.requests.management;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.RequestDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -15,10 +16,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class DroppingOutManager extends RequestManager {
-    public DroppingOutManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu, professor);
+    public DroppingOutManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, professor, offlineModeDTO);
         initializeColumns();
         drawInteractivePanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override
@@ -33,6 +35,7 @@ public class DroppingOutManager extends RequestManager {
     @Override
     protected void setRequestsList() {
         Response response = clientController.getDepartmentDroppingOutRequestDTOs(professor.getDepartmentId());
+        if (response == null) return;
         requestDTOs = (ArrayList<RequestDTO>) response.get("requestDTOs");
     }
 
@@ -59,7 +62,7 @@ public class DroppingOutManager extends RequestManager {
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Dropping out request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been accepted by the department deputy (ID: " +
-                            professor.getId() + ")", "setApproveListener", getClass());
+                            offlineModeDTO.getId() + ")", "setApproveListener", getClass());
                 }
             }
         });
@@ -78,7 +81,7 @@ public class DroppingOutManager extends RequestManager {
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Dropping request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been declined by the department deputy (ID: " +
-                            professor.getId() + ")", "setDeclineListener", getClass());
+                            offlineModeDTO.getId() + ")", "setDeclineListener", getClass());
                 }
             }
         });

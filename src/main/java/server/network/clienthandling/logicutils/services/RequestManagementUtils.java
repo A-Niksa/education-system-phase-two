@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RequestManagementUtils {
+    private static RequestDTOComparator comparator = new RequestDTOComparator();
+
     public static List<RequestDTO> getDroppingOutRequestDTOs(DatabaseManager databaseManager, String departmentId) {
         List<Identifiable> droppingOutRequests = databaseManager.getIdentifiables(DatasetIdentifier.DROPPING_OUT_REQUESTS);
         List<RequestDTO> droppingOutRequestDTOs = new ArrayList<>();
@@ -34,6 +36,7 @@ public class RequestManagementUtils {
                     requestDTO.setRequestingStudentName(requestingStudent.fetchName());
                     droppingOutRequestDTOs.add(requestDTO);
                 });
+        droppingOutRequestDTOs.sort(comparator);
         return droppingOutRequestDTOs;
     }
 
@@ -87,6 +90,7 @@ public class RequestManagementUtils {
                     requestDTO.setRequestingStudentGPAString(student.fetchGPAString());
                     recommendationRequestDTOs.add(requestDTO);
                 });
+        recommendationRequestDTOs.sort(comparator);
         return recommendationRequestDTOs;
     }
 }

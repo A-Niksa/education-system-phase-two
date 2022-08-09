@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MinorSubmissionUtils {
+    private static RequestDTOComparator comparator = new RequestDTOComparator();
+
     public static List<RequestDTO> getStudentMinorRequestDTOs(DatabaseManager databaseManager, String studentId) {
         List<Identifiable> minorRequests = databaseManager.getIdentifiables(DatasetIdentifier.MINOR_REQUESTS);
         List<RequestDTO> minorRequestDTOs = new ArrayList<>();
@@ -32,6 +34,7 @@ public class MinorSubmissionUtils {
                     minorRequestDTO.setAcademicRequestStatus(determineMinorRequestStatus(e));
                     minorRequestDTOs.add(minorRequestDTO);
                 });
+        minorRequestDTOs.sort(comparator);
         return minorRequestDTOs;
     }
 
