@@ -1,38 +1,44 @@
 package client.gui.menus.services;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
+import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import client.locallogic.services.ExamsListSorter;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.CourseDTO;
-import shareables.network.responses.Response;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class ProfessorExamsList extends PanelTemplate {
+public class ProfessorExamsList extends DynamicPanelTemplate implements OfflinePanel {
     Professor professor;
     private ArrayList<CourseDTO> courseDTOs;
+    private DefaultTableModel tableModel;
     private JTable examsTable;
     private String[] columns;
     private String[][] data;
 
-    public ProfessorExamsList(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public ProfessorExamsList(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO,
+                              boolean isOnline) {
+        super(mainFrame, mainMenu, offlineModeDTO);
+        this.offlineModeDTO = offlineModeDTO;
+        this.isOnline = isOnline;
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_EXAMS_LIST;
-        initializeCourseDTOs();
+        updateCourseDTOs();
         initializeColumns();
         setTableData();
         drawPanel();
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
-    private void initializeCourseDTOs() {
-        Response response = clientController.getProfessorCourseDTOs(professor.getId());
-        courseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
+    private void updateCourseDTOs() {
+        courseDTOs = (ArrayList<CourseDTO>) offlineModeDTO.getCourseDTOs();
     }
 
     private void initializeColumns() {
@@ -53,7 +59,8 @@ public class ProfessorExamsList extends PanelTemplate {
 
     @Override
     protected void initializeComponents() {
-        examsTable = new JTable(data, columns);
+        tableModel = new DefaultTableModel(data, columns);
+        examsTable = new JTable(tableModel);
     }
 
     @Override
@@ -69,5 +76,22 @@ public class ProfessorExamsList extends PanelTemplate {
 
     @Override
     protected void connectListeners() {
+    }
+
+    @Override
+    protected void updatePanel() {
+        updateCourseDTOs();
+        setTableData();
+        tableModel.setDataVector(data, columns);
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        restartPanelLoop();
     }
 }

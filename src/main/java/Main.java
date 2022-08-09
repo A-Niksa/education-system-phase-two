@@ -98,7 +98,7 @@ public class Main {
         realAnalysis.addToTeachingAssistantIds(rezaei.getId());
         realAnalysis.setNumberOfCredits(3);
         realAnalysis.setDegreeLevel(DegreeLevel.GRADUATE);
-        realAnalysis.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
+        realAnalysis.setExamDate(LocalDateTime.of(2022, 12, 21, 9, 30));
         realAnalysis.addToWeeklyClassTimes(firstWeekTime);
         realAnalysis.addToWeeklyClassTimes(secondWeekTime);
         mathDepartment.addToCourseIDs(realAnalysis.getId());
@@ -121,7 +121,7 @@ public class Main {
         analyticalMechanics.addToStudentIds(hamidi.getId());
         analyticalMechanics.addToTeachingAssistantIds(rezaei.getId());
         analyticalMechanics.setNumberOfCredits(3);
-        analyticalMechanics.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
+        analyticalMechanics.setExamDate(LocalDateTime.of(2022, 11, 21, 12, 30));
         analyticalMechanics.addToWeeklyClassTimes(firstWeekTime);
         analyticalMechanics.addToWeeklyClassTimes(secondWeekTime);
         analyticalMechanics.addToStudentIds(rezaei.getId());

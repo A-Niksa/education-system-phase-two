@@ -225,7 +225,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, professor, offlineModeDTO, isOnline));
             }
         });
 

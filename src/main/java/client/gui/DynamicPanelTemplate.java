@@ -62,6 +62,7 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
                 goToMainMenu();
                 mainMenu.goOffline(mainFrame, mainMenu, clientController);
             }
+            // TODO: unrelated but adding messenger to offline mode
         };
     }
 

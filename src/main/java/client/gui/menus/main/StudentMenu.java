@@ -258,7 +258,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentExamsList(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new StudentExamsList(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
             }
         });
 
