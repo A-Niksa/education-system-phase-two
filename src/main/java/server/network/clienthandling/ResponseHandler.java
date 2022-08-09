@@ -1,5 +1,6 @@
 package server.network.clienthandling;
 
+import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.*;
@@ -147,9 +148,11 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
-    public void droppingOutSubmissionStatusAcquired(ClientHandler clientHandler, boolean academicRequestHasBeenSubmitted) {
+    public void droppingOutSubmissionStatusAcquired(ClientHandler clientHandler, boolean academicRequestHasBeenSubmitted,
+                                                    AcademicRequestStatus academicRequestStatus) {
         Response response = new Response(ResponseStatus.OK);
         response.put("academicRequestHasBeenSubmitted", academicRequestHasBeenSubmitted);
+        response.put("academicRequestStatus", academicRequestStatus);
         clientHandler.respond(response);
     }
 

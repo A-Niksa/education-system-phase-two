@@ -1,10 +1,12 @@
 package client.gui.menus.services.requests.submission;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
+import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -16,24 +18,46 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DroppingOutSubmission extends PanelTemplate {
+public class DroppingOutSubmission extends DynamicPanelTemplate {
     private Student student;
     private JLabel submissionPrompt;
     private JButton submitRequest;
     private JLabel submittedPrompt;
+    private JLabel resultPrompt;
+    private AcademicRequestStatus academicRequestStatus;
+    private boolean academicRequestHasBeenSubmitted;
 
-    public DroppingOutSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public DroppingOutSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_DROPPING_OUT_SUBMISSION;
         submittedPrompt = new JLabel();
+        resultPrompt = new JLabel();
+        updateDroppingOutStatus();
         updateSubmittedPrompt();
+        updateResultPrompt();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
+    }
+
+    private void updateDroppingOutStatus() {
+        Response response = clientController.getDroppingOutSubmissionStatus(offlineModeDTO.getId());
+        if (response == null) return;
+        academicRequestStatus = (AcademicRequestStatus) response.get("academicRequestStatus");
+        academicRequestHasBeenSubmitted = (boolean) response.get("academicRequestHasBeenSubmitted");
+    }
+
+    private void updateResultPrompt() {
+        if (academicRequestStatus == AcademicRequestStatus.ACCEPTED) {
+            resultPrompt.setText(ConfigManager.getString(configIdentifier, "requestAcceptedM"));
+        } else if (academicRequestStatus == AcademicRequestStatus.DECLINED) {
+            resultPrompt.setText(ConfigManager.getString(configIdentifier, "requestDeclinedM"));
+        } else {
+            resultPrompt.setText("");
+        }
     }
 
     private void updateSubmittedPrompt() {
-        Response response = clientController.getDroppingOutSubmissionStatus(student.getId());
-        boolean academicRequestHasBeenSubmitted = (boolean) response.get("academicRequestHasBeenSubmitted");
         if (academicRequestHasBeenSubmitted) {
             submittedPrompt.setText(ConfigManager.getString(configIdentifier, "submittedPromptM"));
         } else {
@@ -66,6 +90,11 @@ public class DroppingOutSubmission extends PanelTemplate {
                 ConfigManager.getInt(configIdentifier, "submittedPromptW"),
                 ConfigManager.getInt(configIdentifier, "submittedPromptH"));
         add(submittedPrompt);
+        resultPrompt.setBounds(ConfigManager.getInt(configIdentifier, "resultPromptX"),
+                ConfigManager.getInt(configIdentifier, "resultPromptY"),
+                ConfigManager.getInt(configIdentifier, "resultPromptW"),
+                ConfigManager.getInt(configIdentifier, "resultPromptH"));
+        add(resultPrompt);
     }
 
     @Override
@@ -73,13 +102,21 @@ public class DroppingOutSubmission extends PanelTemplate {
         submitRequest.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Response response = clientController.askForDroppingOut(student.getId());
+                Response response = clientController.askForDroppingOut(offlineModeDTO.getId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Submitted a drop-out request",
                             "connectListeners", getClass());
+                    updateDroppingOutStatus();
                     updateSubmittedPrompt();
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+        updateDroppingOutStatus();
+        updateSubmittedPrompt();
+        updateResultPrompt();
     }
 }

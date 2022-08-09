@@ -1,0 +1,15 @@
+{
+  "id" : "16600876730000",
+  "date" : "2022-08-09T23:27:53.1834101",
+  "requestIdentifier" : "MINOR",
+  "requestingStudentId" : "19101100",
+  "receivingProfessorId" : null,
+  "academicRequestStatus" : "ACCEPTED",
+  "originDepartmentId" : "1",
+  "targetDepartmentId" : "2",
+  "academicRequestStatusAtOrigin" : "ACCEPTED",
+  "academicRequestStatusAtTarget" : "ACCEPTED",
+  "requestStatusAtTarget" : "ACCEPTED",
+  "requestStatusAtOrigin" : "ACCEPTED",
+  "requestStatus" : "ACCEPTED"
+}

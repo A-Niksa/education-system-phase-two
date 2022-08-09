@@ -1,10 +1,12 @@
 package client.gui.menus.services.requests.submission;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -15,18 +17,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DormSubmission extends PanelTemplate {
+public class DormSubmission extends DynamicPanelTemplate {
+    // TODO: saving dorm result?
     private Student student;
     private JLabel dormPrompt;
     private JButton submitRequest;
     private JSeparator separator;
     private JLabel resultText;
 
-    public DormSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public DormSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_DORM_SUBMISSION;
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override
@@ -100,5 +104,9 @@ public class DormSubmission extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
     }
 }

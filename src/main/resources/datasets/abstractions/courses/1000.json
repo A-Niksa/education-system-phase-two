@@ -4,7 +4,7 @@
   "courseName" : "Complex Analysis",
   "teachingProfessorIds" : [ "80201200", "90201301" ],
   "teachingAssistantIds" : [ ],
-  "studentIds" : [ "19101100", "18101302" ],
+  "studentIds" : [ "19101100", "18101202" ],
   "weeklyClassTimes" : [ {
     "weekday" : "SUNDAY",
     "startTime" : {

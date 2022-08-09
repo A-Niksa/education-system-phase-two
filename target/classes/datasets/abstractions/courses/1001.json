@@ -3,7 +3,7 @@
   "departmentId" : "1",
   "courseName" : "Real Analysis",
   "teachingProfessorIds" : [ "90201301" ],
-  "teachingAssistantIds" : [ "18101302" ],
+  "teachingAssistantIds" : [ "18101202" ],
   "studentIds" : [ "19101100" ],
   "weeklyClassTimes" : [ {
     "weekday" : "SUNDAY",

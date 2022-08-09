@@ -15,6 +15,7 @@ import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.students.DegreeLevel;
@@ -163,9 +164,13 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void getDroppingOutSubmissionStatus(ClientHandler clientHandler, Request request) {
-        boolean academicRequestHasBeenSubmitted = RequestSubmissionUtils.studentHasSubmittedDroppingOutRequest(
-                databaseManager, (String) request.get("username"));
-        responseHandler.droppingOutSubmissionStatusAcquired(clientHandler, academicRequestHasBeenSubmitted);
+        String studentId = (String) request.get("username");
+        boolean academicRequestHasBeenSubmitted = RequestSubmissionUtils.studentHasSubmittedDroppingOutRequest(databaseManager,
+                studentId);
+        AcademicRequestStatus academicRequestStatus = RequestSubmissionUtils.getDroppingOutRequestStatus(databaseManager,
+                studentId);
+        responseHandler.droppingOutSubmissionStatusAcquired(clientHandler, academicRequestHasBeenSubmitted,
+                academicRequestStatus);
     }
 
     public void askForDroppingOut(ClientHandler clientHandler, Request request) {

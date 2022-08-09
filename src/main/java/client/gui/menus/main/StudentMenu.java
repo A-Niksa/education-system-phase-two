@@ -269,7 +269,7 @@ public class StudentMenu extends MainMenu {
                         "Opened the dropping out subsection in academic requests", "connectListeners",
                         getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DroppingOutSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new DroppingOutSubmission(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
 
@@ -301,7 +301,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new MinorSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new MinorSubmission(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
 
@@ -311,7 +311,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dorm requests subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DormSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new DormSubmission(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
 

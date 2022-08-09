@@ -71,7 +71,14 @@ public class RequestSubmissionUtils {
 
     public static boolean studentHasSubmittedDroppingOutRequest(DatabaseManager databaseManager, String studentId) {
         DroppingOutRequest droppingOutRequest = getDroppingOutRequest(databaseManager, studentId);
-        return droppingOutRequest != null;
+        return droppingOutRequest != null &&
+                droppingOutRequest.getRequestStatus() == AcademicRequestStatus.SUBMITTED;
+    }
+
+    public static AcademicRequestStatus getDroppingOutRequestStatus(DatabaseManager databaseManager, String studentId) {
+        DroppingOutRequest droppingOutRequest = getDroppingOutRequest(databaseManager, studentId);
+        if (droppingOutRequest == null) return null;
+        return droppingOutRequest.getRequestStatus();
     }
 
     public static DroppingOutRequest getDroppingOutRequest(DatabaseManager databaseManager, String studentId) {

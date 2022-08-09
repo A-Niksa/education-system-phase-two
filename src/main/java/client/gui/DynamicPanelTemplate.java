@@ -74,6 +74,7 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
     private void goToMainMenu() {
         if (this instanceof OfflinePanel) facilitateChangingPanel((OfflinePanel) this);
         else stopPanelLoop();
+        // TODO: making this if block more straightforward
 
         MainMenu newMainMenu;
         switch (mainMenu.getMainMenuType()) {
