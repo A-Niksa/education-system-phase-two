@@ -1,7 +1,7 @@
 package client.gui.menus.services.requests.submission;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.general.DatePickerConfigurationTool;
@@ -11,6 +11,7 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -25,7 +26,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Properties;
 
-public class DefenseSubmission extends PanelTemplate {
+public class DefenseSubmission extends DynamicPanelTemplate {
     private Student student;
     private LocalDateTime defenseTime;
     private UtilDateModel dateModel;
@@ -39,16 +40,17 @@ public class DefenseSubmission extends PanelTemplate {
     private JLabel defenseSlotPrompt;
     private JLabel defenseSlotInformation;
 
-    public DefenseSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public DefenseSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_DEFENSE_SUBMISSION;
         updateDefenseTime();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     private void updateDefenseTime() {
-        Response response = clientController.getDefenseTime(student.getId());
+        Response response = clientController.getDefenseTime(offlineModeDTO.getId());
         defenseTime = (LocalDateTime) response.get("defenseTime");
     }
 
@@ -165,5 +167,9 @@ public class DefenseSubmission extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
     }
 }

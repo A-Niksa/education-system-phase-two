@@ -1,10 +1,11 @@
 package client.gui.menus.services.requests.submission;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -16,7 +17,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CertificateSubmission extends PanelTemplate {
+public class CertificateSubmission extends DynamicPanelTemplate {
     private Student student;
     private JLabel generatingPrompt;
     private JButton generateButton;
@@ -24,11 +25,12 @@ public class CertificateSubmission extends PanelTemplate {
     private JLabel yourCertificatePrompt;
     private JLabel certificateText;
 
-    public CertificateSubmission(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public CertificateSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_CERTIFICATE_SUBMISSION;
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override
@@ -81,7 +83,7 @@ public class CertificateSubmission extends PanelTemplate {
         generateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Response response = clientController.askForCertificate(student.getId());
+                Response response = clientController.askForCertificate(offlineModeDTO.getId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     yourCertificatePrompt.setText(ConfigManager.getString(configIdentifier, "yourCertificatePromptM"));
                     certificateText.setText((String) response.get("certificateText"));
@@ -90,5 +92,9 @@ public class CertificateSubmission extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
     }
 }

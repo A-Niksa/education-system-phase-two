@@ -60,7 +60,7 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
             } else {
                 notifyClientOfConnectionLoss();
                 goToMainMenu();
-                mainMenu.goOffline(mainFrame, mainMenu, clientController);
+//                mainMenu.goOffline(mainFrame, mainMenu, clientController);
             }
             // TODO: unrelated but adding messenger to offline mode
         };
@@ -73,7 +73,8 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
 
     private void goToMainMenu() {
         if (this instanceof OfflinePanel) facilitateChangingPanel((OfflinePanel) this);
-        stopPanelLoop();
+        else stopPanelLoop();
+
         MainMenu newMainMenu;
         switch (mainMenu.getMainMenuType()) {
             case PROFESSOR:
@@ -94,6 +95,7 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
 
     private void updateOfflineModeDTO(String userId) {
         Response response = clientController.getOfflineModeDTO(userId);
+        if (response == null) return;
         if (response.getResponseStatus() == ResponseStatus.OK) {
             offlineModeDTO = (OfflineModeDTO) response.get("offlineModeDTO");
         }
@@ -122,14 +124,16 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
         stopPanelLoop();
     }
 
+    protected void staticallyRemoveOfflineComponents() {
+        OfflinePanel.OFFLINE_COMPONENTS.forEach(this::remove);
+        OfflinePanel.OFFLINE_COMPONENTS.clear();
+        this.repaint();
+        this.validate();
+    }
+
     @Override
     protected void connectTemplateListeners() {
-        mainMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                goToMainMenu();
-            }
-        });
+        mainMenuButton.addActionListener(actionEvent -> goToMainMenu());
     }
 
     public void setOnline(boolean online) {

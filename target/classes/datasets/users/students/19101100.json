@@ -17,7 +17,7 @@
   "phoneNumber" : "09192302103",
   "emailAddress" : "hamidi@sharif.edu",
   "password" : "1234",
-  "lastLogin" : "2022-08-09T17:17:05.688622",
+  "lastLogin" : "2022-08-09T17:50:52.0736215",
   "advisingProfessorId" : "80201200",
   "transcript" : {
     "courseIdScoreMap" : { },
@@ -29,6 +29,6 @@
   "yearOfEntry" : 2019,
   "minorDepartmentId" : null,
   "isPermittedToEnrol" : true,
-  "enrolmentTime" : "2022-08-09T17:05:49.4555826",
+  "enrolmentTime" : "2022-08-09T17:22:06.4320728",
   "permittedToEnrol" : true
 }

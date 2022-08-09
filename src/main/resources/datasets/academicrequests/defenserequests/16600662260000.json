@@ -1,0 +1,10 @@
+{
+  "id" : "16600662260000",
+  "date" : "2022-08-09T17:30:26.5250532",
+  "requestIdentifier" : "DEFENSE",
+  "requestingStudentId" : "18101302",
+  "receivingProfessorId" : null,
+  "academicRequestStatus" : "SUBMITTED",
+  "requestedDefenseTime" : "2022-08-24T10:30:00.654",
+  "requestStatus" : "SUBMITTED"
+}

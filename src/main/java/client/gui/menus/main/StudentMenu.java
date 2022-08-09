@@ -280,7 +280,7 @@ public class StudentMenu extends MainMenu {
                         "Opened the enrolment certificate subsection in academic requests", "connectListeners",
                         getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new CertificateSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new CertificateSubmission(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
 
@@ -321,7 +321,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the defense slot selection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DefenseSubmission(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new DefenseSubmission(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
     }
