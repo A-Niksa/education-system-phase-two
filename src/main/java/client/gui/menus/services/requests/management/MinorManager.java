@@ -64,9 +64,9 @@ public class MinorManager extends RequestManager {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
-                Response response = clientController.acceptMinorRequest(minorRequestDTO.getId(), professor.getDepartmentId());
+                Response response = clientController.acceptMinorRequest(minorRequestDTO.getId(), offlineModeDTO.getDepartmentId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
-                    DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(professor.getDepartmentId());
+                    DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(offlineModeDTO.getDepartmentId());
                     String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"
 
                     MasterLogger.clientInfo(clientController.getId(), "Minor request (requesting student ID: " +
@@ -86,9 +86,9 @@ public class MinorManager extends RequestManager {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
-                Response response = clientController.declineMinorRequest(minorRequestDTO.getId(), professor.getDepartmentId());
+                Response response = clientController.declineMinorRequest(minorRequestDTO.getId(), offlineModeDTO.getDepartmentId());
                 if (response.getResponseStatus() == ResponseStatus.OK) {
-                    DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(professor.getDepartmentId());
+                    DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(offlineModeDTO.getDepartmentId());
                     String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"
 
                     MasterLogger.clientInfo(clientController.getId(), "Minor request (requesting student ID: " +

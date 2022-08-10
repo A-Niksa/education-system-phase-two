@@ -5,6 +5,7 @@ import client.gui.MainFrame;
 import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ImageParsingUtils;
+import server.network.clienthandling.logicutils.general.EnumStringMappingUtils;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.OfflineModeDTO;
@@ -88,7 +89,7 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
         totalGPA = new JLabel(totalGPAMessage + offlineModeDTO.getGPAString());
         labelsList.add(totalGPA);
         departmentMessage = ConfigManager.getString(configIdentifier, "departmentMessage");
-        department = new JLabel(departmentMessage + offlineModeDTO.getDepartmentName());
+        department = new JLabel(departmentMessage + EnumStringMappingUtils.getDepartmentName(offlineModeDTO.getDepartmentId()));
         labelsList.add(department);
         advisingProfessorMessage = ConfigManager.getString(configIdentifier, "advisingProfessorMessage");
         advisingProfessor = new JLabel(advisingProfessorMessage + offlineModeDTO.getAdvisingProfessorName());
@@ -211,7 +212,7 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
         phoneNumber.setText(phoneNumberMessage + offlineModeDTO.getPhoneNumber());
         emailAddress.setText(emailAddressMessage + offlineModeDTO.getEmailAddress());
         totalGPA.setText(totalGPAMessage + offlineModeDTO.getGPAString());
-        department.setText(departmentMessage + offlineModeDTO.getDepartmentName());
+        department.setText(departmentMessage + EnumStringMappingUtils.getDepartmentName(offlineModeDTO.getDepartmentId()));
         advisingProfessor.setText(advisingProfessorMessage + offlineModeDTO.getAdvisingProfessorName());
         yearOfEntry.setText(yearOfEntryMessage + offlineModeDTO.getYearOfEntry());
         degreeLevel.setText(degreeLevelMessage + offlineModeDTO.getDegreeLevel());

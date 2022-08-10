@@ -43,8 +43,7 @@ public class CoursesListEditor extends DynamicPanelTemplate {
 
     private void updateDepartmentCourseDTOs() {
 //        clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
-        // TODO: changing professor. for dept id to offlineModeDTO here and everywhere (including student.)
-        Response response = clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
+        Response response = clientController.getDepartmentCourseDTOs(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         departmentCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
     }
@@ -159,7 +158,7 @@ public class CoursesListEditor extends DynamicPanelTemplate {
     private void connectEditButtonListeners() {
         JButton editButton;
         CourseDTO editableCourseDTO;
-        for (int i = 0; i < editButtonsList.size(); i++) {
+        for (int i = 0; i < departmentCourseDTOs.size(); i++) {
             editButton = editButtonsList.get(i);
             editableCourseDTO = departmentCourseDTOs.get(i);
             editButton.addActionListener(new CourseEditHandler(mainFrame, mainMenu, professor, editableCourseDTO,

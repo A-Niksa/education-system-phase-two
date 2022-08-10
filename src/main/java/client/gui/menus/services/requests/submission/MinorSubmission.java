@@ -113,7 +113,7 @@ public class MinorSubmission extends DynamicPanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String targetDepartmentNameString = (String) departmentSelector.getSelectedItem();
-                Response response = clientController.askForMinor(offlineModeDTO.getId(), student.getDepartmentId(),
+                Response response = clientController.askForMinor(offlineModeDTO.getId(), offlineModeDTO.getDepartmentId(),
                         targetDepartmentNameString);
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",

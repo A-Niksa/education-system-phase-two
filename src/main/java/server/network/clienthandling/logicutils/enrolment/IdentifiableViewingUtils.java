@@ -60,6 +60,7 @@ public class IdentifiableViewingUtils {
         List<Identifiable> professors = databaseManager.getIdentifiables(DatasetIdentifier.PROFESSORS);
         Predicate<Identifiable> predicate = e -> ((Professor) e).getDepartmentId().equals(departmentId);
         List<ProfessorDTO> professorDTOs = getProfessorDTOsByPredicate(databaseManager, professors, predicate);
+        professorDTOs.sort(professorDTOComparator);
         return professorDTOs;
     }
 

@@ -15,6 +15,7 @@ import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
     private Professor professor;
     private JButton goBackButton;
     private JButton addProfessorButton;
+    private DefaultTableModel tableModel;
     private JTable professorsTable;
     private String[] columns;
     private String[][] data;
@@ -37,12 +39,13 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
         initializeColumns();
         setTableData();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     private void updateDepartmentProfessorDTOs() {
-        // duplicating request to avoid receiving lossy data:
-        clientController.getDepartmentProfessorDTOs(professor.getDepartmentId());
-        Response response = clientController.getDepartmentProfessorDTOs(professor.getDepartmentId());
+//        clientController.getDepartmentProfessorDTOs(professor.getDepartmentId());
+        Response response = clientController.getDepartmentProfessorDTOs(offlineModeDTO.getDepartmentId());
+        if (response == null) return;
         departmentProfessorDTOs = (ArrayList<ProfessorDTO>) response.get("professorDTOs");
     }
 
@@ -77,8 +80,14 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
         goBackButton = new JButton(ConfigManager.getString(configIdentifier, "goBackButtonM"));
         addProfessorButton = new JButton(ConfigManager.getString(configIdentifier, "addProfessorButtonM"));
 
-        professorsTable = new JTable(data, columns);
+        tableModel = new DefaultTableModel(data, columns);
+        professorsTable = new JTable(tableModel);
 
+        initializeEditButtons();
+    }
+
+    private void initializeEditButtons() {
+        editButtonsList.clear();
         for (int i = 0; i < departmentProfessorDTOs.size(); i++) {
             JButton button = new JButton(ConfigManager.getString(configIdentifier, "editButtonM"));
             editButtonsList.add(button);
@@ -106,6 +115,10 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "scrollPaneH"));
         add(scrollPane);
 
+        alignEditButtons();
+    }
+
+    private void alignEditButtons() {
         int currentX = ConfigManager.getInt(configIdentifier, "editButtonStartingX");;
         int currentY = ConfigManager.getInt(configIdentifier, "editButtonStartingY");;
         int buttonWidth = ConfigManager.getInt(configIdentifier, "editButtonW");
@@ -135,14 +148,19 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorAdderOfDean(mainFrame, mainMenu, professor, offlineModeDTO,
                         clientController.getId()));
             }
         });
 
+        connectEditButtonListeners();
+    }
+
+    private void connectEditButtonListeners() {
         JButton editButton;
         ProfessorDTO editableProfessorDTO;
-        for (int i = 0; i < editButtonsList.size(); i++) {
+        for (int i = 0; i < departmentProfessorDTOs.size(); i++) {
             editButton = editButtonsList.get(i);
             editableProfessorDTO = departmentProfessorDTOs.get(i);
             editButton.addActionListener(new ProfessorEditHandler(mainFrame, mainMenu, professor, editableProfessorDTO,
@@ -152,6 +170,13 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
-
+        updateDepartmentProfessorDTOs();
+        setTableData();
+        tableModel.setDataVector(data, columns);
+        editButtonsList.forEach(this::remove);
+        initializeEditButtons();
+        alignEditButtons();
+        connectEditButtonListeners();
+        this.repaint();
     }
 }

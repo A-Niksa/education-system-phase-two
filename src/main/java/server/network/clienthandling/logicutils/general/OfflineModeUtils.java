@@ -79,9 +79,7 @@ public class OfflineModeUtils {
         offlineModeDTO.setId(user.getId());
         offlineModeDTO.setNationalId(user.getNationalId());
         offlineModeDTO.setPhoneNumber(user.getPhoneNumber());
-        offlineModeDTO.setDepartmentName(getDepartmentNameWithId(
-                user.getDepartmentId()
-        ));
+        offlineModeDTO.setDepartmentId(user.getDepartmentId());
         // TODO: setting offlineMessengerDTO
     }
 

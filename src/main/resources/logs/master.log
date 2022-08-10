@@ -12920,3 +12920,1109 @@
 2022/08/10 | 14:18:10 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
 2022/08/10 | 14:18:10 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
 2022/08/10 | 14:18:11 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 18101202) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 1001) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 2003) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 80202302) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:01 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:30:02 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:30:08 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/10 | 14:30:09 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:30:10 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/10 | 14:30:10 - INFO - 0 - SERVER - Connection established with new client (id: 1) - awaitConnection - server.network.Server
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:18 - INFO - 1 - CLIENT - Opened the professors list in educational services - connectListeners - client.gui.menus.main.ProfessorMenu$3
+2022/08/10 | 14:30:19 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:20 - INFO - 1 - CLIENT - Opened professors list editor - connectEditor - client.gui.menus.enrolment.management.ProfessorsListManager$1
+2022/08/10 | 14:30:21 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:23 - INFO - 1 - CLIENT - Went back to professors list view - connectListeners - client.gui.menus.enrolment.editing.ProfessorsListEditor$1
+2022/08/10 | 14:30:23 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:24 - INFO - 1 - CLIENT - Opened professors list editor - connectEditor - client.gui.menus.enrolment.management.ProfessorsListManager$1
+2022/08/10 | 14:30:25 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:27 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.menus.enrolment.editing.ProfessorsListEditor
+2022/08/10 | 14:30:29 - INFO - 1 - CLIENT - Opened the professors list in educational services - connectListeners - client.gui.menus.main.ProfessorMenu$3
+2022/08/10 | 14:30:29 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:30 - INFO - 1 - CLIENT - Opened professors list editor - connectEditor - client.gui.menus.enrolment.management.ProfessorsListManager$1
+2022/08/10 | 14:30:31 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:33 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:35 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:37 - INFO - 2 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/10 | 14:30:38 - INFO - 0 - SERVER - Connection established with new client (id: 2) - awaitConnection - server.network.Server
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:39 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:41 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:43 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:45 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:47 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:49 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:51 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:53 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:55 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:57 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:30:59 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:01 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:03 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:05 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:07 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:09 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:11 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:13 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:15 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:17 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:19 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:21 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:23 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:25 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:27 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:29 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:31 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:33 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:35 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:37 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:39 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:41 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:43 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:45 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:47 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:49 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:51 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:53 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:55 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:57 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:31:59 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:01 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:03 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:05 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:07 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:09 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:11 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:13 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:15 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 19101100) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 18101202) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 80201200) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 90201301) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 1000) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 1001) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 2003) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 1) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 80202302) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved identifiable (id: 2) - save - server.database.management.DatabaseManager
+2022/08/10 | 14:32:21 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:32:32 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/10 | 14:32:33 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:32:33 - INFO - 1 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/10 | 14:32:34 - INFO - 0 - SERVER - Connection established with new client (id: 1) - awaitConnection - server.network.Server
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 1 - CLIENT - Logged in as student - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:39 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80202302) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:41 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:42 - INFO - 1 - CLIENT - Opened the professors list in educational services - connectListeners - client.gui.menus.main.StudentMenu$3
+2022/08/10 | 14:32:43 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:45 - INFO - 1 - CLIENT - Returned to the main menu - connectListeners - client.gui.menus.enrolment.viewing.ProfessorsListView
+2022/08/10 | 14:32:45 - INFO - 1 - CLIENT - Logged out - connectListeners - client.gui.menus.main.MainMenu$1
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 1 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:53 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:55 - INFO - 1 - CLIENT - Opened the professors list in educational services - connectListeners - client.gui.menus.main.ProfessorMenu$3
+2022/08/10 | 14:32:55 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:56 - INFO - 1 - CLIENT - Opened professors list editor - connectEditor - client.gui.menus.enrolment.management.ProfessorsListManager$1
+2022/08/10 | 14:32:57 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:32:59 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:01 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:03 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:05 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:07 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:09 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:33:11 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:33:46 - INFO - 0 - SERVER - Start of program - psvm - server.ServerMain
+2022/08/10 | 14:33:46 - INFO - 0 - SERVER - Loaded database from resources - loadDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:33:50 - INFO - 2 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/10 | 14:33:50 - INFO - 0 - SERVER - Connection established with new client (id: 2) - awaitConnection - server.network.Server
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 2 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:04 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:06 - INFO - 2 - CLIENT - Opened the professors list in educational services - connectListeners - client.gui.menus.main.ProfessorMenu$3
+2022/08/10 | 14:34:06 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:08 - INFO - 2 - CLIENT - Opened professors list editor - connectEditor - client.gui.menus.enrolment.management.ProfessorsListManager$1
+2022/08/10 | 14:34:08 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:10 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:12 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:14 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:15 - INFO - 3 - CLIENT - Start of program - psvm - client.ClientMain
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Connection established with new client (id: 3) - awaitConnection - server.network.Server
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:16 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:18 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:20 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:22 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:24 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 3 - CLIENT - Logged in as professor - connectListeners - client.gui.menus.login.LoginMenu
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:26 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:27 - INFO - 3 - CLIENT - Opened the professors list in educational services - connectListeners - client.gui.menus.main.ProfessorMenu$3
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:28 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:29 - INFO - 3 - CLIENT - Opened professors list editor - connectEditor - client.gui.menus.enrolment.management.ProfessorsListManager$1
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:30 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 3 - CLIENT - Opened professor editor for Shahram Khazayi - actionPerformed - client.gui.menus.enrolment.editing.ProfessorEditHandler
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:32 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:34 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:36 - INFO - 3 - CLIENT - Shahram Khazayi's academic level set to Full Professor - connectListeners - client.gui.menus.enrolment.editing.ProfessorEditor$2
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:38 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:40 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:42 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 80201200) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiables list from Defense Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiables list from Drop-out Requests Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 19101100) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 18101202) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1000) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 1001) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Removed identifiable (id: 80201200) - remove - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:44 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:45 - INFO - 3 - CLIENT - Removed the selected professor; deputy responsibilities temporarily delegated to department dean - connectListeners - client.gui.menus.enrolment.editing.ProfessorEditor$6
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:46 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:48 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:49 - INFO - 2 - CLIENT - Opened professor editor for Hamidreza Fanaei - actionPerformed - client.gui.menus.enrolment.editing.ProfessorEditHandler
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 2 - CLIENT - Went back to professors list editor - connectListeners - client.gui.menus.enrolment.editing.ProfessorEditor$1
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:50 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:52 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiables list from Courses Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiable (id: 90201301) - get - server.database.management.DatabaseManager
+2022/08/10 | 14:34:54 - INFO - 0 - SERVER - Fetched identifiables list from Professors Dataset - getIdentifiables - server.database.management.DatabaseManager
+2022/08/10 | 14:34:55 - INFO - 0 - SERVER - Saved database to resources - saveDatabase - server.database.management.DatabaseManager
+2022/08/10 | 14:34:56 - FATAL - 3 - CLIENT - Cannot connect to the server - attemptConnectionToServer - client.network.ServerController
+2022/08/10 | 14:34:56 - FATAL - 2 - CLIENT - Cannot connect to the server - attemptConnectionToServer - client.network.ServerController
+2022/08/10 | 14:34:56 - FATAL - 2 - CLIENT - Cannot connect to the server - attemptConnectionToServer - client.network.ServerController
+2022/08/10 | 14:35:00 - INFO - 3 - CLIENT - Gui configured for offline mode - goOffline - client.gui.menus.main.ProfessorMenu
+2022/08/10 | 14:35:00 - INFO - 3 - CLIENT - Returned to the main menu - connectListeners - client.gui.menus.enrolment.editing.ProfessorsListEditor
+2022/08/10 | 14:35:04 - INFO - 2 - CLIENT - Gui configured for offline mode - goOffline - client.gui.menus.main.ProfessorMenu
+2022/08/10 | 14:35:04 - INFO - 2 - CLIENT - Returned to the main menu - connectListeners - client.gui.menus.enrolment.editing.ProfessorsListEditor
+2022/08/10 | 14:35:05 - INFO - 2 - CLIENT - Gui configured for offline mode - goOffline - client.gui.menus.main.ProfessorMenu
+2022/08/10 | 14:35:05 - INFO - 2 - CLIENT - Returned to the main menu - connectListeners - client.gui.menus.enrolment.editing.ProfessorsListEditor

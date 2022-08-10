@@ -7,6 +7,7 @@ import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.profile.DepartmentGetter;
+import server.network.clienthandling.logicutils.general.EnumStringMappingUtils;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.OfflineModeDTO;
@@ -81,7 +82,8 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
         emailAddress = new JLabel(emailAddressMessage + professor.getEmailAddress());
         labelsList.add(emailAddress);
         departmentMessage = ConfigManager.getString(configIdentifier, "departmentMessage");
-        department = new JLabel(departmentMessage + offlineModeDTO.getDepartmentName());
+        department = new JLabel(departmentMessage +
+                EnumStringMappingUtils.getDepartmentName(offlineModeDTO.getDepartmentId()));
         labelsList.add(department);
         officeNumberMessage = ConfigManager.getString(configIdentifier, "officeNumberMessage");
         officeNumber = new JLabel(officeNumberMessage + professor.getOfficeNumber());
@@ -197,7 +199,7 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
         professorId.setText(professorIdMessage + offlineModeDTO.getId());
         phoneNumber.setText(phoneNumberMessage + offlineModeDTO.getPhoneNumber());
         emailAddress.setText(emailAddressMessage + offlineModeDTO.getEmailAddress());
-        department.setText(departmentMessage + offlineModeDTO.getDepartmentName());
+        department.setText(departmentMessage + EnumStringMappingUtils.getDepartmentName(offlineModeDTO.getDepartmentId()));
         officeNumber.setText(officeNumberMessage + offlineModeDTO.getOfficeNumber());
         academicLevel.setText(academicLevelMessage + offlineModeDTO.getAcademicLevel());
     }

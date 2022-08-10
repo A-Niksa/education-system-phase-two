@@ -117,7 +117,7 @@ public class ProfessorAdder extends DynamicPanelTemplate {
 
                 Blueprint blueprint = BlueprintGenerator.generateProfessorBlueprint(password, nationalID, firstName, lastName,
                         phoneNumber, emailAddress, officeNumber, adviseeStudentIds, academicRankString,
-                        professor.getDepartmentId());
+                        offlineModeDTO.getDepartmentId());
 
                 Response response = clientController.addProfessor(blueprint);
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {

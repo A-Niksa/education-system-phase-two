@@ -221,7 +221,7 @@ public class CourseAdder extends DynamicPanelTemplate {
                         teachingProfessorNamesArray, numberOfCredits, degreeLevelString, firstClassWeekdayString,
                         firstClassStartHour, firstClassStartMinute, firstClassEndHour, firstClassEndMinute,
                         secondClassWeekdayString, secondClassStartHour, secondClassStartMinute, secondClassEndHour,
-                        secondClassEndMinute, selectedExamDate, examHour, examMinute, professor.getDepartmentId());
+                        secondClassEndMinute, selectedExamDate, examHour, examMinute, offlineModeDTO.getDepartmentId());
                 Response response = clientController.addCourse(courseBlueprint);
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),

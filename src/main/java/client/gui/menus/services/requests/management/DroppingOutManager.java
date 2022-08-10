@@ -34,7 +34,7 @@ public class DroppingOutManager extends RequestManager {
 
     @Override
     protected void setRequestsList() {
-        Response response = clientController.getDepartmentDroppingOutRequestDTOs(professor.getDepartmentId());
+        Response response = clientController.getDepartmentDroppingOutRequestDTOs(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         requestDTOs = (ArrayList<RequestDTO>) response.get("requestDTOs");
     }

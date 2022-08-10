@@ -29,7 +29,7 @@ public class OfflineModeDTO {
     private String GPAString;
     private String officeNumber;
     private int yearOfEntry;
-    private DepartmentName departmentName;
+    private String departmentId;
     private DegreeLevel degreeLevel;
     private AcademicLevel academicLevel;
     // messenger:
@@ -148,12 +148,12 @@ public class OfflineModeDTO {
         this.yearOfEntry = yearOfEntry;
     }
 
-    public DepartmentName getDepartmentName() {
-        return departmentName;
+    public String getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartmentName(DepartmentName departmentName) {
-        this.departmentName = departmentName;
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
     }
 
     public DegreeLevel getDegreeLevel() {
@@ -248,7 +248,7 @@ public class OfflineModeDTO {
                 ", GPAString='" + GPAString + '\'' +
                 ", officeNumber='" + officeNumber + '\'' +
                 ", yearOfEntry=" + yearOfEntry +
-                ", departmentName=" + departmentName +
+                ", departmentId=" + departmentId +
                 ", degreeLevel=" + degreeLevel +
                 ", academicLevel=" + academicLevel +
                 ", offlineMessengerDTO=" + offlineMessengerDTO +
