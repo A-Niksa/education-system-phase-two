@@ -228,7 +228,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
                         "connectListeners",  getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new TemporaryStandingView(mainFrame, mainMenu, user));
+                mainFrame.setCurrentPanel(new TemporaryStandingView(mainFrame, mainMenu, user, offlineModeDTO));
             }
         });
 

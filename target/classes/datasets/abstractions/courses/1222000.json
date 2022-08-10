@@ -1,9 +1,9 @@
 {
-  "id" : "2003",
-  "departmentId" : "2",
-  "courseName" : "Analytical Mechanics",
-  "teachingProfessorIds" : [ "80202302" ],
-  "teachingAssistantIds" : [ "18101202" ],
+  "id" : "1222000",
+  "departmentId" : "1",
+  "courseName" : "Complex Analysis",
+  "teachingProfessorIds" : [ "80201200", "90201301" ],
+  "teachingAssistantIds" : [ ],
   "studentIds" : [ "19101100", "18101202" ],
   "weeklyClassTimes" : [ {
     "weekday" : "SUNDAY",
@@ -30,12 +30,12 @@
       "second" : 0
     }
   } ],
-  "examDate" : "2022-11-21T12:30:00",
+  "examDate" : "2022-11-21T09:30:00",
   "termIdentifier" : {
     "year" : 2022,
     "semester" : 2
   },
-  "numberOfCredits" : 3,
+  "numberOfCredits" : 4,
   "isActive" : true,
   "degreeLevel" : "UNDERGRADUATE",
   "active" : true

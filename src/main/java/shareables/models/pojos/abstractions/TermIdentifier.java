@@ -30,4 +30,9 @@ public class TermIdentifier {
     public String fetchTermIdentifierString() {
         return year + "-" + semester;
     }
+
+    @Override
+    public String toString() {
+        return (year % 2000) + String.format("%1d", semester);
+    }
 }

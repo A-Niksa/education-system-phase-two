@@ -1,6 +1,7 @@
 package server.network.clienthandling.logicutils.standing;
 
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.comparators.CourseScoreDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 public class StandingViewUtils {
+    private static CourseScoreDTOComparator courseScoreDTOComparator = new CourseScoreDTOComparator();
+
     public static TranscriptDTO getStudentTranscriptDTOWithId(DatabaseManager databaseManager, String studentId) {
         Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
         return initializeTranscriptDTO(databaseManager, student);
@@ -87,6 +90,7 @@ public class StandingViewUtils {
                     courseScoreDTO.setStudentName(studentName);
                     courseScoreDTOs.add(courseScoreDTO);
                 });
+        courseScoreDTOs.sort(courseScoreDTOComparator);
         return courseScoreDTOs;
     }
 
@@ -106,6 +110,7 @@ public class StandingViewUtils {
                     courseScoreDTO.setProfessorResponse(e.getValue().getProfessorResponse());
                     courseScoreDTOs.add(courseScoreDTO);
                 });
+        courseScoreDTOs.sort(courseScoreDTOComparator);
         return courseScoreDTOs;
     }
 

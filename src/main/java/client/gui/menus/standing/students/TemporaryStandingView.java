@@ -1,11 +1,12 @@
 package client.gui.menus.standing.students;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -14,7 +15,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class TemporaryStandingView extends PanelTemplate {
+public class TemporaryStandingView extends DynamicPanelTemplate {
     private Student student;
     private ArrayList<CourseScoreDTO> temporaryCourseScoreDTOs;
     private DefaultTableModel tableModel;
@@ -24,8 +25,8 @@ public class TemporaryStandingView extends PanelTemplate {
     private String[][] data;
     private ArrayList<JButton> protestButtonsList;
 
-    public TemporaryStandingView(MainFrame mainFrame, MainMenu mainMenu, User user) {
-        super(mainFrame, mainMenu);
+    public TemporaryStandingView(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_TEMPORARY_STANDING_VIEW;
         initializeColumns();
@@ -33,6 +34,7 @@ public class TemporaryStandingView extends PanelTemplate {
         setTableData();
         protestButtonsList = new ArrayList<>();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     public void updateTable() {
@@ -42,7 +44,8 @@ public class TemporaryStandingView extends PanelTemplate {
     }
 
     private void updateTemporaryCourseScoreDTOs() {
-        Response response = clientController.getStudentTemporaryCourseScoreDTOs(student.getId());
+        Response response = clientController.getStudentTemporaryCourseScoreDTOs(offlineModeDTO.getId());
+        if (response == null) return;
         temporaryCourseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
     }
 
@@ -71,6 +74,11 @@ public class TemporaryStandingView extends PanelTemplate {
         tableModel = new DefaultTableModel(data, columns);
         scoresTable = new JTable(tableModel);
 
+        initializeButtons();
+    }
+
+    private void initializeButtons() {
+        protestButtonsList.clear();
         for (int i = 0; i < temporaryCourseScoreDTOs.size(); i++) {
             JButton button = new JButton(ConfigManager.getString(configIdentifier, "protestButtonM"));
             protestButtonsList.add(button);
@@ -87,6 +95,10 @@ public class TemporaryStandingView extends PanelTemplate {
                 ConfigManager.getInt(configIdentifier, "scrollPaneH"));
         add(scrollPane);
 
+        alignButtons();
+    }
+
+    private void alignButtons() {
         int currentX = ConfigManager.getInt(configIdentifier, "startingX");
         int currentY = ConfigManager.getInt(configIdentifier, "startingY");
         int buttonWidth = ConfigManager.getInt(configIdentifier, "buttonW");
@@ -106,8 +118,20 @@ public class TemporaryStandingView extends PanelTemplate {
         for (int i = 0; i < protestButtonsList.size(); i++) {
             protestButton = protestButtonsList.get(i);
             courseScoreDTO = temporaryCourseScoreDTOs.get(i);
-            protestButton.addActionListener(new ProtestSubmissionHandler(mainFrame, this, student,
-                    courseScoreDTO, clientController, configIdentifier));
+            protestButton.addActionListener(new ProtestSubmissionHandler(mainFrame, this,
+                    courseScoreDTO, clientController, configIdentifier, offlineModeDTO));
         }
+    }
+
+    @Override
+    protected void updatePanel() {
+        updateTemporaryCourseScoreDTOs();
+        setTableData();
+        tableModel.setDataVector(data, columns);
+        protestButtonsList.forEach(this::remove);
+        initializeButtons();
+        alignButtons();
+        connectListeners();
+        repaint();
     }
 }
