@@ -24,7 +24,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StandingMasteryUtils {
-    private static CourseScoreDTOComparator courseScoreDTOComparator = new CourseScoreDTOComparator();
+    private static CourseScoreDTOComparator courseScoreDTOComparator;
+    static {
+        courseScoreDTOComparator = new CourseScoreDTOComparator();
+    }
 
     public static List<CourseScoreDTO> getCourseScoreDTOsForProfessor(DatabaseManager databaseManager, String departmentId,
                                                                       String professorName) {

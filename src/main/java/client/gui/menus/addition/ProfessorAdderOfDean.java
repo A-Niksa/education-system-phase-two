@@ -16,9 +16,9 @@ public class ProfessorAdderOfDean extends ProfessorAdder {
     private JButton goBackButton;
     private int clientControllerId;
 
-    public ProfessorAdderOfDean(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO,
+    public ProfessorAdderOfDean(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
                                 int clientControllerId) {
-        super(mainFrame, mainMenu, professor, offlineModeDTO);
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.clientControllerId = clientControllerId;
         initializeAndAlignBackButton();
         add(goBackButton);
@@ -40,7 +40,7 @@ public class ProfessorAdderOfDean extends ProfessorAdder {
                 MasterLogger.clientInfo(clientControllerId, "Went back to professors list editor",
                         "connectBackListener", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

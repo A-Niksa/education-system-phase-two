@@ -16,8 +16,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class DroppingOutManager extends RequestManager {
-    public DroppingOutManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
-        super(mainFrame, mainMenu, professor, offlineModeDTO);
+    public DroppingOutManager(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         initializeColumns();
         drawInteractivePanel();
         startPinging(offlineModeDTO.getId());

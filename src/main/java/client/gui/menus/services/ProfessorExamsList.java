@@ -16,18 +16,16 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class ProfessorExamsList extends DynamicPanelTemplate implements OfflinePanel {
-    Professor professor;
     private ArrayList<CourseDTO> courseDTOs;
     private DefaultTableModel tableModel;
     private JTable examsTable;
     private String[] columns;
     private String[][] data;
 
-    public ProfessorExamsList(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO,
+    public ProfessorExamsList(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
                               boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.isOnline = isOnline;
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_EXAMS_LIST;
         updateCourseDTOs();
         initializeColumns();

@@ -18,16 +18,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CertificateSubmission extends DynamicPanelTemplate {
-    private Student student;
     private JLabel generatingPrompt;
     private JButton generateButton;
     private JSeparator separator;
     private JLabel yourCertificatePrompt;
     private JLabel certificateText;
 
-    public CertificateSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public CertificateSubmission(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_CERTIFICATE_SUBMISSION;
         drawPanel();
         startPinging(offlineModeDTO.getId());

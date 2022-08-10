@@ -23,7 +23,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RecommendationSubmission extends DynamicPanelTemplate {
-    private Student student;
     private ArrayList<ProfessorDTO> professorDTOs;
     private JTextField recommendingProfessorId;
     private JButton submitRequest;
@@ -36,9 +35,8 @@ public class RecommendationSubmission extends DynamicPanelTemplate {
     private ArrayList<JLabel> currentRecommendations;
     private RecommendationDisplayer recommendationDisplayer;
 
-    public RecommendationSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public RecommendationSubmission(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_RECOMMENDATION_SUBMISSION;
         updateProfessorDTOs();
         initializeColumns();

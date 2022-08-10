@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class CurrentStandingView extends DynamicPanelTemplate implements OfflinePanel {
-    private Student student;
     private ArrayList<CourseScoreDTO> courseScoreDTOs;
     private TranscriptDTO transcriptDTO;
     private JLabel totalGPA;
@@ -31,11 +30,10 @@ public class CurrentStandingView extends DynamicPanelTemplate implements Offline
     private String totalGPAMessage;
     private String numberOfPassedCreditsMessage;
 
-    public CurrentStandingView(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+    public CurrentStandingView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
                                boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.isOnline = isOnline;
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_CURRENT_STANDING;
         initializeColumns();
         courseScoreDTOs = (ArrayList<CourseScoreDTO>) offlineModeDTO.getCourseScoreDTOs();
@@ -46,13 +44,13 @@ public class CurrentStandingView extends DynamicPanelTemplate implements Offline
     }
 
     private void updateTranscriptDTO() {
-        Response response = clientController.getStudentTranscriptDTOWithId(student.getId());
+        Response response = clientController.getStudentTranscriptDTOWithId(offlineModeDTO.getId());
         if (response == null) return;
         transcriptDTO = (TranscriptDTO) response.get("transcriptDTO");
     }
 
     private void updateCourseScoreDTOs() {
-        Response response = clientController.getStudentCourseScoreDTOsWithId(student.getId());
+        Response response = clientController.getStudentCourseScoreDTOsWithId(offlineModeDTO.getId());
         if (response == null) return;
         courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
     }

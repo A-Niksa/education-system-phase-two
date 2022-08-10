@@ -14,17 +14,15 @@ public class CourseEditHandler implements ActionListener {
     private MainFrame mainFrame;
     private MainMenu mainMenu;
     private CoursesListEditor coursesListEditor;
-    private Professor educationDeputy;
     private CourseDTO correspondingCourseDTO;
     private OfflineModeDTO offlineModeDTO;
     private int clientControllerId;
 
-    public CourseEditHandler(MainFrame mainFrame, MainMenu mainMenu, CoursesListEditor coursesListEditor, Professor educationDeputy,
+    public CourseEditHandler(MainFrame mainFrame, MainMenu mainMenu, CoursesListEditor coursesListEditor,
                              CourseDTO correspondingCourseDTO, OfflineModeDTO offlineModeDTO, int clientControllerId) {
         this.mainFrame = mainFrame;
         this.mainMenu = mainMenu;
         this.coursesListEditor = coursesListEditor;
-        this.educationDeputy = educationDeputy;
         this.correspondingCourseDTO = correspondingCourseDTO;
         this.offlineModeDTO = offlineModeDTO;
         this.clientControllerId = clientControllerId;
@@ -36,7 +34,6 @@ public class CourseEditHandler implements ActionListener {
         MasterLogger.clientInfo(clientControllerId, "Opened course editor for " + courseName,
                 "actionPerformed", getClass());
         coursesListEditor.stopPanelLoop();
-        mainFrame.setCurrentPanel(new CourseEditor(mainFrame, mainMenu, educationDeputy, correspondingCourseDTO,
-                offlineModeDTO));
+        mainFrame.setCurrentPanel(new CourseEditor(mainFrame, mainMenu, correspondingCourseDTO, offlineModeDTO));
     }
 }

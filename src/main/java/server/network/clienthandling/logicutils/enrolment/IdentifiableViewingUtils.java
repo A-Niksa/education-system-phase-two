@@ -17,8 +17,12 @@ import java.util.function.Predicate;
 import static server.network.clienthandling.logicutils.services.WeeklyScheduleUtils.initializeCourseDTO;
 
 public class IdentifiableViewingUtils {
-    private static CourseDTOComparator courseDTOComparator = new CourseDTOComparator();
-    private static ProfessorDTOComparator professorDTOComparator = new ProfessorDTOComparator();
+    private static CourseDTOComparator courseDTOComparator;
+    private static ProfessorDTOComparator professorDTOComparator;
+    static {
+        courseDTOComparator = new CourseDTOComparator();
+        professorDTOComparator = new ProfessorDTOComparator();
+    }
 
     public static List<CourseDTO> getActiveCourseDTOs(DatabaseManager databaseManager) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);

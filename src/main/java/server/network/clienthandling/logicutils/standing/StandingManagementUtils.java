@@ -20,7 +20,10 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class StandingManagementUtils {
-    private static CourseScoreDTOComparator courseScoreDTOComparator = new CourseScoreDTOComparator();
+    private static CourseScoreDTOComparator courseScoreDTOComparator;
+    static {
+        courseScoreDTOComparator = new CourseScoreDTOComparator();
+    }
 
     public static String[] getProfessorActiveCourseNames(DatabaseManager databaseManager, String professorId) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);

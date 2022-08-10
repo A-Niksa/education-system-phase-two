@@ -272,4 +272,11 @@ public class ResponseHandler {
                 "cannotPromoteDeanToDeputy"));
         clientHandler.respond(response);
     }
+
+    public void conversationThumbnailDTOsAcquired(ClientHandler clientHandler,
+                                                  List<ConversationThumbnailDTO> conversationThumbnailDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("conversationThumbnailDTOs", conversationThumbnailDTOs);
+        clientHandler.respond(response);
+    }
 }

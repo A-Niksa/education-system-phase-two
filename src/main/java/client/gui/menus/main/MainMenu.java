@@ -24,7 +24,6 @@ import java.awt.event.ActionListener;
 public abstract class MainMenu extends JPanel implements OfflinePanel {
     protected MainFrame mainFrame;
     protected ClientController clientController;
-    protected User user;
     protected ConfigFileIdentifier configIdentifier;
     protected JLabel lastLoginTime;
     protected JLabel profilePicture;
@@ -37,6 +36,8 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
     protected Runnable pingingTask;
     protected String lastLoginTimePrompt;
     protected MainMenuType mainMenuType;
+    protected JButton notificationsButton;
+    protected JButton messengerButton;
 
     public MainMenu(MainFrame mainFrame, String username, MainMenuType mainMenuType, OfflineModeDTO offlineModeDTO,
                     boolean isOnline) {
@@ -50,10 +51,8 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         drawPanel();
     }
 
-    public MainMenu(MainFrame mainFrame, User user, MainMenuType mainMenuType, OfflineModeDTO offlineModeDTO,
-                    boolean isOnline) {
+    public MainMenu(MainFrame mainFrame, MainMenuType mainMenuType, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         this.mainFrame = mainFrame;
-        this.user = user;
         this.mainMenuType = mainMenuType;
         this.isOnline = isOnline;
         clientController = mainFrame.getClientController();
@@ -86,7 +85,6 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         pingingTask = () -> {
             checkIfClientIsOnline();
             if (isOnline) {
-                user = UserGetter.getUser(username, clientController);
                 updateOfflineModeDTO(username);
                 updatePanel();
             } else {
@@ -152,6 +150,8 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         nameLabel = new JLabel(offlineModeDTO.getName());
         emailAddressLabel = new JLabel(offlineModeDTO.getEmailAddress());
         logOutButton = new JButton(ConfigManager.getString(configIdentifier, "logOutButtonMessage"));
+        notificationsButton = new JButton(ConfigManager.getString(configIdentifier, "notificationsButtonM"));
+        messengerButton = new JButton(ConfigManager.getString(configIdentifier, "messengerButtonM"));
     }
 
     private void alignComponents() {
@@ -180,6 +180,16 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
                 ConfigManager.getInt(configIdentifier, "lastLoginTimeW"),
                 ConfigManager.getInt(configIdentifier, "lastLoginTimeH"));
         add(lastLoginTime);
+        notificationsButton.setBounds(ConfigManager.getInt(configIdentifier, "notificationsButtonX"),
+                ConfigManager.getInt(configIdentifier, "notificationsButtonY"),
+                ConfigManager.getInt(configIdentifier, "notificationsButtonW"),
+                ConfigManager.getInt(configIdentifier, "notificationsButtonH"));
+        add(notificationsButton);
+        messengerButton.setBounds(ConfigManager.getInt(configIdentifier, "messengerButtonX"),
+                ConfigManager.getInt(configIdentifier, "messengerButtonY"),
+                ConfigManager.getInt(configIdentifier, "messengerButtonW"),
+                ConfigManager.getInt(configIdentifier, "messengerButtonH"));
+        add(messengerButton);
     }
 
     private void connectListeners() {
@@ -199,11 +209,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
     }
 
     public String getUsername() {
-        return user.getId();
-    }
-
-    public User getUser() {
-        return user;
+        return offlineModeDTO.getId();
     }
 
     public void setOnline(boolean online) {

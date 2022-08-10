@@ -22,7 +22,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class MinorSubmission extends DynamicPanelTemplate {
-    private Student student;
     private ArrayList<MinorRequestDTO> studentMinorRequestDTOs;
     private DefaultTableModel tableModel;
     private JTable requestsTable;
@@ -33,9 +32,8 @@ public class MinorSubmission extends DynamicPanelTemplate {
     private JComboBox<String> departmentSelector;
     private JButton submitRequest;
 
-    public MinorSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public MinorSubmission(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_MINOR_SUBMISSION;
         departmentNameStrings = EnumArrayUtils.initializeDepartmentNameStrings();
         updateMinorRequestDTOs();

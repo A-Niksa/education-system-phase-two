@@ -206,6 +206,9 @@ public class RequestMapper {
             case GET_COURSE_STATS_DTO:
                 requestHandler.getCourseStatsDTO(clientHandler, request);
                 break;
+            case GET_CONVERSATION_THUMBNAIL_DTOS:
+                requestHandler.getConversationThumbnailDTOs(clientHandler, request);
+                break;
         }
     }
 }

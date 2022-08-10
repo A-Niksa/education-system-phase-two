@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TemporaryStandingManager extends DynamicPanelTemplate {
-    private Professor professor;
     private String[] activeCourseNames;
     private JComboBox<String> coursesBox; // only includes courses active in the current semester
     private String selectedCourseName;
@@ -41,10 +40,8 @@ public class TemporaryStandingManager extends DynamicPanelTemplate {
     private ArrayList<JButton> respondToProtestButtonsList;
     private String noCourseNameSelectedErrorMessage;
 
-    public TemporaryStandingManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor,
-                                    OfflineModeDTO offlineModeDTO) {
+    public TemporaryStandingManager(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_TEMPORARY_STANDING_MANAGER;
         noCourseNameSelectedErrorMessage = ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "noCourseHasBeenSelected");

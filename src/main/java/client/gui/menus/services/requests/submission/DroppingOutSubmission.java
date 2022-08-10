@@ -19,7 +19,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DroppingOutSubmission extends DynamicPanelTemplate {
-    private Student student;
     private JLabel submissionPrompt;
     private JButton submitRequest;
     private JLabel submittedPrompt;
@@ -27,9 +26,8 @@ public class DroppingOutSubmission extends DynamicPanelTemplate {
     private AcademicRequestStatus academicRequestStatus;
     private boolean academicRequestHasBeenSubmitted;
 
-    public DroppingOutSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public DroppingOutSubmission(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_DROPPING_OUT_SUBMISSION;
         submittedPrompt = new JLabel();
         resultPrompt = new JLabel();

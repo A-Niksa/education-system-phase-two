@@ -27,7 +27,6 @@ import java.util.Date;
 import java.util.Properties;
 
 public class DefenseSubmission extends DynamicPanelTemplate {
-    private Student student;
     private LocalDateTime defenseTime;
     private UtilDateModel dateModel;
     private Properties properties;
@@ -40,9 +39,8 @@ public class DefenseSubmission extends DynamicPanelTemplate {
     private JLabel defenseSlotPrompt;
     private JLabel defenseSlotInformation;
 
-    public DefenseSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public DefenseSubmission(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_DEFENSE_SUBMISSION;
         updateDefenseTime();
         drawPanel();
@@ -155,7 +153,7 @@ public class DefenseSubmission extends DynamicPanelTemplate {
 
                 MasterLogger.clientInfo(clientController.getId(), "Submitted thesis defense time",
                         "connectListeners", getClass());
-                Response response = clientController.askForDefenseTime(student.getId(), selectedDate, selectedHour,
+                Response response = clientController.askForDefenseTime(offlineModeDTO.getId(), selectedDate, selectedHour,
                         selectedMinute);
                 if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {

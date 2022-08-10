@@ -16,7 +16,6 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class TemporaryStandingView extends DynamicPanelTemplate {
-    private Student student;
     private ArrayList<CourseScoreDTO> temporaryCourseScoreDTOs;
     private DefaultTableModel tableModel;
     private JTable scoresTable;
@@ -25,9 +24,8 @@ public class TemporaryStandingView extends DynamicPanelTemplate {
     private String[][] data;
     private ArrayList<JButton> protestButtonsList;
 
-    public TemporaryStandingView(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public TemporaryStandingView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_TEMPORARY_STANDING_VIEW;
         initializeColumns();
         updateTemporaryCourseScoreDTOs();

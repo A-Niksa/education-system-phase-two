@@ -18,7 +18,10 @@ import java.util.List;
 import java.util.Map;
 
 public class StandingViewUtils {
-    private static CourseScoreDTOComparator courseScoreDTOComparator = new CourseScoreDTOComparator();
+    private static CourseScoreDTOComparator courseScoreDTOComparator;
+    static {
+        courseScoreDTOComparator = new CourseScoreDTOComparator();
+    }
 
     public static TranscriptDTO getStudentTranscriptDTOWithId(DatabaseManager databaseManager, String studentId) {
         Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);

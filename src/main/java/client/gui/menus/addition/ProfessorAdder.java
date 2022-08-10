@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ProfessorAdder extends DynamicPanelTemplate {
-    protected Professor professor;
     private JTextField passwordField;
     private JTextField nationalIdField;
     private JTextField firstNameField;
@@ -38,9 +37,8 @@ public class ProfessorAdder extends DynamicPanelTemplate {
     private ArrayList<JComboBox<String>> comboBoxesList;
     private JButton addProfessorButton;
 
-    public ProfessorAdder(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+    public ProfessorAdder(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_ADDER;
         academicLevels = EnumArrayUtils.initializeAcademicLevels();
         drawPanel();

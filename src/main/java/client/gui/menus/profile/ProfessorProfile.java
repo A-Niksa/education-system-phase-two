@@ -24,7 +24,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePanel {
-    private Professor professor;
     private JLabel profilePicture;
     private JLabel name;
     private JLabel nationalId;
@@ -51,11 +50,10 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
     private String officeNumberMessage;
     private String academicLevelMessage;
 
-    public ProfessorProfile(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+    public ProfessorProfile(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
                             boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.isOnline = isOnline;
-        professor = (Professor) user;
         configIdentifier = ConfigFileIdentifier.GUI_PROFILE;
         drawPanel();
         startPingingIfOnline(offlineModeDTO.getId(), this);
@@ -63,33 +61,33 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
 
     @Override
     protected void initializeComponents() {
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(professor.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
         profilePicture = new JLabel(profilePictureIcon);
         labelsList = new ArrayList<>();
         nameMessage = ConfigManager.getString(configIdentifier, "nameMessage");
-        name = new JLabel(nameMessage + professor.fetchName());
+        name = new JLabel(nameMessage + offlineModeDTO.getName());
         labelsList.add(name);
         nationalIdMessage = ConfigManager.getString(configIdentifier, "nationalIdMessage");
-        nationalId = new JLabel(nationalIdMessage + professor.getNationalId());
+        nationalId = new JLabel(nationalIdMessage + offlineModeDTO.getNationalId());
         labelsList.add(nationalId);
         professorIdMessage = ConfigManager.getString(configIdentifier, "professorIdMessage");
-        professorId = new JLabel(professorIdMessage + professor.getId());
+        professorId = new JLabel(professorIdMessage + offlineModeDTO.getId());
         labelsList.add(professorId);
         phoneNumberMessage = ConfigManager.getString(configIdentifier, "phoneNumberMessage");
-        phoneNumber = new JLabel(phoneNumberMessage + professor.getPhoneNumber());
+        phoneNumber = new JLabel(phoneNumberMessage + offlineModeDTO.getPhoneNumber());
         labelsList.add(phoneNumber);
         emailAddressMessage = ConfigManager.getString(configIdentifier, "emailAddressMessage");
-        emailAddress = new JLabel(emailAddressMessage + professor.getEmailAddress());
+        emailAddress = new JLabel(emailAddressMessage + offlineModeDTO.getEmailAddress());
         labelsList.add(emailAddress);
         departmentMessage = ConfigManager.getString(configIdentifier, "departmentMessage");
         department = new JLabel(departmentMessage +
                 EnumStringMappingUtils.getDepartmentName(offlineModeDTO.getDepartmentId()));
         labelsList.add(department);
         officeNumberMessage = ConfigManager.getString(configIdentifier, "officeNumberMessage");
-        officeNumber = new JLabel(officeNumberMessage + professor.getOfficeNumber());
+        officeNumber = new JLabel(officeNumberMessage + offlineModeDTO.getOfficeNumber());
         labelsList.add(officeNumber);
         academicLevelMessage = ConfigManager.getString(configIdentifier, "academicLevelMessage");
-        academicLevel = new JLabel(academicLevelMessage + professor.getAcademicLevel());
+        academicLevel = new JLabel(academicLevelMessage + offlineModeDTO.getAcademicLevel());
         labelsList.add(academicLevel);
         separator = new JSeparator();
         enterNewEmailAddress = new JLabel(ConfigManager.getString(configIdentifier, "enterNewEmailAddressMessage"));
@@ -167,7 +165,7 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
                 String newPhoneNumberText = newPhoneNumber.getText();
                 MasterLogger.clientInfo(clientController.getId(), "Changed phone number to " + newPhoneNumberText,
                         "connectListeners", getClass());
-                Response response = clientController.changePhoneNumber(professor.getId(), newPhoneNumberText);
+                Response response = clientController.changePhoneNumber(offlineModeDTO.getId(), newPhoneNumberText);
                 if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     phoneNumber.setText(ConfigManager.getString(configIdentifier, "phoneNumberMessage")
@@ -182,7 +180,7 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
                 String newEmailAddressText = newEmailAddress.getText();
                 MasterLogger.clientInfo(clientController.getId(), "Changed email address to " + newEmailAddressText,
                         "connectListeners",  getClass());
-                Response response = clientController.changeEmailAddress(professor.getId(), newEmailAddressText);
+                Response response = clientController.changeEmailAddress(offlineModeDTO.getId(), newEmailAddressText);
                 if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     emailAddress.setText(ConfigManager.getString(configIdentifier, "emailAddressMessage")

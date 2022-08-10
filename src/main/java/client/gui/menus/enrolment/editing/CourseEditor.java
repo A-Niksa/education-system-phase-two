@@ -23,7 +23,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CourseEditor extends DynamicPanelTemplate {
-    private Professor deputy;
     private CourseDTO courseDTO;
     private JLabel courseNameLabel;
     private JTextField newCourseName;
@@ -38,11 +37,10 @@ public class CourseEditor extends DynamicPanelTemplate {
     private JButton goBackButton;
     private JButton removeCourse;
 
-    public CourseEditor(MainFrame mainFrame, MainMenu mainMenu, Professor deputy, CourseDTO courseDTO,
+    public CourseEditor(MainFrame mainFrame, MainMenu mainMenu, CourseDTO courseDTO,
                         OfflineModeDTO offlineModeDTO) {
         // TODO: perhaps updating the courseDTO
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.deputy = deputy;
         this.courseDTO = courseDTO;
         configIdentifier = ConfigFileIdentifier.GUI_COURSE_EDITOR;
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();
@@ -139,7 +137,7 @@ public class CourseEditor extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to courses list editor",
                         "connectListeners", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, deputy, offlineModeDTO));
+                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 

@@ -9,6 +9,7 @@ import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
 import server.network.clienthandling.logicutils.general.OfflineModeUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
+import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
 import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
@@ -521,5 +522,11 @@ public class RequestHandler { // TODO: logging, perhaps?
             ProfessorEditingUtils.removeProfessor(databaseManager, professorId, departmentId);
             responseHandler.requestSuccessful(clientHandler);
         }
+    }
+
+    public void getConversationThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        List<ConversationThumbnailDTO> conversationThumbnailDTOs = MessengerViewUtils.getConversationThumbnailDTOs(
+                databaseManager, (String) request.get("username"));
+        responseHandler.conversationThumbnailDTOsAcquired(clientHandler, conversationThumbnailDTOs);
     }
 }

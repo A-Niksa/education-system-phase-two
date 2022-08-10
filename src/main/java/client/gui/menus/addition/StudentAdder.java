@@ -21,7 +21,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class StudentAdder extends DynamicPanelTemplate {
-    private Professor professor;
     private JTextField passwordField;
     private JTextField nationalIdField;
     private JTextField firstNameField;
@@ -39,9 +38,8 @@ public class StudentAdder extends DynamicPanelTemplate {
     private ArrayList<JComboBox<String>> comboBoxesList;
     private JButton addStudentButton;
 
-    public StudentAdder(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+    public StudentAdder(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_STUDENT_ADDER;
         studentStatusStrings = EnumArrayUtils.initializeStudentStatusStrings();
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();

@@ -29,7 +29,6 @@ import java.util.Date;
 import java.util.Properties;
 
 public class CourseAdder extends DynamicPanelTemplate {
-    private Professor professor;
     private JTextField courseNameField;
     private JTextField termIdentifierField;
     private JTextField teachingProfessorNames;
@@ -60,9 +59,8 @@ public class CourseAdder extends DynamicPanelTemplate {
     private JButton addCourseButton;
     private JButton goBackButton;
 
-    public CourseAdder(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+    public CourseAdder(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_COURSE_ADDER;
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();
         weekdays = EnumArrayUtils.initializeWeekdays();
@@ -242,7 +240,7 @@ public class CourseAdder extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to courses list editor",
                         "connectListeners", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

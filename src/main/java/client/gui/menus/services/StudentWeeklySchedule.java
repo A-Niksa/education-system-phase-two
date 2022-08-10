@@ -21,7 +21,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class StudentWeeklySchedule extends DynamicPanelTemplate implements OfflinePanel {
-    private Student student;
     private ArrayList<CourseDTO> courseDTOs;
     private ArrayList<JPanel> weekdayPanels;
     private ArrayList<DefaultTableModel> weekdayTableModels;
@@ -30,11 +29,10 @@ public class StudentWeeklySchedule extends DynamicPanelTemplate implements Offli
     private String[] columns;
     private JTabbedPane tabbedPane;
 
-    public StudentWeeklySchedule(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+    public StudentWeeklySchedule(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
                                  boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.isOnline = isOnline;
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_WEEKLY_SCHEDULE;
         updateCourseDTOs();
         initializeColumnsArray();

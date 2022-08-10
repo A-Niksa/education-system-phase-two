@@ -19,15 +19,13 @@ import java.awt.event.ActionListener;
 
 public class DormSubmission extends DynamicPanelTemplate {
     // TODO: saving dorm result?
-    private Student student;
     private JLabel dormPrompt;
     private JButton submitRequest;
     private JSeparator separator;
     private JLabel resultText;
 
-    public DormSubmission(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO) {
+    public DormSubmission(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_DORM_SUBMISSION;
         drawPanel();
         startPinging(offlineModeDTO.getId());

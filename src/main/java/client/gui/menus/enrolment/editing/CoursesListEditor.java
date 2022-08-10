@@ -20,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class CoursesListEditor extends DynamicPanelTemplate {
-    private Professor professor;
     private ArrayList<CourseDTO> departmentCourseDTOs;
     private JButton goBackButton;
     private JButton addCourseButton;
@@ -30,9 +29,8 @@ public class CoursesListEditor extends DynamicPanelTemplate {
     private String[][] data;
     private ArrayList<JButton> editButtonsList;
 
-    public CoursesListEditor(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+    public CoursesListEditor(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_LIST_EDITOR;
         updateDepartmentCourseDTOs();
         initializeColumns();
@@ -138,7 +136,7 @@ public class CoursesListEditor extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to courses list view",
                         "connectListeners", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -148,7 +146,7 @@ public class CoursesListEditor extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the course addition section",
                         "connectListeners", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new CourseAdder(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new CourseAdder(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -161,7 +159,7 @@ public class CoursesListEditor extends DynamicPanelTemplate {
         for (int i = 0; i < departmentCourseDTOs.size(); i++) {
             editButton = editButtonsList.get(i);
             editableCourseDTO = departmentCourseDTOs.get(i);
-            editButton.addActionListener(new CourseEditHandler(mainFrame, mainMenu, this, professor,
+            editButton.addActionListener(new CourseEditHandler(mainFrame, mainMenu, this,
                     editableCourseDTO, offlineModeDTO, clientController.getId()));
         }
     }

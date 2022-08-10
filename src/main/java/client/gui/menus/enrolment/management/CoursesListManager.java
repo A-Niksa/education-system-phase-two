@@ -15,12 +15,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CoursesListManager extends CoursesListView {
-    private Professor professor;
     private JButton openEditor;
 
-    public CoursesListManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+    public CoursesListManager(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_LIST_MANAGER;
         setEditorButton();
         connectEditorListener();
@@ -43,7 +41,7 @@ public class CoursesListManager extends CoursesListView {
                 MasterLogger.clientInfo(clientController.getId(), "Opened courses list editor",
                         "connectEditorListener", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

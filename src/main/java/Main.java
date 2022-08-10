@@ -1,5 +1,9 @@
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.pojos.abstractions.*;
+import shareables.models.pojos.media.Picture;
+import shareables.models.pojos.messaging.Conversation;
+import shareables.models.pojos.messaging.Message;
+import shareables.models.pojos.messaging.MessageType;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
@@ -127,6 +131,33 @@ public class Main {
         analyticalMechanics.addToStudentIds(rezaei.getId());
         physicsDepartment.addToCourseIDs(analyticalMechanics.getId());
 //        hamidi.getTranscript().put(analyticalMechanics.getId(), new Score(false, 19.0));
+
+        Conversation conversation = new Conversation();
+        conversation.addToConversingUserIds(hamidi.getId());
+        conversation.addToConversingUserIds(rezaei.getId());
+        Message firstMessage = new Message();
+        firstMessage.setMessageType(MessageType.TEXT);
+        firstMessage.setMessageText("Certainly sir there is much surrounding this problem");
+        firstMessage.setSenderId(rezaei.getId());
+        Message secondMessage = new Message();
+        secondMessage.setMessageType(MessageType.MEDIA);
+        secondMessage.setMessageMediaFile(new Picture(true));
+        secondMessage.setSenderId(hamidi.getId());
+        conversation.addToMessages(firstMessage);
+        conversation.addToMessages(secondMessage);
+        hamidi.getMessenger().addToConversations(conversation);
+        rezaei.getMessenger().addToConversations(conversation);
+
+        Conversation anotherConversation = new Conversation();
+        anotherConversation.addToConversingUserIds(hamidi.getId());
+        anotherConversation.addToConversingUserIds(khazayi.getId());
+        Message anotherFirstMessage = new Message();
+        anotherFirstMessage.setMessageType(MessageType.TEXT);
+        anotherFirstMessage.setMessageText("Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo  Yo Yo Yo Yo Yo Yo Yo Yo Yo Yo ");
+        anotherFirstMessage.setSenderId(khazayi.getId());
+        anotherConversation.addToMessages(anotherFirstMessage);
+        hamidi.getMessenger().addToConversations(anotherConversation);
+        khazayi.getMessenger().addToConversations(anotherConversation);
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);

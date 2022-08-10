@@ -25,7 +25,7 @@ public abstract class User extends Identifiable {
 
     public User(UserIdentifier userIdentifier) {
         this.userIdentifier = userIdentifier;
-        profilePicture = new Picture(); // sets the default profile picture
+        profilePicture = new Picture(true); // sets the default profile picture
     }
 
     protected void initializeMessenger(String id) {

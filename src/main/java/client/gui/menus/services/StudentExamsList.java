@@ -6,11 +6,8 @@ import client.gui.OfflinePanel;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.locallogic.services.ExamsListSorter;
-import shareables.models.pojos.users.User;
-import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.CourseDTO;
 import shareables.network.DTOs.OfflineModeDTO;
-import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
@@ -19,18 +16,16 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class StudentExamsList extends DynamicPanelTemplate implements OfflinePanel {
-    private Student student;
     private ArrayList<CourseDTO> courseDTOs;
     private DefaultTableModel tableModel;
     private JTable examsTable;
     private String[] columns;
     private String[][] data;
 
-    public StudentExamsList(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+    public StudentExamsList(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
                             boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.isOnline = isOnline;
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_EXAMS_LIST;
         updateCourseDTOs();
         initializeColumns();

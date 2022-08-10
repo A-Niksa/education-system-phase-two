@@ -5,14 +5,18 @@ import shareables.models.idgeneration.IdentifiableWithTime;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.User;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Message extends IdentifiableWithTime {
     private String senderId;
+    private MessageType messageType;
     private MediaFile messageMediaFile;
     private String messageText;
+    private LocalDateTime messageDate;
 
     public Message() {
+        messageDate = LocalDateTime.now();
         initializeId();
     }
 
@@ -22,6 +26,14 @@ public class Message extends IdentifiableWithTime {
 
     public void setSenderId(String senderId) {
         this.senderId = senderId;
+    }
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MessageType messageType) {
+        this.messageType = messageType;
     }
 
     public MediaFile getMessageMediaFile() {
@@ -38,5 +50,13 @@ public class Message extends IdentifiableWithTime {
 
     public void setMessageText(String messageText) {
         this.messageText = messageText;
+    }
+
+    public LocalDateTime getMessageDate() {
+        return messageDate;
+    }
+
+    public void setMessageDate(LocalDateTime messageDate) {
+        this.messageDate = messageDate;
     }
 }

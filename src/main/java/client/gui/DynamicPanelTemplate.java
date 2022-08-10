@@ -80,10 +80,10 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
         MainMenu newMainMenu;
         switch (mainMenu.getMainMenuType()) {
             case PROFESSOR:
-                newMainMenu = new ProfessorMenu(mainFrame, mainMenu.getUser(), offlineModeDTO, isOnline);
+                newMainMenu = new ProfessorMenu(mainFrame, offlineModeDTO, isOnline);
                 break;
             case STUDENT:
-                newMainMenu = new StudentMenu(mainFrame, mainMenu.getUser(), offlineModeDTO, isOnline);
+                newMainMenu = new StudentMenu(mainFrame, offlineModeDTO, isOnline);
                 break;
                 // TODO: adding admin and mr. mohseni
             default:

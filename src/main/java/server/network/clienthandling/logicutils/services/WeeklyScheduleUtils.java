@@ -13,7 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeeklyScheduleUtils {
-    private static CourseDTOComparator courseDTOComparator = new CourseDTOComparator();
+    private static CourseDTOComparator courseDTOComparator;
+    static {
+        courseDTOComparator = new CourseDTOComparator();
+    }
 
     public static List<CourseDTO> getStudentCourseDTOs(DatabaseManager databaseManager, String username) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);

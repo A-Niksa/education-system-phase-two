@@ -21,7 +21,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ProfessorEditor extends DynamicPanelTemplate {
-    private Professor dean;
     private ProfessorDTO professorToEditDTO;
     private JButton goBackButton;
     private JLabel professorName;
@@ -34,10 +33,9 @@ public class ProfessorEditor extends DynamicPanelTemplate {
     private JButton promoteToDeputy;
     private JButton removeProfessor;
 
-    public ProfessorEditor(MainFrame mainFrame, MainMenu mainMenu, Professor dean, ProfessorDTO professorToEditDTO,
+    public ProfessorEditor(MainFrame mainFrame, MainMenu mainMenu, ProfessorDTO professorToEditDTO,
                            OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.dean = dean;
         this.professorToEditDTO = professorToEditDTO;
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_EDITOR;
         academicLevels = EnumArrayUtils.initializeAcademicLevels();
@@ -121,7 +119,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to professors list editor",
                         "connectListeners", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, dean, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 

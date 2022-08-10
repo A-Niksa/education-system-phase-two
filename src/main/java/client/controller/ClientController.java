@@ -414,6 +414,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getConversationThumbnailDTOs(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_CONVERSATION_THUMBNAIL_DTOS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

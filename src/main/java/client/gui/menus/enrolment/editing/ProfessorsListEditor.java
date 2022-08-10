@@ -21,7 +21,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ProfessorsListEditor extends DynamicPanelTemplate {
-    private Professor professor;
     private JButton goBackButton;
     private JButton addProfessorButton;
     private DefaultTableModel tableModel;
@@ -31,9 +30,8 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
     private ArrayList<ProfessorDTO> departmentProfessorDTOs;
     private ArrayList<JButton> editButtonsList;
 
-    public ProfessorsListEditor(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+    public ProfessorsListEditor(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_LIST_EDITOR;
         updateDepartmentProfessorDTOs();
         initializeColumns();
@@ -139,7 +137,7 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to professors list view",
                         "connectListeners", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -149,7 +147,7 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
                 stopPanelLoop();
-                mainFrame.setCurrentPanel(new ProfessorAdderOfDean(mainFrame, mainMenu, professor, offlineModeDTO,
+                mainFrame.setCurrentPanel(new ProfessorAdderOfDean(mainFrame, mainMenu, offlineModeDTO,
                         clientController.getId()));
             }
         });
@@ -163,7 +161,7 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
         for (int i = 0; i < departmentProfessorDTOs.size(); i++) {
             editButton = editButtonsList.get(i);
             editableProfessorDTO = departmentProfessorDTOs.get(i);
-            editButton.addActionListener(new ProfessorEditHandler(mainFrame, mainMenu, this, professor,
+            editButton.addActionListener(new ProfessorEditHandler(mainFrame, mainMenu, this,
                     editableProfessorDTO, offlineModeDTO));
         }
     }

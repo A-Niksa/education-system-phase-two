@@ -3,6 +3,7 @@ package client.gui.menus.main;
 import client.gui.MainFrame;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
+import client.gui.menus.messaging.StudentMessengerView;
 import client.gui.menus.profile.StudentProfile;
 import client.gui.menus.services.StudentExamsList;
 import client.gui.menus.services.StudentWeeklySchedule;
@@ -24,7 +25,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StudentMenu extends MainMenu {
-    private Student student;
     private JLabel studentStatusLabel;
     private JLabel advisingProfessorName;
     private JLabel isAllowedToEnrol;
@@ -62,10 +62,9 @@ public class StudentMenu extends MainMenu {
         startPingingIfOnline(username, this);
     }
 
-    public StudentMenu(MainFrame mainFrame, User user, OfflineModeDTO offlineModeDTO, boolean isOnline) {
-        super(mainFrame, user, MainMenuType.STUDENT, offlineModeDTO, isOnline);
+    public StudentMenu(MainFrame mainFrame, OfflineModeDTO offlineModeDTO, boolean isOnline) {
+        super(mainFrame, MainMenuType.STUDENT, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_STUDENT_MAIN;
-        student = (Student) user;
         initializeComponents();
         alignComponents();
         connectListeners();
@@ -74,7 +73,6 @@ public class StudentMenu extends MainMenu {
 
     @Override
     protected void updatePanel() {
-        student = (Student) user;
         lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
         nameLabel.setText(offlineModeDTO.getName());
         emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
@@ -198,7 +196,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the profile editor in the user profile",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentProfile(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
+                mainFrame.setCurrentPanel(new StudentProfile(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 
@@ -228,7 +226,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
                         "connectListeners",  getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new TemporaryStandingView(mainFrame, mainMenu, user, offlineModeDTO));
+                mainFrame.setCurrentPanel(new TemporaryStandingView(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -238,7 +236,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened current standing in academic standing",
                         "connectListeners",  getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new CurrentStandingView(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
+                mainFrame.setCurrentPanel(new CurrentStandingView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 
@@ -248,7 +246,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners",  getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentWeeklySchedule(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
+                mainFrame.setCurrentPanel(new StudentWeeklySchedule(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 
@@ -258,7 +256,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentExamsList(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
+                mainFrame.setCurrentPanel(new StudentExamsList(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 
@@ -269,7 +267,7 @@ public class StudentMenu extends MainMenu {
                         "Opened the dropping out subsection in academic requests", "connectListeners",
                         getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DroppingOutSubmission(mainFrame, mainMenu, user, offlineModeDTO));
+                mainFrame.setCurrentPanel(new DroppingOutSubmission(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -280,7 +278,7 @@ public class StudentMenu extends MainMenu {
                         "Opened the enrolment certificate subsection in academic requests", "connectListeners",
                         getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new CertificateSubmission(mainFrame, mainMenu, user, offlineModeDTO));
+                mainFrame.setCurrentPanel(new CertificateSubmission(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -291,7 +289,7 @@ public class StudentMenu extends MainMenu {
                         "Opened the recommendation letters subsection in academic requests", "connectListeners",
                         getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new RecommendationSubmission(mainFrame, mainMenu, user, offlineModeDTO));
+                mainFrame.setCurrentPanel(new RecommendationSubmission(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -301,7 +299,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new MinorSubmission(mainFrame, mainMenu, user, offlineModeDTO));
+                mainFrame.setCurrentPanel(new MinorSubmission(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -311,17 +309,27 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dorm requests subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DormSubmission(mainFrame, mainMenu, user, offlineModeDTO));
+                mainFrame.setCurrentPanel(new DormSubmission(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
         defenseSlot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Opened the defense slot selection in academic requests",
+                MasterLogger.clientInfo(clientController.getId(), "Opened the defense slot selection in academic" +
+                                " requests", "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new DefenseSubmission(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
+
+        messengerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the messenger",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DefenseSubmission(mainFrame, mainMenu, user, offlineModeDTO));
+                mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

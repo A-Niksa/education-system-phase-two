@@ -1,8 +1,6 @@
 package shareables.models.pojos.messaging;
 
 import shareables.models.idgeneration.SequentialIdGenerator;
-import shareables.models.pojos.users.User;
-import shareables.models.idgeneration.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +20,11 @@ public class Messenger { // note that this class is a pojo and has no direct mes
         conversations = new ArrayList<>();
     }
 
-    public void addToChats(Conversation conversation) {
+    public void addToConversations(Conversation conversation) {
         conversations.add(conversation);
     }
 
-    public void removeFromChats(String conversationId) {
+    public void removeFromConversations(String conversationId) {
         conversations.removeIf(e -> e.getId().equals(conversationId));
     }
 

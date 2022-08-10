@@ -22,7 +22,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel {
-    private Student student;
     private JLabel profilePicture;
     private JLabel name;
     private JLabel nationalId;
@@ -55,11 +54,10 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
     private String degreeLevelMessage;
     private String studentStatusMessage;
 
-    public StudentProfile(MainFrame mainFrame, MainMenu mainMenu, User user, OfflineModeDTO offlineModeDTO,
+    public StudentProfile(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
                           boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.isOnline = isOnline;
-        student = (Student) user;
         configIdentifier = ConfigFileIdentifier.GUI_PROFILE;
         labelsList = new ArrayList<>();
         drawPanel();
@@ -179,7 +177,7 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
                 String newPhoneNumberText = newPhoneNumber.getText();
                 MasterLogger.clientInfo(clientController.getId(), "Changed phone number to " + newPhoneNumberText,
                         "connectListeners", getClass());
-                Response response = clientController.changePhoneNumber(student.getId(), newPhoneNumberText);
+                Response response = clientController.changePhoneNumber(offlineModeDTO.getId(), newPhoneNumberText);
                 if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     phoneNumber.setText(ConfigManager.getString(configIdentifier, "phoneNumberMessage")
@@ -194,7 +192,7 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
                 String newEmailAddressText = newEmailAddress.getText();
                 MasterLogger.clientInfo(clientController.getId(), "Changed email address to " + newEmailAddressText,
                         "connectListeners",  getClass());
-                Response response = clientController.changeEmailAddress(student.getId(), newEmailAddressText);
+                Response response = clientController.changeEmailAddress(offlineModeDTO.getId(), newEmailAddressText);
                 if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     emailAddress.setText(ConfigManager.getString(configIdentifier, "emailAddressMessage")
