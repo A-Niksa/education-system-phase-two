@@ -22,9 +22,9 @@ public class ProfessorsListManager extends ProfessorsListView {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_LIST_MANAGER;
-        drawPanel();
         setEditorButton();
-        connectEditor();
+        connectEditorListener();
+        drawPanel();
     }
 
     private void setEditorButton() {
@@ -36,12 +36,13 @@ public class ProfessorsListManager extends ProfessorsListView {
         add(openEditor);
     }
 
-    private void connectEditor() {
+    private void connectEditorListener() {
         openEditor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened professors list editor",
                         "connectEditor",getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
