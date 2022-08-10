@@ -13,15 +13,17 @@ import java.awt.event.ActionListener;
 public class ProfessorEditHandler implements ActionListener {
     private MainFrame mainFrame;
     private MainMenu mainMenu;
+    private ProfessorsListEditor professorsListEditor;
     private Professor dean;
     private ProfessorDTO correspondingProfessorDTO;
     private OfflineModeDTO offlineModeDTO;
     private int clientControllerId;
 
-    public ProfessorEditHandler(MainFrame mainFrame, MainMenu mainMenu, Professor dean,
-                                ProfessorDTO correspondingProfessorDTO, OfflineModeDTO offlineModeDTO) {
+    public ProfessorEditHandler(MainFrame mainFrame, MainMenu mainMenu, ProfessorsListEditor professorsListEditor,
+                                Professor dean, ProfessorDTO correspondingProfessorDTO, OfflineModeDTO offlineModeDTO) {
         this.mainFrame = mainFrame;
         this.mainMenu = mainMenu;
+        this.professorsListEditor = professorsListEditor;
         this.dean = dean;
         this.correspondingProfessorDTO = correspondingProfessorDTO;
         this.offlineModeDTO = offlineModeDTO;
@@ -33,6 +35,7 @@ public class ProfessorEditHandler implements ActionListener {
         String professorName = correspondingProfessorDTO.getName();
         MasterLogger.clientInfo(clientControllerId, "Opened professor editor for " + professorName,
                 "actionPerformed", getClass());
+        professorsListEditor.stopPanelLoop();
         mainFrame.setCurrentPanel(new ProfessorEditor(mainFrame, mainMenu, dean, correspondingProfessorDTO, offlineModeDTO));
     }
 }

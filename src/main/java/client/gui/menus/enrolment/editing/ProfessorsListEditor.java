@@ -163,8 +163,8 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
         for (int i = 0; i < departmentProfessorDTOs.size(); i++) {
             editButton = editButtonsList.get(i);
             editableProfessorDTO = departmentProfessorDTOs.get(i);
-            editButton.addActionListener(new ProfessorEditHandler(mainFrame, mainMenu, professor, editableProfessorDTO,
-                    offlineModeDTO));
+            editButton.addActionListener(new ProfessorEditHandler(mainFrame, mainMenu, this, professor,
+                    editableProfessorDTO, offlineModeDTO));
         }
     }
 
@@ -179,4 +179,6 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
         connectEditButtonListeners();
         this.repaint();
     }
+
+
 }

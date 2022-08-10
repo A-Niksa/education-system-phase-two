@@ -42,6 +42,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_EDITOR;
         academicLevels = EnumArrayUtils.initializeAcademicLevels();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override
@@ -119,6 +120,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to professors list editor",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, dean, offlineModeDTO));
             }
         });

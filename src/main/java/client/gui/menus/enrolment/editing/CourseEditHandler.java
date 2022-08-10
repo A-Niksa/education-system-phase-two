@@ -13,15 +13,17 @@ import java.awt.event.ActionListener;
 public class CourseEditHandler implements ActionListener {
     private MainFrame mainFrame;
     private MainMenu mainMenu;
+    private CoursesListEditor coursesListEditor;
     private Professor educationDeputy;
     private CourseDTO correspondingCourseDTO;
     private OfflineModeDTO offlineModeDTO;
     private int clientControllerId;
 
-    public CourseEditHandler(MainFrame mainFrame, MainMenu mainMenu, Professor educationDeputy,
+    public CourseEditHandler(MainFrame mainFrame, MainMenu mainMenu, CoursesListEditor coursesListEditor, Professor educationDeputy,
                              CourseDTO correspondingCourseDTO, OfflineModeDTO offlineModeDTO, int clientControllerId) {
         this.mainFrame = mainFrame;
         this.mainMenu = mainMenu;
+        this.coursesListEditor = coursesListEditor;
         this.educationDeputy = educationDeputy;
         this.correspondingCourseDTO = correspondingCourseDTO;
         this.offlineModeDTO = offlineModeDTO;
@@ -33,6 +35,7 @@ public class CourseEditHandler implements ActionListener {
         String courseName = correspondingCourseDTO.getCourseName();
         MasterLogger.clientInfo(clientControllerId, "Opened course editor for " + courseName,
                 "actionPerformed", getClass());
+        coursesListEditor.stopPanelLoop();
         mainFrame.setCurrentPanel(new CourseEditor(mainFrame, mainMenu, educationDeputy, correspondingCourseDTO,
                 offlineModeDTO));
     }

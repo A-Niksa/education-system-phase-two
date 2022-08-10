@@ -161,8 +161,8 @@ public class CoursesListEditor extends DynamicPanelTemplate {
         for (int i = 0; i < departmentCourseDTOs.size(); i++) {
             editButton = editButtonsList.get(i);
             editableCourseDTO = departmentCourseDTOs.get(i);
-            editButton.addActionListener(new CourseEditHandler(mainFrame, mainMenu, professor, editableCourseDTO,
-                    offlineModeDTO, clientController.getId()));
+            editButton.addActionListener(new CourseEditHandler(mainFrame, mainMenu, this, professor,
+                    editableCourseDTO, offlineModeDTO, clientController.getId()));
         }
     }
 

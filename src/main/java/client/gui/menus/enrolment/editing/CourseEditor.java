@@ -2,7 +2,6 @@ package client.gui.menus.enrolment.editing;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
@@ -41,12 +40,14 @@ public class CourseEditor extends DynamicPanelTemplate {
 
     public CourseEditor(MainFrame mainFrame, MainMenu mainMenu, Professor deputy, CourseDTO courseDTO,
                         OfflineModeDTO offlineModeDTO) {
+        // TODO: perhaps updating the courseDTO
         super(mainFrame, mainMenu, offlineModeDTO);
         this.deputy = deputy;
         this.courseDTO = courseDTO;
         configIdentifier = ConfigFileIdentifier.GUI_COURSE_EDITOR;
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override
@@ -137,6 +138,7 @@ public class CourseEditor extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to courses list editor",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, deputy, offlineModeDTO));
             }
         });

@@ -113,7 +113,7 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
         panelLoop.start();
     }
 
-    protected void stopPanelLoop() {
+    public void stopPanelLoop() {
         panelLoop.stop();
     }
 
