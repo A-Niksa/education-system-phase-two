@@ -84,7 +84,7 @@ public class RecommendationSubmission extends DynamicPanelTemplate {
         currentRecommendationsPrompt = new JLabel(
                 ConfigManager.getString(configIdentifier, "currentRecommendationsPromptM"));
         currentRecommendations = new ArrayList<>();
-        recommendationDisplayer = new RecommendationDisplayer(this, currentRecommendations, student, clientController);
+        recommendationDisplayer = new RecommendationDisplayer(this, currentRecommendations, offlineModeDTO, clientController);
     }
 
     @Override

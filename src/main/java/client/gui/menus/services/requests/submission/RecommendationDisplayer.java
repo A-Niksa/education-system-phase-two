@@ -2,6 +2,7 @@ package client.gui.menus.services.requests.submission;
 
 import client.controller.ClientController;
 import shareables.models.pojos.users.students.Student;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -12,16 +13,16 @@ import java.util.ArrayList;
 public class RecommendationDisplayer {
     private RecommendationSubmission panel;
     private ConfigFileIdentifier configIdentifier;
+    private OfflineModeDTO offlineModeDTO;
     private ArrayList<String> recommendationTexts; // only includes accepted recommendation requests
     private ArrayList<JLabel> currentRecommendations;
-    private Student student;
     private ClientController clientController;
 
-    public RecommendationDisplayer(RecommendationSubmission panel, ArrayList<JLabel> currentRecommendations, Student student,
-                                   ClientController clientController) {
+    public RecommendationDisplayer(RecommendationSubmission panel, ArrayList<JLabel> currentRecommendations,
+                                   OfflineModeDTO offlineModeDTO, ClientController clientController) {
         this.panel = panel;
         this.currentRecommendations = currentRecommendations;
-        this.student = student;
+        this.offlineModeDTO = offlineModeDTO;
         this.clientController = clientController;
         configIdentifier = ConfigFileIdentifier.GUI_RECOMMENDATION_SUBMISSION;
     }
@@ -32,7 +33,7 @@ public class RecommendationDisplayer {
     }
 
     private void updateRecommendationTexts() {
-        Response response = clientController.getStudentRecommendationTexts(student.getId());
+        Response response = clientController.getStudentRecommendationTexts(offlineModeDTO.getId());
         if (response == null) return;
         recommendationTexts = (ArrayList<String>) response.get("recommendationTexts");
     }

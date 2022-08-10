@@ -76,7 +76,7 @@ public class ClientHandler {
                 try { // TODO: breaking down try/catch blocks to smaller blocks
                     Request request = objectMapper.readValue(requestString, Request.class);
                     if (!request.getAuthToken().equals(authToken)) continue;
-                    server.handleRequest(id, request);
+                    server.handleRequest(this, request);
                 } catch (JsonProcessingException e) {
                     MasterLogger.serverInfo("Client (id: " + id + ") disconnected", "startRequestListenerMethod",
                             getClass());

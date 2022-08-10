@@ -136,6 +136,7 @@ public class RequestSubmissionUtils {
         recommendationRequests.stream()
                 .map(e -> (RecommendationRequest) e)
                 .filter(e -> e.getRequestStatus() == AcademicRequestStatus.ACCEPTED)
+                .filter(e -> e.getRequestingStudentId().equals(username))
                 .forEach(e -> recommendationTexts.add(e.fetchFormattedRecommendationText()));
         return recommendationTexts;
     }

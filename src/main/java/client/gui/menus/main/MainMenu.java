@@ -57,7 +57,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         this.mainMenuType = mainMenuType;
         this.isOnline = isOnline;
         clientController = mainFrame.getClientController();
-        initializeOfflineModeDTO(offlineModeDTO, user.getId());
+        initializeOfflineModeDTO(offlineModeDTO, offlineModeDTO.getId());
         configIdentifier = ConfigFileIdentifier.GUI_MAIN;
         configurePanel();
         drawPanel();

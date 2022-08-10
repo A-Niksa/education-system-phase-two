@@ -63,6 +63,7 @@ public class RecommendationManager extends RequestManager {
                     MasterLogger.clientInfo(clientController.getId(), "Recommendation request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been accepted by the receiving professor (ID: " +
                             offlineModeDTO.getId() + ")", "setApproveListener", getClass());
+                    updatePanel();
                 }
             }
         });
@@ -81,6 +82,7 @@ public class RecommendationManager extends RequestManager {
                     MasterLogger.clientInfo(clientController.getId(), "Recommendation request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been declined by the receiving professor (ID: " +
                             offlineModeDTO.getId() + ")", "setApproveListener", getClass());
+                    updatePanel();
                 }
             }
         });

@@ -73,6 +73,7 @@ public class MinorManager extends RequestManager {
                             minorRequestDTO.getRequestingStudentId() + ") has been partially accepted by the " +
                             departmentSide + " (Department: " + departmentName + ")", "setAcceptListener",
                             getClass());
+                    updatePanel();
                 }
             }
         });
@@ -94,6 +95,7 @@ public class MinorManager extends RequestManager {
                                     minorRequestDTO.getRequestingStudentId() + ") has been partially declined by the " +
                                     departmentSide + " (Department: " + departmentName + ")", "setDeclineListener",
                             getClass());
+                    updatePanel();
                 }
             }
         });

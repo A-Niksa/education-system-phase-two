@@ -69,8 +69,7 @@ public class Server {
         }
     }
 
-    public void handleRequest(int clientHandlerId, Request request) {
-        ClientHandler clientHandler = getClientHandler(clientHandlerId);
+    public void handleRequest(ClientHandler clientHandler, Request request) {
         requestMapper.mapRequestToHandlerMethod(clientHandler, request);
     }
 

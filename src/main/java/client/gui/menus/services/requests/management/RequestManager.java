@@ -126,10 +126,6 @@ public abstract class RequestManager extends DynamicPanelTemplate {
         initializeButtons();
         alignButtons();
         connectListeners();
-        acceptButtonsList.forEach(Component::repaint);
-        declineButtonsList.forEach(Component::repaint);
-        acceptButtonsList.forEach(Component::validate);
-        declineButtonsList.forEach(Component::validate);
-        // TODO: java.lang.ArrayIndexOutOfBoundsException: 0 >= 0
+        this.repaint();
     }
 }

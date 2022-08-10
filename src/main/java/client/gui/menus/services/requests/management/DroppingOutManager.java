@@ -63,6 +63,7 @@ public class DroppingOutManager extends RequestManager {
                     MasterLogger.clientInfo(clientController.getId(), "Dropping out request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been accepted by the department deputy (ID: " +
                             offlineModeDTO.getId() + ")", "setApproveListener", getClass());
+                    updatePanel();
                 }
             }
         });
@@ -82,6 +83,7 @@ public class DroppingOutManager extends RequestManager {
                     MasterLogger.clientInfo(clientController.getId(), "Dropping request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been declined by the department deputy (ID: " +
                             offlineModeDTO.getId() + ")", "setDeclineListener", getClass());
+                    updatePanel();
                 }
             }
         });
