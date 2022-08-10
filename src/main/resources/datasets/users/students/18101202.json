@@ -20,9 +20,17 @@
   "lastLogin" : null,
   "advisingProfessorId" : null,
   "transcript" : {
-    "courseIdScoreMap" : { },
-    "GPA" : -1.0,
-    "gpa" : -1.0
+    "courseIdScoreMap" : {
+      "1222000" : {
+        "score" : 18.0,
+        "isFinalized" : true,
+        "studentProtest" : null,
+        "professorResponse" : null,
+        "finalized" : true
+      }
+    },
+    "GPA" : 18.0,
+    "gpa" : 18.0
   },
   "degreeLevel" : "GRADUATE",
   "studentStatus" : "CURRENTLY_STUDYING",

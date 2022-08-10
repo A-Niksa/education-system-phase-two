@@ -17,17 +17,14 @@ import java.awt.event.ActionListener;
 
 public class StatsViewHandler implements ActionListener {
     private MainFrame mainFrame;
-    private TemporaryStandingMaster temporaryStandingMaster;
     private String courseName;
     private String departmentNameString;
     private ClientController clientController;
     private ConfigFileIdentifier configIdentifier;
 
-    public StatsViewHandler(MainFrame mainFrame, TemporaryStandingMaster temporaryStandingMaster, String courseName,
-                            String departmentNameString, ClientController clientController,
-                            ConfigFileIdentifier configIdentifier) {
+    public StatsViewHandler(MainFrame mainFrame, String courseName, String departmentNameString,
+                            ClientController clientController, ConfigFileIdentifier configIdentifier) {
         this.mainFrame = mainFrame;
-        this.temporaryStandingMaster = temporaryStandingMaster;
         this.courseName = courseName;
         this.departmentNameString = departmentNameString;
         this.clientController = clientController;

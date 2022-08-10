@@ -266,7 +266,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores for deputies in academic standing",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                 mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, professor));
+                 mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
 

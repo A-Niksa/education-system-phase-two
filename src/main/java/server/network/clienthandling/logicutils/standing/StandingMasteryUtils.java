@@ -2,6 +2,7 @@ package server.network.clienthandling.logicutils.standing;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.comparators.CourseScoreDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
@@ -16,12 +17,15 @@ import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StandingMasteryUtils {
+    private static CourseScoreDTOComparator courseScoreDTOComparator = new CourseScoreDTOComparator();
+
     public static List<CourseScoreDTO> getCourseScoreDTOsForProfessor(DatabaseManager databaseManager, String departmentId,
                                                                       String professorName) {
         String professorId = getProfessorId(databaseManager, departmentId, professorName);
@@ -31,6 +35,7 @@ public class StandingMasteryUtils {
             courseScoreDTOs.addAll(StandingManagementUtils.getCourseScoreDTOsForCourse(databaseManager, departmentId,
                     course.getCourseName()));
         });
+        courseScoreDTOs.sort(courseScoreDTOComparator);
         return courseScoreDTOs;
     }
 
@@ -69,6 +74,7 @@ public class StandingMasteryUtils {
                     courseScoreDTO.setStudentName(student.fetchName());
                     courseScoreDTOs.add(courseScoreDTO);
                 });
+        courseScoreDTOs.sort(courseScoreDTOComparator);
         return courseScoreDTOs;
     }
 
@@ -89,6 +95,7 @@ public class StandingMasteryUtils {
         department.getCourseIds().stream()
                 .map(e -> IdentifiableFetchingUtils.getCourse(databaseManager, e))
                 .forEach(course -> courseNames.add(course.getCourseName()));
+        Collections.sort(courseNames);
         return courseNames.toArray(new String[0]);
     }
 
@@ -98,13 +105,15 @@ public class StandingMasteryUtils {
         department.getProfessorIds().stream()
                 .map(e -> IdentifiableFetchingUtils.getProfessor(databaseManager, e))
                 .forEach(prof -> professorNames.add(prof.fetchName()));
+        Collections.sort(professorNames);
         return professorNames.toArray(new String[0]);
     }
 
     public static String[] getDepartmentStudentIds(DatabaseManager databaseManager, String departmentId) {
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
-        return department.getStudentIds()
-                .toArray(new String[0]);
+        List<String> studentIds = department.getStudentIds();
+        Collections.sort(studentIds);
+        return studentIds.toArray(new String[0]);
     }
 
     public static String[] getDepartmentStudentNames(DatabaseManager databaseManager, String departmentId) {
@@ -112,6 +121,7 @@ public class StandingMasteryUtils {
         return department.getStudentIds().stream()
                 .map(e -> IdentifiableFetchingUtils.getStudent(databaseManager, e))
                 .map(User::fetchName)
+                .sorted()
                 .toArray(String[]::new);
     }
 

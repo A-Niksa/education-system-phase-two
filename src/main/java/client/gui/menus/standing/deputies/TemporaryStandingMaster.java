@@ -1,13 +1,14 @@
 package client.gui.menus.standing.deputies;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.BooleanDisplayParser;
 import client.locallogic.profile.DepartmentGetter;
 import client.locallogic.standing.ScoreFormatUtils;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -19,7 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class TemporaryStandingMaster extends PanelTemplate {
+public class TemporaryStandingMaster extends DynamicPanelTemplate {
     private enum CurrentMode {
         COURSE_VIEW,
         PROFESSOR_VIEW,
@@ -49,12 +50,13 @@ public class TemporaryStandingMaster extends PanelTemplate {
     private JButton statsButton;
     private CurrentMode currentMode;
 
-    public TemporaryStandingMaster(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public TemporaryStandingMaster(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.professor = professor;
-        departmentNameString = DepartmentGetter.getDepartmentNameById(professor.getDepartmentId()).toString();
+        departmentNameString = DepartmentGetter.getDepartmentNameById(offlineModeDTO.getDepartmentId()).toString();
         configIdentifier = ConfigFileIdentifier.GUI_TEMPORARY_STANDING_MASTER;
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     private void setInteractiveTableForFirstTime() {
@@ -75,7 +77,7 @@ public class TemporaryStandingMaster extends PanelTemplate {
         updateTable();
         setStatsButton();
         repaint();
-        validate();
+//        validate();
     }
 
     private void setColumns() {
@@ -99,6 +101,7 @@ public class TemporaryStandingMaster extends PanelTemplate {
 
     private void updateTable() {
         setTableData();
+        if (tableModel == null) return;
         tableModel.setDataVector(data, columns);
     }
 
@@ -106,15 +109,15 @@ public class TemporaryStandingMaster extends PanelTemplate {
         Response response;
         switch (currentMode) {
             case COURSE_VIEW:
-                response = clientController.getCourseScoreDTOsForCourse(professor.getDepartmentId(),
+                response = clientController.getCourseScoreDTOsForCourse(offlineModeDTO.getDepartmentId(),
                         selectedCourseName);
                 break;
             case PROFESSOR_VIEW:
-                response = clientController.getCourseScoreDTOsForProfessor(professor.getDepartmentId(),
+                response = clientController.getCourseScoreDTOsForProfessor(offlineModeDTO.getDepartmentId(),
                         selectedProfessorName);
                 break;
             case STUDENT_VIEW:
-                response = clientController.getCourseScoreDTOsForStudent(professor.getDepartmentId(), selectedStudentId);
+                response = clientController.getCourseScoreDTOsForStudent(offlineModeDTO.getDepartmentId(), selectedStudentId);
                 break;
             default:
                 response = null;
@@ -169,7 +172,7 @@ public class TemporaryStandingMaster extends PanelTemplate {
                     ConfigManager.getInt(configIdentifier, "statsButtonY"),
                     ConfigManager.getInt(configIdentifier, "statsButtonW"),
                     ConfigManager.getInt(configIdentifier, "statsButtonH"));
-            statsButton.addActionListener(new StatsViewHandler(mainFrame, this, selectedCourseName,
+            statsButton.addActionListener(new StatsViewHandler(mainFrame, selectedCourseName,
                     departmentNameString, clientController, configIdentifier));
             add(statsButton);
         } else if (statsButton != null) {
@@ -193,19 +196,19 @@ public class TemporaryStandingMaster extends PanelTemplate {
     }
 
     private void updateDepartmentStudentIds() {
-        Response response = clientController.getDepartmentStudentIds(professor.getDepartmentId());
+        Response response = clientController.getDepartmentStudentIds(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         studentIds = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentProfessorNames() {
-        Response response = clientController.getDepartmentProfessorNames(professor.getDepartmentId());
+        Response response = clientController.getDepartmentProfessorNames(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         professorNames = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentCourseNames() {
-        Response response = clientController.getDepartmentCourseNames(professor.getDepartmentId());
+        Response response = clientController.getDepartmentCourseNames(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         courseNames = (String[]) response.get("stringArray");
     }
@@ -285,5 +288,11 @@ public class TemporaryStandingMaster extends PanelTemplate {
         } else {
             setInteractiveTable();
         }
+    }
+
+    @Override
+    protected void updatePanel() {
+        if (currentMode == null) return;
+        setInteractiveTable();
     }
 }

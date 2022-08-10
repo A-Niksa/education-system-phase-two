@@ -17,26 +17,18 @@
   "phoneNumber" : "09192302103",
   "emailAddress" : "hamidi@sharif.edu",
   "password" : "1234",
-  "lastLogin" : "2022-08-10T16:39:49.9039004",
+  "lastLogin" : "2022-08-10T17:36:49.7720047",
   "advisingProfessorId" : "80201200",
   "transcript" : {
-    "courseIdScoreMap" : {
-      "1222001" : {
-        "score" : 19.0,
-        "isFinalized" : true,
-        "studentProtest" : null,
-        "professorResponse" : null,
-        "finalized" : true
-      }
-    },
-    "GPA" : 19.0,
-    "gpa" : 19.0
+    "courseIdScoreMap" : { },
+    "GPA" : -1.0,
+    "gpa" : -1.0
   },
   "degreeLevel" : "UNDERGRADUATE",
   "studentStatus" : "CURRENTLY_STUDYING",
   "yearOfEntry" : 2019,
   "minorDepartmentId" : null,
   "isPermittedToEnrol" : true,
-  "enrolmentTime" : "2022-08-10T16:28:12.700571",
+  "enrolmentTime" : "2022-08-10T17:36:49.7720047",
   "permittedToEnrol" : true
 }

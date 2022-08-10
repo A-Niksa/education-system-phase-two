@@ -335,7 +335,7 @@ public class TemporaryStandingManager extends DynamicPanelTemplate {
         removePreviousButtons();
         updateCourseScoreDTOsForSelectedCourse();
 //        updateCoursesBox();
-        // TODO: updating courses box here and in master OR removing the updateCoursesBox and friends methods
+        // TODO: updating courses box here and in master (don't remove the methods though, just in case)
         updateTable();
         initializeInteractiveButtons();
         alignInteractiveButtons();
