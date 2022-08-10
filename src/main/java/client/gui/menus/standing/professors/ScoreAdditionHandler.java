@@ -3,6 +3,7 @@ package client.gui.menus.standing.professors;
 import client.gui.MainFrame;
 import client.locallogic.standing.ScoreFormatUtils;
 import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;

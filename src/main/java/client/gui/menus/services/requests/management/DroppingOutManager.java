@@ -59,6 +59,7 @@ public class DroppingOutManager extends RequestManager {
                 RequestDTO requestDTO = requestDTOs.get(index);
                 Response response = clientController.acceptDroppingOutRequest(requestDTO.getRequestingStudentId(),
                         requestDTO.getId());
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Dropping out request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been accepted by the department deputy (ID: " +
@@ -79,6 +80,7 @@ public class DroppingOutManager extends RequestManager {
             public void actionPerformed(ActionEvent actionEvent) {
                 RequestDTO requestDTO = requestDTOs.get(index);
                 Response response = clientController.declineDroppingOutRequest(requestDTO.getId());
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Dropping request (ID: " +
                             requestDTO.getRequestingStudentId() + ") has been declined by the department deputy (ID: " +

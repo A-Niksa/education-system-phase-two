@@ -47,6 +47,7 @@ public class ProtestResponseHandler implements ActionListener {
                 ConfigManager.getString(configIdentifier, "responsePromptM"));
         Response response = clientController.respondToProtest(courseScoreDTO.getCourseId(), courseScoreDTO.getStudentId(),
                 protestResponseMessage);
+        if (response == null) return;
         if (response.getResponseStatus() == ResponseStatus.OK) {
             MasterLogger.clientInfo(clientController.getId(), "Responded to student protest (ID: " +
                             courseScoreDTO.getStudentId() + ")", "actionPerformed", getClass());

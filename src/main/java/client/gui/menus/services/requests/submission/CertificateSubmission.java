@@ -84,6 +84,7 @@ public class CertificateSubmission extends DynamicPanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Response response = clientController.askForCertificate(offlineModeDTO.getId());
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     yourCertificatePrompt.setText(ConfigManager.getString(configIdentifier, "yourCertificatePromptM"));
                     certificateText.setText((String) response.get("certificateText"));

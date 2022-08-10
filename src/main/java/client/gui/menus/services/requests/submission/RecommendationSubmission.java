@@ -134,6 +134,7 @@ public class RecommendationSubmission extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 String selectedProfessorId = recommendingProfessorId.getText();
                 Response response = clientController.askForRecommendation(offlineModeDTO.getId(), selectedProfessorId);
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());

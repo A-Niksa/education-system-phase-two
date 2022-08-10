@@ -51,6 +51,7 @@ public class StudentAdder extends DynamicPanelTemplate {
 
     private void updateDepartmentProfessorNames() {
         Response response = clientController.getDepartmentProfessorNames(offlineModeDTO.getDepartmentId());
+        if (response == null) return;
         professorNames = (String[]) response.get("stringArray");
     }
 
@@ -132,6 +133,7 @@ public class StudentAdder extends DynamicPanelTemplate {
                         advisingProfessorName, offlineModeDTO.getDepartmentId());
 
                 Response response = clientController.addStudent(studentBlueprint);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     JOptionPane.showMessageDialog(mainFrame, response.getUnsolicitedMessage());
                     MasterLogger.clientInfo(clientController.getId(), response.getUnsolicitedMessage(),

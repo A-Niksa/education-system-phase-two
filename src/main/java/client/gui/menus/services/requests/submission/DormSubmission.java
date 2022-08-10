@@ -82,6 +82,7 @@ public class DormSubmission extends DynamicPanelTemplate {
                         "connectListeners", getClass());
 
                 Response response = clientController.askForDorm();
+                if (response == null) return;
                 boolean willGetDorm = (boolean) response.get("willGetDorm");
                 String randomResult;
                 if (willGetDorm) {

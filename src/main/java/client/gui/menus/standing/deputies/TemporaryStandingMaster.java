@@ -108,18 +108,19 @@ public class TemporaryStandingMaster extends PanelTemplate {
             case COURSE_VIEW:
                 response = clientController.getCourseScoreDTOsForCourse(professor.getDepartmentId(),
                         selectedCourseName);
-                courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
                 break;
             case PROFESSOR_VIEW:
                 response = clientController.getCourseScoreDTOsForProfessor(professor.getDepartmentId(),
                         selectedProfessorName);
-                courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
                 break;
             case STUDENT_VIEW:
                 response = clientController.getCourseScoreDTOsForStudent(professor.getDepartmentId(), selectedStudentId);
-                courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
                 break;
+            default:
+                response = null;
         }
+        if (response == null) return;
+        courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
     }
 
     void setTableData() {
@@ -193,16 +194,19 @@ public class TemporaryStandingMaster extends PanelTemplate {
 
     private void updateDepartmentStudentIds() {
         Response response = clientController.getDepartmentStudentIds(professor.getDepartmentId());
+        if (response == null) return;
         studentIds = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentProfessorNames() {
         Response response = clientController.getDepartmentProfessorNames(professor.getDepartmentId());
+        if (response == null) return;
         professorNames = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentCourseNames() {
         Response response = clientController.getDepartmentCourseNames(professor.getDepartmentId());
+        if (response == null) return;
         courseNames = (String[]) response.get("stringArray");
     }
 

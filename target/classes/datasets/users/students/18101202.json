@@ -20,15 +20,7 @@
   "lastLogin" : null,
   "advisingProfessorId" : null,
   "transcript" : {
-    "courseIdScoreMap" : {
-      "1222000" : {
-        "score" : 19.0,
-        "isFinalized" : false,
-        "studentProtest" : null,
-        "professorResponse" : null,
-        "finalized" : false
-      }
-    },
+    "courseIdScoreMap" : { },
     "GPA" : -1.0,
     "gpa" : -1.0
   },

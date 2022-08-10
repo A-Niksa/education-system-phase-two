@@ -83,6 +83,7 @@ public class CurrentStandingMaster extends PanelTemplate {
             response = clientController.getStudentTranscriptDTOWithName(professor.getDepartmentId(),
                     selectedStudentName);
         }
+        if (response == null) return;
         transcriptDTO = (TranscriptDTO) response.get("transcriptDTO");
     }
 
@@ -93,6 +94,7 @@ public class CurrentStandingMaster extends PanelTemplate {
         } else { // in this case, will be NAME_LOOKUP by design
             response = clientController.getStudentCourseScoreDTOsWithName(professor.getDepartmentId(), selectedStudentName);
         }
+        if (response == null) return;
         courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
     }
 
@@ -187,11 +189,13 @@ public class CurrentStandingMaster extends PanelTemplate {
 
     private void updateDepartmentStudentIds() {
         Response response = clientController.getDepartmentStudentIds(professor.getDepartmentId());
+        if (response == null) return;
         studentIds = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentStudentNames() {
         Response response = clientController.getDepartmentStudentNames(professor.getDepartmentId());
+        if (response == null) return;
         studentNames = (String[]) response.get("stringArray");
     }
 

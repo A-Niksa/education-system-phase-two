@@ -131,6 +131,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
                 String selectedAcademicLevel = (String) newAcademicLevel.getSelectedItem();
                 Response response = clientController.changeProfessorAcademicLevel(professorToEditDTO.getId(),
                         selectedAcademicLevel);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), professorName.getText() + "'s academic level" +
                             " set to " + selectedAcademicLevel, "connectListeners", getClass());
@@ -146,6 +147,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
                 String selectedOfficeNumber = newOfficeNumber.getText();
                 Response response = clientController.changeProfessorOfficeNumber(professorToEditDTO.getId(),
                         selectedOfficeNumber);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), professorName.getText() +
                             "'s office number set to " + selectedOfficeNumber, "connectListeners", getClass());
@@ -158,6 +160,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 Response response = clientController.demoteProfessorFromDeputyRole(professorToEditDTO.getId(),
                         offlineModeDTO.getDepartmentId()); // we get the department id from the operating dean of the department
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());
@@ -173,6 +176,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 Response response = clientController.promoteProfessorToDeputyRole(professorToEditDTO.getId(),
                         offlineModeDTO.getDepartmentId());
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());
@@ -188,6 +192,7 @@ public class ProfessorEditor extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 Response response = clientController.removeProfessor(professorToEditDTO.getId(),
                         offlineModeDTO.getDepartmentId());
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());

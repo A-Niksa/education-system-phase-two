@@ -103,6 +103,7 @@ public class DroppingOutSubmission extends DynamicPanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Response response = clientController.askForDroppingOut(offlineModeDTO.getId());
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Submitted a drop-out request",
                             "connectListeners", getClass());

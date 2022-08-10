@@ -134,6 +134,7 @@ public class LoginMenu extends JPanel {
             }
 
             Response response = clientController.logIn(username, password, captcha, currentCaptcha);
+            if (response == null) return;
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                         "alignComponents", LoginMenu.class);

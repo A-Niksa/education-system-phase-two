@@ -2,6 +2,7 @@ package server.network.clienthandling.logicutils.standing;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.comparators.CourseScoreDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
@@ -13,11 +14,14 @@ import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.CourseScoreDTO;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
 public class StandingManagementUtils {
+    private static CourseScoreDTOComparator courseScoreDTOComparator = new CourseScoreDTOComparator();
+
     public static String[] getProfessorActiveCourseNames(DatabaseManager databaseManager, String professorId) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         List<String> activeCourseNamesList = new ArrayList<>();
@@ -28,6 +32,7 @@ public class StandingManagementUtils {
                     String courseName = e.getCourseName();
                     activeCourseNamesList.add(courseName);
                 });
+        Collections.sort(activeCourseNamesList);
         return activeCourseNamesList.toArray(new String[0]);
     }
 
@@ -42,6 +47,7 @@ public class StandingManagementUtils {
                 .forEach(e -> {
                     courseScoreDTOs.addAll(extractCourseScoreDTOsFromCourseTranscripts(e, databaseManager));
                 });
+        courseScoreDTOs.sort(courseScoreDTOComparator);
         return courseScoreDTOs;
     }
 
@@ -69,6 +75,7 @@ public class StandingManagementUtils {
                     }
                     extractedCourseScoreDTOs.add(courseScoreDTO);
                 });
+        extractedCourseScoreDTOs.sort(courseScoreDTOComparator);
         return extractedCourseScoreDTOs;
     }
 

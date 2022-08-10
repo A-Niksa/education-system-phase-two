@@ -121,6 +121,7 @@ public class ProfessorAdder extends DynamicPanelTemplate {
                         offlineModeDTO.getDepartmentId());
 
                 Response response = clientController.addProfessor(blueprint);
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());

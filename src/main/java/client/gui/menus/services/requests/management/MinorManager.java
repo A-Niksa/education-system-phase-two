@@ -65,6 +65,7 @@ public class MinorManager extends RequestManager {
             public void actionPerformed(ActionEvent actionEvent) {
                 MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
                 Response response = clientController.acceptMinorRequest(minorRequestDTO.getId(), offlineModeDTO.getDepartmentId());
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(offlineModeDTO.getDepartmentId());
                     String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"
@@ -87,6 +88,7 @@ public class MinorManager extends RequestManager {
             public void actionPerformed(ActionEvent actionEvent) {
                 MinorRequestDTO minorRequestDTO = (MinorRequestDTO) requestDTOs.get(index);
                 Response response = clientController.declineMinorRequest(minorRequestDTO.getId(), offlineModeDTO.getDepartmentId());
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     DepartmentName departmentName = DepartmentGetter.getDepartmentNameById(offlineModeDTO.getDepartmentId());
                     String departmentSide = (String) response.get("departmentSide"); // "origin department" or "target department"

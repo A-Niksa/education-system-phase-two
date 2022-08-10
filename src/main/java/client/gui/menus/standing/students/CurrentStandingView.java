@@ -47,11 +47,13 @@ public class CurrentStandingView extends DynamicPanelTemplate implements Offline
 
     private void updateTranscriptDTO() {
         Response response = clientController.getStudentTranscriptDTOWithId(student.getId());
+        if (response == null) return;
         transcriptDTO = (TranscriptDTO) response.get("transcriptDTO");
     }
 
     private void updateCourseScoreDTOs() {
         Response response = clientController.getStudentCourseScoreDTOsWithId(student.getId());
+        if (response == null) return;
         courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
     }
 

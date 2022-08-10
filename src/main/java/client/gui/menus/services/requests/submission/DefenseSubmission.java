@@ -51,6 +51,7 @@ public class DefenseSubmission extends DynamicPanelTemplate {
 
     private void updateDefenseTime() {
         Response response = clientController.getDefenseTime(offlineModeDTO.getId());
+        if (response == null) return;
         defenseTime = (LocalDateTime) response.get("defenseTime");
     }
 
@@ -156,6 +157,7 @@ public class DefenseSubmission extends DynamicPanelTemplate {
                         "connectListeners", getClass());
                 Response response = clientController.askForDefenseTime(student.getId(), selectedDate, selectedHour,
                         selectedMinute);
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());

@@ -149,6 +149,7 @@ public class CourseEditor extends DynamicPanelTemplate {
                 String courseName = newCourseName.getText();
                 String previousCourseName = courseNameLabel.getText();
                 Response response = clientController.changeCourseName(courseDTO.getId(), courseName);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     courseNameLabel.setText(courseName);
                     MasterLogger.clientInfo(clientController.getId(), "Course name changed from " +
@@ -164,6 +165,7 @@ public class CourseEditor extends DynamicPanelTemplate {
                 String[] newTeachingProfessorNamesArray = NamesParser.parseDelimitedNames(newTeachingProfessorNames);
                 Response response = clientController.changeTeachingProfessors(courseDTO.getId(),
                         newTeachingProfessorNamesArray);
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
                             "connectListeners", getClass());
@@ -182,6 +184,7 @@ public class CourseEditor extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 int numberOfCredits = Integer.parseInt(newNumberOfCredits.getText());
                 Response response = clientController.changeCourseNumberOfCredits(courseDTO.getId(), numberOfCredits);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), courseDTO.getCourseName() + "'s number of " +
                             "credits changed to " + numberOfCredits, "connectListeners", getClass());
@@ -195,6 +198,7 @@ public class CourseEditor extends DynamicPanelTemplate {
                 String degreeLevelString = (String) newDegreeLevel.getSelectedItem();
                 DegreeLevel degreeLevel = DegreeLevelGetter.getDegreeLevel(degreeLevelString);
                 Response response = clientController.changeCourseDegreeLevel(courseDTO.getId(), degreeLevel);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), courseDTO.getCourseName() + "'s level changed to "
                             + degreeLevelString, "connectListeners", getClass());
@@ -206,6 +210,7 @@ public class CourseEditor extends DynamicPanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Response response = clientController.removeCourse(courseDTO.getId());
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Removed the selected course",
                             "connectListeners", getClass());

@@ -44,6 +44,7 @@ public class ProtestSubmissionHandler implements ActionListener {
                 ConfigManager.getString(configIdentifier, "enterProtestM"));
 
         Response response = clientController.submitProtest(courseScoreDTO.getCourseId(), offlineModeDTO.getId(), protest);
+        if (response == null) return;
         if (response.getResponseStatus() == ResponseStatus.OK) {
             MasterLogger.clientInfo(clientController.getId(), "Student protested to their score of " +
                     courseScoreDTO.getCourseName(), "actionPerformed", getClass());

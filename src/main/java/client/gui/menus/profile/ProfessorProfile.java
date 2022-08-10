@@ -168,6 +168,7 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
                 MasterLogger.clientInfo(clientController.getId(), "Changed phone number to " + newPhoneNumberText,
                         "connectListeners", getClass());
                 Response response = clientController.changePhoneNumber(professor.getId(), newPhoneNumberText);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     phoneNumber.setText(ConfigManager.getString(configIdentifier, "phoneNumberMessage")
                             + newPhoneNumberText);
@@ -182,6 +183,7 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
                 MasterLogger.clientInfo(clientController.getId(), "Changed email address to " + newEmailAddressText,
                         "connectListeners",  getClass());
                 Response response = clientController.changeEmailAddress(professor.getId(), newEmailAddressText);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     emailAddress.setText(ConfigManager.getString(configIdentifier, "emailAddressMessage")
                             + newEmailAddressText);

@@ -1,6 +1,6 @@
 package client.gui.menus.standing.professors;
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.BooleanDisplayParser;
 import client.gui.utils.ErrorUtils;
@@ -8,6 +8,7 @@ import client.locallogic.standing.ScoreFormatUtils;
 import client.locallogic.standing.TemporaryScoringChecker;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -21,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TemporaryStandingManager extends PanelTemplate {
+public class TemporaryStandingManager extends DynamicPanelTemplate {
     private Professor professor;
     private String[] activeCourseNames;
     private JComboBox<String> coursesBox; // only includes courses active in the current semester
@@ -40,14 +41,28 @@ public class TemporaryStandingManager extends PanelTemplate {
     private ArrayList<JButton> respondToProtestButtonsList;
     private String noCourseNameSelectedErrorMessage;
 
-    public TemporaryStandingManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public TemporaryStandingManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor,
+                                    OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_TEMPORARY_STANDING_MANAGER;
         noCourseNameSelectedErrorMessage = ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "noCourseHasBeenSelected");
+        temporaryScoresMap = new HashMap<>();
+        initializeButtonLists();
         initializeColumns();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
+    }
+
+    private void initializeTable() {
+        tableModel = new DefaultTableModel(data, columns);
+        scoresTable = new JTable(tableModel);
+    }
+
+    private void initializeButtonLists() {
+        addScoreButtonsList = new ArrayList<>();
+        respondToProtestButtonsList = new ArrayList<>();
     }
 
     private void initializeColumns() {
@@ -59,16 +74,11 @@ public class TemporaryStandingManager extends PanelTemplate {
         columns[4] = ConfigManager.getString(configIdentifier, "finalizedCol");
     }
 
-    private void initializeTemporaryScoreMap() {
-        temporaryScoresMap = new HashMap<>();
-    }
-
     private void setInteractiveTableForFirstTime() {
         updateCourseScoreDTOsForSelectedCourse();
         updateTemporaryScoresMap();
         setTableData();
-        tableModel = new DefaultTableModel(data, columns);
-        scoresTable = new JTable(tableModel);
+        initializeTable();
         alignTable();
         initializeInteractiveButtons();
         alignInteractiveButtons();
@@ -86,11 +96,11 @@ public class TemporaryStandingManager extends PanelTemplate {
         alignInteractiveButtons();
         connectInteractiveListeners();
         repaint();
-        revalidate();
+        validate();
     }
 
     private void updateTemporaryScoresMap() {
-        temporaryScoresMap = new HashMap<>();
+        temporaryScoresMap.clear();
         courseScoreDTOsForSelectedCourse.forEach(e -> {
             temporaryScoresMap.put(e.getStudentId(), e.getScore());
         });
@@ -104,16 +114,20 @@ public class TemporaryStandingManager extends PanelTemplate {
     public void updateTable() {
         updateCourseScoreDTOsForSelectedCourse();
         setTableData();
+        if (tableModel == null) return;
         tableModel.setDataVector(data, columns);
     }
 
     private void updateCourseScoreDTOsForSelectedCourse() {
-        Response response = clientController.getCourseScoreDTOsForCourse(professor.getDepartmentId(), selectedCourseName);
+        Response response = clientController.getCourseScoreDTOsForCourse(offlineModeDTO.getDepartmentId(),
+                selectedCourseName);
+        if (response == null) return;
         courseScoreDTOsForSelectedCourse = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
     }
 
     private void updateCourseNames() {
-        Response response = clientController.getProfessorActiveCourseNames(professor.getId());
+        Response response = clientController.getProfessorActiveCourseNames(offlineModeDTO.getId());
+        if (response == null) return;
         activeCourseNames = (String[]) response.get("stringArray");
     }
 
@@ -143,8 +157,8 @@ public class TemporaryStandingManager extends PanelTemplate {
     }
 
     private void initializeInteractiveButtons() {
-        addScoreButtonsList = new ArrayList<>();
-        respondToProtestButtonsList = new ArrayList<>();
+        addScoreButtonsList.clear();
+        respondToProtestButtonsList.clear();
 
         for (int i = 0; i < courseScoreDTOsForSelectedCourse.size(); i++) {
             JButton addScoreButton = new JButton(ConfigManager.getString(configIdentifier, "addScoreButtonM"));
@@ -190,23 +204,31 @@ public class TemporaryStandingManager extends PanelTemplate {
         }
     }
 
-    @Override
-    protected void initializeComponents() {
+    private void initializeCoursesBox() {
         updateCourseNames();
         coursesBox = new JComboBox<>(activeCourseNames);
+    }
+
+    @Override
+    protected void initializeComponents() {
+        initializeCoursesBox();
         viewCourse = new JButton(ConfigManager.getString(configIdentifier, "viewCourseM"));
 
         saveTemporaryScores = new JButton(ConfigManager.getString(configIdentifier, "saveTemporaryScoresM"));
         finalizeAllScores = new JButton(ConfigManager.getString(configIdentifier, "finalizeAllScoresM"));
     }
 
-    @Override
-    protected void alignComponents() {
+    private void alignCoursesBox() {
         coursesBox.setBounds(ConfigManager.getInt(configIdentifier, "coursesBoxX"),
                 ConfigManager.getInt(configIdentifier, "coursesBoxY"),
                 ConfigManager.getInt(configIdentifier, "coursesBoxW"),
                 ConfigManager.getInt(configIdentifier, "coursesBoxH"));
         add(coursesBox);
+    }
+
+    @Override
+    protected void alignComponents() {
+        alignCoursesBox();
         viewCourse.setBounds(ConfigManager.getInt(configIdentifier, "viewCourseX"),
                 ConfigManager.getInt(configIdentifier, "viewCourseY"),
                 ConfigManager.getInt(configIdentifier, "viewCourseW"),
@@ -269,8 +291,9 @@ public class TemporaryStandingManager extends PanelTemplate {
                     return;
                 }
 
-                Response response = clientController.saveTemporaryScores(professor.getDepartmentId(), selectedCourseName,
+                Response response = clientController.saveTemporaryScores(offlineModeDTO.getDepartmentId(), selectedCourseName,
                         temporaryScoresMap);
+                if (response == null) return;
                 if (response.getResponseStatus() == ResponseStatus.OK) {
                     MasterLogger.clientInfo(clientController.getId(), "Saved temporary scores of " +
                             selectedCourseName, "connectListeners", getClass());
@@ -288,7 +311,8 @@ public class TemporaryStandingManager extends PanelTemplate {
                     return;
                 }
 
-                Response response = clientController.finalizeScores(professor.getDepartmentId(), selectedCourseName);
+                Response response = clientController.finalizeScores(offlineModeDTO.getDepartmentId(), selectedCourseName);
+                if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
                             getClass());
@@ -300,4 +324,25 @@ public class TemporaryStandingManager extends PanelTemplate {
             }
         });
     }
+
+    private void updateCoursesBox() {
+        updateCourseNames();
+        coursesBox.setModel(new DefaultComboBoxModel<>(activeCourseNames));
+    }
+
+    @Override
+    protected void updatePanel() {
+        removePreviousButtons();
+        updateCourseScoreDTOsForSelectedCourse();
+//        updateCoursesBox();
+        // TODO: updating courses box here and in master OR removing the updateCoursesBox and friends methods
+        updateTable();
+        initializeInteractiveButtons();
+        alignInteractiveButtons();
+        connectInteractiveListeners();
+        repaint();
+        validate();
+    }
+
+    // TODO: removing JOptionPane remaining? : if we go offline while the scoring pane is open, it'll remain open
 }

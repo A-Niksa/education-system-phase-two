@@ -56,6 +56,7 @@ public class PasswordChanger extends JPanel {
             String newPassword = newPasswordField.getText();
 
             Response response = clientController.changePassword(userId, newPassword);
+            if (response == null) return;
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 return;
             }

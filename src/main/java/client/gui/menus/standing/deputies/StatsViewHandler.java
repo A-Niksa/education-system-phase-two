@@ -38,6 +38,7 @@ public class StatsViewHandler implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         DepartmentName departmentName = DepartmentGetter.getDepartmentNameByString(departmentNameString);
         Response response = clientController.getCourseStatsDTO(courseName, departmentName);
+        if (response == null) return;
         if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
             MasterLogger.clientInfo(clientController.getId(), response.getErrorMessage(), "actionPerformed",
                     getClass());
