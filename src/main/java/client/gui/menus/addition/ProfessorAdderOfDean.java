@@ -39,7 +39,8 @@ public class ProfessorAdderOfDean extends ProfessorAdder {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientControllerId, "Went back to professors list editor",
                         "connectBackListener", getClass());
-                 mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
+                stopPanelLoop();
+                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
     }

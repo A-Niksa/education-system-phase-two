@@ -296,7 +296,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the student addition section",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentAdder(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new StudentAdder(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
 

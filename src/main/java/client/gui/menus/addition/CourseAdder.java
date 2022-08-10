@@ -67,6 +67,7 @@ public class CourseAdder extends DynamicPanelTemplate {
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();
         weekdays = EnumArrayUtils.initializeWeekdays();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override
@@ -239,6 +240,7 @@ public class CourseAdder extends DynamicPanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to courses list editor",
                         "connectListeners", getClass());
+                stopPanelLoop();
                 mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
@@ -246,6 +248,5 @@ public class CourseAdder extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
-
     }
 }

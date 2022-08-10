@@ -44,6 +44,7 @@ public class ProfessorAdder extends DynamicPanelTemplate {
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_ADDER;
         academicLevels = EnumArrayUtils.initializeAcademicLevels();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override

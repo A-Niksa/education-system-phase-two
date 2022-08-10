@@ -1,11 +1,13 @@
 package client.gui.menus.addition;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.locallogic.addition.BlueprintGenerator;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -18,7 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class StudentAdder extends PanelTemplate {
+public class StudentAdder extends DynamicPanelTemplate {
     private Professor professor;
     private JTextField passwordField;
     private JTextField nationalIdField;
@@ -37,17 +39,18 @@ public class StudentAdder extends PanelTemplate {
     private ArrayList<JComboBox<String>> comboBoxesList;
     private JButton addStudentButton;
 
-    public StudentAdder(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public StudentAdder(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_STUDENT_ADDER;
         studentStatusStrings = EnumArrayUtils.initializeStudentStatusStrings();
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     private void updateDepartmentProfessorNames() {
-        Response response = clientController.getDepartmentProfessorNames(professor.getDepartmentId());
+        Response response = clientController.getDepartmentProfessorNames(offlineModeDTO.getDepartmentId());
         professorNames = (String[]) response.get("stringArray");
     }
 
@@ -126,7 +129,7 @@ public class StudentAdder extends PanelTemplate {
 
                 Blueprint studentBlueprint = BlueprintGenerator.generateStudentBlueprint(password, nationalId, firstName,
                         lastName, phoneNumber, emailAddress, yearOfEntry, studentStatusString, degreeLevelString,
-                        advisingProfessorName, professor.getDepartmentId());
+                        advisingProfessorName, offlineModeDTO.getDepartmentId());
 
                 Response response = clientController.addStudent(studentBlueprint);
                 if (response.getResponseStatus() == ResponseStatus.OK) {
@@ -136,5 +139,10 @@ public class StudentAdder extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+
     }
 }
