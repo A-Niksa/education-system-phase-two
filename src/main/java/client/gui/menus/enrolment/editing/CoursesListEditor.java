@@ -2,7 +2,6 @@ package client.gui.menus.enrolment.editing;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.addition.CourseAdder;
 import client.gui.menus.enrolment.management.CoursesListManager;
 import client.gui.menus.main.MainMenu;
@@ -15,6 +14,7 @@ import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class CoursesListEditor extends DynamicPanelTemplate {
     private ArrayList<CourseDTO> departmentCourseDTOs;
     private JButton goBackButton;
     private JButton addCourseButton;
+    private DefaultTableModel tableModel;
     private JTable coursesTable;
     private String[] columns;
     private String[][] data;
@@ -37,12 +38,14 @@ public class CoursesListEditor extends DynamicPanelTemplate {
         initializeColumns();
         setTableData();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
     private void updateDepartmentCourseDTOs() {
-        // duplicating request to avoid receiving lossy data:
-        clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
+//        clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
+        // TODO: changing professor. for dept id to offlineModeDTO here and everywhere (including student.)
         Response response = clientController.getDepartmentCourseDTOs(professor.getDepartmentId());
+        if (response == null) return;
         departmentCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
     }
 
@@ -59,14 +62,13 @@ public class CoursesListEditor extends DynamicPanelTemplate {
     private void setTableData() {
         data = new String[departmentCourseDTOs.size()][];
         CourseDTO courseDTO;
-        Professor teachingProfessor;
         for (int i = 0; i < departmentCourseDTOs.size(); i++) {
             courseDTO = departmentCourseDTOs.get(i);
             data[i] = new String[]{courseDTO.getId(),
                     courseDTO.getCourseName(),
                     courseDTO.fetchFormattedExamDate(),
                     courseDTO.getCompressedNamesOfProfessors(),
-                    courseDTO.getNumberOfCredits() + "",
+                    String.valueOf(courseDTO.getNumberOfCredits()),
                     courseDTO.getDegreeLevel().toString()};
         }
     }
@@ -78,8 +80,14 @@ public class CoursesListEditor extends DynamicPanelTemplate {
         goBackButton = new JButton(ConfigManager.getString(configIdentifier, "goBackButtonM"));
         addCourseButton = new JButton(ConfigManager.getString(configIdentifier, "addCourseButtonM"));
 
-        coursesTable = new JTable(data, columns);
+        tableModel = new DefaultTableModel(data, columns);
+        coursesTable = new JTable(tableModel);
 
+        initializeEditButtons();
+    }
+
+    private void initializeEditButtons() {
+        editButtonsList.clear();
         for (int i = 0; i < departmentCourseDTOs.size(); i++) {
             JButton button = new JButton(ConfigManager.getString(configIdentifier, "editButtonM"));
             editButtonsList.add(button);
@@ -107,6 +115,10 @@ public class CoursesListEditor extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "scrollPaneH"));
         add(scrollPane);
 
+        alignEditButtons();
+    }
+
+    private void alignEditButtons() {
         int currentX = ConfigManager.getInt(configIdentifier, "editButtonStartingX");
         int currentY = ConfigManager.getInt(configIdentifier, "editButtonStartingY");
         int incrementOfY = ConfigManager.getInt(configIdentifier, "incY");
@@ -141,6 +153,10 @@ public class CoursesListEditor extends DynamicPanelTemplate {
             }
         });
 
+        connectEditButtonListeners();
+    }
+
+    private void connectEditButtonListeners() {
         JButton editButton;
         CourseDTO editableCourseDTO;
         for (int i = 0; i < editButtonsList.size(); i++) {
@@ -153,6 +169,13 @@ public class CoursesListEditor extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
-
+        updateDepartmentCourseDTOs();
+        setTableData();
+        tableModel.setDataVector(data, columns);
+        editButtonsList.forEach(this::remove);
+        initializeEditButtons();
+        alignEditButtons();
+        connectEditButtonListeners();
+        this.repaint();
     }
 }

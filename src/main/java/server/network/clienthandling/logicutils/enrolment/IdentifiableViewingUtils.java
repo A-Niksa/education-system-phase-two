@@ -32,6 +32,7 @@ public class IdentifiableViewingUtils {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         Predicate<Identifiable> predicate = e -> ((Course) e).getDepartmentId().equals(departmentId);
         List<CourseDTO> departmentCourseDTOs = getCourseDTOsByPredicate(databaseManager, courses, predicate);
+        departmentCourseDTOs.sort(courseDTOComparator);
         return departmentCourseDTOs;
     }
 

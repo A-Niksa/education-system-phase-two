@@ -2,6 +2,7 @@ package server.network.clienthandling.logicutils.services;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.comparators.CourseDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeeklyScheduleUtils {
+    private static CourseDTOComparator courseDTOComparator = new CourseDTOComparator();
+
     public static List<CourseDTO> getStudentCourseDTOs(DatabaseManager databaseManager, String username) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         List<CourseDTO> courseDTOs = new ArrayList<>();
@@ -23,6 +26,7 @@ public class WeeklyScheduleUtils {
                     CourseDTO courseDTO = initializeCourseDTO(databaseManager, course);
                     courseDTOs.add(courseDTO);
                 });
+        courseDTOs.sort(courseDTOComparator);
         return courseDTOs;
     }
 
@@ -37,6 +41,7 @@ public class WeeklyScheduleUtils {
                     CourseDTO courseDTO = initializeCourseDTO(databaseManager, course);
                     courseDTOs.add(courseDTO);
                 });
+        courseDTOs.sort(courseDTOComparator);
         return courseDTOs;
     }
 
