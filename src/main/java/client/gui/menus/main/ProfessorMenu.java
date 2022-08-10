@@ -76,7 +76,7 @@ public class ProfessorMenu extends MainMenu {
         initializeComponents();
         alignComponents();
         connectListeners();
-        startPingingIfOnline(user.getId(), this);
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
     @Override
@@ -188,9 +188,9 @@ public class ProfessorMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 if (role == AcademicRole.DEPUTY) {
-                    mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professor));
+                    mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professor, offlineModeDTO));
                 } else {
-                    mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu));
+                    mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu, offlineModeDTO));
                 }
             }
         });
@@ -202,9 +202,9 @@ public class ProfessorMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 if (role == AcademicRole.DEAN) {
-                    mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor));
+                    mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor, offlineModeDTO));
                 } else {
-                    mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu));
+                    mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu, offlineModeDTO));
                 }
             }
         });
@@ -306,7 +306,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
     }

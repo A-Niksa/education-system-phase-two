@@ -2,6 +2,8 @@ package server.network.clienthandling.logicutils.enrolment;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.comparators.CourseDTOComparator;
+import server.network.clienthandling.logicutils.comparators.ProfessorDTOComparator;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.professors.Professor;
@@ -15,10 +17,14 @@ import java.util.function.Predicate;
 import static server.network.clienthandling.logicutils.services.WeeklyScheduleUtils.initializeCourseDTO;
 
 public class IdentifiableViewingUtils {
+    private static CourseDTOComparator courseDTOComparator = new CourseDTOComparator();
+    private static ProfessorDTOComparator professorDTOComparator = new ProfessorDTOComparator();
+
     public static List<CourseDTO> getActiveCourseDTOs(DatabaseManager databaseManager) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         Predicate<Identifiable> predicate = e -> ((Course) e).isActive();
         List<CourseDTO> activeCourseDTOs = getCourseDTOsByPredicate(databaseManager, courses, predicate);
+        activeCourseDTOs.sort(courseDTOComparator);
         return activeCourseDTOs;
     }
 
@@ -45,6 +51,7 @@ public class IdentifiableViewingUtils {
     public static List<ProfessorDTO> getProfessorDTOs(DatabaseManager databaseManager) {
         List<Identifiable> professors = databaseManager.getIdentifiables(DatasetIdentifier.PROFESSORS);
         List<ProfessorDTO> professorDTOs = getProfessorDTOsByPredicate(databaseManager, professors, e -> true);
+        professorDTOs.sort(professorDTOComparator);
         return professorDTOs;
     }
 

@@ -2,10 +2,9 @@ package server.network.clienthandling.logicutils.services;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
-import server.network.clienthandling.ClientHandler;
+import server.network.clienthandling.logicutils.comparators.RequestDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
-import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.academicrequests.MinorRequest;
 import shareables.models.pojos.users.students.Student;

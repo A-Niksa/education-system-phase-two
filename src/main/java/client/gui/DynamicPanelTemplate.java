@@ -29,6 +29,7 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
     public DynamicPanelTemplate(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu);
         this.offlineModeDTO = offlineModeDTO;
+        isOnline = true; // default value
     }
 
     protected void startPinging(String userId) {

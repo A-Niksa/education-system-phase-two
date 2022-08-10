@@ -5,6 +5,7 @@ import client.gui.menus.enrolment.editing.ProfessorsListEditor;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -17,8 +18,8 @@ public class ProfessorsListManager extends ProfessorsListView {
     private Professor professor;
     private JButton openEditor;
 
-    public ProfessorsListManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public ProfessorsListManager(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_LIST_MANAGER;
         drawPanel();
@@ -41,7 +42,7 @@ public class ProfessorsListManager extends ProfessorsListView {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened professors list editor",
                         "connectEditor",getClass());
-                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
     }

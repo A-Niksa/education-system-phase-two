@@ -1,11 +1,13 @@
 package client.gui.menus.enrolment.editing;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -18,7 +20,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ProfessorEditor extends PanelTemplate {
+public class ProfessorEditor extends DynamicPanelTemplate {
     private Professor dean;
     private ProfessorDTO professorToEditDTO;
     private JButton goBackButton;
@@ -32,8 +34,9 @@ public class ProfessorEditor extends PanelTemplate {
     private JButton promoteToDeputy;
     private JButton removeProfessor;
 
-    public ProfessorEditor(MainFrame mainFrame, MainMenu mainMenu, Professor dean, ProfessorDTO professorToEditDTO) {
-        super(mainFrame, mainMenu);
+    public ProfessorEditor(MainFrame mainFrame, MainMenu mainMenu, Professor dean, ProfessorDTO professorToEditDTO,
+                           OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.dean = dean;
         this.professorToEditDTO = professorToEditDTO;
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_EDITOR;
@@ -116,7 +119,7 @@ public class ProfessorEditor extends PanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to professors list editor",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, dean));
+                mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, dean, offlineModeDTO));
             }
         });
 
@@ -196,5 +199,10 @@ public class ProfessorEditor extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+
     }
 }

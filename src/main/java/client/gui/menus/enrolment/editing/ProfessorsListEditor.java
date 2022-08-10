@@ -1,11 +1,13 @@
 package client.gui.menus.enrolment.editing;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.addition.ProfessorAdderOfDean;
 import client.gui.menus.enrolment.management.ProfessorsListManager;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -17,7 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ProfessorsListEditor extends PanelTemplate {
+public class ProfessorsListEditor extends DynamicPanelTemplate {
     private Professor professor;
     private JButton goBackButton;
     private JButton addProfessorButton;
@@ -27,8 +29,8 @@ public class ProfessorsListEditor extends PanelTemplate {
     private ArrayList<ProfessorDTO> departmentProfessorDTOs;
     private ArrayList<JButton> editButtonsList;
 
-    public ProfessorsListEditor(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public ProfessorsListEditor(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_LIST_EDITOR;
         updateDepartmentProfessorDTOs();
@@ -123,7 +125,8 @@ public class ProfessorsListEditor extends PanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to professors list view",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor));
+                stopPanelLoop();
+                mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
 
@@ -132,7 +135,7 @@ public class ProfessorsListEditor extends PanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new ProfessorAdderOfDean(mainFrame, mainMenu, professor,
+                mainFrame.setCurrentPanel(new ProfessorAdderOfDean(mainFrame, mainMenu, professor, offlineModeDTO,
                         clientController.getId()));
             }
         });
@@ -142,7 +145,13 @@ public class ProfessorsListEditor extends PanelTemplate {
         for (int i = 0; i < editButtonsList.size(); i++) {
             editButton = editButtonsList.get(i);
             editableProfessorDTO = departmentProfessorDTOs.get(i);
-            editButton.addActionListener(new ProfessorEditHandler(mainFrame, mainMenu, professor, editableProfessorDTO));
+            editButton.addActionListener(new ProfessorEditHandler(mainFrame, mainMenu, professor, editableProfessorDTO,
+                    offlineModeDTO));
         }
+    }
+
+    @Override
+    protected void updatePanel() {
+
     }
 }

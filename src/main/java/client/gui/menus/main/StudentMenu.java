@@ -69,7 +69,7 @@ public class StudentMenu extends MainMenu {
         initializeComponents();
         alignComponents();
         connectListeners();
-        startPingingIfOnline(user.getId(), this);
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
     @Override
@@ -208,7 +208,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the courses list in educational services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu));
+                mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -218,7 +218,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professors list in educational services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu));
+                mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 

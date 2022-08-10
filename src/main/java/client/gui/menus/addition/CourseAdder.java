@@ -1,5 +1,6 @@
 package client.gui.menus.addition;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.enrolment.editing.CoursesListEditor;
@@ -12,6 +13,7 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
-public class CourseAdder extends PanelTemplate {
+public class CourseAdder extends DynamicPanelTemplate {
     private Professor professor;
     private JTextField courseNameField;
     private JTextField termIdentifierField;
@@ -58,8 +60,8 @@ public class CourseAdder extends PanelTemplate {
     private JButton addCourseButton;
     private JButton goBackButton;
 
-    public CourseAdder(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
+    public CourseAdder(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.professor = professor;
         configIdentifier = ConfigFileIdentifier.GUI_COURSE_ADDER;
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();
@@ -237,8 +239,13 @@ public class CourseAdder extends PanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to courses list editor",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+
     }
 }

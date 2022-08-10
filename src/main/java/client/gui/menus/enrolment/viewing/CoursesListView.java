@@ -1,7 +1,7 @@
 package client.gui.menus.enrolment.viewing;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.locallogic.enrolment.CourseFilteringTool;
@@ -9,6 +9,7 @@ import client.locallogic.enrolment.FilterKey;
 import client.locallogic.profile.DepartmentGetter;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -20,8 +21,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CoursesListView extends PanelTemplate {
+public class CoursesListView extends DynamicPanelTemplate {
     private ArrayList<CourseDTO> activeCourseDTOs;
+    private DefaultTableModel tableModel;
     private JTable coursesTable;
     private JScrollPane scrollPane;
     private String[] columns;
@@ -35,19 +37,28 @@ public class CoursesListView extends PanelTemplate {
     private JButton filterOnDegreeLevel;
     private JButton resetButton;
 
-    public CoursesListView(MainFrame mainFrame, MainMenu mainMenu) {
-        super(mainFrame, mainMenu);
+    public CoursesListView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         configIdentifier = ConfigFileIdentifier.GUI_LIST_VIEW;
-        initializeActiveCourseDTOs();
+        updateActiveCourseDTOs();
         initializeColumns();
         degreeLevels = EnumArrayUtils.initializeDegreeLevels();
         setTableData(activeCourseDTOs);
         drawPanel();
+        startPinging(offlineModeDTO.getId());
     }
 
-    private void initializeActiveCourseDTOs() {
-        clientController.getActiveCourseDTOs(); // duplicating request to avoid receiving lossy data
+    @Override
+    protected void updatePanel() {
+        updateActiveCourseDTOs();
+        setTableData(activeCourseDTOs);
+        tableModel.setDataVector(data, columns);
+    }
+
+    private void updateActiveCourseDTOs() {
+//        clientController.getActiveCourseDTOs(); // duplicating request to avoid receiving lossy data
         Response response = clientController.getActiveCourseDTOs();
+        if (response == null) return;
         activeCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");
     }
 
@@ -81,7 +92,8 @@ public class CoursesListView extends PanelTemplate {
 
     @Override
     protected void initializeComponents() {
-        coursesTable = new JTable(data, columns);
+        tableModel = new DefaultTableModel(data, columns);
+        coursesTable = new JTable(tableModel);
         courseIdFilterField = new JTextField(ConfigManager.getString(configIdentifier, "courseIdFilterFieldM"));
         filterOnCourseId = new JButton(ConfigManager.getString(configIdentifier, "filterButtonM"));
         numberOfCreditsFilterField = new JTextField(ConfigManager.getString(configIdentifier,
@@ -94,7 +106,7 @@ public class CoursesListView extends PanelTemplate {
 
     @Override
     protected void alignComponents() {
-        coursesTable.setRowHeight(25);
+        coursesTable.setRowHeight(ConfigManager.getInt(configIdentifier, "tableRowH"));
         scrollPane = new JScrollPane(coursesTable);
         scrollPane.setBounds(ConfigManager.getInt(configIdentifier, "scrollPaneX"),
                 ConfigManager.getInt(configIdentifier, "scrollPaneY"),

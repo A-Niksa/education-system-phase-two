@@ -1,5 +1,6 @@
 package client.gui.menus.enrolment.editing;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
@@ -10,6 +11,7 @@ import client.locallogic.enrolment.NamesParser;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -21,7 +23,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CourseEditor extends PanelTemplate {
+public class CourseEditor extends DynamicPanelTemplate {
     private Professor deputy;
     private CourseDTO courseDTO;
     private JLabel courseNameLabel;
@@ -37,8 +39,9 @@ public class CourseEditor extends PanelTemplate {
     private JButton goBackButton;
     private JButton removeCourse;
 
-    public CourseEditor(MainFrame mainFrame, MainMenu mainMenu, Professor deputy, CourseDTO courseDTO) {
-        super(mainFrame, mainMenu);
+    public CourseEditor(MainFrame mainFrame, MainMenu mainMenu, Professor deputy, CourseDTO courseDTO,
+                        OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         this.deputy = deputy;
         this.courseDTO = courseDTO;
         configIdentifier = ConfigFileIdentifier.GUI_COURSE_EDITOR;
@@ -134,7 +137,7 @@ public class CourseEditor extends PanelTemplate {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Went back to courses list editor",
                         "connectListeners", getClass());
-                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, deputy));
+                mainFrame.setCurrentPanel(new CoursesListEditor(mainFrame, mainMenu, deputy, offlineModeDTO));
             }
         });
 
@@ -207,5 +210,10 @@ public class CourseEditor extends PanelTemplate {
                 }
             }
         });
+    }
+
+    @Override
+    protected void updatePanel() {
+
     }
 }

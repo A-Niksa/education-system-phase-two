@@ -3,6 +3,7 @@ package client.gui.menus.enrolment.editing;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.utils.logging.MasterLogger;
 
@@ -14,14 +15,16 @@ public class ProfessorEditHandler implements ActionListener {
     private MainMenu mainMenu;
     private Professor dean;
     private ProfessorDTO correspondingProfessorDTO;
+    private OfflineModeDTO offlineModeDTO;
     private int clientControllerId;
 
     public ProfessorEditHandler(MainFrame mainFrame, MainMenu mainMenu, Professor dean,
-                                ProfessorDTO correspondingProfessorDTO) {
+                                ProfessorDTO correspondingProfessorDTO, OfflineModeDTO offlineModeDTO) {
         this.mainFrame = mainFrame;
         this.mainMenu = mainMenu;
         this.dean = dean;
         this.correspondingProfessorDTO = correspondingProfessorDTO;
+        this.offlineModeDTO = offlineModeDTO;
         clientControllerId = mainFrame.getClientController().getId();
     }
 
@@ -30,6 +33,6 @@ public class ProfessorEditHandler implements ActionListener {
         String professorName = correspondingProfessorDTO.getName();
         MasterLogger.clientInfo(clientControllerId, "Opened professor editor for " + professorName,
                 "actionPerformed", getClass());
-        mainFrame.setCurrentPanel(new ProfessorEditor(mainFrame, mainMenu, dean, correspondingProfessorDTO));
+        mainFrame.setCurrentPanel(new ProfessorEditor(mainFrame, mainMenu, dean, correspondingProfessorDTO, offlineModeDTO));
     }
 }

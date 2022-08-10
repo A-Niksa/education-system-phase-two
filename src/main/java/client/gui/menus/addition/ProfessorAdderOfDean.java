@@ -4,6 +4,7 @@ import client.gui.MainFrame;
 import client.gui.menus.enrolment.editing.ProfessorsListEditor;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
@@ -15,8 +16,9 @@ public class ProfessorAdderOfDean extends ProfessorAdder {
     private JButton goBackButton;
     private int clientControllerId;
 
-    public ProfessorAdderOfDean(MainFrame mainFrame, MainMenu mainMenu, Professor professor, int clientControllerId) {
-        super(mainFrame, mainMenu, professor);
+    public ProfessorAdderOfDean(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO,
+                                int clientControllerId) {
+        super(mainFrame, mainMenu, professor, offlineModeDTO);
         this.clientControllerId = clientControllerId;
         initializeAndAlignBackButton();
         add(goBackButton);
@@ -37,7 +39,7 @@ public class ProfessorAdderOfDean extends ProfessorAdder {
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientControllerId, "Went back to professors list editor",
                         "connectBackListener", getClass());
-                 mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor));
+                 mainFrame.setCurrentPanel(new ProfessorsListEditor(mainFrame, mainMenu, professor, offlineModeDTO));
             }
         });
     }

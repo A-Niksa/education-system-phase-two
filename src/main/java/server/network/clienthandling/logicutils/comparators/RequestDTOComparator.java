@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils.services;
+package server.network.clienthandling.logicutils.comparators;
 
 import shareables.models.idgeneration.Identifiable;
 import shareables.network.DTOs.RequestDTO;
