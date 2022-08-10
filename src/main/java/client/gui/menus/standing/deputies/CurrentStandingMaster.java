@@ -1,10 +1,11 @@
 package client.gui.menus.standing.deputies;
 
+import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.DTOs.TranscriptDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -17,13 +18,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CurrentStandingMaster extends PanelTemplate {
+public class CurrentStandingMaster extends DynamicPanelTemplate {
     private enum CurrentMode {
         ID_LOOKUP,
         NAME_LOOKUP
     }
 
-    private Professor professor;
     private String[] studentIds;
     private JComboBox<String> studentIdsBox;
     private JButton searchWithStudentID;
@@ -40,14 +40,20 @@ public class CurrentStandingMaster extends PanelTemplate {
     private String[] columns;
     private String[][] data;
     private JButton seeGPAButton;
+    private String numberOfPassedCreditsLabelMessage;
     private JLabel numberOfPassesCreditsLabel;
     private CurrentMode currentMode;
 
-    public CurrentStandingMaster(MainFrame mainFrame, MainMenu mainMenu, Professor professor) {
-        super(mainFrame, mainMenu);
-        this.professor = professor;
+    public CurrentStandingMaster(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
         configIdentifier = ConfigFileIdentifier.GUI_CURRENT_STANDING_MASTER;
+        initializeCourseScoreDTOs();
         drawPanel();
+        startPinging(offlineModeDTO.getId());
+    }
+
+    private void initializeCourseScoreDTOs() {
+        courseScoreDTOs = new ArrayList<>();
     }
 
     private void setInteractiveTableForFirstTime() {
@@ -70,7 +76,7 @@ public class CurrentStandingMaster extends PanelTemplate {
         setColumns();
         updateTable();
         setSeeGPAButton();
-        setNumberOfPassesCreditsLabel();
+        updateNumberOfPassedCreditsLabel();
         repaint();
         validate();
     }
@@ -80,7 +86,7 @@ public class CurrentStandingMaster extends PanelTemplate {
         if (currentMode == CurrentMode.ID_LOOKUP) {
             response = clientController.getStudentTranscriptDTOWithId(selectedStudentId);
         } else { // in this case, will be NAME_LOOKUP by design
-            response = clientController.getStudentTranscriptDTOWithName(professor.getDepartmentId(),
+            response = clientController.getStudentTranscriptDTOWithName(offlineModeDTO.getDepartmentId(),
                     selectedStudentName);
         }
         if (response == null) return;
@@ -92,7 +98,8 @@ public class CurrentStandingMaster extends PanelTemplate {
         if (currentMode == CurrentMode.ID_LOOKUP) {
             response = clientController.getStudentCourseScoreDTOsWithId(selectedStudentId);
         } else { // in this case, will be NAME_LOOKUP by design
-            response = clientController.getStudentCourseScoreDTOsWithName(professor.getDepartmentId(), selectedStudentName);
+            response = clientController.getStudentCourseScoreDTOsWithName(offlineModeDTO.getDepartmentId(),
+                    selectedStudentName);
         }
         if (response == null) return;
         courseScoreDTOs = (ArrayList<CourseScoreDTO>) response.get("courseScoreDTOs");
@@ -113,7 +120,6 @@ public class CurrentStandingMaster extends PanelTemplate {
     }
 
     void setTableData() {
-//        LinkedList<String> courseScoreDTOs = transcript.getPassedCoursesIDs();
         data = new String[courseScoreDTOs.size()][];
         CourseScoreDTO courseScoreDTO;
         for (int i = 0; i < courseScoreDTOs.size(); i++) {
@@ -141,6 +147,7 @@ public class CurrentStandingMaster extends PanelTemplate {
     }
 
     private void updateTable() {
+        if (courseScoreDTOs.isEmpty()) return;
         setTableData();
         tableModel.setDataVector(data, columns);
     }
@@ -171,15 +178,22 @@ public class CurrentStandingMaster extends PanelTemplate {
         });
     }
 
+    private void updateNumberOfPassedCreditsLabel() {
+        if (transcriptDTO == null) return;
+        numberOfPassesCreditsLabel.setText(numberOfPassedCreditsLabelMessage + transcriptDTO.getNumberOfPassedCredits());
+    }
+
 
     private void setNumberOfPassesCreditsLabel() {
-        if (numberOfPassesCreditsLabel != null) { // this condition helps us with finding labels for credits that we
-            // need to clear because they belong to other students
+        if (numberOfPassesCreditsLabel != null) {
+            /* this condition helps us with finding labels for credits that we need to clear because they belong
+            to other students */
             remove(numberOfPassesCreditsLabel);
         }
 
-        numberOfPassesCreditsLabel = new JLabel(ConfigManager.getString(configIdentifier,
-                "numberOfPassesCreditsLabelM") + transcriptDTO.getNumberOfPassedCredits());
+        numberOfPassedCreditsLabelMessage = ConfigManager.getString(configIdentifier, "numberOfPassesCreditsLabelM");
+        numberOfPassesCreditsLabel = new JLabel(numberOfPassedCreditsLabelMessage +
+                transcriptDTO.getNumberOfPassedCredits());
         numberOfPassesCreditsLabel.setBounds(ConfigManager.getInt(configIdentifier, "numberOfPassesCreditsLabelX"),
                 ConfigManager.getInt(configIdentifier, "numberOfPassesCreditsLabelY"),
                 ConfigManager.getInt(configIdentifier, "numberOfPassesCreditsLabelW"),
@@ -188,13 +202,13 @@ public class CurrentStandingMaster extends PanelTemplate {
     }
 
     private void updateDepartmentStudentIds() {
-        Response response = clientController.getDepartmentStudentIds(professor.getDepartmentId());
+        Response response = clientController.getDepartmentStudentIds(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         studentIds = (String[]) response.get("stringArray");
     }
 
     private void updateDepartmentStudentNames() {
-        Response response = clientController.getDepartmentStudentNames(professor.getDepartmentId());
+        Response response = clientController.getDepartmentStudentNames(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         studentNames = (String[]) response.get("stringArray");
     }
@@ -266,5 +280,10 @@ public class CurrentStandingMaster extends PanelTemplate {
         } else {
             setInteractiveTable();
         }
+    }
+
+    @Override
+    protected void updatePanel() {
+        if (currentMode != null) setInteractiveTable();
     }
 }

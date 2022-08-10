@@ -27,7 +27,6 @@ public class TemporaryStandingMaster extends DynamicPanelTemplate {
         STUDENT_VIEW
     }
 
-    private Professor professor;
     private String departmentNameString;
     private String[] courseNames;
     private JComboBox<String> coursesBox;
@@ -50,9 +49,8 @@ public class TemporaryStandingMaster extends DynamicPanelTemplate {
     private JButton statsButton;
     private CurrentMode currentMode;
 
-    public TemporaryStandingMaster(MainFrame mainFrame, MainMenu mainMenu, Professor professor, OfflineModeDTO offlineModeDTO) {
+    public TemporaryStandingMaster(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
-        this.professor = professor;
         departmentNameString = DepartmentGetter.getDepartmentNameById(offlineModeDTO.getDepartmentId()).toString();
         configIdentifier = ConfigFileIdentifier.GUI_TEMPORARY_STANDING_MASTER;
         drawPanel();
@@ -77,7 +75,7 @@ public class TemporaryStandingMaster extends DynamicPanelTemplate {
         updateTable();
         setStatsButton();
         repaint();
-//        validate();
+        validate();
     }
 
     private void setColumns() {

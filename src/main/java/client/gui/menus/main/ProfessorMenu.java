@@ -31,7 +31,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ProfessorMenu extends MainMenu {
-    private Professor professor;
     private AcademicRole role;
     private JMenuBar menuBar;
     private JMenu registrationAffairs;
@@ -65,13 +64,13 @@ public class ProfessorMenu extends MainMenu {
 
     private void initializeAcademicRole() {
         if (offlineModeDTO != null) role = offlineModeDTO.getAcademicRole();
-        else role = professor.getAcademicRole();
+//        else role = professor.getAcademicRole();
+        else role = AcademicRole.NORMAL;
     }
 
-    public ProfessorMenu(MainFrame mainFrame, User user, OfflineModeDTO offlineModeDTO, boolean isOnline) {
-        super(mainFrame, user, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
+    public ProfessorMenu(MainFrame mainFrame, OfflineModeDTO offlineModeDTO, boolean isOnline) {
+        super(mainFrame, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_MAIN;
-        professor = (Professor) user;
         role = offlineModeDTO.getAcademicRole();
         initializeComponents();
         alignComponents();
@@ -81,7 +80,6 @@ public class ProfessorMenu extends MainMenu {
 
     @Override
     protected void updatePanel() {
-        professor = (Professor) user;
         lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
         nameLabel.setText(offlineModeDTO.getName());
         emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
@@ -177,7 +175,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the profile editor in the user profile",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorProfile(mainFrame, mainMenu, user, offlineModeDTO, isOnline));
+                mainFrame.setCurrentPanel(new ProfessorProfile(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 
@@ -188,7 +186,7 @@ public class ProfessorMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 if (role == AcademicRole.DEPUTY) {
-                    mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                    mainFrame.setCurrentPanel(new CoursesListManager(mainFrame, mainMenu, offlineModeDTO));
                 } else {
                     mainFrame.setCurrentPanel(new CoursesListView(mainFrame, mainMenu, offlineModeDTO));
                 }
@@ -202,7 +200,7 @@ public class ProfessorMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 if (role == AcademicRole.DEAN) {
-                    mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                    mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, offlineModeDTO));
                 } else {
                     mainFrame.setCurrentPanel(new ProfessorsListView(mainFrame, mainMenu, offlineModeDTO));
                 }
@@ -215,8 +213,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened weekly schedule in academic services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, professor, offlineModeDTO,
-                        isOnline));
+                mainFrame.setCurrentPanel(new ProfessorWeeklySchedule(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 
@@ -226,7 +223,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened list of exams in academic services",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, professor, offlineModeDTO, isOnline));
+                mainFrame.setCurrentPanel(new ProfessorExamsList(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 
@@ -236,7 +233,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the recommendation letters subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new RecommendationManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new RecommendationManager(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -246,7 +243,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the dropping out subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new DroppingOutManager(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -256,7 +253,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the minor requests subsection in academic requests",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new MinorManager(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -266,7 +263,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores for deputies in academic standing",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                 mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, professor, offlineModeDTO));
+                 mainFrame.setCurrentPanel(new TemporaryStandingMaster(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -276,7 +273,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened temporary scores in academic standing",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new TemporaryStandingManager(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new TemporaryStandingManager(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -286,7 +283,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened current student standings in academic standing",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new CurrentStandingMaster(mainFrame, mainMenu, professor));
+                mainFrame.setCurrentPanel(new CurrentStandingMaster(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -296,7 +293,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the student addition section",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentAdder(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new StudentAdder(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
@@ -306,7 +303,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, professor, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }
