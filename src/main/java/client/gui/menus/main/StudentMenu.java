@@ -12,8 +12,6 @@ import client.gui.menus.standing.students.CurrentStandingView;
 import client.gui.menus.standing.students.TemporaryStandingView;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.main.DateStringFormatter;
-import shareables.models.pojos.users.User;
-import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -76,7 +74,9 @@ public class StudentMenu extends MainMenu {
         lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
         nameLabel.setText(offlineModeDTO.getName());
         emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(offlineModeDTO.getProfilePicture(),
+                ConfigManager.getInt(ConfigFileIdentifier.GUI_MAIN, "profilePictureW"),
+                ConfigManager.getInt(ConfigFileIdentifier.GUI_MAIN, "profilePictureH"));
         profilePicture.setIcon(profilePictureIcon);
         studentStatusLabel.setText(studentStatusLabelPrompt + offlineModeDTO.getStudentStatus().toString());
         advisingProfessorName.setText(advisingProfessorNamePrompt + offlineModeDTO.getAdvisingProfessorName());

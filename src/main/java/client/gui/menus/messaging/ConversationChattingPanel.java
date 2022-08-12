@@ -81,4 +81,8 @@ public class ConversationChattingPanel extends JPanel {
         conversationTextArea.setEditable(false);
         add(conversationTextArea, gridBagConstraints);
     }
+
+    public ConversationDTO getConversationDTO() {
+        return conversationDTO;
+    }
 }

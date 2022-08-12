@@ -4,6 +4,7 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
+import client.gui.utils.ImageParsingUtils;
 import client.locallogic.messaging.DownloadManager;
 import client.locallogic.messaging.MediaFileParser;
 import shareables.models.pojos.media.MediaFile;
@@ -29,6 +30,8 @@ public class ConversationRoom extends DynamicPanelTemplate {
     private JTextField messageField;
     private JLabel chosenFileLabel;
     private JLabel fileChoosingBackground;
+    private JLabel contactProfilePictureLabel;
+    private JLabel contactNameLabel;
     private ConversationChattingPanel conversationChattingPanel;
     private JScrollPane scrollPane;
     private ConversationDTO conversationDTO;
@@ -54,6 +57,11 @@ public class ConversationRoom extends DynamicPanelTemplate {
     @Override
     protected void updatePanel() {
         conversationChattingPanel.updateConversationChattingPanel();
+        conversationDTO = conversationChattingPanel.getConversationDTO();
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(conversationDTO.getContactProfilePicture(),
+                ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelW"),
+                ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelH"));
+        contactProfilePictureLabel.setIcon(profilePictureIcon);
     }
 
     @Override
@@ -66,6 +74,13 @@ public class ConversationRoom extends DynamicPanelTemplate {
         chosenFileLabelMessage = ConfigManager.getString(configIdentifier, "chosenFileLabelM");
         chosenFileLabel = new JLabel(chosenFileLabelMessage);
         fileChoosingBackground = new JLabel();
+
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(conversationDTO.getContactProfilePicture(),
+                ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelW"),
+                ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelH"));
+        contactProfilePictureLabel = new JLabel(profilePictureIcon);
+        contactNameLabel = new JLabel(conversationDTO.getContactName(), SwingConstants.RIGHT);
+
         conversationChattingPanel = new ConversationChattingPanel(configIdentifier, conversationDTO, clientController,
                 offlineModeDTO, contactId);
         scrollPane = new JScrollPane(conversationChattingPanel);
@@ -112,6 +127,18 @@ public class ConversationRoom extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "downloadMediaButtonW"),
                 ConfigManager.getInt(configIdentifier, "downloadMediaButtonH"));
         add(downloadMediaButton);
+
+        contactProfilePictureLabel.setBounds(ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelX"),
+                ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelY"),
+                ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelW"),
+                ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelH"));
+        add(contactProfilePictureLabel);
+
+        contactNameLabel.setBounds(ConfigManager.getInt(configIdentifier, "contactNameLabelX"),
+                ConfigManager.getInt(configIdentifier, "contactNameLabelY"),
+                ConfigManager.getInt(configIdentifier, "contactNameLabelW"),
+                ConfigManager.getInt(configIdentifier, "contactNameLabelH"));
+        add(contactNameLabel);
 
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         JScrollBar scrollBar = scrollPane.getVerticalScrollBar();

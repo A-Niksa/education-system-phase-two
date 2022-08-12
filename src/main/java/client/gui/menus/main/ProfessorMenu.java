@@ -18,9 +18,7 @@ import client.gui.menus.standing.deputies.TemporaryStandingMaster;
 import client.gui.menus.standing.professors.TemporaryStandingManager;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.main.DateStringFormatter;
-import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.AcademicRole;
-import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -83,7 +81,9 @@ public class ProfessorMenu extends MainMenu {
         lastLoginTime.setText(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
         nameLabel.setText(offlineModeDTO.getName());
         emailAddressLabel.setText(offlineModeDTO.getEmailAddress());
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(offlineModeDTO.getProfilePicture(),
+                ConfigManager.getInt(ConfigFileIdentifier.GUI_MAIN, "profilePictureW"),
+                ConfigManager.getInt(ConfigFileIdentifier.GUI_MAIN, "profilePictureH"));
         profilePicture.setIcon(profilePictureIcon);
         role = offlineModeDTO.getAcademicRole();
     }

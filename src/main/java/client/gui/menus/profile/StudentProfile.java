@@ -6,8 +6,6 @@ import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ImageParsingUtils;
 import server.network.clienthandling.logicutils.general.EnumStringMappingUtils;
-import shareables.models.pojos.users.User;
-import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -66,7 +64,9 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
 
     @Override
     protected void initializeComponents() {
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(offlineModeDTO.getProfilePicture(),
+                ConfigManager.getInt(configIdentifier, "profilePictureW"),
+                ConfigManager.getInt(configIdentifier, "profilePictureH"));
         profilePicture = new JLabel(profilePictureIcon);
         nameMessage = ConfigManager.getString(configIdentifier, "nameMessage");
         name = new JLabel(nameMessage + offlineModeDTO.getName());
@@ -204,7 +204,9 @@ public class StudentProfile extends DynamicPanelTemplate implements OfflinePanel
 
     @Override
     protected void updatePanel() {
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(offlineModeDTO.getProfilePicture(),
+                ConfigManager.getInt(configIdentifier, "profilePictureW"),
+                ConfigManager.getInt(configIdentifier, "profilePictureH"));
         profilePicture.setIcon(profilePictureIcon);
         name.setText(nameMessage + offlineModeDTO.getName());
         nationalId.setText(nationalIdMessage + offlineModeDTO.getNationalId());

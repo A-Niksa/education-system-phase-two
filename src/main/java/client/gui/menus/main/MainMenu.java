@@ -6,8 +6,6 @@ import client.gui.OfflinePanel;
 import client.gui.menus.login.LoginMenu;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.main.DateStringFormatter;
-import client.locallogic.main.UserGetter;
-import shareables.models.pojos.users.User;
 import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
@@ -145,7 +143,9 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
     private void initializeComponents() {
         lastLoginTimePrompt = ConfigManager.getString(configIdentifier, "lastLoginTimeMessage");
         lastLoginTime = new JLabel(lastLoginTimePrompt + DateStringFormatter.format(offlineModeDTO.getLastLogin()));
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(offlineModeDTO.getProfilePicture(),
+                ConfigManager.getInt(configIdentifier, "profilePictureW"),
+                ConfigManager.getInt(configIdentifier, "profilePictureH"));
         profilePicture = new JLabel(profilePictureIcon);
         nameLabel = new JLabel(offlineModeDTO.getName());
         emailAddressLabel = new JLabel(offlineModeDTO.getEmailAddress());

@@ -3,13 +3,9 @@ package client.gui.menus.profile;
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.OfflinePanel;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ImageParsingUtils;
-import client.locallogic.profile.DepartmentGetter;
 import server.network.clienthandling.logicutils.general.EnumStringMappingUtils;
-import shareables.models.pojos.users.User;
-import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -61,7 +57,9 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
 
     @Override
     protected void initializeComponents() {
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(offlineModeDTO.getProfilePicture(),
+                ConfigManager.getInt(configIdentifier, "profilePictureW"),
+                ConfigManager.getInt(configIdentifier, "profilePictureH"));
         profilePicture = new JLabel(profilePictureIcon);
         labelsList = new ArrayList<>();
         nameMessage = ConfigManager.getString(configIdentifier, "nameMessage");
@@ -192,7 +190,9 @@ public class ProfessorProfile extends DynamicPanelTemplate implements OfflinePan
 
     @Override
     protected void updatePanel() {
-        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToImageIcon(offlineModeDTO.getProfilePicture());
+        ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(offlineModeDTO.getProfilePicture(),
+                ConfigManager.getInt(configIdentifier, "profilePictureW"),
+                ConfigManager.getInt(configIdentifier, "profilePictureH"));
         profilePicture.setIcon(profilePictureIcon);
         name.setText(nameMessage + offlineModeDTO.getName());
         nationalId.setText(nationalIdMessage + offlineModeDTO.getNationalId());
