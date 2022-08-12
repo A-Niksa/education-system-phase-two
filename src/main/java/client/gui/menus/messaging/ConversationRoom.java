@@ -193,7 +193,10 @@ public class ConversationRoom extends DynamicPanelTemplate {
 
                 MasterLogger.clientInfo(clientController.getId(), "Media file sent to contact (ID: " +
                         contactId + ")", "connectListeners", getClass());
+
                 conversationChattingPanel.updateConversationChattingPanel();
+                chosenFile = null;
+                chosenFileLabel.setText(chosenFileLabelMessage);
             }
         });
 
