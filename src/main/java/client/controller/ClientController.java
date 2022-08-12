@@ -2,6 +2,7 @@ package client.controller;
 
 import client.network.Client;
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.requests.Request;
@@ -423,6 +424,27 @@ public class ClientController {
     public Response getContactConversationDTO(String username, String contactId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_CONTACT_CONVERSATION_DTO,
                 new StringObjectMap("username", username), new StringObjectMap("contactId", contactId));
+        return client.sendAndListen(request);
+    }
+
+    public Response sendTextMessage(String senderId, String receiverId, String messageText) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SEND_TEXT_MESSAGE,
+                new StringObjectMap("senderId", senderId), new StringObjectMap("receiverId", receiverId),
+                new StringObjectMap("messageText", messageText));
+        return client.sendAndListen(request);
+    }
+
+    public Response sendMediaMessage(String senderId, String receiverId, MediaFile messageMedia) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SEND_MEDIA_MESSAGE,
+                new StringObjectMap("senderId", senderId), new StringObjectMap("receiverId", receiverId),
+                new StringObjectMap("messageMedia", messageMedia));
+        return client.sendAndListen(request);
+    }
+
+    public Response downloadMediaFromConversation(String username, String contactId, String mediaId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DOWNLOAD_MEDIA_FROM_CONVERSATION,
+                new StringObjectMap("username", username), new StringObjectMap("contactId", contactId),
+                new StringObjectMap("mediaId", mediaId));
         return client.sendAndListen(request);
     }
 

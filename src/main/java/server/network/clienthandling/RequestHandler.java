@@ -10,6 +10,8 @@ import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtil
 import server.network.clienthandling.logicutils.general.OfflineModeUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
+import server.network.clienthandling.logicutils.messaging.DownloadingUtils;
+import server.network.clienthandling.logicutils.messaging.MessageSendingUtils;
 import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
 import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
@@ -18,6 +20,7 @@ import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
+import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.students.DegreeLevel;
@@ -91,13 +94,13 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void changeEmailAddress(ClientHandler clientHandler, Request request) {
-        User user = LoginUtils.getUser(databaseManager, (String) request.get("username"));
+        User user = IdentifiableFetchingUtils.getUser(databaseManager, (String) request.get("username"));
         user.setEmailAddress((String) request.get("newEmailAddress"));
         responseHandler.requestSuccessful(clientHandler);
     }
 
     public void changePhoneNumber(ClientHandler clientHandler, Request request) {
-        User user = LoginUtils.getUser(databaseManager, (String) request.get("username"));
+        User user = IdentifiableFetchingUtils.getUser(databaseManager, (String) request.get("username"));
         user.setPhoneNumber((String) request.get("newPhoneNumber"));
         responseHandler.requestSuccessful(clientHandler);
     }
@@ -537,5 +540,34 @@ public class RequestHandler { // TODO: logging, perhaps?
         ConversationDTO conversationDTO = MessengerViewUtils.getContactConversationDTO(databaseManager,
                 userId, contactId); // sorts conversations per time as well
         responseHandler.conversationDTOAcquired(clientHandler, conversationDTO);
+    }
+
+    public void sendTextMessage(ClientHandler clientHandler, Request request) {
+        String senderId = (String) request.get("senderId");
+        String receiverId = (String) request.get("receiverId");
+        String messageText = (String) request.get("messageText");
+        MessageSendingUtils.sendTextMessage(databaseManager, senderId, receiverId, messageText);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void sendMediaMessage(ClientHandler clientHandler, Request request) {
+        String senderId = (String) request.get("senderId");
+        String receiverId = (String) request.get("receiverId");
+        MediaFile messageMedia = (MediaFile) request.get("messageMedia");
+        MessageSendingUtils.sendMediaMessage(databaseManager, senderId, receiverId, messageMedia);
+        responseHandler.requestSuccessful(clientHandler);
+
+    }
+
+    public void downloadMediaFromConversation(ClientHandler clientHandler, Request request) {
+        String userId = (String) request.get("username");
+        String contactId = (String) request.get("contactId");
+        String mediaId = (String) request.get("mediaId");
+        if (!DownloadingUtils.mediaFileExistsInConversation(databaseManager, userId, contactId, mediaId)) {
+            responseHandler.mediaFileDoesNotExist(clientHandler);
+        } else {
+            MediaFile mediaFile = DownloadingUtils.getMediaFileFromConversation(databaseManager, userId, contactId, mediaId);
+            responseHandler.mediaFileAcquired(clientHandler, mediaFile);
+        }
     }
 }

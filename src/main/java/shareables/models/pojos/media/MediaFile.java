@@ -7,6 +7,7 @@ import shareables.models.idgeneration.IdentifiableWithTime;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -14,7 +15,7 @@ import java.nio.file.Paths;
     property = "type"
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = MP3.class),
+        @JsonSubTypes.Type(value = SoundFile.class),
         @JsonSubTypes.Type(value = PDF.class),
         @JsonSubTypes.Type(value = Picture.class),
         @JsonSubTypes.Type(value = Video.class)
@@ -55,5 +56,15 @@ public abstract class MediaFile extends IdentifiableWithTime {
 
     public byte[] getEncodedBytes() {
         return encodedBytes;
+    }
+
+    // TODO: to be removed
+    @Override
+    public String toString() {
+        return "MediaFile{" +
+                "mediaFileIdentifier=" + mediaFileIdentifier +
+                ", path='" + path + '\'' +
+                ", encodedBytes=" + Arrays.toString(encodedBytes) +
+                '}';
     }
 }

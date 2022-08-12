@@ -1,6 +1,7 @@
 package server.network.clienthandling;
 
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
+import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.messaging.Conversation;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -284,6 +285,18 @@ public class ResponseHandler {
     public void conversationDTOAcquired(ClientHandler clientHandler, ConversationDTO conversationDTO) {
         Response response = new Response(ResponseStatus.OK);
         response.put("conversationDTO", conversationDTO);
+        clientHandler.respond(response);
+    }
+
+    public void mediaFileAcquired(ClientHandler clientHandler, MediaFile mediaFile) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("mediaFile", mediaFile);
+        clientHandler.respond(response);
+    }
+
+    public void mediaFileDoesNotExist(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "mediaFileDoesNotExist"));
         clientHandler.respond(response);
     }
 }

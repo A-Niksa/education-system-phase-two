@@ -35,7 +35,7 @@ public class ConversationChattingPanel extends JPanel {
         updateConversationTextArea();
     }
 
-    private void updateConversationChattingPanel() {
+    public void updateConversationChattingPanel() {
         updateConversationDTO();
         updateConversationTextArea();
     }

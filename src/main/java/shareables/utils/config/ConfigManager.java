@@ -32,6 +32,10 @@ public class ConfigManager {
         return Double.parseDouble(getString(configFileIdentifier, configKeyString));
     }
 
+    public static long getLong(ConfigFileIdentifier configFileIdentifier, String configKeyString) {
+        return Long.parseLong(getString(configFileIdentifier, configKeyString));
+    }
+
     public static int getInt(ConfigFileIdentifier configFileIdentifier, String configKeyString) {
         return Integer.parseInt(getString(configFileIdentifier, configKeyString));
     }

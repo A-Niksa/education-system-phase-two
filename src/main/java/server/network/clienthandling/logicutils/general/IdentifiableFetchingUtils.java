@@ -10,12 +10,16 @@ import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 
 public class IdentifiableFetchingUtils {
+    public static User getUser(DatabaseManager databaseManager, String studentId) {
+        return LoginUtils.getUser(databaseManager, studentId);
+    }
+
     public static Student getStudent(DatabaseManager databaseManager, String studentId) {
-        return (Student) LoginUtils.getUser(databaseManager, studentId);
+        return (Student) getUser(databaseManager, studentId);
     }
 
     public static Professor getProfessor(DatabaseManager databaseManager, String professorId) {
-        return (Professor) LoginUtils.getUser(databaseManager, professorId);
+        return (Professor) getUser(databaseManager, professorId);
     }
 
     public static String getDepartmentDeputyId(DatabaseManager databaseManager, String departmentId) {
@@ -31,7 +35,7 @@ public class IdentifiableFetchingUtils {
     }
 
     public static String getName(DatabaseManager databaseManager, String userId) {
-        User user = LoginUtils.getUser(databaseManager, userId);
+        User user = getUser(databaseManager, userId);
         return user.fetchName();
     }
 }

@@ -212,6 +212,15 @@ public class RequestMapper {
             case GET_CONTACT_CONVERSATION_DTO:
                 requestHandler.getContactConversationDTO(clientHandler, request);
                 break;
+            case SEND_TEXT_MESSAGE:
+                requestHandler.sendTextMessage(clientHandler, request);
+                break;
+            case SEND_MEDIA_MESSAGE:
+                requestHandler.sendMediaMessage(clientHandler, request);
+                break;
+            case DOWNLOAD_MEDIA_FROM_CONVERSATION:
+                requestHandler.downloadMediaFromConversation(clientHandler, request);
+                break;
         }
     }
 }

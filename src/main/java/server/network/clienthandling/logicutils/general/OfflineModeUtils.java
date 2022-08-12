@@ -16,7 +16,7 @@ import shareables.utils.config.ConfigManager;
 public class OfflineModeUtils {
     public static OfflineModeDTO getOfflineModeDTO(DatabaseManager databaseManager, String userId) {
         OfflineModeDTO offlineModeDTO = new OfflineModeDTO();
-        User user = LoginUtils.getUser(databaseManager, userId);
+        User user = IdentifiableFetchingUtils.getUser(databaseManager, userId);
         // TODO: adding admin and mr mohseni
         if (user.getUserIdentifier() == UserIdentifier.STUDENT) {
             Student student = (Student) user;

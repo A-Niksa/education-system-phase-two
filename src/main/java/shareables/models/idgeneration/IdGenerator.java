@@ -50,8 +50,9 @@ public class IdGenerator {
 
     public String nextId(IdentifiableWithTime identifiableWithTime, SequentialIdGenerator sequentialIdGenerator) {
         LocalDateTime currentDate = identifiableWithTime.getDate();
-        String sequentialId = String.format("%04d", sequentialIdGenerator.nextSequentialId());
-        return currentDate.toEpochSecond(ZoneOffset.UTC) + sequentialId;
+        String currentDateId = String.format("%03d", currentDate.toEpochSecond(ZoneOffset.UTC) % 1000);
+        String sequentialId = String.format("%03d", sequentialIdGenerator.nextSequentialId());
+        return currentDateId + sequentialId;
     }
 
     public String nextId(IdentifiableWithTime identifiableWithTime) {

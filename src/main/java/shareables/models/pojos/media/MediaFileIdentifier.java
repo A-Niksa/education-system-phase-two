@@ -1,7 +1,7 @@
 package shareables.models.pojos.media;
 
 public enum MediaFileIdentifier {
-    MP3("MP3 File"),
+    SOUND_FILE("Sound File"),
     PDF("PDF File"),
     PICTURE("Picture"),
     VIDEO("Video");

@@ -46,7 +46,7 @@ public class MessengerViewUtils {
         conversationThumbnailDTO.setLastMessageText(lastMessage.getMessageText());
         conversationThumbnailDTO.setDateOfLastMessage(lastMessage.getMessageDate());
 
-        User sender = LoginUtils.getUser(databaseManager, lastMessage.getSenderId());
+        User sender = IdentifiableFetchingUtils.getUser(databaseManager, lastMessage.getSenderId());
         conversationThumbnailDTO.setLastMessageSenderName(sender.fetchName());
 
         String contactId = conversation.getConversingUserIds().stream()
@@ -54,7 +54,7 @@ public class MessengerViewUtils {
                 .findAny().orElse(null);
         conversationThumbnailDTO.setContactId(contactId);
 
-        User contact = LoginUtils.getUser(databaseManager, contactId);
+        User contact = IdentifiableFetchingUtils.getUser(databaseManager, contactId);
         conversationThumbnailDTO.setContactName(contact.fetchName());
 
         if (lastMessage.getMessageType() == MessageType.MEDIA) {
@@ -71,13 +71,13 @@ public class MessengerViewUtils {
     }
 
     private static List<Conversation> getUserConversations(DatabaseManager databaseManager, String username) {
-        User user = LoginUtils.getUser(databaseManager, username);
+        User user = IdentifiableFetchingUtils.getUser(databaseManager, username);
         return user.getMessenger().getConversations();
     }
 
     public static ConversationDTO getContactConversationDTO(DatabaseManager databaseManager, String userId, String contactId) {
         Conversation conversation = getContactConversation(databaseManager, userId, contactId);
-        User contact = LoginUtils.getUser(databaseManager, contactId);
+        User contact = IdentifiableFetchingUtils.getUser(databaseManager, contactId);
         ConversationDTO conversationDTO = new ConversationDTO();
         conversationDTO.setContactId(contactId);
         conversationDTO.setContactName(contact.fetchName());
@@ -89,7 +89,7 @@ public class MessengerViewUtils {
     /**
      * sorts the conversation messages per time in addition to fetching the conversation itself
      */
-    private static Conversation getContactConversation(DatabaseManager databaseManager, String userId, String contactId) {
+    public static Conversation getContactConversation(DatabaseManager databaseManager, String userId, String contactId) {
         List<Conversation> userConversations = getUserConversations(databaseManager, userId);
         Conversation contactConversation = userConversations.stream()
                 .filter(conversation -> conversation.getConversingUserIds().contains(contactId))
