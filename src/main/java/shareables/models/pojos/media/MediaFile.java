@@ -2,6 +2,7 @@ package shareables.models.pojos.media;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import shareables.models.idgeneration.IdentifiableWithTime;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,7 +19,7 @@ import java.nio.file.Paths;
         @JsonSubTypes.Type(value = Picture.class),
         @JsonSubTypes.Type(value = Video.class)
 })
-public abstract class MediaFile {
+public abstract class MediaFile extends IdentifiableWithTime {
     private MediaFileIdentifier mediaFileIdentifier;
     private String path;
     private byte[] encodedBytes;

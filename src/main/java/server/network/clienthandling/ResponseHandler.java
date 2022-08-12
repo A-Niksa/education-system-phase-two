@@ -1,6 +1,7 @@
 package server.network.clienthandling;
 
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
+import shareables.models.pojos.messaging.Conversation;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.*;
@@ -277,6 +278,12 @@ public class ResponseHandler {
                                                   List<ConversationThumbnailDTO> conversationThumbnailDTOs) {
         Response response = new Response(ResponseStatus.OK);
         response.put("conversationThumbnailDTOs", conversationThumbnailDTOs);
+        clientHandler.respond(response);
+    }
+
+    public void conversationDTOAcquired(ClientHandler clientHandler, ConversationDTO conversationDTO) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("conversationDTO", conversationDTO);
         clientHandler.respond(response);
     }
 }

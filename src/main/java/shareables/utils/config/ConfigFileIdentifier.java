@@ -38,7 +38,8 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_PROFESSOR_EDITOR("guiProfessorEditorPath"),
     GUI_PANEL_TEMPLATE("guiPanelTemplatePath"),
     GUI_OFFLINE_PANEL("guiOfflinePanelPath"),
-    GUI_MESSENGER_VIEW("guiMessengerViewPath");
+    GUI_MESSENGER_VIEW("guiMessengerViewPath"),
+    GUI_CONVERSATION_ROOM("guiConversationRoomPath");
 
     private String configKeyString;
 

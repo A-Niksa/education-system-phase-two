@@ -6,6 +6,7 @@ import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
+import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import server.network.clienthandling.logicutils.general.OfflineModeUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
@@ -528,5 +529,13 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<ConversationThumbnailDTO> conversationThumbnailDTOs = MessengerViewUtils.getConversationThumbnailDTOs(
                 databaseManager, (String) request.get("username"));
         responseHandler.conversationThumbnailDTOsAcquired(clientHandler, conversationThumbnailDTOs);
+    }
+
+    public void getContactConversationDTO(ClientHandler clientHandler, Request request) {
+        String userId = (String) request.get("username");
+        String contactId = (String) request.get("contactId");
+        ConversationDTO conversationDTO = MessengerViewUtils.getContactConversationDTO(databaseManager,
+                userId, contactId); // sorts conversations per time as well
+        responseHandler.conversationDTOAcquired(clientHandler, conversationDTO);
     }
 }

@@ -420,6 +420,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getContactConversationDTO(String username, String contactId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_CONTACT_CONVERSATION_DTO,
+                new StringObjectMap("username", username), new StringObjectMap("contactId", contactId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

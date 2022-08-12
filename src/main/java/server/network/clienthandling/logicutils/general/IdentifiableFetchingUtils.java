@@ -5,6 +5,7 @@ import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
+import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 
@@ -27,5 +28,10 @@ public class IdentifiableFetchingUtils {
 
     public static Course getCourse(DatabaseManager databaseManager, String courseId) {
         return (Course) databaseManager.get(DatasetIdentifier.COURSES, courseId);
+    }
+
+    public static String getName(DatabaseManager databaseManager, String userId) {
+        User user = LoginUtils.getUser(databaseManager, userId);
+        return user.fetchName();
     }
 }
