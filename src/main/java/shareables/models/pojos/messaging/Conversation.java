@@ -21,6 +21,11 @@ public class Conversation extends IdentifiableWithTime {
         initializeId(sequentialIdGenerator);
     }
 
+    @Override
+    public void initializeId(SequentialIdGenerator sequentialIdGenerator) {
+        id = idGenerator.nextId(this, sequentialIdGenerator);
+    }
+
     public void addToMessages(Message message) {
         messages.add(message);
     }
@@ -56,5 +61,18 @@ public class Conversation extends IdentifiableWithTime {
 
     public void setConversingUserIds(List<String> conversingUserIds) {
         this.conversingUserIds = conversingUserIds;
+    }
+
+    public static SequentialIdGenerator getSequentialIdGenerator() {
+        return sequentialIdGenerator;
+    }
+
+    // TODO: should be removed ->
+    @Override
+    public String toString() {
+        return "Conversation{" +
+                "messages=" + messages +
+                ", conversingUserIds=" + conversingUserIds +
+                '}';
     }
 }

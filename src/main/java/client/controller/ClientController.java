@@ -456,6 +456,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getProfessorContactProfileDTOs(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_CONTACT_PROFILE_DTOS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
     public Response checkIfContactIdsExist(ArrayList<String> contactIds) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.CHECK_IF_CONTACT_IDS_EXIST,
                 new StringObjectMap("contactIds", contactIds));
@@ -488,7 +494,6 @@ public class ClientController {
                 new StringObjectMap("username", username), new StringObjectMap("notificationId", notificationId));
         return client.sendAndListen(request);
     }
-
 
     public boolean isClientOnline() {
         return client.isOnline();

@@ -7,6 +7,8 @@ import client.gui.menus.enrolment.management.CoursesListManager;
 import client.gui.menus.enrolment.management.ProfessorsListManager;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
+import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
+import client.gui.menus.notifications.NotificationsView;
 import client.gui.menus.profile.ProfessorProfile;
 import client.gui.menus.services.ProfessorExamsList;
 import client.gui.menus.services.ProfessorWeeklySchedule;
@@ -304,6 +306,26 @@ public class ProfessorMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
+
+        messengerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the messenger",
+                        "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
+
+        notificationsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the notifications section",
+                        "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new NotificationsView(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

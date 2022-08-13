@@ -95,24 +95,10 @@ public class MessengerViewUtils {
         Conversation contactConversation = userConversations.stream()
                 .filter(conversation -> conversation.getConversingUserIds().contains(contactId))
                 .findAny().orElse(null);
-        if (contactConversation == null) return startNewConversation(databaseManager, userId, contactId);
+        if (contactConversation == null) return null;
 
         contactConversation.getMessages().sort(messageComparator);
 
         return contactConversation;
-    }
-
-    private static Conversation startNewConversation(DatabaseManager databaseManager, String userId, String contactId) {
-        Conversation conversation = new Conversation();
-        conversation.addToConversingUserIds(userId);
-        conversation.addToConversingUserIds(contactId);
-
-        Message startingMessage = new Message();
-        startingMessage.setSenderId(userId);
-        startingMessage.setMessageType(MessageType.TEXT);
-        startingMessage.setMessageText(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "startedConversation"));
-        conversation.addToMessages(startingMessage);
-
-        return conversation;
     }
 }

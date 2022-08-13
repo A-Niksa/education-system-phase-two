@@ -179,7 +179,10 @@ public class ConversationStartingRoom extends DynamicPanelTemplate {
             stopPanelLoop();
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {
                 mainFrame.setCurrentPanel(new StudentConversationStarter(mainFrame, mainMenu, offlineModeDTO));
-            } // TODO: add to this
+            } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
+                mainFrame.setCurrentPanel(new ProfessorConversationStarter(mainFrame, mainMenu, offlineModeDTO));
+            }
+            // TODO: add to this
         });
     }
 }

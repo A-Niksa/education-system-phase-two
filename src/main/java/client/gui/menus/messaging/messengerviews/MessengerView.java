@@ -37,6 +37,9 @@ public abstract class MessengerView extends DynamicPanelTemplate {
         String[] previousConversationThumbnailTexts = Arrays.copyOf(conversationThumbnailTexts,
                 conversationThumbnailTexts.length);
         updateConversationThumbnailTexts();
+        Arrays.stream(previousConversationThumbnailTexts)
+                .filter(e -> !arrayContains(conversationThumbnailTexts, e))
+                .forEach(e -> listModel.removeElement(e));
         Arrays.stream(conversationThumbnailTexts)
                 .filter(e -> !arrayContains(previousConversationThumbnailTexts, e))
                 .forEach(e -> listModel.addElement(e));

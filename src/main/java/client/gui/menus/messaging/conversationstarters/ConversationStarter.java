@@ -3,6 +3,7 @@ package client.gui.menus.messaging.conversationstarters;
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
+import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.messaging.ContactManager;
@@ -144,7 +145,11 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
                     offlineModeDTO.getId());
             if (response == null) return;
 
-            if (response.getUnsolicitedMessage() != null) {
+            if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
+                        getClass());
+                return;
+            } else if (response.getUnsolicitedMessage() != null) {
                 JOptionPane.showMessageDialog(mainFrame, response.getUnsolicitedMessage());
                 MasterLogger.clientInfo(clientController.getId(), response.getUnsolicitedMessage(),
                         "connectListeners", getClass());
@@ -181,7 +186,10 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
             stopPanelLoop();
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {
                 mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO));
-            } // TODO: add to this
+            } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
+                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
+            }
+            // TODO: add to this
         });
 
     }

@@ -3,19 +3,109 @@
   "departmentId" : "2",
   "profilePicture" : {
     "type" : "Picture",
-    "id" : "145002",
-    "date" : "2022-08-13T17:35:45.5324179",
+    "id" : "798002",
+    "date" : "2022-08-13T19:26:38.6133417",
     "mediaFileIdentifier" : "PICTURE",
     "path" : "src/main/resources/images/profilepictures/default.png",
     "encodedBytes" : "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABQVBMVEXk5ufl5+jj5ebi5OXh4+Xh4+TV2NrIzM6/w8a6v8K6v8G9wsTEycvR1Nbe4eLS1te8wcOwtrmts7avtLe3vL/Lz9Hg4uPl5uff4uOutLfZ3N3l5+ff4eK2u77X2tzBxsi3vb/b3t/M0NLAxMfc3+C1u72ttLevtbjJzc/h5OXg4uS5vsGxtrnX2tvY29zKztDP0tTAxce7wMLGysy5vsDGys29wcTi5ebS1dfEyMqzubvP09S+w8W0ubzc3uDDyMq8wcSzubyzuLvO0tTDx8nj5ufN0dOxt7rU19na3d7Izc/N0NLm5+jQ09XCx8m+w8bCxsnHy83Bxci2vL+1u76/xMbN0dLb3d/V2dq0uryts7fT1tjj5efW2dve4OLFycy2vL7Q1Nayt7rMz9Hd3+G4vcDFycuyuLqwtbja3N7////iYmsgAAAAAWJLR0RqJWKVDgAAAAd0SU1FB+YEFgwNAt6BGrkAAAHYSURBVEjH7dbXVsJAEAZgJkixoGQEdSQWLKBSROwdsWADKzbEXt//BQzo8ZhkMbPe6fG///hnl90kDsd//vMbA6A46xQH/IS63B5vfUNjk69Z2iotfhWraQ0E26Ta2zuaVKSPIPk7QxJY89LXYFc3v9vZg2TUvWF2dx+Zg/1Oph0YjFh01MccfMhqCf3DLDsSQyumeIJTDcm4wBKOsnCKhHiMMzV4UIjTrP0eF+MJF8OGJsU4xsEwKsZT0xw80yrEs5wlh8Jzwu2eZx0xZUE09+JSO+u/8kUFUy9zqB5Xxlq90sm8GJDIWnCQWaxnVTXZNe511rO+kTNMvjbCt3o2Y/TBEReDEr3VdWt99bmKVQPjW3K08roAVzI1tL3j1mBX6rEN61oy7yl4M+m0f2//IJVoVoD3A+AYSB0exQk/Q+px8eRUsefgPCucE16YDxhlx0p1NvyyXFSFN1L30UxJ+ebRD1fXuRq0ytX9cO3ycixC3wZvSrWsbwXJJpjbUYT29i5iZyuH5l60XneWY3Wdt+KHR9uZ3xM5t1ztyyem1dddNN0TSD5zLdFLyVTNL65UG3dcC1zwMWUNHxlQViUskeEzAVZligk9hkW/bkglYdpuqbBeHn8zb6D7jbiDIL7dAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA0LTIyVDEyOjEyOjUzKzAwOjAw2RhYDQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wNC0yMlQxMjoxMjo1MyswMDowMKhF4LEAAAAASUVORK5CYII="
   },
   "messenger" : {
     "ownerId" : "80202303",
-    "conversations" : [ ]
+    "conversations" : [ {
+      "id" : "418851016",
+      "date" : "2022-08-13T19:27:31.3370536",
+      "messages" : [ {
+        "id" : "1660418851",
+        "date" : "2022-08-13T19:27:31.3290726",
+        "senderId" : "80201201",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "KAMRAN",
+        "messageDate" : "2022-08-13T19:27:31.3290726"
+      }, {
+        "id" : "1660418863",
+        "date" : "2022-08-13T19:27:43.8528432",
+        "senderId" : "80201201",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "BA TOAM",
+        "messageDate" : "2022-08-13T19:27:43.8528432"
+      }, {
+        "id" : "1660419098",
+        "date" : "2022-08-13T19:31:38.727572",
+        "senderId" : "80201201",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "HIHI",
+        "messageDate" : "2022-08-13T19:31:38.727572"
+      }, {
+        "id" : "1660419220",
+        "date" : "2022-08-13T19:33:40.0029464",
+        "senderId" : "80201201",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "HOMIE",
+        "messageDate" : "2022-08-13T19:33:40.0029464"
+      }, {
+        "id" : "1660419278",
+        "date" : "2022-08-13T19:34:38.0226391",
+        "senderId" : "80202303",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Man ra bebar",
+        "messageDate" : "2022-08-13T19:34:38.0226391"
+      }, {
+        "id" : "1660419283",
+        "date" : "2022-08-13T19:34:43.4147578",
+        "senderId" : "80201201",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Bia baba",
+        "messageDate" : "2022-08-13T19:34:43.4147578"
+      }, {
+        "id" : "1660419291",
+        "date" : "2022-08-13T19:34:51.2397921",
+        "senderId" : "80202303",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Nalahat Shodam",
+        "messageDate" : "2022-08-13T19:34:51.2397921"
+      }, {
+        "id" : "1660419375",
+        "date" : "2022-08-13T19:36:15.1186291",
+        "senderId" : "80201201",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "KAMRAAAAAN",
+        "messageDate" : "2022-08-13T19:36:15.1186291"
+      }, {
+        "id" : "1660419380",
+        "date" : "2022-08-13T19:36:20.627157",
+        "senderId" : "80202303",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "BIAAA",
+        "messageDate" : "2022-08-13T19:36:20.627157"
+      } ],
+      "conversingUserIds" : [ "80201201", "80202303" ]
+    } ]
   },
   "notificationsManager" : {
     "ownerId" : "80202303",
-    "notifications" : [ ]
+    "notifications" : [ {
+      "id" : "1660418838",
+      "date" : "2022-08-13T19:27:18.8758157",
+      "notificationDate" : "2022-08-13T19:27:18.8758157",
+      "isSentByUser" : true,
+      "senderId" : "80201201",
+      "receiverId" : "80202303",
+      "isRequest" : true,
+      "notificationIdentifier" : "MESSAGE_REQUEST",
+      "notificationText" : "Add me to your messenger",
+      "notificationStatus" : "ACCEPTED",
+      "sentByUser" : true,
+      "request" : true
+    } ]
   },
   "userIdentifier" : "PROFESSOR",
   "nationalId" : "015053903",
@@ -24,7 +114,7 @@
   "phoneNumber" : "09125730021",
   "emailAddress" : "rahvar@sharif.edu",
   "password" : "1234",
-  "lastLogin" : null,
+  "lastLogin" : "2022-08-13T19:36:00.5470035",
   "adviseeStudentIds" : [ ],
   "officeNumber" : "205",
   "academicLevel" : "FULL",

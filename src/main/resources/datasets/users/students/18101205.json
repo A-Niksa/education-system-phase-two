@@ -3,8 +3,8 @@
   "departmentId" : "1",
   "profilePicture" : {
     "type" : "Picture",
-    "id" : "145004",
-    "date" : "2022-08-13T17:35:45.5183703",
+    "id" : "394004",
+    "date" : "2022-08-13T19:36:34.1190348",
     "mediaFileIdentifier" : "PICTURE",
     "path" : "src/main/resources/images/profilepictures/default.png",
     "encodedBytes" : "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABQVBMVEXk5ufl5+jj5ebi5OXh4+Xh4+TV2NrIzM6/w8a6v8K6v8G9wsTEycvR1Nbe4eLS1te8wcOwtrmts7avtLe3vL/Lz9Hg4uPl5uff4uOutLfZ3N3l5+ff4eK2u77X2tzBxsi3vb/b3t/M0NLAxMfc3+C1u72ttLevtbjJzc/h5OXg4uS5vsGxtrnX2tvY29zKztDP0tTAxce7wMLGysy5vsDGys29wcTi5ebS1dfEyMqzubvP09S+w8W0ubzc3uDDyMq8wcSzubyzuLvO0tTDx8nj5ufN0dOxt7rU19na3d7Izc/N0NLm5+jQ09XCx8m+w8bCxsnHy83Bxci2vL+1u76/xMbN0dLb3d/V2dq0uryts7fT1tjj5efW2dve4OLFycy2vL7Q1Nayt7rMz9Hd3+G4vcDFycuyuLqwtbja3N7////iYmsgAAAAAWJLR0RqJWKVDgAAAAd0SU1FB+YEFgwNAt6BGrkAAAHYSURBVEjH7dbXVsJAEAZgJkixoGQEdSQWLKBSROwdsWADKzbEXt//BQzo8ZhkMbPe6fG///hnl90kDsd//vMbA6A46xQH/IS63B5vfUNjk69Z2iotfhWraQ0E26Ta2zuaVKSPIPk7QxJY89LXYFc3v9vZg2TUvWF2dx+Zg/1Oph0YjFh01MccfMhqCf3DLDsSQyumeIJTDcm4wBKOsnCKhHiMMzV4UIjTrP0eF+MJF8OGJsU4xsEwKsZT0xw80yrEs5wlh8Jzwu2eZx0xZUE09+JSO+u/8kUFUy9zqB5Xxlq90sm8GJDIWnCQWaxnVTXZNe511rO+kTNMvjbCt3o2Y/TBEReDEr3VdWt99bmKVQPjW3K08roAVzI1tL3j1mBX6rEN61oy7yl4M+m0f2//IJVoVoD3A+AYSB0exQk/Q+px8eRUsefgPCucE16YDxhlx0p1NvyyXFSFN1L30UxJ+ebRD1fXuRq0ytX9cO3ycixC3wZvSrWsbwXJJpjbUYT29i5iZyuH5l60XneWY3Wdt+KHR9uZ3xM5t1ztyyem1dddNN0TSD5zLdFLyVTNL65UG3dcC1zwMWUNHxlQViUskeEzAVZligk9hkW/bkglYdpuqbBeHn8zb6D7jbiDIL7dAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA0LTIyVDEyOjEyOjUzKzAwOjAw2RhYDQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wNC0yMlQxMjoxMjo1MyswMDowMKhF4LEAAAAASUVORK5CYII="
@@ -12,64 +12,38 @@
   "messenger" : {
     "ownerId" : "18101205",
     "conversations" : [ {
-      "id" : "412145000",
-      "date" : "2022-08-13T17:35:45.5330293",
+      "id" : "419394000",
+      "date" : "2022-08-13T19:36:34.1346609",
       "messages" : [ {
-        "id" : "1660412145",
-        "date" : "2022-08-13T17:35:45.5344356",
+        "id" : "1660419394",
+        "date" : "2022-08-13T19:36:34.1346609",
         "senderId" : "18101205",
         "messageType" : "TEXT",
         "messageMediaFile" : null,
         "messageText" : "Certainly sir there is much surrounding this problem",
-        "messageDate" : "2022-08-13T17:35:45.5344356"
+        "messageDate" : "2022-08-13T19:36:34.1346609"
       }, {
-        "id" : "1660412145",
-        "date" : "2022-08-13T17:35:45.5354643",
+        "id" : "1660419394",
+        "date" : "2022-08-13T19:36:34.1346609",
         "senderId" : "19101101",
         "messageType" : "MEDIA",
         "messageMediaFile" : {
           "type" : "Picture",
-          "id" : "145001",
-          "date" : "2022-08-13T17:35:45.5354643",
+          "id" : "394001",
+          "date" : "2022-08-13T19:36:34.1346609",
           "mediaFileIdentifier" : "PICTURE",
           "path" : "src/main/resources/images/profilepictures/default.png",
           "encodedBytes" : "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABQVBMVEXk5ufl5+jj5ebi5OXh4+Xh4+TV2NrIzM6/w8a6v8K6v8G9wsTEycvR1Nbe4eLS1te8wcOwtrmts7avtLe3vL/Lz9Hg4uPl5uff4uOutLfZ3N3l5+ff4eK2u77X2tzBxsi3vb/b3t/M0NLAxMfc3+C1u72ttLevtbjJzc/h5OXg4uS5vsGxtrnX2tvY29zKztDP0tTAxce7wMLGysy5vsDGys29wcTi5ebS1dfEyMqzubvP09S+w8W0ubzc3uDDyMq8wcSzubyzuLvO0tTDx8nj5ufN0dOxt7rU19na3d7Izc/N0NLm5+jQ09XCx8m+w8bCxsnHy83Bxci2vL+1u76/xMbN0dLb3d/V2dq0uryts7fT1tjj5efW2dve4OLFycy2vL7Q1Nayt7rMz9Hd3+G4vcDFycuyuLqwtbja3N7////iYmsgAAAAAWJLR0RqJWKVDgAAAAd0SU1FB+YEFgwNAt6BGrkAAAHYSURBVEjH7dbXVsJAEAZgJkixoGQEdSQWLKBSROwdsWADKzbEXt//BQzo8ZhkMbPe6fG///hnl90kDsd//vMbA6A46xQH/IS63B5vfUNjk69Z2iotfhWraQ0E26Ta2zuaVKSPIPk7QxJY89LXYFc3v9vZg2TUvWF2dx+Zg/1Oph0YjFh01MccfMhqCf3DLDsSQyumeIJTDcm4wBKOsnCKhHiMMzV4UIjTrP0eF+MJF8OGJsU4xsEwKsZT0xw80yrEs5wlh8Jzwu2eZx0xZUE09+JSO+u/8kUFUy9zqB5Xxlq90sm8GJDIWnCQWaxnVTXZNe511rO+kTNMvjbCt3o2Y/TBEReDEr3VdWt99bmKVQPjW3K08roAVzI1tL3j1mBX6rEN61oy7yl4M+m0f2//IJVoVoD3A+AYSB0exQk/Q+px8eRUsefgPCucE16YDxhlx0p1NvyyXFSFN1L30UxJ+ebRD1fXuRq0ytX9cO3ycixC3wZvSrWsbwXJJpjbUYT29i5iZyuH5l60XneWY3Wdt+KHR9uZ3xM5t1ztyyem1dddNN0TSD5zLdFLyVTNL65UG3dcC1zwMWUNHxlQViUskeEzAVZligk9hkW/bkglYdpuqbBeHn8zb6D7jbiDIL7dAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA0LTIyVDEyOjEyOjUzKzAwOjAw2RhYDQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wNC0yMlQxMjoxMjo1MyswMDowMKhF4LEAAAAASUVORK5CYII="
         },
         "messageText" : null,
-        "messageDate" : "2022-08-13T17:35:45.5354643"
+        "messageDate" : "2022-08-13T19:36:34.1346609"
       } ],
       "conversingUserIds" : [ "19101101", "18101205" ]
     } ]
   },
   "notificationsManager" : {
     "ownerId" : "18101205",
-    "notifications" : [ {
-      "id" : "1660412222",
-      "date" : "2022-08-13T17:37:02.1208968",
-      "notificationDate" : "2022-08-13T17:37:02.1208968",
-      "isSentByUser" : true,
-      "senderId" : "19101101",
-      "receiverId" : "18101205",
-      "isRequest" : true,
-      "notificationIdentifier" : "MESSAGE_REQUEST",
-      "notificationText" : "Add me to your messenger",
-      "notificationStatus" : "DECLINED",
-      "sentByUser" : true,
-      "request" : true
-    }, {
-      "id" : "1660412233",
-      "date" : "2022-08-13T17:37:13.2945269",
-      "notificationDate" : "2022-08-13T17:37:13.2945269",
-      "isSentByUser" : true,
-      "senderId" : "19101101",
-      "receiverId" : "18101205",
-      "isRequest" : true,
-      "notificationIdentifier" : "MESSAGE_REQUEST",
-      "notificationText" : "Add me to your messenger",
-      "notificationStatus" : "ACCEPTED",
-      "sentByUser" : true,
-      "request" : true
-    } ]
+    "notifications" : [ ]
   },
   "userIdentifier" : "STUDENT",
   "nationalId" : "0152902202",
@@ -78,7 +52,7 @@
   "phoneNumber" : "09192302110",
   "emailAddress" : "rezaei@sharif.edu",
   "password" : "5678",
-  "lastLogin" : "2022-08-13T17:36:14.8268415",
+  "lastLogin" : null,
   "advisingProfessorId" : null,
   "transcript" : {
     "courseIdScoreMap" : { },

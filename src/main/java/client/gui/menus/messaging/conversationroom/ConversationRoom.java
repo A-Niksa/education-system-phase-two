@@ -3,7 +3,7 @@ package client.gui.menus.messaging.conversationroom;
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
-import client.gui.menus.messaging.messengerviews.MessengerView;
+import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
 import client.gui.utils.ErrorUtils;
 import client.gui.utils.ImageParsingUtils;
@@ -172,6 +172,8 @@ public class ConversationRoom extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Sent a message to contact (ID: " +
                                 conversationDTO.getContactId() + ")", "connectListeners", getClass());
                 conversationChattingPanel.updateConversationChattingPanel();
+
+                messageField.setText(ConfigManager.getString(configIdentifier, "messageFieldM"));
             }
         });
 
@@ -258,7 +260,10 @@ public class ConversationRoom extends DynamicPanelTemplate {
             stopPanelLoop();
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {
                 mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO));
-            } // TODO: add to this
+            } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
+                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
+            }
+            // TODO: add to this
         });
     }
 }

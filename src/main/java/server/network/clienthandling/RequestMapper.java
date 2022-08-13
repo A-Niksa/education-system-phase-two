@@ -224,6 +224,9 @@ public class RequestMapper {
             case GET_STUDENT_CONTACT_PROFILE_DTOS:
                 requestHandler.getStudentContactProfileDTOs(clientHandler, request);
                 break;
+            case GET_PROFESSOR_CONTACT_PROFILE_DTOS:
+                requestHandler.getProfessorContactProfileDTOs(clientHandler, request);
+                break;
             case CHECK_IF_CONTACT_IDS_EXIST:
                 requestHandler.checkIfContactIdsExist(clientHandler, request);
                 break;

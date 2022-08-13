@@ -12,6 +12,7 @@ import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
 import server.network.clienthandling.logicutils.messaging.MessageNotificationManager;
 import server.network.clienthandling.logicutils.messaging.contactfetching.ContactFetchingUtils;
+import server.network.clienthandling.logicutils.messaging.contactfetching.ProfessorContactFetchingUtils;
 import server.network.clienthandling.logicutils.messaging.contactfetching.StudentContactFetchingUtils;
 import server.network.clienthandling.logicutils.messaging.DownloadingUtils;
 import server.network.clienthandling.logicutils.messaging.MessageSendingUtils;
@@ -592,6 +593,12 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler.contactProfileDTOsAcquired(clientHandler, contactProfileDTOs);
     }
 
+    public void getProfessorContactProfileDTOs(ClientHandler clientHandler, Request request) {
+        List<ContactProfileDTO> contactProfileDTOs = ProfessorContactFetchingUtils.getProfessorContactProfileDTOs(databaseManager,
+                (String) request.get("username"));
+        responseHandler.contactProfileDTOsAcquired(clientHandler, contactProfileDTOs);
+    }
+
     public void checkIfContactIdsExist(ClientHandler clientHandler, Request request) {
         List<String> contactIds = (ArrayList<String>) request.get("contactIds");
         if (ContactFetchingUtils.contactIdsExist(databaseManager, contactIds)) {
@@ -605,12 +612,16 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<String> contactIds = (ArrayList<String>) request.get("contactIds");
         List<ContactProfileDTO> contactProfileDTOs = (ArrayList<ContactProfileDTO>) request.get("contactProfileDTOs");
         String userId = (String) request.get("username");
-        boolean sentMessageNotifications = MessageNotificationManager.sendMessageNotificationIfNecessary(databaseManager,
-                contactIds, contactProfileDTOs, userId);
-        if (sentMessageNotifications) {
-            responseHandler.messageNotificationsSent(clientHandler);
+        if (contactIds.contains(userId)) {
+            responseHandler.cannotContactOnesSelf(clientHandler);
         } else {
-            responseHandler.requestSuccessful(clientHandler);
+            boolean sentMessageNotifications = MessageNotificationManager.sendMessageNotificationIfNecessary(databaseManager,
+                    contactIds, contactProfileDTOs, userId);
+            if (sentMessageNotifications) {
+                responseHandler.messageNotificationsSent(clientHandler);
+            } else {
+                responseHandler.requestSuccessful(clientHandler);
+            }
         }
     }
 
@@ -621,7 +632,6 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void acceptNotification(ClientHandler clientHandler, Request request) {
-        // TODO
         String userId = (String) request.get("username");
         String notificationId = (String) request.get("notificationId");
         Notification notification = NotificationManagementUtils.getNotification(databaseManager, userId, notificationId);

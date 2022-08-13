@@ -343,4 +343,10 @@ public class ResponseHandler {
                 "notificationHasAlreadyBeenDecidedOn"));
         clientHandler.respond(response);
     }
+
+    public void cannotContactOnesSelf(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "cannotContactOnesSelf"));
+        clientHandler.respond(response);
+    }
 }
