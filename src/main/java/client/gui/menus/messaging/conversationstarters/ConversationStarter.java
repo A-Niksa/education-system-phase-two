@@ -37,6 +37,8 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
         configIdentifier = ConfigFileIdentifier.GUI_CONVERSATION_STARTER;
         contactProfileDTOs = new ArrayList<>();
         contactManager = new ContactManager();
+        updateContactProfileDTOs();
+        updateContactProfileTexts();
         initializeColumns();
         setTableData();
         drawPanel();
@@ -44,8 +46,8 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
 
     private void initializeColumns() {
         columns = new String[3];
-        columns[0] = ConfigManager.getString(configIdentifier, "nameCol");
-        columns[1] = ConfigManager.getString(configIdentifier, "idCol");
+        columns[0] = ConfigManager.getString(configIdentifier, "idCol");
+        columns[1] = ConfigManager.getString(configIdentifier, "nameCol");
         columns[2] = ConfigManager.getString(configIdentifier, "descriptionCol");
     }
 
@@ -62,7 +64,6 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
-        if (contactProfileDTOs.isEmpty()) return;
         updateContactProfileDTOs();
         updateContactProfileTexts();
         setTableData();
@@ -81,7 +82,7 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
     @Override
     protected void initializeComponents() {
         startConversationWithEveryoneButton = new JButton(ConfigManager.getString(configIdentifier,
-                "startConversationButtonWithEveryoneM"));
+                "startConversationWithEveryoneButtonM"));
         startConversationButton = new JButton(ConfigManager.getString(configIdentifier, "startConversationButtonM"));
         tableModel = new DefaultTableModel(data, columns);
         contactsTable = new JTable(tableModel);
@@ -121,9 +122,15 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
     @Override
     protected void connectListeners() {
         startConversationButton.addActionListener(actionEvent -> {
-            String[] chosenContactIdsArray = JOptionPane.showInputDialog(mainFrame,
-                    ConfigManager.getString(ConfigFileIdentifier.TEXTS, "chooseContactIds")).split(", ");
-            ArrayList<String> chosenContactIds = new ArrayList<>(List.of(chosenContactIdsArray));
+            String chosenContactIdsString = JOptionPane.showInputDialog(mainFrame,
+                    ConfigManager.getString(ConfigFileIdentifier.TEXTS, "chooseContactIds"));
+            if (chosenContactIdsString == null) return;
+
+            ArrayList<String> chosenContactIds = new ArrayList<>(
+                    List.of(
+                            chosenContactIdsString.split(", ")
+                    )
+            );
 
             Response response = clientController.checkIfContactIdsExist(chosenContactIds);
             if (response == null) return;
@@ -147,17 +154,24 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
             MasterLogger.clientInfo(clientController.getId(), "Opted to start a conversation",
                     "connectListeners", getClass());
             stopPanelLoop();
-            mainFrame.setCurrentPanel(new ConversationStarterMessenger(mainFrame, mainMenu, offlineModeDTO,
+            mainFrame.setCurrentPanel(new ConversationStartingRoom(mainFrame, mainMenu, offlineModeDTO,
                     chosenContactIds));
         });
 
         startConversationWithEveryoneButton.addActionListener(actionEvent -> {
             ArrayList<String> allContactIds = contactManager.getAllContactIds(contactProfileDTOs);
+            if (allContactIds.isEmpty()) {
+                String errorMessage = ConfigManager.getString(ConfigFileIdentifier.TEXTS,  "youHaveNoContacts");
+
+                JOptionPane.showMessageDialog(mainFrame, errorMessage);
+                MasterLogger.clientError(clientController.getId(), errorMessage, "connectListeners", getClass());
+                return;
+            }
 
             MasterLogger.clientInfo(clientController.getId(), "Opted to start a conversation with everyone",
                     "connectListeners", getClass());
             stopPanelLoop();
-            mainFrame.setCurrentPanel(new ConversationStarterMessenger(mainFrame, mainMenu, offlineModeDTO,
+            mainFrame.setCurrentPanel(new ConversationStartingRoom(mainFrame, mainMenu, offlineModeDTO,
                     allContactIds));
         });
 

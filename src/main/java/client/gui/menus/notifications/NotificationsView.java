@@ -37,10 +37,12 @@ public class NotificationsView extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
-        if (notificationDTOs.isEmpty()) return;
         updateNotificationDTOs();
         String[] previousNotificationTexts = Arrays.copyOf(notificationTexts, notificationTexts.length);
         updateNotificationTexts();
+        Arrays.stream(previousNotificationTexts)
+                .filter(e -> !arrayContains(notificationTexts, e))
+                .forEach(e -> listModel.removeElement(e));
         Arrays.stream(notificationTexts)
                 .filter(e -> !arrayContains(previousNotificationTexts, e))
                 .forEach(e -> listModel.addElement(e));
@@ -104,7 +106,7 @@ public class NotificationsView extends DynamicPanelTemplate {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedNotificationId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem);
+            String selectedNotificationId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " | ");
             Response response = clientController.acceptNotification(offlineModeDTO.getId(), selectedNotificationId);
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
@@ -121,7 +123,7 @@ public class NotificationsView extends DynamicPanelTemplate {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedNotificationId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem);
+            String selectedNotificationId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " | ");
             Response response = clientController.declineNotification(offlineModeDTO.getId(), selectedNotificationId);
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",

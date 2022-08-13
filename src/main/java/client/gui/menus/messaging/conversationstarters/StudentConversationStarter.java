@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class StudentConversationStarter extends ConversationStarter {
     public StudentConversationStarter(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override

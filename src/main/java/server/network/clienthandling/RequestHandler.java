@@ -25,6 +25,7 @@ import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.media.MediaFile;
+import shareables.models.pojos.notifications.Notification;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.students.DegreeLevel;
@@ -621,5 +622,33 @@ public class RequestHandler { // TODO: logging, perhaps?
 
     public void acceptNotification(ClientHandler clientHandler, Request request) {
         // TODO
+        String userId = (String) request.get("username");
+        String notificationId = (String) request.get("notificationId");
+        Notification notification = NotificationManagementUtils.getNotification(databaseManager, userId, notificationId);
+
+        if (!NotificationManagementUtils.notificationIsRequest(notification)) {
+            responseHandler.notificationIsNotRequest(clientHandler);
+        } else if (NotificationManagementUtils.notificationHasAlreadyBeenDecidedOn(notification)) {
+            responseHandler.notificationHasAlreadyBeenDecidedOn(clientHandler);
+        } else {
+            NotificationManagementUtils.acceptNotification(databaseManager, notification);
+            responseHandler.requestSuccessful(clientHandler);
+        }
+    }
+
+    public void declineNotification(ClientHandler clientHandler, Request request) {
+        // TODO
+        String userId = (String) request.get("username");
+        String notificationId = (String) request.get("notificationId");
+        Notification notification = NotificationManagementUtils.getNotification(databaseManager, userId, notificationId);
+
+        if (!NotificationManagementUtils.notificationIsRequest(notification)) {
+            responseHandler.notificationIsNotRequest(clientHandler);
+        } else if (NotificationManagementUtils.notificationHasAlreadyBeenDecidedOn(notification)) {
+            responseHandler.notificationHasAlreadyBeenDecidedOn(clientHandler);
+        } else {
+            NotificationManagementUtils.declineNotification(databaseManager, notification);
+            responseHandler.requestSuccessful(clientHandler);
+        }
     }
 }

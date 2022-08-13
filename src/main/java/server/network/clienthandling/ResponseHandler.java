@@ -331,4 +331,16 @@ public class ResponseHandler {
         response.put("notificationDTOs", notificationDTOs);
         clientHandler.respond(response);
     }
+
+    public void notificationIsNotRequest(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "notificationIsNotRequest"));
+        clientHandler.respond(response);
+    }
+
+    public void notificationHasAlreadyBeenDecidedOn(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "notificationHasAlreadyBeenDecidedOn"));
+        clientHandler.respond(response);
+    }
 }

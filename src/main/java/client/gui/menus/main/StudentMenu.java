@@ -4,6 +4,7 @@ import client.gui.MainFrame;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
+import client.gui.menus.notifications.NotificationsView;
 import client.gui.menus.profile.StudentProfile;
 import client.gui.menus.services.StudentExamsList;
 import client.gui.menus.services.StudentWeeklySchedule;
@@ -330,6 +331,16 @@ public class StudentMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
+
+        notificationsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the notifications section",
+                        "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new NotificationsView(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

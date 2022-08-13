@@ -5,6 +5,7 @@ import server.network.clienthandling.logicutils.comparators.NotificationDTOCompa
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.notifications.Notification;
 import shareables.models.pojos.notifications.NotificationStatus;
+import shareables.models.pojos.notifications.NotificationsManager;
 import shareables.models.pojos.users.User;
 import shareables.network.DTOs.notifications.NotificationDTO;
 
@@ -47,5 +48,42 @@ public class NotificationManagementUtils {
         notificationDTO.setNotificationText(notification.getNotificationText());
         notificationDTO.setNotificationStatus(notification.getNotificationStatus());
         return notificationDTO;
+    }
+
+    public static Notification getNotification(DatabaseManager databaseManager, String userId, String notificationId) {
+        User user = IdentifiableFetchingUtils.getUser(databaseManager, userId);
+        List<Notification> notifications = user.getNotificationsManager().getNotifications();
+        return notifications.stream()
+                .filter(notification -> notification.getId().equals(notificationId))
+                .findAny().orElse(null);
+    }
+
+    public static boolean notificationIsRequest(Notification notification) {
+        return notification.isRequest();
+    }
+
+    public static boolean notificationHasAlreadyBeenDecidedOn(Notification notification) {
+        return notification.getNotificationStatus() != NotificationStatus.SUBMITTED;
+    }
+
+    public static void acceptNotification(DatabaseManager databaseManager, Notification notification) {
+        notification.setNotificationStatus(NotificationStatus.ACCEPTED);
+        updateNotificationInNotificationManagerOfSender(databaseManager, notification);
+    }
+
+    public static void declineNotification(DatabaseManager databaseManager, Notification notification) {
+        notification.setNotificationStatus(NotificationStatus.DECLINED);
+        updateNotificationInNotificationManagerOfSender(databaseManager, notification);
+    }
+
+    private static void updateNotificationInNotificationManagerOfSender(DatabaseManager databaseManager,
+                                                                        Notification notification) {
+        Notification senderNotification = getNotification(databaseManager, notification.getSenderId(), notification.getId());
+
+        NotificationsManager senderNotificationsManager = IdentifiableFetchingUtils.getUser(databaseManager,
+                notification.getSenderId()).getNotificationsManager();
+
+        senderNotificationsManager.removeFromNotifications(senderNotification.getId());
+        senderNotificationsManager.addToNotifications(senderNotification);
     }
 }

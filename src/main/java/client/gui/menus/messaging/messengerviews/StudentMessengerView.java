@@ -3,6 +3,7 @@ package client.gui.menus.messaging.messengerviews;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.menus.messaging.conversationroom.ConversationRoom;
+import client.gui.menus.messaging.conversationstarters.StudentConversationStarter;
 import client.locallogic.messaging.ThumbnailIdParser;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
@@ -26,7 +27,7 @@ public class StudentMessengerView extends MessengerView {
             MasterLogger.clientInfo(clientController.getId(), "Opened new conversation creator",
                     "connectListeners", getClass());
             stopPanelLoop();
-            // TODO
+            mainFrame.setCurrentPanel(new StudentConversationStarter(mainFrame, mainMenu, offlineModeDTO));
         });
 
         openConversationButton.addActionListener(actionEvent -> {
@@ -39,7 +40,7 @@ public class StudentMessengerView extends MessengerView {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedContactId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem);
+            String selectedContactId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
             Response response = clientController.getContactConversationDTO(offlineModeDTO.getId(), selectedContactId);
             if (response == null) return;
             if (response.getResponseStatus() == ResponseStatus.OK) {

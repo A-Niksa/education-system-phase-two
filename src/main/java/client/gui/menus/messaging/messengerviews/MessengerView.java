@@ -33,7 +33,6 @@ public abstract class MessengerView extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
-        if (conversationThumbnailDTOs.isEmpty()) return;
         updateConversationThumbnailDTOs();
         String[] previousConversationThumbnailTexts = Arrays.copyOf(conversationThumbnailTexts,
                 conversationThumbnailTexts.length);

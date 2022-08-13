@@ -41,7 +41,7 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_MESSENGER_VIEW("guiMessengerViewPath"),
     GUI_CONVERSATION_ROOM("guiConversationRoomPath"),
     GUI_CONVERSATION_STARTER("guiConversationStarterPath"),
-    GUI_CONVERSATION_STARTER_MESSENGER("guiConversationStarterMessengerPath"),
+    GUI_CONVERSATION_STARTING_ROOM("guiConversationStartingRoomPath"),
     GUI_NOTIFICATIONS_VIEW("guiNotificationsViewPath");
 
     private String configKeyString;

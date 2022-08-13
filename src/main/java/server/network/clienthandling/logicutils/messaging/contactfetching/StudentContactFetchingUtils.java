@@ -45,6 +45,7 @@ public class StudentContactFetchingUtils {
                 .filter(fetchedStudent -> fetchedStudent.getStudentStatus() != StudentStatus.DROPPED_OUT)
                 .filter(fetchedStudent -> fetchedStudent.getDegreeLevel() == student.getDegreeLevel())
                 .filter(fetchedStudent -> fetchedStudent.getYearOfEntry() == student.getYearOfEntry())
+                .filter(fetchedStudent -> !fetchedStudent.getId().equals(studentId))
                 .forEach(peer -> {
                     peerContactProfileDTOs.add(initializeContactProfileDTO(peer, false));
                 });

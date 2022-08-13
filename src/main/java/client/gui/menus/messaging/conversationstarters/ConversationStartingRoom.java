@@ -17,9 +17,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ConversationStarterMessenger extends DynamicPanelTemplate {
+public class ConversationStartingRoom extends DynamicPanelTemplate {
     private JButton goBackButton;
     private JButton sendMessageButton;
     private JButton sendFileButton;
@@ -32,11 +31,11 @@ public class ConversationStarterMessenger extends DynamicPanelTemplate {
     private MediaFileParser mediaFileParser;
     private ArrayList<String> chosenContactIds;
 
-    public ConversationStarterMessenger(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
-                                        ArrayList<String> chosenContactIds) {
+    public ConversationStartingRoom(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO,
+                                    ArrayList<String> chosenContactIds) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.chosenContactIds = chosenContactIds;
-        configIdentifier = ConfigFileIdentifier.GUI_CONVERSATION_STARTER_MESSENGER;
+        configIdentifier = ConfigFileIdentifier.GUI_CONVERSATION_STARTING_ROOM;
         mediaFileParser = new MediaFileParser();
         drawPanel();
         startPinging(offlineModeDTO.getId());
