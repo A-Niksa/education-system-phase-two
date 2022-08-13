@@ -10,9 +10,13 @@ import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtil
 import server.network.clienthandling.logicutils.general.OfflineModeUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
+import server.network.clienthandling.logicutils.messaging.MessageNotificationManager;
+import server.network.clienthandling.logicutils.messaging.contactfetching.ContactFetchingUtils;
+import server.network.clienthandling.logicutils.messaging.contactfetching.StudentContactFetchingUtils;
 import server.network.clienthandling.logicutils.messaging.DownloadingUtils;
 import server.network.clienthandling.logicutils.messaging.MessageSendingUtils;
 import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
+import server.network.clienthandling.logicutils.notifications.NotificationManagementUtils;
 import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
@@ -28,9 +32,19 @@ import shareables.models.pojos.users.students.Student;
 import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 import shareables.network.DTOs.*;
+import shareables.network.DTOs.academicrequests.RequestDTO;
+import shareables.network.DTOs.messaging.ContactProfileDTO;
+import shareables.network.DTOs.messaging.ConversationDTO;
+import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
+import shareables.network.DTOs.notifications.NotificationDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
+import shareables.network.DTOs.standing.CourseStatsDTO;
+import shareables.network.DTOs.standing.TranscriptDTO;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -544,17 +558,17 @@ public class RequestHandler { // TODO: logging, perhaps?
 
     public void sendTextMessage(ClientHandler clientHandler, Request request) {
         String senderId = (String) request.get("senderId");
-        String receiverId = (String) request.get("receiverId");
+        List<String> receiverIds = (ArrayList<String>) request.get("receiverIds");
         String messageText = (String) request.get("messageText");
-        MessageSendingUtils.sendTextMessage(databaseManager, senderId, receiverId, messageText);
+        MessageSendingUtils.sendTextMessage(databaseManager, senderId, receiverIds, messageText);
         responseHandler.requestSuccessful(clientHandler);
     }
 
     public void sendMediaMessage(ClientHandler clientHandler, Request request) {
         String senderId = (String) request.get("senderId");
-        String receiverId = (String) request.get("receiverId");
+        List<String> receiverIds = (ArrayList<String>) request.get("receiverIds");
         MediaFile messageMedia = (MediaFile) request.get("messageMedia");
-        MessageSendingUtils.sendMediaMessage(databaseManager, senderId, receiverId, messageMedia);
+        MessageSendingUtils.sendMediaMessage(databaseManager, senderId, receiverIds, messageMedia);
         responseHandler.requestSuccessful(clientHandler);
 
     }
@@ -569,5 +583,43 @@ public class RequestHandler { // TODO: logging, perhaps?
             MediaFile mediaFile = DownloadingUtils.getMediaFileFromConversation(databaseManager, userId, contactId, mediaId);
             responseHandler.mediaFileAcquired(clientHandler, mediaFile);
         }
+    }
+
+    public void getStudentContactProfileDTOs(ClientHandler clientHandler, Request request) {
+        List<ContactProfileDTO> contactProfileDTOs = StudentContactFetchingUtils.getStudentContactProfileDTOs(databaseManager,
+                (String) request.get("username"));
+        responseHandler.contactProfileDTOsAcquired(clientHandler, contactProfileDTOs);
+    }
+
+    public void checkIfContactIdsExist(ClientHandler clientHandler, Request request) {
+        List<String> contactIds = (ArrayList<String>) request.get("contactIds");
+        if (ContactFetchingUtils.contactIdsExist(databaseManager, contactIds)) {
+            responseHandler.requestSuccessful(clientHandler);
+        } else {
+            responseHandler.atLeastOneContactDoesNotExist(clientHandler);
+        }
+    }
+
+    public void sendMessageNotificationsIfNecessary(ClientHandler clientHandler, Request request) {
+        List<String> contactIds = (ArrayList<String>) request.get("contactIds");
+        List<ContactProfileDTO> contactProfileDTOs = (ArrayList<ContactProfileDTO>) request.get("contactProfileDTOs");
+        String userId = (String) request.get("username");
+        boolean sentMessageNotifications = MessageNotificationManager.sendMessageNotificationIfNecessary(databaseManager,
+                contactIds, contactProfileDTOs, userId);
+        if (sentMessageNotifications) {
+            responseHandler.messageNotificationsSent(clientHandler);
+        } else {
+            responseHandler.requestSuccessful(clientHandler);
+        }
+    }
+
+    public void getNotificationDTOs(ClientHandler clientHandler, Request request) {
+        List<NotificationDTO> notificationDTOs = NotificationManagementUtils.getNotificationDTOs(databaseManager,
+                (String) request.get("username"));
+        responseHandler.notificationDTOsAcquired(clientHandler, notificationDTOs);
+    }
+
+    public void acceptNotification(ClientHandler clientHandler, Request request) {
+        // TODO
     }
 }

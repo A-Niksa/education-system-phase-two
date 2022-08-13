@@ -8,8 +8,8 @@ import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.academicrequests.MinorRequest;
 import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.MinorRequestDTO;
-import shareables.network.DTOs.RequestDTO;
+import shareables.network.DTOs.academicrequests.MinorRequestDTO;
+import shareables.network.DTOs.academicrequests.RequestDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 

@@ -4,13 +4,12 @@ import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.comparators.ConversationThumbnailDTOComparator;
 import server.network.clienthandling.logicutils.comparators.MessageComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
-import server.network.clienthandling.logicutils.login.LoginUtils;
 import shareables.models.pojos.messaging.Conversation;
 import shareables.models.pojos.messaging.Message;
 import shareables.models.pojos.messaging.MessageType;
 import shareables.models.pojos.users.User;
-import shareables.network.DTOs.ConversationDTO;
-import shareables.network.DTOs.ConversationThumbnailDTO;
+import shareables.network.DTOs.messaging.ConversationDTO;
+import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
 
 import java.util.ArrayList;
 import java.util.Collections;

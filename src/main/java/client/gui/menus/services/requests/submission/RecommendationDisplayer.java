@@ -1,8 +1,7 @@
 package client.gui.menus.services.requests.submission;
 
 import client.controller.ClientController;
-import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;

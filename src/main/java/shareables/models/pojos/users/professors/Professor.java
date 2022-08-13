@@ -33,6 +33,7 @@ public class Professor extends User {
         isTemporaryDeputy = false; // default value
         initializeId();
         initializeMessenger(id);
+        initializeNotificationsManager(id);
     }
 
     public void addToAdviseeStudentIds(String studentId) {

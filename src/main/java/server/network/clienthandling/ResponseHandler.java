@@ -2,10 +2,18 @@ package server.network.clienthandling;
 
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.media.MediaFile;
-import shareables.models.pojos.messaging.Conversation;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.*;
+import shareables.network.DTOs.academicrequests.RequestDTO;
+import shareables.network.DTOs.messaging.ContactProfileDTO;
+import shareables.network.DTOs.messaging.ConversationDTO;
+import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
+import shareables.network.DTOs.notifications.NotificationDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
+import shareables.network.DTOs.standing.CourseStatsDTO;
+import shareables.network.DTOs.standing.TranscriptDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -297,6 +305,30 @@ public class ResponseHandler {
     public void mediaFileDoesNotExist(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "mediaFileDoesNotExist"));
+        clientHandler.respond(response);
+    }
+
+    public void contactProfileDTOsAcquired(ClientHandler clientHandler, List<ContactProfileDTO> contactProfileDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("contactProfileDTOs", contactProfileDTOs);
+        clientHandler.respond(response);
+    }
+
+    public void atLeastOneContactDoesNotExist(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "atLeastOneContactDoesNotExist"));
+        clientHandler.respond(response);
+    }
+
+    public void messageNotificationsSent(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "messageNotificationsSent"));
+        clientHandler.respond(response);
+    }
+
+    public void notificationDTOsAcquired(ClientHandler clientHandler, List<NotificationDTO> notificationDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("notificationDTOs", notificationDTOs);
         clientHandler.respond(response);
     }
 }

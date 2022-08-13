@@ -4,11 +4,13 @@ import client.network.Client;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.students.DegreeLevel;
+import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;
 import shareables.network.responses.Response;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -427,16 +429,16 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
-    public Response sendTextMessage(String senderId, String receiverId, String messageText) {
+    public Response sendTextMessage(String senderId, ArrayList<String> receiverIds, String messageText) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.SEND_TEXT_MESSAGE,
-                new StringObjectMap("senderId", senderId), new StringObjectMap("receiverId", receiverId),
+                new StringObjectMap("senderId", senderId), new StringObjectMap("receiverIds", receiverIds),
                 new StringObjectMap("messageText", messageText));
         return client.sendAndListen(request);
     }
 
-    public Response sendMediaMessage(String senderId, String receiverId, MediaFile messageMedia) {
+    public Response sendMediaMessage(String senderId, ArrayList<String> receiverIds, MediaFile messageMedia) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.SEND_MEDIA_MESSAGE,
-                new StringObjectMap("senderId", senderId), new StringObjectMap("receiverId", receiverId),
+                new StringObjectMap("senderId", senderId), new StringObjectMap("receiverIds", receiverIds),
                 new StringObjectMap("messageMedia", messageMedia));
         return client.sendAndListen(request);
     }
@@ -447,6 +449,46 @@ public class ClientController {
                 new StringObjectMap("mediaId", mediaId));
         return client.sendAndListen(request);
     }
+
+    public Response getStudentContactProfileDTOs(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_CONTACT_PROFILE_DTOS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response checkIfContactIdsExist(ArrayList<String> contactIds) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHECK_IF_CONTACT_IDS_EXIST,
+                new StringObjectMap("contactIds", contactIds));
+        return client.sendAndListen(request);
+    }
+
+    public Response sendMessageNotificationsIfNecessary(ArrayList<String> contactIds,
+                                                        ArrayList<ContactProfileDTO> contactProfileDTOs, String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SEND_MESSAGE_NOTIFICATIONS_IF_NECESSARY,
+                new StringObjectMap("contactIds", contactIds),
+                new StringObjectMap("contactProfileDTOs", contactProfileDTOs),
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response getNotificationDTOs(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_NOTIFICATION_DTOS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response acceptNotification(String username, String notificationId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ACCEPT_NOTIFICATION,
+                new StringObjectMap("username", username), new StringObjectMap("notificationId", notificationId));
+        return client.sendAndListen(request);
+    }
+
+    public Response declineNotification(String username, String notificationId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DECLINE_NOTIFICATION,
+                new StringObjectMap("username", username), new StringObjectMap("notificationId", notificationId));
+        return client.sendAndListen(request);
+    }
+
 
     public boolean isClientOnline() {
         return client.isOnline();

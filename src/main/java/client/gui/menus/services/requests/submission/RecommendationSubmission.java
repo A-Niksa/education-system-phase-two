@@ -2,14 +2,10 @@ package client.gui.menus.services.requests.submission;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
-import shareables.models.pojos.users.User;
-import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.ProfessorDTO;
-import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;

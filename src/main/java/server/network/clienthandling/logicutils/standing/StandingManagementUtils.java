@@ -9,9 +9,8 @@ import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.abstractions.Score;
 import shareables.models.pojos.abstractions.Transcript;
-import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
 
 import java.util.ArrayList;
 import java.util.Collections;

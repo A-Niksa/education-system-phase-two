@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Messenger { // note that this class is a pojo and has no direct messaging capability
-    private static SequentialIdGenerator sequentialIdGenerator;
-
     private String ownerId;
     private List<Conversation> conversations;
 

@@ -8,8 +8,8 @@ import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.abstractions.Score;
 import shareables.models.pojos.abstractions.Transcript;
 import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.CourseScoreDTO;
-import shareables.network.DTOs.TranscriptDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
+import shareables.network.DTOs.standing.TranscriptDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 

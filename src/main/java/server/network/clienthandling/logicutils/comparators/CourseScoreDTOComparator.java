@@ -1,6 +1,6 @@
 package server.network.clienthandling.logicutils.comparators;
 
-import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
 
 import java.util.Comparator;
 

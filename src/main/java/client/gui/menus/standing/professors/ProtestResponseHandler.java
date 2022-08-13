@@ -2,7 +2,7 @@ package client.gui.menus.standing.professors;
 
 import client.controller.ClientController;
 import client.gui.MainFrame;
-import shareables.network.DTOs.CourseScoreDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;

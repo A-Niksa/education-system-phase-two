@@ -2,16 +2,13 @@ package client.gui.menus.addition;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.addition.BlueprintGenerator;
-import shareables.models.pojos.users.professors.Professor;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.responses.Response;
-import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -20,7 +17,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class ProfessorAdder extends DynamicPanelTemplate {
     private JTextField passwordField;

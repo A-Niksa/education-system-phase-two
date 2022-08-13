@@ -1,7 +1,6 @@
 package server.network.clienthandling.logicutils.general;
 
 import server.database.management.DatabaseManager;
-import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.DepartmentName;
@@ -9,7 +8,7 @@ import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
@@ -31,6 +30,7 @@ public class OfflineModeUtils {
     private static void initializeStudentOfflineModeDTO(DatabaseManager databaseManager, Student student,
                                                         OfflineModeDTO offlineModeDTO) {
         initializeCommonUserFields(student, offlineModeDTO);
+        offlineModeDTO.setUserIdentifier(UserIdentifier.STUDENT);
         offlineModeDTO.setStudentStatus(student.getStudentStatus());
         // TODO: handling null case in front:
         offlineModeDTO.setEnrolmentTime(student.getEnrolmentTime());
@@ -64,6 +64,7 @@ public class OfflineModeUtils {
     private static void initializeProfessorOfflineModeDTO(DatabaseManager databaseManager, Professor professor,
                                                           OfflineModeDTO offlineModeDTO) {
         initializeCommonUserFields(professor, offlineModeDTO);
+        offlineModeDTO.setUserIdentifier(UserIdentifier.PROFESSOR);
         offlineModeDTO.setOfficeNumber(professor.getOfficeNumber());
         offlineModeDTO.setAcademicLevel(professor.getAcademicLevel());
         offlineModeDTO.setAcademicRole(professor.getAcademicRole());

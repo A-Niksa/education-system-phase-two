@@ -2,12 +2,10 @@ package client.gui.menus.enrolment.editing;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.addition.ProfessorAdderOfDean;
 import client.gui.menus.enrolment.management.ProfessorsListManager;
 import client.gui.menus.main.MainMenu;
-import shareables.models.pojos.users.professors.Professor;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;

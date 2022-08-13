@@ -2,7 +2,9 @@ package shareables.models.pojos.users;
 
 public enum UserIdentifier {
     PROFESSOR("professor"),
-    STUDENT("student");
+    STUDENT("student"),
+    MR_MOHSENI("mr. mohseni"),
+    ADMIN("admin");
 
     private String identifierString;
 

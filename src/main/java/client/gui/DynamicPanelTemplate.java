@@ -3,7 +3,7 @@ package client.gui;
 import client.gui.menus.main.MainMenu;
 import client.gui.menus.main.ProfessorMenu;
 import client.gui.menus.main.StudentMenu;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -12,8 +12,6 @@ import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public abstract class DynamicPanelTemplate extends PanelTemplate {
     public static final double PINGING_FPS;

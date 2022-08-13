@@ -2,9 +2,8 @@ package client.gui.menus.enrolment.editing;
 
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
-import shareables.models.pojos.users.professors.Professor;
 import shareables.network.DTOs.CourseDTO;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.logging.MasterLogger;
 
 import java.awt.event.ActionEvent;

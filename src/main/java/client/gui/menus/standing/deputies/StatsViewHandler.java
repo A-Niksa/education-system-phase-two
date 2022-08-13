@@ -6,7 +6,7 @@ import client.gui.utils.ErrorUtils;
 import client.gui.utils.StatsViewHelper;
 import client.locallogic.profile.DepartmentGetter;
 import shareables.models.pojos.abstractions.DepartmentName;
-import shareables.network.DTOs.CourseStatsDTO;
+import shareables.network.DTOs.standing.CourseStatsDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.logging.MasterLogger;

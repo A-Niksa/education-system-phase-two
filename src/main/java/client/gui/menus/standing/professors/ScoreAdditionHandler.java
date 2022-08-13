@@ -2,8 +2,7 @@ package client.gui.menus.standing.professors;
 
 import client.gui.MainFrame;
 import client.locallogic.standing.ScoreFormatUtils;
-import shareables.network.DTOs.CourseScoreDTO;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -11,7 +10,6 @@ import shareables.utils.logging.MasterLogger;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ScoreAdditionHandler implements ActionListener {

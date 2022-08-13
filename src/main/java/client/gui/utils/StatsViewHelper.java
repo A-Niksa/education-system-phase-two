@@ -1,6 +1,6 @@
 package client.gui.utils;
 
-import shareables.network.DTOs.CourseStatsDTO;
+import shareables.network.DTOs.standing.CourseStatsDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 

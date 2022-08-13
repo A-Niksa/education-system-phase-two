@@ -11,7 +11,7 @@ import shareables.models.pojos.academicrequests.RecommendationRequest;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
 import shareables.models.pojos.users.students.StudentStatus;
-import shareables.network.DTOs.RequestDTO;
+import shareables.network.DTOs.academicrequests.RequestDTO;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,9 @@
 package shareables.models.pojos.messaging;
 
-import shareables.models.idgeneration.IdGenerator;
 import shareables.models.idgeneration.IdentifiableWithTime;
 import shareables.models.pojos.media.MediaFile;
-import shareables.models.pojos.users.User;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Message extends IdentifiableWithTime {
     private String senderId;

@@ -2,9 +2,8 @@ package client.gui.menus.services.requests.management;
 
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
-import shareables.models.pojos.users.professors.Professor;
-import shareables.network.DTOs.OfflineModeDTO;
-import shareables.network.DTOs.RequestDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
+import shareables.network.DTOs.academicrequests.RequestDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigManager;

@@ -36,6 +36,7 @@ public class Student extends User {
         isPermittedToEnrol = true; // default value
         initializeId();
         initializeMessenger(id);
+        initializeNotificationsManager(id);
     }
 
     @Override

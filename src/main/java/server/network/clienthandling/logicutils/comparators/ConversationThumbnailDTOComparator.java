@@ -1,6 +1,6 @@
 package server.network.clienthandling.logicutils.comparators;
 
-import shareables.network.DTOs.ConversationThumbnailDTO;
+import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;

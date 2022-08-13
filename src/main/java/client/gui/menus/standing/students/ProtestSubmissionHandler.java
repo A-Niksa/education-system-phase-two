@@ -3,10 +3,8 @@ package client.gui.menus.standing.students;
 
 import client.controller.ClientController;
 import client.gui.MainFrame;
-import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.CourseScoreDTO;
-import shareables.network.DTOs.OfflineMessengerDTO;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;

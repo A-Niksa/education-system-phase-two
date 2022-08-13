@@ -221,6 +221,24 @@ public class RequestMapper {
             case DOWNLOAD_MEDIA_FROM_CONVERSATION:
                 requestHandler.downloadMediaFromConversation(clientHandler, request);
                 break;
+            case GET_STUDENT_CONTACT_PROFILE_DTOS:
+                requestHandler.getStudentContactProfileDTOs(clientHandler, request);
+                break;
+            case CHECK_IF_CONTACT_IDS_EXIST:
+                requestHandler.checkIfContactIdsExist(clientHandler, request);
+                break;
+            case SEND_MESSAGE_NOTIFICATIONS_IF_NECESSARY:
+                requestHandler.sendMessageNotificationsIfNecessary(clientHandler, request);
+                break;
+            case GET_NOTIFICATION_DTOS:
+                requestHandler.getNotificationDTOs(clientHandler, request);
+                break;
+            case ACCEPT_NOTIFICATION:
+                requestHandler.acceptNotification(clientHandler, request);
+                break;
+            case DECLINE_NOTIFICATION:
+                requestHandler.declineNotification(clientHandler, request);
+                break;
         }
     }
 }

@@ -2,7 +2,6 @@ package client.gui.menus.addition;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.PanelTemplate;
 import client.gui.menus.enrolment.editing.CoursesListEditor;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
@@ -12,8 +11,7 @@ import client.locallogic.enrolment.NamesParser;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
-import shareables.models.pojos.users.professors.Professor;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;

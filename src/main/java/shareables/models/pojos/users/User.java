@@ -3,6 +3,7 @@ package shareables.models.pojos.users;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.media.Picture;
 import shareables.models.pojos.messaging.Messenger;
+import shareables.models.pojos.notifications.NotificationsManager;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +11,7 @@ public abstract class User extends Identifiable {
     protected String departmentId;
     protected Picture profilePicture;
     protected Messenger messenger;
+    protected NotificationsManager notificationsManager;
     protected UserIdentifier userIdentifier;
     protected String nationalId;
     protected String firstName;
@@ -30,6 +32,10 @@ public abstract class User extends Identifiable {
 
     protected void initializeMessenger(String id) {
         messenger = new Messenger(id);
+    }
+
+    protected void initializeNotificationsManager(String id) {
+        notificationsManager = new NotificationsManager(id);
     }
 
     public String getId() {
@@ -134,5 +140,13 @@ public abstract class User extends Identifiable {
 
     public void setMessenger(Messenger messenger) {
         this.messenger = messenger;
+    }
+
+    public NotificationsManager getNotificationsManager() {
+        return notificationsManager;
+    }
+
+    public void setNotificationsManager(NotificationsManager notificationsManager) {
+        this.notificationsManager = notificationsManager;
     }
 }

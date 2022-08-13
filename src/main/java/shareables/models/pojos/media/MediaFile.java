@@ -3,6 +3,7 @@ package shareables.models.pojos.media;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import shareables.models.idgeneration.IdentifiableWithTime;
+import shareables.models.idgeneration.SequentialIdGenerator;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,6 +37,11 @@ public abstract class MediaFile extends IdentifiableWithTime {
         this.mediaFileIdentifier = mediaFileIdentifier;
         this.path = path;
         initializeEncodedBytes();
+    }
+
+    @Override
+    protected void initializeId(SequentialIdGenerator sequentialIdGenerator) {
+        id = idGenerator.nextId(this, sequentialIdGenerator);
     }
 
     private void initializeEncodedBytes() {

@@ -3,7 +3,7 @@ package client.gui.menus.enrolment.viewing;
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
-import shareables.network.DTOs.OfflineModeDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.ProfessorDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;

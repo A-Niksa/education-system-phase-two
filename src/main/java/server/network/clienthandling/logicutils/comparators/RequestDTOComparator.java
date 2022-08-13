@@ -1,7 +1,6 @@
 package server.network.clienthandling.logicutils.comparators;
 
-import shareables.models.idgeneration.Identifiable;
-import shareables.network.DTOs.RequestDTO;
+import shareables.network.DTOs.academicrequests.RequestDTO;
 
 import java.util.Comparator;
 

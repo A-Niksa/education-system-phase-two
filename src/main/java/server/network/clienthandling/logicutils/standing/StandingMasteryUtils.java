@@ -11,8 +11,8 @@ import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.abstractions.Score;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.CourseScoreDTO;
-import shareables.network.DTOs.CourseStatsDTO;
+import shareables.network.DTOs.standing.CourseScoreDTO;
+import shareables.network.DTOs.standing.CourseStatsDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 

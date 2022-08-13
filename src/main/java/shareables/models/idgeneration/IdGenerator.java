@@ -3,6 +3,7 @@ package shareables.models.idgeneration;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.academicrequests.AcademicRequest;
+import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.messaging.Conversation;
 import shareables.models.pojos.messaging.Message;
 import shareables.models.pojos.messaging.Messenger;
@@ -50,6 +51,13 @@ public class IdGenerator {
 
     public String nextId(IdentifiableWithTime identifiableWithTime, SequentialIdGenerator sequentialIdGenerator) {
         LocalDateTime currentDate = identifiableWithTime.getDate();
+        String currentDateId = String.format("%06d", currentDate.toEpochSecond(ZoneOffset.UTC) % 1000000);
+        String sequentialId = String.format("%03d", sequentialIdGenerator.nextSequentialId());
+        return currentDateId + sequentialId;
+    }
+
+    public String nextId(MediaFile mediaFile, SequentialIdGenerator sequentialIdGenerator) {
+        LocalDateTime currentDate = mediaFile.getDate();
         String currentDateId = String.format("%03d", currentDate.toEpochSecond(ZoneOffset.UTC) % 1000);
         String sequentialId = String.format("%03d", sequentialIdGenerator.nextSequentialId());
         return currentDateId + sequentialId;
