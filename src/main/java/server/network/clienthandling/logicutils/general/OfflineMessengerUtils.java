@@ -71,6 +71,8 @@ public class OfflineMessengerUtils {
         return shortenedConversationDTO;
     }
 
+    // TODO: unrelated but increasing the cap for sending files OR testing the cap
+
     private static String getContactId(List<String> conversingUserIds, String ownerId) {
         return conversingUserIds.stream()
                 .filter(id -> !id.equals(ownerId))

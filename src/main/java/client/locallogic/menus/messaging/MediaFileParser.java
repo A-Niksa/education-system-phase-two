@@ -17,6 +17,7 @@ public class MediaFileParser {
         switch (fileSuffix) { // can be expanded and scaled accordingly
             case ".mp3":
             case ".ogg":
+            case ".m4a":
                 mediaFile = getSoundFile(file);
                 break;
             case ".pdf":
