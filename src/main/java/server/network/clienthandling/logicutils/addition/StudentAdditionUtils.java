@@ -3,6 +3,7 @@ package server.network.clienthandling.logicutils.addition;
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
+import server.network.clienthandling.logicutils.messaging.AdminMessagingUtils;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.DegreeLevel;
@@ -28,10 +29,14 @@ public class StudentAdditionUtils {
         String advisingProfessorName = (String) request.get("advisingProfessorName");
         Professor advisingProfessor = getProfessor(databaseManager, department, advisingProfessorName);
         student.setAdvisingProfessorId(advisingProfessor.getId());
+
         databaseManager.save(DatasetIdentifier.STUDENTS, student);
+
+        AdminMessagingUtils.addAdminHelpingMessageToUserMessenger(databaseManager, student);
 
         advisingProfessor.addToAdviseeStudentIds(student.getId());
         department.addToStudentIds(student.getId());
+
 
         return student.getId();
     }

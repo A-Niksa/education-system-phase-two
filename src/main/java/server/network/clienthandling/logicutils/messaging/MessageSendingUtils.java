@@ -37,8 +37,8 @@ public class MessageSendingUtils {
         addMessageToSenderAndReceiversConversations(databaseManager, senderId, receiverIds, message);
     }
 
-    private static void addMessageToSenderAndReceiversConversations(DatabaseManager databaseManager, String senderId,
-                                                                    List<String> receiverIds, Message message) {
+    static void addMessageToSenderAndReceiversConversations(DatabaseManager databaseManager, String senderId,
+                                                            List<String> receiverIds, Message message) {
         User sender = IdentifiableFetchingUtils.getUser(databaseManager, senderId);
         for (String receiverId : receiverIds) {
             Conversation receiverConversation = MessengerViewUtils.getContactConversation(databaseManager, receiverId, senderId);

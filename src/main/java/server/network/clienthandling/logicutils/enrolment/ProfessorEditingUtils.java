@@ -11,6 +11,8 @@ import shareables.models.pojos.users.professors.Professor;
 
 import java.util.List;
 
+import static server.network.clienthandling.logicutils.messaging.AdminMessagingUtils.removeProfessorFromConversations;
+
 public class ProfessorEditingUtils {
     public static void changeProfessorAcademicLevel(DatabaseManager databaseManager, String professorId,
                                                     String newAcademicLevelString) {
@@ -86,6 +88,7 @@ public class ProfessorEditingUtils {
     public static void removeProfessor(DatabaseManager databaseManager, String professorId, String departmentId) {
         RequestRedirectingUtils.redirectAcademicRequestsToDeanIfNecessary(databaseManager, professorId, departmentId);
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
+        removeProfessorFromConversations(databaseManager, professorId);
         removeProfessorFromDepartment(professorId, department);
         removeProfessorFromAdvisors(databaseManager, department);
         removeProfessorFromActiveCourses(databaseManager, professorId, department);

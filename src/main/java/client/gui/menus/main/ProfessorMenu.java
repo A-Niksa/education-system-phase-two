@@ -343,6 +343,7 @@ public class ProfessorMenu extends MainMenu {
         viewStudentsAcademicStanding.setEnabled(false);
         addStudent.setEnabled(false);
         addProfessor.setEnabled(false);
+        notificationsButton.setEnabled(false);
     }
 
     @Override
@@ -358,5 +359,6 @@ public class ProfessorMenu extends MainMenu {
         viewStudentsAcademicStanding.setEnabled(true);
         addStudent.setEnabled(true);
         addProfessor.setEnabled(true);
+        notificationsButton.setEnabled(true);
     }
 }

@@ -38,7 +38,7 @@ public class Main {
     public static void main(String[] args) {
         ConfigIdSupplier.resetCurrentClientId();
         manager.getDatabaseWriter().purgeDirectory(new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "datasetsFolderPath")));
-        manager.getDatabaseWriter().purgeDirectory(new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath")));
+        manager.getDatabaseWriter().purgeDirectoryCompletely(new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath")));
         createTestData(); // TODO: cleaning the directories
         sendAdminHelpMessages();
 //        manager.loadDatabase();

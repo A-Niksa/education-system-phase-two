@@ -3,6 +3,7 @@ package server.network.clienthandling.logicutils.addition;
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
+import server.network.clienthandling.logicutils.messaging.AdminMessagingUtils;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
@@ -49,6 +50,7 @@ public class ProfessorAdditionUtils {
         professor.setPhoneNumber((String) request.get("phoneNumber"));
         professor.setEmailAddress((String) request.get("emailAddress"));
         professor.setOfficeNumber((String) request.get("officeNumber"));
+
         String[] adviseeStudentIdsArray = (String[]) request.get("adviseeStudentIds");
         if (adviseeStudentIdsArray.length != 1 ||
                 !adviseeStudentIdsArray[0].equals("")) {
@@ -58,6 +60,8 @@ public class ProfessorAdditionUtils {
         }
 
         databaseManager.save(DatasetIdentifier.PROFESSORS, professor);
+
+        AdminMessagingUtils.addAdminHelpingMessageToUserMessenger(databaseManager, professor);
 
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
         department.addToProfessorIds(professor.getId());

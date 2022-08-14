@@ -357,6 +357,7 @@ public class StudentMenu extends MainMenu {
         dormitory.setEnabled(false);
         defenseSlot.setEnabled(false);
         temporaryScores.setEnabled(false);
+        notificationsButton.setEnabled(false);
     }
 
     @Override
@@ -371,5 +372,6 @@ public class StudentMenu extends MainMenu {
         dormitory.setEnabled(true);
         defenseSlot.setEnabled(true);
         temporaryScores.setEnabled(true);
+        notificationsButton.setEnabled(true);
     }
 }

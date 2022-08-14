@@ -2,9 +2,9 @@
   "id" : "1222001",
   "departmentId" : "1",
   "courseName" : "Real Analysis",
-  "teachingProfessorIds" : [ "90201303" ],
-  "teachingAssistantIds" : [ "18101205" ],
-  "studentIds" : [ "19101101" ],
+  "teachingProfessorIds" : [ "90201301" ],
+  "teachingAssistantIds" : [ "18101201" ],
+  "studentIds" : [ "19101100" ],
   "weeklyClassTimes" : [ {
     "weekday" : "SUNDAY",
     "startTime" : {

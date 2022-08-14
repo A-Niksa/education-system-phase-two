@@ -1,7 +1,7 @@
 package shareables.models.idgeneration;
 
 public class SequentialIdGenerator {
-    private static int idCounter;
+    private int idCounter;
 
     public SequentialIdGenerator(int initialIdCounter) {
         idCounter = initialIdCounter;
@@ -12,7 +12,7 @@ public class SequentialIdGenerator {
     }
 
     // TODO: should be removed ->
-    public static int getIdCounter() {
+    public int getIdCounter() {
         return idCounter;
     }
 }
