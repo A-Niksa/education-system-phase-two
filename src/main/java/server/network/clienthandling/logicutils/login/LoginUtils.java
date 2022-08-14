@@ -3,6 +3,8 @@ package server.network.clienthandling.logicutils.login;
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.pojos.users.User;
 import server.database.management.DatabaseManager;
+import shareables.models.pojos.users.specialusers.Admin;
+import shareables.models.pojos.users.specialusers.MrMohseni;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
@@ -23,8 +25,17 @@ public class LoginUtils {
 
     public static User getUser(DatabaseManager databaseManager, String userId) {
         User user = (User) databaseManager.get(DatasetIdentifier.STUDENTS, userId);
+
         if (user == null) user = (User) databaseManager.get(DatasetIdentifier.PROFESSORS, userId);
-        // TODO: adding cases for mohseni and admin
+
+        if (user == null) {
+            user = (User) databaseManager.get(DatasetIdentifier.SPECIAL_USERS, userId);
+        }
+
+        if (user == null) {
+            user = (User) databaseManager.get(DatasetIdentifier.SPECIAL_USERS, userId);
+        }
+
         return user;
     }
 

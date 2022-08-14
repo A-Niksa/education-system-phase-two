@@ -22,7 +22,7 @@ public abstract class User extends Identifiable {
     protected LocalDateTime lastLogin;
 
     public User() {
-        profilePicture = new Picture(); // sets the default profile picture
+        profilePicture = new Picture(true); // sets the default profile picture
     }
 
     public User(UserIdentifier userIdentifier) {

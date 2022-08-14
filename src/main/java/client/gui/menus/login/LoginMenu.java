@@ -1,5 +1,7 @@
 package client.gui.menus.login;
 
+import client.gui.menus.main.AdminMenu;
+import client.gui.menus.main.MrMohseniMenu;
 import client.gui.utils.ErrorUtils;
 import client.gui.MainFrame;
 import client.controller.ClientController;
@@ -153,6 +155,14 @@ public class LoginMenu extends JPanel {
                 MasterLogger.clientInfo(clientController.getId(), "Logged in as professor",
                         "connectListeners", getClass());
                 mainFrame.setCurrentPanel(new ProfessorMenu(mainFrame, username, null, true));
+            } else if (userIdentifier == UserIdentifier.MR_MOHSENI) {
+                MasterLogger.clientInfo(clientController.getId(), "Logged in as Mr. Mohseni",
+                        "connectListeners", getClass());
+                mainFrame.setCurrentPanel(new MrMohseniMenu(mainFrame, username, null, true));
+            } else if (userIdentifier == UserIdentifier.ADMIN) {
+                MasterLogger.clientInfo(clientController.getId(), "Logged in as admin",
+                        "connectListeners", getClass());
+                mainFrame.setCurrentPanel(new AdminMenu(mainFrame, username, null, true));
             }
         });
     }

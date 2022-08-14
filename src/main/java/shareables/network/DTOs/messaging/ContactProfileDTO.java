@@ -7,6 +7,7 @@ public class ContactProfileDTO {
     private String contactId;
     private String contactName;
     private ContactIdentifier contactIdentifier;
+    private int yearOfEntry;
 
     public ContactProfileDTO() {
     }
@@ -33,5 +34,20 @@ public class ContactProfileDTO {
 
     public void setContactIdentifier(ContactIdentifier contactIdentifier) {
         this.contactIdentifier = contactIdentifier;
+    }
+
+    public int getYearOfEntry() {
+        return yearOfEntry;
+    }
+
+    public void setYearOfEntry(int yearOfEntry) {
+        this.yearOfEntry = yearOfEntry;
+    }
+
+    @Override
+    public String toString() {
+        return "<html>" +
+                    contactId + " - " + contactName + " - " + contactIdentifier +
+                "</html>";
     }
 }

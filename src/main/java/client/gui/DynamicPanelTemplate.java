@@ -1,8 +1,6 @@
 package client.gui;
 
-import client.gui.menus.main.MainMenu;
-import client.gui.menus.main.ProfessorMenu;
-import client.gui.menus.main.StudentMenu;
+import client.gui.menus.main.*;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
@@ -83,7 +81,12 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
             case STUDENT:
                 newMainMenu = new StudentMenu(mainFrame, offlineModeDTO, isOnline);
                 break;
-                // TODO: adding admin and mr. mohseni
+            case MR_MOHSENI:
+                newMainMenu = new MrMohseniMenu(mainFrame, offlineModeDTO, isOnline);
+                break;
+            case ADMIN:
+                newMainMenu = new AdminMenu(mainFrame, offlineModeDTO, isOnline);
+                break;
             default:
                 newMainMenu = null; // added for explicitness
         }

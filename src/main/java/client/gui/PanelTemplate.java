@@ -1,9 +1,7 @@
 package client.gui;
 
 import client.controller.ClientController;
-import client.gui.menus.main.MainMenu;
-import client.gui.menus.main.ProfessorMenu;
-import client.gui.menus.main.StudentMenu;
+import client.gui.menus.main.*;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
@@ -71,6 +69,12 @@ public abstract class PanelTemplate extends JPanel {
                         break;
                     case STUDENT:
                         newMainMenu = new StudentMenu(mainFrame, mainMenu.getUsername(), null, true);
+                        break;
+                    case MR_MOHSENI:
+                        newMainMenu = new MrMohseniMenu(mainFrame, mainMenu.getUsername(), null, true);
+                        break;
+                    case ADMIN:
+                        newMainMenu = new AdminMenu(mainFrame, mainMenu.getUsername(), null, true);
                         break;
                     default:
                         newMainMenu = null; // added for explicitness

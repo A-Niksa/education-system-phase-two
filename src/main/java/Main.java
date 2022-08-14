@@ -7,6 +7,8 @@ import shareables.models.pojos.messaging.MessageType;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.models.pojos.users.specialusers.Admin;
+import shareables.models.pojos.users.specialusers.MrMohseni;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import server.database.management.DatabaseManager;
@@ -159,6 +161,9 @@ public class Main {
         hamidi.getMessenger().addToConversations(anotherConversation);
         khazayi.getMessenger().addToConversations(anotherConversation);
 
+        Admin admin = new Admin();
+        MrMohseni mrMohseni = new MrMohseni();
+
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);
         manager.save(DatasetIdentifier.PROFESSORS, khazayi);
@@ -169,6 +174,8 @@ public class Main {
         manager.save(DatasetIdentifier.DEPARTMENTS, mathDepartment);
         manager.save(DatasetIdentifier.PROFESSORS, rahvar);
         manager.save(DatasetIdentifier.DEPARTMENTS, physicsDepartment);
+        manager.save(DatasetIdentifier.SPECIAL_USERS, admin);
+        manager.save(DatasetIdentifier.SPECIAL_USERS, mrMohseni);
         manager.saveDatabase();
     }
 }

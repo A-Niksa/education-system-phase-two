@@ -349,4 +349,10 @@ public class ResponseHandler {
                 "cannotContactOnesSelf"));
         clientHandler.respond(response);
     }
+
+    public void studentDTOAcquired(ClientHandler clientHandler, StudentDTO studentDTO) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("studentDTO", studentDTO);
+        clientHandler.respond(response);
+    }
 }

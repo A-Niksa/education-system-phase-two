@@ -8,6 +8,7 @@ import shareables.models.pojos.academicrequests.DroppingOutRequest;
 import shareables.models.pojos.academicrequests.MinorRequest;
 import shareables.models.pojos.academicrequests.RecommendationRequest;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.models.pojos.users.specialusers.SpecialUser;
 import shareables.models.pojos.users.students.Student;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
@@ -15,6 +16,7 @@ import shareables.utils.config.ConfigManager;
 public enum DatasetIdentifier {
     STUDENTS("studentsFolderPath", Student.class, "Students Dataset"),
     PROFESSORS("professorsFolderPath", Professor.class, "Professors Dataset"),
+    SPECIAL_USERS("specialUsersFolderPath", SpecialUser.class, "Special Users Dataset"),
     COURSES("coursesFolderPath", Course.class, "Courses Dataset"),
     DEPARTMENTS("departmentsFolderPath", Department.class, "Departments Dataset"),
     DEFENSE_REQUESTS("defenseRequestsFolderPath", DefenseRequest.class, "Defense Requests Dataset"),

@@ -495,6 +495,23 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getAllStudentContactProfileDTOs() {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_ALL_STUDENT_CONTACT_PROFILE_DTOS);
+        return client.sendAndListen(request);
+    }
+
+    public Response getFilteredStudentContactProfileDTOs(String studentIdStartsWith) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_FILTERED_STUDENT_CONTACT_PROFILE_DTOS,
+                new StringObjectMap("studentIdStartsWith", studentIdStartsWith));
+        return client.sendAndListen(request);
+    }
+
+    public Response getStudentDTO(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_DTO,
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

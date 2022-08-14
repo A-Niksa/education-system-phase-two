@@ -62,12 +62,6 @@ public class ProfessorMenu extends MainMenu {
         startPingingIfOnline(username, this);
     }
 
-    private void initializeAcademicRole() {
-        if (offlineModeDTO != null) role = offlineModeDTO.getAcademicRole();
-//        else role = professor.getAcademicRole();
-        else role = AcademicRole.NORMAL;
-    }
-
     public ProfessorMenu(MainFrame mainFrame, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
         configIdentifier = ConfigFileIdentifier.GUI_PROFESSOR_MAIN;
@@ -76,6 +70,12 @@ public class ProfessorMenu extends MainMenu {
         alignComponents();
         connectListeners();
         startPingingIfOnline(offlineModeDTO.getId(), this);
+    }
+
+    private void initializeAcademicRole() {
+        if (offlineModeDTO != null) role = offlineModeDTO.getAcademicRole();
+//        else role = professor.getAcademicRole();
+        else role = AcademicRole.NORMAL;
     }
 
     @Override

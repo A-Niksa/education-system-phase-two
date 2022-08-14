@@ -7,6 +7,8 @@ import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.models.pojos.users.specialusers.Admin;
+import shareables.models.pojos.users.specialusers.MrMohseni;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -16,15 +18,24 @@ public class OfflineModeUtils {
     public static OfflineModeDTO getOfflineModeDTO(DatabaseManager databaseManager, String userId) {
         OfflineModeDTO offlineModeDTO = new OfflineModeDTO();
         User user = IdentifiableFetchingUtils.getUser(databaseManager, userId);
-        // TODO: adding admin and mr mohseni
         if (user.getUserIdentifier() == UserIdentifier.STUDENT) {
             Student student = (Student) user;
             initializeStudentOfflineModeDTO(databaseManager, student, offlineModeDTO);
         } else if (user.getUserIdentifier() == UserIdentifier.PROFESSOR) {
             Professor professor = (Professor) user;
             initializeProfessorOfflineModeDTO(databaseManager, professor, offlineModeDTO);
+        } else if (user.getUserIdentifier() == UserIdentifier.MR_MOHSENI) {
+            MrMohseni mrMohseni = (MrMohseni) user;
+            initializeSpecialUserOfflineModeDTO(mrMohseni, offlineModeDTO);
+        } else if (user.getUserIdentifier() == UserIdentifier.ADMIN) {
+            Admin admin = (Admin) user;
+            initializeSpecialUserOfflineModeDTO(admin, offlineModeDTO);
         }
         return offlineModeDTO;
+    }
+
+    private static void initializeSpecialUserOfflineModeDTO(User user, OfflineModeDTO offlineModeDTO) {
+        initializeCommonUserFields(user, offlineModeDTO);
     }
 
     private static void initializeStudentOfflineModeDTO(DatabaseManager databaseManager, Student student,
@@ -32,7 +43,6 @@ public class OfflineModeUtils {
         initializeCommonUserFields(student, offlineModeDTO);
         offlineModeDTO.setUserIdentifier(UserIdentifier.STUDENT);
         offlineModeDTO.setStudentStatus(student.getStudentStatus());
-        // TODO: handling null case in front:
         offlineModeDTO.setEnrolmentTime(student.getEnrolmentTime());
         offlineModeDTO.setGPAString(student.fetchGPAString());
         offlineModeDTO.setYearOfEntry(student.getYearOfEntry());

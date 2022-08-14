@@ -18,6 +18,7 @@ import server.network.clienthandling.logicutils.messaging.DownloadingUtils;
 import server.network.clienthandling.logicutils.messaging.MessageSendingUtils;
 import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
 import server.network.clienthandling.logicutils.notifications.NotificationManagementUtils;
+import server.network.clienthandling.logicutils.searching.StudentSearchingUtils;
 import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
@@ -647,7 +648,6 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void declineNotification(ClientHandler clientHandler, Request request) {
-        // TODO
         String userId = (String) request.get("username");
         String notificationId = (String) request.get("notificationId");
         Notification notification = NotificationManagementUtils.getNotification(databaseManager, userId, notificationId);
@@ -660,5 +660,24 @@ public class RequestHandler { // TODO: logging, perhaps?
             NotificationManagementUtils.declineNotification(databaseManager, notification);
             responseHandler.requestSuccessful(clientHandler);
         }
+    }
+
+    public void getAllStudentContactProfileDTOs(ClientHandler clientHandler, Request request) {
+        List<ContactProfileDTO> allStudentContactProfileDTOs = StudentSearchingUtils
+                .getAllStudentContactProfileDTOs(databaseManager);
+        responseHandler.contactProfileDTOsAcquired(clientHandler, allStudentContactProfileDTOs);
+    }
+
+    public void getFilteredStudentContactProfileDTOs(ClientHandler clientHandler, Request request) {
+        String studentIdStartsWith = (String) request.get("studentIdStartsWith");
+        List<ContactProfileDTO> allStudentContactProfileDTOs = StudentSearchingUtils
+                .getFilteredStudentContactProfileDTOs(databaseManager, studentIdStartsWith);
+        responseHandler.contactProfileDTOsAcquired(clientHandler, allStudentContactProfileDTOs);
+    }
+
+    public void getStudentDTO(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        StudentDTO studentDTO = StudentSearchingUtils.getStudentDTO(databaseManager, studentId);
+        responseHandler.studentDTOAcquired(clientHandler, studentDTO);
     }
 }

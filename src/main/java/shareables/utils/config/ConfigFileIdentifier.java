@@ -8,11 +8,15 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     NETWORK("networkPath"),
     ID_GENERATION("idGenerationPath"),
 
+    ADMIN_INFO("adminInfoPath"),
+    MR_MOHSENI_INFO("mrMohseniInfoPath"),
+
     GUI("guiPath"),
     GUI_LOGIN("guiLoginPath"),
     GUI_MAIN("guiMainPath"),
     GUI_STUDENT_MAIN("guiStudentMainPath"),
     GUI_PROFESSOR_MAIN("guiProfessorMainPath"),
+    GUI_SPECIAL_USERS_MAIN("guiSpecialUsersMainPath"),
     GUI_PROFILE("guiProfilePath"),
     GUI_WEEKLY_SCHEDULE("guiWeeklySchedulePath"),
     GUI_EXAMS_LIST("guiExamsListPath"),
@@ -42,7 +46,9 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_CONVERSATION_ROOM("guiConversationRoomPath"),
     GUI_CONVERSATION_STARTER("guiConversationStarterPath"),
     GUI_CONVERSATION_STARTING_ROOM("guiConversationStartingRoomPath"),
-    GUI_NOTIFICATIONS_VIEW("guiNotificationsViewPath");
+    GUI_NOTIFICATIONS_VIEW("guiNotificationsViewPath"),
+    GUI_MR_MOHSENI_SEARCHER("guiMrMohseniSearcherPath"),
+    GUI_STUDENT_PROFILE_VIEW("guiStudentProfileViewPath");
 
     private String configKeyString;
 
