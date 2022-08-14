@@ -88,12 +88,6 @@ public class MessageSendingUtils {
         conversation.addToConversingUserIds(senderId);
         conversation.addToConversingUserIds(receiverId);
 
-//        Message startingMessage = new Message();
-//        startingMessage.setSenderId(senderId);
-//        startingMessage.setMessageType(MessageType.TEXT);
-//        startingMessage.setMessageText(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "startedConversation"));
-//        conversation.addToMessages(startingMessage);
-
         return conversation;
     }
 }

@@ -3,6 +3,7 @@ package client.gui.menus.messaging.conversationroom;
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
+import client.gui.menus.messaging.messengerviews.AdminMessengerView;
 import client.gui.menus.messaging.messengerviews.MrMohseniMessengerView;
 import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
@@ -265,8 +266,9 @@ public class ConversationRoom extends DynamicPanelTemplate {
                 mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
             } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.MR_MOHSENI) {
                 mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO));
+            } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.ADMIN) {
+                mainFrame.setCurrentPanel(new AdminMessengerView(mainFrame, mainMenu, offlineModeDTO));
             }
-            // TODO: add to this
         });
     }
 }
