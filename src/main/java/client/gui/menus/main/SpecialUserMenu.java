@@ -2,7 +2,7 @@ package client.gui.menus.main;
 
 import client.gui.MainFrame;
 import client.gui.utils.ImageParsingUtils;
-import client.locallogic.main.DateStringFormatter;
+import client.locallogic.menus.main.DateStringFormatter;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;

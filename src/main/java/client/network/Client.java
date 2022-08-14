@@ -2,6 +2,7 @@ package client.network;
 
 import client.gui.MainFrame;
 import client.controller.ClientController;
+import client.locallogic.localdatabase.management.LocalDatabaseManager;
 import shareables.network.requests.Request;
 import shareables.network.responses.Response;
 

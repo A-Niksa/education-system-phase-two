@@ -1,6 +1,6 @@
 package client.gui.menus.login;
 
-import client.locallogic.login.CaptchaManager;
+import client.locallogic.menus.login.CaptchaManager;
 import shareables.utils.images.ImageIdentifier;
 import shareables.utils.images.ImageManager;
 

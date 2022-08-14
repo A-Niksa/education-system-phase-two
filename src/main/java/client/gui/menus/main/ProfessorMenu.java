@@ -19,7 +19,7 @@ import client.gui.menus.standing.deputies.CurrentStandingMaster;
 import client.gui.menus.standing.deputies.TemporaryStandingMaster;
 import client.gui.menus.standing.professors.TemporaryStandingManager;
 import client.gui.utils.ImageParsingUtils;
-import client.locallogic.main.DateStringFormatter;
+import client.locallogic.menus.main.DateStringFormatter;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;

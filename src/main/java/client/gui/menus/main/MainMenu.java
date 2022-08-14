@@ -5,7 +5,7 @@ import client.gui.MainFrame;
 import client.gui.OfflinePanel;
 import client.gui.menus.login.LoginMenu;
 import client.gui.utils.ImageParsingUtils;
-import client.locallogic.main.DateStringFormatter;
+import client.locallogic.menus.main.DateStringFormatter;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;

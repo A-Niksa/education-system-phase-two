@@ -5,7 +5,7 @@ import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.EnumStringMappingUtils;
-import client.locallogic.messaging.MediaFileParser;
+import client.locallogic.menus.messaging.MediaFileParser;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.StudentStatus;

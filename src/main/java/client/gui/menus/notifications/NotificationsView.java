@@ -4,7 +4,7 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
-import client.locallogic.messaging.ThumbnailIdParser;
+import client.locallogic.menus.messaging.ThumbnailIdParser;
 import shareables.network.DTOs.notifications.NotificationDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;

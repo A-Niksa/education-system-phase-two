@@ -9,8 +9,8 @@ import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
 import client.gui.utils.ErrorUtils;
 import client.gui.utils.ImageParsingUtils;
-import client.locallogic.messaging.DownloadManager;
-import client.locallogic.messaging.MediaFileParser;
+import client.locallogic.menus.messaging.DownloadManager;
+import client.locallogic.menus.messaging.MediaFileParser;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.messaging.ConversationDTO;
@@ -25,7 +25,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ConversationRoom extends DynamicPanelTemplate {

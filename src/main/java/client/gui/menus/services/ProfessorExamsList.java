@@ -4,7 +4,7 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
-import client.locallogic.services.ExamsListSorter;
+import client.locallogic.menus.services.ExamsListSorter;
 import shareables.network.DTOs.CourseDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;

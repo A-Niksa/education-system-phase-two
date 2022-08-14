@@ -3,7 +3,7 @@ package client.gui.menus.messaging.conversationstarters;
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
-import client.locallogic.messaging.MediaFileParser;
+import client.locallogic.menus.messaging.MediaFileParser;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;

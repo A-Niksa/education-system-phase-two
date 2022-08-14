@@ -5,7 +5,7 @@ import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
-import client.locallogic.addition.BlueprintGenerator;
+import client.locallogic.menus.addition.BlueprintGenerator;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.responses.Response;

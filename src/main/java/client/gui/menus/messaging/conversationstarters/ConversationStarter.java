@@ -7,7 +7,7 @@ import client.gui.menus.messaging.messengerviews.MrMohseniMessengerView;
 import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
 import client.gui.utils.ErrorUtils;
-import client.locallogic.messaging.ContactManager;
+import client.locallogic.menus.messaging.ContactManager;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;

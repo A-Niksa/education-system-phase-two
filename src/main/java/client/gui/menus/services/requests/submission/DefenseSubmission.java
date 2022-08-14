@@ -5,7 +5,7 @@ import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.general.DatePickerConfigurationTool;
-import client.locallogic.services.LocalDateTimeFormatter;
+import client.locallogic.menus.services.LocalDateTimeFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
