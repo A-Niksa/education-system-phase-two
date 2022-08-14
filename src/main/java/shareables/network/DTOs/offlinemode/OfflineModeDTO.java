@@ -7,6 +7,7 @@ import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.StudentStatus;
 import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
 import shareables.network.DTOs.standing.CourseScoreDTO;
 import shareables.network.DTOs.standing.TranscriptDTO;
 
@@ -38,12 +39,12 @@ public class OfflineModeDTO {
     // messenger:
     private UserIdentifier userIdentifier;
     private OfflineMessengerDTO offlineMessengerDTO;
+    private List<ConversationThumbnailDTO> conversationThumbnailDTOs;
     // current standing:
     private List<CourseScoreDTO> courseScoreDTOs;
     private TranscriptDTO transcriptDTO;
     // weekly schedule and exams list:
     private List<CourseDTO> courseDTOs;
-
 
     public OfflineModeDTO() {
     }
@@ -238,6 +239,14 @@ public class OfflineModeDTO {
 
     public void setUserIdentifier(UserIdentifier userIdentifier) {
         this.userIdentifier = userIdentifier;
+    }
+
+    public List<ConversationThumbnailDTO> getConversationThumbnailDTOs() {
+        return conversationThumbnailDTOs;
+    }
+
+    public void setConversationThumbnailDTOs(List<ConversationThumbnailDTO> conversationThumbnailDTOs) {
+        this.conversationThumbnailDTOs = conversationThumbnailDTOs;
     }
 
     // TODO: to be removed

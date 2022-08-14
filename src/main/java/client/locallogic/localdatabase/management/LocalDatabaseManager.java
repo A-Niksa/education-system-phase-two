@@ -3,22 +3,46 @@ package client.locallogic.localdatabase.management;
 import client.locallogic.localdatabase.datasets.LocalDataset;
 import client.locallogic.localdatabase.datasets.LocalDatasetIdentifier;
 import shareables.models.idgeneration.Identifiable;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 import shareables.utils.logging.MasterLogger;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
 public class LocalDatabaseManager {
+    private int id;
     private Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap;
     private LocalDatabaseReader localDatabaseReader;
     private LocalDatabaseWriter localDatabaseWriter;
 
-    public LocalDatabaseManager() {
+    public LocalDatabaseManager(int id) {
+        this.id = id;
+        createDirectoryIfDoesNotExist();
         initializeIdentifierDatasetMap();
-        localDatabaseReader = new LocalDatabaseReader(identifierDatasetMap);
-        localDatabaseWriter = new LocalDatabaseWriter(identifierDatasetMap);
+        localDatabaseReader = new LocalDatabaseReader(identifierDatasetMap, id);
+        localDatabaseWriter = new LocalDatabaseWriter(identifierDatasetMap, id);
+    }
+
+    private void createDirectoryIfDoesNotExist() {
+        String localDatasetsPath = ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath");
+        File localDatasetsDirectory = new File(localDatasetsPath);
+        String targetDirectoryPath = localDatasetsPath + id;
+        if (!directoryExists(localDatasetsDirectory, targetDirectoryPath)) {
+            new File(targetDirectoryPath).mkdir();
+        }
+    }
+
+    private boolean directoryExists(File localDatasetsDirectory, String targetDirectoryPath) {
+        for (File file : localDatasetsDirectory.listFiles()) {
+            if (file.getPath().equals(targetDirectoryPath)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void initializeIdentifierDatasetMap() {
@@ -31,28 +55,28 @@ public class LocalDatabaseManager {
 
     public void loadDatabase() {
         localDatabaseReader.loadDatabase();
-        MasterLogger.serverInfo("Loaded database from resources", "loadDatabase", getClass());
+        MasterLogger.clientInfo(id, "Loaded database from resources", "loadDatabase", getClass());
     }
 
     public void saveDatabase() {
         localDatabaseWriter.saveDatabase();
-        MasterLogger.serverInfo("Saved database to resources", "saveDatabase", getClass());
+        MasterLogger.clientInfo(id, "Saved database to resources", "saveDatabase", getClass());
     }
 
     public synchronized void save(LocalDatasetIdentifier localDatasetIdentifier, Identifiable identifiable) {
         getDataset(localDatasetIdentifier).save(identifiable);
-        MasterLogger.serverInfo("Saved identifiable (id: " + identifiable.getId() + ")", "save",
+        MasterLogger.clientInfo(id, "Saved identifiable (id: " + identifiable.getId() + ")", "save",
                 getClass());
     }
 
     public synchronized void remove(LocalDatasetIdentifier localDatasetIdentifier, String identifiableId) {
         getDataset(localDatasetIdentifier).remove(identifiableId);
-        MasterLogger.serverInfo("Removed identifiable (id: " + identifiableId + ")", "remove",
+        MasterLogger.clientInfo(id, "Removed identifiable (id: " + identifiableId + ")", "remove",
                 getClass());
     }
 
     public Identifiable get(LocalDatasetIdentifier localDatasetIdentifier, String identifiableId) {
-        MasterLogger.serverInfo("Fetched identifiable (id: " + identifiableId + ")", "get",
+        MasterLogger.clientInfo(id, "Fetched identifiable (id: " + identifiableId + ")", "get",
                 getClass());
         return getDataset(localDatasetIdentifier).get(identifiableId);
     }
@@ -61,7 +85,7 @@ public class LocalDatabaseManager {
      * gets the identifiables list of a particular dataset
      */
     public List<Identifiable> getIdentifiables(LocalDatasetIdentifier localDatasetIdentifier) {
-        MasterLogger.serverInfo("Fetched identifiables list from " + localDatasetIdentifier,
+        MasterLogger.clientInfo(id, "Fetched identifiables list from " + localDatasetIdentifier,
                 "getIdentifiables", getClass());
         return getDataset(localDatasetIdentifier).getIdentifiables();
     }
@@ -72,7 +96,7 @@ public class LocalDatabaseManager {
     public synchronized void update(LocalDatasetIdentifier localDatasetIdentifier, Identifiable identifiable) {
         remove(localDatasetIdentifier, identifiable.getId());
         save(localDatasetIdentifier, identifiable);
-        MasterLogger.serverInfo("Updated identifiable (id: " + identifiable.getId() + ")", "update",
+        MasterLogger.clientInfo(id, "Updated identifiable (id: " + identifiable.getId() + ")", "update",
                 getClass());
     }
 

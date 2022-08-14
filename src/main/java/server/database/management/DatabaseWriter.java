@@ -37,6 +37,13 @@ public class DatabaseWriter { // save in this context refers to saving to file
         }
     }
 
+    // TODO: should be private
+    public void purgeDirectoryCompletely(File directory) {
+        for (File file : directory.listFiles()) {
+            file.delete();
+        }
+    }
+
     private void saveDataset(Map.Entry<DatasetIdentifier, Dataset> identifierDatasetEntry) {
         List<Identifiable> identifiables = identifierDatasetEntry.getValue().getIdentifiables();
         identifiables.stream()

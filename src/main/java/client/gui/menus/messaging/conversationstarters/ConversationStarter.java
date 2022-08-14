@@ -186,11 +186,11 @@ public abstract class ConversationStarter extends DynamicPanelTemplate {
                     "connectListeners", getClass());
             stopPanelLoop();
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {
-                mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
-                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.MR_MOHSENI) {
-                mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 

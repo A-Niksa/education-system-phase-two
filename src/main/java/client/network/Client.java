@@ -10,11 +10,13 @@ public class Client {
     private int id;
     private int port;
     private ServerController serverController;
+    private LocalDatabaseManager localDatabaseManager;
     private boolean isOnline;
 
     public Client(int id, int port) {
         this.id = id;
         this.port = port;
+        localDatabaseManager = new LocalDatabaseManager(id);
     }
 
     public void start() {

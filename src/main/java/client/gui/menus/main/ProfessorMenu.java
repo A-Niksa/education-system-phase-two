@@ -315,7 +315,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the messenger",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 

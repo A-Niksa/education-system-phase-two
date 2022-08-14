@@ -330,7 +330,7 @@ public class StudentMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the messenger",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
 

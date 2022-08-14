@@ -47,7 +47,7 @@ public class MrMohseniMenu extends SpecialUserMenu {
             MasterLogger.clientInfo(clientController.getId(), "Opened the messenger",
                     "connectListeners", getClass());
             facilitateChangingPanel(mainMenu);
-            mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO));
+            mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
         });
 
         studentSearchButton.addActionListener(actionEvent -> {

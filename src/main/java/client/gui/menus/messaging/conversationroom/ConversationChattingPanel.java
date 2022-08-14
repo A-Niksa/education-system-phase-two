@@ -20,30 +20,37 @@ public class ConversationChattingPanel extends JPanel {
     private JPanel fillerPanel;
     private JTextArea conversationTextArea;
     private GridBagConstraints gridBagConstraints;
+    private boolean isOnline;
 
     public ConversationChattingPanel(ConfigFileIdentifier configIdentifier, ConversationDTO conversationDTO,
                                      ClientController clientController, OfflineModeDTO offlineModeDTO,
-                                     String contactId) {
+                                     String contactId, boolean isOnline) {
         this.configIdentifier = configIdentifier;
         this.conversationDTO = conversationDTO;
         this.clientController = clientController;
         this.offlineModeDTO = offlineModeDTO;
         this.contactId = contactId;
+        this.isOnline = isOnline;
         setLayout(new GridBagLayout());
         gridBagConstraints = new GridBagConstraints();
         drawPanel();
         updateConversationTextArea();
     }
 
-    public void updateConversationChattingPanel() {
+    public void updateConversationChattingPanel(boolean isOnline) {
+        this.isOnline = isOnline;
         updateConversationDTO();
         updateConversationTextArea();
     }
 
     private void updateConversationDTO() {
-        Response response = clientController.getContactConversationDTO(offlineModeDTO.getId(), contactId);
-        if (response == null) return;
-        conversationDTO = (ConversationDTO) response.get("conversationDTO");
+        if (isOnline) {
+            Response response = clientController.getContactConversationDTO(offlineModeDTO.getId(), contactId);
+            if (response == null) return;
+            conversationDTO = (ConversationDTO) response.get("conversationDTO");
+        } else {
+            conversationDTO = offlineModeDTO.getOfflineMessengerDTO().fetchConversationDTO(contactId);
+        }
     }
 
     private void updateConversationTextArea() {

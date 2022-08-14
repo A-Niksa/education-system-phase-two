@@ -2,18 +2,22 @@ package client.gui.menus.messaging.messengerviews;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
+import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
+import client.gui.menus.messaging.conversationroom.ConversationRoom;
+import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class MessengerView extends DynamicPanelTemplate {
+public abstract class MessengerView extends DynamicPanelTemplate implements OfflinePanel {
     protected JButton openConversationButton;
     protected JButton newConversationButton;
     protected DefaultListModel<String> listModel;
@@ -22,8 +26,9 @@ public abstract class MessengerView extends DynamicPanelTemplate {
     protected ArrayList<ConversationThumbnailDTO> conversationThumbnailDTOs;
     protected String[] conversationThumbnailTexts;
 
-    public MessengerView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
+    public MessengerView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
+        this.isOnline = isOnline;
         configIdentifier = ConfigFileIdentifier.GUI_MESSENGER_VIEW;
         conversationThumbnailDTOs = new ArrayList<>();
         updateConversationThumbnailDTOs();
@@ -57,9 +62,10 @@ public abstract class MessengerView extends DynamicPanelTemplate {
     }
 
     protected void updateConversationThumbnailDTOs() {
-        Response response = clientController.getConversationThumbnailDTOs(offlineModeDTO.getId());
-        if (response == null) return;
-        conversationThumbnailDTOs = (ArrayList<ConversationThumbnailDTO>) response.get("conversationThumbnailDTOs");
+//        Response response = clientController.getConversationThumbnailDTOs(offlineModeDTO.getId());
+//        if (response == null) return;
+//        conversationThumbnailDTOs = (ArrayList<ConversationThumbnailDTO>) response.get("conversationThumbnailDTOs");
+        conversationThumbnailDTOs = (ArrayList<ConversationThumbnailDTO>) offlineModeDTO.getConversationThumbnailDTOs();
     }
 
     @Override
@@ -93,5 +99,27 @@ public abstract class MessengerView extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "scrollPaneW"),
                 ConfigManager.getInt(configIdentifier, "scrollPaneH"));
         add(scrollPane);
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+        newConversationButton.setEnabled(false);
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        restartPanelLoop();
+        newConversationButton.setEnabled(true);
+    }
+
+    protected void getConversationDTOInOfflineMode(String contactId) {
+        ConversationDTO conversationDTO = offlineModeDTO.getOfflineMessengerDTO().fetchConversationDTO(contactId);
+
+        facilitateChangingPanel(this);
+        mainFrame.setCurrentPanel(new ConversationRoom(mainFrame, mainMenu, offlineModeDTO,
+                conversationDTO, contactId, isOnline));
+        MasterLogger.clientInfo(clientController.getId(), "Opened conversation room with user (ID: " +
+                contactId + ")", "connectListeners", getClass());
     }
 }

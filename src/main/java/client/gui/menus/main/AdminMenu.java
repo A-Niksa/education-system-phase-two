@@ -1,6 +1,7 @@
 package client.gui.menus.main;
 
 import client.gui.MainFrame;
+import client.gui.menus.messaging.messengerviews.AdminMessengerView;
 import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.logging.MasterLogger;
@@ -24,7 +25,7 @@ public class AdminMenu extends SpecialUserMenu {
             MasterLogger.clientInfo(clientController.getId(), "Opened the messenger",
                     "connectListeners", getClass());
             facilitateChangingPanel(mainMenu);
-            mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
+            mainFrame.setCurrentPanel(new AdminMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
         });
     }
 

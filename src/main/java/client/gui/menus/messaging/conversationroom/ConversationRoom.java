@@ -2,6 +2,7 @@ package client.gui.menus.messaging.conversationroom;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
+import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import client.gui.menus.messaging.messengerviews.AdminMessengerView;
 import client.gui.menus.messaging.messengerviews.MrMohseniMessengerView;
@@ -9,8 +10,10 @@ import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
 import client.gui.utils.ErrorUtils;
 import client.gui.utils.ImageParsingUtils;
+import client.locallogic.localdatabase.datamodels.QueuedMessage;
 import client.locallogic.menus.messaging.DownloadManager;
 import client.locallogic.menus.messaging.MediaFileParser;
+import client.locallogic.menus.messaging.QueuingUtils;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.messaging.ConversationDTO;
@@ -27,7 +30,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConversationRoom extends DynamicPanelTemplate {
+public class ConversationRoom extends DynamicPanelTemplate implements OfflinePanel {
     private String contactId;
     private JButton goBackButton;
     private JButton sendMessageButton;
@@ -48,20 +51,21 @@ public class ConversationRoom extends DynamicPanelTemplate {
     private MediaFileParser mediaFileParser;
 
     public ConversationRoom(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO, ConversationDTO conversationDTO,
-                            String contactId) {
+                            String contactId, boolean isOnline) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.conversationDTO = conversationDTO;
         this.contactId = contactId;
+        this.isOnline = isOnline;
         configIdentifier = ConfigFileIdentifier.GUI_CONVERSATION_ROOM;
         downloadManager = new DownloadManager();
         mediaFileParser = new MediaFileParser();
         drawPanel();
-        startPinging(offlineModeDTO.getId());
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
     @Override
     protected void updatePanel() {
-        conversationChattingPanel.updateConversationChattingPanel();
+        conversationChattingPanel.updateConversationChattingPanel(isOnline);
         conversationDTO = conversationChattingPanel.getConversationDTO();
         ImageIcon profilePictureIcon = ImageParsingUtils.convertPictureToScaledImageIcon(conversationDTO.getContactProfilePicture(),
                 ConfigManager.getInt(configIdentifier, "contactProfilePictureLabelW"),
@@ -87,7 +91,7 @@ public class ConversationRoom extends DynamicPanelTemplate {
         contactNameLabel = new JLabel(conversationDTO.getContactName(), SwingConstants.RIGHT);
 
         conversationChattingPanel = new ConversationChattingPanel(configIdentifier, conversationDTO, clientController,
-                offlineModeDTO, contactId);
+                offlineModeDTO, contactId, isOnline);
         scrollPane = new JScrollPane(conversationChattingPanel);
 
         goBackButton = new JButton(ConfigManager.getString(configIdentifier, "goBackButtonM"));
@@ -164,7 +168,21 @@ public class ConversationRoom extends DynamicPanelTemplate {
     @Override
     protected void connectListeners() {
         sendMessageButton.addActionListener(actionEvent -> {
+            String adminId = ConfigManager.getString(ConfigFileIdentifier.CONSTANTS, "adminId");
+            if (conversationDTO.getContactId().equals(adminId)) {
+                QueuedMessage queuedMessage = QueuingUtils.getTextQueuedMessage(offlineModeDTO.getId(), messageField.getText());
+                queuedMessagesManager.submitQueuedMessage(queuedMessage);
+
+                JOptionPane.showMessageDialog(mainFrame, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                        "textMessageQueuedForSending"));
+                MasterLogger.clientInfo(clientController.getId(), "Text message queued for sending to contact (ID: " +
+                        contactId + ")", "connectListeners", getClass());
+
+                return;
+            }
+
             ArrayList<String> receiverList = new ArrayList<>(List.of(conversationDTO.getContactId()));
+
             Response response = clientController.sendTextMessage(offlineModeDTO.getId(), receiverList,
                     messageField.getText());
             if (response == null) return;
@@ -172,7 +190,7 @@ public class ConversationRoom extends DynamicPanelTemplate {
             if (response.getResponseStatus() == ResponseStatus.OK) {
                 MasterLogger.clientInfo(clientController.getId(), "Sent a message to contact (ID: " +
                                 conversationDTO.getContactId() + ")", "connectListeners", getClass());
-                conversationChattingPanel.updateConversationChattingPanel();
+                conversationChattingPanel.updateConversationChattingPanel(isOnline);
 
                 messageField.setText(ConfigManager.getString(configIdentifier, "messageFieldM"));
             }
@@ -222,6 +240,19 @@ public class ConversationRoom extends DynamicPanelTemplate {
                 return;
             }
 
+            String adminId = ConfigManager.getString(ConfigFileIdentifier.CONSTANTS, "adminId");
+            if (conversationDTO.getContactId().equals(adminId)) {
+                QueuedMessage queuedMessage = QueuingUtils.getMediaQueuedMessage(offlineModeDTO.getId(), convertedMediaFile);
+                queuedMessagesManager.submitQueuedMessage(queuedMessage);
+
+                JOptionPane.showMessageDialog(mainFrame, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                        "mediaFileQueuedForSending"));
+                MasterLogger.clientInfo(clientController.getId(), "Media file queued for sending to contact (ID: " +
+                        contactId + ")", "connectListeners", getClass());
+
+                return;
+            }
+
             ArrayList<String> receiverList = new ArrayList<>(List.of(conversationDTO.getContactId()));
             Response response = clientController.sendMediaMessage(offlineModeDTO.getId(), receiverList,
                     convertedMediaFile);
@@ -232,7 +263,7 @@ public class ConversationRoom extends DynamicPanelTemplate {
                 MasterLogger.clientInfo(clientController.getId(), "Media file sent to contact (ID: " +
                         contactId + ")", "connectListeners", getClass());
 
-                conversationChattingPanel.updateConversationChattingPanel();
+                conversationChattingPanel.updateConversationChattingPanel(isOnline);
                 chosenFile = null;
                 chosenFileLabel.setText(chosenFileLabelMessage);
             }
@@ -258,16 +289,44 @@ public class ConversationRoom extends DynamicPanelTemplate {
         goBackButton.addActionListener(actionEvent -> {
             MasterLogger.clientInfo(clientController.getId(), "Went back to messenger view",
                     "connectListeners", getClass());
-            stopPanelLoop();
+            facilitateChangingPanel(this);
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {
-                mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new StudentMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
-                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.MR_MOHSENI) {
-                mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.ADMIN) {
-                mainFrame.setCurrentPanel(new AdminMessengerView(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new AdminMessengerView(mainFrame, mainMenu, offlineModeDTO, isOnline));
             }
         });
+    }
+
+    @Override
+    public void disableOnlineComponents() {
+        stopPanelLoop();
+
+        String adminId = ConfigManager.getString(ConfigFileIdentifier.CONSTANTS, "adminId");
+        if (!contactId.equals(adminId)) {
+            sendMessageButton.setEnabled(false);
+            messageField.setEnabled(false);
+
+            sendFileButton.setEnabled(false);
+            chooseFileButton.setEnabled(false);
+        }
+    }
+
+    @Override
+    public void enableOnlineComponents() {
+        restartPanelLoop();
+
+        String adminId = ConfigManager.getString(ConfigFileIdentifier.CONSTANTS, "adminId");
+        if (!contactId.equals(adminId)) {
+            sendMessageButton.setEnabled(true);
+            messageField.setEnabled(true);
+
+            sendFileButton.setEnabled(true);
+            chooseFileButton.setEnabled(true);
+        }
     }
 }

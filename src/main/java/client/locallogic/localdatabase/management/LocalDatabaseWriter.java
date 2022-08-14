@@ -14,14 +14,23 @@ import java.util.List;
 import java.util.Map;
 
 public class LocalDatabaseWriter { // save in this context refers to saving to file
+    private int id;
     private Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap;
     private ObjectMapper objectMapper;
     private File datasetsDirectory;
 
-    public LocalDatabaseWriter(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap) {
+    public LocalDatabaseWriter(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap, int id) {
         this.identifierDatasetMap = identifierDatasetMap;
+        this.id = id;
         objectMapper = ObjectMapperUtils.getDatabaseObjectMapper();
-        datasetsDirectory = new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath"));
+        initializeDatasetsDirectory();
+    }
+
+    private void initializeDatasetsDirectory() {
+        datasetsDirectory = new File(
+                ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath")
+                        + id + "/"
+        );
     }
 
     public void saveDatabase() {
@@ -40,7 +49,7 @@ public class LocalDatabaseWriter { // save in this context refers to saving to f
     private void saveDataset(Map.Entry<LocalDatasetIdentifier, LocalDataset> identifierDatasetEntry) {
         List<Identifiable> identifiables = identifierDatasetEntry.getValue().getIdentifiables();
         identifiables.stream()
-                .forEach(e -> saveIdentifiable(e, identifierDatasetEntry.getKey().getFolderPath()));
+                .forEach(e -> saveIdentifiable(e, identifierDatasetEntry.getKey().getPath()));
     }
 
     private void saveIdentifiable(Identifiable identifiable, String folderPath) {

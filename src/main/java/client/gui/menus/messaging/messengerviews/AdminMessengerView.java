@@ -4,6 +4,7 @@ import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.menus.messaging.conversationroom.ConversationRoom;
 import client.locallogic.menus.messaging.ThumbnailIdParser;
+import shareables.models.pojos.messaging.Conversation;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
@@ -15,10 +16,10 @@ import shareables.utils.logging.MasterLogger;
 import javax.swing.*;
 
 public class AdminMessengerView extends MessengerView {
-    public AdminMessengerView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
-        super(mainFrame, mainMenu, offlineModeDTO);
+    public AdminMessengerView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO, boolean isOnline) {
+        super(mainFrame, mainMenu, offlineModeDTO, isOnline);
         removeConversationStarter();
-        startPinging(offlineModeDTO.getId());
+        startPingingIfOnline(offlineModeDTO.getId(), this);
     }
 
     private void removeConversationStarter() {
@@ -40,14 +41,20 @@ public class AdminMessengerView extends MessengerView {
 
             String selectedListItem = graphicalList.getSelectedValue();
             String selectedContactId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+
+            if (!isOnline) {
+                getConversationDTOInOfflineMode(selectedContactId);
+                return;
+            }
+
             Response response = clientController.getContactConversationDTO(offlineModeDTO.getId(), selectedContactId);
             if (response == null) return;
             if (response.getResponseStatus() == ResponseStatus.OK) {
                 ConversationDTO conversationDTO = (ConversationDTO) response.get("conversationDTO");
 
-                stopPanelLoop();
+                facilitateChangingPanel(this);
                 mainFrame.setCurrentPanel(new ConversationRoom(mainFrame, mainMenu, offlineModeDTO,
-                        conversationDTO, selectedContactId));
+                        conversationDTO, selectedContactId, isOnline));
                 MasterLogger.clientInfo(clientController.getId(), "Opened conversation room with user (ID: " +
                         selectedContactId + ")", "connectListeners", getClass());
             }

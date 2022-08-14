@@ -4,6 +4,8 @@ import client.locallogic.localdatabase.datasets.LocalDataset;
 import client.locallogic.localdatabase.datasets.LocalDatasetIdentifier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import shareables.models.idgeneration.Identifiable;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 import shareables.utils.objectmapping.ObjectMapperUtils;
 
 import java.io.File;
@@ -18,11 +20,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LocalDatabaseReader {
+    private int id;
     private Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap;
     private ObjectMapper objectMapper;
 
-    public LocalDatabaseReader(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap) {
+    public LocalDatabaseReader(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap, int id) {
         this.identifierDatasetMap = identifierDatasetMap;
+        this.id = id;
         objectMapper = ObjectMapperUtils.getDatabaseObjectMapper();
     }
 
@@ -37,8 +41,13 @@ public class LocalDatabaseReader {
     }
 
     private void readFilesAndSaveToDataset(LocalDatasetIdentifier localDatasetIdentifier, LocalDataset localDataset) {
-        List<File> filesInFolder = getFilesInFolder(localDatasetIdentifier.getFolderPath());
+        List<File> filesInFolder = getFilesInFolder(getDatasetFolderPath(localDatasetIdentifier));
         readFilesInFolder(localDatasetIdentifier, filesInFolder, localDataset);
+    }
+
+    private String getDatasetFolderPath(LocalDatasetIdentifier localDatasetIdentifier) {
+        return ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath")
+                + id + "/" + localDatasetIdentifier.getPath();
     }
 
     private void readFilesInFolder(LocalDatasetIdentifier localDatasetIdentifier, List<File> filesInFolder, LocalDataset localDataset) {

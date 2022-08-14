@@ -1,6 +1,7 @@
 package server.network.clienthandling.logicutils.general;
 
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
 import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import shareables.models.pojos.abstractions.DepartmentName;
@@ -26,23 +27,24 @@ public class OfflineModeUtils {
             initializeProfessorOfflineModeDTO(databaseManager, professor, offlineModeDTO);
         } else if (user.getUserIdentifier() == UserIdentifier.MR_MOHSENI) {
             MrMohseni mrMohseni = (MrMohseni) user;
-            initializeSpecialUserOfflineModeDTO(mrMohseni, offlineModeDTO);
+            initializeSpecialUserOfflineModeDTO(databaseManager, mrMohseni, offlineModeDTO);
             offlineModeDTO.setUserIdentifier(UserIdentifier.MR_MOHSENI);
         } else if (user.getUserIdentifier() == UserIdentifier.ADMIN) {
             Admin admin = (Admin) user;
-            initializeSpecialUserOfflineModeDTO(admin, offlineModeDTO);
+            initializeSpecialUserOfflineModeDTO(databaseManager, admin, offlineModeDTO);
             offlineModeDTO.setUserIdentifier(UserIdentifier.ADMIN);
         }
         return offlineModeDTO;
     }
 
-    private static void initializeSpecialUserOfflineModeDTO(User user, OfflineModeDTO offlineModeDTO) {
-        initializeCommonUserFields(user, offlineModeDTO);
+    private static void initializeSpecialUserOfflineModeDTO(DatabaseManager databaseManager, User user,
+                                                            OfflineModeDTO offlineModeDTO) {
+        initializeCommonUserFields(databaseManager, user, offlineModeDTO);
     }
 
     private static void initializeStudentOfflineModeDTO(DatabaseManager databaseManager, Student student,
                                                         OfflineModeDTO offlineModeDTO) {
-        initializeCommonUserFields(student, offlineModeDTO);
+        initializeCommonUserFields(databaseManager, student, offlineModeDTO);
         offlineModeDTO.setUserIdentifier(UserIdentifier.STUDENT);
         offlineModeDTO.setStudentStatus(student.getStudentStatus());
         offlineModeDTO.setEnrolmentTime(student.getEnrolmentTime());
@@ -75,7 +77,7 @@ public class OfflineModeUtils {
 
     private static void initializeProfessorOfflineModeDTO(DatabaseManager databaseManager, Professor professor,
                                                           OfflineModeDTO offlineModeDTO) {
-        initializeCommonUserFields(professor, offlineModeDTO);
+        initializeCommonUserFields(databaseManager, professor, offlineModeDTO);
         offlineModeDTO.setUserIdentifier(UserIdentifier.PROFESSOR);
         offlineModeDTO.setOfficeNumber(professor.getOfficeNumber());
         offlineModeDTO.setAcademicLevel(professor.getAcademicLevel());
@@ -84,7 +86,7 @@ public class OfflineModeUtils {
         offlineModeDTO.setCourseDTOs(WeeklyScheduleUtils.getProfessorCourseDTOs(databaseManager, professor.getId()));
     }
 
-    private static void initializeCommonUserFields(User user, OfflineModeDTO offlineModeDTO) {
+    private static void initializeCommonUserFields(DatabaseManager databaseManager, User user, OfflineModeDTO offlineModeDTO) {
         offlineModeDTO.setLastLogin(user.getLastLogin());
         offlineModeDTO.setName(user.fetchName());
         offlineModeDTO.setEmailAddress(user.getEmailAddress());
@@ -93,7 +95,14 @@ public class OfflineModeUtils {
         offlineModeDTO.setNationalId(user.getNationalId());
         offlineModeDTO.setPhoneNumber(user.getPhoneNumber());
         offlineModeDTO.setDepartmentId(user.getDepartmentId());
-        // TODO: setting offlineMessengerDTO
+
+        offlineModeDTO.setConversationThumbnailDTOs(
+                MessengerViewUtils.getConversationThumbnailDTOs(databaseManager, user.getId())
+        );
+
+        offlineModeDTO.setOfflineMessengerDTO(
+                OfflineMessengerUtils.getOfflineMessengerDTO(databaseManager, user.getMessenger())
+        );
     }
 
     private static DepartmentName getDepartmentNameWithId(String departmentId) {

@@ -1,6 +1,7 @@
 package client.gui;
 
 import client.gui.menus.main.*;
+import client.locallogic.localdatabase.management.QueuedMessagesManager;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.pinging.Loop;
 import shareables.network.responses.Response;
@@ -21,10 +22,12 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
     protected Runnable pingingTask;
     protected Loop panelLoop;
     protected OfflineModeDTO offlineModeDTO;
+    protected QueuedMessagesManager queuedMessagesManager;
 
     public DynamicPanelTemplate(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu);
         this.offlineModeDTO = offlineModeDTO;
+        queuedMessagesManager = new QueuedMessagesManager(clientController, offlineModeDTO.getId());
         isOnline = true; // default value
     }
 
@@ -54,10 +57,10 @@ public abstract class DynamicPanelTemplate extends PanelTemplate {
             if (isOnline) {
                 updateOfflineModeDTO(userId);
                 updatePanel();
+                queuedMessagesManager.sendQueuedMessages();
             } else {
                 notifyClientOfConnectionLoss();
                 goToMainMenu();
-//                mainMenu.goOffline(mainFrame, mainMenu, clientController);
             }
             // TODO: unrelated but adding messenger to offline mode
         };
