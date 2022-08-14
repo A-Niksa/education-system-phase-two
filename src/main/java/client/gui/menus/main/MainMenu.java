@@ -5,6 +5,7 @@ import client.gui.MainFrame;
 import client.gui.OfflinePanel;
 import client.gui.menus.login.LoginMenu;
 import client.gui.utils.ImageParsingUtils;
+import client.locallogic.localdatabase.management.QueuedMessagesManager;
 import client.locallogic.menus.main.DateStringFormatter;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.pinging.Loop;
@@ -36,6 +37,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
     protected MainMenuType mainMenuType;
     protected JButton notificationsButton;
     protected JButton messengerButton;
+    protected QueuedMessagesManager queuedMessagesManager;
 
     public MainMenu(MainFrame mainFrame, String username, MainMenuType mainMenuType, OfflineModeDTO offlineModeDTO,
                     boolean isOnline) {
@@ -44,6 +46,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         this.isOnline = isOnline;
         clientController = mainFrame.getClientController();
         initializeOfflineModeDTO(offlineModeDTO, username);
+        queuedMessagesManager = new QueuedMessagesManager(clientController, this.offlineModeDTO.getId());
         configIdentifier = ConfigFileIdentifier.GUI_MAIN;
         configurePanel();
         drawPanel();
@@ -55,6 +58,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
         this.isOnline = isOnline;
         clientController = mainFrame.getClientController();
         initializeOfflineModeDTO(offlineModeDTO, offlineModeDTO.getId());
+        queuedMessagesManager = new QueuedMessagesManager(clientController, this.offlineModeDTO.getId());
         configIdentifier = ConfigFileIdentifier.GUI_MAIN;
         configurePanel();
         drawPanel();
@@ -85,6 +89,7 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
             if (isOnline) {
                 updateOfflineModeDTO(username);
                 updatePanel();
+                queuedMessagesManager.sendQueuedMessages();
             } else {
                 notifyClientOfConnectionLoss();
                 goOffline(mainFrame, this, clientController);
@@ -199,6 +204,11 @@ public abstract class MainMenu extends JPanel implements OfflinePanel {
                 MasterLogger.clientInfo(clientController.getId(), "Logged out", "connectListeners",
                         getClass());
                 stopPanelLoop();
+
+                clientController.saveLocalDatabase();
+                MasterLogger.clientInfo(clientController.getId(), "Saved local database",
+                        "connectListeners", getClass());
+
                 mainFrame.setCurrentPanel(new LoginMenu(mainFrame));
             }
         });

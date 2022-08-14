@@ -52,6 +52,7 @@ public class OfflineMessengerUtils {
 
         List<Message> shortenedListOfMessages = conversation.getMessages().stream()
                 .limit(numberOfOfflineModeMessages)
+                .sorted(messageComparator)
                 .collect(Collectors.toCollection(ArrayList::new));
 
         Conversation shortenedConversation = new Conversation();

@@ -4,9 +4,12 @@ import client.gui.menus.login.LoginMenu;
 import client.controller.ClientController;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame {
     private ClientController clientController;
@@ -18,7 +21,20 @@ public class MainFrame extends JFrame {
         configIdentifier = ConfigFileIdentifier.GUI;
         initializePanel();
         configureFrame();
+        connectWindowListener();
         repaintFrame();
+    }
+
+    private void connectWindowListener() {
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                clientController.saveLocalDatabase();
+                MasterLogger.clientInfo(clientController.getId(), "Saved local database",
+                        "connectWindowListener", getClass());
+                e.getWindow().dispose();
+            }
+        });
     }
 
     private void initializePanel() {

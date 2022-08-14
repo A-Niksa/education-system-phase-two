@@ -2,7 +2,7 @@
   "id" : "1",
   "courseIds" : [ "1222000", "1222001" ],
   "professorIds" : [ "80201200", "90201301" ],
-  "studentIds" : [ "19101100", "18101201", "13101102" ],
+  "studentIds" : [ "19101100", "18101201" ],
   "deanId" : "90201301",
   "deputyId" : "80201200",
   "departmentName" : "MATHEMATICS"

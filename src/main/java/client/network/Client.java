@@ -16,7 +16,6 @@ public class Client {
     public Client(int id, int port) {
         this.id = id;
         this.port = port;
-        localDatabaseManager = new LocalDatabaseManager(id);
     }
 
     public void start() {
@@ -27,6 +26,17 @@ public class Client {
     public void startClientNetwork() {
         serverController = new ServerController(port, id, this);
         serverController.attemptConnectionToServer();
+    }
+
+    public void startLocalDatabaseManager(String currentUserId) {
+        if (localDatabaseManager == null) createNewLocalDatabaseManager(currentUserId);
+        else localDatabaseManager.setCurrentUserId(currentUserId);
+
+        localDatabaseManager.loadDatabase();
+    }
+
+    private void createNewLocalDatabaseManager(String currentUserId) {
+        localDatabaseManager = new LocalDatabaseManager(currentUserId);
     }
 
     public Response sendAndListen(Request request) {
@@ -48,5 +58,17 @@ public class Client {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setCurrentUserIdInDatabaseManager(String currentUserId) {
+        localDatabaseManager.setCurrentUserId(currentUserId);
+    }
+
+    public LocalDatabaseManager getLocalDatabaseManager() {
+        return localDatabaseManager;
+    }
+
+    public void setLocalDatabaseManager(LocalDatabaseManager localDatabaseManager) {
+        this.localDatabaseManager = localDatabaseManager;
     }
 }

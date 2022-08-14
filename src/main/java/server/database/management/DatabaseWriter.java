@@ -40,6 +40,7 @@ public class DatabaseWriter { // save in this context refers to saving to file
     // TODO: should be private
     public void purgeDirectoryCompletely(File directory) {
         for (File file : directory.listFiles()) {
+            if (file.isDirectory()) purgeDirectoryCompletely(file);
             file.delete();
         }
     }

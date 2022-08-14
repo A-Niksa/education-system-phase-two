@@ -169,7 +169,7 @@ public class ConversationRoom extends DynamicPanelTemplate implements OfflinePan
     protected void connectListeners() {
         sendMessageButton.addActionListener(actionEvent -> {
             String adminId = ConfigManager.getString(ConfigFileIdentifier.CONSTANTS, "adminId");
-            if (conversationDTO.getContactId().equals(adminId)) {
+            if (!isOnline && conversationDTO.getContactId().equals(adminId)) {
                 QueuedMessage queuedMessage = QueuingUtils.getTextQueuedMessage(offlineModeDTO.getId(), messageField.getText());
                 queuedMessagesManager.submitQueuedMessage(queuedMessage);
 
@@ -241,7 +241,7 @@ public class ConversationRoom extends DynamicPanelTemplate implements OfflinePan
             }
 
             String adminId = ConfigManager.getString(ConfigFileIdentifier.CONSTANTS, "adminId");
-            if (conversationDTO.getContactId().equals(adminId)) {
+            if (!isOnline && conversationDTO.getContactId().equals(adminId)) {
                 QueuedMessage queuedMessage = QueuingUtils.getMediaQueuedMessage(offlineModeDTO.getId(), convertedMediaFile);
                 queuedMessagesManager.submitQueuedMessage(queuedMessage);
 

@@ -1,5 +1,7 @@
 package client.controller;
 
+import client.locallogic.localdatabase.datamodels.QueuedMessage;
+import client.locallogic.localdatabase.datasets.LocalDatasetIdentifier;
 import client.network.Client;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.media.MediaFile;
@@ -14,6 +16,7 @@ import shareables.network.responses.Response;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class ClientController {
     private Client client;
@@ -26,6 +29,34 @@ public class ClientController {
 
     public void attemptServerConnection() {
         client.startClientNetwork();
+    }
+
+    public void startClientLocalDatabaseManager(String currentUserId) {
+        client.startLocalDatabaseManager(currentUserId);
+    }
+
+    // TODO: having two users log in at the same time
+
+    public void saveLocalDatabase() {
+        client.getLocalDatabaseManager().saveDatabase();
+    }
+
+    public void loadLocalDatabase() {
+        client.getLocalDatabaseManager().loadDatabase();
+    }
+
+    public List<QueuedMessage> getQueuedMessagesFromLocalDatabase() {
+        return client.getLocalDatabaseManager().getAllQueuedMessages();
+    }
+
+    public void submitQueuedMessage(QueuedMessage queuedMessage) {
+        client.getLocalDatabaseManager()
+                .save(LocalDatasetIdentifier.QUEUED_MESSAGES, queuedMessage);
+    }
+
+    public void removeQueuedMessage(QueuedMessage queuedMessage) {
+        client.getLocalDatabaseManager()
+                .remove(LocalDatasetIdentifier.QUEUED_MESSAGES, queuedMessage.getId());
     }
 
     public Response logIn(String username, String password, String captcha, String currentCaptcha) {

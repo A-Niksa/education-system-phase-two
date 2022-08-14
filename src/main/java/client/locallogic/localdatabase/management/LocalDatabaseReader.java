@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LocalDatabaseReader {
-    private int id;
     private Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap;
     private ObjectMapper objectMapper;
+    private String currentUserId;
 
-    public LocalDatabaseReader(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap, int id) {
+    public LocalDatabaseReader(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap, String currentUserId) {
         this.identifierDatasetMap = identifierDatasetMap;
-        this.id = id;
+        this.currentUserId = currentUserId;
         objectMapper = ObjectMapperUtils.getDatabaseObjectMapper();
     }
 
@@ -41,13 +41,13 @@ public class LocalDatabaseReader {
     }
 
     private void readFilesAndSaveToDataset(LocalDatasetIdentifier localDatasetIdentifier, LocalDataset localDataset) {
-        List<File> filesInFolder = getFilesInFolder(getDatasetFolderPath(localDatasetIdentifier));
+        List<File> filesInFolder = getFilesInFolder(getUserDatasetFolderPath());
         readFilesInFolder(localDatasetIdentifier, filesInFolder, localDataset);
     }
 
-    private String getDatasetFolderPath(LocalDatasetIdentifier localDatasetIdentifier) {
+    private String getUserDatasetFolderPath() {
         return ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath")
-                + id + "/" + localDatasetIdentifier.getPath();
+                + currentUserId + "/";
     }
 
     private void readFilesInFolder(LocalDatasetIdentifier localDatasetIdentifier, List<File> filesInFolder, LocalDataset localDataset) {
@@ -77,5 +77,9 @@ public class LocalDatabaseReader {
             e.printStackTrace();
         }
         return filesInFolder;
+    }
+
+    public void setCurrentUserId(String currentUserId) {
+        this.currentUserId = currentUserId;
     }
 }

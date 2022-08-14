@@ -14,14 +14,14 @@ import java.util.List;
 import java.util.Map;
 
 public class LocalDatabaseWriter { // save in this context refers to saving to file
-    private int id;
     private Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap;
     private ObjectMapper objectMapper;
     private File datasetsDirectory;
+    private String currentUserId;
 
-    public LocalDatabaseWriter(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap, int id) {
+    public LocalDatabaseWriter(Map<LocalDatasetIdentifier, LocalDataset> identifierDatasetMap, String currentUserId) {
         this.identifierDatasetMap = identifierDatasetMap;
-        this.id = id;
+        this.currentUserId = currentUserId;
         objectMapper = ObjectMapperUtils.getDatabaseObjectMapper();
         initializeDatasetsDirectory();
     }
@@ -29,7 +29,7 @@ public class LocalDatabaseWriter { // save in this context refers to saving to f
     private void initializeDatasetsDirectory() {
         datasetsDirectory = new File(
                 ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath")
-                        + id + "/"
+                        + currentUserId + "/"
         );
     }
 
@@ -49,16 +49,20 @@ public class LocalDatabaseWriter { // save in this context refers to saving to f
     private void saveDataset(Map.Entry<LocalDatasetIdentifier, LocalDataset> identifierDatasetEntry) {
         List<Identifiable> identifiables = identifierDatasetEntry.getValue().getIdentifiables();
         identifiables.stream()
-                .forEach(e -> saveIdentifiable(e, identifierDatasetEntry.getKey().getPath()));
+                .forEach(e -> saveIdentifiable(e, datasetsDirectory.getPath()));
     }
 
     private void saveIdentifiable(Identifiable identifiable, String folderPath) {
         String id = identifiable.getId();
-        File file = new File(folderPath + id + ".json");
+        File file = new File(folderPath + "/" + id + ".json");
         try {
             objectMapper.writeValue(file, identifiable);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setCurrentUserId(String currentUserId) {
+        this.currentUserId = currentUserId;
     }
 }

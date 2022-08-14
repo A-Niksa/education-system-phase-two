@@ -146,6 +146,12 @@ public class LoginMenu extends JPanel {
                 }
                 return;
             }
+
+            clientController.startClientLocalDatabaseManager(username);
+            clientController.loadLocalDatabase();
+            MasterLogger.clientInfo(clientController.getId(), "Started and loaded local database",
+                    "connectListeners", getClass());
+
             UserIdentifier userIdentifier = (UserIdentifier) response.get("userIdentifier");
             if (userIdentifier == UserIdentifier.STUDENT) {
                 MasterLogger.clientInfo(clientController.getId(), "Logged in as student",

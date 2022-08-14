@@ -6,20 +6,14 @@ import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
 
 public enum LocalDatasetIdentifier {
-    QUEUED_MESSAGES("queuedMessagesFolderPath", QueuedMessage.class, "Queued Messaged Path");
+    QUEUED_MESSAGES(QueuedMessage.class, "Queued Messages Path");
 
-    private String path;
     private Class<? extends Identifiable> classLiteral;
     private String datasetName;
 
-    LocalDatasetIdentifier(String pathConfigKeyString, Class<? extends Identifiable> classLiteral, String datasetName) {
-        path = ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, pathConfigKeyString);
+    LocalDatasetIdentifier(Class<? extends Identifiable> classLiteral, String datasetName) {
         this.classLiteral = classLiteral;
         this.datasetName = datasetName;
-    }
-
-    public String getPath() {
-        return path;
     }
 
     public Class<?> getClassLiteral() {

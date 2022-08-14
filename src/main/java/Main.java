@@ -173,6 +173,11 @@ public class Main {
         firstMessage.setMessageType(MessageType.TEXT);
         firstMessage.setMessageText("Certainly sir there is much surrounding this problem");
         firstMessage.setSenderId(rezaei.getId());
+        try {
+            Thread.sleep(1100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Message secondMessage = new Message();
         secondMessage.setMessageType(MessageType.MEDIA);
         secondMessage.setMessageMediaFile(new Picture(true));

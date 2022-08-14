@@ -15,20 +15,50 @@ import java.util.List;
 public class QueuedMessagesManager {
     private ClientController clientController;
     private String userId;
-    private Deque<QueuedMessage> queuedMessages;
+    private List<QueuedMessage> queuedMessages;
+    private Deque<QueuedMessage> submittedMessagesQueue;
 
     public QueuedMessagesManager(ClientController clientController, String userId) {
         this.clientController = clientController;
         this.userId = userId;
-        queuedMessages = new ArrayDeque<>();
+        submittedMessagesQueue = new ArrayDeque<>();
+        updateQueue();
+    }
+
+    private void updateQueue() {
+        updateQueuedMessages();
+        updateSubmittedMessagesQueue();
+    }
+
+    private void updateSubmittedMessagesQueue() {
+        submittedMessagesQueue.clear();
+        queuedMessages.stream()
+                .filter(message -> !message.isSent())
+                .forEach(message -> submittedMessagesQueue.offer(message));
+    }
+
+    private void updateQueuedMessages() {
+        queuedMessages = clientController.getQueuedMessagesFromLocalDatabase();
     }
 
     public void sendQueuedMessages() {
-        QueuedMessage earliestQueuedMessage = queuedMessages.poll();
+        updateQueue();
+
+        QueuedMessage earliestQueuedMessage = submittedMessagesQueue.poll();
         if (earliestQueuedMessage != null) {
             if (!earliestQueuedMessage.isSent()) {
                 sendToAdmin(earliestQueuedMessage);
+                clientController.removeQueuedMessage(earliestQueuedMessage);
+                sleepShortly();
             }
+        }
+    }
+
+    private void sleepShortly() {
+        try {
+            Thread.sleep(ConfigManager.getInt(ConfigFileIdentifier.CONSTANTS, "queueSleepingTime"));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -57,6 +87,6 @@ public class QueuedMessagesManager {
     }
 
     public void submitQueuedMessage(QueuedMessage queuedMessage) {
-        queuedMessages.offer(queuedMessage);
+        clientController.submitQueuedMessage(queuedMessage);
     }
 }

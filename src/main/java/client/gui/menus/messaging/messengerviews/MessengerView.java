@@ -47,7 +47,7 @@ public abstract class MessengerView extends DynamicPanelTemplate implements Offl
                 .forEach(e -> listModel.removeElement(e));
         Arrays.stream(conversationThumbnailTexts)
                 .filter(e -> !arrayContains(previousConversationThumbnailTexts, e))
-                .forEach(e -> listModel.addElement(e));
+                .forEach(e -> listModel.add(0, e));
     }
 
     private boolean arrayContains(String[] array, String targetElement) {

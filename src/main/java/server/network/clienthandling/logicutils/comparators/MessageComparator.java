@@ -7,6 +7,11 @@ import java.util.Comparator;
 public class MessageComparator implements Comparator<Message> {
     @Override
     public int compare(Message firstMessage, Message secondMessage) {
-        return firstMessage.getMessageDate().compareTo(secondMessage.getMessageDate());
+        int comparisonResult = firstMessage.getMessageDate().compareTo(secondMessage.getMessageDate());
+        if (comparisonResult == 0) {
+            return 1;
+        } else {
+            return comparisonResult;
+        }
     }
 }
