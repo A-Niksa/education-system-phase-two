@@ -11,9 +11,7 @@ import server.network.clienthandling.logicutils.general.OfflineModeUtils;
 import server.network.clienthandling.logicutils.login.LoginUtils;
 import server.network.clienthandling.logicutils.main.MainMenuUtils;
 import server.network.clienthandling.logicutils.messaging.MessageNotificationManager;
-import server.network.clienthandling.logicutils.messaging.contactfetching.ContactFetchingUtils;
-import server.network.clienthandling.logicutils.messaging.contactfetching.ProfessorContactFetchingUtils;
-import server.network.clienthandling.logicutils.messaging.contactfetching.StudentContactFetchingUtils;
+import server.network.clienthandling.logicutils.messaging.contactfetching.*;
 import server.network.clienthandling.logicutils.messaging.DownloadingUtils;
 import server.network.clienthandling.logicutils.messaging.MessageSendingUtils;
 import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
@@ -600,6 +598,12 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler.contactProfileDTOsAcquired(clientHandler, contactProfileDTOs);
     }
 
+    public void getMrMohseniContactProfileDTOs(ClientHandler clientHandler, Request request) {
+        List<ContactProfileDTO> contactProfileDTOs = MrMohseniContactFetchingUtils.getMrMohseniContactProfileDTOs(
+                databaseManager, (String) request.get("username"));
+        responseHandler.contactProfileDTOsAcquired(clientHandler, contactProfileDTOs);
+    }
+
     public void checkIfContactIdsExist(ClientHandler clientHandler, Request request) {
         List<String> contactIds = (ArrayList<String>) request.get("contactIds");
         if (ContactFetchingUtils.contactIdsExist(databaseManager, contactIds)) {
@@ -679,5 +683,15 @@ public class RequestHandler { // TODO: logging, perhaps?
         String studentId = (String) request.get("studentId");
         StudentDTO studentDTO = StudentSearchingUtils.getStudentDTO(databaseManager, studentId);
         responseHandler.studentDTOAcquired(clientHandler, studentDTO);
+    }
+
+    public void getFilteredContactIds(ClientHandler clientHandler, Request request) {
+        List<String> contactIds = (ArrayList<String>) request.get("contactIds");
+        DegreeLevel degreeLevel = (DegreeLevel) request.get("degreeLevel");
+        StudentStatus studentStatus = (StudentStatus) request.get("studentStatus");
+        int yearOfEntry = (int) request.get("yearOfEntry");
+        List<String> filteredContactIds = ContactFilteringUtils.getFilteredContactIds(databaseManager, contactIds,
+                yearOfEntry, degreeLevel, studentStatus);
+        responseHandler.contactIdsAcquired(clientHandler, filteredContactIds);
     }
 }

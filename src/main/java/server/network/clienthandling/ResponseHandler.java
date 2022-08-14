@@ -355,4 +355,10 @@ public class ResponseHandler {
         response.put("studentDTO", studentDTO);
         clientHandler.respond(response);
     }
+
+    public void contactIdsAcquired(ClientHandler clientHandler, List<String> contactIds) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("contactIds", contactIds);
+        clientHandler.respond(response);
+    }
 }

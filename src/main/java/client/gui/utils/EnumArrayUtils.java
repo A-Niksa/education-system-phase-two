@@ -51,4 +51,13 @@ public class EnumArrayUtils {
         }
         return studentStatusStrings;
     }
+
+    public static String[] initializeStudentStatusStringsWithoutDropouts() {
+        String[] studentStatusStrings = new String[StudentStatus.values().length - 1];
+        int index = 0;
+        for (StudentStatus studentStatus : StudentStatus.values()) {
+            if (studentStatus != StudentStatus.DROPPED_OUT) studentStatusStrings[index++] = studentStatus.toString();
+        }
+        return studentStatusStrings;
+    }
 }

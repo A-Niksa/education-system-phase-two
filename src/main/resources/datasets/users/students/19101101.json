@@ -52,6 +52,19 @@
         "messageDate" : "2022-08-13T23:18:29.6168731"
       } ],
       "conversingUserIds" : [ "19101101", "80201201" ]
+    }, {
+      "id" : "492022019",
+      "date" : "2022-08-14T15:47:02.3333962",
+      "messages" : [ {
+        "id" : "1660492022",
+        "date" : "2022-08-14T15:47:02.3314165",
+        "senderId" : "2",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Yo",
+        "messageDate" : "2022-08-14T15:47:02.3314165"
+      } ],
+      "conversingUserIds" : [ "2", "19101101" ]
     } ]
   },
   "notificationsManager" : {

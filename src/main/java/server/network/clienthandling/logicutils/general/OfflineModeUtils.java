@@ -27,9 +27,11 @@ public class OfflineModeUtils {
         } else if (user.getUserIdentifier() == UserIdentifier.MR_MOHSENI) {
             MrMohseni mrMohseni = (MrMohseni) user;
             initializeSpecialUserOfflineModeDTO(mrMohseni, offlineModeDTO);
+            offlineModeDTO.setUserIdentifier(UserIdentifier.MR_MOHSENI);
         } else if (user.getUserIdentifier() == UserIdentifier.ADMIN) {
             Admin admin = (Admin) user;
             initializeSpecialUserOfflineModeDTO(admin, offlineModeDTO);
+            offlineModeDTO.setUserIdentifier(UserIdentifier.ADMIN);
         }
         return offlineModeDTO;
     }

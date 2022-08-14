@@ -1,6 +1,8 @@
 package client.gui.menus.main;
 
 import client.gui.MainFrame;
+import client.gui.menus.messaging.messengerviews.MrMohseniMessengerView;
+import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.searching.MrMohseniSearcher;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigManager;
@@ -40,6 +42,13 @@ public class MrMohseniMenu extends SpecialUserMenu {
 
     private void connectStudentSearchListener() {
         MainMenu mainMenu = this;
+
+        messengerButton.addActionListener(actionEvent -> {
+            MasterLogger.clientInfo(clientController.getId(), "Opened the messenger",
+                    "connectListeners", getClass());
+            facilitateChangingPanel(mainMenu);
+            mainFrame.setCurrentPanel(new MrMohseniMessengerView(mainFrame, mainMenu, offlineModeDTO));
+        });
 
         studentSearchButton.addActionListener(actionEvent -> {
             MasterLogger.clientInfo(clientController.getId(), "Opened the student searching section",

@@ -43,7 +43,6 @@ public class ConversationStartingRoom extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
-
     }
 
     @Override
@@ -182,7 +181,6 @@ public class ConversationStartingRoom extends DynamicPanelTemplate {
             } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
                 mainFrame.setCurrentPanel(new ProfessorConversationStarter(mainFrame, mainMenu, offlineModeDTO));
             }
-            // TODO: add to this
         });
     }
 }

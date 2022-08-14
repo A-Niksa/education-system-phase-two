@@ -7,11 +7,21 @@ import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.Professor;
+import shareables.models.pojos.users.specialusers.Admin;
+import shareables.models.pojos.users.specialusers.MrMohseni;
 import shareables.models.pojos.users.students.Student;
 
 public class IdentifiableFetchingUtils {
     public static User getUser(DatabaseManager databaseManager, String userId) {
         return LoginUtils.getUser(databaseManager, userId);
+    }
+
+    public static Admin getAdmin(DatabaseManager databaseManager, String adminId) {
+        return (Admin) getUser(databaseManager, adminId);
+    }
+
+    public static MrMohseni getMrMohseni(DatabaseManager databaseManager, String mrMohseniId) {
+        return (MrMohseni) getUser(databaseManager, mrMohseniId);
     }
 
     public static Student getStudent(DatabaseManager databaseManager, String studentId) {

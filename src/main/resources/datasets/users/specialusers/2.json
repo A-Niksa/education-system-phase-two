@@ -12,11 +12,70 @@
   },
   "messenger" : {
     "ownerId" : "2",
-    "conversations" : [ ]
+    "conversations" : [ {
+      "id" : "492022021",
+      "date" : "2022-08-14T15:47:02.3333962",
+      "messages" : [ {
+        "id" : "1660492022",
+        "date" : "2022-08-14T15:47:02.3314165",
+        "senderId" : "2",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Yo",
+        "messageDate" : "2022-08-14T15:47:02.3314165"
+      } ],
+      "conversingUserIds" : [ "2", "19101101" ]
+    }, {
+      "id" : "492052026",
+      "date" : "2022-08-14T15:47:32.7827885",
+      "messages" : [ {
+        "id" : "1660492052",
+        "date" : "2022-08-14T15:47:32.7817896",
+        "senderId" : "2",
+        "messageType" : "MEDIA",
+        "messageMediaFile" : {
+          "type" : "Picture",
+          "id" : "052040",
+          "date" : "2022-08-14T15:47:32.7727739",
+          "mediaFileIdentifier" : "PICTURE",
+          "path" : "D:\\SUT\\1400 - 2 - Semester 2\\Advanced Programming\\Materials\\Projects\\Phase 2\\EDUPhaseTwo\\src\\main\\resources\\images\\profilepictures\\default.png",
+          "encodedBytes" : "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABQVBMVEXk5ufl5+jj5ebi5OXh4+Xh4+TV2NrIzM6/w8a6v8K6v8G9wsTEycvR1Nbe4eLS1te8wcOwtrmts7avtLe3vL/Lz9Hg4uPl5uff4uOutLfZ3N3l5+ff4eK2u77X2tzBxsi3vb/b3t/M0NLAxMfc3+C1u72ttLevtbjJzc/h5OXg4uS5vsGxtrnX2tvY29zKztDP0tTAxce7wMLGysy5vsDGys29wcTi5ebS1dfEyMqzubvP09S+w8W0ubzc3uDDyMq8wcSzubyzuLvO0tTDx8nj5ufN0dOxt7rU19na3d7Izc/N0NLm5+jQ09XCx8m+w8bCxsnHy83Bxci2vL+1u76/xMbN0dLb3d/V2dq0uryts7fT1tjj5efW2dve4OLFycy2vL7Q1Nayt7rMz9Hd3+G4vcDFycuyuLqwtbja3N7////iYmsgAAAAAWJLR0RqJWKVDgAAAAd0SU1FB+YEFgwNAt6BGrkAAAHYSURBVEjH7dbXVsJAEAZgJkixoGQEdSQWLKBSROwdsWADKzbEXt//BQzo8ZhkMbPe6fG///hnl90kDsd//vMbA6A46xQH/IS63B5vfUNjk69Z2iotfhWraQ0E26Ta2zuaVKSPIPk7QxJY89LXYFc3v9vZg2TUvWF2dx+Zg/1Oph0YjFh01MccfMhqCf3DLDsSQyumeIJTDcm4wBKOsnCKhHiMMzV4UIjTrP0eF+MJF8OGJsU4xsEwKsZT0xw80yrEs5wlh8Jzwu2eZx0xZUE09+JSO+u/8kUFUy9zqB5Xxlq90sm8GJDIWnCQWaxnVTXZNe511rO+kTNMvjbCt3o2Y/TBEReDEr3VdWt99bmKVQPjW3K08roAVzI1tL3j1mBX6rEN61oy7yl4M+m0f2//IJVoVoD3A+AYSB0exQk/Q+px8eRUsefgPCucE16YDxhlx0p1NvyyXFSFN1L30UxJ+ebRD1fXuRq0ytX9cO3ycixC3wZvSrWsbwXJJpjbUYT29i5iZyuH5l60XneWY3Wdt+KHR9uZ3xM5t1ztyyem1dddNN0TSD5zLdFLyVTNL65UG3dcC1zwMWUNHxlQViUskeEzAVZligk9hkW/bkglYdpuqbBeHn8zb6D7jbiDIL7dAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA0LTIyVDEyOjEyOjUzKzAwOjAw2RhYDQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wNC0yMlQxMjoxMjo1MyswMDowMKhF4LEAAAAASUVORK5CYII="
+        },
+        "messageText" : null,
+        "messageDate" : "2022-08-14T15:47:32.7817896"
+      } ],
+      "conversingUserIds" : [ "2", "18101205" ]
+    }, {
+      "id" : "492427024",
+      "date" : "2022-08-14T15:53:47.8668625",
+      "messages" : [ {
+        "id" : "1660492427",
+        "date" : "2022-08-14T15:53:47.865853",
+        "senderId" : "2",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Halo",
+        "messageDate" : "2022-08-14T15:53:47.865853"
+      } ],
+      "conversingUserIds" : [ "2", "80201201" ]
+    } ]
   },
   "notificationsManager" : {
     "ownerId" : "2",
-    "notifications" : [ ]
+    "notifications" : [ {
+      "id" : "1660492395",
+      "date" : "2022-08-14T15:53:15.7718915",
+      "notificationDate" : "2022-08-14T15:53:15.7718915",
+      "isSentByUser" : true,
+      "senderId" : "2",
+      "receiverId" : "80201201",
+      "isRequest" : true,
+      "notificationIdentifier" : "MESSAGE_REQUEST",
+      "notificationText" : "Add me to your messenger",
+      "notificationStatus" : "ACCEPTED",
+      "sentByUser" : true,
+      "request" : true
+    } ]
   },
   "userIdentifier" : "MR_MOHSENI",
   "nationalId" : "0150390912",
@@ -25,6 +84,6 @@
   "phoneNumber" : "09123412782",
   "emailAddress" : "mohseni@sharif.edu",
   "password" : "1234",
-  "lastLogin" : "2022-08-14T12:20:02.1514302",
+  "lastLogin" : "2022-08-14T15:52:47.7746183",
   "configIdentifier" : "MR_MOHSENI_INFO"
 }

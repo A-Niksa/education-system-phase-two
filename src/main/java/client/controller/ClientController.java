@@ -4,6 +4,7 @@ import client.network.Client;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.students.DegreeLevel;
+import shareables.models.pojos.users.students.StudentStatus;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.requests.Request;
@@ -509,6 +510,20 @@ public class ClientController {
     public Response getStudentDTO(String studentId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_DTO,
                 new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getMrMohseniContactProfileDTOs(String username) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_MR_MOHSENI_CONTACT_PROFILE_DTOS,
+                new StringObjectMap("username", username));
+        return client.sendAndListen(request);
+    }
+
+    public Response getFilteredContactIds(ArrayList<String> contactIds, int yearOfEntry, DegreeLevel degreeLevel,
+                                          StudentStatus studentStatus) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_FILTERED_CONTACT_IDS,
+                new StringObjectMap("contactIds", contactIds), new StringObjectMap("yearOfEntry", yearOfEntry),
+                new StringObjectMap("degreeLevel", degreeLevel), new StringObjectMap("studentStatus", studentStatus));
         return client.sendAndListen(request);
     }
 

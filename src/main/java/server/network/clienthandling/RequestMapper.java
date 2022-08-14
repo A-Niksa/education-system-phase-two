@@ -242,6 +242,9 @@ public class RequestMapper {
             case DECLINE_NOTIFICATION:
                 requestHandler.declineNotification(clientHandler, request);
                 break;
+            case GET_MR_MOHSENI_CONTACT_PROFILE_DTOS:
+                requestHandler.getMrMohseniContactProfileDTOs(clientHandler, request);
+                break;
             case GET_ALL_STUDENT_CONTACT_PROFILE_DTOS:
                 requestHandler.getAllStudentContactProfileDTOs(clientHandler, request);
                 break;
@@ -250,6 +253,9 @@ public class RequestMapper {
                 break;
             case GET_STUDENT_DTO:
                 requestHandler.getStudentDTO(clientHandler, request);
+                break;
+            case GET_FILTERED_CONTACT_IDS:
+                requestHandler.getFilteredContactIds(clientHandler, request);
                 break;
         }
     }

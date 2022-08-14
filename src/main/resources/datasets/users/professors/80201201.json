@@ -24,11 +24,37 @@
         "messageDate" : "2022-08-13T23:18:29.6168731"
       } ],
       "conversingUserIds" : [ "19101101", "80201201" ]
+    }, {
+      "id" : "492427022",
+      "date" : "2022-08-14T15:53:47.8668625",
+      "messages" : [ {
+        "id" : "1660492427",
+        "date" : "2022-08-14T15:53:47.865853",
+        "senderId" : "2",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Halo",
+        "messageDate" : "2022-08-14T15:53:47.865853"
+      } ],
+      "conversingUserIds" : [ "2", "80201201" ]
     } ]
   },
   "notificationsManager" : {
     "ownerId" : "80201201",
-    "notifications" : [ ]
+    "notifications" : [ {
+      "id" : "1660492395",
+      "date" : "2022-08-14T15:53:15.7718915",
+      "notificationDate" : "2022-08-14T15:53:15.7718915",
+      "isSentByUser" : true,
+      "senderId" : "2",
+      "receiverId" : "80201201",
+      "isRequest" : true,
+      "notificationIdentifier" : "MESSAGE_REQUEST",
+      "notificationText" : "Add me to your messenger",
+      "notificationStatus" : "ACCEPTED",
+      "sentByUser" : true,
+      "request" : true
+    } ]
   },
   "userIdentifier" : "PROFESSOR",
   "nationalId" : "015033903",
@@ -37,7 +63,7 @@
   "phoneNumber" : "09129730021",
   "emailAddress" : "khazayi@sharif.edu",
   "password" : "1234",
-  "lastLogin" : null,
+  "lastLogin" : "2022-08-14T15:52:56.248725",
   "adviseeStudentIds" : [ "19101101" ],
   "officeNumber" : "105",
   "academicLevel" : "ASSOCIATE",
