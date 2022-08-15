@@ -28,9 +28,14 @@ import java.util.Properties;
 
 public class CourseAdder extends DynamicPanelTemplate {
     private JTextField courseNameField;
+    private JTextField courseIdField;
     private JTextField termIdentifierField;
+    private JTextField prerequisiteIdsField;
+    private JTextField corequisiteIdsField;
     private JTextField teachingProfessorNames;
+    private JTextField teachingAssistantIds;
     private JTextField numberOfCreditsField;
+    private JTextField courseCapacityField;
     private ArrayList<JTextField> textFieldsList;
     private String[] degreeLevels;
     private JComboBox<String> degreeLevelBox;
@@ -72,13 +77,24 @@ public class CourseAdder extends DynamicPanelTemplate {
 
         courseNameField = new JTextField(ConfigManager.getString(configIdentifier, "courseNameFieldM"));
         textFieldsList.add(courseNameField);
+        courseIdField = new JTextField(ConfigManager.getString(configIdentifier, "courseIdFieldM"));
+        textFieldsList.add(courseIdField);
         termIdentifierField = new JTextField(ConfigManager.getString(configIdentifier, "termIdentifierFieldM"));
         textFieldsList.add(termIdentifierField);
+        prerequisiteIdsField = new JTextField(ConfigManager.getString(configIdentifier, "prerequisiteIdsFieldM"));
+        textFieldsList.add(prerequisiteIdsField);
+        corequisiteIdsField = new JTextField(ConfigManager.getString(configIdentifier, "corequisiteIdsFieldM"));
+        textFieldsList.add(corequisiteIdsField);
         teachingProfessorNames =
                 new JTextField(ConfigManager.getString(configIdentifier, "teachingProfessorNamesM"));
         textFieldsList.add(teachingProfessorNames);
+        teachingAssistantIds =
+                new JTextField(ConfigManager.getString(configIdentifier, "teachingAssistantIdsM"));
+        textFieldsList.add(teachingAssistantIds);
         numberOfCreditsField = new JTextField(ConfigManager.getString(configIdentifier, "numberOfCreditsM"));
         textFieldsList.add(numberOfCreditsField);
+        courseCapacityField = new JTextField(ConfigManager.getString(configIdentifier, "courseCapacityFieldM"));
+        textFieldsList.add(courseCapacityField);
 
         degreeLevelBox = new JComboBox<>(degreeLevels);
         firstClassPrompt = new JLabel(ConfigManager.getString(configIdentifier, "firstClassPromptM"));
@@ -116,16 +132,29 @@ public class CourseAdder extends DynamicPanelTemplate {
         int currentX = ConfigManager.getInt(configIdentifier, "startingX");
         int currentY = ConfigManager.getInt(configIdentifier, "startingY");
         int incrementOfX = ConfigManager.getInt(configIdentifier, "incX");
+        int smallerIncrementOfX = ConfigManager.getInt(configIdentifier, "smallerIncX");
         int incrementOfY = ConfigManager.getInt(configIdentifier, "incY");
         int smallerIncrementOfY = ConfigManager.getInt(configIdentifier, "smallerIncY");
         int textFieldWidth = ConfigManager.getInt(configIdentifier, "textFieldW");
         int textFieldHeight = ConfigManager.getInt(configIdentifier, "textFieldH");
         int smallerTextFieldWidth = ConfigManager.getInt(configIdentifier, "smallerTextFieldW");
-        for (JTextField textField : textFieldsList) {
-            textField.setBounds(currentX, currentY, textFieldWidth, textFieldHeight);
-            add(textField);
-            currentY += incrementOfY;
-        }
+        int tinyTextFieldWidth = ConfigManager.getInt(configIdentifier, "tinyTextFieldW");
+
+        courseNameField.setBounds(currentX, currentY, tinyTextFieldWidth, textFieldHeight);
+        courseIdField.setBounds(currentX + smallerIncrementOfX, currentY, tinyTextFieldWidth, textFieldHeight);
+        termIdentifierField.setBounds(currentX + 2 * smallerIncrementOfX, currentY, tinyTextFieldWidth, textFieldHeight);
+        currentY += incrementOfY;
+        prerequisiteIdsField.setBounds(currentX, currentY, smallerTextFieldWidth, textFieldHeight);
+        corequisiteIdsField.setBounds(currentX + incrementOfX, currentY, smallerTextFieldWidth, textFieldHeight);
+        currentY += incrementOfY;
+        teachingProfessorNames.setBounds(currentX, currentY, smallerTextFieldWidth, textFieldHeight);
+        teachingAssistantIds.setBounds(currentX + incrementOfX, currentY, smallerTextFieldWidth, textFieldHeight);
+        currentY += incrementOfY;
+        numberOfCreditsField.setBounds(currentX, currentY, smallerTextFieldWidth, textFieldHeight);
+        courseCapacityField.setBounds(currentX + incrementOfX, currentY, smallerTextFieldWidth, textFieldHeight);
+        currentY += incrementOfY;
+
+        textFieldsList.forEach(this::add);
 
         degreeLevelBox.setBounds(currentX, currentY, textFieldWidth, textFieldHeight);
         add(degreeLevelBox);
@@ -196,9 +225,14 @@ public class CourseAdder extends DynamicPanelTemplate {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String courseName = courseNameField.getText();
+                String courseId = courseIdField.getText();
                 String termIdentifierString = termIdentifierField.getText();
+                String[] prerequisiteIdsArray = NamesParser.parseDelimitedNames(prerequisiteIdsField.getText());
+                String[] corequisiteIdsArray = NamesParser.parseDelimitedNames(corequisiteIdsField.getText());
                 String[] teachingProfessorNamesArray = NamesParser.parseDelimitedNames(teachingProfessorNames.getText());
+                String[] teachingAssistantIdsArray = NamesParser.parseDelimitedNames(teachingAssistantIds.getText());
                 int numberOfCredits = Integer.parseInt(numberOfCreditsField.getText());
+                int courseCapacity = Integer.parseInt(courseCapacityField.getText());
                 String degreeLevelString = (String) degreeLevelBox.getSelectedItem();
                 String firstClassWeekdayString = (String) firstClassWeekdayBox.getSelectedItem();
                 int firstClassStartHour = Integer.parseInt(firstClassStartHourField.getText());
@@ -214,8 +248,9 @@ public class CourseAdder extends DynamicPanelTemplate {
                 int examHour = Integer.parseInt(examHourField.getText());
                 int examMinute = Integer.parseInt(examMinuteField.getText());
 
-                Blueprint courseBlueprint = BlueprintGenerator.generateCourseBlueprint(courseName, termIdentifierString,
-                        teachingProfessorNamesArray, numberOfCredits, degreeLevelString, firstClassWeekdayString,
+                Blueprint courseBlueprint = BlueprintGenerator.generateCourseBlueprint(courseName, courseId, termIdentifierString,
+                        prerequisiteIdsArray, corequisiteIdsArray, teachingProfessorNamesArray, teachingAssistantIdsArray,
+                        numberOfCredits, courseCapacity, degreeLevelString, firstClassWeekdayString,
                         firstClassStartHour, firstClassStartMinute, firstClassEndHour, firstClassEndMinute,
                         secondClassWeekdayString, secondClassStartHour, secondClassStartMinute, secondClassEndHour,
                         secondClassEndMinute, selectedExamDate, examHour, examMinute, offlineModeDTO.getDepartmentId());

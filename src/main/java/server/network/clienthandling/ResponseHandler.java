@@ -120,6 +120,24 @@ public class ResponseHandler {
         clientHandler.respond(response);
     }
 
+    public void prerequisitesDoNotExist(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "prerequisitesDoNotExist"));
+        clientHandler.respond(response);
+    }
+
+    public void corequisitesDoNotExist(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "corequisitesDoNotExist"));
+        clientHandler.respond(response);
+    }
+
+    public void studentTAsDoNotExist(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "studentTAsDoNotExist"));
+        clientHandler.respond(response);
+    }
+
     public void studentsDoNotExistInDepartment(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "studentsDoNotExistInDepartment"));

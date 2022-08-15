@@ -235,10 +235,19 @@ public class RequestHandler { // TODO: logging, perhaps?
     }
 
     public void addCourse(ClientHandler clientHandler, Request request) {
+        String[] prerequisiteIds = (String[]) request.get("prerequisiteIds");
+        String[] corequisiteIds = (String[]) request.get("corequisiteIds");
         String[] teachingProfessorNames = (String[]) request.get("teachingProfessorNames");
-        if (!CourseEditingUtils.professorsExistInDepartment(databaseManager, teachingProfessorNames,
+        String[] teachingAssistantIds = (String[]) request.get("teachingAssistantIds");
+        if (!CourseEditingUtils.coursesExist(databaseManager, prerequisiteIds)) {
+            responseHandler.prerequisitesDoNotExist(clientHandler);
+        } else if (!CourseEditingUtils.coursesExist(databaseManager, corequisiteIds)) {
+            responseHandler.corequisitesDoNotExist(clientHandler);
+        } else if (!CourseEditingUtils.professorsExistInDepartment(databaseManager, teachingProfessorNames,
                 (String) request.get("departmentId"))) {
             responseHandler.professorsDoNotExistInDepartment(clientHandler);
+        } else if (!CourseEditingUtils.studentsExist(databaseManager, teachingAssistantIds)) {
+            responseHandler.studentTAsDoNotExist(clientHandler);
         } else {
             String courseId = CourseAdditionUtils.addCourseAndReturnId(databaseManager, request);
             responseHandler.courseAdded(clientHandler, courseId);

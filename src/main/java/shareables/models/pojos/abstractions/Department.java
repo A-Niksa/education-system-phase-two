@@ -10,6 +10,7 @@ public class Department extends Identifiable {
     private List<String> courseIds;
     private List<String> professorIds;
     private List<String> studentIds;
+    private List<UnitSelectionSession> unitSelectionSessions;
     private String deanId;
     private String deputyId;
     private DepartmentName departmentName;
@@ -23,6 +24,7 @@ public class Department extends Identifiable {
         courseIds = new ArrayList<>();
         professorIds = new ArrayList<>();
         studentIds = new ArrayList<>();
+        unitSelectionSessions = new ArrayList<>();
         initializeId();
     }
 
@@ -48,6 +50,14 @@ public class Department extends Identifiable {
 
     public void removeFromStudentIds(String studentId) {
         studentIds.removeIf(e -> e.equals(studentId));
+    }
+
+    public void addToUnitSelectionSessions(UnitSelectionSession unitSelectionSession) {
+        unitSelectionSessions.add(unitSelectionSession);
+    }
+
+    public void removeFromUnitSelectionSession(String unitSelectionSessionId) {
+        unitSelectionSessions.removeIf(e -> e.getId().equals(unitSelectionSessionId));
     }
 
     @Override

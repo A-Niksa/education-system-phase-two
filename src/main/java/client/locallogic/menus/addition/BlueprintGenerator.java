@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class BlueprintGenerator {
-    public static Blueprint generateCourseBlueprint(String courseName, String termIdentifierString,
-                                                    String[] teachingProfessorNamesArray, int numberOfCredits, String degreeLevelString,
+    public static Blueprint generateCourseBlueprint(String courseName, String courseId, String termIdentifierString,
+                                                    String[] prerequisiteIdsArray, String[] corequisiteIdsArray,
+                                                    String[] teachingProfessorNamesArray, String[] teachingAssistantIdsArray,
+                                                    int numberOfCredits, int courseCapacity, String degreeLevelString,
                                                     String firstClassWeekdayString, int firstClassStartHour,
                                                     int firstClassStartMinute, int firstClassEndHour, int firstClassEndMinute,
                                                     String secondClassWeekdayString, int secondClassStartHour,
@@ -26,16 +28,22 @@ public class BlueprintGenerator {
         ArrayList<WeekTime> weeklyClassTimes = CourseBlueprintHelper.getWeeklyClassTimes(firstClassWeekdayString, firstClassStartHour,
                 firstClassStartMinute, firstClassEndHour, firstClassEndMinute, secondClassWeekdayString,
                 secondClassStartHour, secondClassStartMinute, secondClassEndHour, secondClassEndMinute);
+        String processedCourseId = CourseBlueprintHelper.getProcessedCourseId(courseId);
 
         Blueprint blueprint = new Blueprint();
         blueprint.put("courseName", courseName);
+        blueprint.put("courseId", processedCourseId);
+        blueprint.put("prerequisiteIds", prerequisiteIdsArray);
+        blueprint.put("corequisiteIds", corequisiteIdsArray);
         blueprint.put("teachingProfessorNames", teachingProfessorNamesArray);
+        blueprint.put("teachingAssistantIds", teachingAssistantIdsArray);
         blueprint.put("numberOfCredits", numberOfCredits);
         blueprint.put("degreeLevel", degreeLevel);
         blueprint.put("weeklyClassTimes", weeklyClassTimes);
         blueprint.put("examDate", examLocalDateTime);
         blueprint.put("departmentId", departmentId);
         blueprint.put("termIdentifier", termIdentifier);
+        blueprint.put("courseCapacity", courseCapacity);
         return blueprint;
     }
 

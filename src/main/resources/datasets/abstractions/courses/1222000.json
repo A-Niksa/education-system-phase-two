@@ -38,5 +38,8 @@
   "numberOfCredits" : 4,
   "isActive" : true,
   "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ ],
+  "courseCapacity" : 0,
   "active" : true
 }

@@ -49,8 +49,9 @@ public class ProfessorMenu extends MainMenu {
     private JMenuItem temporaryScoresForDeputy;
     private JMenuItem viewStudentsAcademicStanding;
     private JMenuItem editUserProfile;
-    private JButton addStudent;
-    private JButton addProfessor;
+    private JButton addStudentButton;
+    private JButton addProfessorButton;
+    private JButton addUnitSelectionButton;
 
     public ProfessorMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, username, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
@@ -110,8 +111,9 @@ public class ProfessorMenu extends MainMenu {
         viewStudentsAcademicStanding = new JMenuItem(ConfigManager.getString(configIdentifier,
                 "viewStudentsAcademicStandingMessage"));
         editUserProfile = new JMenuItem(ConfigManager.getString(configIdentifier, "editUserProfileMessage"));
-        addStudent = new JButton(ConfigManager.getString(configIdentifier, "addStudentMessage"));
-        addProfessor = new JButton(ConfigManager.getString(configIdentifier, "addProfessorMessage"));
+        addStudentButton = new JButton(ConfigManager.getString(configIdentifier, "addStudentMessage"));
+        addProfessorButton = new JButton(ConfigManager.getString(configIdentifier, "addProfessorMessage"));
+        addUnitSelectionButton = new JButton(ConfigManager.getString(configIdentifier, "addUnitSelectionButtonM"));
     }
 
     private void alignComponents() {
@@ -137,16 +139,21 @@ public class ProfessorMenu extends MainMenu {
 
     private void addUserAdditionButtons() {
         if (role == AcademicRole.DEPUTY) {
-            addStudent.setBounds(ConfigManager.getInt(configIdentifier, "addStudentX"),
+            addStudentButton.setBounds(ConfigManager.getInt(configIdentifier, "addStudentX"),
                     ConfigManager.getInt(configIdentifier, "addStudentY"),
                     ConfigManager.getInt(configIdentifier, "addStudentW"),
                     ConfigManager.getInt(configIdentifier, "addStudentH"));
-            add(addStudent);
-            addProfessor.setBounds(ConfigManager.getInt(configIdentifier, "addProfessorX"),
+            add(addStudentButton);
+            addProfessorButton.setBounds(ConfigManager.getInt(configIdentifier, "addProfessorX"),
                     ConfigManager.getInt(configIdentifier, "addProfessorY"),
                     ConfigManager.getInt(configIdentifier, "addProfessorW"),
                     ConfigManager.getInt(configIdentifier, "addProfessorH"));
-            add(addProfessor);
+            add(addProfessorButton);
+            addUnitSelectionButton.setBounds(ConfigManager.getInt(configIdentifier, "addUnitSelectionButtonX"),
+                    ConfigManager.getInt(configIdentifier, "addUnitSelectionButtonY"),
+                    ConfigManager.getInt(configIdentifier, "addUnitSelectionButtonW"),
+                    ConfigManager.getInt(configIdentifier, "addUnitSelectionButtonH"));
+            add(addUnitSelectionButton);
         }
     }
 
@@ -289,7 +296,7 @@ public class ProfessorMenu extends MainMenu {
             }
         });
 
-        addStudent.addActionListener(new ActionListener() {
+        addStudentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the student addition section",
@@ -299,7 +306,7 @@ public class ProfessorMenu extends MainMenu {
             }
         });
 
-        addProfessor.addActionListener(new ActionListener() {
+        addProfessorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
@@ -341,9 +348,10 @@ public class ProfessorMenu extends MainMenu {
         temporaryScores.setEnabled(false);
         temporaryScoresForDeputy.setEnabled(false);
         viewStudentsAcademicStanding.setEnabled(false);
-        addStudent.setEnabled(false);
-        addProfessor.setEnabled(false);
+        addStudentButton.setEnabled(false);
+        addProfessorButton.setEnabled(false);
         notificationsButton.setEnabled(false);
+        addUnitSelectionButton.setEnabled(false);
     }
 
     @Override
@@ -357,8 +365,9 @@ public class ProfessorMenu extends MainMenu {
         temporaryScores.setEnabled(true);
         temporaryScoresForDeputy.setEnabled(true);
         viewStudentsAcademicStanding.setEnabled(true);
-        addStudent.setEnabled(true);
-        addProfessor.setEnabled(true);
+        addStudentButton.setEnabled(true);
+        addProfessorButton.setEnabled(true);
         notificationsButton.setEnabled(true);
+        addUnitSelectionButton.setEnabled(true);
     }
 }

@@ -3,6 +3,7 @@
   "courseIds" : [ "2222002" ],
   "professorIds" : [ "80202302" ],
   "studentIds" : [ ],
+  "unitSelectionSessions" : [ ],
   "deanId" : null,
   "deputyId" : "80202302",
   "departmentName" : "PHYSICS"

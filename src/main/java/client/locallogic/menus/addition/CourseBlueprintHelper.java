@@ -4,6 +4,8 @@ import client.locallogic.general.EnumStringMapper;
 import shareables.models.pojos.abstractions.TermIdentifier;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.network.blueprints.Blueprint;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
 import shareables.utils.timing.timekeeping.DayTime;
 import shareables.utils.timing.timekeeping.WeekTime;
 
@@ -13,6 +15,16 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class CourseBlueprintHelper {
+    public static String getProcessedCourseId(String courseId) {
+        String courseIdFieldMessage = ConfigManager.getString(ConfigFileIdentifier.GUI_COURSE_ADDER,
+                "courseIdFieldM");
+        if (courseId.equals(courseIdFieldMessage)) {
+            return "";
+        } else {
+            return courseId;
+        }
+    }
+
     public static TermIdentifier getTermIdentifier(String termIdentifierString) {
         String[] termIdentifierArray = termIdentifierString.split("-");
         int year = Integer.parseInt(termIdentifierArray[0]);

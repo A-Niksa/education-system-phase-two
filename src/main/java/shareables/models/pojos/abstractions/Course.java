@@ -29,6 +29,9 @@ public class Course extends Identifiable {
     private int numberOfCredits;
     private boolean isActive; // shows whether the course is being currently taught
     private DegreeLevel degreeLevel;
+    private List<String> prerequisiteIds;
+    private List<String> corequisiteIds;
+    private int courseCapacity;
 
     public Course() {
     }
@@ -41,6 +44,8 @@ public class Course extends Identifiable {
         teachingAssistantIds = new ArrayList<>();
         studentIds = new ArrayList<>();
         weeklyClassTimes = new ArrayList<>();
+        prerequisiteIds = new ArrayList<>();
+        corequisiteIds = new ArrayList<>();
         initializeId();
     }
 
@@ -175,5 +180,29 @@ public class Course extends Identifiable {
 
     public void setWeeklyClassTimes(List<WeekTime> weeklyClassTimes) {
         this.weeklyClassTimes = weeklyClassTimes;
+    }
+
+    public List<String> getPrerequisiteIds() {
+        return prerequisiteIds;
+    }
+
+    public void setPrerequisiteIds(List<String> prerequisiteIds) {
+        this.prerequisiteIds = prerequisiteIds;
+    }
+
+    public List<String> getCorequisiteIds() {
+        return corequisiteIds;
+    }
+
+    public void setCorequisiteIds(List<String> corequisiteIds) {
+        this.corequisiteIds = corequisiteIds;
+    }
+
+    public int getCourseCapacity() {
+        return courseCapacity;
+    }
+
+    public void setCourseCapacity(int courseCapacity) {
+        this.courseCapacity = courseCapacity;
     }
 }

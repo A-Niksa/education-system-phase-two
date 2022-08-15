@@ -38,5 +38,8 @@
   "numberOfCredits" : 3,
   "isActive" : true,
   "degreeLevel" : "GRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ ],
+  "courseCapacity" : 0,
   "active" : true
 }
