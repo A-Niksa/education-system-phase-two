@@ -51,6 +51,7 @@ public class StudentMenu extends MainMenu {
     private String studentStatusLabelPrompt;
     private String advisingProfessorNamePrompt;
     private String enrolmentTimePrompt;
+    private JButton unitSelectionButton;
 
     public StudentMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, username, MainMenuType.STUDENT, offlineModeDTO, isOnline);
@@ -85,6 +86,8 @@ public class StudentMenu extends MainMenu {
         enrolmentTime.setText(enrolmentTimePrompt + DateStringFormatter.formatEnrolmentTime(
                 offlineModeDTO.getEnrolmentTime()
         ));
+
+        unitSelectionButton.setVisible(offlineModeDTO.isTimeForUnitSelection());
     }
 
     private void initializeComponents() {
@@ -118,6 +121,8 @@ public class StudentMenu extends MainMenu {
         // TODO: temporary scores bug (with sina)?
         currentAcademicStanding = new JMenuItem(ConfigManager.getString(configIdentifier, "currentAcademicStandingMessage"));
         editUserProfile = new JMenuItem(ConfigManager.getString(configIdentifier, "editUserProfileMessage"));
+
+        unitSelectionButton = new JButton(ConfigManager.getString(configIdentifier, "unitSelectionButtonM"));
     }
 
     private void alignComponents() {
@@ -164,6 +169,13 @@ public class StudentMenu extends MainMenu {
         academicStanding.add(currentAcademicStanding);
         menuBar.add(userProfile);
         userProfile.add(editUserProfile);
+
+        unitSelectionButton.setVisible(offlineModeDTO.isTimeForUnitSelection());
+        unitSelectionButton.setBounds(ConfigManager.getInt(configIdentifier, "unitSelectionButtonX"),
+                ConfigManager.getInt(configIdentifier, "unitSelectionButtonY"),
+                ConfigManager.getInt(configIdentifier, "unitSelectionButtonW"),
+                ConfigManager.getInt(configIdentifier, "unitSelectionButtonH"));
+        add(unitSelectionButton);
     }
 
     private void alignServicesMenu() {
@@ -358,6 +370,7 @@ public class StudentMenu extends MainMenu {
         defenseSlot.setEnabled(false);
         temporaryScores.setEnabled(false);
         notificationsButton.setEnabled(false);
+        unitSelectionButton.setEnabled(false);
     }
 
     @Override
@@ -373,5 +386,6 @@ public class StudentMenu extends MainMenu {
         defenseSlot.setEnabled(true);
         temporaryScores.setEnabled(true);
         notificationsButton.setEnabled(true);
+        unitSelectionButton.setEnabled(true);
     }
 }

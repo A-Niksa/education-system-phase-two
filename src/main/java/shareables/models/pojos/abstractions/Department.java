@@ -120,4 +120,12 @@ public class Department extends Identifiable {
     public List<String> getCourseIds() {
         return courseIds;
     }
+
+    public List<UnitSelectionSession> getUnitSelectionSessions() {
+        return unitSelectionSessions;
+    }
+
+    public void setUnitSelectionSessions(List<UnitSelectionSession> unitSelectionSessions) {
+        this.unitSelectionSessions = unitSelectionSessions;
+    }
 }

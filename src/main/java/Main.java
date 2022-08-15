@@ -141,6 +141,13 @@ public class Main {
         realAnalysis.addToWeeklyClassTimes(secondWeekTime);
         mathDepartment.addToCourseIDs(realAnalysis.getId());
 
+        UnitSelectionSession session = new UnitSelectionSession();
+        session.setStartsAt(LocalDateTime.now());
+        session.setEndsAt(LocalDateTime.of(2023, 10, 11, 10, 30));
+        session.setIntendedDegreeLevel(DegreeLevel.UNDERGRADUATE);
+        session.setIntendedYearOfEntry(2019);
+//        mathDepartment.addToUnitSelectionSessions(session);
+
         Department physicsDepartment = new Department(DepartmentName.PHYSICS);
         Professor rahvar = new Professor(AcademicRole.DEPUTY, AcademicLevel.FULL, physicsDepartment.getId());
         rahvar.setNationalId("015053903");

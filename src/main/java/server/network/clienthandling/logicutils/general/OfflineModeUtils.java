@@ -4,7 +4,9 @@ import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
 import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
+import server.network.clienthandling.logicutils.unitselection.UnitSelectionTimeUtils;
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.abstractions.UnitSelectionSession;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.professors.Professor;
@@ -47,7 +49,6 @@ public class OfflineModeUtils {
         initializeCommonUserFields(databaseManager, student, offlineModeDTO);
         offlineModeDTO.setUserIdentifier(UserIdentifier.STUDENT);
         offlineModeDTO.setStudentStatus(student.getStudentStatus());
-        offlineModeDTO.setEnrolmentTime(student.getEnrolmentTime());
         offlineModeDTO.setGPAString(student.fetchGPAString());
         offlineModeDTO.setYearOfEntry(student.getYearOfEntry());
         offlineModeDTO.setDegreeLevel(student.getDegreeLevel());
@@ -73,6 +74,16 @@ public class OfflineModeUtils {
                     ConfigManager.getString(ConfigFileIdentifier.TEXTS, "noAdvisingProfessorFound");
             offlineModeDTO.setAdvisingProfessorName(noAdvisingProfessorPrompt);
         }
+
+        UnitSelectionSession unitSelectionSession = UnitSelectionTimeUtils.getStudentUnitSelection(databaseManager, student);
+        if (unitSelectionSession != null) {
+            student.setEnrolmentTime(unitSelectionSession.getStartsAt());
+            // access to uni selection depends on whether the student is allowed to enrol or not:
+            offlineModeDTO.setTimeForUnitSelection(student.isPermittedToEnrol());
+        } else {
+            offlineModeDTO.setTimeForUnitSelection(false);
+        }
+        offlineModeDTO.setEnrolmentTime(student.getEnrolmentTime());
     }
 
     private static void initializeProfessorOfflineModeDTO(DatabaseManager databaseManager, Professor professor,

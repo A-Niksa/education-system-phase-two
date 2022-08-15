@@ -26,6 +26,7 @@ public class OfflineModeDTO {
     private LocalDateTime enrolmentTime;
     private Picture profilePicture;
     private AcademicRole academicRole;
+    private boolean isTimeForUnitSelection;
     // profile:
     private String id;
     private String nationalId;
@@ -247,6 +248,14 @@ public class OfflineModeDTO {
 
     public void setConversationThumbnailDTOs(List<ConversationThumbnailDTO> conversationThumbnailDTOs) {
         this.conversationThumbnailDTOs = conversationThumbnailDTOs;
+    }
+
+    public boolean isTimeForUnitSelection() {
+        return isTimeForUnitSelection;
+    }
+
+    public void setTimeForUnitSelection(boolean timeForUnitSelection) {
+        isTimeForUnitSelection = timeForUnitSelection;
     }
 
     // TODO: to be removed

@@ -18,6 +18,7 @@ import client.gui.menus.services.requests.management.RecommendationManager;
 import client.gui.menus.standing.deputies.CurrentStandingMaster;
 import client.gui.menus.standing.deputies.TemporaryStandingMaster;
 import client.gui.menus.standing.professors.TemporaryStandingManager;
+import client.gui.menus.unitselection.UnitSelectionAdder;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.menus.main.DateStringFormatter;
 import shareables.models.pojos.users.professors.AcademicRole;
@@ -313,6 +314,16 @@ public class ProfessorMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
+
+        addUnitSelectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the unit selection session addition" +
+                                " section", "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new UnitSelectionAdder(mainFrame, mainMenu, offlineModeDTO));
             }
         });
 
