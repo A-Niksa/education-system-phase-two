@@ -4,16 +4,22 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
+import client.gui.utils.ErrorUtils;
+import client.locallogic.menus.addition.BlueprintGenerator;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
+import shareables.network.blueprints.Blueprint;
+import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 import shareables.utils.timing.formatting.DateLabelFormatter;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 public class UnitSelectionAdder extends DynamicPanelTemplate {
@@ -115,6 +121,30 @@ public class UnitSelectionAdder extends DynamicPanelTemplate {
 
     @Override
     protected void connectListeners() {
+        scheduleUnitSelectionUnitButton.addActionListener(actionEvent -> {
+            int yearOfEntry = Integer.parseInt(yearOfEntryField.getText());
+            String degreeLevelString = (String) degreeLevelsBox.getSelectedItem();
+            int startingHour = Integer.parseInt(startsAtHour.getText());
+            int startingMinute = Integer.parseInt(startsAtMinute.getText());
+            Date startingDate = startsAtDateModel.getValue();
+            int endingHour = Integer.parseInt(endsAtHour.getText());
+            int endingMinute = Integer.parseInt(endsAtMinute.getText());
+            Date endingDate = endsAtDateModel.getValue();
 
+            Blueprint unitSelectionBlueprint = BlueprintGenerator.generateUnitSelectionBlueprint(yearOfEntry,
+                    degreeLevelString, startingHour, startingMinute, startingDate, endingHour, endingMinute, endingDate,
+                    offlineModeDTO.getDepartmentId());
+            Response response = clientController.addUnitSelectionSession(unitSelectionBlueprint);
+            if (response == null) return;
+
+            if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                        "connectListeners", getClass());
+            } else {
+                JOptionPane.showMessageDialog(mainFrame, response.getUnsolicitedMessage());
+                MasterLogger.clientError(clientController.getId(), response.getUnsolicitedMessage(),
+                        "connectListeners", getClass());
+            }
+        });
     }
 }

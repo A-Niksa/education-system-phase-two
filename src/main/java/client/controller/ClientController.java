@@ -251,6 +251,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response addUnitSelectionSession(Blueprint blueprint) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_UNIT_SELECTION_SESSION,
+                blueprint.getFields());
+        return client.sendAndListen(request);
+    }
+
     public Response getDepartmentDroppingOutRequestDTOs(String departmentId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_DROPPING_OUT_REQUEST_DTOS,
                 new StringObjectMap("departmentId", departmentId));

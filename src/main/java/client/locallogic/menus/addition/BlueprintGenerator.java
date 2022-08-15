@@ -22,7 +22,7 @@ public class BlueprintGenerator {
                                                     String secondClassWeekdayString, int secondClassStartHour,
                                                     int secondClassStartMinute, int secondClassEndHour, int secondClassEndMinute,
                                                     Date selectedExamDate, int examHour, int examMinute, String departmentId) {
-        LocalDateTime examLocalDateTime = CourseBlueprintHelper.convertToLocalDateTime(selectedExamDate, examHour, examMinute);
+        LocalDateTime examLocalDateTime = GeneralBlueprintHelper.convertToLocalDateTime(selectedExamDate, examHour, examMinute);
         DegreeLevel degreeLevel = EnumStringMapper.getDegreeLevel(degreeLevelString);
         TermIdentifier termIdentifier = CourseBlueprintHelper.getTermIdentifier(termIdentifierString);
         ArrayList<WeekTime> weeklyClassTimes = CourseBlueprintHelper.getWeeklyClassTimes(firstClassWeekdayString, firstClassStartHour,
@@ -85,6 +85,22 @@ public class BlueprintGenerator {
         blueprint.put("studentStatus", studentStatus);
         blueprint.put("degreeLevel", degreeLevel);
         blueprint.put("advisingProfessorName", advisingProfessorName);
+        blueprint.put("departmentId", departmentId);
+        return blueprint;
+    }
+
+    public static Blueprint generateUnitSelectionBlueprint(int yearOfEntry, String degreeLevelString, int startingHour,
+                                                           int startingMinute, Date startingDate, int endingHour,
+                                                           int endingMinute, Date endingDate, String departmentId) {
+        DegreeLevel degreeLevel = EnumStringMapper.getDegreeLevel(degreeLevelString);
+        LocalDateTime startsAt = GeneralBlueprintHelper.convertToLocalDateTime(startingDate, startingHour, startingMinute);
+        LocalDateTime endsAt = GeneralBlueprintHelper.convertToLocalDateTime(endingDate, endingHour, endingMinute);
+
+        Blueprint blueprint = new Blueprint();
+        blueprint.put("yearOfEntry", yearOfEntry);
+        blueprint.put("degreeLevel", degreeLevel);
+        blueprint.put("startsAt", startsAt);
+        blueprint.put("endsAt", endsAt);
         blueprint.put("departmentId", departmentId);
         return blueprint;
     }

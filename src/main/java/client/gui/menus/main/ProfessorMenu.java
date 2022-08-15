@@ -317,6 +317,8 @@ public class ProfessorMenu extends MainMenu {
             }
         });
 
+        // TODO: unrelated but handling two consecutive message notifs?
+
         addUnitSelectionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

@@ -257,6 +257,9 @@ public class RequestMapper {
             case GET_FILTERED_CONTACT_IDS:
                 requestHandler.getFilteredContactIds(clientHandler, request);
                 break;
+            case ADD_UNIT_SELECTION_SESSION:
+                requestHandler.addUnitSelectionSession(clientHandler, request);
+                break;
         }
     }
 }

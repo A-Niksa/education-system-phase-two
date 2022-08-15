@@ -21,6 +21,8 @@ import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
+import server.network.clienthandling.logicutils.unitselection.UnitSelectionAdditionUtils;
+import server.network.clienthandling.logicutils.unitselection.UnitSelectionTimeUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
@@ -702,5 +704,24 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<String> filteredContactIds = ContactFilteringUtils.getFilteredContactIds(databaseManager, contactIds,
                 yearOfEntry, degreeLevel, studentStatus);
         responseHandler.contactIdsAcquired(clientHandler, filteredContactIds);
+    }
+
+    public void addUnitSelectionSession(ClientHandler clientHandler, Request request) {
+        LocalDateTime startsAt = (LocalDateTime) request.get("startsAt");
+        LocalDateTime endsAt = (LocalDateTime) request.get("endsAt");
+        if (UnitSelectionTimeUtils.isSoonerThanNow(startsAt)) {
+            responseHandler.startsSoonerThanNow(clientHandler);
+        } else if (UnitSelectionTimeUtils.isSoonerThanNow(endsAt)) {
+            responseHandler.endsSoonerThanNow(clientHandler);
+        } else if (UnitSelectionTimeUtils.isEndSoonerThanStart(startsAt, endsAt)) {
+            responseHandler.endIsSoonerThanStart(clientHandler);
+        } else {
+            int yearOfEntry = (int) request.get("yearOfEntry");
+            DegreeLevel degreeLevel = (DegreeLevel) request.get("degreeLevel");
+            String departmentId = (String) request.get("departmentId");
+            UnitSelectionAdditionUtils.addUnitSelectionSession(databaseManager, startsAt, endsAt, yearOfEntry, degreeLevel,
+                    departmentId);
+            responseHandler.addedUnitSelectionTime(clientHandler);
+        }
     }
 }

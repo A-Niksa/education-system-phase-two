@@ -23,4 +23,12 @@ public class UnitSelectionTimeUtils {
         return currentTime.compareTo(rangeStartsAt) >= 0 &&
                 currentTime.compareTo(rangeEndsAt) < 0;
     }
+
+    public static boolean isSoonerThanNow(LocalDateTime unitSelectionTime) {
+        return unitSelectionTime.compareTo(LocalDateTime.now()) <= 0;
+    }
+
+    public static boolean isEndSoonerThanStart(LocalDateTime startsAt, LocalDateTime endsAt) {
+        return endsAt.compareTo(startsAt) <= 0;
+    }
 }

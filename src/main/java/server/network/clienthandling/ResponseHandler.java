@@ -379,4 +379,26 @@ public class ResponseHandler {
         response.put("contactIds", contactIds);
         clientHandler.respond(response);
     }
+
+    public void startsSoonerThanNow(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "startsSoonerThanNow"));
+        clientHandler.respond(response);
+    }
+
+    public void endsSoonerThanNow(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "endsSoonerThanNow"));
+        clientHandler.respond(response);
+    }
+
+    public void endIsSoonerThanStart(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "endIsSoonerThanStart"));
+        clientHandler.respond(response);
+    }
+
+    public void addedUnitSelectionTime(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "addedUnitSelectionTime"));
+        clientHandler.respond(response);
+    }
 }

@@ -15,6 +15,10 @@ public class UnitSelectionSession extends IdentifiableWithTime {
         initializeId();
     }
 
+    public void resetSession() {
+        // TODO
+    }
+
     public DegreeLevel getIntendedDegreeLevel() {
         return intendedDegreeLevel;
     }

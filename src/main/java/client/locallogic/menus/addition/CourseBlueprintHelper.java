@@ -32,16 +32,6 @@ public class CourseBlueprintHelper {
         return new TermIdentifier(year, semester);
     }
 
-    public static LocalDateTime convertToLocalDateTime(Date selectedDate, int hour, int minute) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(selectedDate);
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH) + 1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        return LocalDateTime.of(year, month, day, hour, minute);
-    }
-
     public static ArrayList<WeekTime> getWeeklyClassTimes(String firstClassWeekdayString, int firstClassStartHour,
                                                            int firstClassStartMinute, int firstClassEndHour,
                                                            int firstClassEndMinute, String secondClassWeekdayString,
