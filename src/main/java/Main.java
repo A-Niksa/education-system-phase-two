@@ -108,7 +108,7 @@ public class Main {
         rezaei.setEmailAddress("rezaei@sharif.edu");
         rezaei.setPassword("5678");
         mathDepartment.addToStudentIds(rezaei.getId());
-        Course complexAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2));
+        Course complexAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2), 1);
         complexAnalysis.setCourseName("Complex Analysis");
         complexAnalysis.addToTeachingProfessorIds(khazayi.getId());
         complexAnalysis.addToTeachingProfessorIds(fanaei.getId());
@@ -129,7 +129,7 @@ public class Main {
 //        hamidi.getTranscript().setGPA(20.0);
         // TODO: being careful not to add a student twice to a course in course picking stuff
         mathDepartment.addToCourseIDs(complexAnalysis.getId());
-        Course realAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2));
+        Course realAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2), 1);
         realAnalysis.setCourseName("Real Analysis");
         realAnalysis.addToTeachingProfessorIds(fanaei.getId());
         realAnalysis.addToStudentIds(hamidi.getId());
@@ -159,7 +159,7 @@ public class Main {
         rahvar.setPassword("1234");
         physicsDepartment.setDeputyId(rahvar.getId());
         physicsDepartment.addToProfessorIds(rahvar.getId());
-        Course analyticalMechanics = new Course(physicsDepartment.getId(), new TermIdentifier(2022, 2));
+        Course analyticalMechanics = new Course(physicsDepartment.getId(), new TermIdentifier(2022, 2), 1);
         analyticalMechanics.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
         analyticalMechanics.setCourseName("Analytical Mechanics");
         analyticalMechanics.addToTeachingProfessorIds(rahvar.getId());

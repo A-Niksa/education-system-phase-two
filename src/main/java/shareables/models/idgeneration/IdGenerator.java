@@ -41,8 +41,8 @@ public class IdGenerator {
         String departmentId = course.getDepartmentId();
         String sequentialId = String.format("%03d", sequentialIdGenerator.nextSequentialId());
         String termId = course.getTermIdentifier().toString();
-        // TODO: resolving the wrong sequential id bug (not just for courses)
-        return departmentId + termId + sequentialId;
+        String groupId = String.valueOf(course.getGroupNumber());
+        return departmentId + sequentialId + termId + "0" + groupId;
     }
 
     public String nextId(Department department) {

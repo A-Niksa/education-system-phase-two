@@ -32,13 +32,15 @@ public class Course extends Identifiable {
     private List<String> prerequisiteIds;
     private List<String> corequisiteIds;
     private int courseCapacity;
+    private int groupNumber;
 
     public Course() {
     }
 
-    public Course(String departmentId, TermIdentifier termIdentifier) {
+    public Course(String departmentId, TermIdentifier termIdentifier, int groupNumber) {
         this.departmentId = departmentId;
         this.termIdentifier = termIdentifier;
+        this.groupNumber = groupNumber;
         isActive = termIdentifier.courseIsActive(); // will be active if the term id matches the current semester
         teachingProfessorIds = new ArrayList<>();
         teachingAssistantIds = new ArrayList<>();
@@ -204,5 +206,13 @@ public class Course extends Identifiable {
 
     public void setCourseCapacity(int courseCapacity) {
         this.courseCapacity = courseCapacity;
+    }
+
+    public int getGroupNumber() {
+        return groupNumber;
+    }
+
+    public void setGroupNumber(int groupNumber) {
+        this.groupNumber = groupNumber;
     }
 }

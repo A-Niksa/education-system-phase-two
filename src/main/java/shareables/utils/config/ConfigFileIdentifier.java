@@ -49,7 +49,9 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_NOTIFICATIONS_VIEW("guiNotificationsViewPath"),
     GUI_MR_MOHSENI_SEARCHER("guiMrMohseniSearcherPath"),
     GUI_STUDENT_PROFILE_VIEW("guiStudentProfileViewPath"),
-    GUI_UNIT_SELECTION_ADDER("guiUnitSelectionAdderPath");
+    GUI_UNIT_SELECTION_ADDER("guiUnitSelectionAdderPath"),
+    GUI_UNIT_SELECTION_MENU("guiUnitSelectionMenuPath"),
+    GUI_COURSES_SELECTION_PANEL("guiCoursesSelectionPanelPath");
 
     private String configKeyString;
 

@@ -4,6 +4,7 @@ import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
+import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.abstractions.TermIdentifier;
@@ -18,7 +19,17 @@ import java.util.List;
 
 public class CourseAdditionUtils {
     public static String addCourseAndReturnId(DatabaseManager databaseManager, Request request) {
-        Course course = new Course((String) request.get("departmentId"), (TermIdentifier) request.get("termIdentifier"));
+        String departmentId = (String) request.get("departmentId");
+        TermIdentifier termIdentifier = (TermIdentifier) request.get("termIdentifier");
+        String courseId = (String) request.get("courseId");
+        int groupNumber;
+        if (courseId.equals("")) {
+            groupNumber = 1;
+        } else {
+            groupNumber = getNumberOfCurrentCoursesWithId(databaseManager, courseId, termIdentifier) + 1;
+        }
+
+        Course course = new Course(departmentId, termIdentifier, groupNumber);
 
         List<String> prerequisiteIds = Arrays.asList((String[]) request.get("prerequisiteIds"));
         List<String> corequisiteIds = Arrays.asList((String[]) request.get("corequisiteIds"));
@@ -39,9 +50,13 @@ public class CourseAdditionUtils {
         course.setExamDate((LocalDateTime) request.get("examDate"));
         course.setTermIdentifier((TermIdentifier) request.get("termIdentifier"));
 
+        course.setGroupNumber(
+                getNumberOfCurrentCoursesWithId(databaseManager, course.getId(), course.getTermIdentifier()) + 1
+        );
+
         String givenCourseId = (String) request.get("courseId");
         if (!givenCourseId.equals("")) {
-            course.setId(givenCourseId);
+            course.setId(givenCourseId + termIdentifier + "0" + groupNumber);
         }
 
         databaseManager.save(DatasetIdentifier.COURSES, course);
@@ -50,5 +65,29 @@ public class CourseAdditionUtils {
         department.addToCourseIDs(course.getId());
 
         return course.getId();
+    }
+
+    private static int getNumberOfCurrentCoursesWithId(DatabaseManager databaseManager, String courseId,
+                                                       TermIdentifier termIdentifier) {
+        List<Identifiable> allCourses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
+        String termIdentifierString = termIdentifier.toString();
+        String processedCourseId = courseId + termIdentifier;
+        return (int) allCourses.stream()
+                .map(identifiable -> (Course) identifiable)
+                .filter(course -> {
+                    return getCourseIdBarGroupIdentifier(course.getId()).equals(processedCourseId);
+                })
+                .count();
+        // note that since the full course id includes the term identifier, there's no need for filtering the term id too
+    }
+
+    private static String getCourseIdBarGroupIdentifier(String courseId) {
+        String[] partitionedCourseId = courseId.split("0");
+        String groupId = partitionedCourseId[partitionedCourseId.length - 1];
+
+        int courseIdLength = courseId.length();
+        int groupIdLength = groupId.length();
+
+        return courseId.substring(0, courseIdLength - groupIdLength - 1); // -1 removes the "0" as well
     }
 }

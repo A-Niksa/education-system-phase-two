@@ -11,6 +11,7 @@ import client.gui.menus.services.StudentWeeklySchedule;
 import client.gui.menus.services.requests.submission.*;
 import client.gui.menus.standing.students.CurrentStandingView;
 import client.gui.menus.standing.students.TemporaryStandingView;
+import client.gui.menus.unitselection.UnitSelectionMenu;
 import client.gui.utils.ImageParsingUtils;
 import client.locallogic.menus.main.DateStringFormatter;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
@@ -353,6 +354,16 @@ public class StudentMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new NotificationsView(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
+
+        unitSelectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the unit selection menu",
+                        "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new UnitSelectionMenu(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }
