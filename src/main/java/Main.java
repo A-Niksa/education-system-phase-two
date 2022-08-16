@@ -45,6 +45,22 @@ public class Main {
 //        manager.loadDatabase();
 //        Student student = (Student) manager.get(DatasetIdentifier.STUDENTS, "19101100");
 //        System.out.println(student);
+//        testTimes();
+    }
+
+    private static void testTimes() {
+        DayTime firstDayTime = new DayTime(9, 30, 20);
+        DayTime secondDayTime = new DayTime(9, 30, 20);
+        System.out.println(firstDayTime.compareTo(secondDayTime));
+
+        secondDayTime = new DayTime(10, 25, 15);
+        System.out.println(firstDayTime.compareTo(secondDayTime));
+
+        secondDayTime = new DayTime(9, 25, 15);
+        System.out.println(firstDayTime.compareTo(secondDayTime));
+
+        secondDayTime = new DayTime(9, 30, 21);
+        System.out.println(firstDayTime.compareTo(secondDayTime));
     }
 
     private static void sendAdminHelpMessages() {

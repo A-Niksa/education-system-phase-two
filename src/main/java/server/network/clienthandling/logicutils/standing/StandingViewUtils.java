@@ -16,6 +16,7 @@ import shareables.utils.config.ConfigManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StandingViewUtils {
     private static CourseScoreDTOComparator courseScoreDTOComparator;
@@ -130,5 +131,13 @@ public class StandingViewUtils {
                                 !e.getValue().isFinalized())
                 .map(Map.Entry::getValue)
                 .findAny().orElse(null);
+    }
+
+    public static List<String> getPassedCourseIds(Map<String, Score> courseIdScoreMap) {
+        double minimumPassingScore = ConfigManager.getDouble(ConfigFileIdentifier.CONSTANTS, "minimumPassingScore");
+        return courseIdScoreMap.entrySet().stream()
+                .filter(e -> e.getValue().getScore() >= minimumPassingScore)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }

@@ -408,4 +408,40 @@ public class ResponseHandler {
         response.put("courseThumbnailDTOs", courseThumbnailDTOs);
         clientHandler.respond(response);
     }
+
+    public void courseHasNoCapacity(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "courseHasNoCapacity"));
+        clientHandler.respond(response);
+    }
+
+    public void studentDoesNotSatisfyPrerequisites(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "studentDoesNotSatisfyPrerequisites"));
+        clientHandler.respond(response);
+    }
+
+    public void classTimesCollideWithStudentClasses(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "classTimesCollideWithStudentClasses"));
+        clientHandler.respond(response);
+    }
+
+    public void examDateCollidesWithStudentExams(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "examDateCollidesWithStudentExams"));
+        clientHandler.respond(response);
+    }
+
+    public void cannotHaveTwoOrMoreTheologyCourses(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "cannotHaveTwoOrMoreTheologyCourses"));
+        clientHandler.respond(response);
+    }
+
+    public void courseAcquired(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "courseAcquired"));
+        clientHandler.respond(response);
+    }
 }

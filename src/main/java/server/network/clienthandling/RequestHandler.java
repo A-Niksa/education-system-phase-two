@@ -21,14 +21,17 @@ import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
-import server.network.clienthandling.logicutils.unitselection.DepartmentCoursesUtils;
-import server.network.clienthandling.logicutils.unitselection.UnitSelectionAdditionUtils;
-import server.network.clienthandling.logicutils.unitselection.UnitSelectionTimeUtils;
+import server.network.clienthandling.logicutils.unitselection.acquisition.CourseAcquisitionUtils;
+import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionAdditionUtils;
+import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionTimeUtils;
+import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
+import server.network.clienthandling.logicutils.unitselection.thumbnails.DepartmentCoursesUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.notifications.Notification;
+import shareables.models.pojos.unitselection.UnitSelectionSession;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.students.DegreeLevel;
@@ -762,5 +765,27 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void acquireCourse(ClientHandler clientHandler, Request request) {
         String courseId = (String) request.get("courseId");
         String studentId = (String) request.get("studentId");
+        UnitSelectionSession unitSelectionSession = CourseAcquisitionUtils.getOngoingUnitSelectionSession(databaseManager,
+                studentId);
+        Course course = IdentifiableFetchingUtils.getCourse(databaseManager, courseId);
+        Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
+
+        if (!SelectionErrorUtils.courseHasCapacity(course, unitSelectionSession)) {
+            responseHandler.courseHasNoCapacity(clientHandler);
+        } else if (!SelectionErrorUtils.studentHasCoursePrerequisites(course, student)) {
+            responseHandler.studentDoesNotSatisfyPrerequisites(clientHandler);
+        } else if (SelectionErrorUtils.doClassTimesCollideWithStudentClasses(databaseManager, course, studentId,
+                unitSelectionSession)) {
+            responseHandler.classTimesCollideWithStudentClasses(clientHandler);
+        } else if (SelectionErrorUtils.doExamDateCollideWithStudentExams(databaseManager, course, studentId,
+                unitSelectionSession)) {
+            responseHandler.examDateCollidesWithStudentExams(clientHandler);
+        } else if (SelectionErrorUtils.isTryingToAcquireTwoTheologyCourses(databaseManager, course, studentId,
+                unitSelectionSession)) {
+            responseHandler.cannotHaveTwoOrMoreTheologyCourses(clientHandler);
+        } else {
+            CourseAcquisitionUtils.acquireCourse(unitSelectionSession, courseId, studentId);
+            responseHandler.courseAcquired(clientHandler);
+        }
     }
 }
