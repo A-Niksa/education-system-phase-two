@@ -4,12 +4,13 @@
   "professorIds" : [ "80201200", "90201301" ],
   "studentIds" : [ "19101100", "18101201" ],
   "unitSelectionSessions" : [ {
-    "id" : "1660608410",
-    "date" : "2022-08-16T00:06:50.8797884",
+    "id" : "1660689815",
+    "date" : "2022-08-16T22:43:35.8515396",
     "intendedDegreeLevel" : "UNDERGRADUATE",
     "intendedYearOfEntry" : 2019,
-    "startsAt" : "2022-08-16T00:06:50.8807854",
-    "endsAt" : "2023-10-11T10:30:00"
+    "startsAt" : "2022-08-16T22:43:35.8515396",
+    "endsAt" : "2023-10-11T10:30:00",
+    "studentSelectionLogs" : [ ]
   } ],
   "deanId" : "90201301",
   "deputyId" : "80201200",

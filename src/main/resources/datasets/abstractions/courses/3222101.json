@@ -1,0 +1,48 @@
+{
+  "id" : "3222101",
+  "departmentId" : "0",
+  "courseName" : "TestCenter",
+  "teachingProfessorIds" : [ "90200303" ],
+  "teachingAssistantIds" : [ "" ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SATURDAY",
+    "startTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "SATURDAY",
+    "startTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-08-17T01:01:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 1
+  },
+  "numberOfCredits" : 1,
+  "isActive" : false,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ "" ],
+  "corequisiteIds" : [ "" ],
+  "courseCapacity" : 1,
+  "groupNumber" : 1,
+  "isTheologyCourse" : true,
+  "active" : false,
+  "theologyCourse" : true
+}

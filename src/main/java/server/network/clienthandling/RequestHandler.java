@@ -21,6 +21,7 @@ import server.network.clienthandling.logicutils.services.*;
 import server.network.clienthandling.logicutils.standing.StandingManagementUtils;
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
+import server.network.clienthandling.logicutils.unitselection.DepartmentCoursesUtils;
 import server.network.clienthandling.logicutils.unitselection.UnitSelectionAdditionUtils;
 import server.network.clienthandling.logicutils.unitselection.UnitSelectionTimeUtils;
 import shareables.models.pojos.abstractions.Course;
@@ -44,6 +45,7 @@ import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.standing.CourseScoreDTO;
 import shareables.network.DTOs.standing.CourseStatsDTO;
 import shareables.network.DTOs.standing.TranscriptDTO;
+import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
 import shareables.network.requests.Request;
 
 import java.time.LocalDateTime;
@@ -723,5 +725,42 @@ public class RequestHandler { // TODO: logging, perhaps?
                     departmentId);
             responseHandler.addedUnitSelectionTime(clientHandler);
         }
+    }
+
+    public void getDepartmentCourseThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        String departmentNameString = (String) request.get("departmentNameString");
+        String studentId = (String) request.get("studentId");
+        List<CourseThumbnailDTO> courseThumbnailDTOs = DepartmentCoursesUtils.getDepartmentCourseThumbnailDTOs(databaseManager,
+                departmentNameString, studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, courseThumbnailDTOs);
+    }
+
+    public void getDepartmentCourseThumbnailDTOsAlphabetically(ClientHandler clientHandler, Request request) {
+        String departmentNameString = (String) request.get("departmentNameString");
+        String studentId = (String) request.get("studentId");
+        List<CourseThumbnailDTO> courseThumbnailDTOs = DepartmentCoursesUtils.getDepartmentCourseThumbnailDTOsAlphabetically(
+                databaseManager, departmentNameString, studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, courseThumbnailDTOs);
+    }
+
+    public void getDepartmentCourseThumbnailDTOsInExamDateOrder(ClientHandler clientHandler, Request request) {
+        String departmentNameString = (String) request.get("departmentNameString");
+        String studentId = (String) request.get("studentId");
+        List<CourseThumbnailDTO> courseThumbnailDTOs = DepartmentCoursesUtils.getDepartmentCourseThumbnailDTOsInExamDateOrder(
+                databaseManager, departmentNameString, studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, courseThumbnailDTOs);
+    }
+
+    public void getDepartmentCourseThumbnailDTOsInDegreeLevelOrder(ClientHandler clientHandler, Request request) {
+        String departmentNameString = (String) request.get("departmentNameString");
+        String studentId = (String) request.get("studentId");
+        List<CourseThumbnailDTO> courseThumbnailDTOs = DepartmentCoursesUtils.getDepartmentCourseThumbnailDTOsInDegreeLevelOrder(
+                databaseManager, departmentNameString, studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, courseThumbnailDTOs);
+    }
+
+    public void acquireCourse(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
     }
 }

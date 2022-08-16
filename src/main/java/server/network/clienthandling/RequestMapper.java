@@ -260,6 +260,21 @@ public class RequestMapper {
             case ADD_UNIT_SELECTION_SESSION:
                 requestHandler.addUnitSelectionSession(clientHandler, request);
                 break;
+            case GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS:
+                requestHandler.getDepartmentCourseThumbnailDTOs(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS_ALPHABETICALLY:
+                requestHandler.getDepartmentCourseThumbnailDTOsAlphabetically(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS_IN_EXAM_DATE_ORDER:
+                requestHandler.getDepartmentCourseThumbnailDTOsInExamDateOrder(clientHandler, request);
+                break;
+            case GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS_IN_DEGREE_LEVEL_ORDER:
+                requestHandler.getDepartmentCourseThumbnailDTOsInDegreeLevelOrder(clientHandler, request);
+                break;
+            case ACQUIRE_COURSE:
+                requestHandler.acquireCourse(clientHandler, request);
+                break;
         }
     }
 }

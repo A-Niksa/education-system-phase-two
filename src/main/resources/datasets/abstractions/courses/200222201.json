@@ -42,5 +42,7 @@
   "corequisiteIds" : [ ],
   "courseCapacity" : 0,
   "groupNumber" : 1,
-  "active" : true
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
 }

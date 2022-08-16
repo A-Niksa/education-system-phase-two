@@ -59,6 +59,7 @@ public class CourseAdder extends DynamicPanelTemplate {
     private JDatePickerImpl examDatePicker;
     private JTextField examHourField;
     private JTextField examMinuteField;
+    private JCheckBox theologyCourseCheckBox;
     private JButton addCourseButton;
     private JButton goBackButton;
 
@@ -121,6 +122,9 @@ public class CourseAdder extends DynamicPanelTemplate {
 
         examHourField = new JTextField(ConfigManager.getString(configIdentifier, "examHourFieldM"));
         examMinuteField = new JTextField(ConfigManager.getString(configIdentifier, "examMinuteFieldM"));
+
+        theologyCourseCheckBox = new JCheckBox(ConfigManager.getString(configIdentifier,
+                "theologyCourseCheckBoxM"));
 
         addCourseButton = new JButton(ConfigManager.getString(configIdentifier, "addCourseButtonM"));
 
@@ -206,6 +210,16 @@ public class CourseAdder extends DynamicPanelTemplate {
         add(examMinuteField);
 //        currentY += incrementOfY;
 
+        theologyCourseCheckBox.setBounds(ConfigManager.getInt(configIdentifier, "theologyCourseCheckBoxX"),
+                ConfigManager.getInt(configIdentifier, "theologyCourseCheckBoxY"),
+                ConfigManager.getInt(configIdentifier, "theologyCourseCheckBoxW"),
+                ConfigManager.getInt(configIdentifier, "theologyCourseCheckBoxH"));
+
+        String generalCentersId = ConfigManager.getString(ConfigFileIdentifier.CONSTANTS, "generalCentersId");
+        if (offlineModeDTO.getDepartmentId().equals(generalCentersId)) {
+            add(theologyCourseCheckBox);
+        }
+
         addCourseButton.setBounds(ConfigManager.getInt(configIdentifier, "addCourseButtonX"),
                 ConfigManager.getInt(configIdentifier, "addCourseButtonY"),
                 ConfigManager.getInt(configIdentifier, "addCourseButtonW"),
@@ -247,13 +261,15 @@ public class CourseAdder extends DynamicPanelTemplate {
                 Date selectedExamDate = examDateModel.getValue();
                 int examHour = Integer.parseInt(examHourField.getText());
                 int examMinute = Integer.parseInt(examMinuteField.getText());
+                boolean isTheologyCourse = theologyCourseCheckBox.isSelected();
 
                 Blueprint courseBlueprint = BlueprintGenerator.generateCourseBlueprint(courseName, courseId, termIdentifierString,
                         prerequisiteIdsArray, corequisiteIdsArray, teachingProfessorNamesArray, teachingAssistantIdsArray,
                         numberOfCredits, courseCapacity, degreeLevelString, firstClassWeekdayString,
                         firstClassStartHour, firstClassStartMinute, firstClassEndHour, firstClassEndMinute,
                         secondClassWeekdayString, secondClassStartHour, secondClassStartMinute, secondClassEndHour,
-                        secondClassEndMinute, selectedExamDate, examHour, examMinute, offlineModeDTO.getDepartmentId());
+                        secondClassEndMinute, selectedExamDate, examHour, examMinute, isTheologyCourse,
+                        offlineModeDTO.getDepartmentId());
                 Response response = clientController.addCourse(courseBlueprint);
                 if (response == null) return;
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {

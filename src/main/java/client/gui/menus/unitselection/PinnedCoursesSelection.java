@@ -1,9 +1,13 @@
 package client.gui.menus.unitselection;
 
-public class PinnedCoursesSelection extends CoursesSelectionPanel {
-    public PinnedCoursesSelection(UnitSelectionMenu unitSelectionMenu) {
-        super(unitSelectionMenu);
+import client.controller.ClientController;
+import client.gui.MainFrame;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 
+public class PinnedCoursesSelection extends CoursesSelectionPanel {
+    public PinnedCoursesSelection(MainFrame mainFrame, UnitSelectionMenu unitSelectionMenu,
+                                  ClientController clientController, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, unitSelectionMenu, clientController, offlineModeDTO);
         drawPanel();
     }
 
@@ -29,6 +33,16 @@ public class PinnedCoursesSelection extends CoursesSelectionPanel {
 
     @Override
     public void updatePanel() {
+
+    }
+
+    @Override
+    protected void updateCourseThumbnailDTOs() {
+
+    }
+
+    @Override
+    protected void updateCourseThumbnailTexts() {
 
     }
 }

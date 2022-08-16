@@ -1,0 +1,10 @@
+{
+  "id" : "0",
+  "courseIds" : [ "3222101" ],
+  "professorIds" : [ "90200303", "80200304" ],
+  "studentIds" : [ ],
+  "unitSelectionSessions" : [ ],
+  "deanId" : "90200303",
+  "deputyId" : "80200304",
+  "departmentName" : "GENERAL_CENTERS"
+}

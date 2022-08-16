@@ -8,6 +8,9 @@ public class EnumStringMappingUtils {
     public static DepartmentName getDepartmentName(String departmentId) {
         DepartmentName departmentName;
         switch (departmentId) {
+            case "0":
+                departmentName = DepartmentName.GENERAL_CENTERS;
+                break;
             case "1":
                 departmentName = DepartmentName.MATHEMATICS;
                 break;

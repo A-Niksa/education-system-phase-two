@@ -38,7 +38,7 @@ public class IdGenerator {
     }
 
     public String nextId(Course course, SequentialIdGenerator sequentialIdGenerator) {
-        String departmentId = course.getDepartmentId();
+        String departmentId = course.fetchDepartmentId();
         String sequentialId = String.format("%03d", sequentialIdGenerator.nextSequentialId());
         String termId = course.getTermIdentifier().toString();
         String groupId = String.valueOf(course.getGroupNumber());

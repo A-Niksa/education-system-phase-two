@@ -37,10 +37,12 @@
   },
   "numberOfCredits" : 4,
   "isActive" : true,
-  "degreeLevel" : "UNDERGRADUATE",
+  "degreeLevel" : "GRADUATE",
   "prerequisiteIds" : [ ],
   "corequisiteIds" : [ ],
-  "courseCapacity" : 0,
+  "courseCapacity" : 30,
   "groupNumber" : 1,
-  "active" : true
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
 }

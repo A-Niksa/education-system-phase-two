@@ -63,4 +63,12 @@ public class UnitSelectionSession extends IdentifiableWithTime {
     public void setEndsAt(LocalDateTime endsAt) {
         this.endsAt = endsAt;
     }
+
+    public List<StudentSelectionLog> getStudentSelectionLogs() {
+        return studentSelectionLogs;
+    }
+
+    public void setStudentSelectionLogs(List<StudentSelectionLog> studentSelectionLogs) {
+        this.studentSelectionLogs = studentSelectionLogs;
+    }
 }

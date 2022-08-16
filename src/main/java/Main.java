@@ -118,7 +118,7 @@ public class Main {
 //        complexAnalysis.addToTAs(rezaei);
         complexAnalysis.setNumberOfCredits(4);
 //        complexAnalysis.setActive(true);
-        complexAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
+        complexAnalysis.setDegreeLevel(DegreeLevel.GRADUATE);
         complexAnalysis.setExamDate(LocalDateTime.of(2022, 11, 21, 9, 30));
         WeekTime firstWeekTime = new WeekTime(Weekday.SUNDAY, new DayTime(14, 30, 0),
                 new DayTime(16, 30, 0));
@@ -126,20 +126,22 @@ public class Main {
                 new DayTime(16, 30, 0));
         complexAnalysis.addToWeeklyClassTimes(firstWeekTime);
         complexAnalysis.addToWeeklyClassTimes(secondWeekTime);
+        complexAnalysis.setCourseCapacity(30);
 //        hamidi.getTranscript().put(complexAnalysis.getId(), new Score(false, 20.0));
 //        hamidi.getTranscript().setGPA(20.0);
         // TODO: being careful not to add a student twice to a course in course picking stuff
         mathDepartment.addToCourseIDs(complexAnalysis.getId());
         Course realAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2), 1);
-        realAnalysis.setCourseName("Real Analysis");
+        realAnalysis.setCourseName("A Real Analysis");
         realAnalysis.addToTeachingProfessorIds(fanaei.getId());
         realAnalysis.addToStudentIds(hamidi.getId());
         realAnalysis.addToTeachingAssistantIds(rezaei.getId());
         realAnalysis.setNumberOfCredits(3);
-        realAnalysis.setDegreeLevel(DegreeLevel.GRADUATE);
-        realAnalysis.setExamDate(LocalDateTime.of(2022, 12, 21, 9, 30));
+        realAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
+        realAnalysis.setExamDate(LocalDateTime.of(2022, 9, 21, 9, 30));
         realAnalysis.addToWeeklyClassTimes(firstWeekTime);
         realAnalysis.addToWeeklyClassTimes(secondWeekTime);
+        realAnalysis.setCourseCapacity(40);
         mathDepartment.addToCourseIDs(realAnalysis.getId());
 
         UnitSelectionSession session = new UnitSelectionSession();
@@ -208,6 +210,29 @@ public class Main {
 
         admin = new Admin();
         MrMohseni mrMohseni = new MrMohseni();
+
+        Department generalCenters = new Department(DepartmentName.GENERAL_CENTERS);
+        Professor movahed = new Professor(AcademicRole.DEAN, AcademicLevel.FULL, "0");
+        movahed.setNationalId("015053903");
+        movahed.setFirstName("Ali");
+        movahed.setLastName("Movahed");
+        movahed.setPhoneNumber("09125730021");
+        movahed.setEmailAddress("movahed@sharif.edu");
+        movahed.setOfficeNumber("005");
+        movahed.setPassword("1234");
+        generalCenters.addToProfessorIds(movahed.getId());
+        generalCenters.setDeanId(movahed.getId());
+        Professor keyvani = new Professor(AcademicRole.DEPUTY, AcademicLevel.FULL, "0");
+        keyvani.setNationalId("015053903");
+        keyvani.setFirstName("Mohammad");
+        keyvani.setLastName("Keyvani");
+        keyvani.setPhoneNumber("09125730021");
+        keyvani.setEmailAddress("keyvani@sharif.edu");
+        keyvani.setOfficeNumber("006");
+        keyvani.setPassword("1234");
+        generalCenters.addToProfessorIds(keyvani.getId());
+        generalCenters.setDeputyId(keyvani.getId());
+
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);
         manager.save(DatasetIdentifier.PROFESSORS, khazayi);
@@ -220,6 +245,9 @@ public class Main {
         manager.save(DatasetIdentifier.DEPARTMENTS, physicsDepartment);
         manager.save(DatasetIdentifier.SPECIAL_USERS, admin);
         manager.save(DatasetIdentifier.SPECIAL_USERS, mrMohseni);
+        manager.save(DatasetIdentifier.DEPARTMENTS, generalCenters);
+        manager.save(DatasetIdentifier.PROFESSORS, movahed);
+        manager.save(DatasetIdentifier.PROFESSORS, keyvani);
         manager.saveDatabase();
     }
 

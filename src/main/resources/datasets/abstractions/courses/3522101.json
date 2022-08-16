@@ -1,0 +1,48 @@
+{
+  "id" : "3522101",
+  "departmentId" : "1",
+  "courseName" : "Course Name...",
+  "teachingProfessorIds" : [ "90201301" ],
+  "teachingAssistantIds" : [ "" ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SATURDAY",
+    "startTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "SATURDAY",
+    "startTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 1,
+      "minute" : 1,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-08-17T01:01:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 1
+  },
+  "numberOfCredits" : 1,
+  "isActive" : false,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ "" ],
+  "corequisiteIds" : [ "" ],
+  "courseCapacity" : 1,
+  "groupNumber" : 1,
+  "isTheologyCourse" : false,
+  "active" : false,
+  "theologyCourse" : false
+}

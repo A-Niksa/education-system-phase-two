@@ -4,17 +4,28 @@ import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.unitselection.UnitSelectionSession;
+import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 
 import java.time.LocalDateTime;
 
 public class UnitSelectionTimeUtils {
-    public static UnitSelectionSession getStudentUnitSelection(DatabaseManager databaseManager, Student student) {
+    public static UnitSelectionSession getStudentUnitSelectionSession(DatabaseManager databaseManager, Student student) {
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, student.getDepartmentId());
         return department.getUnitSelectionSessions().parallelStream()
                 .filter(session -> isCurrentTimeInTimeRange(session.getStartsAt(), session.getEndsAt()))
                 .filter(session -> session.getIntendedDegreeLevel() == student.getDegreeLevel())
                 .filter(session -> session.getIntendedYearOfEntry() == student.getYearOfEntry())
+                .findAny().orElse(null);
+    }
+
+    public static UnitSelectionSession getOngoingUnitSelectionSession(Department department, int intendedYearOfEntry,
+                                                                      DegreeLevel intendedDegreeLevel) {
+        if (department == null) return null;
+        return department.getUnitSelectionSessions().parallelStream()
+                .filter(session -> isCurrentTimeInTimeRange(session.getStartsAt(), session.getEndsAt()))
+                .filter(session -> session.getIntendedDegreeLevel() == intendedDegreeLevel)
+                .filter(session -> session.getIntendedYearOfEntry() == intendedYearOfEntry)
                 .findAny().orElse(null);
     }
     

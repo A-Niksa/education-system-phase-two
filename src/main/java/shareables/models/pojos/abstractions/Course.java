@@ -33,6 +33,7 @@ public class Course extends Identifiable {
     private List<String> corequisiteIds;
     private int courseCapacity;
     private int groupNumber;
+    private boolean isTheologyCourse;
 
     public Course() {
     }
@@ -48,6 +49,7 @@ public class Course extends Identifiable {
         weeklyClassTimes = new ArrayList<>();
         prerequisiteIds = new ArrayList<>();
         corequisiteIds = new ArrayList<>();
+        isTheologyCourse = false;
         initializeId();
     }
 
@@ -144,6 +146,10 @@ public class Course extends Identifiable {
         this.termIdentifier = termIdentifier;
     }
 
+    public String fetchDepartmentId() {
+        return departmentId == null ? "0" : departmentId;
+    }
+
     public String getDepartmentId() {
         return departmentId;
     }
@@ -214,5 +220,13 @@ public class Course extends Identifiable {
 
     public void setGroupNumber(int groupNumber) {
         this.groupNumber = groupNumber;
+    }
+
+    public boolean isTheologyCourse() {
+        return isTheologyCourse;
+    }
+
+    public void setTheologyCourse(boolean theologyCourse) {
+        isTheologyCourse = theologyCourse;
     }
 }

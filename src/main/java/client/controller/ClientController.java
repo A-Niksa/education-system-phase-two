@@ -564,6 +564,41 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getDepartmentCourseThumbnailDTOs(String departmentNameString, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS,
+                new StringObjectMap("departmentNameString", departmentNameString),
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDepartmentCourseThumbnailDTOsAlphabetically(String departmentNameString, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS_ALPHABETICALLY,
+                new StringObjectMap("departmentNameString", departmentNameString),
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDepartmentCourseThumbnailDTOsInExamDateOrder(String departmentNameString, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS_ALPHABETICALLY,
+                new StringObjectMap("departmentNameString", departmentNameString),
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getDepartmentCourseThumbnailDTOsInDegreeLevelOrder(String departmentNameString, String studentId) {
+        Request request = requestGenerator.generateRequest(
+                RequestIdentifier.GET_DEPARTMENT_COURSE_THUMBNAIL_DTOS_IN_DEGREE_LEVEL_ORDER,
+                new StringObjectMap("departmentNameString", departmentNameString),
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response acquireCourse(String courseId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ACQUIRE_COURSE,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

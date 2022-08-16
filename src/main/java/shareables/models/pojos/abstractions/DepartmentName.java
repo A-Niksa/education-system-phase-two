@@ -5,7 +5,8 @@ public enum DepartmentName {
     PHYSICS("Physics"),
     ECONOMICS("Economics"),
     CHEMISTRY("Chemistry"),
-    AEROSPACE_ENGINEERING("Aerospace Engineering");
+    AEROSPACE_ENGINEERING("Aerospace Engineering"),
+    GENERAL_CENTERS("General Centers");
 
     private String departmentNameString;
 

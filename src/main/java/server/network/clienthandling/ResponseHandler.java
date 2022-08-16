@@ -14,6 +14,7 @@ import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.standing.CourseScoreDTO;
 import shareables.network.DTOs.standing.CourseStatsDTO;
 import shareables.network.DTOs.standing.TranscriptDTO;
+import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -399,6 +400,12 @@ public class ResponseHandler {
     public void addedUnitSelectionTime(ClientHandler clientHandler) {
         Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "addedUnitSelectionTime"));
+        clientHandler.respond(response);
+    }
+
+    public void courseThumbnailDTOsAcquired(ClientHandler clientHandler, List<CourseThumbnailDTO> courseThumbnailDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("courseThumbnailDTOs", courseThumbnailDTOs);
         clientHandler.respond(response);
     }
 }

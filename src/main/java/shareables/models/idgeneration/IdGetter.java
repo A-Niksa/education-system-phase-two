@@ -71,6 +71,9 @@ public class IdGetter {
     public String getDepartmentId(DepartmentName departmentName) {
         String departmentId;
         switch (departmentName) {
+            case GENERAL_CENTERS:
+                departmentId = "0";
+                break;
             case MATHEMATICS:
                 departmentId = "1";
                 break;

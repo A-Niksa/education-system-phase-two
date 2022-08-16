@@ -75,7 +75,7 @@ public class OfflineModeUtils {
             offlineModeDTO.setAdvisingProfessorName(noAdvisingProfessorPrompt);
         }
 
-        UnitSelectionSession unitSelectionSession = UnitSelectionTimeUtils.getStudentUnitSelection(databaseManager, student);
+        UnitSelectionSession unitSelectionSession = UnitSelectionTimeUtils.getStudentUnitSelectionSession(databaseManager, student);
         if (unitSelectionSession != null) {
             student.setEnrolmentTime(unitSelectionSession.getStartsAt());
             // access to uni selection depends on whether the student is allowed to enrol or not:
@@ -114,29 +114,5 @@ public class OfflineModeUtils {
         offlineModeDTO.setOfflineMessengerDTO(
                 OfflineMessengerUtils.getOfflineMessengerDTO(databaseManager, user.getMessenger())
         );
-    }
-
-    private static DepartmentName getDepartmentNameWithId(String departmentId) {
-        DepartmentName departmentName;
-        switch (departmentId) {
-            case "1":
-                departmentName = DepartmentName.MATHEMATICS;
-                break;
-            case "2":
-                departmentName = DepartmentName.PHYSICS;
-                break;
-            case "3":
-                departmentName = DepartmentName.ECONOMICS;
-                break;
-            case "4":
-                departmentName = DepartmentName.CHEMISTRY;
-                break;
-            case "5":
-                departmentName = DepartmentName.AEROSPACE_ENGINEERING;
-                break;
-            default:
-                departmentName = null; // this branch added for explicitness
-        }
-        return departmentName;
     }
 }

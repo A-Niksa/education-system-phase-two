@@ -15,49 +15,28 @@ public class UnitSelectionMenu extends DynamicPanelTemplate {
     private DepartmentCoursesSelection departmentCoursesPanel;
     private PinnedCoursesSelection pinnedCoursesPanel;
     private JTabbedPane tabbedPane;
-    private ArrayList<CourseThumbnailDTO> departmentCourseThumbnailDTOs;
-    private ArrayList<CourseThumbnailDTO> recommendedCourseThumbnailDTOs; // for pinnedCoursesPanel
-    private ArrayList<CourseThumbnailDTO> favoriteCourseThumbnailDTOs; // for pinnedCoursesPanel
 
     public UnitSelectionMenu(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
         configIdentifier = ConfigFileIdentifier.GUI_UNIT_SELECTION_MENU;
-        updateDepartmentCourseThumbnailDTOs();
-        updatePinnedCourseThumbnailDTOs();
+        // TODO: updatePanel for pinnedCoursesPanel in the constructor
         drawPanel();
         startPinging(offlineModeDTO.getId());
     }
 
-    private void updateDepartmentCourseThumbnailDTOs() {
-        // TODO
-    }
-
-    private void updatePinnedCourseThumbnailDTOs() {
-        updateRecommendedCourseThumbnailDTOs();
-        updateFavoriteCourseThumbnailDTOs();
-    }
-
-    private void updateRecommendedCourseThumbnailDTOs() {
-        // TODO
-    }
-
-    private void updateFavoriteCourseThumbnailDTOs() {
-        // TODO:
-    }
-
     @Override
     protected void updatePanel() {
-        updateDepartmentCourseThumbnailDTOs();
-        updatePinnedCourseThumbnailDTOs();
-
-        departmentCoursesPanel.updatePanel();
-        pinnedCoursesPanel.updatePanel();
+        if (tabbedPane.getSelectedIndex() == 0) {
+            departmentCoursesPanel.updatePanel();
+        } else if (tabbedPane.getSelectedIndex() == 1) {
+            pinnedCoursesPanel.updatePanel();
+        }
     }
 
     @Override
     protected void initializeComponents() {
-        departmentCoursesPanel = new DepartmentCoursesSelection(this);
-        pinnedCoursesPanel = new PinnedCoursesSelection(this);
+        departmentCoursesPanel = new DepartmentCoursesSelection(mainFrame, this, clientController, offlineModeDTO);
+        pinnedCoursesPanel = new PinnedCoursesSelection(mainFrame, this, clientController, offlineModeDTO);
         tabbedPane = new JTabbedPane();
     }
 

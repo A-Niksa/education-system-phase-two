@@ -21,7 +21,8 @@ public class BlueprintGenerator {
                                                     int firstClassStartMinute, int firstClassEndHour, int firstClassEndMinute,
                                                     String secondClassWeekdayString, int secondClassStartHour,
                                                     int secondClassStartMinute, int secondClassEndHour, int secondClassEndMinute,
-                                                    Date selectedExamDate, int examHour, int examMinute, String departmentId) {
+                                                    Date selectedExamDate, int examHour, int examMinute,
+                                                    boolean isTheologyCourse, String departmentId) {
         LocalDateTime examLocalDateTime = GeneralBlueprintHelper.convertToLocalDateTime(selectedExamDate, examHour, examMinute);
         DegreeLevel degreeLevel = EnumStringMapper.getDegreeLevel(degreeLevelString);
         TermIdentifier termIdentifier = CourseBlueprintHelper.getTermIdentifier(termIdentifierString);
@@ -44,6 +45,7 @@ public class BlueprintGenerator {
         blueprint.put("departmentId", departmentId);
         blueprint.put("termIdentifier", termIdentifier);
         blueprint.put("courseCapacity", courseCapacity);
+        blueprint.put("isTheologyCourse", isTheologyCourse);
         return blueprint;
     }
 

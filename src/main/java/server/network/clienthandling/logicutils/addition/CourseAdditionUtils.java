@@ -49,6 +49,7 @@ public class CourseAdditionUtils {
         course.setWeeklyClassTimes((ArrayList<WeekTime>) request.get("weeklyClassTimes"));
         course.setExamDate((LocalDateTime) request.get("examDate"));
         course.setTermIdentifier((TermIdentifier) request.get("termIdentifier"));
+        course.setTheologyCourse((boolean) request.get("isTheologyCourse"));
 
         course.setGroupNumber(
                 getNumberOfCurrentCoursesWithId(databaseManager, course.getId(), course.getTermIdentifier()) + 1

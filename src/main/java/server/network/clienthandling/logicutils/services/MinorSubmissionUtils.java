@@ -16,6 +16,8 @@ import shareables.utils.config.ConfigManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import static server.network.clienthandling.logicutils.general.EnumStringMappingUtils.getDepartmentId;
+
 public class MinorSubmissionUtils {
     private static RequestDTOComparator comparator = new RequestDTOComparator();
 
@@ -60,31 +62,6 @@ public class MinorSubmissionUtils {
     public static boolean targetDepartmentIsSameAsCurrentDepartment(String originDepartmentId, String targetDepartmentNameString) {
         String targetDepartmentId = getDepartmentId(targetDepartmentNameString);
         return originDepartmentId.equals(targetDepartmentId);
-    }
-
-    private static String getDepartmentId(String departmentNameString) {
-        String departmentId;
-        // TODO: making this more elegant?
-        switch (departmentNameString) {
-            case "Mathematics":
-                departmentId = "1";
-                break;
-            case "Physics":
-                departmentId = "2";
-                break;
-            case "Economics":
-                departmentId = "3";
-                break;
-            case "Chemistry":
-                departmentId = "4";
-                break;
-            case "Aerospace Engineering":
-                departmentId = "5";
-                break;
-            default:
-                departmentId = null; // added for explicitness
-        }
-        return departmentId;
     }
 
     public static boolean isCurrentlyMinoringAtTargetDepartment(DatabaseManager databaseManager, String requestingStudentId,

@@ -1,13 +1,21 @@
 package shareables.network.DTOs.unitselection;
 
 import shareables.models.pojos.users.students.DegreeLevel;
+import shareables.utils.timing.formatting.FormattingUtils;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class CourseThumbnailDTO {
+    private static DateTimeFormatter extensiveDateTimeFormatter;
+    static {
+        extensiveDateTimeFormatter = FormattingUtils.getExtensiveDateTimeFormatter();
+    }
+
     private String courseId;
     private String courseName;
-    private String examDateString;
+    private LocalDateTime examDate;
     private int groupNumber;
     private int currentCapacity;
     private DegreeLevel degreeLevel;
@@ -34,12 +42,12 @@ public class CourseThumbnailDTO {
         this.courseName = courseName;
     }
 
-    public String getExamDateString() {
-        return examDateString;
+    public LocalDateTime getExamDate() {
+        return examDate;
     }
 
-    public void setExamDateString(String examDateString) {
-        this.examDateString = examDateString;
+    public void setExamDate(LocalDateTime examDate) {
+        this.examDate = examDate;
     }
 
     public DegreeLevel getDegreeLevel() {
@@ -99,7 +107,7 @@ public class CourseThumbnailDTO {
                     "<br/>" +
                     degreeLevel +
                     "<br/>" +
-                    "Exam date: " + examDateString +
+                    "Exam date: " + extensiveDateTimeFormatter.format(examDate) +
                     "<br/>" +
                     "Remaining capacity: " + currentCapacity +
                     "<br/>" +

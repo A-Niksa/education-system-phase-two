@@ -6,6 +6,9 @@ public class DepartmentGetter {
     public static DepartmentName getDepartmentNameById(String id) {
         DepartmentName departmentName;
         switch (id) {
+            case "0":
+                departmentName = DepartmentName.GENERAL_CENTERS;
+                break;
             case "1":
                 departmentName = DepartmentName.MATHEMATICS;
                 break;
@@ -30,6 +33,9 @@ public class DepartmentGetter {
     public static DepartmentName getDepartmentNameByString(String departmentNameString) {
         DepartmentName departmentName;
         switch (departmentNameString) {
+            case "General Centers":
+                departmentName = DepartmentName.GENERAL_CENTERS;
+                break;
             case "Mathematics":
                 departmentName = DepartmentName.MATHEMATICS;
                 break;

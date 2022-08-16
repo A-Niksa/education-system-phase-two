@@ -1,13 +1,22 @@
 package client.gui.menus.unitselection;
 
+import client.controller.ClientController;
+import client.gui.MainFrame;
+import client.gui.utils.ErrorUtils;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
+import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
 
 import javax.swing.*;
 
 public abstract class CoursesSelectionPanel extends JPanel {
+    protected MainFrame mainFrame;
     protected UnitSelectionMenu unitSelectionMenu;
+    protected ClientController clientController;
+    protected OfflineModeDTO offlineModeDTO;
     protected ConfigFileIdentifier configIdentifier;
     protected JButton requestAcquisitionButton;
     protected JButton changeGroupButton;
@@ -15,9 +24,14 @@ public abstract class CoursesSelectionPanel extends JPanel {
     protected JButton removeButton;
     protected JButton pinButton;
     protected JButton unpinButton;
+    protected String selectedCourseId;
 
-    public CoursesSelectionPanel(UnitSelectionMenu unitSelectionMenu) {
+    public CoursesSelectionPanel(MainFrame mainFrame, UnitSelectionMenu unitSelectionMenu, ClientController clientController,
+                                 OfflineModeDTO offlineModeDTO) {
+        this.mainFrame = mainFrame;
         this.unitSelectionMenu = unitSelectionMenu;
+        this.clientController = clientController;
+        this.offlineModeDTO = offlineModeDTO;
         setLayout(null);
         configIdentifier = ConfigFileIdentifier.GUI_COURSES_SELECTION_PANEL;
         drawPreliminaryPanel();
@@ -93,6 +107,19 @@ public abstract class CoursesSelectionPanel extends JPanel {
     }
 
     private void connectPreliminaryListeners() {
+        acquireButton.addActionListener(actionEvent -> {
+            Response response = clientController.acquireCourse(selectedCourseId, offlineModeDTO.getId());
+            if (response == null) return;
+
+            if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                        "connectPreliminaryListeners", getClass());
+            } else {
+                JOptionPane.showMessageDialog(mainFrame, response.getUnsolicitedMessage());
+                MasterLogger.clientInfo(clientController.getId(), response.getUnsolicitedMessage(),
+                        "connectPreliminaryListeners", getClass());
+            }
+        });
         // TODO
     }
 
@@ -102,6 +129,7 @@ public abstract class CoursesSelectionPanel extends JPanel {
         initializeComponents();
         alignComponents();
         connectListeners();
+        connectListSelectionListeners();
     }
 
     protected abstract void initializeComponents();
@@ -111,4 +139,8 @@ public abstract class CoursesSelectionPanel extends JPanel {
     protected abstract void connectListeners();
 
     public abstract void updatePanel();
+
+    protected abstract void updateCourseThumbnailDTOs();
+
+    protected abstract void updateCourseThumbnailTexts();
 }

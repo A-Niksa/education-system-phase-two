@@ -3,6 +3,7 @@ package server.network.clienthandling.logicutils.standing;
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.comparators.CourseScoreDTOComparator;
+import server.network.clienthandling.logicutils.general.EnumStringMappingUtils;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
@@ -143,7 +144,7 @@ public class StandingMasteryUtils {
     }
 
     public static Course getCourse(DatabaseManager databaseManager, String courseName, DepartmentName departmentName) {
-        String departmentId = getDepartmentId(departmentName);
+        String departmentId = EnumStringMappingUtils.getDepartmentId(departmentName);
         return StandingManagementUtils.getCourse(databaseManager, departmentId, courseName);
     }
 
@@ -191,30 +192,6 @@ public class StandingMasteryUtils {
                 .flatMap(transcript -> transcript.getCourseIdScoreMap().entrySet().stream())
                 .filter(entry -> entry.getKey().equals(course.getId()))
                 .map(Map.Entry::getValue);
-    }
-
-    private static String getDepartmentId(DepartmentName departmentName) {
-        String departmentId;
-        switch (departmentName) {
-            case MATHEMATICS:
-                departmentId = "1";
-                break;
-            case PHYSICS:
-                departmentId = "2";
-                break;
-            case ECONOMICS:
-                departmentId = "3";
-                break;
-            case CHEMISTRY:
-                departmentId = "4";
-                break;
-            case AEROSPACE_ENGINEERING:
-                departmentId = "5";
-                break;
-            default:
-                departmentId = null; // added for explicitness
-        }
-        return departmentId;
     }
 
     public static boolean allStudentScoresHaveBeenFinalized(DatabaseManager databaseManager, Course course) {
