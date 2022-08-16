@@ -3,7 +3,7 @@ package server.network.clienthandling.logicutils.unitselection;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Department;
-import shareables.models.pojos.abstractions.UnitSelectionSession;
+import shareables.models.pojos.unitselection.UnitSelectionSession;
 import shareables.models.pojos.users.students.DegreeLevel;
 
 import java.time.LocalDateTime;

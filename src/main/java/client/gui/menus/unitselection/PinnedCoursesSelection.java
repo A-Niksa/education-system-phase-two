@@ -1,11 +1,6 @@
 package client.gui.menus.unitselection;
 
-import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
-
-import java.util.ArrayList;
-
 public class PinnedCoursesSelection extends CoursesSelectionPanel {
-
     public PinnedCoursesSelection(UnitSelectionMenu unitSelectionMenu) {
         super(unitSelectionMenu);
 
@@ -24,6 +19,11 @@ public class PinnedCoursesSelection extends CoursesSelectionPanel {
 
     @Override
     protected void connectListeners() {
+
+    }
+
+    @Override
+    protected void connectListSelectionListeners() {
 
     }
 

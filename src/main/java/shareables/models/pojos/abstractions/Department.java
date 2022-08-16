@@ -1,6 +1,7 @@
 package shareables.models.pojos.abstractions;
 
 import shareables.models.idgeneration.Identifiable;
+import shareables.models.pojos.unitselection.UnitSelectionSession;
 
 import java.util.ArrayList;
 import java.util.List;

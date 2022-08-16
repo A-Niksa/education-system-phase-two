@@ -38,7 +38,7 @@ public class UnitSelectionMenu extends DynamicPanelTemplate {
     }
 
     private void updateRecommendedCourseThumbnailDTOs() {
-        // TODO:
+        // TODO
     }
 
     private void updateFavoriteCourseThumbnailDTOs() {
@@ -68,6 +68,10 @@ public class UnitSelectionMenu extends DynamicPanelTemplate {
         tabbedPane.add(ConfigManager.getString(configIdentifier, "pinnedCoursesPanelHeader"),
                 pinnedCoursesPanel);
 
+        tabbedPane.setBounds(ConfigManager.getInt(configIdentifier, "tabbedPaneX"),
+                ConfigManager.getInt(configIdentifier, "tabbedPaneY"),
+                ConfigManager.getInt(configIdentifier, "tabbedPaneW"),
+                ConfigManager.getInt(configIdentifier, "tabbedPaneH"));
         add(tabbedPane);
     }
 

@@ -9,6 +9,7 @@ import shareables.models.pojos.media.Picture;
 import shareables.models.pojos.messaging.Conversation;
 import shareables.models.pojos.messaging.Message;
 import shareables.models.pojos.messaging.MessageType;
+import shareables.models.pojos.unitselection.UnitSelectionSession;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
@@ -146,7 +147,7 @@ public class Main {
         session.setEndsAt(LocalDateTime.of(2023, 10, 11, 10, 30));
         session.setIntendedDegreeLevel(DegreeLevel.UNDERGRADUATE);
         session.setIntendedYearOfEntry(2019);
-//        mathDepartment.addToUnitSelectionSessions(session);
+        mathDepartment.addToUnitSelectionSessions(session);
 
         Department physicsDepartment = new Department(DepartmentName.PHYSICS);
         Professor rahvar = new Professor(AcademicRole.DEPUTY, AcademicLevel.FULL, physicsDepartment.getId());

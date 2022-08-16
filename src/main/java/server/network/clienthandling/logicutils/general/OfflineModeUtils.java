@@ -6,7 +6,7 @@ import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import server.network.clienthandling.logicutils.unitselection.UnitSelectionTimeUtils;
 import shareables.models.pojos.abstractions.DepartmentName;
-import shareables.models.pojos.abstractions.UnitSelectionSession;
+import shareables.models.pojos.unitselection.UnitSelectionSession;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.models.pojos.users.professors.Professor;

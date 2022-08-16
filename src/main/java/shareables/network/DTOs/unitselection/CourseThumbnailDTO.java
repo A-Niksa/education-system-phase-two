@@ -12,6 +12,8 @@ public class CourseThumbnailDTO {
     private int currentCapacity;
     private DegreeLevel degreeLevel;
     private List<String> teachingProfessorNames;
+    private boolean isAcquired;
+    private boolean isPinned;
 
     public CourseThumbnailDTO() {
     }
@@ -72,6 +74,22 @@ public class CourseThumbnailDTO {
         this.currentCapacity = currentCapacity;
     }
 
+    public boolean isAcquired() {
+        return isAcquired;
+    }
+
+    public void setAcquired(boolean acquired) {
+        isAcquired = acquired;
+    }
+
+    public boolean isPinned() {
+        return isPinned;
+    }
+
+    public void setPinned(boolean pinned) {
+        isPinned = pinned;
+    }
+
     @Override
     public String toString() {
         return "<html>" +
@@ -84,7 +102,13 @@ public class CourseThumbnailDTO {
                     "Exam date: " + examDateString +
                     "<br/>" +
                     "Remaining capacity: " + currentCapacity +
+                    "<br/>" +
+                    "Acquired: " + acquiredToString(isAcquired) +
                 "</html>";
+    }
+
+    private String acquiredToString(boolean isAcquired) {
+        return isAcquired ? "Yes" : "No";
     }
 
     private String teachingProfessorsToString() {
