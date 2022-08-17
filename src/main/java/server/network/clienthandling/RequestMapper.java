@@ -293,6 +293,9 @@ public class RequestMapper {
             case CHANGE_GROUP_NUMBER:
                 requestHandler.changeGroupNumber(clientHandler, request);
                 break;
+            case GET_PINNED_COURSE_THUMBNAIL_DTOS:
+                requestHandler.getPinnedCourseThumbnailDTOs(clientHandler, request);
+                break;
         }
     }
 }

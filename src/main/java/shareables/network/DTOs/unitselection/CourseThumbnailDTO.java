@@ -22,6 +22,7 @@ public class CourseThumbnailDTO {
     private List<String> teachingProfessorNames;
     private boolean isAcquired;
     private boolean isPinnedToFavorites;
+    private boolean isRecommended;
 
     public CourseThumbnailDTO() {
     }
@@ -98,6 +99,14 @@ public class CourseThumbnailDTO {
         isPinnedToFavorites = pinnedToFavorites;
     }
 
+    public boolean isRecommended() {
+        return isRecommended;
+    }
+
+    public void setRecommended(boolean recommended) {
+        isRecommended = recommended;
+    }
+
     @Override
     public String toString() {
         return "<html>" +
@@ -111,12 +120,12 @@ public class CourseThumbnailDTO {
                     "<br/>" +
                     "Remaining capacity: " + currentCapacity +
                     "<br/>" +
-                    "Acquired: " + acquiredToString(isAcquired) +
+                    "Acquired: " + booleanToString(isAcquired) +
+                    "<br/>" +
+                    "Recommended: " + booleanToString(isRecommended) +
+                    "<br/>" +
+                    "Favorite: " + booleanToString(isPinnedToFavorites) +
                 "</html>";
-    }
-
-    private String acquiredToString(boolean isAcquired) {
-        return isAcquired ? "Yes" : "No";
     }
 
     public String teachingProfessorsToString() {
@@ -126,5 +135,9 @@ public class CourseThumbnailDTO {
         }
         int stringBuilderLength = teachingProfessorsNameStringBuilder.length();
         return teachingProfessorsNameStringBuilder.delete(stringBuilderLength - 2, stringBuilderLength - 1).toString();
+    }
+
+    private String booleanToString(boolean inputBoolean) {
+        return inputBoolean ? "Yes" : "No";
     }
 }

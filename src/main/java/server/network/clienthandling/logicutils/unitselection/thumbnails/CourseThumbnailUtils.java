@@ -33,6 +33,8 @@ public class CourseThumbnailUtils {
                 studentSelectionLog, unitSelectionSession, course.getId()
         ));
 
+        courseThumbnailDTO.setRecommended(false); // default value; can be changed in other methods in the logical pipeline
+
         return courseThumbnailDTO;
     }
 

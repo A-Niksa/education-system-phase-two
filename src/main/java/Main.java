@@ -117,7 +117,7 @@ public class Main {
         mathDepartment.setDeanId(fanaei.getId());
         mathDepartment.addToProfessorIds(khazayi.getId());
         mathDepartment.addToProfessorIds(fanaei.getId());
-        Student rezaei = new Student(2018, DegreeLevel.GRADUATE, mathDepartment.getId());
+        Student rezaei = new Student(2019, DegreeLevel.UNDERGRADUATE, mathDepartment.getId());
         rezaei.setNationalId("0152902202");
         rezaei.setFirstName("Arash");
         rezaei.setLastName("Rezaei");
@@ -150,7 +150,7 @@ public class Main {
         Course realAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2), 1);
         realAnalysis.setCourseName("A Real Analysis");
         realAnalysis.addToTeachingProfessorIds(fanaei.getId());
-        realAnalysis.addToStudentIds(hamidi.getId());
+//        realAnalysis.addToStudentIds(hamidi.getId());
         realAnalysis.addToTeachingAssistantIds(rezaei.getId());
         realAnalysis.setNumberOfCredits(3);
         realAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
@@ -162,7 +162,7 @@ public class Main {
         Course anotherRealAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2), 2);
         anotherRealAnalysis.setCourseName("A Real Analysis");
         anotherRealAnalysis.addToTeachingProfessorIds(khazayi.getId());
-        anotherRealAnalysis.addToStudentIds(hamidi.getId());
+//        anotherRealAnalysis.addToStudentIds(hamidi.getId());
         anotherRealAnalysis.addToTeachingAssistantIds(rezaei.getId());
         anotherRealAnalysis.setNumberOfCredits(3);
         anotherRealAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
@@ -172,6 +172,20 @@ public class Main {
         anotherRealAnalysis.setCourseCapacity(0);
         anotherRealAnalysis.setId("100122202");
         mathDepartment.addToCourseIDs(anotherRealAnalysis.getId());
+        Course anotherAnotherRealAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 1), 2);
+        anotherAnotherRealAnalysis.setCourseName("A Real Analysis");
+        anotherAnotherRealAnalysis.addToTeachingProfessorIds(khazayi.getId());
+        anotherAnotherRealAnalysis.addToStudentIds(hamidi.getId());
+        anotherAnotherRealAnalysis.addToTeachingAssistantIds(rezaei.getId());
+        anotherAnotherRealAnalysis.setNumberOfCredits(3);
+        anotherAnotherRealAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
+        anotherAnotherRealAnalysis.setExamDate(LocalDateTime.of(2022, 9, 21, 9, 30));
+        anotherAnotherRealAnalysis.addToWeeklyClassTimes(firstWeekTime);
+        anotherAnotherRealAnalysis.addToWeeklyClassTimes(secondWeekTime);
+        anotherAnotherRealAnalysis.setCourseCapacity(40);
+        anotherAnotherRealAnalysis.setId("100122202");
+        mathDepartment.addToCourseIDs(anotherAnotherRealAnalysis.getId());
+        complexAnalysis.addToPrerequisiteIds(anotherAnotherRealAnalysis.getId());
 
         UnitSelectionSession session = new UnitSelectionSession();
         session.setStartsAt(LocalDateTime.now());
@@ -204,6 +218,8 @@ public class Main {
         analyticalMechanics.addToStudentIds(rezaei.getId());
         physicsDepartment.addToCourseIDs(analyticalMechanics.getId());
 //        hamidi.getTranscript().put(analyticalMechanics.getId(), new Score(false, 19.0));
+
+        complexAnalysis.addToCorequisiteIds(analyticalMechanics.getId());
 
         Conversation conversation = new Conversation();
         conversation.addToConversingUserIds(hamidi.getId());
@@ -261,6 +277,26 @@ public class Main {
         keyvani.setPassword("1234");
         generalCenters.addToProfessorIds(keyvani.getId());
         generalCenters.setDeputyId(keyvani.getId());
+        Course tafsir = new Course(physicsDepartment.getId(), new TermIdentifier(2022, 2), 1);
+        tafsir.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
+        tafsir.setCourseName("Tafsir");
+        tafsir.addToTeachingProfessorIds(movahed.getId());
+        tafsir.setNumberOfCredits(3);
+        tafsir.setExamDate(LocalDateTime.of(2022, 11, 21, 14, 30));
+        tafsir.addToWeeklyClassTimes(firstWeekTime);
+        tafsir.addToWeeklyClassTimes(secondWeekTime);
+        tafsir.addToStudentIds(rezaei.getId());
+        generalCenters.addToCourseIDs(tafsir.getId());
+        Course ayeen = new Course(physicsDepartment.getId(), new TermIdentifier(2022, 2), 1);
+        ayeen.setDegreeLevel(DegreeLevel.GRADUATE);
+        ayeen.setCourseName("Ayeen");
+        ayeen.addToTeachingProfessorIds(keyvani.getId());
+        ayeen.setNumberOfCredits(3);
+        ayeen.setExamDate(LocalDateTime.of(2022, 11, 21, 16, 30));
+        ayeen.addToWeeklyClassTimes(firstWeekTime);
+        ayeen.addToWeeklyClassTimes(secondWeekTime);
+        ayeen.addToStudentIds(rezaei.getId());
+        generalCenters.addToCourseIDs(ayeen.getId());
 
         manager.save(DatasetIdentifier.STUDENTS, hamidi);
         manager.save(DatasetIdentifier.STUDENTS, rezaei);
@@ -278,6 +314,9 @@ public class Main {
         manager.save(DatasetIdentifier.PROFESSORS, movahed);
         manager.save(DatasetIdentifier.PROFESSORS, keyvani);
         manager.save(DatasetIdentifier.COURSES, anotherRealAnalysis);
+        manager.save(DatasetIdentifier.COURSES, anotherAnotherRealAnalysis);
+        manager.save(DatasetIdentifier.COURSES, tafsir);
+        manager.save(DatasetIdentifier.COURSES, ayeen);
         manager.saveDatabase();
     }
 

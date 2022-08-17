@@ -85,6 +85,22 @@ public class Course extends Identifiable {
         studentIds.removeIf(e -> e.equals(studentId));
     }
 
+    public void addToPrerequisiteIds(String prerequisiteId) {
+        prerequisiteIds.add(prerequisiteId);
+    }
+
+    public void removeFromPrerequisiteIds(String prerequisiteId) {
+        prerequisiteIds.removeIf(e -> e.equals(prerequisiteId));
+    }
+
+    public void addToCorequisiteIds(String corequisiteId) {
+        corequisiteIds.add(corequisiteId);
+    }
+
+    public void removeFromCorequisiteIds(String corequisiteId) {
+        corequisiteIds.removeIf(e -> e.equals(corequisiteId));
+    }
+
     @Override
     protected void initializeId() {
         id = idGenerator.nextId(this, sequentialIdGenerator);

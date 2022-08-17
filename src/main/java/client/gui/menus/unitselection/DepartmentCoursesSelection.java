@@ -133,14 +133,14 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
 
     private void updatePanelNormally() {
         updateCourseThumbnailDTOs();
-        String[] previousDepartmentCourseThumbnailTexts = Arrays.copyOf(courseThumbnailTexts,
+        String[] previousCourseThumbnailTexts = Arrays.copyOf(courseThumbnailTexts,
                 courseThumbnailTexts.length);
         updateCourseThumbnailTexts();
-        Arrays.stream(previousDepartmentCourseThumbnailTexts)
+        Arrays.stream(previousCourseThumbnailTexts)
                 .filter(e -> !arrayContains(courseThumbnailTexts, e))
                 .forEach(e -> coursesListModel.removeElement(e));
         Arrays.stream(courseThumbnailTexts)
-                .filter(e -> !arrayContains(previousDepartmentCourseThumbnailTexts, e))
+                .filter(e -> !arrayContains(previousCourseThumbnailTexts, e))
                 .forEach(e -> coursesListModel.add(0, e));
     }
 

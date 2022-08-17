@@ -1,6 +1,6 @@
 {
   "id" : "0",
-  "courseIds" : [ ],
+  "courseIds" : [ "200522201", "200622201" ],
   "professorIds" : [ "90200303", "80200304" ],
   "studentIds" : [ ],
   "unitSelectionSessions" : [ ],

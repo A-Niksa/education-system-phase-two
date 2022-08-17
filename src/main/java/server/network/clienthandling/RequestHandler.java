@@ -28,6 +28,7 @@ import server.network.clienthandling.logicutils.unitselection.addition.UnitSelec
 import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
 import server.network.clienthandling.logicutils.unitselection.pinning.FavoriteCoursesUtils;
 import server.network.clienthandling.logicutils.unitselection.thumbnails.DepartmentCoursesUtils;
+import server.network.clienthandling.logicutils.unitselection.thumbnails.PinnedCoursesUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
@@ -857,5 +858,12 @@ public class RequestHandler { // TODO: logging, perhaps?
             CourseGroupUtils.changeGroupNumber(unitSelectionSession, courseId, studentId, newGroupNumber);
             responseHandler.changedCourseGroupNumber(clientHandler);
         }
+    }
+
+    public void getPinnedCourseThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        List<CourseThumbnailDTO> pinnedCourseThumbnailDTOs = PinnedCoursesUtils.getPinnedCourseThumbnailDTOs(databaseManager,
+                studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, pinnedCourseThumbnailDTOs);
     }
 }

@@ -4,7 +4,7 @@
   "courseName" : "Complex Analysis",
   "teachingProfessorIds" : [ "80201200", "90201301" ],
   "teachingAssistantIds" : [ ],
-  "studentIds" : [ "19101100", "18101201" ],
+  "studentIds" : [ "19101100", "19101101" ],
   "weeklyClassTimes" : [ {
     "weekday" : "SUNDAY",
     "startTime" : {
@@ -38,8 +38,8 @@
   "numberOfCredits" : 4,
   "isActive" : true,
   "degreeLevel" : "GRADUATE",
-  "prerequisiteIds" : [ ],
-  "corequisiteIds" : [ ],
+  "prerequisiteIds" : [ "100122202" ],
+  "corequisiteIds" : [ "200422201" ],
   "courseCapacity" : 30,
   "groupNumber" : 1,
   "isTheologyCourse" : false,

@@ -636,6 +636,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getPinnedCourseThumbnailDTOs(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PINNED_COURSE_THUMBNAIL_DTOS,
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }
