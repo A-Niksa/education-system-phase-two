@@ -3,7 +3,9 @@ package server.network.clienthandling.logicutils.notifications;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.comparators.NotificationDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
+import server.network.clienthandling.logicutils.unitselection.acquisition.CourseNotificationManager;
 import shareables.models.pojos.notifications.Notification;
+import shareables.models.pojos.notifications.NotificationIdentifier;
 import shareables.models.pojos.notifications.NotificationStatus;
 import shareables.models.pojos.notifications.NotificationsManager;
 import shareables.models.pojos.users.User;
@@ -68,6 +70,11 @@ public class NotificationManagementUtils {
 
     public static void acceptNotification(DatabaseManager databaseManager, Notification notification) {
         notification.setNotificationStatus(NotificationStatus.ACCEPTED);
+
+        if (notification.getNotificationIdentifier() == NotificationIdentifier.COURSE_ACQUISITION_REQUEST) {
+            CourseNotificationManager.acquireCourseByDecreeOfDeputy(databaseManager, notification);
+        }
+
         updateNotificationInNotificationManagerOfSender(databaseManager, notification);
     }
 

@@ -25,6 +25,7 @@ import server.network.clienthandling.logicutils.unitselection.acquisition.Course
 import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionAdditionUtils;
 import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionTimeUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
+import server.network.clienthandling.logicutils.unitselection.pinning.FavoriteCoursesUtils;
 import server.network.clienthandling.logicutils.unitselection.thumbnails.DepartmentCoursesUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
@@ -787,5 +788,43 @@ public class RequestHandler { // TODO: logging, perhaps?
             CourseAcquisitionUtils.acquireCourse(unitSelectionSession, courseId, studentId);
             responseHandler.courseAcquired(clientHandler);
         }
+    }
+
+    public void removeAcquiredCourse(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
+        UnitSelectionSession unitSelectionSession = CourseAcquisitionUtils.getOngoingUnitSelectionSession(databaseManager,
+                studentId);
+
+        CourseAcquisitionUtils.removeAcquiredCourse(courseId, studentId, unitSelectionSession);
+        responseHandler.removedCourseFromUnitSelectionAcquisitions(clientHandler);
+    }
+
+    public void pinCourseToFavorites(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
+        UnitSelectionSession unitSelectionSession = CourseAcquisitionUtils.getOngoingUnitSelectionSession(databaseManager,
+                studentId);
+
+        FavoriteCoursesUtils.pinCourseToFavorites(courseId, studentId, unitSelectionSession);
+        responseHandler.coursePinnedToFavorites(clientHandler);
+    }
+
+    public void unpinCourseFromFavorites(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
+        UnitSelectionSession unitSelectionSession = CourseAcquisitionUtils.getOngoingUnitSelectionSession(databaseManager,
+                studentId);
+
+        FavoriteCoursesUtils.unpinCourseFromFavorites(courseId, studentId, unitSelectionSession);
+        responseHandler.courseUnpinnedFromFavorites(clientHandler);
+    }
+
+    public void requestCourseAcquisition(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
+
+        CourseAcquisitionUtils.requestCourseAcquisitionFromDeputy(databaseManager, courseId, studentId);
+        responseHandler.courseAcquisitionRequestSent(clientHandler);
     }
 }

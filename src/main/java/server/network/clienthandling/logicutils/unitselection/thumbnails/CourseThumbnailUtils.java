@@ -29,7 +29,9 @@ public class CourseThumbnailUtils {
 
         StudentSelectionLog studentSelectionLog = getStudentSelectionLog(student.getId(), unitSelectionSession);
         courseThumbnailDTO.setAcquired(getAcquisitionStatus(studentSelectionLog, unitSelectionSession, course.getId()));
-        courseThumbnailDTO.setPinned(getPinningStatus(studentSelectionLog, unitSelectionSession, course.getId()));
+        courseThumbnailDTO.setPinnedToFavorites(getFavouritePinningStatus(
+                studentSelectionLog, unitSelectionSession, course.getId()
+        ));
 
         return courseThumbnailDTO;
     }
@@ -56,8 +58,8 @@ public class CourseThumbnailUtils {
         return studentSelectionLog.getAcquiredCoursesIds().contains(courseId);
     }
 
-    private static boolean getPinningStatus(StudentSelectionLog studentSelectionLog, UnitSelectionSession unitSelectionSession,
-                                            String courseId) {
+    private static boolean getFavouritePinningStatus(StudentSelectionLog studentSelectionLog, UnitSelectionSession unitSelectionSession,
+                                                     String courseId) {
         if (studentSelectionLog == null) return false;
 
         return studentSelectionLog.getFavoriteCoursesIds().contains(courseId);

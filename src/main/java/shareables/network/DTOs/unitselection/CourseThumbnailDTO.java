@@ -21,7 +21,7 @@ public class CourseThumbnailDTO {
     private DegreeLevel degreeLevel;
     private List<String> teachingProfessorNames;
     private boolean isAcquired;
-    private boolean isPinned;
+    private boolean isPinnedToFavorites;
 
     public CourseThumbnailDTO() {
     }
@@ -90,12 +90,12 @@ public class CourseThumbnailDTO {
         isAcquired = acquired;
     }
 
-    public boolean isPinned() {
-        return isPinned;
+    public boolean isPinnedToFavorites() {
+        return isPinnedToFavorites;
     }
 
-    public void setPinned(boolean pinned) {
-        isPinned = pinned;
+    public void setPinnedToFavorites(boolean pinnedToFavorites) {
+        isPinnedToFavorites = pinnedToFavorites;
     }
 
     @Override

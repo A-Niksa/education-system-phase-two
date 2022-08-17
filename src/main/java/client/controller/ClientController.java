@@ -599,6 +599,30 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response removeAcquiredCourse(String courseId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.REMOVE_ACQUIRED_COURSE,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response pinCourseToFavorites(String courseId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.PIN_COURSE_TO_FAVORITES,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response unpinCourseFromFavorites(String courseId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.UNPIN_COURSE_FROM_FAVORITES,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response requestCourseAcquisition(String courseId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.REQUEST_COURSE_ACQUISITION,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

@@ -1,5 +1,6 @@
 package server.network.clienthandling;
 
+import server.database.management.DatabaseManager;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.User;
@@ -440,8 +441,32 @@ public class ResponseHandler {
     }
 
     public void courseAcquired(ClientHandler clientHandler) {
-        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "courseAcquired"));
+        clientHandler.respond(response);
+    }
+
+    public void removedCourseFromUnitSelectionAcquisitions(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "removedCourseFromAcquisitions"));
+        clientHandler.respond(response);
+    }
+
+    public void coursePinnedToFavorites(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "coursePinnedToFavorites"));
+        clientHandler.respond(response);
+    }
+
+    public void courseUnpinnedFromFavorites(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "courseUnpinnedFromFavorites"));
+        clientHandler.respond(response);
+    }
+
+    public void courseAcquisitionRequestSent(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "courseAcquisitionRequestSent"));
         clientHandler.respond(response);
     }
 }

@@ -3,8 +3,6 @@ package client.gui.menus.unitselection;
 import client.controller.ClientController;
 import client.gui.MainFrame;
 import client.gui.utils.EnumArrayUtils;
-import client.locallogic.menus.messaging.ThumbnailIdParser;
-import client.locallogic.menus.unitselection.CourseSelectionUtils;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
 import shareables.network.responses.Response;
@@ -23,10 +21,6 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
         DEGREE_LEVEL
     }
 
-    private DefaultListModel<String> departmentCoursesListModel;
-    private JList<String> departmentCoursesGraphicalList;
-    private ArrayList<CourseThumbnailDTO> departmentCourseThumbnailDTOs;
-    private String[] departmentCourseThumbnailTexts;
     private JScrollPane departmentCoursesScrollPane;
     private String[] departmentNameStrings;
     private JComboBox<String> departmentNamesBox;
@@ -42,7 +36,6 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
         super(mainFrame, unitSelectionMenu, clientController, offlineModeDTO);
         sortingType = SortingType.NONE;
         departmentNameStrings = EnumArrayUtils.initializeDepartmentNameStrings();
-        departmentCourseThumbnailDTOs = new ArrayList<>();
         drawPanel();
     }
 
@@ -54,10 +47,10 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
         sortByExamDateButton = new JButton(ConfigManager.getString(configIdentifier, "sortByExamDateButtonM"));
         sortByDegreeLevelButton = new JButton(ConfigManager.getString(configIdentifier, "sortByDegreeLevelButtonM"));
 
-        departmentCoursesListModel = new DefaultListModel<>();
-        departmentCoursesGraphicalList = new JList<>(departmentCoursesListModel);
+        coursesListModel = new DefaultListModel<>();
+        coursesGraphicalList = new JList<>(coursesListModel);
         departmentCoursesScrollPane = new JScrollPane();
-        departmentCoursesScrollPane.setViewportView(departmentCoursesGraphicalList);
+        departmentCoursesScrollPane.setViewportView(coursesGraphicalList);
     }
 
     @Override
@@ -127,51 +120,11 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
         });
     }
 
-    private void purgeAndUpdateGraphicalList() {
-        if (departmentCourseThumbnailTexts == null) return;
-
-        updateCourseThumbnailDTOs();
-        updateCourseThumbnailTexts();
-        departmentCoursesListModel.removeAllElements();
-        Arrays.stream(departmentCourseThumbnailTexts)
-                .forEach(e -> departmentCoursesListModel.addElement(e));
-    }
-
-    @Override
-    protected void connectListSelectionListeners() {
-//        String previousSelectedCourseId = selectedCourseId;
-//        updateSelectedCourseId();
-//        if (!selectedCourseId.equals(previousSelectedCourseId)) {
-//            CourseThumbnailDTO selectedCourseThumbnailDTO = CourseSelectionUtils.getCourseThumbnailDTOWithId(selectedCourseId,
-//                    departmentCourseThumbnailDTOs);
-//
-//            removePreviousCourseSelectionButtons();
-//            setAppropriateCourseSelectionButtons(selectedCourseThumbnailDTO);
-//        }
-        departmentCoursesGraphicalList.addListSelectionListener(actionEvent -> {
-            if (!actionEvent.getValueIsAdjusting()) {
-                updateSelectedCourseId();
-
-                CourseThumbnailDTO selectedCourseThumbnailDTO = CourseSelectionUtils.getCourseThumbnailDTOWithId(selectedCourseId,
-                        departmentCourseThumbnailDTOs);
-                removePreviousCourseSelectionButtons();
-                setAppropriateCourseSelectionButtons(selectedCourseThumbnailDTO);
-                repaint();
-                revalidate();
-            }
-        });
-    }
-
-    private void updateSelectedCourseId() {
-        String selectedListItem = departmentCoursesGraphicalList.getSelectedValue();
-        selectedCourseId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
-    }
-
     @Override
     public void updatePanel() {
         if (selectedDepartmentNameString == null) return;
 
-        if (departmentCourseThumbnailTexts != null) {
+        if (courseThumbnailTexts != null) {
             updatePanelNormally();
         } else { // setting for the first time
             updatePanelForFirstTime();
@@ -180,26 +133,22 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
 
     private void updatePanelNormally() {
         updateCourseThumbnailDTOs();
-        String[] previousDepartmentCourseThumbnailTexts = Arrays.copyOf(departmentCourseThumbnailTexts,
-                departmentCourseThumbnailTexts.length);
+        String[] previousDepartmentCourseThumbnailTexts = Arrays.copyOf(courseThumbnailTexts,
+                courseThumbnailTexts.length);
         updateCourseThumbnailTexts();
         Arrays.stream(previousDepartmentCourseThumbnailTexts)
-                .filter(e -> !arrayContains(departmentCourseThumbnailTexts, e))
-                .forEach(e -> departmentCoursesListModel.removeElement(e));
-        Arrays.stream(departmentCourseThumbnailTexts)
+                .filter(e -> !arrayContains(courseThumbnailTexts, e))
+                .forEach(e -> coursesListModel.removeElement(e));
+        Arrays.stream(courseThumbnailTexts)
                 .filter(e -> !arrayContains(previousDepartmentCourseThumbnailTexts, e))
-                .forEach(e -> departmentCoursesListModel.add(0, e));
+                .forEach(e -> coursesListModel.add(0, e));
     }
 
     private void updatePanelForFirstTime() {
         updateCourseThumbnailDTOs();
         updateCourseThumbnailTexts();
-        Arrays.stream(departmentCourseThumbnailTexts)
-                .forEach(e -> departmentCoursesListModel.addElement(e));
-    }
-
-    private boolean arrayContains(String[] array, String targetElement) {
-        return Arrays.stream(array).anyMatch(e -> e.equals(targetElement));
+        Arrays.stream(courseThumbnailTexts)
+                .forEach(e -> coursesListModel.addElement(e));
     }
 
     @Override
@@ -220,15 +169,6 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
 
         if (response == null) return;
 
-        departmentCourseThumbnailDTOs = (ArrayList<CourseThumbnailDTO>) response.get("courseThumbnailDTOs");
-        // TODO
-    }
-
-    @Override
-    protected void updateCourseThumbnailTexts() {
-        departmentCourseThumbnailTexts = new String[departmentCourseThumbnailDTOs.size()];
-        for (int i = 0; i < departmentCourseThumbnailDTOs.size(); i++) {
-            departmentCourseThumbnailTexts[i] = departmentCourseThumbnailDTOs.get(i).toString();
-        }
+        courseThumbnailDTOs = (ArrayList<CourseThumbnailDTO>) response.get("courseThumbnailDTOs");
     }
 }

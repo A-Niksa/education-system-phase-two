@@ -275,6 +275,18 @@ public class RequestMapper {
             case ACQUIRE_COURSE:
                 requestHandler.acquireCourse(clientHandler, request);
                 break;
+            case REMOVE_ACQUIRED_COURSE:
+                requestHandler.removeAcquiredCourse(clientHandler, request);
+                break;
+            case PIN_COURSE_TO_FAVORITES:
+                requestHandler.pinCourseToFavorites(clientHandler, request);
+                break;
+            case UNPIN_COURSE_FROM_FAVORITES:
+                requestHandler.unpinCourseFromFavorites(clientHandler, request);
+                break;
+            case REQUEST_COURSE_ACQUISITION:
+                requestHandler.requestCourseAcquisition(clientHandler, request);
+                break;
         }
     }
 }
