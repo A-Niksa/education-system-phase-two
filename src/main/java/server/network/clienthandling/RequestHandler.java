@@ -22,6 +22,7 @@ import server.network.clienthandling.logicutils.standing.StandingManagementUtils
 import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.CourseAcquisitionUtils;
+import server.network.clienthandling.logicutils.unitselection.acquisition.CourseGroupUtils;
 import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionAdditionUtils;
 import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionTimeUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
@@ -826,5 +827,35 @@ public class RequestHandler { // TODO: logging, perhaps?
 
         CourseAcquisitionUtils.requestCourseAcquisitionFromDeputy(databaseManager, courseId, studentId);
         responseHandler.courseAcquisitionRequestSent(clientHandler);
+    }
+
+    public void getCourseGroupsThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
+
+        List<CourseThumbnailDTO> courseGroupsThumbnailDTOs = CourseGroupUtils.getCourseGroupsThumbnailDTOs(databaseManager,
+                courseId, studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, courseGroupsThumbnailDTOs);
+    }
+
+    public void changeGroupNumber(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
+        int newGroupNumber = (int) request.get("groupNumber");
+        Course newCourse = CourseGroupUtils.getNewCourseWithGroupNumber(databaseManager, courseId, newGroupNumber);
+        UnitSelectionSession unitSelectionSession = CourseAcquisitionUtils.getOngoingUnitSelectionSession(databaseManager,
+                studentId);
+
+        if (CourseGroupUtils.newGroupIsTheSameAsCurrentGroup(courseId, newGroupNumber)) {
+            responseHandler.newGroupNumberIsSameAsPreviousGroupNumber(clientHandler);
+        } else if (!CourseGroupUtils.courseWithGroupNumberExists(databaseManager, courseId, newGroupNumber)) {
+            responseHandler.courseGroupDoesNotExist(clientHandler);
+        } else if (!SelectionErrorUtils.courseHasCapacity(newCourse, unitSelectionSession)) {
+            CourseGroupUtils.requestGroupChangeFromDeputy(databaseManager, courseId, studentId, newGroupNumber);
+            responseHandler.requestedGroupChangeDueToCourseLimitation(clientHandler);
+        } else {
+            CourseGroupUtils.changeGroupNumber(unitSelectionSession, courseId, studentId, newGroupNumber);
+            responseHandler.changedCourseGroupNumber(clientHandler);
+        }
     }
 }

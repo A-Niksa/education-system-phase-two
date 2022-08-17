@@ -1,16 +1,22 @@
 {
   "id" : "1",
-  "courseIds" : [ "100022201", "100122201" ],
+  "courseIds" : [ "100022201", "100122201", "100122202" ],
   "professorIds" : [ "80201200", "90201301" ],
   "studentIds" : [ "19101100", "18101201" ],
   "unitSelectionSessions" : [ {
-    "id" : "1660760766",
-    "date" : "2022-08-17T18:26:06.3825231",
+    "id" : "1660775805",
+    "date" : "2022-08-17T22:36:45.755285",
     "intendedDegreeLevel" : "UNDERGRADUATE",
     "intendedYearOfEntry" : 2019,
-    "startsAt" : "2022-08-17T18:26:06.3825231",
+    "startsAt" : "2022-08-17T22:36:45.755285",
     "endsAt" : "2023-10-11T10:30:00",
-    "studentSelectionLogs" : [ ]
+    "studentSelectionLogs" : [ {
+      "id" : "1660775830",
+      "date" : "2022-08-17T22:37:10.4444785",
+      "studentId" : "19101100",
+      "favoriteCoursesIds" : [ ],
+      "acquiredCoursesIds" : [ "100122202" ]
+    } ]
   } ],
   "deanId" : "90201301",
   "deputyId" : "80201200",

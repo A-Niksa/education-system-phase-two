@@ -5,6 +5,7 @@ import client.gui.MainFrame;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.menus.messaging.ThumbnailIdParser;
 import client.locallogic.menus.unitselection.CourseSelectionUtils;
+import client.locallogic.menus.unitselection.GroupThumbnailParser;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
 import shareables.network.responses.Response;
@@ -183,6 +184,32 @@ public abstract class CoursesSelectionPanel extends JPanel {
             if (response == null) return;
 
             if (response.getResponseStatus() == ResponseStatus.OK) {
+                JOptionPane.showMessageDialog(mainFrame, response.getUnsolicitedMessage());
+                MasterLogger.clientInfo(clientController.getId(), response.getUnsolicitedMessage(),
+                        "connectPreliminaryListeners", getClass());
+                updateGraphicalListAndRemoveItsButtons();
+            }
+        });
+
+        changeGroupButton.addActionListener(actionEvent -> {
+            Response response = clientController.getCourseGroupsThumbnailDTOs(selectedCourseId, offlineModeDTO.getId());
+            if (response == null) return;
+
+            ArrayList<CourseThumbnailDTO> courseThumbnailDTOs =
+                    (ArrayList<CourseThumbnailDTO>) response.get("courseThumbnailDTOs");
+
+            String groupNumberString = JOptionPane.showInputDialog(mainFrame,
+                    GroupThumbnailParser.parseThumbnailDTOsAsString(courseThumbnailDTOs, configIdentifier));
+            if (groupNumberString == null) return;
+            int groupNumber = Integer.parseInt(groupNumberString);
+
+            response = clientController.changeGroupNumber(selectedCourseId, groupNumber, offlineModeDTO.getId());
+            if (response == null) return;
+
+            if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                        "connectPreliminaryListeners", getClass());
+            } else {
                 JOptionPane.showMessageDialog(mainFrame, response.getUnsolicitedMessage());
                 MasterLogger.clientInfo(clientController.getId(), response.getUnsolicitedMessage(),
                         "connectPreliminaryListeners", getClass());

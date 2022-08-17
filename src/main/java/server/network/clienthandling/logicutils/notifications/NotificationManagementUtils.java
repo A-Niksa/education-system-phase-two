@@ -73,6 +73,8 @@ public class NotificationManagementUtils {
 
         if (notification.getNotificationIdentifier() == NotificationIdentifier.COURSE_ACQUISITION_REQUEST) {
             CourseNotificationManager.acquireCourseByDecreeOfDeputy(databaseManager, notification);
+        } else if (notification.getNotificationIdentifier() == NotificationIdentifier.GROUP_CHANGE_REQUEST) {
+            CourseNotificationManager.changeCourseGroupByDecreeOfDeputy(databaseManager, notification);
         }
 
         updateNotificationInNotificationManagerOfSender(databaseManager, notification);

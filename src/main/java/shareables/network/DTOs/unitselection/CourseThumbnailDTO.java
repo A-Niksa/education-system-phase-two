@@ -119,7 +119,7 @@ public class CourseThumbnailDTO {
         return isAcquired ? "Yes" : "No";
     }
 
-    private String teachingProfessorsToString() {
+    public String teachingProfessorsToString() {
         StringBuilder teachingProfessorsNameStringBuilder = new StringBuilder();
         for (String professorName : teachingProfessorNames) {
             teachingProfessorsNameStringBuilder.append(professorName).append(", ");

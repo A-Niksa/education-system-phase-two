@@ -1,6 +1,5 @@
 package server.network.clienthandling;
 
-import server.database.management.DatabaseManager;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.User;
@@ -467,6 +466,30 @@ public class ResponseHandler {
     public void courseAcquisitionRequestSent(ClientHandler clientHandler) {
         Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "courseAcquisitionRequestSent"));
+        clientHandler.respond(response);
+    }
+
+    public void newGroupNumberIsSameAsPreviousGroupNumber(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "newGroupNumberIsSameAsPreviousGroupNumber"));
+        clientHandler.respond(response);
+    }
+
+    public void courseGroupDoesNotExist(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "courseGroupDoesNotExist"));
+        clientHandler.respond(response);
+    }
+
+    public void requestedGroupChangeDueToCourseLimitation(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "requestedGroupChangeDueToCourseLimitation"));
+        clientHandler.respond(response);
+    }
+
+    public void changedCourseGroupNumber(ClientHandler clientHandler) {
+        Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "changedCourseGroupNumber"));
         clientHandler.respond(response);
     }
 }

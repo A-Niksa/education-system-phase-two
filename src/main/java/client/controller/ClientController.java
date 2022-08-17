@@ -623,6 +623,19 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getCourseGroupsThumbnailDTOs(String courseId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_COURSE_GROUPS_THUMBNAIL_DTOS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response changeGroupNumber(String courseId, int groupNumber, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHANGE_GROUP_NUMBER,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("groupNumber", groupNumber),
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

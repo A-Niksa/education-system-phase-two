@@ -159,6 +159,19 @@ public class Main {
         realAnalysis.addToWeeklyClassTimes(secondWeekTime);
         realAnalysis.setCourseCapacity(40);
         mathDepartment.addToCourseIDs(realAnalysis.getId());
+        Course anotherRealAnalysis = new Course(mathDepartment.getId(), new TermIdentifier(2022, 2), 2);
+        anotherRealAnalysis.setCourseName("A Real Analysis");
+        anotherRealAnalysis.addToTeachingProfessorIds(khazayi.getId());
+        anotherRealAnalysis.addToStudentIds(hamidi.getId());
+        anotherRealAnalysis.addToTeachingAssistantIds(rezaei.getId());
+        anotherRealAnalysis.setNumberOfCredits(3);
+        anotherRealAnalysis.setDegreeLevel(DegreeLevel.UNDERGRADUATE);
+        anotherRealAnalysis.setExamDate(LocalDateTime.of(2022, 9, 21, 9, 30));
+        anotherRealAnalysis.addToWeeklyClassTimes(firstWeekTime);
+        anotherRealAnalysis.addToWeeklyClassTimes(secondWeekTime);
+        anotherRealAnalysis.setCourseCapacity(0);
+        anotherRealAnalysis.setId("100122202");
+        mathDepartment.addToCourseIDs(anotherRealAnalysis.getId());
 
         UnitSelectionSession session = new UnitSelectionSession();
         session.setStartsAt(LocalDateTime.now());
@@ -264,6 +277,7 @@ public class Main {
         manager.save(DatasetIdentifier.DEPARTMENTS, generalCenters);
         manager.save(DatasetIdentifier.PROFESSORS, movahed);
         manager.save(DatasetIdentifier.PROFESSORS, keyvani);
+        manager.save(DatasetIdentifier.COURSES, anotherRealAnalysis);
         manager.saveDatabase();
     }
 

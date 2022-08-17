@@ -287,6 +287,12 @@ public class RequestMapper {
             case REQUEST_COURSE_ACQUISITION:
                 requestHandler.requestCourseAcquisition(clientHandler, request);
                 break;
+            case GET_COURSE_GROUPS_THUMBNAIL_DTOS:
+                requestHandler.getCourseGroupsThumbnailDTOs(clientHandler, request);
+                break;
+            case CHANGE_GROUP_NUMBER:
+                requestHandler.changeGroupNumber(clientHandler, request);
+                break;
         }
     }
 }

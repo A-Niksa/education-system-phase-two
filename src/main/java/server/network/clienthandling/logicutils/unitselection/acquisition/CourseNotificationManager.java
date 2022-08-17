@@ -43,4 +43,47 @@ public class CourseNotificationManager {
 
         return partitionedNotificationText[partitionedNotificationLength - 1];
     }
+
+    public static void sendGroupChangeNotification(Student requestingStudent, Professor receivingDeputy, Course course,
+                                                   int newGroupNumber) {
+        Notification notification = new Notification();
+        notification.setNotificationIdentifier(NotificationIdentifier.GROUP_CHANGE_REQUEST);
+        notification.setSentByUser(true);
+        notification.setSenderId(requestingStudent.getId());
+        notification.setReceiverId(receivingDeputy.getId());
+        notification.setRequest(true);
+        notification.setNotificationText(
+                ConfigManager.getString(ConfigFileIdentifier.TEXTS, "letMeChangeGroupNumber") +
+                        course.getCourseName() + " - " + course.getId() + " - " + newGroupNumber
+        );
+
+        receivingDeputy.getNotificationsManager().addToNotifications(notification);
+        requestingStudent.getNotificationsManager().addToNotifications(notification);
+    }
+
+    public static void changeCourseGroupByDecreeOfDeputy(DatabaseManager databaseManager, Notification notification) {
+        UnitSelectionSession unitSelectionSession = CourseAcquisitionUtils.getOngoingUnitSelectionSession(databaseManager,
+                notification.getSenderId());
+
+        String courseId = extractCourseIdFromGroupChangeNotification(notification);
+        int newGroupNumber = extractNewGroupNumberFromGroupChangeNotification(notification);
+
+        CourseGroupUtils.changeGroupNumber(unitSelectionSession, courseId, notification.getSenderId(), newGroupNumber);
+    }
+
+    private static int extractNewGroupNumberFromGroupChangeNotification(Notification notification) {
+        String notificationText = notification.getNotificationText();
+        String[] partitionedNotificationText = notificationText.split(" - ");
+        int partitionedNotificationLength = partitionedNotificationText.length;
+
+        return Integer.parseInt(partitionedNotificationText[partitionedNotificationLength - 1]);
+    }
+
+    private static String extractCourseIdFromGroupChangeNotification(Notification notification) {
+        String notificationText = notification.getNotificationText();
+        String[] partitionedNotificationText = notificationText.split(" - ");
+        int partitionedNotificationLength = partitionedNotificationText.length;
+
+        return partitionedNotificationText[partitionedNotificationLength - 2];
+    }
 }

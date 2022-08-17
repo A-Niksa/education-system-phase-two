@@ -82,7 +82,7 @@ public class CourseAdditionUtils {
         // note that since the full course id includes the term identifier, there's no need for filtering the term id too
     }
 
-    private static String getCourseIdBarGroupIdentifier(String courseId) {
+    public static String getCourseIdBarGroupIdentifier(String courseId) {
         String[] partitionedCourseId = courseId.split("0");
         String groupId = partitionedCourseId[partitionedCourseId.length - 1];
 
