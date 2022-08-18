@@ -1,17 +1,25 @@
 package server.network.clienthandling;
 
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.unitselection.validation.UnitSelectionManager;
 import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;
 
 public class RequestMapper {
+    private DatabaseManager databaseManager;
     private RequestHandler requestHandler;
+    private UnitSelectionManager unitSelectionManager;
 
     public RequestMapper(DatabaseManager databaseManager) {
+        this.databaseManager = databaseManager;
+
         requestHandler = new RequestHandler(databaseManager);
+        unitSelectionManager = new UnitSelectionManager();
     }
 
     public void mapRequestToHandlerMethod(ClientHandler clientHandler, Request request) {
+        unitSelectionManager.validateAnyUnitSelectionSessionsIfNecessary(databaseManager);
+
         RequestIdentifier requestIdentifier = request.getRequestIdentifier();
         switch (requestIdentifier) {
             case CONNECTION_PING:

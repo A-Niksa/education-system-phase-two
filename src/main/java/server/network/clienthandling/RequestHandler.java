@@ -23,8 +23,8 @@ import server.network.clienthandling.logicutils.standing.StandingMasteryUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.CourseAcquisitionUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.CourseGroupUtils;
-import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionAdditionUtils;
-import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionTimeUtils;
+import server.network.clienthandling.logicutils.unitselection.sessionaddition.UnitSelectionAdditionUtils;
+import server.network.clienthandling.logicutils.unitselection.sessionaddition.UnitSelectionTimeUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
 import server.network.clienthandling.logicutils.unitselection.pinning.FavoriteCoursesUtils;
 import server.network.clienthandling.logicutils.unitselection.thumbnails.DepartmentCoursesUtils;
@@ -450,7 +450,7 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void finalizeScores(ClientHandler clientHandler, Request request) {
         String departmentId = (String) request.get("departmentId");
         String courseName = (String) request.get("courseName");
-        if (!StandingManagementUtils.allStudentsHaveBeenTemporaryScores(databaseManager, departmentId, courseName)) {
+        if (!StandingManagementUtils.allStudentsHaveBeenGivenTemporaryScores(databaseManager, departmentId, courseName)) {
             responseHandler.notAllStudentsHaveBeenGivenTemporaryScores(clientHandler);
         } else {
             StandingManagementUtils.finalizeScores(databaseManager, departmentId, courseName);

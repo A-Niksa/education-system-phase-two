@@ -88,7 +88,7 @@ public class MessengerViewUtils {
     }
 
     /**
-     * sorts the conversation messages per time in addition to fetching the conversation itself
+     * sorts the conversation messages per time in sessionaddition to fetching the conversation itself
      */
     public static Conversation getContactConversation(DatabaseManager databaseManager, String userId, String contactId) {
         List<Conversation> userConversations = getUserConversations(databaseManager, userId);

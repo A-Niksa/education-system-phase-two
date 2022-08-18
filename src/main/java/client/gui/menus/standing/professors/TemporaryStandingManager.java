@@ -128,6 +128,8 @@ public class TemporaryStandingManager extends DynamicPanelTemplate {
     }
 
     void setTableData() {
+        if (courseScoreDTOsForSelectedCourse == null) return;
+
         data = new String[courseScoreDTOsForSelectedCourse.size()][];
         CourseScoreDTO courseScoreDTO;
         Double studentScore;
@@ -309,6 +311,7 @@ public class TemporaryStandingManager extends DynamicPanelTemplate {
 
                 Response response = clientController.finalizeScores(offlineModeDTO.getDepartmentId(), selectedCourseName);
                 if (response == null) return;
+
                 if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                     MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
                             getClass());

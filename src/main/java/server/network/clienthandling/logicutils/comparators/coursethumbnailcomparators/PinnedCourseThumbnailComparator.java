@@ -19,17 +19,17 @@ public class PinnedCourseThumbnailComparator implements Comparator<CourseThumbna
         int numericalValueOfSecondDTO = 0;
 
         if (isFirstDTORecommended) {
-            numericalValueOfFirstDTO += 1;
+            numericalValueOfFirstDTO += 2;
         }
         if (isFirstDTOPinnedToFavorites) {
-            numericalValueOfFirstDTO += 2;
+            numericalValueOfFirstDTO += 1;
         }
 
         if (isSecondDTORecommended) {
-            numericalValueOfSecondDTO += 1;
+            numericalValueOfSecondDTO += 2;
         }
         if (isSecondDTOPinnedToFavorites) {
-            numericalValueOfSecondDTO += 2;
+            numericalValueOfSecondDTO += 1;
         }
 
         return numericalValueOfFirstDTO - numericalValueOfSecondDTO;

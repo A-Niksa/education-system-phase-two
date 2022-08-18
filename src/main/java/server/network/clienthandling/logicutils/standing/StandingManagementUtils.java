@@ -30,6 +30,7 @@ public class StandingManagementUtils {
         courses.stream()
                 .map(e -> (Course) e)
                 .filter(e -> e.getTeachingProfessorIds().contains(professorId))
+                .filter(Course::isActive)
                 .forEach(e -> {
                     String courseName = e.getCourseName();
                     activeCourseNamesList.add(courseName);
@@ -45,6 +46,7 @@ public class StandingManagementUtils {
         List<CourseScoreDTO> courseScoreDTOs = new ArrayList<>();
         departmentCourseIds.stream()
                 .map(e -> IdentifiableFetchingUtils.getCourse(databaseManager, e))
+                .filter(Course::isActive)
                 .filter(e -> e.getCourseName().equals(courseName))
                 .forEach(e -> {
                     courseScoreDTOs.addAll(extractCourseScoreDTOsFromCourseTranscripts(e, databaseManager));
@@ -122,8 +124,8 @@ public class StandingManagementUtils {
                 .findAny().orElse(null);
     }
 
-    public static boolean allStudentsHaveBeenTemporaryScores(DatabaseManager databaseManager, String departmentId,
-                                                             String courseName) {
+    public static boolean allStudentsHaveBeenGivenTemporaryScores(DatabaseManager databaseManager, String departmentId,
+                                                                  String courseName) {
         Course course = getCourse(databaseManager, departmentId, courseName);
         int numberOfCourseStudents = course.getStudentIds().size();
         int numberOfStudentsWithTemporaryScores = getNumberOfStudentsWithTemporaryScores(databaseManager, course);

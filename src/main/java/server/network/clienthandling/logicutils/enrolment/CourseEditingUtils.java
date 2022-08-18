@@ -3,6 +3,7 @@ package server.network.clienthandling.logicutils.enrolment;
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
+import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
@@ -58,10 +59,15 @@ public class CourseEditingUtils {
         }
 
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
+
         List<String> allCourseIds = getIdentifiableIds(courses);
+        List<String> allShortenedCourseIds = allCourseIds.stream()
+                .map(SelectionErrorUtils::getCourseIdBarTermAndGroupIdentifiers)
+                .collect(Collectors.toCollection(ArrayList::new));
+
         List<String> courseIdsList = Arrays.asList(courseIds);
         return courseIdsList.parallelStream()
-                .allMatch(allCourseIds::contains);
+                .allMatch(allShortenedCourseIds::contains);
     }
 
     public static boolean studentsExist(DatabaseManager databaseManager, String[] studentIds) {

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static server.network.clienthandling.logicutils.addition.CourseAdditionUtils.getCourseIdBarGroupIdentifier;
 import static server.network.clienthandling.logicutils.unitselection.acquisition.CourseAcquisitionUtils.getStudentSelectionLog;
 
 public class SelectionErrorUtils {
@@ -22,9 +23,19 @@ public class SelectionErrorUtils {
 
     public static boolean studentHasCoursePrerequisites(Course course, Student student) {
         List<String> passedCourseIds = StandingViewUtils.getPassedCourseIds(student.getTranscript().getCourseIdScoreMap());
+        List<String> purePassedCourseIds = passedCourseIds.stream()
+                .map(SelectionErrorUtils::getCourseIdBarTermAndGroupIdentifiers)
+                .collect(Collectors.toCollection(ArrayList::new));
         List<String> coursePrerequisiteIds = course.getPrerequisiteIds();
 
-        return passedCourseIds.containsAll(coursePrerequisiteIds);
+        if (coursePrerequisiteIds.isEmpty()) return true;
+
+        return purePassedCourseIds.containsAll(coursePrerequisiteIds);
+    }
+
+    public static String getCourseIdBarTermAndGroupIdentifiers(String courseId) {
+        String courseIdBarGroupNumber = getCourseIdBarGroupIdentifier(courseId);
+        return courseIdBarGroupNumber.substring(0, courseIdBarGroupNumber.length() - 3); // -3 removes the term identifier
     }
 
     public static boolean isTryingToAcquireTwoTheologyCourses(DatabaseManager databaseManager, Course course,

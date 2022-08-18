@@ -4,7 +4,7 @@ import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.messaging.MessengerViewUtils;
 import server.network.clienthandling.logicutils.services.WeeklyScheduleUtils;
 import server.network.clienthandling.logicutils.standing.StandingViewUtils;
-import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionTimeUtils;
+import server.network.clienthandling.logicutils.unitselection.sessionaddition.UnitSelectionTimeUtils;
 import shareables.models.pojos.unitselection.UnitSelectionSession;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -15,6 +15,8 @@ import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;
+
+import static server.network.clienthandling.logicutils.unitselection.sessionaddition.UnitSelectionTimeUtils.isCurrentTimeInTimeRange;
 
 public class OfflineModeUtils {
     public static OfflineModeDTO getOfflineModeDTO(DatabaseManager databaseManager, String userId) {
@@ -74,15 +76,21 @@ public class OfflineModeUtils {
             offlineModeDTO.setAdvisingProfessorName(noAdvisingProfessorPrompt);
         }
 
-        UnitSelectionSession unitSelectionSession = UnitSelectionTimeUtils.getStudentUnitSelectionSession(databaseManager, student);
+        UnitSelectionSession unitSelectionSession = UnitSelectionTimeUtils.getStudentFutureUnitSelectionSession(databaseManager,
+                student);
+
         if (unitSelectionSession != null) {
             student.setEnrolmentTime(unitSelectionSession.getStartsAt());
+
             // access to uni selection depends on whether the student is allowed to enrol or not:
-            offlineModeDTO.setTimeForUnitSelection(student.isPermittedToEnrol());
+            offlineModeDTO.setTimeForUnitSelection(student.isPermittedToEnrol() &&
+                    isCurrentTimeInTimeRange(unitSelectionSession.getStartsAt(), unitSelectionSession.getEndsAt()));
+
+            offlineModeDTO.setEnrolmentTime(student.getEnrolmentTime());
         } else {
             offlineModeDTO.setTimeForUnitSelection(false);
+            offlineModeDTO.setEnrolmentTime(null);
         }
-        offlineModeDTO.setEnrolmentTime(student.getEnrolmentTime());
     }
 
     private static void initializeProfessorOfflineModeDTO(DatabaseManager databaseManager, Professor professor,

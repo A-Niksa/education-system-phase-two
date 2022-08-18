@@ -5,21 +5,17 @@ import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.comparators.coursethumbnailcomparators.PinnedCourseThumbnailComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.CourseAcquisitionUtils;
-import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionTimeUtils;
+import server.network.clienthandling.logicutils.unitselection.sessionaddition.UnitSelectionTimeUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.unitselection.StudentSelectionLog;
 import shareables.models.pojos.unitselection.UnitSelectionSession;
-import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils.courseHasCapacity;
-import static server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils.studentHasCoursePrerequisites;
 
 public class PinnedCoursesUtils {
     private static PinnedCourseThumbnailComparator pinnedCourseThumbnailComparator;
@@ -36,7 +32,8 @@ public class PinnedCoursesUtils {
 
         List<CourseThumbnailDTO> pinnedCourseThumbnailDTOs = new ArrayList<>();
 
-        pinnedCourseThumbnailDTOs.addAll(getRecommendedCourseThumbnailDTOs(databaseManager, unitSelectionSession, student));
+        pinnedCourseThumbnailDTOs.addAll(getRecommendedCourseThumbnailDTOs(databaseManager, unitSelectionSession, student,
+                studentSelectionLog));
         pinnedCourseThumbnailDTOs.addAll(getFavoriteCourseThumbnailDTOs(databaseManager, studentSelectionLog,
                 unitSelectionSession, student));
 
@@ -45,13 +42,15 @@ public class PinnedCoursesUtils {
     }
 
     private static List<CourseThumbnailDTO> getRecommendedCourseThumbnailDTOs(DatabaseManager databaseManager,
-                                                              UnitSelectionSession unitSelectionSession, Student student) {
+                                                              UnitSelectionSession unitSelectionSession, Student student,
+                                                              StudentSelectionLog studentSelectionLog) {
         List<Course> activeCourses = getActiveCourses(databaseManager);
-        DegreeLevel studentDegreeLevel = student.getDegreeLevel();
         return activeCourses.stream()
-                .filter(course -> course.getDegreeLevel() == studentDegreeLevel)
-                .filter(course -> studentHasCoursePrerequisites(course, student))
-                .filter(course -> courseHasCapacity(course, unitSelectionSession))
+                .filter(course -> !studentSelectionLog.getFavoriteCoursesIds().contains(course.getId()))
+                .filter(course -> {
+                    return CourseThumbnailUtils.getRecommendationStatus(databaseManager, studentSelectionLog, unitSelectionSession,
+                            course, student);
+                })
                 .map(course -> {
                     CourseThumbnailDTO courseThumbnailDTO = CourseThumbnailUtils.initializeCourseThumbnailDTO(databaseManager,
                             course, student, unitSelectionSession);

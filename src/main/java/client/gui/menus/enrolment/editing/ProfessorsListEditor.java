@@ -142,7 +142,7 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
         addProfessorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
+                MasterLogger.clientInfo(clientController.getId(), "Opened the professor sessionaddition section",
                         "connectListeners", getClass());
                 stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorAdderOfDean(mainFrame, mainMenu, offlineModeDTO,

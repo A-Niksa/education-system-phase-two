@@ -8,10 +8,14 @@ import shareables.models.pojos.unitselection.UnitSelectionSession;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.students.Student;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
+import shareables.utils.timing.timekeeping.WeekTime;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils.courseHasCapacity;
+import static server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils.studentHasCoursePrerequisites;
 
 public class CourseThumbnailUtils {
     public static CourseThumbnailDTO initializeCourseThumbnailDTO(DatabaseManager databaseManager, Course course,
@@ -23,6 +27,13 @@ public class CourseThumbnailUtils {
         courseThumbnailDTO.setDegreeLevel(course.getDegreeLevel());
         courseThumbnailDTO.setExamDate(course.getExamDate());
 
+        List<WeekTime> weeklyClassTimes = course.getWeeklyClassTimes();
+
+        courseThumbnailDTO.setFirstClassDateString(weeklyClassTimes.get(0).toString());
+        if (weeklyClassTimes.size() > 1) {
+            courseThumbnailDTO.setSecondClassDateString(weeklyClassTimes.get(1).toString());
+        }
+
         courseThumbnailDTO.setCurrentCapacity(getRemainingCapacity(course, unitSelectionSession));
 
         courseThumbnailDTO.setTeachingProfessorNames(getTeachingProfessorNames(databaseManager, course));
@@ -33,9 +44,19 @@ public class CourseThumbnailUtils {
                 studentSelectionLog, unitSelectionSession, course.getId()
         ));
 
-        courseThumbnailDTO.setRecommended(false); // default value; can be changed in other methods in the logical pipeline
+        courseThumbnailDTO.setRecommended(getRecommendationStatus(
+                databaseManager, studentSelectionLog, unitSelectionSession, course, student
+        ));
 
         return courseThumbnailDTO;
+    }
+
+    public static boolean getRecommendationStatus(DatabaseManager databaseManager, StudentSelectionLog studentSelectionLog,
+                                                   UnitSelectionSession unitSelectionSession, Course course, Student student) {
+
+        return course.getDegreeLevel() == student.getDegreeLevel() &&
+                studentHasCoursePrerequisites(course, student) &&
+                courseHasCapacity(course, unitSelectionSession);
     }
 
     public static int getRemainingCapacity(Course course, UnitSelectionSession unitSelectionSession) {

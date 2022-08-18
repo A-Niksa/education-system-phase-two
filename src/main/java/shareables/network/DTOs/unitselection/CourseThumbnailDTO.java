@@ -16,6 +16,8 @@ public class CourseThumbnailDTO {
     private String courseId;
     private String courseName;
     private LocalDateTime examDate;
+    private String firstClassDateString;
+    private String secondClassDateString;
     private int groupNumber;
     private int currentCapacity;
     private DegreeLevel degreeLevel;
@@ -99,6 +101,22 @@ public class CourseThumbnailDTO {
         isPinnedToFavorites = pinnedToFavorites;
     }
 
+    public String getFirstClassDateString() {
+        return firstClassDateString;
+    }
+
+    public void setFirstClassDateString(String firstClassDateString) {
+        this.firstClassDateString = firstClassDateString;
+    }
+
+    public String getSecondClassDateString() {
+        return secondClassDateString;
+    }
+
+    public void setSecondClassDateString(String secondClassDateString) {
+        this.secondClassDateString = secondClassDateString;
+    }
+
     public boolean isRecommended() {
         return isRecommended;
     }
@@ -117,6 +135,8 @@ public class CourseThumbnailDTO {
                     degreeLevel +
                     "<br/>" +
                     "Exam date: " + extensiveDateTimeFormatter.format(examDate) +
+                    "<br/>" +
+                    "Class dates: " + firstClassDateString + " | " + secondClassDateString +
                     "<br/>" +
                     "Remaining capacity: " + currentCapacity +
                     "<br/>" +

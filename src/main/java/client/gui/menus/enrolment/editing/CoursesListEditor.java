@@ -142,7 +142,7 @@ public class CoursesListEditor extends DynamicPanelTemplate {
         addCourseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Opened the course addition section",
+                MasterLogger.clientInfo(clientController.getId(), "Opened the course sessionaddition section",
                         "connectListeners", getClass());
                 stopPanelLoop();
                 mainFrame.setCurrentPanel(new CourseAdder(mainFrame, mainMenu, offlineModeDTO));

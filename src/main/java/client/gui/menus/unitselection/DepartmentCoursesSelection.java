@@ -133,6 +133,8 @@ public class DepartmentCoursesSelection extends CoursesSelectionPanel {
 
     private void updatePanelNormally() {
         updateCourseThumbnailDTOs();
+        if (courseThumbnailDTOs == null) return;
+
         String[] previousCourseThumbnailTexts = Arrays.copyOf(courseThumbnailTexts,
                 courseThumbnailTexts.length);
         updateCourseThumbnailTexts();

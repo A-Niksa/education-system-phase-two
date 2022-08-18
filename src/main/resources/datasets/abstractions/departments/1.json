@@ -1,17 +1,9 @@
 {
   "id" : "1",
-  "courseIds" : [ "100022201", "100122201", "100122202", "100122202" ],
+  "courseIds" : [ "100022201", "100122201", "100122202", "100322201" ],
   "professorIds" : [ "80201200", "90201301" ],
   "studentIds" : [ "19101100", "19101101" ],
-  "unitSelectionSessions" : [ {
-    "id" : "1660781122",
-    "date" : "2022-08-18T00:05:22.8517553",
-    "intendedDegreeLevel" : "UNDERGRADUATE",
-    "intendedYearOfEntry" : 2019,
-    "startsAt" : "2022-08-18T00:05:22.8517553",
-    "endsAt" : "2023-10-11T10:30:00",
-    "studentSelectionLogs" : [ ]
-  } ],
+  "unitSelectionSessions" : [ ],
   "deanId" : "90201301",
   "deputyId" : "80201200",
   "departmentName" : "MATHEMATICS"

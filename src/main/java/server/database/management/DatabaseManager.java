@@ -51,7 +51,7 @@ public class DatabaseManager {
                 getClass());
     }
 
-    public Identifiable get(DatasetIdentifier datasetIdentifier, String identifiableId) {
+    public synchronized Identifiable get(DatasetIdentifier datasetIdentifier, String identifiableId) {
         MasterLogger.serverInfo("Fetched identifiable (id: " + identifiableId + ")", "get",
                 getClass());
         return getDataset(datasetIdentifier).get(identifiableId);

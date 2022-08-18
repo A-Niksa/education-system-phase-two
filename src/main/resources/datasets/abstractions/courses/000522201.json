@@ -1,0 +1,48 @@
+{
+  "id" : "000522201",
+  "departmentId" : "0",
+  "courseName" : "Tafsir (G: 1)",
+  "teachingProfessorIds" : [ "90200303" ],
+  "teachingAssistantIds" : [ ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SUNDAY",
+    "startTime" : {
+      "hour" : 6,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 8,
+      "minute" : 30,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "MONDAY",
+    "startTime" : {
+      "hour" : 6,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 8,
+      "minute" : 30,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-21T14:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 3,
+  "isActive" : true,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ ],
+  "courseCapacity" : 30,
+  "groupNumber" : 1,
+  "isTheologyCourse" : true,
+  "active" : true,
+  "theologyCourse" : true
+}

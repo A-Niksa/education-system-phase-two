@@ -1,0 +1,48 @@
+{
+  "id" : "200422201",
+  "departmentId" : "2",
+  "courseName" : "Analytical Mechanics (G: 1)",
+  "teachingProfessorIds" : [ "80202302" ],
+  "teachingAssistantIds" : [ "19101101" ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SATURDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "WEDNESDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-21T12:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 3,
+  "isActive" : true,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ "1000" ],
+  "courseCapacity" : 30,
+  "groupNumber" : 1,
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
+}

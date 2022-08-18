@@ -1,5 +1,9 @@
 package shareables.utils.timing.timekeeping;
 
+import shareables.utils.timing.formatting.FormattingUtils;
+
+import java.time.format.DateTimeFormatter;
+
 public class WeekTime {
     private Weekday weekday;
     private DayTime startTime;
@@ -38,5 +42,10 @@ public class WeekTime {
         return weekday == weekTime.getWeekday() &&
                 startTime.equals(weekTime.getStartTime()) &&
                 endTime.equals(weekTime.getEndTime());
+    }
+
+    @Override
+    public String toString() {
+        return weekday + ": " + startTime + " - " + endTime;
     }
 }

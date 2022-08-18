@@ -300,7 +300,7 @@ public class ProfessorMenu extends MainMenu {
         addStudentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Opened the student addition section",
+                MasterLogger.clientInfo(clientController.getId(), "Opened the student sessionaddition section",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new StudentAdder(mainFrame, mainMenu, offlineModeDTO));
@@ -310,7 +310,7 @@ public class ProfessorMenu extends MainMenu {
         addProfessorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Opened the professor addition section",
+                MasterLogger.clientInfo(clientController.getId(), "Opened the professor sessionaddition section",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, offlineModeDTO));
@@ -322,7 +322,7 @@ public class ProfessorMenu extends MainMenu {
         addUnitSelectionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Opened the unit selection session addition" +
+                MasterLogger.clientInfo(clientController.getId(), "Opened the unit selection session sessionaddition" +
                                 " section", "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new UnitSelectionAdder(mainFrame, mainMenu, offlineModeDTO));

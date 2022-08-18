@@ -25,6 +25,8 @@ public class PinnedCoursesSelection extends CoursesSelectionPanel {
     @Override
     protected void initializeComponents() {
         coursesListModel = new DefaultListModel<>();
+        Arrays.stream(courseThumbnailTexts).forEach(e -> coursesListModel.addElement(e));
+
         coursesGraphicalList = new JList<>(coursesListModel);
         pinnedCoursesScrollPane = new JScrollPane();
         pinnedCoursesScrollPane.setViewportView(coursesGraphicalList);

@@ -6,7 +6,7 @@ import server.network.clienthandling.logicutils.comparators.coursethumbnailcompa
 import server.network.clienthandling.logicutils.comparators.coursethumbnailcomparators.ExamDateCourseThumbnailComparator;
 import server.network.clienthandling.logicutils.general.EnumStringMappingUtils;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
-import server.network.clienthandling.logicutils.unitselection.addition.UnitSelectionTimeUtils;
+import server.network.clienthandling.logicutils.unitselection.sessionaddition.UnitSelectionTimeUtils;
 import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.unitselection.UnitSelectionSession;
 import shareables.models.pojos.users.students.Student;
@@ -31,14 +31,15 @@ public class DepartmentCoursesUtils {
     public static List<CourseThumbnailDTO> getDepartmentCourseThumbnailDTOs(DatabaseManager databaseManager,
                                                                             String departmentNameString, String studentId) {
         String departmentId = EnumStringMappingUtils.getDepartmentId(departmentNameString);
-        Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
+        Department targetDepartment = IdentifiableFetchingUtils.getDepartment(databaseManager, departmentId);
         Student student = IdentifiableFetchingUtils.getStudent(databaseManager, studentId);
+        Department studentDepartment = IdentifiableFetchingUtils.getDepartment(databaseManager, student.getDepartmentId());
 
-        UnitSelectionSession unitSelectionSession = UnitSelectionTimeUtils.getOngoingUnitSelectionSession(department,
+        UnitSelectionSession unitSelectionSession = UnitSelectionTimeUtils.getOngoingUnitSelectionSession(studentDepartment,
                 student.getYearOfEntry(), student.getDegreeLevel());
         if (unitSelectionSession == null) return new ArrayList<>();
 
-        return department.getCourseIds().stream()
+        return targetDepartment.getCourseIds().stream()
                 .map(id -> IdentifiableFetchingUtils.getCourse(databaseManager, id))
                 .map(course -> {
                     return initializeCourseThumbnailDTO(databaseManager, course, student, unitSelectionSession);

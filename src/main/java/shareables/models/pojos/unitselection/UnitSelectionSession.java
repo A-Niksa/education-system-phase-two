@@ -8,14 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnitSelectionSession extends IdentifiableWithTime {
+    private String departmentId;
     private DegreeLevel intendedDegreeLevel;
     private int intendedYearOfEntry;
     private LocalDateTime startsAt;
     private LocalDateTime endsAt;
     private List<StudentSelectionLog> studentSelectionLogs;
+    private boolean isValidated;
 
     public UnitSelectionSession() {
         studentSelectionLogs = new ArrayList<>();
+        isValidated = false;
         initializeId();
     }
 
@@ -30,6 +33,14 @@ public class UnitSelectionSession extends IdentifiableWithTime {
 
     public void removeFromStudentSelectionLogs(String studentSelectionLogId) {
         studentSelectionLogs.removeIf(e -> e.getId().equals(studentSelectionLogId));
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
     }
 
     public DegreeLevel getIntendedDegreeLevel() {
@@ -70,5 +81,13 @@ public class UnitSelectionSession extends IdentifiableWithTime {
 
     public void setStudentSelectionLogs(List<StudentSelectionLog> studentSelectionLogs) {
         this.studentSelectionLogs = studentSelectionLogs;
+    }
+
+    public boolean isValidated() {
+        return isValidated;
+    }
+
+    public void setValidated(boolean validated) {
+        isValidated = validated;
     }
 }

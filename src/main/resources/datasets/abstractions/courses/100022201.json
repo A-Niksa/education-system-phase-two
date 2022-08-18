@@ -1,10 +1,10 @@
 {
   "id" : "100022201",
   "departmentId" : "1",
-  "courseName" : "Complex Analysis",
+  "courseName" : "Complex Analysis (G: 1)",
   "teachingProfessorIds" : [ "80201200", "90201301" ],
   "teachingAssistantIds" : [ ],
-  "studentIds" : [ "19101100", "19101101" ],
+  "studentIds" : [ ],
   "weeklyClassTimes" : [ {
     "weekday" : "SUNDAY",
     "startTime" : {
@@ -37,9 +37,9 @@
   },
   "numberOfCredits" : 4,
   "isActive" : true,
-  "degreeLevel" : "GRADUATE",
-  "prerequisiteIds" : [ "100122202" ],
-  "corequisiteIds" : [ "200422201" ],
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ "1003" ],
+  "corequisiteIds" : [ "2004" ],
   "courseCapacity" : 30,
   "groupNumber" : 1,
   "isTheologyCourse" : false,

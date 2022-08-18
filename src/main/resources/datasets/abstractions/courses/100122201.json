@@ -1,7 +1,7 @@
 {
   "id" : "100122201",
   "departmentId" : "1",
-  "courseName" : "A Real Analysis",
+  "courseName" : "Real Analysis (G: 1)",
   "teachingProfessorIds" : [ "90201301" ],
   "teachingAssistantIds" : [ "19101101" ],
   "studentIds" : [ ],
@@ -18,7 +18,7 @@
       "second" : 0
     }
   }, {
-    "weekday" : "TUESDAY",
+    "weekday" : "MONDAY",
     "startTime" : {
       "hour" : 14,
       "minute" : 30,

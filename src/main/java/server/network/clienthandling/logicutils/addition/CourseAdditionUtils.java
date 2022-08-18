@@ -4,6 +4,7 @@ import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
+import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.Department;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class CourseAdditionUtils {
     public static String addCourseAndReturnId(DatabaseManager databaseManager, Request request) {
@@ -31,6 +33,11 @@ public class CourseAdditionUtils {
 
         Course course = new Course(departmentId, termIdentifier, groupNumber);
 
+        String givenCourseId = (String) request.get("courseId");
+        if (!givenCourseId.equals("")) {
+            course.setId(givenCourseId + termIdentifier + "0" + groupNumber);
+        }
+
         List<String> prerequisiteIds = Arrays.asList((String[]) request.get("prerequisiteIds"));
         List<String> corequisiteIds = Arrays.asList((String[]) request.get("corequisiteIds"));
 
@@ -40,9 +47,11 @@ public class CourseAdditionUtils {
 
         course.setPrerequisiteIds(prerequisiteIds);
         course.setCorequisiteIds(corequisiteIds);
+        makeCorequisitenessBiderectional(databaseManager, corequisiteIds, course);
+
         course.setTeachingProfessorIds(teachingProfessorIds);
         course.setTeachingAssistantIds(teachingAssistantIds);
-        course.setCourseName((String) request.get("courseName"));
+        course.setCourseName((String) request.get("courseName") + " (G: " + groupNumber + ")");
         course.setDegreeLevel((DegreeLevel) request.get("degreeLevel"));
         course.setNumberOfCredits((int) request.get("numberOfCredits"));
         course.setCourseCapacity((int) request.get("courseCapacity"));
@@ -55,17 +64,24 @@ public class CourseAdditionUtils {
                 getNumberOfCurrentCoursesWithId(databaseManager, course.getId(), course.getTermIdentifier()) + 1
         );
 
-        String givenCourseId = (String) request.get("courseId");
-        if (!givenCourseId.equals("")) {
-            course.setId(givenCourseId + termIdentifier + "0" + groupNumber);
-        }
-
         databaseManager.save(DatasetIdentifier.COURSES, course);
 
         Department department = IdentifiableFetchingUtils.getDepartment(databaseManager, (String) request.get("departmentId"));
         department.addToCourseIDs(course.getId());
 
         return course.getId();
+    }
+
+    private static void makeCorequisitenessBiderectional(DatabaseManager databaseManager, List<String> corequisiteIds,
+                                                         Course course) {
+        String pureCourseId = SelectionErrorUtils.getCourseIdBarTermAndGroupIdentifiers(course.getId());
+
+        corequisiteIds.stream()
+                .flatMap(id -> IdentifiableFetchingUtils.getCoursesWithPureId(databaseManager, id).stream())
+                .filter(Objects::nonNull)
+                .forEach(corequisiteCourse -> {
+                    corequisiteCourse.addToCorequisiteIds(pureCourseId);
+                });
     }
 
     private static int getNumberOfCurrentCoursesWithId(DatabaseManager databaseManager, String courseId,
