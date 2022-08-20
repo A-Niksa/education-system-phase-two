@@ -3,6 +3,7 @@ package shareables.models.pojos.abstractions;
 import server.database.datasets.DatasetIdentifier;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.idgeneration.SequentialIdGenerator;
+import shareables.models.pojos.coursewares.CoursewareManager;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.Student;
@@ -34,6 +35,7 @@ public class Course extends Identifiable {
     private int courseCapacity;
     private int groupNumber;
     private boolean isTheologyCourse;
+    private CoursewareManager coursewareManager;
 
     public Course() {
     }
@@ -51,6 +53,11 @@ public class Course extends Identifiable {
         corequisiteIds = new ArrayList<>();
         isTheologyCourse = false;
         initializeId();
+        initializeCoursewareManager(id);
+    }
+
+    private void initializeCoursewareManager(String id) {
+        coursewareManager = new CoursewareManager(id);
     }
 
     public void addToWeeklyClassTimes(WeekTime weekTime) {
@@ -244,5 +251,9 @@ public class Course extends Identifiable {
 
     public void setTheologyCourse(boolean theologyCourse) {
         isTheologyCourse = theologyCourse;
+    }
+
+    public CoursewareManager getCoursewareManager() {
+        return coursewareManager;
     }
 }
