@@ -5,6 +5,7 @@ import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.academicrequests.RequestDTO;
+import shareables.network.DTOs.coursewares.CalendarEventDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
@@ -492,6 +493,12 @@ public class ResponseHandler {
     public void changedCourseGroupNumber(ClientHandler clientHandler) {
         Response response = new Response(ResponseStatus.OK, ConfigManager.getString(ConfigFileIdentifier.TEXTS,
                 "changedCourseGroupNumber"));
+        clientHandler.respond(response);
+    }
+
+    public void calendarEventDTOsAcquired(ClientHandler clientHandler, List<CalendarEventDTO> calendarEventDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("calendarEventDTOs", calendarEventDTOs);
         clientHandler.respond(response);
     }
 }

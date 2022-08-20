@@ -3,6 +3,7 @@ package server.network.clienthandling;
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
 import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
+import server.network.clienthandling.logicutils.coursewares.CourseCalendarUtils;
 import server.network.clienthandling.logicutils.coursewares.CoursewaresViewUtils;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
@@ -43,6 +44,7 @@ import shareables.models.pojos.users.students.Student;
 import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 import shareables.network.DTOs.academicrequests.RequestDTO;
+import shareables.network.DTOs.coursewares.CalendarEventDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
@@ -875,5 +877,13 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<CourseThumbnailDTO> coursewareThumbnailDTOs = CoursewaresViewUtils.getStudentCoursewareThumbnailDTOs(databaseManager,
                 studentId);
         responseHandler.courseThumbnailDTOsAcquired(clientHandler, coursewareThumbnailDTOs);
+    }
+
+    public void getCalendarEventDTOs(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        LocalDateTime calendarDate = (LocalDateTime) request.get("calendarDate");
+        List<CalendarEventDTO> calendarEventDTOs = CourseCalendarUtils.getCourseCalendarEventDTOs(databaseManager, courseId,
+                calendarDate);
+        responseHandler.calendarEventDTOsAcquired(clientHandler, calendarEventDTOs);
     }
 }

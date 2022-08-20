@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Homework extends IdentifiableWithTime {
+    private String title;
     private LocalDateTime startingTime;
     private LocalDateTime endingTime;
     private LocalDateTime permissibleSubmittingTime;
@@ -27,6 +28,14 @@ public class Homework extends IdentifiableWithTime {
 
     public void removeFromHomeworkSubmissions(String homeworkSubmissionId) {
         homeworkSubmissions.removeIf(e -> e.getId().equals(homeworkSubmissionId));
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public LocalDateTime getStartingTime() {

@@ -306,6 +306,10 @@ public class RequestMapper {
                 break;
             case GET_STUDENT_COURSEWARE_THUMBNAIL_DTOS:
                 requestHandler.getStudentCoursewareThumbnailDTOs(clientHandler, request);
+                break;
+            case GET_CALENDAR_EVENT_DTOS:
+                requestHandler.getCalendarEventDTOs(clientHandler, request);
+                break;
         }
     }
 }

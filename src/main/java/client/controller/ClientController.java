@@ -8,11 +8,13 @@ import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.StudentStatus;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;
 import shareables.network.responses.Response;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -645,6 +647,12 @@ public class ClientController {
     public Response getStudentCoursewareThumbnailDTOs(String studentId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSEWARE_THUMBNAIL_DTOS,
                 new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getCalendarEventDTOs(String courseId, LocalDateTime calendarDate) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_CALENDAR_EVENT_DTOS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("calendarDate", calendarDate));
         return client.sendAndListen(request);
     }
 

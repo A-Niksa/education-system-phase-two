@@ -33,7 +33,10 @@ public class StudentCoursewaresView extends CoursewaresView {
             String selectedListItem = graphicalList.getSelectedValue();
             String selectedCourseId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
 
-            // TODO
+            MasterLogger.clientInfo(clientController.getId(), "Opened course menu", "connectListeners",
+                    getClass());
+            stopPanelLoop();
+            mainFrame.setCurrentPanel(new CourseMenu(mainFrame, mainMenu, offlineModeDTO, selectedCourseId));
         });
     }
 

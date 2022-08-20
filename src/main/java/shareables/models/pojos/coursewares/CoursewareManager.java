@@ -33,4 +33,16 @@ public class CoursewareManager {
     public void removeFromHomeworks(String homeworkId) {
         homeworks.removeIf(e -> e.getId().equals(homeworkId));
     }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public List<EducationalMaterial> getEducationalMaterials() {
+        return educationalMaterials;
+    }
+
+    public List<Homework> getHomeworks() {
+        return homeworks;
+    }
 }
