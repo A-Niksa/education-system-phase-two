@@ -1,0 +1,46 @@
+package client.gui.menus.coursewares;
+
+import client.gui.MainFrame;
+import client.gui.menus.main.MainMenu;
+import client.locallogic.menus.messaging.ThumbnailIdParser;
+import shareables.network.DTOs.offlinemode.OfflineModeDTO;
+import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
+import shareables.network.responses.Response;
+import shareables.utils.config.ConfigFileIdentifier;
+import shareables.utils.config.ConfigManager;
+import shareables.utils.logging.MasterLogger;
+
+import javax.swing.*;
+import java.util.ArrayList;
+
+public class StudentCoursewaresView extends CoursewaresView {
+    public StudentCoursewaresView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
+        super(mainFrame, mainMenu, offlineModeDTO);
+        startPinging(offlineModeDTO.getId());
+    }
+
+    @Override
+    protected void connectListeners() {
+        openButton.addActionListener(actionEvent -> {
+            if (graphicalList.getSelectedIndex() == -1) {
+                String errorMessage = ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                        "noCourseHasBeenSelected");
+                JOptionPane.showMessageDialog(mainFrame, errorMessage);
+                MasterLogger.clientError(clientController.getId(), errorMessage, "connectListeners", getClass());
+                return;
+            }
+
+            String selectedListItem = graphicalList.getSelectedValue();
+            String selectedCourseId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+
+            // TODO
+        });
+    }
+
+    @Override
+    protected void updateCourseThumbnailDTOs() {
+        Response response = clientController.getStudentCoursewareThumbnailDTOs(offlineModeDTO.getId());
+        if (response == null) return;
+        courseThumbnailDTOs = (ArrayList<CourseThumbnailDTO>) response.get("courseThumbnailDTOs");
+    }
+}

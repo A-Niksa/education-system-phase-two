@@ -1,0 +1,10 @@
+{
+  "id" : "2",
+  "courseIds" : [ "200422201", "200522201", "200622201" ],
+  "professorIds" : [ "90202303", "80202204", "70202105" ],
+  "studentIds" : [ "20102103", "21102104", "21102205" ],
+  "unitSelectionSessions" : [ ],
+  "deanId" : "90202303",
+  "deputyId" : "80202204",
+  "departmentName" : "PHYSICS"
+}

@@ -3,6 +3,7 @@ package server.network.clienthandling;
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
 import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
+import server.network.clienthandling.logicutils.coursewares.CoursewaresViewUtils;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
@@ -865,5 +866,12 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<CourseThumbnailDTO> pinnedCourseThumbnailDTOs = PinnedCoursesUtils.getPinnedCourseThumbnailDTOs(databaseManager,
                 studentId);
         responseHandler.courseThumbnailDTOsAcquired(clientHandler, pinnedCourseThumbnailDTOs);
+    }
+
+    public void getStudentCoursewareThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        List<CourseThumbnailDTO> coursewareThumbnailDTOs = CoursewaresViewUtils.getStudentCoursewareThumbnailDTOs(databaseManager,
+                studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, coursewareThumbnailDTOs);
     }
 }

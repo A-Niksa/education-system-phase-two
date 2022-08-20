@@ -1,6 +1,7 @@
 package client.gui.menus.main;
 
 import client.gui.MainFrame;
+import client.gui.menus.coursewares.StudentCoursewaresView;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
@@ -53,6 +54,7 @@ public class StudentMenu extends MainMenu {
     private String advisingProfessorNamePrompt;
     private String enrolmentTimePrompt;
     private JButton unitSelectionButton;
+    private JButton coursewaresButton;
 
     public StudentMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, username, MainMenuType.STUDENT, offlineModeDTO, isOnline);
@@ -119,11 +121,12 @@ public class StudentMenu extends MainMenu {
         dormitory = new JMenuItem(ConfigManager.getString(configIdentifier, "dormitoryMessage"));
         defenseSlot = new JMenuItem(ConfigManager.getString(configIdentifier, "defenseSlotMessage"));
         temporaryScores = new JMenuItem(ConfigManager.getString(configIdentifier, "temporaryScoresMessage"));
-        // TODO: temporary scores bug (with sina)?
         currentAcademicStanding = new JMenuItem(ConfigManager.getString(configIdentifier, "currentAcademicStandingMessage"));
         editUserProfile = new JMenuItem(ConfigManager.getString(configIdentifier, "editUserProfileMessage"));
 
         unitSelectionButton = new JButton(ConfigManager.getString(configIdentifier, "unitSelectionButtonM"));
+
+        coursewaresButton = new JButton(ConfigManager.getString(configIdentifier, "coursewaresButtonM"));
     }
 
     private void alignComponents() {
@@ -177,6 +180,12 @@ public class StudentMenu extends MainMenu {
                 ConfigManager.getInt(configIdentifier, "unitSelectionButtonW"),
                 ConfigManager.getInt(configIdentifier, "unitSelectionButtonH"));
         add(unitSelectionButton);
+
+        coursewaresButton.setBounds(ConfigManager.getInt(configIdentifier, "coursewaresButtonX"),
+                ConfigManager.getInt(configIdentifier, "coursewaresButtonY"),
+                ConfigManager.getInt(configIdentifier, "coursewaresButtonW"),
+                ConfigManager.getInt(configIdentifier, "coursewaresButtonH"));
+        add(coursewaresButton);
     }
 
     private void alignServicesMenu() {
@@ -366,6 +375,16 @@ public class StudentMenu extends MainMenu {
                 mainFrame.setCurrentPanel(new UnitSelectionMenu(mainFrame, mainMenu, offlineModeDTO));
             }
         });
+
+        coursewaresButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the coursewares section",
+                        "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                mainFrame.setCurrentPanel(new StudentCoursewaresView(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
     }
 
     @Override
@@ -382,6 +401,7 @@ public class StudentMenu extends MainMenu {
         temporaryScores.setEnabled(false);
         notificationsButton.setEnabled(false);
         unitSelectionButton.setEnabled(false);
+        coursewaresButton.setEnabled(false);
     }
 
     @Override
@@ -398,5 +418,6 @@ public class StudentMenu extends MainMenu {
         temporaryScores.setEnabled(true);
         notificationsButton.setEnabled(true);
         unitSelectionButton.setEnabled(true);
+        coursewaresButton.setEnabled(true);
     }
 }

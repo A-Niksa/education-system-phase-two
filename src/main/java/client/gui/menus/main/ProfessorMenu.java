@@ -53,6 +53,7 @@ public class ProfessorMenu extends MainMenu {
     private JButton addStudentButton;
     private JButton addProfessorButton;
     private JButton addUnitSelectionButton;
+    private JButton coursewaresButton;
 
     public ProfessorMenu(MainFrame mainFrame, String username, OfflineModeDTO offlineModeDTO, boolean isOnline) {
         super(mainFrame, username, MainMenuType.PROFESSOR, offlineModeDTO, isOnline);
@@ -115,6 +116,8 @@ public class ProfessorMenu extends MainMenu {
         addStudentButton = new JButton(ConfigManager.getString(configIdentifier, "addStudentMessage"));
         addProfessorButton = new JButton(ConfigManager.getString(configIdentifier, "addProfessorMessage"));
         addUnitSelectionButton = new JButton(ConfigManager.getString(configIdentifier, "addUnitSelectionButtonM"));
+
+        coursewaresButton = new JButton(ConfigManager.getString(configIdentifier, "coursewaresButtonM"));
     }
 
     private void alignComponents() {
@@ -136,6 +139,12 @@ public class ProfessorMenu extends MainMenu {
         menuBar.add(userProfile);
         userProfile.add(editUserProfile);
         addUserAdditionButtons();
+
+        coursewaresButton.setBounds(ConfigManager.getInt(configIdentifier, "coursewaresButtonX"),
+                ConfigManager.getInt(configIdentifier, "coursewaresButtonY"),
+                ConfigManager.getInt(configIdentifier, "coursewaresButtonW"),
+                ConfigManager.getInt(configIdentifier, "coursewaresButtonH"));
+        add(coursewaresButton);
     }
 
     private void addUserAdditionButtons() {
@@ -346,6 +355,17 @@ public class ProfessorMenu extends MainMenu {
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
                 mainFrame.setCurrentPanel(new NotificationsView(mainFrame, mainMenu, offlineModeDTO));
+            }
+        });
+
+        coursewaresButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MasterLogger.clientInfo(clientController.getId(), "Opened the coursewares section",
+                        "connectListeners", getClass());
+                facilitateChangingPanel(mainMenu);
+                // TODO:
+//                mainFrame.setCurrentPanel(new UnitSelectionMenu(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

@@ -642,6 +642,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getStudentCoursewareThumbnailDTOs(String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSEWARE_THUMBNAIL_DTOS,
+                new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

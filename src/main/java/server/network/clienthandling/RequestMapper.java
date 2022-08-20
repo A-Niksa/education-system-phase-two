@@ -304,6 +304,8 @@ public class RequestMapper {
             case GET_PINNED_COURSE_THUMBNAIL_DTOS:
                 requestHandler.getPinnedCourseThumbnailDTOs(clientHandler, request);
                 break;
+            case GET_STUDENT_COURSEWARE_THUMBNAIL_DTOS:
+                requestHandler.getStudentCoursewareThumbnailDTOs(clientHandler, request);
         }
     }
 }

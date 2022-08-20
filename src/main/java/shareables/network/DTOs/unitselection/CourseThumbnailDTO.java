@@ -22,6 +22,7 @@ public class CourseThumbnailDTO {
     private int currentCapacity;
     private DegreeLevel degreeLevel;
     private List<String> teachingProfessorNames;
+    private List<String> teachingAssistantNames;
     private boolean isAcquired;
     private boolean isPinnedToFavorites;
     private boolean isRecommended;
@@ -67,6 +68,14 @@ public class CourseThumbnailDTO {
 
     public void setTeachingProfessorNames(List<String> teachingProfessorNames) {
         this.teachingProfessorNames = teachingProfessorNames;
+    }
+
+    public List<String> getTeachingAssistantNames() {
+        return teachingAssistantNames;
+    }
+
+    public void setTeachingAssistantNames(List<String> teachingAssistantNames) {
+        this.teachingAssistantNames = teachingAssistantNames;
     }
 
     public int getGroupNumber() {
@@ -130,7 +139,7 @@ public class CourseThumbnailDTO {
         return "<html>" +
                     courseId + " - " + groupNumber + " - " + courseName +
                     "<br/>" +
-                    "Teaching professor(s): " + teachingProfessorsToString() +
+                    "Teaching professor(s): " + namesListToString(teachingProfessorNames) +
                     "<br/>" +
                     degreeLevel +
                     "<br/>" +
@@ -148,13 +157,27 @@ public class CourseThumbnailDTO {
                 "</html>";
     }
 
-    public String teachingProfessorsToString() {
-        StringBuilder teachingProfessorsNameStringBuilder = new StringBuilder();
-        for (String professorName : teachingProfessorNames) {
-            teachingProfessorsNameStringBuilder.append(professorName).append(", ");
+    public String toShortenedString() {
+        return "<html>" +
+                    courseId + " - " + groupNumber + " - " + courseName +
+                    "<br/>" +
+                    "Teaching professor(s): " + namesListToString(teachingProfessorNames) +
+                    "<br/>" +
+                    "Teaching assistant(s): " + namesListToString(teachingAssistantNames) +
+                    "<br/>" +
+                    "Exam date: " + extensiveDateTimeFormatter.format(examDate) +
+                    "<br/>" +
+                    "Class dates: " + firstClassDateString + " | " + secondClassDateString +
+                "</html>";
+    }
+
+    public String namesListToString(List<String> namesList) {
+        StringBuilder namesStringBuilder = new StringBuilder();
+        for (String name : namesList) {
+            namesStringBuilder.append(name).append(", ");
         }
-        int stringBuilderLength = teachingProfessorsNameStringBuilder.length();
-        return teachingProfessorsNameStringBuilder.delete(stringBuilderLength - 2, stringBuilderLength - 1).toString();
+        int stringBuilderLength = namesStringBuilder.length();
+        return namesStringBuilder.delete(stringBuilderLength - 2, stringBuilderLength - 1).toString();
     }
 
     private String booleanToString(boolean inputBoolean) {

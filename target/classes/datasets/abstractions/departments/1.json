@@ -1,0 +1,10 @@
+{
+  "id" : "1",
+  "courseIds" : [ "100022201", "100122201", "100222202", "100322201" ],
+  "professorIds" : [ "90201300", "80201201", "70201102" ],
+  "studentIds" : [ "19101100", "18101201", "17101302" ],
+  "unitSelectionSessions" : [ ],
+  "deanId" : "90201300",
+  "deputyId" : "80201201",
+  "departmentName" : "MATHEMATICS"
+}

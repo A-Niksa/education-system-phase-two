@@ -88,9 +88,16 @@ public class CourseThumbnailUtils {
         return studentSelectionLog.getFavoriteCoursesIds().contains(courseId);
     }
 
-    private static List<String> getTeachingProfessorNames(DatabaseManager databaseManager, Course course) {
+    public static List<String> getTeachingProfessorNames(DatabaseManager databaseManager, Course course) {
         return course.getTeachingProfessorIds().stream()
                 .map(id -> IdentifiableFetchingUtils.getProfessor(databaseManager, id))
+                .map(User::fetchName)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static List<String> getTeachingAssistantNames(DatabaseManager databaseManager, Course course) {
+        return course.getTeachingAssistantIds().stream()
+                .map(id -> IdentifiableFetchingUtils.getStudent(databaseManager, id))
                 .map(User::fetchName)
                 .collect(Collectors.toCollection(ArrayList::new));
     }

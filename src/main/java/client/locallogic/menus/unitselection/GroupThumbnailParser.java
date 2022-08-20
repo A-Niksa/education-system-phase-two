@@ -12,7 +12,9 @@ public class GroupThumbnailParser {
         StringBuilder parsedBuilder = new StringBuilder("<html>");
         for (CourseThumbnailDTO thumbnailDTO : courseThumbnailDTOs) {
             parsedBuilder.append(thumbnailDTO.getGroupNumber() + " - ");
-            parsedBuilder.append(thumbnailDTO.teachingProfessorsToString() + " - ");
+            parsedBuilder.append(
+                    thumbnailDTO.namesListToString(thumbnailDTO.getTeachingProfessorNames()) + " - "
+            );
             parsedBuilder.append("Capacity: " + thumbnailDTO.getCurrentCapacity());
             parsedBuilder.append("<br/>");
         }
