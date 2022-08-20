@@ -37,6 +37,7 @@ public class UnitSelectionManager {
                 validationTool.validate(databaseManager, earliestSession);
                 earliestSession.setValidated(true);
                 addStudentsToAcquiredCourses(databaseManager, validationTool, earliestSession);
+                sendEnrolmentNotificationsToStudents(databaseManager, validationTool, earliestSession);
                 removeSessionFromDepartment(databaseManager, earliestSession);
                 // TODO: adding to CW
 
@@ -57,6 +58,14 @@ public class UnitSelectionManager {
         unitSelectionSession.getStudentSelectionLogs().parallelStream()
                 .forEach(selectionLog -> {
                     validationTool.addStudentToAcquiredCourses(databaseManager, selectionLog);
+                });
+    }
+
+    private void sendEnrolmentNotificationsToStudents(DatabaseManager databaseManager, ValidationTool validationTool,
+                                                      UnitSelectionSession unitSelectionSession) {
+        unitSelectionSession.getStudentSelectionLogs().parallelStream()
+                .forEach(selectionLog -> {
+                    validationTool.sendEnrolmentNotification(databaseManager, selectionLog);
                 });
     }
 

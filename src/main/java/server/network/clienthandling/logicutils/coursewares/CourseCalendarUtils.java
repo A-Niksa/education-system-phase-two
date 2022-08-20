@@ -1,6 +1,7 @@
 package server.network.clienthandling.logicutils.coursewares;
 
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.comparators.CalendarEventDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.coursewares.Homework;
@@ -13,6 +14,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CourseCalendarUtils {
+    private static CalendarEventDTOComparator calendarEventDTOComparator;
+    static {
+        calendarEventDTOComparator = new CalendarEventDTOComparator();
+    }
+
     public static List<CalendarEventDTO> getCourseCalendarEventDTOs(DatabaseManager databaseManager, String courseId,
                                                                     LocalDateTime calendarDate) {
         Course course = IdentifiableFetchingUtils.getCourse(databaseManager, courseId);
@@ -20,6 +26,7 @@ public class CourseCalendarUtils {
         return course.getCoursewareManager().getHomeworks().stream()
                 .filter(homework -> areEventsInTheSameDay(calendarDate, homework.getPermissibleSubmittingTime()))
                 .map(CourseCalendarUtils::initializeShortenedCalendarEventDTO)
+                .sorted(calendarEventDTOComparator)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -27,7 +34,7 @@ public class CourseCalendarUtils {
         CalendarEventDTO calendarEventDTO = new CalendarEventDTO();
         calendarEventDTO.setCalendarEventType(CalendarEventType.HOMEWORK);
         calendarEventDTO.setEventTitle(homework.getTitle());
-        calendarEventDTO.setPermissibleEndingTime(homework.getPermissibleSubmittingTime());
+        calendarEventDTO.setEventDate(homework.getPermissibleSubmittingTime());
 
         return calendarEventDTO;
     }

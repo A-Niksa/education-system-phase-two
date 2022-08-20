@@ -7,6 +7,7 @@ import client.gui.menus.messaging.messengerviews.AdminMessengerView;
 import client.gui.menus.messaging.messengerviews.MrMohseniMessengerView;
 import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;
+import client.gui.utils.ErrorUtils;
 import client.locallogic.general.DatePickerConfigurationTool;
 import client.locallogic.menus.coursewares.CalendarUtils;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -43,11 +44,14 @@ public class CourseMenu extends DynamicPanelTemplate {
     private JScrollPane scrollPane;
     private JButton homeworksButton;
     private JButton educationalMaterialsButton;
+    private JButton addStudentButton;
+    private JButton addTAButton;
     private JButton goBackButton;
 
     public CourseMenu(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO, String courseId) {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.courseId = courseId;
+        configIdentifier = ConfigFileIdentifier.GUI_COURSE_MENU;
         updateCalendarEventDTOs();
         updateCalendarEventTexts();
         drawPanel();
@@ -108,6 +112,9 @@ public class CourseMenu extends DynamicPanelTemplate {
         educationalMaterialsButton = new JButton(ConfigManager.getString(configIdentifier,
                 "educationalMaterialsButtonM"));
 
+        addStudentButton = new JButton(ConfigManager.getString(configIdentifier, "addStudentButtonM"));
+        addTAButton = new JButton(ConfigManager.getString(configIdentifier, "addTAButtonM"));
+
         goBackButton = new JButton(ConfigManager.getString(configIdentifier, "goBackButtonM"));
     }
 
@@ -150,6 +157,20 @@ public class CourseMenu extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "goBackButtonW"),
                 ConfigManager.getInt(configIdentifier, "goBackButtonH"));
         add(goBackButton);
+
+        addStudentButton.setBounds(ConfigManager.getInt(configIdentifier, "addStudentButtonX"),
+                ConfigManager.getInt(configIdentifier, "addStudentButtonY"),
+                ConfigManager.getInt(configIdentifier, "addStudentButtonW"),
+                ConfigManager.getInt(configIdentifier, "addStudentButtonH"));
+        addTAButton.setBounds(ConfigManager.getInt(configIdentifier, "addTAButtonX"),
+                ConfigManager.getInt(configIdentifier, "addTAButtonY"),
+                ConfigManager.getInt(configIdentifier, "addTAButtonW"),
+                ConfigManager.getInt(configIdentifier, "addTAButtonH"));
+
+        if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
+            add(addStudentButton);
+            add(addTAButton);
+        }
     }
 
     @Override
@@ -180,6 +201,40 @@ public class CourseMenu extends DynamicPanelTemplate {
                     "connectListeners", getClass());
             stopPanelLoop();
             // TODO
+        });
+
+        addStudentButton.addActionListener(actionEvent -> {
+            String studentId = JOptionPane.showInputDialog(mainFrame, ConfigManager.getString(configIdentifier,
+                    "addStudentPrompt"));
+            if (studentId == null) return;
+
+            Response response = clientController.addStudentToCourse(studentId, courseId);
+            if (response == null) return;
+
+            if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
+                        getClass());
+            } else {
+                MasterLogger.clientInfo(clientController.getId(), "Added student (ID: " + studentId + ") to own course" +
+                                " (ID: " + courseId + ")", "connectListeners", getClass());
+            }
+        });
+
+        addTAButton.addActionListener(actionEvent -> {
+            String teachingAssistantId = JOptionPane.showInputDialog(mainFrame, ConfigManager.getString(configIdentifier,
+                    "addStudentPrompt"));
+            if (teachingAssistantId == null) return;
+
+            Response response = clientController.addTeachingAssistantToCourse(teachingAssistantId, courseId);
+            if (response == null) return;
+
+            if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
+                        getClass());
+            } else {
+                MasterLogger.clientInfo(clientController.getId(), "Added TA (ID: " + teachingAssistantId +
+                        ") to own course (ID: " + courseId + ")", "connectListeners", getClass());
+            }
         });
 
         goBackButton.addActionListener(actionEvent -> {

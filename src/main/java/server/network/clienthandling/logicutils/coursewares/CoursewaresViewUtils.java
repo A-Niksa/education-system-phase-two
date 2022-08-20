@@ -24,6 +24,24 @@ public class CoursewaresViewUtils {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public static List<CourseThumbnailDTO> getProfessorCoursewareThumbnailDTOs(DatabaseManager databaseManager,
+                                                                             String professorId) {
+        List<Course> activeCourses = getProfessorActiveCourses(databaseManager, professorId);
+
+        return activeCourses.stream()
+                .map(course -> initializeExtensiveCourseThumbnailDTO(databaseManager, course))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    private static List<Course> getProfessorActiveCourses(DatabaseManager databaseManager, String professorId) {
+        List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
+        return courses.stream()
+                .map(identifiable -> (Course) identifiable)
+                .filter(Course::isActive)
+                .filter(course -> course.getTeachingProfessorIds().contains(professorId))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
     private static List<Course> getStudentActiveCourses(DatabaseManager databaseManager, String studentId) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         return courses.stream()

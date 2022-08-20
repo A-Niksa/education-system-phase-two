@@ -307,8 +307,20 @@ public class RequestMapper {
             case GET_STUDENT_COURSEWARE_THUMBNAIL_DTOS:
                 requestHandler.getStudentCoursewareThumbnailDTOs(clientHandler, request);
                 break;
+            case GET_PROFESSOR_COURSEWARE_THUMBNAIL_DTOS:
+                requestHandler.getProfessorCoursewareThumbnailDTOs(clientHandler, request);
+                break;
             case GET_CALENDAR_EVENT_DTOS:
                 requestHandler.getCalendarEventDTOs(clientHandler, request);
+                break;
+            case GET_MATERIAL_THUMBNAIL_DTOS:
+                requestHandler.getMaterialThumbnailDTOs(clientHandler, request);
+                break;
+            case ADD_STUDENT_TO_COURSE:
+                requestHandler.addStudentToCourse(clientHandler, request);
+                break;
+            case ADD_TA_TO_COURSE:
+                requestHandler.addTeachingAssistantToCourse(clientHandler, request);
                 break;
         }
     }

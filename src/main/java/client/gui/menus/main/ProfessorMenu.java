@@ -3,6 +3,7 @@ package client.gui.menus.main;
 import client.gui.MainFrame;
 import client.gui.menus.addition.ProfessorAdder;
 import client.gui.menus.addition.StudentAdder;
+import client.gui.menus.coursewares.ProfessorCoursewaresView;
 import client.gui.menus.enrolment.management.CoursesListManager;
 import client.gui.menus.enrolment.management.ProfessorsListManager;
 import client.gui.menus.enrolment.viewing.CoursesListView;
@@ -364,8 +365,7 @@ public class ProfessorMenu extends MainMenu {
                 MasterLogger.clientInfo(clientController.getId(), "Opened the coursewares section",
                         "connectListeners", getClass());
                 facilitateChangingPanel(mainMenu);
-                // TODO:
-//                mainFrame.setCurrentPanel(new UnitSelectionMenu(mainFrame, mainMenu, offlineModeDTO));
+                mainFrame.setCurrentPanel(new ProfessorCoursewaresView(mainFrame, mainMenu, offlineModeDTO));
             }
         });
     }

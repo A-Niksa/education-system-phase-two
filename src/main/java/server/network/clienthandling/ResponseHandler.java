@@ -6,6 +6,7 @@ import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.academicrequests.RequestDTO;
 import shareables.network.DTOs.coursewares.CalendarEventDTO;
+import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
@@ -18,6 +19,7 @@ import shareables.network.DTOs.standing.CourseScoreDTO;
 import shareables.network.DTOs.standing.CourseStatsDTO;
 import shareables.network.DTOs.standing.TranscriptDTO;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
+import shareables.network.requests.Request;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;
@@ -499,6 +501,17 @@ public class ResponseHandler {
     public void calendarEventDTOsAcquired(ClientHandler clientHandler, List<CalendarEventDTO> calendarEventDTOs) {
         Response response = new Response(ResponseStatus.OK);
         response.put("calendarEventDTOs", calendarEventDTOs);
+        clientHandler.respond(response);
+    }
+
+    public void materialThumbnailDTOsAcquired(ClientHandler clientHandler, List<MaterialThumbnailDTO> materialThumbnailDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("materialThumbnailDTOs", materialThumbnailDTOs);
+        clientHandler.respond(response);
+    }
+
+    public void studentDoesNotExist(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "studentDoesNotExist"));
         clientHandler.respond(response);
     }
 }

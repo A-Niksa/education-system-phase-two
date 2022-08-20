@@ -4,7 +4,9 @@ import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
 import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
 import server.network.clienthandling.logicutils.coursewares.CourseCalendarUtils;
+import server.network.clienthandling.logicutils.coursewares.CoursewareEnrolmentUtils;
 import server.network.clienthandling.logicutils.coursewares.CoursewaresViewUtils;
+import server.network.clienthandling.logicutils.coursewares.MaterialThumbnailUtils;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
@@ -45,6 +47,7 @@ import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 import shareables.network.DTOs.academicrequests.RequestDTO;
 import shareables.network.DTOs.coursewares.CalendarEventDTO;
+import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
@@ -874,8 +877,15 @@ public class RequestHandler { // TODO: logging, perhaps?
 
     public void getStudentCoursewareThumbnailDTOs(ClientHandler clientHandler, Request request) {
         String studentId = (String) request.get("studentId");
-        List<CourseThumbnailDTO> coursewareThumbnailDTOs = CoursewaresViewUtils.getStudentCoursewareThumbnailDTOs(databaseManager,
-                studentId);
+        List<CourseThumbnailDTO> coursewareThumbnailDTOs = CoursewaresViewUtils.getStudentCoursewareThumbnailDTOs(
+                databaseManager, studentId);
+        responseHandler.courseThumbnailDTOsAcquired(clientHandler, coursewareThumbnailDTOs);
+    }
+
+    public void getProfessorCoursewareThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        String professorId = (String) request.get("professorId");
+        List<CourseThumbnailDTO> coursewareThumbnailDTOs = CoursewaresViewUtils.getProfessorCoursewareThumbnailDTOs(
+                databaseManager, professorId);
         responseHandler.courseThumbnailDTOsAcquired(clientHandler, coursewareThumbnailDTOs);
     }
 
@@ -885,5 +895,33 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<CalendarEventDTO> calendarEventDTOs = CourseCalendarUtils.getCourseCalendarEventDTOs(databaseManager, courseId,
                 calendarDate);
         responseHandler.calendarEventDTOsAcquired(clientHandler, calendarEventDTOs);
+    }
+
+    public void getMaterialThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        List<MaterialThumbnailDTO> materialThumbnailDTOs = MaterialThumbnailUtils.getCourseMaterialThumbnailDTOs(databaseManager,
+                (String) request.get("courseId"));
+        responseHandler.materialThumbnailDTOsAcquired(clientHandler, materialThumbnailDTOs);
+    }
+
+    public void addStudentToCourse(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        String courseId = (String) request.get("courseId");
+        if (!CoursewareEnrolmentUtils.studentExists(databaseManager, studentId)) {
+            responseHandler.studentDoesNotExist(clientHandler);
+        } else {
+            CoursewareEnrolmentUtils.addStudentToCourse(databaseManager, studentId, courseId);
+            responseHandler.requestSuccessful(clientHandler);
+        }
+    }
+
+    public void addTeachingAssistantToCourse(ClientHandler clientHandler, Request request) {
+        String teachingAssistantId = (String) request.get("teachingAssistantId");
+        String courseId = (String) request.get("courseId");
+        if (!CoursewareEnrolmentUtils.studentExists(databaseManager, teachingAssistantId)) {
+            responseHandler.studentDoesNotExist(clientHandler);
+        } else {
+            CoursewareEnrolmentUtils.addTeachingAssistantToCourse(databaseManager, teachingAssistantId, courseId);
+            responseHandler.requestSuccessful(clientHandler);
+        }
     }
 }

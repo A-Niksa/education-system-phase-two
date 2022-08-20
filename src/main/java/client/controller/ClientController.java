@@ -650,9 +650,34 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getProfessorCoursewareThumbnailDTOs(String professorId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSEWARE_THUMBNAIL_DTOS,
+                new StringObjectMap("professorId", professorId));
+        return client.sendAndListen(request);
+    }
+
     public Response getCalendarEventDTOs(String courseId, LocalDateTime calendarDate) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_CALENDAR_EVENT_DTOS,
                 new StringObjectMap("courseId", courseId), new StringObjectMap("calendarDate", calendarDate));
+        return client.sendAndListen(request);
+    }
+
+    public Response getMaterialThumbnailDTOs(String courseId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_MATERIAL_THUMBNAIL_DTOS,
+                new StringObjectMap("courseId", courseId));
+        return client.sendAndListen(request);
+    }
+
+    public Response addStudentToCourse(String studentId, String courseId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_STUDENT_TO_COURSE,
+                new StringObjectMap("studentId", studentId), new StringObjectMap("courseId", courseId));
+        return client.sendAndListen(request);
+    }
+
+    public Response addTeachingAssistantToCourse(String teachingAssistantId, String courseId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_TA_TO_COURSE,
+                new StringObjectMap("teachingAssistantId", teachingAssistantId),
+                new StringObjectMap("courseId", courseId));
         return client.sendAndListen(request);
     }
 

@@ -14,8 +14,7 @@ public class CalendarEventDTO {
     private String courseName;
     private String eventTitle;
     private CalendarEventType calendarEventType;
-    private LocalDateTime permissibleEndingTime;
-    private LocalDateTime examTime;
+    private LocalDateTime eventDate;
 
     public CalendarEventDTO() {
     }
@@ -44,27 +43,19 @@ public class CalendarEventDTO {
         this.calendarEventType = calendarEventType;
     }
 
-    public LocalDateTime getPermissibleEndingTime() {
-        return permissibleEndingTime;
+    public LocalDateTime getEventDate() {
+        return eventDate;
     }
 
-    public void setPermissibleEndingTime(LocalDateTime permissibleEndingTime) {
-        this.permissibleEndingTime = permissibleEndingTime;
-    }
-
-    public LocalDateTime getExamTime() {
-        return examTime;
-    }
-
-    public void setExamTime(LocalDateTime examTime) {
-        this.examTime = examTime;
+    public void setEventDate(LocalDateTime eventDate) {
+        this.eventDate = eventDate;
     }
 
     public String toShortenedString() {
         return "<html>" +
                     eventTitle +
                     "<br/>" +
-                    "Deadline: " + extensiveDateTimeFormatter.format(permissibleEndingTime) +
+                    "Sharp deadline: " + extensiveDateTimeFormatter.format(eventDate) +
                 "</html>";
     }
 }
