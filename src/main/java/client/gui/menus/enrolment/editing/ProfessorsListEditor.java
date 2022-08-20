@@ -6,7 +6,7 @@ import client.gui.menus.addition.ProfessorAdderOfDean;
 import client.gui.menus.enrolment.management.ProfessorsListManager;
 import client.gui.menus.main.MainMenu;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
-import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.DTOs.generalmodels.ProfessorDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;

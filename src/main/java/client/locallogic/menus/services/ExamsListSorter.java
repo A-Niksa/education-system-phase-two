@@ -1,6 +1,6 @@
 package client.locallogic.menus.services;
 
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 
 import java.util.ArrayList;
 

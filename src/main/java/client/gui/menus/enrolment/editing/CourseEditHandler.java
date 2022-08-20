@@ -2,7 +2,7 @@ package client.gui.menus.enrolment.editing;
 
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.logging.MasterLogger;
 

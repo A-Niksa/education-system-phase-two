@@ -1,4 +1,4 @@
-package shareables.network.DTOs;
+package shareables.network.DTOs.generalmodels;
 
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.utils.timing.formatting.FormattingUtils;

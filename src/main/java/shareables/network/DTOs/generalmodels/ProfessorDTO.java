@@ -1,4 +1,4 @@
-package shareables.network.DTOs;
+package shareables.network.DTOs.generalmodels;
 
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;

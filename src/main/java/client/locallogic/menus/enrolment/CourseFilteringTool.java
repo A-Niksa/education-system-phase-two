@@ -1,6 +1,6 @@
 package client.locallogic.menus.enrolment;
 
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

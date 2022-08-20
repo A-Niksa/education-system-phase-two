@@ -6,7 +6,7 @@ import client.gui.OfflinePanel;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.locallogic.menus.services.WeeklyScheduleParser;
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.utils.config.ConfigFileIdentifier;
 import shareables.utils.config.ConfigManager;

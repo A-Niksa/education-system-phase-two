@@ -7,8 +7,8 @@ import server.network.clienthandling.logicutils.comparators.ProfessorDTOComparat
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.professors.Professor;
-import shareables.network.DTOs.CourseDTO;
-import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
+import shareables.network.DTOs.generalmodels.ProfessorDTO;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,7 @@ import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.professors.AcademicRole;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.StudentStatus;
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
 import shareables.network.DTOs.standing.CourseScoreDTO;
 import shareables.network.DTOs.standing.TranscriptDTO;

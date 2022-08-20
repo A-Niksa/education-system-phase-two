@@ -1,6 +1,6 @@
 package client.locallogic.menus.services;
 
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 import shareables.utils.timing.timekeeping.WeekTime;
 import shareables.utils.timing.timekeeping.Weekday;
 

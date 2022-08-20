@@ -5,7 +5,7 @@ import client.gui.MainFrame;
 import client.gui.menus.addition.CourseAdder;
 import client.gui.menus.enrolment.management.CoursesListManager;
 import client.gui.menus.main.MainMenu;
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;

@@ -9,7 +9,7 @@ import shareables.models.pojos.abstractions.Department;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.professors.Professor;
 import shareables.models.pojos.users.students.Student;
-import shareables.network.DTOs.StudentDTO;
+import shareables.network.DTOs.generalmodels.StudentDTO;
 import shareables.network.DTOs.messaging.ContactIdentifier;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.utils.config.ConfigFileIdentifier;

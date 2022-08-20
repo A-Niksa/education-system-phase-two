@@ -8,7 +8,7 @@ import client.gui.utils.ErrorUtils;
 import client.locallogic.menus.enrolment.DegreeLevelGetter;
 import client.locallogic.menus.enrolment.NamesParser;
 import shareables.models.pojos.users.students.DegreeLevel;
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;

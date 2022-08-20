@@ -6,7 +6,7 @@ import client.gui.menus.main.MainMenu;
 import client.gui.utils.EnumArrayUtils;
 import client.gui.utils.ErrorUtils;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
-import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.DTOs.generalmodels.ProfessorDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
 import shareables.utils.config.ConfigFileIdentifier;

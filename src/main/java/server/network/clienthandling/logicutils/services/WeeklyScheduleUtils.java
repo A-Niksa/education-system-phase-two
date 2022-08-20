@@ -7,7 +7,7 @@ import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtil
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.users.professors.Professor;
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 
 import java.util.ArrayList;
 import java.util.List;

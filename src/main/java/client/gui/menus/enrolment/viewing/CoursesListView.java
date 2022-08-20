@@ -8,7 +8,7 @@ import client.locallogic.menus.enrolment.CourseFilteringTool;
 import client.locallogic.menus.enrolment.FilterKey;
 import client.locallogic.menus.profile.DepartmentGetter;
 import shareables.models.pojos.abstractions.DepartmentName;
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.utils.config.ConfigFileIdentifier;

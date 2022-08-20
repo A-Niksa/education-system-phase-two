@@ -4,7 +4,7 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.locallogic.menus.messaging.ThumbnailIdParser;
-import shareables.network.DTOs.StudentDTO;
+import shareables.network.DTOs.generalmodels.StudentDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;

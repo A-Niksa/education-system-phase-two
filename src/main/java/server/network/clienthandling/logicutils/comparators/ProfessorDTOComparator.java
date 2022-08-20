@@ -1,6 +1,6 @@
 package server.network.clienthandling.logicutils.comparators;
 
-import shareables.network.DTOs.ProfessorDTO;
+import shareables.network.DTOs.generalmodels.ProfessorDTO;
 
 import java.util.Comparator;
 

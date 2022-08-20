@@ -1,10 +1,9 @@
 package client.locallogic.menus.services;
 
-import shareables.network.DTOs.CourseDTO;
+import shareables.network.DTOs.generalmodels.CourseDTO;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
-import java.util.Date;
 
 public class ExamDateComparator implements Comparator<CourseDTO> {
     @Override
