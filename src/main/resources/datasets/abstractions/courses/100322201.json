@@ -2,45 +2,45 @@
   "id" : "100322201",
   "departmentId" : "1",
   "courseName" : "Functional Analysis (G: 1)",
-  "teachingProfessorIds" : [ "80201200" ],
-  "teachingAssistantIds" : [ "19101101" ],
+  "teachingProfessorIds" : [ "90201300" ],
+  "teachingAssistantIds" : [ "18101201" ],
   "studentIds" : [ ],
   "weeklyClassTimes" : [ {
-    "weekday" : "SUNDAY",
+    "weekday" : "SATURDAY",
     "startTime" : {
-      "hour" : 9,
+      "hour" : 10,
       "minute" : 30,
       "second" : 0
     },
     "endTime" : {
-      "hour" : 11,
+      "hour" : 12,
       "minute" : 30,
       "second" : 0
     }
   }, {
     "weekday" : "MONDAY",
     "startTime" : {
-      "hour" : 9,
+      "hour" : 10,
       "minute" : 30,
       "second" : 0
     },
     "endTime" : {
-      "hour" : 11,
+      "hour" : 12,
       "minute" : 30,
       "second" : 0
     }
   } ],
-  "examDate" : "2022-09-21T09:30:00",
+  "examDate" : "2022-11-21T09:30:00",
   "termIdentifier" : {
     "year" : 2022,
     "semester" : 2
   },
-  "numberOfCredits" : 3,
+  "numberOfCredits" : 4,
   "isActive" : true,
-  "degreeLevel" : "UNDERGRADUATE",
+  "degreeLevel" : "GRADUATE",
   "prerequisiteIds" : [ ],
   "corequisiteIds" : [ ],
-  "courseCapacity" : 40,
+  "courseCapacity" : 35,
   "groupNumber" : 1,
   "isTheologyCourse" : false,
   "active" : true,

@@ -1,0 +1,48 @@
+{
+  "id" : "000722201",
+  "departmentId" : "0",
+  "courseName" : "Lessons from Quran (G: 1)",
+  "teachingProfessorIds" : [ "70200108" ],
+  "teachingAssistantIds" : [ "21100107" ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SATURDAY",
+    "startTime" : {
+      "hour" : 8,
+      "minute" : 0,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 10,
+      "minute" : 0,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "MONDAY",
+    "startTime" : {
+      "hour" : 8,
+      "minute" : 0,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 10,
+      "minute" : 0,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-19T09:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 2,
+  "isActive" : true,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ ],
+  "courseCapacity" : 60,
+  "groupNumber" : 1,
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
+}

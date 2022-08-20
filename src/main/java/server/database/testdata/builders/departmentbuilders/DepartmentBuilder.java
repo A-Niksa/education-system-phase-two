@@ -63,6 +63,8 @@ public abstract class DepartmentBuilder {
     }
 
     private void buildCourses(int numberOfCourses) {
+        courses = new ArrayList<>();
+
         for (int i = 0; i < numberOfCourses; i++) {
             String courseNumeral = EnumExtractionUtils.getIdentifiableNumeral(i) + "Course";
 
@@ -92,6 +94,8 @@ public abstract class DepartmentBuilder {
             LocalDateTime examDate = getExamDate(courseNumeral);
             course.setExamDate(examDate);
 
+            courses.add(course);
+
             department.addToCourseIDs(course.getId());
         }
     }
@@ -107,8 +111,8 @@ public abstract class DepartmentBuilder {
     }
 
     private List<WeekTime> getCourseWeekTimes(String courseNumeral) {
-        WeekTime firstWeekTime = getWeekTime(courseNumeral, "first");
-        WeekTime secondWeekTime = getWeekTime(courseNumeral, "second");
+        WeekTime firstWeekTime = getWeekTime(courseNumeral, "First");
+        WeekTime secondWeekTime = getWeekTime(courseNumeral, "Second");
         return new ArrayList<>(List.of(firstWeekTime, secondWeekTime));
     }
 
@@ -217,6 +221,8 @@ public abstract class DepartmentBuilder {
     }
 
     private void buildStudents() {
+        students = new ArrayList<>();
+
         for (int i = 0; i < 3; i++) {
             String studentNumeral = EnumExtractionUtils.getIdentifiableNumeral(i) + "Student";
 
@@ -239,6 +245,8 @@ public abstract class DepartmentBuilder {
 
             student.setAdvisingProfessorId(advisingProfessor.getId());
             advisingProfessor.addToAdviseeStudentIds(student.getId());
+
+            students.add(student);
 
             department.addToStudentIds(student.getId());
         }
@@ -264,6 +272,6 @@ public abstract class DepartmentBuilder {
 
         students.forEach(e -> databaseManager.save(DatasetIdentifier.STUDENTS, e));
 
-        courses.forEach(e -> databaseManager.save(DatasetIdentifier.STUDENTS, e));
+        courses.forEach(e -> databaseManager.save(DatasetIdentifier.COURSES, e));
     }
 }

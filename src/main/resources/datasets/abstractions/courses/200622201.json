@@ -1,0 +1,48 @@
+{
+  "id" : "200622201",
+  "departmentId" : "2",
+  "courseName" : "Information Theory (G: 1)",
+  "teachingProfessorIds" : [ "70202105" ],
+  "teachingAssistantIds" : [ "21102104" ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SUNDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "TUESDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-24T09:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 3,
+  "isActive" : true,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ ],
+  "courseCapacity" : 40,
+  "groupNumber" : 1,
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
+}

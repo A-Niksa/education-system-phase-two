@@ -1,0 +1,48 @@
+{
+  "id" : "000822201",
+  "departmentId" : "0",
+  "courseName" : "Islamic History (G: 1)",
+  "teachingProfessorIds" : [ "90200306" ],
+  "teachingAssistantIds" : [ "20100106" ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SUNDAY",
+    "startTime" : {
+      "hour" : 8,
+      "minute" : 0,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 10,
+      "minute" : 0,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "TUESDAY",
+    "startTime" : {
+      "hour" : 8,
+      "minute" : 0,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 10,
+      "minute" : 0,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-18T09:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 2,
+  "isActive" : true,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ ],
+  "courseCapacity" : 60,
+  "groupNumber" : 1,
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
+}

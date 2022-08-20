@@ -1,0 +1,48 @@
+{
+  "id" : "200522201",
+  "departmentId" : "2",
+  "courseName" : "Thermodynamical Systems (G: 1)",
+  "teachingProfessorIds" : [ "70202105" ],
+  "teachingAssistantIds" : [ "21102205" ],
+  "studentIds" : [ "21102104" ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SUNDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "TUESDAY",
+    "startTime" : {
+      "hour" : 17,
+      "minute" : 0,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 19,
+      "minute" : 0,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-23T09:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 4,
+  "isActive" : true,
+  "degreeLevel" : "GRADUATE",
+  "prerequisiteIds" : [ ],
+  "corequisiteIds" : [ ],
+  "courseCapacity" : 10,
+  "groupNumber" : 1,
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
+}
