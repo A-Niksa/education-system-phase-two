@@ -1,8 +1,9 @@
-package server.database.testdata;
+package server.database.testdata.utils;
 
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.students.DegreeLevel;
+import shareables.utils.timing.timekeeping.Weekday;
 
 public class EnumExtractionUtils {
     public static AcademicLevel getAcademicLevel(String academicLevelString) {
@@ -59,6 +60,36 @@ public class EnumExtractionUtils {
         return degreeLevel;
     }
 
+    public static Weekday getWeekday(String weekdayString) {
+        Weekday weekday;
+        switch (weekdayString) {
+            case "Saturday":
+                weekday = Weekday.SATURDAY;
+                break;
+            case "Sunday":
+                weekday = Weekday.SUNDAY;
+                break;
+            case "Monday":
+                weekday = Weekday.MONDAY;
+                break;
+            case "Tuesday":
+                weekday = Weekday.TUESDAY;
+                break;
+            case "Wednesday":
+                weekday = Weekday.WEDNESDAY;
+                break;
+            case "Thursday":
+                weekday = Weekday.THURSDAY;
+                break;
+            case "Friday":
+                weekday = Weekday.FRIDAY;
+                break;
+            default:
+                weekday = null;
+        }
+        return weekday;
+    }
+
     public static String getIdentifiableNumeral(int identifiableIndex) {
         String studentNumeral;
         switch (identifiableIndex) {
@@ -70,6 +101,9 @@ public class EnumExtractionUtils {
                 break;
             case 2:
                 studentNumeral = "third";
+                break;
+            case 3:
+                studentNumeral = "fourth";
                 break;
             default:
                 studentNumeral = null;
