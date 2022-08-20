@@ -69,6 +69,9 @@ public class ValidationTool {
         String studentId = selectionLog.getStudentId();
         selectionLog.getAcquiredCoursesIds().stream()
                 .map(id -> IdentifiableFetchingUtils.getCourse(databaseManager, id))
-                .forEach(course -> course.addToStudentIds(studentId));
+                .forEach(course -> {
+                    course.addToStudentIds(studentId);
+                    course.setActive(true);
+                });
     }
 }

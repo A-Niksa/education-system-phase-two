@@ -11,6 +11,10 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     ADMIN_INFO("adminInfoPath"),
     MR_MOHSENI_INFO("mrMohseniInfoPath"),
 
+    MATH_DEPARTMENT_INFO("mathDepartmentInfoPath"),
+    PHYSICS_DEPARTMENT_INFO("physicsDepartmentInfoPath"),
+    GENERAL_CENTERS_DEPARTMENT_INFO("generalCentersDepartmentInfoPath"),
+
     GUI("guiPath"),
     GUI_LOGIN("guiLoginPath"),
     GUI_MAIN("guiMainPath"),

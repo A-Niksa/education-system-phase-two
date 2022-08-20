@@ -1,0 +1,48 @@
+{
+  "id" : "100022201",
+  "departmentId" : "1",
+  "courseName" : "Complex Analysis (G: 1)",
+  "teachingProfessorIds" : [ "80201200", "90201301" ],
+  "teachingAssistantIds" : [ ],
+  "studentIds" : [ ],
+  "weeklyClassTimes" : [ {
+    "weekday" : "SUNDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  }, {
+    "weekday" : "TUESDAY",
+    "startTime" : {
+      "hour" : 14,
+      "minute" : 30,
+      "second" : 0
+    },
+    "endTime" : {
+      "hour" : 16,
+      "minute" : 30,
+      "second" : 0
+    }
+  } ],
+  "examDate" : "2022-11-21T09:30:00",
+  "termIdentifier" : {
+    "year" : 2022,
+    "semester" : 2
+  },
+  "numberOfCredits" : 4,
+  "isActive" : true,
+  "degreeLevel" : "UNDERGRADUATE",
+  "prerequisiteIds" : [ "1003" ],
+  "corequisiteIds" : [ "2004" ],
+  "courseCapacity" : 30,
+  "groupNumber" : 1,
+  "isTheologyCourse" : false,
+  "active" : true,
+  "theologyCourse" : false
+}
