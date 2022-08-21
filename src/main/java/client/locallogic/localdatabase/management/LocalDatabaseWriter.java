@@ -38,7 +38,6 @@ public class LocalDatabaseWriter { // save in this context refers to saving to f
         identifierDatasetMap.entrySet().stream().parallel().forEach(this::saveDataset);
     }
 
-    // TODO: should be private
     public void purgeDirectory(File directory) {
         for (File file : directory.listFiles()) {
             if (file.isDirectory()) purgeDirectory(file);

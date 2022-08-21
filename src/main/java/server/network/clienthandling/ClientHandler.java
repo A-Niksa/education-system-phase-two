@@ -73,7 +73,7 @@ public class ClientHandler {
                             getClass());
                     break;
                 }
-                try { // TODO: breaking down try/catch blocks to smaller blocks
+                try {
                     Request request = objectMapper.readValue(requestString, Request.class);
                     if (!request.getAuthToken().equals(authToken)) continue;
                     server.handleRequest(this, request);

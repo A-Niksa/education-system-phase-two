@@ -208,7 +208,6 @@ public class CourseAdder extends DynamicPanelTemplate {
         add(examHourField);
         examMinuteField.setBounds(currentX + incrementOfX, currentY, smallerTextFieldWidth, textFieldHeight);
         add(examMinuteField);
-//        currentY += incrementOfY;
 
         theologyCourseCheckBox.setBounds(ConfigManager.getInt(configIdentifier, "theologyCourseCheckBoxX"),
                 ConfigManager.getInt(configIdentifier, "theologyCourseCheckBoxY"),

@@ -11,7 +11,6 @@ public class SequentialIdGenerator {
         return idCounter++;
     }
 
-    // TODO: should be removed ->
     public int getIdCounter() {
         return idCounter;
     }

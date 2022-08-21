@@ -560,4 +560,10 @@ public class ResponseHandler {
         response.put("submissionText", submissionText);
         clientHandler.respond(response);
     }
+
+    public void scoreAcquired(ClientHandler clientHandler, Double score) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("score", score);
+        clientHandler.respond(response);
+    }
 }

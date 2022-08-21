@@ -42,11 +42,6 @@ public class Conversation extends IdentifiableWithTime {
         conversingUserIds.removeIf(e -> e.equals(userId));
     }
 
-//    public Message fetchLastMessage() {
-//        if (messages.isEmpty()) return null;
-//        return messages.get(messages.size() - 1);
-//    }
-
     public List<Message> getMessages() {
         return messages;
     }
@@ -65,14 +60,5 @@ public class Conversation extends IdentifiableWithTime {
 
     public static SequentialIdGenerator getSequentialIdGenerator() {
         return sequentialIdGenerator;
-    }
-
-    // TODO: should be removed ->
-    @Override
-    public String toString() {
-        return "Conversation{" +
-                "messages=" + messages +
-                ", conversingUserIds=" + conversingUserIds +
-                '}';
     }
 }

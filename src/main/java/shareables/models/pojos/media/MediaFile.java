@@ -63,14 +63,4 @@ public abstract class MediaFile extends IdentifiableWithTime {
     public byte[] getEncodedBytes() {
         return encodedBytes;
     }
-
-    // TODO: to be removed
-    @Override
-    public String toString() {
-        return "MediaFile{" +
-                "mediaFileIdentifier=" + mediaFileIdentifier +
-                ", path='" + path + '\'' +
-                ", encodedBytes=" + Arrays.toString(encodedBytes) +
-                '}';
-    }
 }

@@ -40,12 +40,8 @@ public class Main {
         ConfigIdSupplier.resetCurrentClientId();
         manager.getDatabaseWriter().purgeDirectory(new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "datasetsFolderPath")));
         manager.getDatabaseWriter().purgeDirectoryCompletely(new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES, "localDatasetsFolderPath")));
-        createTestData(); // TODO: cleaning the directories
+        createTestData();
         sendAdminHelpMessages();
-//        manager.loadDatabase();
-//        Student student = (Student) manager.get(DatasetIdentifier.STUDENTS, "19101100");
-//        System.out.println(student);
-//        testTimes();
     }
 
     private static void testTimes() {
@@ -102,7 +98,6 @@ public class Main {
         hamidi.setAdvisingProfessorId(khazayi.getId());
         hamidi.setPassword("1234");
         hamidi.updateLastLogin();
-//        hamidi.setEnrolmentTime(LocalDateTime.now());
         khazayi.addToAdviseeStudentIds(hamidi.getId());
         mathDepartment.setDeputyId(khazayi.getId());
         mathDepartment.addToStudentIds(hamidi.getId());

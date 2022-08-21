@@ -22,7 +22,6 @@ public class Transcript {
 
     public double getGPA() {
         return GPA;
-        // TODO: calculating GPA
     }
 
     public void setGPA(double GPA) {

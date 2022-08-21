@@ -14,7 +14,6 @@ public class ConfigWriter extends Properties {
     public void initializeFileWriter(String configPath) {
         try {
             fileWriter = new FileWriter(configPath);
-            // TODO: logging this?
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,13 +22,11 @@ public class ConfigWriter extends Properties {
     public void write(String key, int value) {
         try {
             fileWriter.write(key + " = " + value);
-            // TODO: logging this?
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
             fileWriter.close();
-            // TODO: logging this?
         } catch (IOException e) {
             e.printStackTrace();
         }

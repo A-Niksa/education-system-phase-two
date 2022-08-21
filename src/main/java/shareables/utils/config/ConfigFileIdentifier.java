@@ -1,6 +1,6 @@
 package shareables.utils.config;
 
-public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals for exceptions
+public enum ConfigFileIdentifier {
     CONSTANTS("constantsPath"),
     TEXTS("textsPath"),
     ACADEMIC_REQUEST_TEXTS("academicRequestTextsPath"),

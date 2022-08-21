@@ -59,4 +59,19 @@ public class SubmissionUtils {
                 .filter(submission -> submission.getId().equals(submissionId))
                 .findAny().orElse(null);
     }
+
+    public static Double getStudentScore(DatabaseManager databaseManager, String studentId, String courseId, String homeworkId) {
+        HomeworkSubmission submission = getHomeworkSubmissionWithStudentId(databaseManager, courseId, homeworkId, studentId);
+        return submission.getScore();
+    }
+
+    private static HomeworkSubmission getHomeworkSubmissionWithStudentId(DatabaseManager databaseManager, String courseId,
+                                                                         String homeworkId, String studentId) {
+        Course course = IdentifiableFetchingUtils.getCourse(databaseManager, courseId);
+        Homework homework = HomeworkViewUtils.getHomework(course.getCoursewareManager(), homeworkId);
+
+        return homework.getHomeworkSubmissions().stream()
+                .filter(submission -> submission.getOwnerId().equals(studentId))
+                .findAny().orElse(null);
+    }
 }

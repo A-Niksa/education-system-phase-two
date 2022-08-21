@@ -381,6 +381,9 @@ public class RequestMapper {
             case GET_PROFESSOR_GLOBAL_CALENDAR_EVENT_DTOS:
                 requestHandler.getProfessorGlobalCalendarEventDTOs(clientHandler, request);
                 break;
+            case GET_STUDENT_SCORE:
+                requestHandler.getStudentScore(clientHandler, request);
+                break;
         }
     }
 }

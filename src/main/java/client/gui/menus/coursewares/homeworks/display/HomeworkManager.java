@@ -60,9 +60,15 @@ public class HomeworkManager extends DynamicPanelTemplate {
     }
 
     private void updateSubmissionThumbnailTexts() {
+        if (submissionThumbnailDTOs == null) return;
+
         submissionThumbnailTexts = new String[submissionThumbnailDTOs.size()];
         for (int i = 0; i < submissionThumbnailDTOs.size(); i++) {
-            submissionThumbnailTexts[i] = submissionThumbnailDTOs.get(i).toString();
+            if (isTeachingAssistant) {
+                submissionThumbnailTexts[i] = submissionThumbnailDTOs.get(i).toStringForTA();
+            } else {
+                submissionThumbnailTexts[i] = submissionThumbnailDTOs.get(i).toString();
+            }
         }
     }
 

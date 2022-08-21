@@ -47,6 +47,8 @@ public class MaterialDisplay extends DynamicPanelTemplate {
     }
 
     private void updateEducationalItemTexts() {
+        if (educationalItems == null) return;
+
         educationalItemTexts = new String[educationalItems.size()];
         for (int i = 0; i < educationalItems.size(); i++) {
             educationalItemTexts[i] = educationalItems.get(i).toExtensiveString();

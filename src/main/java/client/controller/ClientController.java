@@ -37,8 +37,6 @@ public class ClientController {
         client.startLocalDatabaseManager(currentUserId);
     }
 
-    // TODO: having two users log in at the same time
-
     public void saveLocalDatabase() {
         client.getLocalDatabaseManager().saveDatabase();
     }
@@ -772,7 +770,7 @@ public class ClientController {
     }
 
     public Response getSubmissionThumbnailDTOs(String courseId, String homeworkId) {
-        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_HOMEWORK_THUMBNAIL_DTOS,
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_SUBMISSION_THUMBNAIL_DTOS,
                 new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId));
         return client.sendAndListen(request);
     }
@@ -808,6 +806,13 @@ public class ClientController {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_GLOBAL_CALENDAR_EVENT_DTOS,
                 new StringObjectMap("professorId", professorId),
                 new StringObjectMap("selectedDate", selectedDate));
+        return client.sendAndListen(request);
+    }
+
+    public Response getStudentHomeworkScore(String courseId, String homeworkId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_SCORE,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId),
+                new StringObjectMap("studentId", studentId));
         return client.sendAndListen(request);
     }
 

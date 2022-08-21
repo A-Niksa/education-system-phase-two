@@ -80,7 +80,6 @@ public class DatabaseManager {
         return identifierDatasetMap.get(datasetIdentifier);
     }
 
-    // TODO: should be removed ->
     public DatabaseWriter getDatabaseWriter() {
         return databaseWriter;
     }

@@ -79,7 +79,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class RequestHandler { // TODO: logging, perhaps?
+public class RequestHandler {
     private DatabaseManager databaseManager;
     private ResponseHandler responseHandler;
 
@@ -92,14 +92,14 @@ public class RequestHandler { // TODO: logging, perhaps?
         responseHandler.requestSuccessful(clientHandler);
     }
 
-    public void logIn(ClientHandler clientHandler, Request request) { // TODO: two people logging in at the same time
+    public void logIn(ClientHandler clientHandler, Request request) {
         User user = LoginUtils.getUser(databaseManager, (String) request.get("username"));
         if (user == null ||
                 !request.get("username").equals(user.getId()) || !request.get("password").equals(user.getPassword())) {
             responseHandler.wrongUsernameOrPassword(clientHandler);
         } else if (!request.get("captcha").equals(request.get("currentCaptcha"))) {
             responseHandler.wrongCaptcha(clientHandler);
-        } else if (LoginUtils.hasBeenTooLongSinceLastLogin(user)) { // TODO: set proper time in config
+        } else if (LoginUtils.hasBeenTooLongSinceLastLogin(user)) {
             responseHandler.shouldChangePassword(clientHandler);
         } else if (user.getUserIdentifier() == UserIdentifier.STUDENT &&
                 ((Student) user).getStudentStatus() == StudentStatus.DROPPED_OUT) {
@@ -1085,5 +1085,13 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<CalendarEventDTO> calendarEventDTOs = GlobalCalendarUtils.getProfessorGlobalCalendarEventDTOs(databaseManager,
                 professorId, selectedDate);
         responseHandler.calendarEventDTOsAcquired(clientHandler, calendarEventDTOs);
+    }
+
+    public void getStudentScore(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        Double score = SubmissionUtils.getStudentScore(databaseManager, studentId, courseId, homeworkId);
+        responseHandler.scoreAcquired(clientHandler, score);
     }
 }

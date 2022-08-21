@@ -109,7 +109,6 @@ public class CurrentStandingView extends DynamicPanelTemplate implements Offline
     protected void updatePanel() {
         courseScoreDTOs = (ArrayList<CourseScoreDTO>) offlineModeDTO.getCourseScoreDTOs();
         transcriptDTO = offlineModeDTO.getTranscriptDTO();
-        // TODO: removing updates
         setTableData();
         tableModel.setDataVector(data, columns);
         totalGPA.setText(totalGPAMessage + transcriptDTO.getGPAString());

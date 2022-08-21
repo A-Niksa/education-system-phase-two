@@ -55,6 +55,8 @@ public class CalendarView extends DynamicPanelTemplate {
             return;
         }
 
+        if (calendarEventDTOs == null) return;
+
         calendarEventTexts = new String[calendarEventDTOs.size()];
         for (int i = 0; i < calendarEventDTOs.size(); i++) {
             calendarEventTexts[i] = calendarEventDTOs.get(i).toString();

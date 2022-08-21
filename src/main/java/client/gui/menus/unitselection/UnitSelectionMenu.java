@@ -19,7 +19,6 @@ public class UnitSelectionMenu extends DynamicPanelTemplate {
     public UnitSelectionMenu(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
         configIdentifier = ConfigFileIdentifier.GUI_UNIT_SELECTION_MENU;
-        // TODO: updatePanel for pinnedCoursesPanel in the constructor
         drawPanel();
         startPinging(offlineModeDTO.getId());
     }

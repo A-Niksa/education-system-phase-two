@@ -27,7 +27,7 @@ public class Server {
     public Server(int port) {
         this.port = port;
         clientHandlers = new ArrayList<>();
-        currentClientHandlerId = ConfigIdSupplier.getCurrentClientId(); // TODO: resetting this in config
+        currentClientHandlerId = ConfigIdSupplier.getCurrentClientId();
         authTokenGenerator = new AuthTokenGenerator();
         databaseManager = new DatabaseManager();
         requestMapper = new RequestMapper(databaseManager);
@@ -63,7 +63,7 @@ public class Server {
                         authTokenGenerator.generateAuthToken(), socket, this);
                 currentClientHandlerId++;
                 clientHandlers.add(clientHandler);
-            } catch (IOException e) {  // TODO: handling the exception (along with exceptions associated with the network)
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

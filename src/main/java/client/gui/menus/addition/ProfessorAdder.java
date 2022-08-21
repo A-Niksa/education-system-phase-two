@@ -46,7 +46,6 @@ public class ProfessorAdder extends DynamicPanelTemplate {
         textFieldsList = new ArrayList<>();
         comboBoxesList = new ArrayList<>();
 
-        // TODO: adding profile picture?
         passwordField = new JTextField(ConfigManager.getString(configIdentifier, "passwordFieldM"));
         textFieldsList.add(passwordField);
         nationalIdField = new JTextField(ConfigManager.getString(configIdentifier, "nationalIdFieldM"));

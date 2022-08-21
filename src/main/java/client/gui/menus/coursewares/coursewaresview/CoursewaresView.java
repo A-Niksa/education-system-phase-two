@@ -32,6 +32,8 @@ public abstract class CoursewaresView extends DynamicPanelTemplate {
     protected abstract void updateCourseThumbnailDTOs();
 
     private void updateCourseThumbnailTexts() {
+        if (courseThumbnailDTOs == null) return;
+
         courseThumbnailTexts = new String[courseThumbnailDTOs.size()];
         for (int i = 0; i < courseThumbnailDTOs.size(); i++) {
             courseThumbnailTexts[i] = courseThumbnailDTOs.get(i).toShortenedString();

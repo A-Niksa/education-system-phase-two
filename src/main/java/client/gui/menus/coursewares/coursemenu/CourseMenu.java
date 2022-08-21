@@ -78,6 +78,8 @@ public class CourseMenu extends DynamicPanelTemplate {
             return;
         }
 
+        if (calendarEventDTOs == null) return;
+
         Response response = clientController.getCalendarEventDTOs(courseId, selectedLocalDateTime);
         if (response == null) return;
         calendarEventDTOs = (ArrayList<CalendarEventDTO>) response.get("calendarEventDTOs");

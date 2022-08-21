@@ -42,7 +42,7 @@ public class ServerController {
 
     public void attemptConnectionToServer() {
         try {
-            Socket socket = new Socket(InetAddress.getLocalHost(), port); // TODO: diff between this ip and the config ip?
+            Socket socket = new Socket(InetAddress.getLocalHost(), port);
             socket.setSoTimeout(SO_TIMEOUT);
             client.setOnline(true);
             in = new Scanner(socket.getInputStream());
@@ -70,7 +70,7 @@ public class ServerController {
             String responseString = in.nextLine();
             Response response = objectMapper.readValue(responseString, Response.class);
             authToken = response.getUnsolicitedMessage();
-        } catch (NoSuchElementException e) { // TODO: is this the correct exception
+        } catch (NoSuchElementException e) {
             goOffline("receiveAuthTokenFromServer");
         } catch (JsonProcessingException e) {
             e.printStackTrace();

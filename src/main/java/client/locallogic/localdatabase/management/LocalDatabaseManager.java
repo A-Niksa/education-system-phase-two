@@ -61,31 +61,21 @@ public class LocalDatabaseManager {
 
     public void loadDatabase() {
         localDatabaseReader.loadDatabase();
-//        MasterLogger.clientInfo(Integer.parseInt(currentUserId), "Loaded database from resources",
-//                "loadDatabase", getClass());
     }
 
     public void saveDatabase() {
         localDatabaseWriter.saveDatabase();
-//        MasterLogger.clientInfo(Integer.parseInt(currentUserId), "Saved database to resources",
-//                "saveDatabase", getClass());
     }
 
     public synchronized void save(LocalDatasetIdentifier localDatasetIdentifier, Identifiable identifiable) {
         getDataset(localDatasetIdentifier).save(identifiable);
-//        MasterLogger.clientInfo(Integer.parseInt(currentUserId), "Saved identifiable (id: " +
-//                        identifiable.getId() + ")", "save", getClass());
     }
 
     public synchronized void remove(LocalDatasetIdentifier localDatasetIdentifier, String identifiableId) {
         getDataset(localDatasetIdentifier).remove(identifiableId);
-//        MasterLogger.clientInfo(Integer.parseInt(currentUserId), "Removed identifiable (id: " +
-//                        identifiableId + ")", "remove", getClass());
     }
 
     public Identifiable get(LocalDatasetIdentifier localDatasetIdentifier, String identifiableId) {
-//        MasterLogger.clientInfo(Integer.parseInt(currentUserId), "Fetched identifiable (id: " +
-//                        identifiableId + ")", "get", getClass());
         return getDataset(localDatasetIdentifier).get(identifiableId);
     }
 
@@ -93,8 +83,6 @@ public class LocalDatabaseManager {
      * gets the identifiables list of a particular dataset
      */
     public List<Identifiable> getIdentifiables(LocalDatasetIdentifier localDatasetIdentifier) {
-//        MasterLogger.clientInfo(Integer.parseInt(currentUserId), "Fetched identifiables list from " +
-//                        localDatasetIdentifier, "getIdentifiables", getClass());
         return getDataset(localDatasetIdentifier).getIdentifiables();
     }
 
@@ -104,8 +92,6 @@ public class LocalDatabaseManager {
     public synchronized void update(LocalDatasetIdentifier localDatasetIdentifier, Identifiable identifiable) {
         remove(localDatasetIdentifier, identifiable.getId());
         save(localDatasetIdentifier, identifiable);
-//        MasterLogger.clientInfo(Integer.parseInt(currentUserId), "Updated identifiable (id: " +
-//                        identifiable.getId() + ")", "update", getClass());
     }
 
     public synchronized List<QueuedMessage> getAllQueuedMessages() {
@@ -129,7 +115,6 @@ public class LocalDatabaseManager {
         return currentUserId;
     }
 
-    // TODO: should be removed ->
     public LocalDatabaseWriter getDatabaseWriter() {
         return localDatabaseWriter;
     }

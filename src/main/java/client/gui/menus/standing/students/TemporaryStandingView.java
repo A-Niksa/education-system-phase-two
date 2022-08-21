@@ -34,7 +34,7 @@ public class TemporaryStandingView extends DynamicPanelTemplate {
     }
 
     public void updateTable() {
-        updateTemporaryCourseScoreDTOs(); // TODO: removing this line here and elsewhere after adding pings
+        updateTemporaryCourseScoreDTOs();
         setTableData();
         tableModel.setDataVector(data, columns);
     }

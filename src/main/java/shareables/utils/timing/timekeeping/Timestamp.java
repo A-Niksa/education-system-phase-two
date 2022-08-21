@@ -2,7 +2,7 @@ package shareables.utils.timing.timekeeping;
 
 import java.time.LocalDateTime;
 
-public class Timestamp { // TODO: delete if necessary
+public class Timestamp {
     private int year;
     private int month;
     private int day;

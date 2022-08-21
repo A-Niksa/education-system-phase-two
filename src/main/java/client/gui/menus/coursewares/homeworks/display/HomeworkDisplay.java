@@ -4,6 +4,7 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.coursewares.homeworks.listview.StudentHomeworksView;
 import client.gui.menus.main.MainMenu;
+import client.locallogic.menus.coursewares.ScoreFormattingUtils;
 import client.locallogic.menus.messaging.DownloadManager;
 import client.locallogic.menus.messaging.MediaFileParser;
 import shareables.models.pojos.coursewares.SubmissionType;
@@ -34,8 +35,11 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
     private JLabel fileChoosingBackground;
     private File chosenFile;
     private String chosenFileLabelMessage;
+    private Double score;
+    private JLabel scoreLabel;
     private MediaFileParser mediaFileParser;
     private DownloadManager downloadManager;
+    private String scoreLabelMessage;
 
     public HomeworkDisplay(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO, String courseId,
                            String homeworkId) {
@@ -44,6 +48,7 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
         this.homeworkId = homeworkId;
         configIdentifier = ConfigFileIdentifier.GUI_HOMEWORK_DISPLAY;
         initializeSubmissionType();
+        updateScore();
         mediaFileParser = new MediaFileParser();
         downloadManager = new DownloadManager();
         drawPanel();
@@ -58,14 +63,22 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
 
     @Override
     protected void updatePanel() {
+        updateScore();
+        scoreLabel.setText(scoreLabelMessage + ScoreFormattingUtils.getScoreString(score));
+    }
+
+    private void updateScore() {
+        Response response = clientController.getStudentHomeworkScore(courseId, homeworkId, offlineModeDTO.getId());
+        if (response == null) return;
+        score = (Double) response.get("score");
     }
 
     @Override
     protected void initializeComponents() {
-        sendTextButton = new JButton(ConfigManager.getString(configIdentifier, "sendMessageButtonM"));
+        sendTextButton = new JButton(ConfigManager.getString(configIdentifier, "sendTextButtonM"));
         sendFileButton = new JButton(ConfigManager.getString(configIdentifier, "sendFileButtonM"));
         chooseFileButton = new JButton(ConfigManager.getString(configIdentifier, "chooseFileButtonM"));
-        textField = new JTextField(ConfigManager.getString(configIdentifier, "messageFieldM"));
+        textField = new JTextField(ConfigManager.getString(configIdentifier, "textFieldM"));
         chosenFileLabelMessage = ConfigManager.getString(configIdentifier, "chosenFileLabelM");
         chosenFileLabel = new JLabel(chosenFileLabelMessage);
         fileChoosingBackground = new JLabel();
@@ -75,6 +88,9 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
         downloadHomeworkPDFButton = new JButton(ConfigManager.getString(configIdentifier,
                 "downloadHomeworkPDFButtonM"));
         goBackButton = new JButton(ConfigManager.getString(configIdentifier, "goBackButtonM"));
+
+        scoreLabelMessage = ConfigManager.getString(configIdentifier, "scoreLabelM");
+        scoreLabel = new JLabel(scoreLabelMessage + ScoreFormattingUtils.getScoreString(score), SwingConstants.CENTER);
     }
 
     @Override
@@ -95,10 +111,16 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "goBackButtonH"));
         add(goBackButton);
 
-        sendTextButton.setBounds(ConfigManager.getInt(configIdentifier, "sendMessageButtonX"),
-                ConfigManager.getInt(configIdentifier, "sendMessageButtonY"),
-                ConfigManager.getInt(configIdentifier, "sendMessageButtonW"),
-                ConfigManager.getInt(configIdentifier, "sendMessageButtonH"));
+        scoreLabel.setBounds(ConfigManager.getInt(configIdentifier, "scoreLabelX"),
+                ConfigManager.getInt(configIdentifier, "scoreLabelY"),
+                ConfigManager.getInt(configIdentifier, "scoreLabelW"),
+                ConfigManager.getInt(configIdentifier, "scoreLabelH"));
+        add(scoreLabel);
+
+        sendTextButton.setBounds(ConfigManager.getInt(configIdentifier, "sendTextButtonX"),
+                ConfigManager.getInt(configIdentifier, "sendTextButtonY"),
+                ConfigManager.getInt(configIdentifier, "sendTextButtonW"),
+                ConfigManager.getInt(configIdentifier, "sendTextButtonH"));
         sendFileButton.setBounds(ConfigManager.getInt(configIdentifier, "sendFileButtonX"),
                 ConfigManager.getInt(configIdentifier, "sendFileButtonY"),
                 ConfigManager.getInt(configIdentifier, "sendFileButtonW"),
@@ -107,10 +129,10 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "chooseFileButtonY"),
                 ConfigManager.getInt(configIdentifier, "chooseFileButtonW"),
                 ConfigManager.getInt(configIdentifier, "chooseFileButtonH"));
-        textField.setBounds(ConfigManager.getInt(configIdentifier, "messageFieldX"),
-                ConfigManager.getInt(configIdentifier, "messageFieldY"),
-                ConfigManager.getInt(configIdentifier, "messageFieldW"),
-                ConfigManager.getInt(configIdentifier, "messageFieldH"));
+        textField.setBounds(ConfigManager.getInt(configIdentifier, "textFieldX"),
+                ConfigManager.getInt(configIdentifier, "textFieldY"),
+                ConfigManager.getInt(configIdentifier, "textFieldW"),
+                ConfigManager.getInt(configIdentifier, "textFieldH"));
         chosenFileLabel.setBounds(ConfigManager.getInt(configIdentifier, "chosenFileLabelX"),
                 ConfigManager.getInt(configIdentifier, "chosenFileLabelY"),
                 ConfigManager.getInt(configIdentifier, "chosenFileLabelW"),

@@ -78,7 +78,6 @@ public class ProfessorMenu extends MainMenu {
 
     private void initializeAcademicRole() {
         if (offlineModeDTO != null) role = offlineModeDTO.getAcademicRole();
-//        else role = professor.getAcademicRole();
         else role = AcademicRole.NORMAL;
     }
 
@@ -326,8 +325,6 @@ public class ProfessorMenu extends MainMenu {
                 mainFrame.setCurrentPanel(new ProfessorAdder(mainFrame, mainMenu, offlineModeDTO));
             }
         });
-
-        // TODO: unrelated but handling two consecutive message notifs?
 
         addUnitSelectionButton.addActionListener(new ActionListener() {
             @Override

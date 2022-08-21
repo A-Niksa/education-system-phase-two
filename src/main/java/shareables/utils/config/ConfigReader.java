@@ -16,7 +16,6 @@ public class ConfigReader extends Properties {
         try {
             fileReader = new FileReader(configPath);
             load(fileReader);
-            // TODO: logging this?
         } catch (IOException e) {
             e.printStackTrace();
         }

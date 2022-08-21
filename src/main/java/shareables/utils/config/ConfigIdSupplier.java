@@ -27,7 +27,7 @@ public class ConfigIdSupplier {
         return nextClientId;
     }
 
-    public static synchronized int getCurrentClientId() { // TODO: should this really be synchronized?
+    public static synchronized int getCurrentClientId() {
         return ConfigManager.getInt(getInstance().configFileIdentifier, "currentClientId");
     }
 

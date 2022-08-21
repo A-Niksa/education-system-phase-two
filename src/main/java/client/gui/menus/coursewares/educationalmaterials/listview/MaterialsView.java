@@ -41,6 +41,8 @@ public abstract class MaterialsView extends DynamicPanelTemplate {
     }
 
     private void updateMaterialThumbnailTexts() {
+        if (materialThumbnailDTOs == null) return;
+
         materialThumbnailTexts = new String[materialThumbnailDTOs.size()];
         for (int i = 0; i < materialThumbnailDTOs.size(); i++) {
             materialThumbnailTexts[i] = materialThumbnailDTOs.get(i).toString();

@@ -23,7 +23,6 @@ public class UnitSelectionSession extends IdentifiableWithTime {
     }
 
     public void resetSession() {
-        // TODO
         studentSelectionLogs.clear();
     }
 

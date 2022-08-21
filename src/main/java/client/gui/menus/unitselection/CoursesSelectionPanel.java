@@ -89,7 +89,6 @@ public abstract class CoursesSelectionPanel extends JPanel {
                 ConfigManager.getInt(configIdentifier, "requestAcquisitionButtonY"),
                 ConfigManager.getInt(configIdentifier, "requestAcquisitionButtonW"),
                 ConfigManager.getInt(configIdentifier, "requestAcquisitionButtonH"));
-        // TODO
     }
 
     protected void removePreviousCourseSelectionButtons() {
@@ -243,7 +242,6 @@ public abstract class CoursesSelectionPanel extends JPanel {
         removePreviousCourseSelectionButtons();
         setAppropriateCourseSelectionButtons(selectedCourseThumbnailDTO);
         repaint();
-//        revalidate();
     }
 
     private void updateSelectedCourseId() {
