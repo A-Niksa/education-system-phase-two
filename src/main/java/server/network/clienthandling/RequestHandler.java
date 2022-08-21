@@ -967,4 +967,11 @@ public class RequestHandler { // TODO: logging, perhaps?
         MaterialItemUtils.removeAllCourseEducationalMaterials(databaseManager, courseId);
         responseHandler.requestSuccessful(clientHandler);
     }
+
+    public void getTeachingAssistanceStatus(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String studentId = (String) request.get("studentId");
+        boolean isTeachingAssistant = CoursewaresViewUtils.isTeachingAssistant(databaseManager, courseId, studentId);
+        responseHandler.teachingAssistanceStatusAcquired(clientHandler, isTeachingAssistant);
+    }
 }

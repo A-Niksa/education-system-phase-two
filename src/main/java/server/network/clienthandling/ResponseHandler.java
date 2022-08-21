@@ -521,4 +521,10 @@ public class ResponseHandler {
         response.put("educationalItems", educationalItems);
         clientHandler.respond(response);
     }
+
+    public void teachingAssistanceStatusAcquired(ClientHandler clientHandler, boolean isTeachingAssistant) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("isTeachingAssistant", isTeachingAssistant);
+        clientHandler.respond(response);
+    }
 }

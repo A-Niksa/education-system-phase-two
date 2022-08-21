@@ -29,7 +29,7 @@ public class MaterialAdder extends DynamicPanelTemplate {
     private JButton addTextItemButton;
     private JButton addMediaItemButton;
     protected JButton saveButton;
-    private JButton goBackButton;
+    protected JButton goBackButton;
     private ItemGenerator itemGenerator;
     private MediaFileParser mediaFileParser;
 

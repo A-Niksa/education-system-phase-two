@@ -339,6 +339,9 @@ public class RequestMapper {
             case REMOVE_ALL_COURSE_EDUCATIONAL_MATERIALS:
                 requestHandler.removeAllCourseEducationalMaterials(clientHandler, request);
                 break;
+            case GET_TEACHING_ASSISTANCE_STATUS:
+                requestHandler.getTeachingAssistanceStatus(clientHandler, request);
+                break;
         }
     }
 }

@@ -1,8 +1,11 @@
 package client.gui.menus.coursewares.educationalmaterials.addition;
 
 import client.gui.MainFrame;
+import client.gui.menus.coursewares.educationalmaterials.listview.ProfessorMaterialsView;
+import client.gui.menus.coursewares.educationalmaterials.listview.StudentMaterialsView;
 import client.gui.menus.main.MainMenu;
 import shareables.models.pojos.coursewares.EducationalItem;
+import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -16,14 +19,27 @@ import java.util.ArrayList;
 public class MaterialEditor extends MaterialAdder {
     private String materialId;
     private JButton removeItemButton;
+    private boolean isTeachingAssistant;
 
     public MaterialEditor(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO, String courseId,
                           String materialId) {
         super(mainFrame, mainMenu, offlineModeDTO, courseId, "");
         this.materialId = materialId;
+        initializeTeachingAssistanceStatus();
         initializeItemsList();
         addRemovalFeature();
         connectNewSaveListener();
+        connectNewBackListenerIfNecessary();
+    }
+
+    private void initializeTeachingAssistanceStatus() {
+        if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
+            isTeachingAssistant = false;
+        } else {
+            Response response = clientController.getTeachingAssistanceStatus(courseId, offlineModeDTO.getId());
+            if (response == null) return;
+            isTeachingAssistant = (boolean) response.get("isTeachingAssistant");
+        }
     }
 
     private void connectNewSaveListener() {
@@ -37,6 +53,21 @@ public class MaterialEditor extends MaterialAdder {
                 MasterLogger.clientInfo(clientController.getId(), "Edited educational material",
                         "connectListeners", getClass());
             }
+        });
+    }
+
+
+
+    private void connectNewBackListenerIfNecessary() {
+        if (!isTeachingAssistant) return;
+
+        goBackButton.removeActionListener(goBackButton.getActionListeners()[0]);
+
+        goBackButton.addActionListener(actionEvent -> {
+            MasterLogger.clientInfo(clientController.getId(), "Went back to materials listview",
+                    "connectListeners", getClass());
+            stopPanelLoop();
+            mainFrame.setCurrentPanel(new StudentMaterialsView(mainFrame, mainMenu, offlineModeDTO, courseId));
         });
     }
 

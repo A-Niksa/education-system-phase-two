@@ -722,6 +722,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getTeachingAssistanceStatus(String courseId, String studentId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_TEACHING_ASSISTANCE_STATUS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("studentId", studentId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

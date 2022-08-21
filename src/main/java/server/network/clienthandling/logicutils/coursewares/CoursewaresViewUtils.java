@@ -2,6 +2,7 @@ package server.network.clienthandling.logicutils.coursewares;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.idgeneration.Identifiable;
 import shareables.models.pojos.abstractions.Course;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
@@ -47,7 +48,10 @@ public class CoursewaresViewUtils {
         return courses.stream()
                 .map(identifiable -> (Course) identifiable)
                 .filter(Course::isActive)
-                .filter(course -> course.getStudentIds().contains(studentId))
+                .filter(course -> {
+                    return course.getStudentIds().contains(studentId) ||
+                            course.getTeachingAssistantIds().contains(studentId);
+                })
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -70,5 +74,10 @@ public class CoursewaresViewUtils {
         courseThumbnailDTO.setTeachingAssistantNames(getTeachingAssistantNames(databaseManager, course));
 
         return courseThumbnailDTO;
+    }
+
+    public static boolean isTeachingAssistant(DatabaseManager databaseManager, String courseId, String studentId) {
+        Course course = IdentifiableFetchingUtils.getCourse(databaseManager, courseId);
+        return course.getTeachingAssistantIds().contains(studentId);
     }
 }
