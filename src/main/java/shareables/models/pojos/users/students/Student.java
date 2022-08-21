@@ -116,7 +116,6 @@ public class Student extends User {
         this.enrolmentTime = enrolmentTime;
     }
 
-    // TODO: should be removed
     @Override
     public String toString() {
         return "Student{" +

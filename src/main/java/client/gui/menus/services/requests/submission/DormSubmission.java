@@ -15,7 +15,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DormSubmission extends DynamicPanelTemplate {
-    // TODO: saving dorm result?
     private JLabel dormPrompt;
     private JButton submitRequest;
     private JSeparator separator;

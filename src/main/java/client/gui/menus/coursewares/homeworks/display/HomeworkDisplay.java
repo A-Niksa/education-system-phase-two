@@ -148,6 +148,7 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
             add(textField);
             add(sendTextButton);
         } else if (submissionType == SubmissionType.MEDIA_FILE) {
+            add(chooseFileButton);
             add(chosenFileLabel);
             add(sendFileButton);
             add(fileChoosingBackground);
@@ -229,7 +230,9 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
             if (response == null) return;
 
             if (response.getResponseStatus() == ResponseStatus.OK) {
-                JTextArea descriptionTextArea = new JTextArea((String) response.get("description"));
+                String description = (String) response.get("description");
+                if (description == null) description = "";
+                JTextArea descriptionTextArea = new JTextArea(description);
                 descriptionTextArea.setLineWrap(true);
                 descriptionTextArea.setWrapStyleWord(true);
                 descriptionTextArea.setEditable(false);

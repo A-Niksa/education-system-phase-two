@@ -56,7 +56,6 @@ public class CoursesListView extends DynamicPanelTemplate {
     }
 
     private void updateActiveCourseDTOs() {
-//        clientController.getActiveCourseDTOs(); // duplicating request to avoid receiving lossy data
         Response response = clientController.getActiveCourseDTOs();
         if (response == null) return;
         activeCourseDTOs = (ArrayList<CourseDTO>) response.get("courseDTOs");

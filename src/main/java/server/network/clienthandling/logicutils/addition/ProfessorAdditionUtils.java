@@ -69,8 +69,6 @@ public class ProfessorAdditionUtils {
         return professor.getId();
     }
 
-    // TODO: unrelated to here but making student ids department independent (For sequential ones) or increasing capacity
-
     private static void updateAdvisingProfessorOfAdviseeStudents(DatabaseManager databaseManager,
                                                                  List<String> adviseeStudentIdsList, String advisingProfessorId) {
         adviseeStudentIdsList.stream()

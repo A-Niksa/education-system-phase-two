@@ -62,9 +62,6 @@ public abstract class MessengerView extends DynamicPanelTemplate implements Offl
     }
 
     protected void updateConversationThumbnailDTOs() {
-//        Response response = clientController.getConversationThumbnailDTOs(offlineModeDTO.getId());
-//        if (response == null) return;
-//        conversationThumbnailDTOs = (ArrayList<ConversationThumbnailDTO>) response.get("conversationThumbnailDTOs");
         conversationThumbnailDTOs = (ArrayList<ConversationThumbnailDTO>) offlineModeDTO.getConversationThumbnailDTOs();
     }
 

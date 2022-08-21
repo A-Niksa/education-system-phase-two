@@ -48,11 +48,6 @@ public abstract class DepartmentBuilder {
 
         if (departmentName == DepartmentName.PHYSICS) addStudentsToCourses();
 
-        // TODO: to be removed -> 
-        if (departmentName == DepartmentName.MATHEMATICS) {
-            courses.get(0).addToStudentIds(students.get(0).getId());
-        }
-
         saveDepartment(databaseManager);
     }
 

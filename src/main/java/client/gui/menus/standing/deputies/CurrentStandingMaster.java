@@ -152,8 +152,8 @@ public class CurrentStandingMaster extends DynamicPanelTemplate {
     }
 
     private void setSeeGPAButton() {
-        if (seeGPAButton != null) { // resetting the seeGPAButton if there was a previous seeGPAButton set up (which
-            // won't be null)
+        if (seeGPAButton != null) { /* resetting the seeGPAButton if there was a previous seeGPAButton set up (which
+            won't be null) */
             remove(seeGPAButton);
         }
 

@@ -38,7 +38,6 @@ public class CourseEditor extends DynamicPanelTemplate {
 
     public CourseEditor(MainFrame mainFrame, MainMenu mainMenu, CourseDTO courseDTO,
                         OfflineModeDTO offlineModeDTO) {
-        // TODO: perhaps updating the courseDTO
         super(mainFrame, mainMenu, offlineModeDTO);
         this.courseDTO = courseDTO;
         configIdentifier = ConfigFileIdentifier.GUI_COURSE_EDITOR;

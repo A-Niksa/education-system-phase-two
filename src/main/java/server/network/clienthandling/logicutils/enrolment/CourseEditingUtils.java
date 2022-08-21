@@ -49,7 +49,7 @@ public class CourseEditingUtils {
                 departmentId);
 
         return teachingProfessorIdsList.parallelStream().allMatch(allProfessorIds::contains) &&
-                teachingProfessorIdsList.size() == newTeachingProfessorNames.length; // TODO: two profs with the same name?
+                teachingProfessorIdsList.size() == newTeachingProfessorNames.length;
     }
 
     public static boolean coursesExist(DatabaseManager databaseManager, String[] courseIds) {

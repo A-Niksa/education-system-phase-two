@@ -816,6 +816,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response checkDeadlineConstraints(String courseId, String homeworkId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.CHECK_DEADLINE_CONSTRAINTS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

@@ -32,7 +32,6 @@ public class EnumStringMappingUtils {
 
     public static String getDepartmentId(String departmentNameString) {
         String departmentId;
-        // TODO: making this more elegant?
         switch (departmentNameString) {
             case "General Centers":
                 departmentId = "0";

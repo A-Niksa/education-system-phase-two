@@ -61,7 +61,6 @@ public class ProfessorEditor extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "goBackButtonW"),
                 ConfigManager.getInt(configIdentifier, "goBackButtonH"));
         add(goBackButton);
-        // TODO: perhaps adding advising professor editing?
         professorName.setBounds(ConfigManager.getInt(configIdentifier, "professorNameX"),
                 ConfigManager.getInt(configIdentifier, "professorNameY"),
                 ConfigManager.getInt(configIdentifier, "professorNameW"),
@@ -134,8 +133,6 @@ public class ProfessorEditor extends DynamicPanelTemplate {
                 }
             }
         });
-
-        // TODO: adding advisees editor?
 
         changeOfficeNumber.addActionListener(new ActionListener() {
             @Override

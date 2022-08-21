@@ -39,7 +39,6 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
     }
 
     private void updateDepartmentProfessorDTOs() {
-//        clientController.getDepartmentProfessorDTOs(professor.getDepartmentId());
         Response response = clientController.getDepartmentProfessorDTOs(offlineModeDTO.getDepartmentId());
         if (response == null) return;
         departmentProfessorDTOs = (ArrayList<ProfessorDTO>) response.get("professorDTOs");

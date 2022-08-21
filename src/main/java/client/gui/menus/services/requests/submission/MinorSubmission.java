@@ -120,8 +120,6 @@ public class MinorSubmission extends DynamicPanelTemplate {
                             targetDepartmentNameString, "connectListeners", getClass());
                     updateTable();
                 }
-                // TODO: remove updater here and other places after putting pinging
-                // TODO: using a standard method instead of setTableData everywhere
             }
         });
     }

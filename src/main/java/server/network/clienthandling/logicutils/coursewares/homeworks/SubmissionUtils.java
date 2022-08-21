@@ -62,6 +62,7 @@ public class SubmissionUtils {
 
     public static Double getStudentScore(DatabaseManager databaseManager, String studentId, String courseId, String homeworkId) {
         HomeworkSubmission submission = getHomeworkSubmissionWithStudentId(databaseManager, courseId, homeworkId, studentId);
+        if (submission == null) return null;
         return submission.getScore();
     }
 

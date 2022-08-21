@@ -566,4 +566,16 @@ public class ResponseHandler {
         response.put("score", score);
         clientHandler.respond(response);
     }
+
+    public void homeworkHasNotBeenStarted(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "homeworkHasNotBeenStarted"));
+        clientHandler.respond(response);
+    }
+
+    public void sharpDeadlineHasBeenPassed(ClientHandler clientHandler) {
+        Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                "sharpDeadlineHasBeenPassed"));
+        clientHandler.respond(response);
+    }
 }

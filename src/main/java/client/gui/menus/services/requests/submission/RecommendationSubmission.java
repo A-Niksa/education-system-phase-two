@@ -119,8 +119,6 @@ public class RecommendationSubmission extends DynamicPanelTemplate {
         recommendationDisplayer.displayRecommendations();
     }
 
-    // TODO: bug: list of all professors won't be displayed completely if i close the program and run it again
-
     @Override
     protected void connectListeners() {
         submitRequest.addActionListener(new ActionListener() {
@@ -147,7 +145,6 @@ public class RecommendationSubmission extends DynamicPanelTemplate {
     protected void updatePanel() {
         updateProfessorDTOs();
         setTableData();
-        // TODO: sorting the profs list perhaps (by id)?
         tableModel.setDataVector(data, columns);
         currentRecommendations.forEach(this::remove);
         recommendationDisplayer.displayRecommendations();

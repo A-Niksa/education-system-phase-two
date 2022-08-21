@@ -42,13 +42,16 @@ public class LoginUtils {
     public static void changePassword(DatabaseManager databaseManager, User user, String newPassword) {
         user.setPassword(newPassword);
         user.updateLastLogin();
-        // TODO: adding cases for mohseni and admin
         switch (user.getUserIdentifier()) {
             case STUDENT:
                 databaseManager.update(DatasetIdentifier.STUDENTS, user);
                 break;
             case PROFESSOR:
                 databaseManager.update(DatasetIdentifier.PROFESSORS, user);
+                break;
+            case ADMIN:
+            case MR_MOHSENI:
+                databaseManager.update(DatasetIdentifier.SPECIAL_USERS, user);
                 break;
         }
     }

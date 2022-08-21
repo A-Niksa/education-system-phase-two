@@ -333,8 +333,6 @@ public class TemporaryStandingManager extends DynamicPanelTemplate {
     protected void updatePanel() {
         removePreviousButtons();
         updateCourseScoreDTOsForSelectedCourse();
-//        updateCoursesBox();
-        // TODO: updating courses box here and in master (don't remove the methods though, just in case)
         updateTable();
         initializeInteractiveButtons();
         alignInteractiveButtons();
@@ -342,6 +340,4 @@ public class TemporaryStandingManager extends DynamicPanelTemplate {
         repaint();
         validate();
     }
-
-    // TODO: removing JOptionPane remaining? : if we go offline while the scoring pane is open, it'll remain open
 }

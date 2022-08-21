@@ -39,7 +39,6 @@ public class UnitSelectionManager {
                 addStudentsToAcquiredCourses(databaseManager, validationTool, earliestSession);
                 sendEnrolmentNotificationsToStudents(databaseManager, validationTool, earliestSession);
                 removeSessionFromDepartment(databaseManager, earliestSession);
-                // TODO: adding to CW
 
                 MasterLogger.serverInfo("Unit selection session validated (ID: " + earliestSession.getId() + ")",
                         "validateAnyUnitSelectionSessionsIfNecessary", getClass());

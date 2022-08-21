@@ -29,8 +29,6 @@ public class DroppingOutManager extends RequestManager {
         columns[1] = ConfigManager.getString(configIdentifier, "studentNameCol");
     }
 
-    // TODO: unrelated but having 3 digit ids for students
-
     @Override
     protected void setRequestsList() {
         Response response = clientController.getDepartmentDroppingOutRequestDTOs(offlineModeDTO.getDepartmentId());
@@ -68,8 +66,6 @@ public class DroppingOutManager extends RequestManager {
             }
         });
     }
-
-    // TODO: unrelated but resolving the sequential id bug (100 -> 302)
 
     @Override
     protected void setDeclineListener(int index) {

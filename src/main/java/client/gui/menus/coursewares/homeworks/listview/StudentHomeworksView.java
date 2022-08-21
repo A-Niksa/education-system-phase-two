@@ -4,6 +4,7 @@ import client.gui.MainFrame;
 import client.gui.menus.coursewares.homeworks.display.HomeworkDisplay;
 import client.gui.menus.coursewares.homeworks.display.HomeworkManager;
 import client.gui.menus.main.MainMenu;
+import client.gui.utils.ErrorUtils;
 import client.locallogic.menus.messaging.ThumbnailParser;
 import shareables.models.pojos.users.UserIdentifier;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
@@ -46,6 +47,17 @@ public class StudentHomeworksView extends HomeworksView {
 
             String selectedListItem = graphicalList.getSelectedValue();
             String selectedHomeworkId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
+
+            if (!isTeachingAssistant) {
+                Response response = clientController.checkDeadlineConstraints(courseId, selectedHomeworkId);
+                if (response == null) return;
+
+                if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
+                    MasterLogger.clientError(clientController.getId(), response.getErrorMessage(),
+                            "connectListeners", getClass());
+                    return;
+                }
+            }
 
             MasterLogger.clientInfo(clientController.getId(), "Opened homeworks display",
                     "connectListeners", getClass());

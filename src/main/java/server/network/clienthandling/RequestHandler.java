@@ -10,10 +10,7 @@ import server.network.clienthandling.logicutils.coursewares.educationalmaterials
 import server.network.clienthandling.logicutils.coursewares.general.CoursewareDownloadUtils;
 import server.network.clienthandling.logicutils.coursewares.general.CoursewareEnrolmentUtils;
 import server.network.clienthandling.logicutils.coursewares.general.CoursewaresViewUtils;
-import server.network.clienthandling.logicutils.coursewares.homeworks.HomeworkAdditionUtils;
-import server.network.clienthandling.logicutils.coursewares.homeworks.HomeworkThumbnailUtils;
-import server.network.clienthandling.logicutils.coursewares.homeworks.HomeworkViewUtils;
-import server.network.clienthandling.logicutils.coursewares.homeworks.SubmissionUtils;
+import server.network.clienthandling.logicutils.coursewares.homeworks.*;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
@@ -1093,5 +1090,17 @@ public class RequestHandler {
         String homeworkId = (String) request.get("homeworkId");
         Double score = SubmissionUtils.getStudentScore(databaseManager, studentId, courseId, homeworkId);
         responseHandler.scoreAcquired(clientHandler, score);
+    }
+
+    public void checkDeadlineConstraints(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        if (DeadlineConstraintUtils.homeworkHasNotBeenStarted(databaseManager, courseId, homeworkId)) {
+            responseHandler.homeworkHasNotBeenStarted(clientHandler);
+        } else if (DeadlineConstraintUtils.sharpDeadlineHasBeenPassed(databaseManager, courseId, homeworkId)) {
+            responseHandler.sharpDeadlineHasBeenPassed(clientHandler);
+        } else {
+            responseHandler.requestSuccessful(clientHandler);
+        }
     }
 }

@@ -44,7 +44,9 @@ public class NotificationManagementUtils {
         notificationDTO.setSentByUser(notification.isSentByUser());
         notificationDTO.setSenderId(notification.getSenderId());
         User user = IdentifiableFetchingUtils.getUser(databaseManager, notification.getSenderId());
-        notificationDTO.setSenderName(user.fetchName());
+        if (user != null) {
+            notificationDTO.setSenderName(user.fetchName());
+        }
         notificationDTO.setRequest(notification.isRequest());
         notificationDTO.setNotificationIdentifier(notification.getNotificationIdentifier());
         notificationDTO.setNotificationText(notification.getNotificationText());

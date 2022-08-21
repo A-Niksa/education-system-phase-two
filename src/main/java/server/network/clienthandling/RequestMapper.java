@@ -384,6 +384,9 @@ public class RequestMapper {
             case GET_STUDENT_SCORE:
                 requestHandler.getStudentScore(clientHandler, request);
                 break;
+            case CHECK_DEADLINE_CONSTRAINTS:
+                requestHandler.checkDeadlineConstraints(clientHandler, request);
+                break;
         }
     }
 }

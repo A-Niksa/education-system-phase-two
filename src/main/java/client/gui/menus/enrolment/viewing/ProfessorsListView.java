@@ -38,7 +38,6 @@ public class ProfessorsListView extends DynamicPanelTemplate {
     }
 
     private void updateProfessorDTOs() {
-//        clientController.getProfessorDTOs(); // duplicating request to avoid receiving lossy data
         Response response = clientController.getProfessorDTOs();
         if (response == null) return;
         professorDTOs = (ArrayList<ProfessorDTO>) response.get("professorDTOs");
