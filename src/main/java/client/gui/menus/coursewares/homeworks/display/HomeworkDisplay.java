@@ -14,6 +14,7 @@ public class HomeworkDisplay extends DynamicPanelTemplate {
         super(mainFrame, mainMenu, offlineModeDTO);
         this.courseId = courseId;
         this.homeworkId = homeworkId;
+        startPinging(offlineModeDTO.getId());
     }
 
     @Override

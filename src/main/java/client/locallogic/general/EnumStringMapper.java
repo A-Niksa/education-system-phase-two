@@ -1,5 +1,6 @@
 package client.locallogic.general;
 
+import shareables.models.pojos.coursewares.SubmissionType;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.utils.timing.timekeeping.Weekday;
 
@@ -30,6 +31,15 @@ public class EnumStringMapper {
             return DegreeLevel.GRADUATE;
         } else if (degreeLevelString.equals("PhD")) {
             return DegreeLevel.PHD;
+        }
+        return null;
+    }
+
+    public static SubmissionType getSubmissionType(String submissionTypeString) {
+        if (submissionTypeString.equals("Text")) {
+            return SubmissionType.TEXT;
+        } else if (submissionTypeString.equals("Media File")) {
+            return SubmissionType.MEDIA_FILE;
         }
         return null;
     }

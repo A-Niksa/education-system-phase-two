@@ -63,7 +63,7 @@ public class EnumArrayUtils {
     }
 
     public static String[] initializeSubmissionTypes() {
-        String[] submissionTypes = new String[SubmissionType.values().length - 1];
+        String[] submissionTypes = new String[SubmissionType.values().length];
         int index = 0;
         for (SubmissionType submissionType : SubmissionType.values()) {
             submissionTypes[index++] = submissionType.toString();

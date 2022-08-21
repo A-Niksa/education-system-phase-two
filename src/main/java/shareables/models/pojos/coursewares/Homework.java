@@ -12,7 +12,7 @@ public class Homework extends IdentifiableWithTime {
     private LocalDateTime startingTime;
     private LocalDateTime endingTime;
     private LocalDateTime permissibleSubmittingTime;
-    private String text;
+    private String description;
     private MediaFile mediaFile;
     private SubmissionType submissionType;
     private List<HomeworkSubmission> homeworkSubmissions;
@@ -62,12 +62,12 @@ public class Homework extends IdentifiableWithTime {
         this.permissibleSubmittingTime = permissibleSubmittingTime;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public MediaFile getMediaFile() {

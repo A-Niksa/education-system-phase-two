@@ -345,6 +345,9 @@ public class RequestMapper {
             case GET_TEACHING_ASSISTANCE_STATUS:
                 requestHandler.getTeachingAssistanceStatus(clientHandler, request);
                 break;
+            case SAVE_HOMEWORK:
+                requestHandler.saveHomework(clientHandler, request);
+                break;
         }
     }
 }

@@ -2,6 +2,8 @@ package client.locallogic.menus.addition;
 
 import client.locallogic.general.EnumStringMapper;
 import shareables.models.pojos.abstractions.TermIdentifier;
+import shareables.models.pojos.coursewares.SubmissionType;
+import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.StudentStatus;
@@ -104,6 +106,29 @@ public class BlueprintGenerator {
         blueprint.put("startsAt", startsAt);
         blueprint.put("endsAt", endsAt);
         blueprint.put("departmentId", departmentId);
+        return blueprint;
+    }
+
+    public static Blueprint generateHomeworkBlueprint(String submissionTypeString, int startingHour, int startingMinute,
+                                                      Date startingDate, int endingHour, int endingMinute, Date endingDate,
+                                                      int sharpEndingHour, int sharpEndingMinute, Date sharpEndingDate,
+                                                      MediaFile mediaFile, String description, String courseId,
+                                                      String homeworkTitle) {
+        SubmissionType submissionType = EnumStringMapper.getSubmissionType(submissionTypeString);
+        LocalDateTime startsAt = GeneralBlueprintHelper.convertToLocalDateTime(startingDate, startingHour, startingMinute);
+        LocalDateTime endsAt = GeneralBlueprintHelper.convertToLocalDateTime(endingDate, endingHour, endingMinute);
+        LocalDateTime sharplyEndsAt = GeneralBlueprintHelper.convertToLocalDateTime(sharpEndingDate, sharpEndingHour,
+                sharpEndingMinute);
+
+        Blueprint blueprint = new Blueprint();
+        blueprint.put("submissionType", submissionType);
+        blueprint.put("startsAt", startsAt);
+        blueprint.put("endsAt", endsAt);
+        blueprint.put("sharplyEndsAt", sharplyEndsAt);
+        blueprint.put("mediaFile", mediaFile);
+        blueprint.put("description", description);
+        blueprint.put("courseId", courseId);
+        blueprint.put("homeworkTitle", homeworkTitle);
         return blueprint;
     }
 }

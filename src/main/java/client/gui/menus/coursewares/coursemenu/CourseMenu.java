@@ -61,6 +61,11 @@ public class CourseMenu extends DynamicPanelTemplate {
     }
 
     private void updateCalendarEventTexts() {
+        if (selectedLocalDateTime == null) {
+            calendarEventTexts = new String[0];
+            return;
+        }
+
         calendarEventTexts = new String[calendarEventDTOs.size()];
         for (int i = 0; i < calendarEventDTOs.size(); i++) {
             calendarEventTexts[i] = calendarEventDTOs.get(i).toShortenedString();
@@ -68,6 +73,11 @@ public class CourseMenu extends DynamicPanelTemplate {
     }
 
     private void updateCalendarEventDTOs() {
+        if (selectedLocalDateTime == null) {
+            calendarEventDTOs = new ArrayList<>();
+            return;
+        }
+
         Response response = clientController.getCalendarEventDTOs(courseId, selectedLocalDateTime);
         if (response == null) return;
         calendarEventDTOs = (ArrayList<CalendarEventDTO>) response.get("calendarEventDTOs");
@@ -105,7 +115,7 @@ public class CourseMenu extends DynamicPanelTemplate {
         datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
 
         listModel = new DefaultListModel<>();
-        Arrays.stream(calendarEventTexts).forEach(e -> listModel.addElement(e));
+//        Arrays.stream(calendarEventTexts).forEach(e -> listModel.addElement(e));
         graphicalList = new JList<>(listModel);
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(graphicalList);

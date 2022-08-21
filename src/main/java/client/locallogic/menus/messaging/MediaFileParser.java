@@ -39,6 +39,17 @@ public class MediaFileParser {
         return mediaFile;
     }
 
+    public MediaFile convertFileToPDFMediaFile(File file) {
+        MediaFile mediaFile;
+        String fileSuffix = SuffixExtractionUtils.getFileSuffix(file.getPath());
+        if (".pdf".equals(fileSuffix)) {
+            mediaFile = getPDF(file);
+        } else {
+            mediaFile = null;
+        }
+        return mediaFile;
+    }
+
     private MediaFile getVideo(File file) {
         return new Video(file.getPath());
     }

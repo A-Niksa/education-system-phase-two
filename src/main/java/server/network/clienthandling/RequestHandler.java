@@ -981,4 +981,9 @@ public class RequestHandler { // TODO: logging, perhaps?
         boolean isTeachingAssistant = CoursewaresViewUtils.isTeachingAssistant(databaseManager, courseId, studentId);
         responseHandler.teachingAssistanceStatusAcquired(clientHandler, isTeachingAssistant);
     }
+
+    public void saveHomework(ClientHandler clientHandler, Request request) {
+        HomeworkAdditionUtils.addHomework(databaseManager, request);
+        responseHandler.requestSuccessful(clientHandler);
+    }
 }

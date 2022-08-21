@@ -37,7 +37,7 @@
   "phoneNumber" : "09121949494",
   "emailAddress" : "d.hamsoo@sharif.edu",
   "password" : "1234",
-  "lastLogin" : null,
+  "lastLogin" : "2022-08-21T14:17:39.8237317",
   "advisingProfessorId" : "70201102",
   "transcript" : {
     "courseIdScoreMap" : { },
