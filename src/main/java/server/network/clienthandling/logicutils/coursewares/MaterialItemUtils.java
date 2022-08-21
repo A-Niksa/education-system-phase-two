@@ -28,7 +28,7 @@ public class MaterialItemUtils {
         educationalMaterial.setEducationalItems(educationalItems);
     }
 
-    private static EducationalMaterial getEducationalMaterial(CoursewareManager coursewareManager, String materialId) {
+    public static EducationalMaterial getEducationalMaterial(CoursewareManager coursewareManager, String materialId) {
         return coursewareManager.getEducationalMaterials().stream()
                 .filter(material -> material.getId().equals(materialId))
                 .findAny().orElse(null);

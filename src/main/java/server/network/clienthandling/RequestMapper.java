@@ -229,6 +229,8 @@ public class RequestMapper {
             case DOWNLOAD_MEDIA_FROM_CONVERSATION:
                 requestHandler.downloadMediaFromConversation(clientHandler, request);
                 break;
+            case DOWNLOAD_MEDIA_FROM_EDUCATIONAL_MATERIAL:
+                requestHandler.downloadMediaFromEducationalMaterial(clientHandler, request);
             case GET_STUDENT_CONTACT_PROFILE_DTOS:
                 requestHandler.getStudentContactProfileDTOs(clientHandler, request);
                 break;

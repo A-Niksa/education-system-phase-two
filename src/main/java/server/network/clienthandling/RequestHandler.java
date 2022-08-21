@@ -611,6 +611,15 @@ public class RequestHandler { // TODO: logging, perhaps?
         }
     }
 
+    public void downloadMediaFromEducationalMaterial(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String materialId = (String) request.get("materialId");
+        String itemId = (String) request.get("itemId");
+        MediaFile mediaFile = CoursewareDownloadUtils.getMediaFileFromEducationalMaterial(databaseManager, courseId,
+                materialId, itemId);
+        responseHandler.mediaFileAcquired(clientHandler, mediaFile);
+    }
+
     public void getStudentContactProfileDTOs(ClientHandler clientHandler, Request request) {
         List<ContactProfileDTO> contactProfileDTOs = StudentContactFetchingUtils.getStudentContactProfileDTOs(databaseManager,
                 (String) request.get("username"));

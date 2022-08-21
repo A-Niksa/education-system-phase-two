@@ -4,7 +4,7 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
-import client.locallogic.menus.messaging.ThumbnailIdParser;
+import client.locallogic.menus.messaging.ThumbnailParser;
 import shareables.network.DTOs.notifications.NotificationDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
@@ -106,7 +106,7 @@ public class NotificationsView extends DynamicPanelTemplate {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedNotificationId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " | ");
+            String selectedNotificationId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " | ");
             Response response = clientController.acceptNotification(offlineModeDTO.getId(), selectedNotificationId);
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
@@ -123,7 +123,7 @@ public class NotificationsView extends DynamicPanelTemplate {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedNotificationId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " | ");
+            String selectedNotificationId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " | ");
             Response response = clientController.declineNotification(offlineModeDTO.getId(), selectedNotificationId);
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",

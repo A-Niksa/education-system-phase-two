@@ -3,7 +3,7 @@ package client.gui.menus.coursewares.coursewaresview;
 import client.gui.MainFrame;
 import client.gui.menus.coursewares.coursemenu.CourseMenu;
 import client.gui.menus.main.MainMenu;
-import client.locallogic.menus.messaging.ThumbnailIdParser;
+import client.locallogic.menus.messaging.ThumbnailParser;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.DTOs.unitselection.CourseThumbnailDTO;
 import shareables.network.responses.Response;
@@ -32,7 +32,7 @@ public class StudentCoursewaresView extends CoursewaresView {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedCourseId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+            String selectedCourseId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
 
             MasterLogger.clientInfo(clientController.getId(), "Opened course menu", "connectListeners",
                     getClass());

@@ -275,6 +275,8 @@ public class ConversationRoom extends DynamicPanelTemplate implements OfflinePan
             Response response = clientController.downloadMediaFromConversation(offlineModeDTO.getId(),
                     conversationDTO.getContactId(), mediaToDownloadId);
 
+            if (response == null) return;
+
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
                         getClass());
@@ -287,7 +289,7 @@ public class ConversationRoom extends DynamicPanelTemplate implements OfflinePan
         });
 
         goBackButton.addActionListener(actionEvent -> {
-            MasterLogger.clientInfo(clientController.getId(), "Went back to messenger view",
+            MasterLogger.clientInfo(clientController.getId(), "Went back to messenger listview",
                     "connectListeners", getClass());
             facilitateChangingPanel(this);
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {

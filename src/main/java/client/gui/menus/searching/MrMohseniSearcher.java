@@ -3,7 +3,7 @@ package client.gui.menus.searching;
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
-import client.locallogic.menus.messaging.ThumbnailIdParser;
+import client.locallogic.menus.messaging.ThumbnailParser;
 import shareables.network.DTOs.generalmodels.StudentDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
@@ -121,7 +121,7 @@ public class MrMohseniSearcher extends DynamicPanelTemplate {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            selectedStudentId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+            selectedStudentId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
 
             Response response = clientController.getStudentDTO(selectedStudentId);
             if (response == null) return;

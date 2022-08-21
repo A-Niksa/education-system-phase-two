@@ -2,7 +2,7 @@ package client.gui.menus.coursewares.educationalmaterials.addition;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
-import client.gui.menus.coursewares.educationalmaterials.view.ProfessorMaterialsView;
+import client.gui.menus.coursewares.educationalmaterials.listview.ProfessorMaterialsView;
 import client.gui.menus.main.MainMenu;
 import client.locallogic.menus.coursewares.ItemGenerator;
 import client.locallogic.menus.messaging.MediaFileParser;
@@ -172,7 +172,7 @@ public class MaterialAdder extends DynamicPanelTemplate {
         });
 
         goBackButton.addActionListener(actionEvent -> {
-            MasterLogger.clientInfo(clientController.getId(), "Went back to materials view",
+            MasterLogger.clientInfo(clientController.getId(), "Went back to materials listview",
                     "connectListeners", getClass());
             stopPanelLoop();
             mainFrame.setCurrentPanel(new ProfessorMaterialsView(mainFrame, mainMenu, offlineModeDTO, courseId));

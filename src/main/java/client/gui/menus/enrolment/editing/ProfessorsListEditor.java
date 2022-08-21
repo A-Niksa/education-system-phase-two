@@ -132,7 +132,7 @@ public class ProfessorsListEditor extends DynamicPanelTemplate {
         goBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MasterLogger.clientInfo(clientController.getId(), "Went back to professors list view",
+                MasterLogger.clientInfo(clientController.getId(), "Went back to professors list listview",
                         "connectListeners", getClass());
                 stopPanelLoop();
                 mainFrame.setCurrentPanel(new ProfessorsListManager(mainFrame, mainMenu, offlineModeDTO));

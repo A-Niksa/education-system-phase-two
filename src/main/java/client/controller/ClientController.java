@@ -490,6 +490,13 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response downloadMediaFromEducationalMaterial(String courseId, String materialId, String itemId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DOWNLOAD_MEDIA_FROM_EDUCATIONAL_MATERIAL,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("materialId", materialId),
+                new StringObjectMap("itemId", itemId));
+        return client.sendAndListen(request);
+    }
+
     public Response getStudentContactProfileDTOs(String username) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_CONTACT_PROFILE_DTOS,
                 new StringObjectMap("username", username));

@@ -59,11 +59,12 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_COURSEWARES_VIEW("guiCoursewaresViewPath"),
     GUI_COURSE_MENU("guiCourseMenuPath"),
     GUI_MATERIALS_VIEW("guiMaterialsViewPath"),
-    GUI_MATERIAL_ADDER("guiMaterialAdderPath");
+    GUI_MATERIAL_ADDER("guiMaterialAdderPath"),
+    GUI_MATERIAL_DISPLAY("guiMaterialDisplayPath");
 
     private String configKeyString;
 
-    private ConfigFileIdentifier(String configKeyString) {
+    ConfigFileIdentifier(String configKeyString) {
         this.configKeyString = configKeyString;
     }
 

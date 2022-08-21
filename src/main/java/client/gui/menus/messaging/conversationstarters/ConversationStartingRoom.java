@@ -173,7 +173,7 @@ public class ConversationStartingRoom extends DynamicPanelTemplate {
         });
 
         goBackButton.addActionListener(actionEvent -> {
-            MasterLogger.clientInfo(clientController.getId(), "Went back to messenger view",
+            MasterLogger.clientInfo(clientController.getId(), "Went back to messenger listview",
                     "connectListeners", getClass());
             stopPanelLoop();
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {

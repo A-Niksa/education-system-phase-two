@@ -1,9 +1,11 @@
-package client.gui.menus.coursewares.educationalmaterials.view;
+package client.gui.menus.coursewares.educationalmaterials.listview;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.coursewares.coursemenu.CourseMenu;
+import client.gui.menus.coursewares.educationalmaterials.display.MaterialDisplay;
 import client.gui.menus.main.MainMenu;
+import client.locallogic.menus.messaging.ThumbnailParser;
 import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
@@ -126,6 +128,24 @@ public abstract class MaterialsView extends DynamicPanelTemplate {
 
     @Override
     protected void connectListeners() {
+        openButton.addActionListener(actionEvent -> {
+            if (graphicalList.getSelectedIndex() == -1) {
+                String errorMessage = ConfigManager.getString(ConfigFileIdentifier.TEXTS,
+                        "noMaterialHasBeenSelected");
+                JOptionPane.showMessageDialog(mainFrame, errorMessage);
+                MasterLogger.clientError(clientController.getId(), errorMessage, "connectListeners", getClass());
+                return;
+            }
+
+            String selectedListItem = graphicalList.getSelectedValue();
+            String selectedMaterialId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
+
+            MasterLogger.clientInfo(clientController.getId(), "Opened material display",
+                    "connectListeners", getClass());
+            stopPanelLoop();
+            mainFrame.setCurrentPanel(new MaterialDisplay(mainFrame, mainMenu, offlineModeDTO, courseId, selectedMaterialId));
+        });
+
         goBackButton.addActionListener(actionEvent -> {
             MasterLogger.clientInfo(clientController.getId(), "Went back to course menu",
                     "connectListeners", getClass());
@@ -133,6 +153,4 @@ public abstract class MaterialsView extends DynamicPanelTemplate {
             mainFrame.setCurrentPanel(new CourseMenu(mainFrame, mainMenu, offlineModeDTO, courseId));
         });
     }
-
-    protected abstract void connectOpeningListener();
 }

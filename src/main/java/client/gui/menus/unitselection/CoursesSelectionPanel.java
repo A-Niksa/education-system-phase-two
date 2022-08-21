@@ -3,7 +3,7 @@ package client.gui.menus.unitselection;
 import client.controller.ClientController;
 import client.gui.MainFrame;
 import client.gui.utils.ErrorUtils;
-import client.locallogic.menus.messaging.ThumbnailIdParser;
+import client.locallogic.menus.messaging.ThumbnailParser;
 import client.locallogic.menus.unitselection.CourseSelectionUtils;
 import client.locallogic.menus.unitselection.GroupThumbnailParser;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
@@ -248,7 +248,7 @@ public abstract class CoursesSelectionPanel extends JPanel {
 
     private void updateSelectedCourseId() {
         String selectedListItem = coursesGraphicalList.getSelectedValue();
-        selectedCourseId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+        selectedCourseId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
     }
 
     protected void drawPanel() {

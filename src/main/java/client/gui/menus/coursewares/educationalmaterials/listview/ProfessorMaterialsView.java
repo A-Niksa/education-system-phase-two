@@ -1,11 +1,10 @@
-package client.gui.menus.coursewares.educationalmaterials.view;
+package client.gui.menus.coursewares.educationalmaterials.listview;
 
 import client.gui.MainFrame;
 import client.gui.menus.coursewares.educationalmaterials.addition.MaterialAdder;
 import client.gui.menus.coursewares.educationalmaterials.addition.MaterialEditor;
-import client.gui.menus.coursewares.educationalmaterials.materialdisplay.ProfessorMaterialDisplay;
 import client.gui.menus.main.MainMenu;
-import client.locallogic.menus.messaging.ThumbnailIdParser;
+import client.locallogic.menus.messaging.ThumbnailParser;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
 import shareables.network.responses.ResponseStatus;
@@ -53,7 +52,7 @@ public class ProfessorMaterialsView extends MaterialsView {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedMaterialId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+            String selectedMaterialId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
 
             MasterLogger.clientInfo(clientController.getId(), "Opened material editor",
                     "connectListeners", getClass());
@@ -71,7 +70,7 @@ public class ProfessorMaterialsView extends MaterialsView {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedMaterialId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+            String selectedMaterialId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
 
             Response response = clientController.removeCourseEducationalMaterial(courseId, selectedMaterialId);
             if (response == null) return;
@@ -92,27 +91,6 @@ public class ProfessorMaterialsView extends MaterialsView {
                         "connectListeners", getClass());
                 updatePanel();
             }
-        });
-    }
-
-    @Override
-    protected void connectOpeningListener() {
-        openButton.addActionListener(actionEvent -> {
-            if (graphicalList.getSelectedIndex() == -1) {
-                String errorMessage = ConfigManager.getString(ConfigFileIdentifier.TEXTS,
-                        "noMaterialHasBeenSelected");
-                JOptionPane.showMessageDialog(mainFrame, errorMessage);
-                MasterLogger.clientError(clientController.getId(), errorMessage, "connectListeners", getClass());
-                return;
-            }
-
-            String selectedListItem = graphicalList.getSelectedValue();
-            String selectedMaterialId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
-
-            MasterLogger.clientInfo(clientController.getId(), "Opened material display",
-                    "connectListeners", getClass());
-            stopPanelLoop();
-            mainFrame.setCurrentPanel(new ProfessorMaterialDisplay(mainFrame, mainMenu, offlineModeDTO, selectedMaterialId));
         });
     }
 }

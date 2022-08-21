@@ -47,6 +47,14 @@ public class EducationalItem extends IdentifiableWithTime {
                 "</html>";
     }
 
+    public String toExtensiveString() {
+        return "<html>" +
+                    id + " - " + itemType.toString() +
+                    "<br/>" +
+                    descriptionToString() + " - " + itemType.toString() +
+                "</html>";
+    }
+
     private String descriptionToString() {
         if (itemType == ItemType.TEXT) {
             return fetchShortenedText();

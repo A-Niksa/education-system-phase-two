@@ -4,8 +4,8 @@ import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
 import client.gui.menus.coursewares.coursewaresview.ProfessorCoursewaresView;
 import client.gui.menus.coursewares.coursewaresview.StudentCoursewaresView;
-import client.gui.menus.coursewares.educationalmaterials.view.ProfessorMaterialsView;
-import client.gui.menus.coursewares.educationalmaterials.view.StudentMaterialsView;
+import client.gui.menus.coursewares.educationalmaterials.listview.ProfessorMaterialsView;
+import client.gui.menus.coursewares.educationalmaterials.listview.StudentMaterialsView;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.general.DatePickerConfigurationTool;
@@ -242,7 +242,7 @@ public class CourseMenu extends DynamicPanelTemplate {
         });
 
         goBackButton.addActionListener(actionEvent -> {
-            MasterLogger.clientInfo(clientController.getId(), "Went back to coursewares view",
+            MasterLogger.clientInfo(clientController.getId(), "Went back to coursewares listview",
                     "connectListeners", getClass());
             stopPanelLoop();
             if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {

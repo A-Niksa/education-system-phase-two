@@ -3,8 +3,7 @@ package client.gui.menus.messaging.messengerviews;
 import client.gui.MainFrame;
 import client.gui.menus.main.MainMenu;
 import client.gui.menus.messaging.conversationroom.ConversationRoom;
-import client.locallogic.menus.messaging.ThumbnailIdParser;
-import shareables.models.pojos.messaging.Conversation;
+import client.locallogic.menus.messaging.ThumbnailParser;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.responses.Response;
@@ -40,7 +39,7 @@ public class AdminMessengerView extends MessengerView {
             }
 
             String selectedListItem = graphicalList.getSelectedValue();
-            String selectedContactId = ThumbnailIdParser.getIdFromThumbnailText(selectedListItem, " - ");
+            String selectedContactId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
 
             if (!isOnline) {
                 getConversationDTOInOfflineMode(selectedContactId);
