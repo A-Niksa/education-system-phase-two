@@ -203,7 +203,7 @@ public class ConversationRoom extends DynamicPanelTemplate implements OfflinePan
             if (returnedValue == JFileChooser.APPROVE_OPTION) {
                 chosenFile = fileChooser.getSelectedFile();
                 chosenFileLabel.setText(chosenFileLabelMessage + chosenFile.getPath());
-                MasterLogger.clientInfo(clientController.getId(), "Media file chosen (ID: " + chosenFile.getPath()
+                MasterLogger.clientInfo(clientController.getId(), "Media file chosen (Path: " + chosenFile.getPath()
                         + ")", "connectListeners", getClass());
             }
         });

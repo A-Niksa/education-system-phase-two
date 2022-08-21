@@ -45,7 +45,7 @@ public class MaterialThumbnailDTO {
     @Override
     public String toString() {
         return "<html>" +
-                    id + " | " + title +
+                    id + " - " + title +
                     "<br/>" +
                     extensiveDateTimeFormatter.format(uploadDate) +
                 "</html>";

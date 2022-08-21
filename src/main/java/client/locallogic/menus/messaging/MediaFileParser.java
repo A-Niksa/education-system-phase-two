@@ -66,4 +66,16 @@ public class MediaFileParser {
         }
         return fileTooLarge;
     }
+
+    public boolean isFileTooLargeInReducedWay(File file) {
+        long maximumNumberOfBytes = ConfigManager.getLong(ConfigFileIdentifier.CONSTANTS, "reducedMaxBytes");
+        Path path = Paths.get(file.getPath());
+        boolean fileTooLarge = true; // default value
+        try {
+            fileTooLarge = Files.size(path) > maximumNumberOfBytes;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileTooLarge;
+    }
 }

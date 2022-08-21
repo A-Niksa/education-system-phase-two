@@ -3,10 +3,7 @@ package server.network.clienthandling;
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
 import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
-import server.network.clienthandling.logicutils.coursewares.CourseCalendarUtils;
-import server.network.clienthandling.logicutils.coursewares.CoursewareEnrolmentUtils;
-import server.network.clienthandling.logicutils.coursewares.CoursewaresViewUtils;
-import server.network.clienthandling.logicutils.coursewares.MaterialThumbnailUtils;
+import server.network.clienthandling.logicutils.coursewares.*;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
@@ -36,6 +33,7 @@ import server.network.clienthandling.logicutils.unitselection.thumbnails.PinnedC
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
+import shareables.models.pojos.coursewares.EducationalItem;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.notifications.Notification;
 import shareables.models.pojos.unitselection.UnitSelectionSession;
@@ -923,5 +921,41 @@ public class RequestHandler { // TODO: logging, perhaps?
             CoursewareEnrolmentUtils.addTeachingAssistantToCourse(databaseManager, teachingAssistantId, courseId);
             responseHandler.requestSuccessful(clientHandler);
         }
+    }
+
+    public void saveEducationalMaterialItems(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String materialTitle = (String) request.get("materialTitle");
+        List<EducationalItem> educationalItems = (ArrayList<EducationalItem>) request.get("educationalItems");
+        MaterialItemUtils.addEducationalMaterialItems(databaseManager, courseId, materialTitle, educationalItems);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void editEducationalMaterialItems(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String materialId = (String) request.get("materialId");
+        List<EducationalItem> educationalItems = (ArrayList<EducationalItem>) request.get("educationalItems");
+        MaterialItemUtils.editEducationalMaterialItems(databaseManager, courseId, materialId, educationalItems);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void getCourseMaterialEducationalItems(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String materialId = (String) request.get("materialId");
+        List<EducationalItem> educationalItems = MaterialItemUtils.getEducationalItems(databaseManager, courseId, materialId);
+        responseHandler.educationalItemsAcquired(clientHandler, educationalItems);
+    }
+
+    public void removeCourseEducationalMaterial(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String materialId = (String) request.get("materialId");
+        MaterialItemUtils.removeCourseEducationalMaterial(databaseManager, courseId, materialId);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void removeAllCourseEducationalMaterials(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        MaterialItemUtils.removeAllCourseEducationalMaterials(databaseManager, courseId);
+        responseHandler.requestSuccessful(clientHandler);
     }
 }

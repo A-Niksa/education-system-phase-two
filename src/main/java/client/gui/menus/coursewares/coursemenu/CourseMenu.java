@@ -1,12 +1,12 @@
-package client.gui.menus.coursewares;
+package client.gui.menus.coursewares.coursemenu;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
+import client.gui.menus.coursewares.coursewaresview.ProfessorCoursewaresView;
+import client.gui.menus.coursewares.coursewaresview.StudentCoursewaresView;
+import client.gui.menus.coursewares.educationalmaterials.view.ProfessorMaterialsView;
+import client.gui.menus.coursewares.educationalmaterials.view.StudentMaterialsView;
 import client.gui.menus.main.MainMenu;
-import client.gui.menus.messaging.messengerviews.AdminMessengerView;
-import client.gui.menus.messaging.messengerviews.MrMohseniMessengerView;
-import client.gui.menus.messaging.messengerviews.ProfessorMessengerView;
-import client.gui.menus.messaging.messengerviews.StudentMessengerView;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.general.DatePickerConfigurationTool;
 import client.locallogic.menus.coursewares.CalendarUtils;
@@ -200,7 +200,11 @@ public class CourseMenu extends DynamicPanelTemplate {
             MasterLogger.clientInfo(clientController.getId(), "Opened courseware educational materials section",
                     "connectListeners", getClass());
             stopPanelLoop();
-            // TODO
+            if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {
+                mainFrame.setCurrentPanel(new StudentMaterialsView(mainFrame, mainMenu, offlineModeDTO, courseId));
+            } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
+                mainFrame.setCurrentPanel(new ProfessorMaterialsView(mainFrame, mainMenu, offlineModeDTO, courseId));
+            }
         });
 
         addStudentButton.addActionListener(actionEvent -> {
@@ -222,7 +226,7 @@ public class CourseMenu extends DynamicPanelTemplate {
 
         addTAButton.addActionListener(actionEvent -> {
             String teachingAssistantId = JOptionPane.showInputDialog(mainFrame, ConfigManager.getString(configIdentifier,
-                    "addStudentPrompt"));
+                    "addTAPrompt"));
             if (teachingAssistantId == null) return;
 
             Response response = clientController.addTeachingAssistantToCourse(teachingAssistantId, courseId);

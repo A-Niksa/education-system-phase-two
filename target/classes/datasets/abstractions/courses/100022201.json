@@ -45,7 +45,41 @@
   "isTheologyCourse" : false,
   "coursewareManager" : {
     "courseId" : "100022201",
-    "educationalMaterials" : [ ],
+    "educationalMaterials" : [ {
+      "id" : "1661084945",
+      "date" : "2022-08-21T12:29:05.0917202",
+      "title" : "s",
+      "educationalItems" : [ {
+        "id" : "1661084940",
+        "date" : "2022-08-21T12:29:00.1838196",
+        "itemType" : "TEXT",
+        "text" : "sda",
+        "mediaFile" : null
+      }, {
+        "id" : "1661084942",
+        "date" : "2022-08-21T12:29:02.2159279",
+        "itemType" : "TEXT",
+        "text" : "asd",
+        "mediaFile" : null
+      }, {
+        "id" : "1661084944",
+        "date" : "2022-08-21T12:29:04.3314856",
+        "itemType" : "TEXT",
+        "text" : "f",
+        "mediaFile" : null
+      } ]
+    }, {
+      "id" : "1661084956",
+      "date" : "2022-08-21T12:29:16.0006764",
+      "title" : "o",
+      "educationalItems" : [ {
+        "id" : "1661084955",
+        "date" : "2022-08-21T12:29:15.4510985",
+        "itemType" : "TEXT",
+        "text" : "sad",
+        "mediaFile" : null
+      } ]
+    } ],
     "homeworks" : [ ]
   },
   "active" : true,

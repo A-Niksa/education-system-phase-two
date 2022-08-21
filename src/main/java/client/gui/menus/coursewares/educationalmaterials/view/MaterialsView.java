@@ -1,7 +1,8 @@
-package client.gui.menus.coursewares;
+package client.gui.menus.coursewares.educationalmaterials.view;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;
+import client.gui.menus.coursewares.coursemenu.CourseMenu;
 import client.gui.menus.main.MainMenu;
 import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;
@@ -22,6 +23,10 @@ public abstract class MaterialsView extends DynamicPanelTemplate {
     protected JScrollPane scrollPane;
     protected String[] materialThumbnailTexts;
     protected ArrayList<MaterialThumbnailDTO> materialThumbnailDTOs;
+    protected JButton removeAllButton;
+    protected JButton removeButton;
+    protected JButton addButton;
+    protected JButton editButton;
     protected JButton goBackButton;
 
     public MaterialsView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO, String courseId) {
@@ -73,6 +78,10 @@ public abstract class MaterialsView extends DynamicPanelTemplate {
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(graphicalList);
 
+        removeAllButton = new JButton(ConfigManager.getString(configIdentifier, "removeAllButtonM"));
+        removeButton = new JButton(ConfigManager.getString(configIdentifier, "removeButtonM"));
+        addButton = new JButton(ConfigManager.getString(configIdentifier, "addButtonM"));
+        editButton = new JButton(ConfigManager.getString(configIdentifier, "editButtonM"));
         goBackButton = new JButton(ConfigManager.getString(configIdentifier, "goBackButtonM"));
     }
 
@@ -92,6 +101,22 @@ public abstract class MaterialsView extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "scrollPaneH"));
         add(scrollPane);
 
+        removeAllButton.setBounds(ConfigManager.getInt(configIdentifier, "removeAllButtonX"),
+                ConfigManager.getInt(configIdentifier, "removeAllButtonY"),
+                ConfigManager.getInt(configIdentifier, "removeAllButtonW"),
+                ConfigManager.getInt(configIdentifier, "removeAllButtonH"));
+        removeButton.setBounds(ConfigManager.getInt(configIdentifier, "removeButtonX"),
+                ConfigManager.getInt(configIdentifier, "removeButtonY"),
+                ConfigManager.getInt(configIdentifier, "removeButtonW"),
+                ConfigManager.getInt(configIdentifier, "removeButtonH"));
+        addButton.setBounds(ConfigManager.getInt(configIdentifier, "addButtonX"),
+                ConfigManager.getInt(configIdentifier, "addButtonY"),
+                ConfigManager.getInt(configIdentifier, "addButtonW"),
+                ConfigManager.getInt(configIdentifier, "addButtonH"));
+        editButton.setBounds(ConfigManager.getInt(configIdentifier, "editButtonX"),
+                ConfigManager.getInt(configIdentifier, "editButtonY"),
+                ConfigManager.getInt(configIdentifier, "editButtonW"),
+                ConfigManager.getInt(configIdentifier, "editButtonH"));
         goBackButton.setBounds(ConfigManager.getInt(configIdentifier, "goBackButtonX"),
                 ConfigManager.getInt(configIdentifier, "goBackButtonY"),
                 ConfigManager.getInt(configIdentifier, "goBackButtonW"),
@@ -108,4 +133,6 @@ public abstract class MaterialsView extends DynamicPanelTemplate {
             mainFrame.setCurrentPanel(new CourseMenu(mainFrame, mainMenu, offlineModeDTO, courseId));
         });
     }
+
+    protected abstract void connectOpeningListener();
 }

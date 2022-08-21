@@ -1,6 +1,7 @@
-package client.gui.menus.coursewares;
+package client.gui.menus.coursewares.coursewaresview;
 
 import client.gui.MainFrame;
+import client.gui.menus.coursewares.coursemenu.CourseMenu;
 import client.gui.menus.main.MainMenu;
 import client.locallogic.menus.messaging.ThumbnailIdParser;
 import shareables.network.DTOs.offlinemode.OfflineModeDTO;

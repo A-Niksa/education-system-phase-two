@@ -1,6 +1,7 @@
 package server.network.clienthandling;
 
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
+import shareables.models.pojos.coursewares.EducationalItem;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -512,6 +513,12 @@ public class ResponseHandler {
 
     public void studentDoesNotExist(ClientHandler clientHandler) {
         Response response = new Response(ConfigManager.getString(ConfigFileIdentifier.TEXTS, "studentDoesNotExist"));
+        clientHandler.respond(response);
+    }
+
+    public void educationalItemsAcquired(ClientHandler clientHandler, List<EducationalItem> educationalItems) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("educationalItems", educationalItems);
         clientHandler.respond(response);
     }
 }

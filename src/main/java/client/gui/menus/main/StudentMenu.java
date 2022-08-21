@@ -1,7 +1,7 @@
 package client.gui.menus.main;
 
 import client.gui.MainFrame;
-import client.gui.menus.coursewares.StudentCoursewaresView;
+import client.gui.menus.coursewares.coursewaresview.StudentCoursewaresView;
 import client.gui.menus.enrolment.viewing.CoursesListView;
 import client.gui.menus.enrolment.viewing.ProfessorsListView;
 import client.gui.menus.messaging.messengerviews.StudentMessengerView;

@@ -58,7 +58,8 @@ public enum ConfigFileIdentifier { // TODO: unrelated to here but putting fatals
     GUI_COURSES_SELECTION_PANEL("guiCoursesSelectionPanelPath"),
     GUI_COURSEWARES_VIEW("guiCoursewaresViewPath"),
     GUI_COURSE_MENU("guiCourseMenuPath"),
-    GUI_MATERIALS_VIEW("guiMaterialsViewPath");
+    GUI_MATERIALS_VIEW("guiMaterialsViewPath"),
+    GUI_MATERIAL_ADDER("guiMaterialAdderPath");
 
     private String configKeyString;
 

@@ -322,6 +322,21 @@ public class RequestMapper {
             case ADD_TA_TO_COURSE:
                 requestHandler.addTeachingAssistantToCourse(clientHandler, request);
                 break;
+            case ADD_EDUCATIONAL_MATERIAL_ITEMS:
+                requestHandler.saveEducationalMaterialItems(clientHandler, request);
+                break;
+            case EDIT_EDUCATIONAL_MATERIAL_ITEMS:
+                requestHandler.editEducationalMaterialItems(clientHandler, request);
+                break;
+            case GET_COURSE_MATERIAL_EDUCATIONAL_ITEMS:
+                requestHandler.getCourseMaterialEducationalItems(clientHandler, request);
+                break;
+            case REMOVE_COURSE_EDUCATIONAL_MATERIAL:
+                requestHandler.removeCourseEducationalMaterial(clientHandler, request);
+                break;
+            case REMOVE_ALL_COURSE_EDUCATIONAL_MATERIALS:
+                requestHandler.removeAllCourseEducationalMaterials(clientHandler, request);
+                break;
         }
     }
 }

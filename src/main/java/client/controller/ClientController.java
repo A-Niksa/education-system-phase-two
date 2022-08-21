@@ -4,11 +4,11 @@ import client.locallogic.localdatabase.datamodels.QueuedMessage;
 import client.locallogic.localdatabase.datasets.LocalDatasetIdentifier;
 import client.network.Client;
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.coursewares.EducationalItem;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.StudentStatus;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
-import shareables.network.DTOs.offlinemode.OfflineModeDTO;
 import shareables.network.blueprints.Blueprint;
 import shareables.network.requests.Request;
 import shareables.network.requests.RequestIdentifier;
@@ -651,7 +651,7 @@ public class ClientController {
     }
 
     public Response getProfessorCoursewareThumbnailDTOs(String professorId) {
-        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_COURSEWARE_THUMBNAIL_DTOS,
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_COURSEWARE_THUMBNAIL_DTOS,
                 new StringObjectMap("professorId", professorId));
         return client.sendAndListen(request);
     }
@@ -677,6 +677,40 @@ public class ClientController {
     public Response addTeachingAssistantToCourse(String teachingAssistantId, String courseId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_TA_TO_COURSE,
                 new StringObjectMap("teachingAssistantId", teachingAssistantId),
+                new StringObjectMap("courseId", courseId));
+        return client.sendAndListen(request);
+    }
+
+    public Response saveEducationalMaterialItems(String courseId, String materialTitle,
+                                                 ArrayList<EducationalItem> educationalItems) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_EDUCATIONAL_MATERIAL_ITEMS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("materialTitle", materialTitle),
+                new StringObjectMap("educationalItems", educationalItems));
+        return client.sendAndListen(request);
+    }
+
+    public Response editEducationalMaterialItems(String courseId, String materialId,
+                                                 ArrayList<EducationalItem> educationalItems) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.EDIT_EDUCATIONAL_MATERIAL_ITEMS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("materialId", materialId),
+                new StringObjectMap("educationalItems", educationalItems));
+        return client.sendAndListen(request);
+    }
+
+    public Response getCourseMaterialEducationalItems(String courseId, String materialId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_COURSE_MATERIAL_EDUCATIONAL_ITEMS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("materialId", materialId));
+        return client.sendAndListen(request);
+    }
+
+    public Response removeCourseEducationalMaterial(String courseId, String materialId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.REMOVE_COURSE_EDUCATIONAL_MATERIAL,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("materialId", materialId));
+        return client.sendAndListen(request);
+    }
+
+    public Response removeAllCourseEducationalMaterials(String courseId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.REMOVE_ALL_COURSE_EDUCATIONAL_MATERIALS,
                 new StringObjectMap("courseId", courseId));
         return client.sendAndListen(request);
     }

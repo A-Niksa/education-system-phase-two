@@ -3,7 +3,7 @@ package client.gui.menus.main;
 import client.gui.MainFrame;
 import client.gui.menus.addition.ProfessorAdder;
 import client.gui.menus.addition.StudentAdder;
-import client.gui.menus.coursewares.ProfessorCoursewaresView;
+import client.gui.menus.coursewares.coursewaresview.ProfessorCoursewaresView;
 import client.gui.menus.enrolment.management.CoursesListManager;
 import client.gui.menus.enrolment.management.ProfessorsListManager;
 import client.gui.menus.enrolment.viewing.CoursesListView;
@@ -385,6 +385,7 @@ public class ProfessorMenu extends MainMenu {
         addProfessorButton.setEnabled(false);
         notificationsButton.setEnabled(false);
         addUnitSelectionButton.setEnabled(false);
+        coursewaresButton.setEnabled(false);
     }
 
     @Override
@@ -402,5 +403,6 @@ public class ProfessorMenu extends MainMenu {
         addProfessorButton.setEnabled(true);
         notificationsButton.setEnabled(true);
         addUnitSelectionButton.setEnabled(true);
+        coursewaresButton.setEnabled(true);
     }
 }

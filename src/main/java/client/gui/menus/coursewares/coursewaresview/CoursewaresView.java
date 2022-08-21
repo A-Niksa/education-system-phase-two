@@ -1,4 +1,4 @@
-package client.gui.menus.coursewares;
+package client.gui.menus.coursewares.coursewaresview;
 
 import client.gui.DynamicPanelTemplate;
 import client.gui.MainFrame;

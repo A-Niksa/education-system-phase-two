@@ -1,6 +1,17 @@
 package shareables.models.pojos.coursewares;
 
 public enum SubmissionType {
-    TEXT,
-    MEDIA_FILE
+    TEXT("Text"),
+    MEDIA_FILE("Media File");
+
+    private String submissionTypeString;
+
+    SubmissionType(String submissionTypeString) {
+        this.submissionTypeString = submissionTypeString;
+    }
+
+    @Override
+    public String toString() {
+        return submissionTypeString;
+    }
 }
