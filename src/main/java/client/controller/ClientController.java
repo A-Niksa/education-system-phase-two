@@ -739,6 +739,78 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getHomeworkDescription(String courseId, String homeworkId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_HOMEWORK_DESCRIPTION,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getHomeworkPDF(String courseId, String homeworkId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_HOMEWORK_PDF,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getHomeworkSubmissionType(String courseId, String homeworkId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_HOMEWORK_SUBMISSION_TYPE,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId));
+        return client.sendAndListen(request);
+    }
+
+    public Response submitHomeworkText(String studentId, String courseId, String homeworkId, String text) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SUBMIT_HOMEWORK_TEXT,
+                new StringObjectMap("studentId", studentId), new StringObjectMap("homeworkId", homeworkId),
+                new StringObjectMap("courseId", courseId), new StringObjectMap("text", text));
+        return client.sendAndListen(request);
+    }
+
+    public Response submitHomeworkMedia(String studentId, String courseId, String homeworkId, MediaFile mediaFile) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SUBMIT_HOMEWORK_MEDIA,
+                new StringObjectMap("studentId", studentId), new StringObjectMap("homeworkId", homeworkId),
+                new StringObjectMap("courseId", courseId), new StringObjectMap("mediaFile", mediaFile));
+        return client.sendAndListen(request);
+    }
+
+    public Response getSubmissionThumbnailDTOs(String courseId, String homeworkId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_HOMEWORK_THUMBNAIL_DTOS,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId));
+        return client.sendAndListen(request);
+    }
+
+    public Response getSubmissionText(String courseId, String homeworkId, String submissionId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_SUBMISSION_TEXT,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId),
+                new StringObjectMap("submissionId", submissionId));
+        return client.sendAndListen(request);
+    }
+
+    public Response downloadSubmissionMediaFile(String courseId, String homeworkId, String submissionId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.DOWNLOAD_SUBMISSION_MEDIA_FILE,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId),
+                new StringObjectMap("submissionId", submissionId));
+        return client.sendAndListen(request);
+    }
+
+    public Response scoreStudentSubmission(String courseId, String homeworkId, String submissionId, Double score) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.SCORE_STUDENT_SUBMISSION,
+                new StringObjectMap("courseId", courseId), new StringObjectMap("homeworkId", homeworkId),
+                new StringObjectMap("submissionId", submissionId), new StringObjectMap("score", score));
+        return client.sendAndListen(request);
+    }
+
+    public Response getStudentGlobalCalendarEventDTOs(String studentId, LocalDateTime selectedDate) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_STUDENT_GLOBAL_CALENDAR_EVENT_DTOS,
+                new StringObjectMap("studentId", studentId), new StringObjectMap("selectedDate", selectedDate));
+        return client.sendAndListen(request);
+    }
+
+    public Response getProfessorGlobalCalendarEventDTOs(String professorId, LocalDateTime selectedDate) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_PROFESSOR_GLOBAL_CALENDAR_EVENT_DTOS,
+                new StringObjectMap("professorId", professorId),
+                new StringObjectMap("selectedDate", selectedDate));
+        return client.sendAndListen(request);
+    }
+
     public boolean isClientOnline() {
         return client.isOnline();
     }

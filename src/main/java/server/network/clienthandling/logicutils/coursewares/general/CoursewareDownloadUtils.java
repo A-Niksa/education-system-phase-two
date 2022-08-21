@@ -1,6 +1,7 @@
-package server.network.clienthandling.logicutils.coursewares;
+package server.network.clienthandling.logicutils.coursewares.general;
 
 import server.database.management.DatabaseManager;
+import server.network.clienthandling.logicutils.coursewares.educationalmaterials.MaterialItemUtils;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.coursewares.EducationalItem;

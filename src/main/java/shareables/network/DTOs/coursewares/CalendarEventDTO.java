@@ -58,4 +58,28 @@ public class CalendarEventDTO {
                     "Sharp deadline: " + extensiveDateTimeFormatter.format(eventDate) +
                 "</html>";
     }
+
+    @Override
+    public String toString() {
+        return "<html>" +
+                    courseName +
+                    "<br/>" +
+                    eventTitle + eventTypeToString() +
+                    "<br/>" +
+                    eventDatePromptToString() + extensiveDateTimeFormatter.format(eventDate) +
+                "</html>";
+    }
+
+    private String eventDatePromptToString() {
+        if (calendarEventType == CalendarEventType.HOMEWORK) {
+            return "Sharp deadline: ";
+        } else if (calendarEventType == CalendarEventType.EXAM) {
+            return "Exam date: ";
+        }
+        return "";
+    }
+
+    private String eventTypeToString() {
+        return calendarEventType == CalendarEventType.HOMEWORK ? " - Homework" : "";
+    }
 }

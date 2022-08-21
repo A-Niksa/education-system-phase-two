@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils.coursewares;
+package server.network.clienthandling.logicutils.coursewares.homeworks;
 
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;

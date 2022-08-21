@@ -19,6 +19,7 @@ public abstract class CoursewaresView extends DynamicPanelTemplate {
     protected JScrollPane scrollPane;
     protected String[] courseThumbnailTexts;
     protected ArrayList<CourseThumbnailDTO> courseThumbnailDTOs;
+    protected JButton calendarButton;
 
     public CoursewaresView(MainFrame mainFrame, MainMenu mainMenu, OfflineModeDTO offlineModeDTO) {
         super(mainFrame, mainMenu, offlineModeDTO);
@@ -58,6 +59,7 @@ public abstract class CoursewaresView extends DynamicPanelTemplate {
     @Override
     protected void initializeComponents() {
         openButton = new JButton(ConfigManager.getString(configIdentifier, "openButtonM"));
+        calendarButton = new JButton(ConfigManager.getString(configIdentifier, "calendarButtonM"));
 
         listModel = new DefaultListModel<>();
         Arrays.stream(courseThumbnailTexts).forEach(e -> listModel.addElement(e));
@@ -73,6 +75,11 @@ public abstract class CoursewaresView extends DynamicPanelTemplate {
                 ConfigManager.getInt(configIdentifier, "openButtonW"),
                 ConfigManager.getInt(configIdentifier, "openButtonH"));
         add(openButton);
+        calendarButton.setBounds(ConfigManager.getInt(configIdentifier, "calendarButtonX"),
+                ConfigManager.getInt(configIdentifier, "calendarButtonY"),
+                ConfigManager.getInt(configIdentifier, "calendarButtonW"),
+                ConfigManager.getInt(configIdentifier, "calendarButtonH"));
+        add(calendarButton);
 
         graphicalList.setLayoutOrientation(JList.VERTICAL);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

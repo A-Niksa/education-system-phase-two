@@ -2,6 +2,7 @@ package server.network.clienthandling;
 
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.coursewares.EducationalItem;
+import shareables.models.pojos.coursewares.SubmissionType;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.users.User;
 import shareables.models.pojos.users.UserIdentifier;
@@ -9,6 +10,7 @@ import shareables.network.DTOs.academicrequests.RequestDTO;
 import shareables.network.DTOs.coursewares.CalendarEventDTO;
 import shareables.network.DTOs.coursewares.HomeworkThumbnailDTO;
 import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
+import shareables.network.DTOs.coursewares.SubmissionThumbnailDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
@@ -531,6 +533,31 @@ public class ResponseHandler {
     public void teachingAssistanceStatusAcquired(ClientHandler clientHandler, boolean isTeachingAssistant) {
         Response response = new Response(ResponseStatus.OK);
         response.put("isTeachingAssistant", isTeachingAssistant);
+        clientHandler.respond(response);
+    }
+
+    public void descriptionAcquired(ClientHandler clientHandler, String description) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("description", description);
+        clientHandler.respond(response);
+    }
+
+    public void submissionTypeAcquired(ClientHandler clientHandler, SubmissionType submissionType) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("submissionType", submissionType);
+        clientHandler.respond(response);
+    }
+
+    public void submissionThumbnailDTOsAcquired(ClientHandler clientHandler,
+                                                List<SubmissionThumbnailDTO> submissionThumbnailDTOs) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("submissionThumbnailDTOs", submissionThumbnailDTOs);
+        clientHandler.respond(response);
+    }
+
+    public void submissionTextAcquired(ClientHandler clientHandler, String submissionText) {
+        Response response = new Response(ResponseStatus.OK);
+        response.put("submissionText", submissionText);
         clientHandler.respond(response);
     }
 }

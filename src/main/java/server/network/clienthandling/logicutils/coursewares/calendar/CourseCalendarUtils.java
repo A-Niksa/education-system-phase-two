@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils.coursewares;
+package server.network.clienthandling.logicutils.coursewares.calendar;
 
 import server.database.management.DatabaseManager;
 import server.network.clienthandling.logicutils.comparators.coursewarecomparators.CalendarEventDTOComparator;
@@ -19,27 +19,39 @@ public class CourseCalendarUtils {
         calendarEventDTOComparator = new CalendarEventDTOComparator();
     }
 
-    public static List<CalendarEventDTO> getCourseCalendarEventDTOs(DatabaseManager databaseManager, String courseId,
-                                                                    LocalDateTime calendarDate) {
+    public static List<CalendarEventDTO> getHomeworkCourseCalendarEventDTOs(DatabaseManager databaseManager, String courseId,
+                                                                            LocalDateTime calendarDate) {
         Course course = IdentifiableFetchingUtils.getCourse(databaseManager, courseId);
+        String courseName = course.getCourseName();
 
         return course.getCoursewareManager().getHomeworks().stream()
                 .filter(homework -> areEventsInTheSameDay(calendarDate, homework.getPermissibleSubmittingTime()))
-                .map(CourseCalendarUtils::initializeShortenedCalendarEventDTO)
+                .map(homework -> initializeShortenedCalendarEventDTO(homework, courseName))
                 .sorted(calendarEventDTOComparator)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static CalendarEventDTO initializeShortenedCalendarEventDTO(Homework homework) {
+    public static List<CalendarEventDTO> getHomeworkCourseCalendarEventDTOs(Course course, LocalDateTime calendarDate) {
+        String courseName = course.getCourseName();
+
+        return course.getCoursewareManager().getHomeworks().stream()
+                .filter(homework -> areEventsInTheSameDay(calendarDate, homework.getPermissibleSubmittingTime()))
+                .map(homework -> initializeShortenedCalendarEventDTO(homework, courseName))
+                .sorted(calendarEventDTOComparator)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    private static CalendarEventDTO initializeShortenedCalendarEventDTO(Homework homework, String courseName) {
         CalendarEventDTO calendarEventDTO = new CalendarEventDTO();
         calendarEventDTO.setCalendarEventType(CalendarEventType.HOMEWORK);
         calendarEventDTO.setEventTitle(homework.getTitle());
         calendarEventDTO.setEventDate(homework.getPermissibleSubmittingTime());
+        calendarEventDTO.setCourseName(courseName);
 
         return calendarEventDTO;
     }
 
-    private static boolean areEventsInTheSameDay(LocalDateTime firstEventDate, LocalDateTime secondEventDate) {
+    public static boolean areEventsInTheSameDay(LocalDateTime firstEventDate, LocalDateTime secondEventDate) {
         int firstEventDay = firstEventDate.getDayOfMonth();
         int firstEventMonth = firstEventDate.getMonthValue();
         int firstEventYear = firstEventDate.getYear();

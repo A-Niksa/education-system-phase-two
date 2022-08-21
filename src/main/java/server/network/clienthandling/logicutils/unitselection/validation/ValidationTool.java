@@ -1,7 +1,7 @@
 package server.network.clienthandling.logicutils.unitselection.validation;
 
 import server.database.management.DatabaseManager;
-import server.network.clienthandling.logicutils.coursewares.EnrolmentNotificationManager;
+import server.network.clienthandling.logicutils.coursewares.general.EnrolmentNotificationManager;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import server.network.clienthandling.logicutils.unitselection.acquisition.errorutils.SelectionErrorUtils;
 import shareables.models.pojos.abstractions.Course;

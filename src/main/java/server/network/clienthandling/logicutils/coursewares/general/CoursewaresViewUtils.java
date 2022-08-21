@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils.coursewares;
+package server.network.clienthandling.logicutils.coursewares.general;
 
 import server.database.datasets.DatasetIdentifier;
 import server.database.management.DatabaseManager;
@@ -34,7 +34,7 @@ public class CoursewaresViewUtils {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static List<Course> getProfessorActiveCourses(DatabaseManager databaseManager, String professorId) {
+    public static List<Course> getProfessorActiveCourses(DatabaseManager databaseManager, String professorId) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         return courses.stream()
                 .map(identifiable -> (Course) identifiable)
@@ -43,7 +43,7 @@ public class CoursewaresViewUtils {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static List<Course> getStudentActiveCourses(DatabaseManager databaseManager, String studentId) {
+    public static List<Course> getStudentActiveCourses(DatabaseManager databaseManager, String studentId) {
         List<Identifiable> courses = databaseManager.getIdentifiables(DatasetIdentifier.COURSES);
         return courses.stream()
                 .map(identifiable -> (Course) identifiable)

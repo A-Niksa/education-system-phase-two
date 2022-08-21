@@ -219,7 +219,7 @@ public class HomeworkAdder extends DynamicPanelTemplate {
             if (response == null) return;
 
             if (response.getResponseStatus() == ResponseStatus.OK) {
-                MasterLogger.clientInfo(clientController.getId(), "Added homework",
+                MasterLogger.clientInfo(clientController.getId(), "Added homeworks",
                         "connectListeners", getClass());
             }
         });

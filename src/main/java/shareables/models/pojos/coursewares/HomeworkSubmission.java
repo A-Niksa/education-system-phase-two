@@ -7,7 +7,7 @@ public class HomeworkSubmission extends IdentifiableWithTime {
     private String ownerId;
     private String text;
     private MediaFile mediaFile;
-    private double score;
+    private Double score;
 
     public HomeworkSubmission() {
         initializeId();
@@ -37,11 +37,11 @@ public class HomeworkSubmission extends IdentifiableWithTime {
         this.mediaFile = mediaFile;
     }
 
-    public double getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 }

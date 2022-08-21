@@ -115,7 +115,6 @@ public class CourseMenu extends DynamicPanelTemplate {
         datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
 
         listModel = new DefaultListModel<>();
-//        Arrays.stream(calendarEventTexts).forEach(e -> listModel.addElement(e));
         graphicalList = new JList<>(listModel);
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(graphicalList);

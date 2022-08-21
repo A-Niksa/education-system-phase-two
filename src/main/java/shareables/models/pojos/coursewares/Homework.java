@@ -85,4 +85,8 @@ public class Homework extends IdentifiableWithTime {
     public void setSubmissionType(SubmissionType submissionType) {
         this.submissionType = submissionType;
     }
+
+    public List<HomeworkSubmission> getHomeworkSubmissions() {
+        return homeworkSubmissions;
+    }
 }

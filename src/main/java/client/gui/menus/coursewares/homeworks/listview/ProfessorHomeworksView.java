@@ -33,7 +33,7 @@ public class ProfessorHomeworksView extends HomeworksView {
                     "homeworkTitleAcquisitionPrompt"));
             if (homeworkTitle == null || homeworkTitle.equals("")) homeworkTitle = "No Title";
 
-            MasterLogger.clientInfo(clientController.getId(), "Opened homework adder",
+            MasterLogger.clientInfo(clientController.getId(), "Opened homeworks adder",
                     "connectListeners", getClass());
             stopPanelLoop();
             mainFrame.setCurrentPanel(new HomeworkAdder(mainFrame, mainMenu, offlineModeDTO, courseId, homeworkTitle));
@@ -54,7 +54,7 @@ public class ProfessorHomeworksView extends HomeworksView {
             String selectedListItem = graphicalList.getSelectedValue();
             String selectedHomeworkId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " - ");
 
-            MasterLogger.clientInfo(clientController.getId(), "Opened homework management tool",
+            MasterLogger.clientInfo(clientController.getId(), "Opened homeworks management tool",
                     "connectListeners", getClass());
             stopPanelLoop();
             mainFrame.setCurrentPanel(new HomeworkManager(mainFrame, mainMenu, offlineModeDTO, courseId, selectedHomeworkId));

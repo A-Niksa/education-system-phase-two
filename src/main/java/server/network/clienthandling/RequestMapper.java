@@ -348,6 +348,39 @@ public class RequestMapper {
             case SAVE_HOMEWORK:
                 requestHandler.saveHomework(clientHandler, request);
                 break;
+            case GET_HOMEWORK_DESCRIPTION:
+                requestHandler.getHomeworkDescription(clientHandler, request);
+                break;
+            case GET_HOMEWORK_PDF:
+                requestHandler.getHomeworkPDF(clientHandler, request);
+                break;
+            case GET_HOMEWORK_SUBMISSION_TYPE:
+                requestHandler.getHomeworkSubmissionType(clientHandler, request);
+                break;
+            case SUBMIT_HOMEWORK_TEXT:
+                requestHandler.submitHomeworkText(clientHandler, request);
+                break;
+            case SUBMIT_HOMEWORK_MEDIA:
+                requestHandler.submitHomeworkMedia(clientHandler, request);
+                break;
+            case GET_SUBMISSION_THUMBNAIL_DTOS:
+                requestHandler.getSubmissionThumbnailDTOs(clientHandler, request);
+                break;
+            case GET_SUBMISSION_TEXT:
+                requestHandler.getSubmissionText(clientHandler, request);
+                break;
+            case DOWNLOAD_SUBMISSION_MEDIA_FILE:
+                requestHandler.getSubmissionMediaFile(clientHandler, request);
+                break;
+            case SCORE_STUDENT_SUBMISSION:
+                requestHandler.scoreStudentSubmission(clientHandler, request);
+                break;
+            case GET_STUDENT_GLOBAL_CALENDAR_EVENT_DTOS:
+                requestHandler.getStudentGlobalCalendarEventDTOs(clientHandler, request);
+                break;
+            case GET_PROFESSOR_GLOBAL_CALENDAR_EVENT_DTOS:
+                requestHandler.getProfessorGlobalCalendarEventDTOs(clientHandler, request);
+                break;
         }
     }
 }

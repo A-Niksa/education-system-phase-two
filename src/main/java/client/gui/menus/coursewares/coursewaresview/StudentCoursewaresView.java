@@ -1,6 +1,7 @@
 package client.gui.menus.coursewares.coursewaresview;
 
 import client.gui.MainFrame;
+import client.gui.menus.coursewares.calendar.CalendarView;
 import client.gui.menus.coursewares.coursemenu.CourseMenu;
 import client.gui.menus.main.MainMenu;
 import client.locallogic.menus.messaging.ThumbnailParser;
@@ -38,6 +39,13 @@ public class StudentCoursewaresView extends CoursewaresView {
                     getClass());
             stopPanelLoop();
             mainFrame.setCurrentPanel(new CourseMenu(mainFrame, mainMenu, offlineModeDTO, selectedCourseId));
+        });
+
+        calendarButton.addActionListener(actionEvent -> {
+            MasterLogger.clientInfo(clientController.getId(), "Opened calendar view", "connectListeners",
+                    getClass());
+            stopPanelLoop();
+            mainFrame.setCurrentPanel(new CalendarView(mainFrame, mainMenu, offlineModeDTO));
         });
     }
 

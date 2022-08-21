@@ -3,7 +3,17 @@ package server.network.clienthandling;
 import server.network.clienthandling.logicutils.addition.CourseAdditionUtils;
 import server.network.clienthandling.logicutils.addition.ProfessorAdditionUtils;
 import server.network.clienthandling.logicutils.addition.StudentAdditionUtils;
-import server.network.clienthandling.logicutils.coursewares.*;
+import server.network.clienthandling.logicutils.coursewares.calendar.CourseCalendarUtils;
+import server.network.clienthandling.logicutils.coursewares.calendar.GlobalCalendarUtils;
+import server.network.clienthandling.logicutils.coursewares.educationalmaterials.MaterialItemUtils;
+import server.network.clienthandling.logicutils.coursewares.educationalmaterials.MaterialThumbnailUtils;
+import server.network.clienthandling.logicutils.coursewares.general.CoursewareDownloadUtils;
+import server.network.clienthandling.logicutils.coursewares.general.CoursewareEnrolmentUtils;
+import server.network.clienthandling.logicutils.coursewares.general.CoursewaresViewUtils;
+import server.network.clienthandling.logicutils.coursewares.homeworks.HomeworkAdditionUtils;
+import server.network.clienthandling.logicutils.coursewares.homeworks.HomeworkThumbnailUtils;
+import server.network.clienthandling.logicutils.coursewares.homeworks.HomeworkViewUtils;
+import server.network.clienthandling.logicutils.coursewares.homeworks.SubmissionUtils;
 import server.network.clienthandling.logicutils.enrolment.CourseEditingUtils;
 import server.network.clienthandling.logicutils.enrolment.IdentifiableViewingUtils;
 import server.network.clienthandling.logicutils.enrolment.ProfessorEditingUtils;
@@ -34,6 +44,7 @@ import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.abstractions.DepartmentName;
 import shareables.models.pojos.academicrequests.AcademicRequestStatus;
 import shareables.models.pojos.coursewares.EducationalItem;
+import shareables.models.pojos.coursewares.SubmissionType;
 import shareables.models.pojos.media.MediaFile;
 import shareables.models.pojos.notifications.Notification;
 import shareables.models.pojos.unitselection.UnitSelectionSession;
@@ -47,6 +58,7 @@ import shareables.network.DTOs.academicrequests.RequestDTO;
 import shareables.network.DTOs.coursewares.CalendarEventDTO;
 import shareables.network.DTOs.coursewares.HomeworkThumbnailDTO;
 import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
+import shareables.network.DTOs.coursewares.SubmissionThumbnailDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.messaging.ConversationDTO;
 import shareables.network.DTOs.messaging.ConversationThumbnailDTO;
@@ -900,7 +912,7 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void getCalendarEventDTOs(ClientHandler clientHandler, Request request) {
         String courseId = (String) request.get("courseId");
         LocalDateTime calendarDate = (LocalDateTime) request.get("calendarDate");
-        List<CalendarEventDTO> calendarEventDTOs = CourseCalendarUtils.getCourseCalendarEventDTOs(databaseManager, courseId,
+        List<CalendarEventDTO> calendarEventDTOs = CourseCalendarUtils.getHomeworkCourseCalendarEventDTOs(databaseManager, courseId,
                 calendarDate);
         responseHandler.calendarEventDTOsAcquired(clientHandler, calendarEventDTOs);
     }
@@ -915,6 +927,14 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<HomeworkThumbnailDTO> homeworkThumbnailDTOs = HomeworkThumbnailUtils.getCourseHomeworkThumbnailDTOs(databaseManager,
                 (String) request.get("courseId"));
         responseHandler.homeworkThumbnailDTOsAcquired(clientHandler, homeworkThumbnailDTOs);
+    }
+
+    public void getSubmissionThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        List<SubmissionThumbnailDTO> submissionThumbnailDTOs = HomeworkThumbnailUtils.getSubmissionThumbnailDTOs(
+                databaseManager, courseId, homeworkId);
+        responseHandler.submissionThumbnailDTOsAcquired(clientHandler, submissionThumbnailDTOs);
     }
 
     public void addStudentToCourse(ClientHandler clientHandler, Request request) {
@@ -985,5 +1005,85 @@ public class RequestHandler { // TODO: logging, perhaps?
     public void saveHomework(ClientHandler clientHandler, Request request) {
         HomeworkAdditionUtils.addHomework(databaseManager, request);
         responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void getHomeworkDescription(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        String homeworkDescription = HomeworkViewUtils.getHomeworkDescription(databaseManager, courseId, homeworkId);
+        responseHandler.descriptionAcquired(clientHandler, homeworkDescription);
+    }
+
+    public void getHomeworkPDF(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        MediaFile homeworkPDF = HomeworkViewUtils.getHomeworkPDF(databaseManager, courseId, homeworkId);
+        responseHandler.mediaFileAcquired(clientHandler, homeworkPDF);
+    }
+
+    public void getHomeworkSubmissionType(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        SubmissionType submissionType = HomeworkViewUtils.getSubmissionType(databaseManager, courseId, homeworkId);
+        responseHandler.submissionTypeAcquired(clientHandler, submissionType);
+    }
+
+    public void submitHomeworkText(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        String text = (String) request.get("text");
+        SubmissionUtils.submitTextHomework(databaseManager, studentId, courseId, homeworkId, text);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void submitHomeworkMedia(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        MediaFile mediaFile = (MediaFile) request.get("mediaFile");
+        SubmissionUtils.submitMediaHomework(databaseManager, studentId, courseId, homeworkId, mediaFile);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void getSubmissionText(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        String submissionId = (String) request.get("submissionId");
+        String submissionText = SubmissionUtils.getSubmissionText(databaseManager, courseId, homeworkId, submissionId);
+        responseHandler.submissionTextAcquired(clientHandler, submissionText);
+    }
+
+    public void getSubmissionMediaFile(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        String submissionId = (String) request.get("submissionId");
+        MediaFile mediaFile = SubmissionUtils.getSubmissionMediaFile(databaseManager, courseId, homeworkId, submissionId);
+        responseHandler.mediaFileAcquired(clientHandler, mediaFile);
+    }
+
+    public void scoreStudentSubmission(ClientHandler clientHandler, Request request) {
+        String courseId = (String) request.get("courseId");
+        String homeworkId = (String) request.get("homeworkId");
+        String submissionId = (String) request.get("submissionId");
+        Double score = (Double) request.get("score");
+        SubmissionUtils.scoreStudentSubmission(databaseManager, courseId, homeworkId, submissionId, score);
+        responseHandler.requestSuccessful(clientHandler);
+    }
+
+    public void getStudentGlobalCalendarEventDTOs(ClientHandler clientHandler, Request request) {
+        String studentId = (String) request.get("studentId");
+        LocalDateTime selectedDate = (LocalDateTime) request.get("selectedDate");
+        List<CalendarEventDTO> calendarEventDTOs = GlobalCalendarUtils.getStudentGlobalCalendarEventDTOs(databaseManager,
+                studentId, selectedDate);
+        responseHandler.calendarEventDTOsAcquired(clientHandler, calendarEventDTOs);
+    }
+
+    public void getProfessorGlobalCalendarEventDTOs(ClientHandler clientHandler, Request request) {
+        String professorId = (String) request.get("professorId");
+        LocalDateTime selectedDate = (LocalDateTime) request.get("selectedDate");
+        List<CalendarEventDTO> calendarEventDTOs = GlobalCalendarUtils.getProfessorGlobalCalendarEventDTOs(databaseManager,
+                professorId, selectedDate);
+        responseHandler.calendarEventDTOsAcquired(clientHandler, calendarEventDTOs);
     }
 }
