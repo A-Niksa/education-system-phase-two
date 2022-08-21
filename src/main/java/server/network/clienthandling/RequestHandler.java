@@ -45,6 +45,7 @@ import shareables.models.pojos.users.students.StudentStatus;
 import server.database.management.DatabaseManager;
 import shareables.network.DTOs.academicrequests.RequestDTO;
 import shareables.network.DTOs.coursewares.CalendarEventDTO;
+import shareables.network.DTOs.coursewares.HomeworkThumbnailDTO;
 import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
 import shareables.network.DTOs.messaging.ContactProfileDTO;
 import shareables.network.DTOs.messaging.ConversationDTO;
@@ -908,6 +909,12 @@ public class RequestHandler { // TODO: logging, perhaps?
         List<MaterialThumbnailDTO> materialThumbnailDTOs = MaterialThumbnailUtils.getCourseMaterialThumbnailDTOs(databaseManager,
                 (String) request.get("courseId"));
         responseHandler.materialThumbnailDTOsAcquired(clientHandler, materialThumbnailDTOs);
+    }
+
+    public void getHomeworkThumbnailDTOs(ClientHandler clientHandler, Request request) {
+        List<HomeworkThumbnailDTO> homeworkThumbnailDTOs = HomeworkThumbnailUtils.getCourseHomeworkThumbnailDTOs(databaseManager,
+                (String) request.get("courseId"));
+        responseHandler.homeworkThumbnailDTOsAcquired(clientHandler, homeworkThumbnailDTOs);
     }
 
     public void addStudentToCourse(ClientHandler clientHandler, Request request) {

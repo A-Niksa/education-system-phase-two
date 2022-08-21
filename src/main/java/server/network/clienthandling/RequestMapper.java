@@ -318,6 +318,9 @@ public class RequestMapper {
             case GET_MATERIAL_THUMBNAIL_DTOS:
                 requestHandler.getMaterialThumbnailDTOs(clientHandler, request);
                 break;
+            case GET_HOMEWORK_THUMBNAIL_DTOS:
+                requestHandler.getHomeworkThumbnailDTOs(clientHandler, request);
+                break;
             case ADD_STUDENT_TO_COURSE:
                 requestHandler.addStudentToCourse(clientHandler, request);
                 break;

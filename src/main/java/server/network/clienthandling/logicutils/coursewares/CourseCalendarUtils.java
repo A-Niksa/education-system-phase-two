@@ -1,7 +1,7 @@
 package server.network.clienthandling.logicutils.coursewares;
 
 import server.database.management.DatabaseManager;
-import server.network.clienthandling.logicutils.comparators.CalendarEventDTOComparator;
+import server.network.clienthandling.logicutils.comparators.coursewarecomparators.CalendarEventDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.coursewares.Homework;

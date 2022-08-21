@@ -1,7 +1,7 @@
 package server.network.clienthandling.logicutils.coursewares;
 
 import server.database.management.DatabaseManager;
-import server.network.clienthandling.logicutils.comparators.MaterialThumbnailDTOComparator;
+import server.network.clienthandling.logicutils.comparators.coursewarecomparators.MaterialThumbnailDTOComparator;
 import server.network.clienthandling.logicutils.general.IdentifiableFetchingUtils;
 import shareables.models.pojos.abstractions.Course;
 import shareables.models.pojos.coursewares.EducationalMaterial;

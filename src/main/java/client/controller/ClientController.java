@@ -675,6 +675,12 @@ public class ClientController {
         return client.sendAndListen(request);
     }
 
+    public Response getHomeworkThumbnailDTOs(String courseId) {
+        Request request = requestGenerator.generateRequest(RequestIdentifier.GET_HOMEWORK_THUMBNAIL_DTOS,
+                new StringObjectMap("courseId", courseId));
+        return client.sendAndListen(request);
+    }
+
     public Response addStudentToCourse(String studentId, String courseId) {
         Request request = requestGenerator.generateRequest(RequestIdentifier.ADD_STUDENT_TO_COURSE,
                 new StringObjectMap("studentId", studentId), new StringObjectMap("courseId", courseId));

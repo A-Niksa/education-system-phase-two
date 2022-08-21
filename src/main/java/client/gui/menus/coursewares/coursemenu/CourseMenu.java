@@ -6,6 +6,8 @@ import client.gui.menus.coursewares.coursewaresview.ProfessorCoursewaresView;
 import client.gui.menus.coursewares.coursewaresview.StudentCoursewaresView;
 import client.gui.menus.coursewares.educationalmaterials.listview.ProfessorMaterialsView;
 import client.gui.menus.coursewares.educationalmaterials.listview.StudentMaterialsView;
+import client.gui.menus.coursewares.homeworks.listview.ProfessorHomeworksView;
+import client.gui.menus.coursewares.homeworks.listview.StudentHomeworksView;
 import client.gui.menus.main.MainMenu;
 import client.gui.utils.ErrorUtils;
 import client.locallogic.general.DatePickerConfigurationTool;
@@ -193,7 +195,11 @@ public class CourseMenu extends DynamicPanelTemplate {
             MasterLogger.clientInfo(clientController.getId(), "Opened courseware homeworks section",
                     "connectListeners", getClass());
             stopPanelLoop();
-            // TODO
+            if (offlineModeDTO.getUserIdentifier() == UserIdentifier.STUDENT) {
+                mainFrame.setCurrentPanel(new StudentHomeworksView(mainFrame, mainMenu, offlineModeDTO, courseId));
+            } else if (offlineModeDTO.getUserIdentifier() == UserIdentifier.PROFESSOR) {
+                mainFrame.setCurrentPanel(new ProfessorHomeworksView(mainFrame, mainMenu, offlineModeDTO, courseId));
+            }
         });
 
         educationalMaterialsButton.addActionListener(actionEvent -> {

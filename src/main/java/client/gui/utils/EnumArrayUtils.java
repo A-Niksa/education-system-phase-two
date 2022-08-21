@@ -1,6 +1,7 @@
 package client.gui.utils;
 
 import shareables.models.pojos.abstractions.DepartmentName;
+import shareables.models.pojos.coursewares.SubmissionType;
 import shareables.models.pojos.users.professors.AcademicLevel;
 import shareables.models.pojos.users.students.DegreeLevel;
 import shareables.models.pojos.users.students.StudentStatus;
@@ -59,5 +60,14 @@ public class EnumArrayUtils {
             if (studentStatus != StudentStatus.DROPPED_OUT) studentStatusStrings[index++] = studentStatus.toString();
         }
         return studentStatusStrings;
+    }
+
+    public static String[] initializeSubmissionTypes() {
+        String[] submissionTypes = new String[SubmissionType.values().length - 1];
+        int index = 0;
+        for (SubmissionType submissionType : SubmissionType.values()) {
+            submissionTypes[index++] = submissionType.toString();
+        }
+        return submissionTypes;
     }
 }

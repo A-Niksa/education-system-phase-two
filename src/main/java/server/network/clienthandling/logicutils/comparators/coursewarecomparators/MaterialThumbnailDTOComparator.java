@@ -1,4 +1,4 @@
-package server.network.clienthandling.logicutils.comparators;
+package server.network.clienthandling.logicutils.comparators.coursewarecomparators;
 
 import shareables.network.DTOs.coursewares.MaterialThumbnailDTO;
 
