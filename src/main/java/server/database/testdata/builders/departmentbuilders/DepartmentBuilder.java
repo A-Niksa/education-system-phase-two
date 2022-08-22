@@ -48,7 +48,22 @@ public abstract class DepartmentBuilder {
 
         if (departmentName == DepartmentName.PHYSICS) addStudentsToCourses();
 
+        if (departmentName == DepartmentName.MATHEMATICS) setFunctionalAnalysisCoPreRequisites();
+
         saveDepartment(databaseManager);
+    }
+
+    private void setFunctionalAnalysisCoPreRequisites() {
+        resetRealAnalysisGroupInfo();
+
+        Course functionalAnalysis = courses.get(3);
+        functionalAnalysis.addToPrerequisiteIds("1001");
+        functionalAnalysis.addToCorequisiteIds("1000");
+    }
+
+    private void resetRealAnalysisGroupInfo() {
+        Course realAnalysis = courses.get(2);
+        realAnalysis.setId("100122202");
     }
 
     private void addStudentsToCourses() {
@@ -242,6 +257,7 @@ public abstract class DepartmentBuilder {
             String advisingProfessorName = ConfigManager.getString(configIdentifier, studentNumeral +
                     "AdvisingProfessor");
             Professor advisingProfessor = getProfessor(advisingProfessorName);
+            if (advisingProfessor == null) continue;
 
             student.setAdvisingProfessorId(advisingProfessor.getId());
             advisingProfessor.addToAdviseeStudentIds(student.getId());

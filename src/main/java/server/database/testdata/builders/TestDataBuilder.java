@@ -57,5 +57,9 @@ public class TestDataBuilder {
         File localDatasetsFolder = new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES,
                 "localDatasetsFolderPath"));
         databaseWriter.purgeDirectoryCompletely(localDatasetsFolder);
+
+        File downloadsFolder = new File(ConfigManager.getString(ConfigFileIdentifier.ADDRESSES,
+                "downloadsFolderPath"));
+        databaseWriter.purgeDirectoryCompletely(downloadsFolder);
     }
 }

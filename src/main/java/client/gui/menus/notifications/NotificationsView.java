@@ -108,6 +108,7 @@ public class NotificationsView extends DynamicPanelTemplate {
             String selectedListItem = graphicalList.getSelectedValue();
             String selectedNotificationId = ThumbnailParser.getIdFromThumbnailText(selectedListItem, " | ");
             Response response = clientController.acceptNotification(offlineModeDTO.getId(), selectedNotificationId);
+            if (response == null) return;
             if (ErrorUtils.showErrorDialogIfNecessary(mainFrame, response)) {
                 MasterLogger.clientError(clientController.getId(), response.getErrorMessage(), "connectListeners",
                         getClass());

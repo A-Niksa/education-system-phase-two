@@ -94,11 +94,19 @@ public class NotificationDTO {
     @Override
     public String toString() {
         return "<html>" +
-                    id + " | " + senderId + " - " + senderName +
+                    id + " | " + senderInfoToString() +
                     "<br/>" +
                     notificationIdentifier + ": " + notificationText +
                     "<br/>" +
                     "Status: " + notificationStatus +
                 "</html>";
+    }
+
+    private String senderInfoToString() {
+        if (senderId != null && senderName != null) {
+            return senderId + " - " + senderName;
+        } else {
+            return "";
+        }
     }
 }

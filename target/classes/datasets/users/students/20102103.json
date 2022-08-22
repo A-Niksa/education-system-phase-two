@@ -3,8 +3,8 @@
   "departmentId" : "2",
   "profilePicture" : {
     "type" : "Picture",
-    "id" : "519009",
-    "date" : "2022-08-22T02:15:19.7077064",
+    "id" : "500009",
+    "date" : "2022-08-22T11:41:40.5910629",
     "mediaFileIdentifier" : "PICTURE",
     "path" : "src/main/resources/images/profilepictures/default.png",
     "encodedBytes" : "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABQVBMVEXk5ufl5+jj5ebi5OXh4+Xh4+TV2NrIzM6/w8a6v8K6v8G9wsTEycvR1Nbe4eLS1te8wcOwtrmts7avtLe3vL/Lz9Hg4uPl5uff4uOutLfZ3N3l5+ff4eK2u77X2tzBxsi3vb/b3t/M0NLAxMfc3+C1u72ttLevtbjJzc/h5OXg4uS5vsGxtrnX2tvY29zKztDP0tTAxce7wMLGysy5vsDGys29wcTi5ebS1dfEyMqzubvP09S+w8W0ubzc3uDDyMq8wcSzubyzuLvO0tTDx8nj5ufN0dOxt7rU19na3d7Izc/N0NLm5+jQ09XCx8m+w8bCxsnHy83Bxci2vL+1u76/xMbN0dLb3d/V2dq0uryts7fT1tjj5efW2dve4OLFycy2vL7Q1Nayt7rMz9Hd3+G4vcDFycuyuLqwtbja3N7////iYmsgAAAAAWJLR0RqJWKVDgAAAAd0SU1FB+YEFgwNAt6BGrkAAAHYSURBVEjH7dbXVsJAEAZgJkixoGQEdSQWLKBSROwdsWADKzbEXt//BQzo8ZhkMbPe6fG///hnl90kDsd//vMbA6A46xQH/IS63B5vfUNjk69Z2iotfhWraQ0E26Ta2zuaVKSPIPk7QxJY89LXYFc3v9vZg2TUvWF2dx+Zg/1Oph0YjFh01MccfMhqCf3DLDsSQyumeIJTDcm4wBKOsnCKhHiMMzV4UIjTrP0eF+MJF8OGJsU4xsEwKsZT0xw80yrEs5wlh8Jzwu2eZx0xZUE09+JSO+u/8kUFUy9zqB5Xxlq90sm8GJDIWnCQWaxnVTXZNe511rO+kTNMvjbCt3o2Y/TBEReDEr3VdWt99bmKVQPjW3K08roAVzI1tL3j1mBX6rEN61oy7yl4M+m0f2//IJVoVoD3A+AYSB0exQk/Q+px8eRUsefgPCucE16YDxhlx0p1NvyyXFSFN1L30UxJ+ebRD1fXuRq0ytX9cO3ycixC3wZvSrWsbwXJJpjbUYT29i5iZyuH5l60XneWY3Wdt+KHR9uZ3xM5t1ztyyem1dddNN0TSD5zLdFLyVTNL65UG3dcC1zwMWUNHxlQViUskeEzAVZligk9hkW/bkglYdpuqbBeHn8zb6D7jbiDIL7dAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA0LTIyVDEyOjEyOjUzKzAwOjAw2RhYDQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wNC0yMlQxMjoxMjo1MyswMDowMKhF4LEAAAAASUVORK5CYII="
@@ -12,23 +12,88 @@
   "messenger" : {
     "ownerId" : "20102103",
     "conversations" : [ {
-      "id" : "134520036",
-      "date" : "2022-08-22T02:15:20.0792542",
+      "id" : "168500036",
+      "date" : "2022-08-22T11:41:40.9166821",
       "messages" : [ {
-        "id" : "1661134520",
-        "date" : "2022-08-22T02:15:20.0792542",
+        "id" : "1661168500",
+        "date" : "2022-08-22T11:41:40.9155615",
         "senderId" : "1",
         "messageType" : "TEXT",
         "messageMediaFile" : null,
         "messageText" : "This is the admin. Please let me know if you run into any problems.",
-        "messageDate" : "2022-08-22T02:15:20.0792542"
+        "messageDate" : "2022-08-22T11:41:40.9155615"
       } ],
       "conversingUserIds" : [ "1", "20102103" ]
+    }, {
+      "id" : "174015071",
+      "date" : "2022-08-22T13:13:35.6057301",
+      "messages" : [ {
+        "id" : "1661174015",
+        "date" : "2022-08-22T13:13:35.6057301",
+        "senderId" : "20102103",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Salam ostade rahnama!",
+        "messageDate" : "2022-08-22T13:13:35.6057301"
+      } ],
+      "conversingUserIds" : [ "20102103", "80202204" ]
+    }, {
+      "id" : "174073135",
+      "date" : "2022-08-22T13:14:33.0556267",
+      "messages" : [ {
+        "id" : "1661174073",
+        "date" : "2022-08-22T13:14:33.0556267",
+        "senderId" : "20102103",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Salam!",
+        "messageDate" : "2022-08-22T13:14:33.0556267"
+      } ],
+      "conversingUserIds" : [ "20102103", "21102104" ]
+    }, {
+      "id" : "174147355",
+      "date" : "2022-08-22T13:15:47.3498476",
+      "messages" : [ {
+        "id" : "1661174147",
+        "date" : "2022-08-22T13:15:47.3498476",
+        "senderId" : "20102103",
+        "messageType" : "TEXT",
+        "messageMediaFile" : null,
+        "messageText" : "Salam!",
+        "messageDate" : "2022-08-22T13:15:47.3498476"
+      } ],
+      "conversingUserIds" : [ "20102103", "21102205" ]
     } ]
   },
   "notificationsManager" : {
     "ownerId" : "20102103",
-    "notifications" : [ ]
+    "notifications" : [ {
+      "id" : "1661174041",
+      "date" : "2022-08-22T13:14:01.0257039",
+      "notificationDate" : "2022-08-22T13:14:01.0257039",
+      "isSentByUser" : true,
+      "senderId" : "20102103",
+      "receiverId" : "21102104",
+      "isRequest" : true,
+      "notificationIdentifier" : "MESSAGE_REQUEST",
+      "notificationText" : "Add me to your messenger",
+      "notificationStatus" : "ACCEPTED",
+      "request" : true,
+      "sentByUser" : true
+    }, {
+      "id" : "1661174081",
+      "date" : "2022-08-22T13:14:41.044706",
+      "notificationDate" : "2022-08-22T13:14:41.044706",
+      "isSentByUser" : true,
+      "senderId" : "20102103",
+      "receiverId" : "21102205",
+      "isRequest" : true,
+      "notificationIdentifier" : "MESSAGE_REQUEST",
+      "notificationText" : "Add me to your messenger",
+      "notificationStatus" : "ACCEPTED",
+      "request" : true,
+      "sentByUser" : true
+    } ]
   },
   "userIdentifier" : "STUDENT",
   "nationalId" : "0150259058",
@@ -37,7 +102,7 @@
   "phoneNumber" : "09173949494",
   "emailAddress" : "e.sabeti@sharif.edu",
   "password" : "1234",
-  "lastLogin" : null,
+  "lastLogin" : "2022-08-22T13:13:16.2699391",
   "advisingProfessorId" : "80202204",
   "transcript" : {
     "courseIdScoreMap" : { },
